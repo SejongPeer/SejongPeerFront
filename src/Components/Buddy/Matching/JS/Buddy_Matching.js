@@ -86,7 +86,7 @@ const Buddy_Matching = () => {
         setMajor(major);
     };
     const GradeDiffData = (gradeDiff) => {
-        console.log("학년차이 : " + gradeDiff);
+        console.log("학년 : " + gradeDiff);
         setGradeDiff(gradeDiff);
     };
     const PhoneNumData = (phoneNum) => {

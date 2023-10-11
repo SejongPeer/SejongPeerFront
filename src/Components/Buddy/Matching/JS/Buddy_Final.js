@@ -53,17 +53,7 @@ const Final = (props) => {
         findingRange = "all";
     }
 
-    let findingGrade = {};
-    if (props.gradeDiff === "1학년") {
-        findingGrade = 1;
-    } else if (props.gradeDiff === "2학년") {
-        findingGrade = 2;
-    } else if (props.gradeDiff === "3학년") {
-        findingGrade = 3;
-    } else {
-        findingGrade = 4;
-    }
-
+    let findingGrade = props.gradeDiff;
     let phoneNumber = props.phoneNum;
     let kakaoId = props.kakao;
 
@@ -161,7 +151,7 @@ const Final = (props) => {
                     onClick={Page4}>
                         <div className={styles.titleWrapper}>
                             <div className={styles.complete}></div>
-                            <span>학년 차이</span>
+                            <span>학년</span>
                         </div>
                         <div className={styles.textWrapper}>
                         {props.gradeDiff}
