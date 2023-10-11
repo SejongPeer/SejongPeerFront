@@ -1,0 +1,101 @@
+.container{
+    margin-top: 5rem;
+    display: flex;
+    flex-direction: column;
+    height: 85%;
+    justify-content: space-between;
+    background-color: #FAFAFA;
+}
+.top{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 70%;
+    justify-content: center;
+}
+.bottom{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.btn1{
+    font-size: 20px;
+    font-weight: 700;
+    width: 335px;
+    height: 56px;
+    margin: 8px;
+    border-radius: 40px;
+    background-color: #FF3838;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+.btn2{
+    font-size: 18px;
+    font-weight: 700;
+    width: 335px;
+    height: 52px;
+    margin: 8px;
+    border-radius: 40px;
+    background-color: #FF3838;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.buddyText{
+    width: 172px;
+    height: 40px;
+}
+.buddyImg{
+    width: 117px;
+    height: 245.5px;
+    margin-top: 120px;
+}
+.text{
+    font-size: 18px;
+    font-weight: 600;
+    color: #333333;
+}
+.text2{
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.5;
+    color: #333333;
+}
+.text3{
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.5;
+    color: #FF3838;
+}
+
+.flex{
+    display: flex;
+    align-items: center;
+    width: auto;
+}
+.logo{
+    width: 32px;
+    height: 32px;
+}
+.title{
+    font-size: 24px;
+    color: #FF3838;
+    font-weight: 800;
+    margin: 8px 5px;
+}
+
+.wrapper{
+    width: 310px;
+}
+
+.back{
+    font-size: 16px;
+    font-weight: 600;
+    color: #999999;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}

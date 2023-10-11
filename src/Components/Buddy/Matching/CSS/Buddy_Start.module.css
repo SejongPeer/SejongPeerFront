@@ -1,0 +1,16 @@
+.mainImg {
+    width: 10rem;
+    height: 10rem;
+    margin: 15px;
+    border-radius: 50%;
+}
+
+.startBtn {
+    font-size: 20px;
+    font-weight: bold;
+    background-color: rgba(255, 0, 0, 0.7);
+    width: 219px;
+    height: 48px;
+    color: white;
+    border-radius: 30px;
+}

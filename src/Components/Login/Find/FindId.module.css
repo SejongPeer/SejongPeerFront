@@ -1,0 +1,24 @@
+.cnt{
+    margin: 3px 0px;
+}
+.submitBtn{
+    width: 335px;
+    height: 52px;
+    border-radius: 28px;
+    border: none;
+    background-color: #FF3838;
+    top: 90%;
+    color: #FFFFFF;
+    font-size: 18px;
+    font-weight: 700;
+    margin: 15px 0px;
+}
+.send{
+    margin: 4px 0px;
+    font-weight: 500;
+    font-size: 14px;
+    text-align: center;
+}
+.underline {
+    text-decoration: underline
+}

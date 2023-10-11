@@ -1,0 +1,29 @@
+.start{
+    border: none;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    width: 150px;
+    height: 160px;
+}
+.imgLogo{
+    width: 110px;
+    height: 86px;
+}
+.textLogo{
+    width: 130px;
+    height: 30px;
+    position: relative;
+    top: -12px;
+}
+
+.container{
+    width: 100%;
+    height: 93%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FAFAFA;
+}

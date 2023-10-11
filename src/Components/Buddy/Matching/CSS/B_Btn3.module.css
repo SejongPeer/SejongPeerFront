@@ -1,0 +1,40 @@
+.selectBtn3{
+    font-size: 18px;
+    font-weight: bold;
+    width: 340px;
+    height: 60px;
+    margin: 8px;
+    padding: 14px 20px;
+    border-radius: 40px;
+    text-align: left;
+    cursor: pointer;
+    border: 1px solid #E5E5E5;
+    background-color: white;
+    color: #333333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+} 
+
+.check{
+    width: 20px;
+    height: 11px;
+}
+
+.clicked{
+    background: #FFFFFF;
+    color: #333333;
+    font-size: 18px;
+    font-weight: bold;
+    width: 340px;
+    height: 60px;
+    margin: 8px;
+    padding: 14px 20px;
+    border-radius: 40px;
+    text-align: left;
+    cursor: pointer;
+    border: 3px solid #FF3838;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

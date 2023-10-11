@@ -1,0 +1,67 @@
+.inputText{
+    width: 330px;
+    height: 48px;
+    border-radius: 35px;
+    background-color: #FFFFFF;
+    border: 1px solid #E5E5E5;
+    color: #666666;
+    padding: 20px;
+    font-size: 16px;
+    font-weight: 400; 
+    margin-left: 2.5px;
+} 
+.inputText:active{
+    border: 1px solid #FF3838;
+} 
+
+.majorbox{
+    width: 335px;
+    height: 48px;
+    border-radius: 35px;
+    background-color: #FFFFFF;
+    border: 1px solid #E5E5E5;
+    color: #666666;
+    padding: 20px;
+    font-size: 16px;
+    font-weight: 400; 
+    text-align: left;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.emailBtn{
+    width: 68px;
+    height: 40px;
+    border-radius: 35px;
+    border: none;
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: 700;
+    z-index: 3;
+    right: 2.5%;
+    position: absolute;
+    transform: translateY(10%);
+    background-color: #FF3838;
+    cursor: pointer;
+}
+.emailCheckBtn{
+    width: 68px;
+    height: 40px;
+    border-radius: 35px;
+    border: none;
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: 700;
+    z-index: 3;
+    right: 2.5%;
+    position: absolute;
+    transform: translateY(10%);
+    background-color: #E5E5E5;
+    cursor: pointer;
+}
+.relative{
+    position: relative;
+}
+.emailContainer{
+    margin: 6px 0px;
+}

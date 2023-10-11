@@ -1,0 +1,17 @@
+.wrapper {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    border: none;
+    background-color: transparent;
+    margin-right: 20px;
+    padding: 0px;
+    align-items: center;
+    justify-content: space-around;
+    cursor: pointer;
+}
+
+.usericon{
+    width: 24px;
+    height: 24px;
+}

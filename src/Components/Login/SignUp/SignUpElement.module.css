@@ -1,0 +1,16 @@
+.error{
+    color: #FF3838;
+    font-weight: 500;
+    font-size: 14px;
+    margin: 2px 0px;
+}
+
+.title{
+    margin: 4px 0px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.container{
+    margin: 3px 0px;
+}

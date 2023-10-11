@@ -1,0 +1,43 @@
+.container{
+    background-color: #FAFAFA;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 6rem;
+}
+
+.signInBtn{
+    width: 335px;
+    height: 56px;
+    border-radius: 50px;
+    border: none;
+    background-color: #FF3838;
+    color: #FFFFFF;
+    font-size: 18px;
+    text-align: center;
+    margin: 12px 0px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.findBtn{
+    border: none;
+    background-color: transparent;
+    font-size: 14px;
+    color: #999999; 
+    font-weight: 500;
+    cursor: pointer;
+}
+.signUpBtn{
+    border: none;
+    background-color: transparent;
+    font-size: 14px;
+    color: #FF3838; 
+    font-weight: 500;
+    cursor: pointer;
+}
+.line{
+    color: #C5C5C5;
+    font-size: 14px;
+
+}
