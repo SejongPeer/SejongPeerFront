@@ -47,7 +47,7 @@ const ResetPwd = () => {
         };
 
         try {
-            const response = await fetch('http://3.36.128.187:8080/api/v1/email/verification/send/find-password', {
+            const response = await fetch(process.env.REACT_APP_BACK_SERVER + '/email/verification/send/find-password', {
                 method: 'POST',
                 body: JSON.stringify(emailSend),
                 headers: {

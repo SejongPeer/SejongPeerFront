@@ -40,7 +40,7 @@ const EmailBox = (props) => {
             };
             const backUrl = process.env.REACT_APP_BACK_SERVER;
             try {
-                const response = await fetch(backUrl + '/email/verification/send', {
+                const response = await fetch(process.env.REACT_APP_BACK_SERVER + '/email/verification/send', {
                     method: 'POST',
                     body: JSON.stringify(emailSend),
                     headers: {
