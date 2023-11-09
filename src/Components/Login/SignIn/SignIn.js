@@ -53,6 +53,10 @@ const SignIn = () => {
         throw new Error(data.message);
       }
 
+      console.log(id, pwd);
+      console.log(response);
+      console.log(data);
+      localStorage.setItem(id);
       alert("로그인 성공 메인페이지로 이동합니다.");
       navigate("/main");
     } catch (error) {
