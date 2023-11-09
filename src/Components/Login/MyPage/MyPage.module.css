@@ -1,10 +1,16 @@
+.myInfo {
+  margin-top: 10vh;
+  margin-left: 5%;
+  color: #333333;
+}
+
 .logoutContainer {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 30vh;
-  gap: 1vh;
+  /* margin-top: 10vh; */
+  gap: 2vh;
 }
 
 .div1 {
@@ -17,10 +23,70 @@
   border-radius: 35px;
 }
 
+.leftFont {
+  font-weight: bold;
+}
+
+.rightFont {
+  color: #666666;
+}
+
 .logoutButton {
   position: fixed;
-  bottom: 80px;
+  bottom: 3vh;
   width: 90vw;
   height: 7vh;
-  border: 1px solid black;
+  border: 1px solid white;
+  border-radius: 35px;
+  background-color: #ff3838;
+}
+
+.logoutFont {
+  font-weight: bold;
+  color: white;
+}
+
+/* 데스크탑 버전 */
+@media (min-width: 768px) {
+  .myInfo {
+    margin-left: 33%;
+    margin-top: 10vh;
+    color: #333333;
+  }
+
+  .logoutContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* margin-top: 10vh; */
+    gap: 1vh;
+  }
+
+  .div1 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #e5e5e5;
+    width: 35vw;
+    padding: 0 3vw 0 3vw;
+    border-radius: 35px;
+  }
+
+  .leftFont {
+    font-weight: bold;
+  }
+
+  .rightFont {
+    color: #666666;
+  }
+
+  .logoutButton {
+    position: fixed;
+    bottom: 3vh;
+    width: 35vw;
+    height: 7vh;
+    border-radius: 35px;
+    border: 1px solid white;
+  }
 }

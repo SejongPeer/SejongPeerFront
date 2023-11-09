@@ -54,9 +54,13 @@ const SignIn = () => {
       }
 
       console.log(id, pwd);
+
+      // 로그인 성공 후, 로컬 스토리지에 저장
+      localStorage.setItem("userId", id);
+      // localStorage.setItem("userPwd", pwd);
+
       console.log(response);
       console.log(data);
-      localStorage.setItem(id);
       alert("로그인 성공 메인페이지로 이동합니다.");
       navigate("/main");
     } catch (error) {
