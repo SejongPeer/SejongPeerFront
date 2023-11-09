@@ -53,14 +53,21 @@ const SignIn = () => {
         throw new Error(data.message);
       }
 
-      console.log(id, pwd);
+      // console.log(id, pwd);
 
+      // console.log(response);
+      // console.log(response.user);
+      console.log(data.user);
       // 로그인 성공 후, 로컬 스토리지에 저장
-      localStorage.setItem("userId", id);
-      // localStorage.setItem("userPwd", pwd);
-
-      console.log(response);
-      console.log(data);
+      localStorage.setItem("birth", data.user.birth);
+      localStorage.setItem("gender", data.user.gender);
+      localStorage.setItem("userId", data.user.id);
+      localStorage.setItem("kakaoId", data.user.kakaoId);
+      localStorage.setItem("major", data.user.major);
+      localStorage.setItem("name", data.user.name);
+      localStorage.setItem("phoneNum", data.user.phoneNum);
+      localStorage.setItem("sejongEmail", data.user.sejongEmail);
+      localStorage.setItem("studentId", data.user.studentId);
       alert("로그인 성공 메인페이지로 이동합니다.");
       navigate("/main");
     } catch (error) {
