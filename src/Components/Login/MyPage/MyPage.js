@@ -1,11 +1,15 @@
 import { useNavigate } from "react-router-dom";
 import styles from "../MyPage/MyPage.module.css";
+import Cookies from "js-cookie";
 
 const MyPage = () => {
   const navigate = useNavigate();
   // const test = () => {
   //   return console.log("로그아웃 버튼입니다!");
   // };
+  const deleteCookie = (name) => {
+    Cookies.remove(name);
+  };
 
   const handleLogout = () => {
     deleteCookie("session"); // 여기에 삭제할 쿠키의 이름을 넣는다
