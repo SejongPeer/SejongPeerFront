@@ -10,6 +10,7 @@ import BuddyStart1 from "./Components/Buddy/BuddyStart/BuddyStart1.js";
 import BuddyStart2 from "./Components/Buddy/BuddyStart/BuddyStart2.js";
 import BuddyStart3 from "./Components/Buddy/BuddyStart/BuddyStart3.js";
 import BuddyMatching from "./Components/Buddy/Matching/JS/Buddy_Matching";
+import HonbobStart1 from "./Components/Honbob/HonbobStart/HonbobStart1.js";
 import Confirm from "./Components/Modal/Confirm";
 import Finish from "./Components/Buddy/Matching/JS/Finish";
 import IfComplete from "./Components/Buddy/Matching/JS/IfComplete";
@@ -79,6 +80,7 @@ const App = () => {
               <Route path="/buddy/matching" element={<BuddyMatching />} />
               <Route path="/buddy/matching/finish" element={<Finish />} />
               <Route path="/buddy/ifcomplete" element={<IfComplete />} />
+              <Route path="/honbob/start1" element={<HonbobStart1 />} />
               <Route path="/login" element={<SignIn />} />
               <Route path="/login/signup" element={<SignUp />} />
               <Route path="/login/findid" element={<FindId />} />
