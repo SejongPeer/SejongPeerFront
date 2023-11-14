@@ -1,0 +1,100 @@
+.progressBarWrapper {
+  height: 6%;
+  width: 100%;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #fafafa;
+  z-index: 2;
+  align-items: center;
+}
+.test {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-around;
+}
+@media (min-width: 420px) {
+  .test {
+    display: flex;
+    width: 414px;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-around;
+  }
+}
+
+@media (max-height: 670px) {
+  .progressBarWrapper {
+    height: 7.5%;
+    width: 100%;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+}
+
+.controllerWrapper {
+  width: 100%;
+  height: 50%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+.controller {
+  border: none;
+  height: 24px;
+  width: 28px;
+  margin: 0px 20px;
+  padding: 0px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #666666;
+  text-decoration: underline;
+  text-underline-position: under;
+  background-color: transparent;
+  cursor: pointer;
+}
+.nonController {
+  border: none;
+  height: 24px;
+  width: 28px;
+  margin: 0px 20px;
+  padding: 0px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #c5c5c5;
+  text-decoration: underline;
+  text-underline-position: under;
+  background-color: transparent;
+}
+.submitBtn {
+  height: 32px;
+  width: 52px;
+  margin: 0px 20px;
+  padding: 0px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #ff3838;
+  border-radius: 25px;
+  border: none;
+  cursor: pointer;
+}
+
+.barWrapper {
+  width: 100%;
+  height: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.progress {
+  width: 15.6%;
+  height: 100%;
+  background-color: #ccc;
+}

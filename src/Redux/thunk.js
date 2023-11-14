@@ -49,6 +49,9 @@ export const fetchData = (sourceComponent, navigate, id) => {
           navigate("/mypage");
         } else if (sourceComponent === "Buddy") {
           navigate("/buddy/matching");
+        } else if (sourceComponent === "Honbob") {
+          console.log("혼밥매칭~출발~~~");
+          navigate("/honbob/matching");
         }
       }
 

@@ -1,0 +1,47 @@
+.container {
+  margin-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  height: 85%;
+  justify-content: space-between;
+  background-color: #fafafa;
+}
+.TextBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 85vh;
+  justify-content: center;
+}
+.Text1 {
+  font-size: 30px;
+  color: #4f41de;
+  font-weight: bold;
+  margin: 0;
+}
+.Text2 {
+  text-align: center;
+}
+.BtnBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.moveToHomeBtn {
+  font-size: 20px;
+  font-weight: 700;
+  width: 30vw;
+  height: 56px;
+  margin: 8px;
+  border-radius: 40px;
+  background-color: #4f41de;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+.cancelBtn {
+  font-size: 20px;
+  font-weight: 700;
+  color: #999999;
+  background-color: transparent;
+}
