@@ -2,7 +2,7 @@ import { useState } from "react";
 import con from "../CSS/H_Container.module.css";
 import btn2 from "../CSS/H_Btn2.module.css";
 
-const ChoiceGender_h = (props) => {
+const ChoiceGenderHonbob = (props) => {
   const [isSameClicked, setIsSameClicked] = useState(false);
   const [isDontCareClicked, setIsDontCareClicked] = useState(false);
 
@@ -10,14 +10,14 @@ const ChoiceGender_h = (props) => {
     setIsSameClicked(true);
     setIsDontCareClicked(false);
     const choiceGender = "남자";
-    props.sendChoiceGenderData(choiceGender);
+    props.sendChoiceMyGenderData(choiceGender);
   };
 
   const clickDontCareBtnHandler = () => {
     setIsSameClicked(false);
     setIsDontCareClicked(true);
     const choiceGender = "여자";
-    props.sendChoiceGenderData(choiceGender);
+    props.sendChoiceMyGenderData(choiceGender);
   };
 
   const clickSameBtnColor = isSameClicked ? btn2.clicked : btn2.selectBtn;
@@ -43,4 +43,4 @@ const ChoiceGender_h = (props) => {
   );
 };
 
-export default ChoiceGender_h;
+export default ChoiceGenderHonbob;

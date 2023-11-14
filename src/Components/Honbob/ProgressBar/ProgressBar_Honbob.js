@@ -3,7 +3,7 @@ import styles from "./ProgressBar_Honbob.module.css";
 import { MyContext } from "../../../App.js";
 
 const ProgressBar = (props) => {
-  const [step, setStep] = useState(Array(6).fill(false));
+  const [step, setStep] = useState(Array(3).fill(false));
   const [canMoveNext, setCanMoveNext] = useState(false);
   const [canMovePrev, setCanMovePrev] = useState(false);
   const [isLastPage, setIsLastPage] = useState(false);
@@ -18,7 +18,7 @@ const ProgressBar = (props) => {
   };
   const submitHandler = () => {
     setModalOpen(true);
-    setModalContent("buddyConfirm");
+    setModalContent("HonbobConfirm");
   };
 
   useEffect(() => {
@@ -26,64 +26,53 @@ const ProgressBar = (props) => {
     let next = false;
     let prev = false;
 
+    
+
     if (props.slide === 0) {
       updateStep[0] = true;
-      prev = false;
-      if (props.choiceGender !== "") {
-        next = true;
-      }
-    }
-
-    if (props.slide === 1) {
-      updateStep[1] = true;
-      prev = true;
-      next = false;
-      if (props.grade !== "") {
-        next = true;
-      }
-    }
-    if (props.slide === 2) {
-      updateStep[2] = true;
-      prev = true;
-      next = false;
-      if (props.major !== "") {
-        next = true;
-      }
-    }
-    if (props.slide === 3) {
-      updateStep[3] = true;
-      prev = true;
-      next = false;
-      if (props.gradeDiff !== "") {
-        next = true;
-      }
-    }
-    if (props.slide === 4) {
-      updateStep[4] = true;
+      updateStep[1]=false;
       prev = true;
       next = false;
       if (
-        props.phoneNum !== "" &&
-        props.phoneNum.length === 11 &&
-        props.kakao !== ""
+        props.phoneNumHonbob !== "" &&
+        props.phoneNumHonbob.length === 11 &&
+        props.kakaoHonbob !== ""
       ) {
         next = true;
       }
     } else {
       setIsLastPage(false);
     }
+
+    if(props.slide===1){
+      updateStep[1]=true;
+      updateStep[2]=false;
+      
+      prev=true;
+      next=false;
+      if(props.myGenderHonbob!==""){
+        next=true;
+      }
+    }
+
+    if(props.slide===2){
+      updateStep[2]=true;
+      prev=true;
+      next=false;
+      if(props.choiceGenderHonbob!==""){
+        next=true;
+      }
+    }
+
     setStep(updateStep);
     setCanMoveNext(next);
     setCanMovePrev(prev);
   }, [
-    props.gender,
-    props.choiceGender,
-    props.grade,
-    props.major,
-    props.gradeDiff,
-    props.studentNum,
-    props.phoneNum,
-    props.kakao,
+    
+    props.choiceGenderHonbob,
+    props.myGenderHonbob,
+    props.phoneNumHonbob,
+    props.kakaoHonbob,
     props.slide,
   ]);
 
