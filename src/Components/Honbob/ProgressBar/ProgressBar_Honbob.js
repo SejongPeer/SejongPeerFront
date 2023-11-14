@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
-import styles from "./ProgressBar.module.css";
+import styles from "./ProgressBar_Honbob.module.css";
 import { MyContext } from "../../../App.js";
 
 const ProgressBar = (props) => {
@@ -69,12 +69,6 @@ const ProgressBar = (props) => {
       ) {
         next = true;
       }
-    }
-    if (props.slide === 5) {
-      updateStep[5] = true;
-      prev = true;
-      next = true;
-      setIsLastPage(true);
     } else {
       setIsLastPage(false);
     }
@@ -127,7 +121,7 @@ const ProgressBar = (props) => {
               key={index}
               className={styles.progress}
               style={{
-                backgroundColor: step ? "#FF3838" : "#ccc",
+                backgroundColor: step ? "#4F41DE" : "#ccc",
               }}
             ></div>
           ))}

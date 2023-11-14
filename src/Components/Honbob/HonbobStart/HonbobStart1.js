@@ -1,11 +1,15 @@
 import { useNavigate } from "react-router-dom";
 import honbobEscape from "../../../Assets/honbobEscape.png";
+import { useDispatch } from "react-redux";
 import style from "./HonbobStart.module.css";
+import { fetchData } from "../../../Redux/thunk";
 
 const HonbobStart1 = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const HonbobHandler = () => {
-    navigate("/honbob/start2");
+    dispatch(fetchData("Honbob", navigate));
   };
 
   return (

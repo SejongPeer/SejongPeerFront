@@ -1,8 +1,8 @@
 import { useState } from "react";
-import con from "../CSS/B_Container.module.css";
-import btn2 from "../CSS/B_Btn2.module.css";
+import con from "../CSS/H_Container.module.css";
+import btn2 from "../CSS/H_Btn2.module.css";
 
-const ChoiceGender = (props) => {
+const H_Gender = (props) => {
   const [isSameClicked, setIsSameClicked] = useState(false);
   const [isDontCareClicked, setIsDontCareClicked] = useState(false);
 
@@ -27,20 +27,20 @@ const ChoiceGender = (props) => {
 
   return (
     <div className={con.container}>
-      <p className={con.title}>자신의 성별을 선택해주세요!</p>
+      <p className={con.title}>원하는 밥짝꿍 성별을 선택해주세요!</p>
       <div>
         <button className={clickSameBtnColor} onClick={clickSameBtnHandler}>
-          남자
+          동성
         </button>
         <button
           className={clickDontCareBtnColor}
           onClick={clickDontCareBtnHandler}
         >
-          여자
+          상관없음
         </button>
       </div>
     </div>
   );
 };
 
-export default ChoiceGender;
+export default H_Gender;

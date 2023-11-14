@@ -1,0 +1,27 @@
+.selectBtn {
+  font-size: 18px;
+  font-weight: bold;
+  width: 161px;
+  height: 184px;
+  margin: 6px;
+  padding-top: 80px;
+  border-radius: 40px;
+  border: 1px solid #e5e5e5;
+  cursor: pointer;
+  background-color: white;
+  color: #333333;
+}
+
+.clicked {
+  background: #ffffff;
+  color: #333333;
+  font-size: 18px;
+  font-weight: bold;
+  width: 161px;
+  height: 184px;
+  margin: 6px;
+  padding-top: 80px;
+  border-radius: 40px;
+  cursor: pointer;
+  border: 3px solid #4f41de;
+}
