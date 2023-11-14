@@ -2,13 +2,14 @@ import { useState, useEffect } from "react";
 import ChoiceGenderHonbob from "./H_MyGender.js";
 import H_Gender from "./H_Gender.js";
 import PhoneNumHonbob from "./U_PhoneNum_h.js";
-//import ProgressBar from "../../ProgressBar_Honbob/ProgressBar_Honbob.js";
+import ProgressBar from "../../ProgressBar/ProgressBar_Honbob";
 import style from "../CSS/Honbob_Matching.module.css";
 
 const Honbob_Matching = () => {
   const [slide, setSlide] = useState(0);
 
   const [choiceGenderHonbob, setChoiceGender] = useState("");
+  const [myGenderHonbob,setMyGender]=useState("");
   const [phoneNumHonbob, setPhoneNum] = useState("");
   const [kakaohonbob, setKakao] = useState("");
 
@@ -33,6 +34,7 @@ const Honbob_Matching = () => {
     };
   }, [width]);
 
+ 
   const mediaWidth = {
     width: width,
   };
@@ -40,8 +42,8 @@ const Honbob_Matching = () => {
   //다음
   const MoveNext = () => {
     setSlide(slide + 1);
-    if (slide >= 5) {
-      setSlide(5);
+    if (slide >= 3) {
+      setSlide(3);
     }
   };
 
@@ -65,6 +67,10 @@ const Honbob_Matching = () => {
   };*/
 
   //사용자가 입력한 정보
+  const MyGenderChoiceData=(myGenderHonbob)=>{
+    console.log("내 성별 : " + myGenderHonbob );
+    setMyGender(myGenderHonbob);
+  }
   const GenderChoiceData = (choiceGenderHonbob) => {
     console.log("동성이성(혼밥) : " + choiceGenderHonbob);
     setChoiceGender(choiceGenderHonbob);
@@ -81,23 +87,24 @@ const Honbob_Matching = () => {
   return (
     <div className={style.wrapper} style={mediaWidth}>
       <div className={style.formWrapper} style={Slide}>
-        <H_Gender sendChoiceGenderData={GenderChoiceData} />
-
         <PhoneNumHonbob
-          sendPhoneNumData={PhoneNumData}
-          sendKakaoData={KaKaoData}
+            sendPhoneNumData={PhoneNumData}
+            sendKakaoData={KaKaoData}
         />
-        <ChoiceGenderHonbob sendChoiceGenderData={GenderChoiceData} />
+      <ChoiceGenderHonbob sendChoiceMyGenderData={MyGenderChoiceData} />
+      <H_Gender sendChoiceGenderData={GenderChoiceData} />
+
       </div>
-      {/*<ProgressBar
+      <ProgressBar
         moveNext={MoveNext}
         moveBefore={MoveBefore}
         slide={slide}
         setSlide={setSlide}
-        choiceGender={choiceGender}
-        phoneNum={phoneNum}
-        kakao={kakao}
-  />*/}
+        choiceGenderHonbob={choiceGenderHonbob}
+        myGenderHonbob={myGenderHonbob}
+        phoneNumHonbob={phoneNumHonbob}
+        kakaohonbob={kakaohonbob}
+       />
     </div>
   );
 };
