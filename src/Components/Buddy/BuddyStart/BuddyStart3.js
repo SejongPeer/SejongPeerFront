@@ -1,14 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import logo from "../../../Assets/sejongpeer.png";
 import style from "./BuddyStart.module.css";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { fetchData } from "../../../Redux/thunk";
-import { useEffect } from "react";
 
 const BuddyStart3 = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { statusCode, sourceComponent } = useSelector((state) => state);
 
   const MatchingHandler = () => {
     dispatch(fetchData("Buddy", navigate));

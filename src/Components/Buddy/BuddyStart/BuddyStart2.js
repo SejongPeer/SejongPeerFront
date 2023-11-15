@@ -1,17 +1,26 @@
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from "react-redux";
+import { fetchData } from "../../../Redux/thunk";
 import logo from '../../../Assets/sejongpeer.png';
 import style from './BuddyStart.module.css';
 
 const BuddyStart2 = () => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+
     const BuddyHandler = () => {
-        navigate('/buddy/start3');
+        dispatch(fetchData("Buddy", navigate));
     };
+    /** 
+    const BuddyHandler = () => {
+        dispatch(fetchData("Buddy", navigate));
+    };
+    */
     const BackHandler = () => {
         navigate('/buddy/start1');
     };
-    const sejongbuddy1 = '세종버디는 세종대 학우들이 다른 학우들과 교류할 수 있도록 연결해주는 서비스 입니다.'; 
-    const sejongbuddy2 = '한 명의 학우와 매칭이 되며, 같은 학과뿐만 아니라 타학과 학우들과도 매칭이 가능합니다.';
+    const txt1 = "한명의 학우와 한 학기 동안 버디가 되며, 다음 학기에 새로운 버디를 찾을 수 있습니다.";
+    const duration = "매칭 기간: 9월 1일부터 9월 15일";
 
     return <div className={style.container}>
         <div className={style.top}>
@@ -22,8 +31,9 @@ const BuddyStart2 = () => {
             </div>
 
             <div className={style.wrapper}>
-                <p className={style.text2}>{sejongbuddy1}</p>
-                <p className={style.text2}>{sejongbuddy2}</p>
+                <p className={style.text2}>버디(Buddy)는 <span className={style.highlight}>‘동료'</span>이자 <span className={style.highlight}>‘단짝'</span>이라는 의미로, 학교생활을 함께 할 <span className={style.highlight}>짝꿍을 찾는 서비스</span>입니다.</p>
+                <p className={style.text2}>{txt1}</p>
+                <p className={style.text2}>{duration}</p>
             </div>
             
         </div>
