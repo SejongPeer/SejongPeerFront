@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import con from "../CSS/H_Container.module.css";
-import box from "../CSS/H_Container.module.css";
+import box from "../CSS/H_InputBox.module.css";
 
 const PhoneNumHonbob = (props) => {
   const [isKaKaoInput, setIsKaKaoInput] = useState("");

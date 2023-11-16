@@ -9,7 +9,7 @@ const Honbob_Matching = () => {
   const [slide, setSlide] = useState(0);
 
   const [choiceGenderHonbob, setChoiceGender] = useState("");
-  const [myGenderHonbob,setMyGender]=useState("");
+  const [myGenderHonbob, setMyGender] = useState("");
   const [phoneNumHonbob, setPhoneNum] = useState("");
   const [kakaohonbob, setKakao] = useState("");
 
@@ -34,7 +34,6 @@ const Honbob_Matching = () => {
     };
   }, [width]);
 
- 
   const mediaWidth = {
     width: width,
   };
@@ -67,10 +66,10 @@ const Honbob_Matching = () => {
   };*/
 
   //사용자가 입력한 정보
-  const MyGenderChoiceData=(myGenderHonbob)=>{
-    console.log("내 성별 : " + myGenderHonbob );
+  const MyGenderChoiceData = (myGenderHonbob) => {
+    console.log("내 성별 : " + myGenderHonbob);
     setMyGender(myGenderHonbob);
-  }
+  };
   const GenderChoiceData = (choiceGenderHonbob) => {
     console.log("동성이성(혼밥) : " + choiceGenderHonbob);
     setChoiceGender(choiceGenderHonbob);
@@ -88,12 +87,11 @@ const Honbob_Matching = () => {
     <div className={style.wrapper} style={mediaWidth}>
       <div className={style.formWrapper} style={Slide}>
         <PhoneNumHonbob
-            sendPhoneNumData={PhoneNumData}
-            sendKakaoData={KaKaoData}
+          sendPhoneNumData={PhoneNumData}
+          sendKakaoData={KaKaoData}
         />
-      <ChoiceGenderHonbob sendChoiceMyGenderData={MyGenderChoiceData} />
-      <H_Gender sendChoiceGenderData={GenderChoiceData} />
-
+        <ChoiceGenderHonbob sendChoiceMyGenderData={MyGenderChoiceData} />
+        <H_Gender sendChoiceGenderData={GenderChoiceData} />
       </div>
       <ProgressBar
         moveNext={MoveNext}
@@ -104,7 +102,7 @@ const Honbob_Matching = () => {
         myGenderHonbob={myGenderHonbob}
         phoneNumHonbob={phoneNumHonbob}
         kakaohonbob={kakaohonbob}
-       />
+      />
     </div>
   );
 };

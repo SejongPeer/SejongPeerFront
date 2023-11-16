@@ -19,7 +19,7 @@ const HonbobStart1 = () => {
           className={style.honbobText}
           src={honbobEscape}
           alt="honbobEscape"
-        />
+        />{" "}
       </div>
       <div className={style.bottom}>
         <p className={style.text}>오늘은 48명의 밥쭉꿍들이 매칭됐어요!XD </p>

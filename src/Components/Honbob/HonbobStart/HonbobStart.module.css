@@ -45,12 +45,12 @@
 }
 
 .honbobText {
-  width: 400px;
-  height: 120px;
+  width: 191px;
+  height: 64px;
 }
 .honbobImg {
-  width: 117px;
-  height: 245.5px;
+  width: 191px;
+  height: 64px;
   margin-top: 120px;
 }
 .text {
@@ -69,6 +69,17 @@
   font-weight: 600;
   line-height: 1.5;
   color: #4f41de;
+}
+
+.text4 {
+  color: #4f41de;
+  text-align: center;
+  font-family: Jalnan;
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 64px; /* 133.333% */
+  letter-spacing: -0.333px;
 }
 
 .flex {
