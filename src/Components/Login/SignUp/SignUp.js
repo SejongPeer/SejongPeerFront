@@ -15,6 +15,7 @@ const SignUp = () => {
   const [genderValue, setGenderValue] = useState("");
   const [majorValue, setMajorValue] = useState("");
   const [studentNumberValue, setStudentNumberValue] = useState("");
+  const [gradeValue, setGradeValue] = useState("");
 
   const [error, setError] = useState("가입완료 되었습니다.");
 
@@ -57,6 +58,10 @@ const SignUp = () => {
     setMajorValue(userMajor);
   };
 
+  const gradeData = (userGrade) => {
+    setGradeValue(userGrade);
+  };
+
   const studentNumData = (userStudentNum) => {
     setStudentNumberValue(userStudentNum);
   };
@@ -74,6 +79,7 @@ const SignUp = () => {
     console.log("genderValue : " + genderValue);
     console.log("majorValue : " + majorValue);
     console.log("studentNumberValue : " + studentNumberValue);
+    console.log("gradeValue : " + gradeValue);
 
     if (
       idValue === "" ||
@@ -85,7 +91,8 @@ const SignUp = () => {
       phoneNumberValue === "" ||
       genderValue === "" ||
       majorValue === "" ||
-      studentNumberValue === ""
+      studentNumberValue === "" ||
+      gradeValue === ""
     ) {
       alert("모든 양식의 작성을 완료해주세요");
       e.preventDefault();
@@ -102,6 +109,7 @@ const SignUp = () => {
           gender: genderValue,
           major: majorValue,
           studentNumber: studentNumberValue,
+          grade: gradeValue,
         };
 
         try {
@@ -212,6 +220,13 @@ const SignUp = () => {
           title="학번"
           name="학번입력 (ex: 22)"
           studentNumData={studentNumData}
+          signUpErrorHandler={signUpErrorHandler}
+        />
+        <SignUpElement
+          id="grade"
+          title="학년"
+          name="학년입력 (ex: 1)"
+          studentNumData={gradeData}
           signUpErrorHandler={signUpErrorHandler}
         />
         <button
