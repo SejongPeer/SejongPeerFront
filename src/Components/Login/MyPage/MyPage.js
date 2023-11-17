@@ -1,20 +1,16 @@
 import { useNavigate } from "react-router-dom";
 import styles from "../MyPage/MyPage.module.css";
-import Cookies from "js-cookie";
+import axios from "axios";
 
 const MyPage = () => {
   const navigate = useNavigate();
-  // const test = () => {
-  //   return console.log("로그아웃 버튼입니다!");
-  // };
-  const deleteCookie = (name) => {
-    Cookies.remove(name);
-  };
-
   const handleLogout = () => {
-    deleteCookie("session"); // 여기에 삭제할 쿠키의 이름을 넣는다
+    axios
+      .get(`${process.env.REACT_APP_BACK_SERVER + "/logout"}`)
+      .then((response) => console.log(response))
+      .catch((error) => console.log(error));
     alert("로그아웃 되었습니다!");
-    navigate("/login");
+    // navigate("/login");
   };
 
   const userId = localStorage.getItem("userId");
