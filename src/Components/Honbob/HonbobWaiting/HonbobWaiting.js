@@ -7,7 +7,7 @@ const HonbobWaiting = () => {
     navigate("/main");
   };
   return (
-    <div clsaaName={style.container}>
+    <div className={style.container}>
       <div className={style.TextBox}>
         <img src={hohbobWaitingLogo} className={style.honbobWaitingImg} />
         <p className={style.Text1}>밥짝꿍 찾는 중...</p>
