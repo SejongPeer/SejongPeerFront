@@ -45,33 +45,45 @@
     align-items: center;
     margin-bottom: 16px;
 }
-.controller{
-    border: none;
-    height: 24px;
-    width: 28px;
-    margin: 0px 20px;
-    padding: 0px;
-    font-size: 16px;
+
+.controller_next {
+    height: 4vh;
+    width: 15vw;
+    margin: 3vw;
+    border: 1px solid #FF3838;
+    border-radius: 25px;
+    background-color: #FF3838;
+    font-size: 1rem;
     font-weight: bold;
-    color: #666666;
-    text-decoration: underline;
-    text-underline-position : under;
-    background-color: transparent;
+    color: #FFFFFF;
     cursor: pointer;
 }
-.nonController{
-    border: none;
-    height: 24px;
-    width: 28px;
-    margin: 0px 20px;
-    padding: 0px;
-    font-size: 16px;
+.controller_next_none {
+    height: 4vh;
+    width: 15vw;
+    margin: 3vw;
+    border: 1px solid #FF3838;
+    border-radius: 25px;
+    background-color: #FF3838;
+    font-size: 1rem;
     font-weight: bold;
-    color: #C5C5C5;
-    text-decoration: underline;
-    text-underline-position : under;
-    background-color: transparent;
+    color: #FFFFFF;
+    cursor: pointer;
+    opacity: 0.5;
 }
+.controller_prev{
+    height: 4vh;
+    width: 15vw;
+    margin: 3vw;
+    border: 2px solid #FF3838;
+    border-radius: 25px;
+    background-color: transparent;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333333;
+    cursor: pointer;
+}
+
 .submitBtn{
     height: 32px;
     width: 52px;

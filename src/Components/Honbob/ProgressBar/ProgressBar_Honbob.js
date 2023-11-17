@@ -30,7 +30,10 @@ const ProgressBar = (props) => {
     navigate("/honbob/waiting");
   }
   const moveToMain=()=>{
-    navigate("/main");
+    const backToMain = window.confirm("확인을 누르면 메인 화면으로 이동합니다.\n지금까지 작성한 내용들이 모두 초기화 됩니다.")
+    if (backToMain) {
+        navigate("/main");
+    }
   }
 
   useEffect(() => {

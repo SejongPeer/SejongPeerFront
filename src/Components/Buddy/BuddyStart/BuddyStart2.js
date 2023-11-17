@@ -20,7 +20,7 @@ const BuddyStart2 = () => {
         navigate('/buddy/start1');
     };
     const txt1 = "한명의 학우와 한 학기 동안 버디가 되며, 다음 학기에 새로운 버디를 찾을 수 있습니다.";
-    const duration = "매칭 기간: 9월 1일부터 9월 15일";
+    const duration = "매칭은 부스 운영중에만 진행됩니다.";
 
     return <div className={style.container}>
         <div className={style.top}>

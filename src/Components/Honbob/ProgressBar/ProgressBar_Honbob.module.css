@@ -47,48 +47,44 @@
 }
 
 .nextController{
-  border: none;
-  border-radius:50px;
-  height: 35px;
-  width: 60px;
-  margin: 0px 20px;
-  padding: 0px;
-  font-size: 16px;
-  font-weight: bold;
-  color: white;
+  height: 4vh;
+  width: 15vw;
+  margin: 3vw;
+  border: 1px solid #4F41DE;
+  border-radius: 25px;
   background-color: #4F41DE;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #FFFFFF;
   cursor: pointer;
 
 }
 .nextNonController{
-  border: none;
-  border-radius:50px;
-  height: 35px;
-  width: 60px;
-  margin: 0px 20px;
-  padding: 0px;
-  font-size: 16px;
+  height: 4vh;
+  width: 15vw;
+  margin: 3vw;
+  border: 1px solid #4F41DE;
+  border-radius: 25px;
+  background-color: #4F41DE;
+  font-size: 1rem;
   font-weight: bold;
-  color: white;
-  background-color: #BAB4FC;
+  color: #FFFFFF;
   cursor: pointer;
+  opacity: 0.5;
 }
 .prevController{
-  border: 1px solid #4F41DE;
-  border-radius:50px;
-  height: 35px;
-  width: 60px;
-  margin: 0px 20px;
-  padding: 0px;
-  font-size: 16px;
-  font-weight: bold;
-  color: black;
-  background-color: white;
-  cursor: pointer;
+  height: 4vh;
+    width: 15vw;
+    margin: 3vw;
+    border: 2px solid #4F41DE;
+    border-radius: 25px;
+    background-color: transparent;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333333;
+    cursor: pointer;
 }
-.prevNonController{
 
-}
 .submitBtn {
   height: 32px;
   width: 52px;
@@ -112,7 +108,7 @@
   align-items: center;
 }
 .progress {
-  width: 27%;
+  width: 32vw;
   height: 100%;
   background-color: #ccc;
 }
