@@ -7,10 +7,22 @@ const MyPage = () => {
   const handleLogout = () => {
     axios
       .get(`${process.env.REACT_APP_BACK_SERVER + "/logout"}`)
-      .then((response) => console.log(response))
+      .then(
+        (response) => console.log(response),
+        localStorage.removeItem("userId"),
+        localStorage.removeItem("birth"),
+        localStorage.removeItem("gender"),
+        localStorage.removeItem("kakaoId"),
+        localStorage.removeItem("major"),
+        localStorage.removeItem("name"),
+        localStorage.removeItem("phoneNum"),
+        localStorage.removeItem("sejongEmail"),
+        localStorage.removeItem("studentId"),
+        console.log("로그아웃 성공!"),
+        alert("로그아웃 되었습니다!"),
+        navigate("/main")
+      )
       .catch((error) => console.log(error));
-    alert("로그아웃 되었습니다!");
-    // navigate("/login");
   };
 
   const userId = localStorage.getItem("userId");
