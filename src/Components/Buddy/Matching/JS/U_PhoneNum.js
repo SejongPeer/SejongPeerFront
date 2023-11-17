@@ -26,6 +26,11 @@ const PhoneNum = (props) => {
         }
     }
 
+    const kakaoId = localStorage.getItem("kakaoId");
+    const phoneNum = localStorage.getItem("phoneNum");
+
+    console.log(kakaoId);
+    console.log(phoneNum);
 
     const inputPhoneChange = {
         border : isPhoneInput ? "1px solid red" : "1px solid #ccc",
@@ -37,14 +42,14 @@ const PhoneNum = (props) => {
         placeholder='카톡 아이디 입력'
         className={box.inputText}
         onChange={inputKaKaoChangeHandler}
-        value={isKaKaoInput}
+        value={kakaoId}
         style={inputKaKaoChange}></input>
 
         <input type='number'
         placeholder='전화번호 입력 (ex: 01012345678)'
         className={box.inputText}
         onChange={inputPhoneChangeHandler}
-        value={isPhoneInput}
+        value={phoneNum}
         style={inputPhoneChange}></input>
     </div>;
 };

@@ -11,16 +11,16 @@ const ProgressBar = (props) => {
   const { setModalContent } = useContext(MyContext);
 
   const moveRightHandler = () => {
-    props.moveNext(true);
+    props.moveNext();
   };
   const moveLeftHandler = () => {
-    props.moveBefore(true);
+    props.moveBefore();
   };
   const submitHandler = () => {
     setModalOpen(true);
     setModalContent("buddyConfirm");
   };
-console.log("??" + step)
+
   useEffect(() => {
     const updateStep = [...step];
     let next = false;
