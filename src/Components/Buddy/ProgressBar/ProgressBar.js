@@ -1,4 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 import styles from "./ProgressBar.module.css";
 import { MyContext } from "../../../App.js";
 
@@ -7,10 +8,11 @@ const ProgressBar = (props) => {
   const [canMoveNext, setCanMoveNext] = useState(false);
   const [canMovePrev, setCanMovePrev] = useState(false);
   const [isLastPage, setIsLastPage] = useState(false);
+  const [isFirstPage, setIsFirstPage] = useState(false);
   const { setModalOpen } = useContext(MyContext);
   const { setModalContent } = useContext(MyContext);
   const [clickedPrev, setClickedPrev] = useState(false);
-
+  const navigate = useNavigate();
 
   const moveRightHandler = () => {
     props.moveNext();
@@ -22,6 +24,12 @@ const ProgressBar = (props) => {
   const submitHandler = () => {
     setModalOpen(true);
     setModalContent("buddyConfirm");
+  };
+  const moveMainHandler = () => {
+    const backToMain = window.confirm("확인을 누르면 메인 화면으로 이동합니다.\n지금까지 작성한 내용들이 모두 초기화 됩니다.")
+    if (backToMain) {
+        navigate("/main");
+    }
   };
 
   useEffect(() => {
@@ -40,7 +48,10 @@ const ProgressBar = (props) => {
         if (!clickedPrev) {
         props.MoveNext();
         }
-      }
+      } 
+      setIsFirstPage(true);
+    } else {
+      setIsFirstPage(false);
     }
   
 
@@ -110,22 +121,28 @@ const ProgressBar = (props) => {
     props.slide,
   ]);
 
-  const nextClass = canMoveNext ? styles.controller : styles.nonController;
-  const prevClass = canMovePrev ? styles.controller : styles.nonController;
+  const nextClass = canMoveNext ? styles.controller_next : styles.controller_next_none;
 
   return (
     <div className={styles.progressBarWrapper}>
       <div className={styles.test}>
         <div className={styles.controllerWrapper}>
-          <button
-            className={prevClass}
-            onClick={moveLeftHandler}
-            disabled={!canMovePrev}
+          {isFirstPage ? (
+            <button
+            className={styles.controller_prev}
+            onClick={moveMainHandler}
           >
-            이전
+            나가기
           </button>
+          ) : (
+            <button
+            className={styles.controller_prev}
+            onClick={moveLeftHandler}
+          >
+            뒤로
+          </button>)}
           {isLastPage ? (
-            <button className={styles.submitBtn} onClick={submitHandler}>
+            <button className={styles.controller_next} onClick={submitHandler}>
               제출
             </button>
           ) : (
