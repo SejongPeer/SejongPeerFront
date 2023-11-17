@@ -12,7 +12,7 @@ const PhoneNumHonbob = (props) => {
     props.sendKakaoData(kakao);
   };
   const inputKaKaoChange = {
-    border: isKaKaoInput ? "1px solid red" : "1px solid #ccc",
+    border: isKaKaoInput ? "1px solid #4F41DE" : "1px solid #ccc",
   };
 
   const [isPhoneInput, setIsPhoneInput] = useState("");
