@@ -45,7 +45,7 @@ const PhoneNum = (props) => {
         value={kakaoId}
         style={inputKaKaoChange}></input>
 
-        <input type='number'
+        <input type='text'
         placeholder='전화번호 입력 (ex: 01012345678)'
         className={box.inputText}
         onChange={inputPhoneChangeHandler}

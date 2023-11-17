@@ -30,13 +30,13 @@ const ChoiceGender = (props) => {
       <p className={con.title}>버디의 성별을 선택해주세요!</p>
       <div>
         <button className={clickSameBtnColor} onClick={clickSameBtnHandler}>
-          남자
+          동성
         </button>
         <button
           className={clickDontCareBtnColor}
           onClick={clickDontCareBtnHandler}
         >
-          여자
+          상관없음
         </button>
       </div>
     </div>

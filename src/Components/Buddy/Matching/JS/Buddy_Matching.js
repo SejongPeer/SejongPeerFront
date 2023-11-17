@@ -45,20 +45,26 @@ const Buddy_Matching = () => {
   // 화면 넘기기 (다음 / 이전)
   // 다음
   const MoveNext = () => {
-    setSlide(slide + 1);
-    if (slide >= 5) {
-      setSlide(5);
-    }
+    setSlide(prevSlide => {
+      if (prevSlide >= 5) {
+        return 5;
+      } else {
+        return prevSlide + 1;
+      }
+    });
   };
 
   // 이전
   const MoveBefore = () => {
-    const prev = slide - 1;
-    setSlide(prev);
-    if (prev < 0) {
-      setSlide(0);
-    }
+    setSlide(prevSlide => {
+      if (prevSlide <= 0) {
+        return 0;
+      } else {
+        return prevSlide - 1;
+      }
+    });
   };
+  
 
   // 슬라이드별 이동
   const Slide = {
@@ -126,7 +132,7 @@ const Buddy_Matching = () => {
         gradeDiff={gradeDiff}
         phoneNum={phoneNum}
         kakao={kakao}
-        slideMove={slideMove}
+        MoveNext={MoveNext}
       />
     </div>
   );

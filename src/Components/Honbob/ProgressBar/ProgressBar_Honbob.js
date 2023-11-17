@@ -9,6 +9,7 @@ const ProgressBar = (props) => {
   const [isLastPage, setIsLastPage] = useState(false);
   const { setModalOpen } = useContext(MyContext);
   const { setModalContent } = useContext(MyContext);
+  const [clickedPrev, setClickedPrev] = useState(false);
 
   const navigate = useNavigate();
 
@@ -16,6 +17,7 @@ const ProgressBar = (props) => {
     props.moveNext(true);
   };
   const moveLeftHandler = () => {
+    setClickedPrev(true);
     props.moveBefore(true);
   };
   // const submitHandler = () => {
@@ -60,7 +62,9 @@ const ProgressBar = (props) => {
       next=false;
       if(props.myGenderHonbob!==""){
         next=true;
-        props.slideMove(props.slide + 1);
+        if (!clickedPrev) {
+          props.slideMove(props.slide + 1);
+        }
       }
     }
 
@@ -71,7 +75,6 @@ const ProgressBar = (props) => {
       setIsLastPage(true);
       if(props.choiceGenderHonbob!==""){
         next=true;
-        // props.slideMove(props.slide + 1);
       }
     }
 
