@@ -18,10 +18,15 @@ const ProgressBar = (props) => {
   const moveLeftHandler = () => {
     props.moveBefore(true);
   };
-  const submitHandler = () => {
+  // const submitHandler = () => {
+  //   setModalOpen(true);
+  //   setModalContent("HonbobConfirm");
+  // };
+  const searchHandler=()=>{
     setModalOpen(true);
     setModalContent("HonbobConfirm");
-  };
+    navigate("/honbob/waiting");
+  }
   const moveToMain=()=>{
     navigate("/main");
   }
@@ -66,7 +71,7 @@ const ProgressBar = (props) => {
       setIsLastPage(true);
       if(props.choiceGenderHonbob!==""){
         next=true;
-        props.slideMove(props.slide + 1);
+        // props.slideMove(props.slide + 1);
       }
     }
 
@@ -107,7 +112,7 @@ const ProgressBar = (props) => {
           
 
           {isLastPage ? (
-            <button className={nextClass} onClick={submitHandler}>
+            <button className={nextClass} onClick={searchHandler}>
               찾기
             </button>
           ) : (
