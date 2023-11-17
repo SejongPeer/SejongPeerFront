@@ -54,6 +54,11 @@ const Honbob_Matching = () => {
     }
   };
 
+  const slideMove = (page) => {
+    console.log("페이지 이동 " + page);
+    setSlide(page);
+  };
+
   // 슬라이드별 이동
   const Slide = {
     transform: "translateX(" + -width * slide + "px)",
@@ -102,6 +107,7 @@ const Honbob_Matching = () => {
         myGenderHonbob={myGenderHonbob}
         phoneNumHonbob={phoneNumHonbob}
         kakaohonbob={kakaohonbob}
+        slideMove={slideMove}
       />
     </div>
   );

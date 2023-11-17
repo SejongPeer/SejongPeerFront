@@ -126,6 +126,7 @@ const Buddy_Matching = () => {
         gradeDiff={gradeDiff}
         phoneNum={phoneNum}
         kakao={kakao}
+        slideMove={slideMove}
       />
     </div>
   );

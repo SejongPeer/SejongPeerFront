@@ -57,6 +57,7 @@ const ProgressBar = (props) => {
       next=false;
       if(props.myGenderHonbob!==""){
         next=true;
+        props.slideMove(props.slide + 1);
       }
     }
 
@@ -66,6 +67,7 @@ const ProgressBar = (props) => {
       next=false;
       if(props.choiceGenderHonbob!==""){
         next=true;
+        props.slideMove(props.slide + 1);
       }
     }
 

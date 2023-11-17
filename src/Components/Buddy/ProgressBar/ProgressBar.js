@@ -31,6 +31,7 @@ const ProgressBar = (props) => {
       prev = false;
       if (props.choiceGender !== "") {
         next = true;
+        props.slideMove(props.slide + 1);
       }
     }
 
@@ -40,6 +41,7 @@ const ProgressBar = (props) => {
       next = false;
       if (props.grade !== "") {
         next = true;
+        props.slideMove(props.slide + 1);
       }
     }
     if (props.slide === 2) {
@@ -48,6 +50,7 @@ const ProgressBar = (props) => {
       next = false;
       if (props.major !== "") {
         next = true;
+        props.slideMove(props.slide + 1);
       }
     }
     if (props.slide === 3) {
@@ -56,6 +59,7 @@ const ProgressBar = (props) => {
       next = false;
       if (props.gradeDiff !== "") {
         next = true;
+        props.slideMove(props.slide + 1);
       }
     }
     if (props.slide === 4) {
