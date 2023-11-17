@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import styles from "./ProgressBar_Honbob.module.css";
 import { MyContext } from "../../../App.js";
-
+import { useNavigate } from "react-router-dom";
 const ProgressBar = (props) => {
   const [step, setStep] = useState(Array(3).fill(false));
   const [canMoveNext, setCanMoveNext] = useState(false);
@@ -9,6 +9,8 @@ const ProgressBar = (props) => {
   const [isLastPage, setIsLastPage] = useState(false);
   const { setModalOpen } = useContext(MyContext);
   const { setModalContent } = useContext(MyContext);
+
+  const navigate = useNavigate();
 
   const moveRightHandler = () => {
     props.moveNext(true);
@@ -20,6 +22,9 @@ const ProgressBar = (props) => {
     setModalOpen(true);
     setModalContent("HonbobConfirm");
   };
+  const moveToMain=()=>{
+    navigate("/main");
+  }
 
   useEffect(() => {
     const updateStep = [...step];
@@ -76,20 +81,30 @@ const ProgressBar = (props) => {
     props.slide,
   ]);
 
-  const nextClass = canMoveNext ? styles.controller : styles.nonController;
-  const prevClass = canMovePrev ? styles.controller : styles.nonController;
+  const nextClass = canMoveNext ? styles.nextController : styles.nextNonController;
+  const prevClass = canMovePrev ? styles.prevController : styles.prevNonController;
 
   return (
     <div className={styles.progressBarWrapper}>
       <div className={styles.test}>
         <div className={styles.controllerWrapper}>
+         {props.slide===0 ? 
+          <button 
+            className={styles.prevController}
+            onClick={moveToMain}
+          >
+            나가기
+          </button>
+          :
           <button
             className={prevClass}
             onClick={moveLeftHandler}
             disabled={!canMovePrev}
           >
             이전
-          </button>
+          </button>}
+          
+
           {isLastPage ? (
             <button className={styles.submitBtn} onClick={submitHandler}>
               제출
