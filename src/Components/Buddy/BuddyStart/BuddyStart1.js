@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
-import buddyTextRed from '../../../Assets/buddyTextRed.png';
-import buddyFlower from '../../../Assets/buddyFlower.png';
+import buddyTextRed from '../../../Assets/buddyText2.png';
+import buddyCat from '../../../Assets/honbobWaitingLogo.png';
 import style from './BuddyStart.module.css';
 
 const BuddyStart1 = () => {
@@ -14,7 +14,7 @@ const BuddyStart1 = () => {
             <img className={style.buddyText} 
             src={buddyTextRed} alt='buddyTextRed'/>
             <img className={style.buddyImg} 
-            src={buddyFlower} alt='buddyFlower'/>
+            src={buddyCat} alt='buddyCat'/>
             
         </div>
         <div className={style.bottom}>
