@@ -1,4 +1,4 @@
-import buddyTextRed from "../../../Assets/buddyTextRed.png";
+import buddyTextRed from '../../../Assets/buddyText2.png';
 import sejongBuddycat from "../../../Assets/sejongBuddycat.png";
 
 import style from "./MainBuddy.module.css";

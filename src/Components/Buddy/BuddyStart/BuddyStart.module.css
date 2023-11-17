@@ -12,6 +12,7 @@
     align-items: center;
     height: 70%;
     justify-content: center;
+    gap: 10vh;
 }
 .bottom{
     display: flex;
@@ -49,9 +50,10 @@
     height: 40px;
 }
 .buddyImg{
-    width: 117px;
-    height: 245.5px;
-    margin-top: 120px;
+    width: 62vw;
+    max-width: 250px;
+    height: 30vh;
+    max-height: 260px;
 }
 .text{
     font-size: 18px;
