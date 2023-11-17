@@ -9,11 +9,14 @@ const ProgressBar = (props) => {
   const [isLastPage, setIsLastPage] = useState(false);
   const { setModalOpen } = useContext(MyContext);
   const { setModalContent } = useContext(MyContext);
+  const [clickedPrev, setClickedPrev] = useState(false);
+
 
   const moveRightHandler = () => {
     props.moveNext();
   };
   const moveLeftHandler = () => {
+    setClickedPrev(true);
     props.moveBefore();
   };
   const submitHandler = () => {
@@ -26,35 +29,48 @@ const ProgressBar = (props) => {
     let next = false;
     let prev = false;
 
+    
     if (props.slide === 0) {
       updateStep[0] = true;
+      updateStep[1] = false;
+
       prev = false;
       if (props.choiceGender !== "") {
         next = true;
-        props.slideMove(props.slide + 1);
+        if (!clickedPrev) {
+        props.MoveNext();
+        }
       }
     }
+  
 
     if (props.slide === 1) {
       updateStep[1] = true;
+      updateStep[2] = false;
       prev = true;
       next = false;
       if (props.grade !== "") {
         next = true;
-        props.slideMove(props.slide + 1);
+        if (!clickedPrev) {
+        props.MoveNext();
+        }
       }
     }
     if (props.slide === 2) {
       updateStep[2] = true;
+      updateStep[3] = false;
       prev = true;
       next = false;
       if (props.major !== "") {
         next = true;
-        props.slideMove(props.slide + 1);
+        if (!clickedPrev) {
+          props.MoveNext();
+        }
       }
     }
     if (props.slide === 3) {
       updateStep[3] = true;
+      updateStep[4] = false;
       prev = true;
       next = false;
       if (props.gradeDiff.length !== 0) {
@@ -80,16 +96,15 @@ const ProgressBar = (props) => {
     } else {
       setIsLastPage(false);
     }
+  
     setStep(updateStep);
     setCanMoveNext(next);
     setCanMovePrev(prev);
   }, [
-    props.gender,
     props.choiceGender,
     props.grade,
     props.major,
     props.gradeDiff,
-    props.studentNum,
     props.phoneNum,
     props.kakao,
     props.slide,
