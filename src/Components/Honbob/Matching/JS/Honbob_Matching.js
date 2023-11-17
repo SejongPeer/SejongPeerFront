@@ -1,13 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect,useContext } from "react";
 import ChoiceGenderHonbob from "./H_MyGender.js";
 import H_Gender from "./H_Gender.js";
 import PhoneNumHonbob from "./U_PhoneNum_h.js";
 import ProgressBar from "../../ProgressBar/ProgressBar_Honbob";
 import style from "../CSS/Honbob_Matching.module.css";
-
+import { MyContext } from "../../../../App";
+import { useNavigate } from "react-router-dom";
 const Honbob_Matching = () => {
   const [slide, setSlide] = useState(0);
-
   const [choiceGenderHonbob, setChoiceGender] = useState("");
   const [myGenderHonbob, setMyGender] = useState("");
   const [phoneNumHonbob, setPhoneNum] = useState("");
@@ -18,6 +18,9 @@ const Honbob_Matching = () => {
   // 화면 넓이 설정
   const [width, setWidth] = useState(window.innerWidth);
 
+
+  const navigate=useNavigate();
+  
   useEffect(() => {
     const handleResize = () => {
       let wrapperWidth = width;
@@ -87,6 +90,76 @@ const Honbob_Matching = () => {
     console.log("카톡 : " + kakaohonbob);
     setKakao(kakaohonbob);
   };
+
+  const { honbobSubmit,setHonbobSubmit } = useContext(MyContext);
+
+  let sameGender={};
+
+  if(choiceGenderHonbob==="동성"){
+    sameGender="true";
+  }
+  else{
+    sameGender="false";
+  }
+
+
+  let myGender={};
+  if(myGenderHonbob==="남자"){
+    myGender="male";
+  }
+  else{
+    myGender="female";
+  }
+  let kakaoId=kakaohonbob;
+  let phoneNumber=phoneNumHonbob;
+
+  const honbobSubmitHandler = async (e) => {
+    let findInfo = {
+      kakaoId: kakaoId,
+      phoneNumber: phoneNumber,
+      myGender: myGender,
+      buddyGender:sameGender,
+    };
+    console.log(findInfo);
+
+    try {
+      const response = await fetch(
+        process.env.REACT_APP_BACK_SERVER + "/honbob/matching",
+        {
+          method: "POST",
+          body: JSON.stringify(findInfo),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      const data = await response.json(); // data 변수를 await로 초기화
+
+      if (!response.ok) {
+        throw new Error(data.message);
+      }
+
+      alert("제출 성공");
+      console.log("제출 성공");
+      console.log(data.message);
+      setHonbobSubmit(false);
+      navigate("/honbob/waiting");
+      // sethoSubmit(false);
+    } catch (error) {
+      console.error("Error occurred:", error);
+      console.log("제출 실패");
+      console.error(error.message);
+      alert(error.message);
+      e.preventDefault();
+    }
+  };
+
+  useEffect(() => {
+    if (honbobSubmit === true) {
+      honbobSubmitHandler();
+    }
+  }, [honbobSubmit]);
 
   return (
     <div className={style.wrapper} style={mediaWidth}>

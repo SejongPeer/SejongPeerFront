@@ -24,10 +24,13 @@ const ProgressBar = (props) => {
   //   setModalOpen(true);
   //   setModalContent("HonbobConfirm");
   // };
+
+  const { honbobSubmit,setHonbobSubmit } = useContext(MyContext);
   const searchHandler=()=>{
-    setModalOpen(true);
-    setModalContent("HonbobConfirm");
-    navigate("/honbob/waiting");
+    if(canMoveNext===true){
+      setHonbobSubmit(true);
+    }
+    
   }
   const moveToMain=()=>{
     const backToMain = window.confirm("확인을 누르면 메인 화면으로 이동합니다.\n지금까지 작성한 내용들이 모두 초기화 됩니다.")
