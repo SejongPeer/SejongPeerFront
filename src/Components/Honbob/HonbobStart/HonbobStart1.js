@@ -9,7 +9,7 @@ const HonbobStart1 = () => {
   const dispatch = useDispatch();
 
   const HonbobHandler = () => {
-    dispatch(fetchData("Honbob", navigate));
+    dispatch(fetchData("Honbob", navigate("/honbob/matching")));
   };
 
   return (
