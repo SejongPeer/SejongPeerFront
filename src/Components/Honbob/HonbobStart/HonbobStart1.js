@@ -22,7 +22,7 @@ const HonbobStart1 = () => {
         />{" "}
       </div>
       <div className={style.bottom}>
-        <p className={style.text}>오늘은 48명의 밥쭉꿍들이 매칭됐어요!XD </p>
+        <p className={style.text}>오늘은 48명의 밥짝꿍들이 매칭됐어요!XD </p>
         <button onClick={HonbobHandler} className={style.btn1}>
           밥짝꿍 찾기
         </button>
