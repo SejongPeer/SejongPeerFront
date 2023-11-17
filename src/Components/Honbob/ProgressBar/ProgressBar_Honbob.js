@@ -31,8 +31,6 @@ const ProgressBar = (props) => {
     let next = false;
     let prev = false;
 
-    
-
     if (props.slide === 0) {
       updateStep[0] = true;
       updateStep[1]=false;
@@ -65,6 +63,7 @@ const ProgressBar = (props) => {
       updateStep[2]=true;
       prev=true;
       next=false;
+      setIsLastPage(true);
       if(props.choiceGenderHonbob!==""){
         next=true;
         props.slideMove(props.slide + 1);
@@ -85,7 +84,7 @@ const ProgressBar = (props) => {
 
   const nextClass = canMoveNext ? styles.nextController : styles.nextNonController;
   const prevClass = canMovePrev ? styles.prevController : styles.prevNonController;
-
+  
   return (
     <div className={styles.progressBarWrapper}>
       <div className={styles.test}>
@@ -108,10 +107,11 @@ const ProgressBar = (props) => {
           
 
           {isLastPage ? (
-            <button className={styles.submitBtn} onClick={submitHandler}>
-              제출
+            <button className={nextClass} onClick={submitHandler}>
+              찾기
             </button>
           ) : (
+            
             <button
               className={nextClass}
               onClick={moveRightHandler}

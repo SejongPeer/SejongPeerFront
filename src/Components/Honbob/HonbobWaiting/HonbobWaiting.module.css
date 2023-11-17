@@ -10,7 +10,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 85vh;
+  height: 80vh;
   justify-content: center;
 }
 .Text1 {
@@ -21,6 +21,16 @@
 }
 .Text2 {
   text-align: center;
+  color: #666666;
+}
+.Text2_span1{
+  color:#4f41de;
+}
+.Text2_span2{
+  font-weight:600;
+}
+.Text3{
+  font-weight: 700;
 }
 .BtnBox {
   display: flex;
