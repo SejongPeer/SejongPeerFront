@@ -37,6 +37,7 @@
   }
   .Text3{
     font-weight: 600;
+    font-size:2vh;
   }
   .BtnBox {
     display: flex;
@@ -46,7 +47,7 @@
   .moveToHomeBtn {
     font-size: 2vh;
     font-weight: 700;
-    width: 38vh;
+    width: 42vh;
     height: 5.5vh;
     margin: 8px;
     border-radius: 40px;
@@ -62,8 +63,8 @@
     background-color: transparent;
   }
   .buddyWaitingImg{
-    width:32vh;
-    height:32vh;
+    width:35vh;
+    height:35vh;
     background-color: #FAFAFA;
   }
   
