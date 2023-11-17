@@ -11,8 +11,8 @@
   margin-left: 10px;
 }
 .left {
-  width: 120.4px;
-  height: 28px;
+  width: 127px;
+  height: 32px;
 }
 .text {
   font-size: 14px;
@@ -22,7 +22,8 @@
 }
 
 .wrapperRight {
-  width: 55%;
+  width: 184px;
+  height: 184px;
 }
 .right {
   width: 176px;
