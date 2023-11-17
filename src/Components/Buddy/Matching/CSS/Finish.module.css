@@ -1,9 +1,9 @@
 .container{
-    margin-top: 9rem;
     display: flex;
     flex-direction: column;
-    height: 83%;
-    justify-content: space-around;
+    height: 70vh;
+    gap: 30vh;
+    margin-top: 15rem;
 }
 @media (max-height: 670px) {
     .container{
