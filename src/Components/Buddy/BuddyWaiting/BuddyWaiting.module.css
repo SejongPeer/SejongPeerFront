@@ -1,0 +1,70 @@
+.container {
+    margin-top: 5rem;
+    display: flex;
+    flex-direction: column;
+    height: 85%;
+    justify-content: space-between;
+    background-color: #fafafa;
+  }
+  .TextBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 80vh;
+    justify-content: center;
+  }
+  .Text1 {
+    font-size: 2vh;
+    width:70vw;
+    color: black;
+    font-weight: 600;
+    /* background-color: red; */
+    text-align: center;
+    margin: 1.5vh;
+  }
+  .ImgText{
+    font-size:2vh;
+    position:relative;
+    right:3vh;
+    top:7vh;
+    margin:0;
+    font-weight:800;
+  }
+
+  .buddyLogo{
+    width:20vh;
+    height:5vh;
+  }
+  .Text3{
+    font-weight: 600;
+  }
+  .BtnBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .moveToHomeBtn {
+    font-size: 2vh;
+    font-weight: 700;
+    width: 38vh;
+    height: 5.5vh;
+    margin: 8px;
+    border-radius: 40px;
+    background-color: #FF3838;
+    border: none;
+    color: white;
+    cursor: pointer;
+  }
+  .cancelBtn {
+    font-size: 2vh;
+    font-weight: 700;
+    color: #999999;
+    background-color: transparent;
+  }
+  .buddyWaitingImg{
+    width:32vh;
+    height:32vh;
+    background-color: #FAFAFA;
+  }
+  
+  
