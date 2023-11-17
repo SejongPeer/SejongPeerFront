@@ -3,7 +3,7 @@ import styles from "./ProgressBar.module.css";
 import { MyContext } from "../../../App.js";
 
 const ProgressBar = (props) => {
-  const [step, setStep] = useState(Array(6).fill(false));
+  const [step, setStep] = useState(Array(5).fill(false));
   const [canMoveNext, setCanMoveNext] = useState(false);
   const [canMovePrev, setCanMovePrev] = useState(false);
   const [isLastPage, setIsLastPage] = useState(false);
@@ -20,7 +20,7 @@ const ProgressBar = (props) => {
     setModalOpen(true);
     setModalContent("buddyConfirm");
   };
-
+console.log("??" + step)
   useEffect(() => {
     const updateStep = [...step];
     let next = false;
@@ -57,9 +57,8 @@ const ProgressBar = (props) => {
       updateStep[3] = true;
       prev = true;
       next = false;
-      if (props.gradeDiff !== "") {
+      if (props.gradeDiff.length !== 0) {
         next = true;
-        props.slideMove(props.slide + 1);
       }
     }
     if (props.slide === 4) {
@@ -75,7 +74,6 @@ const ProgressBar = (props) => {
       }
     }
     if (props.slide === 5) {
-      updateStep[5] = true;
       prev = true;
       next = true;
       setIsLastPage(true);

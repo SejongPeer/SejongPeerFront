@@ -19,8 +19,6 @@ const Buddy_Matching = () => {
   const [phoneNum, setPhoneNum] = useState("");
   const [kakao, setKakao] = useState("");
 
-  // 화면 넘기기 (다음 / 이전)
-
   // 화면 넓이 설정
   const [width, setWidth] = useState(window.innerWidth);
 
@@ -44,7 +42,8 @@ const Buddy_Matching = () => {
     width: width,
   };
 
-  //다음
+  // 화면 넘기기 (다음 / 이전)
+  // 다음
   const MoveNext = () => {
     setSlide(slide + 1);
     if (slide >= 5) {
@@ -52,10 +51,11 @@ const Buddy_Matching = () => {
     }
   };
 
-  //이전
+  // 이전
   const MoveBefore = () => {
-    setSlide(slide - 1);
-    if (slide <= 0) {
+    const prev = slide - 1;
+    setSlide(prev);
+    if (prev < 0) {
       setSlide(0);
     }
   };
