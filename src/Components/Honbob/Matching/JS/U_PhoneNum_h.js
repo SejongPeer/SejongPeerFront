@@ -27,7 +27,7 @@ const PhoneNumHonbob = (props) => {
   };
 
   const inputPhoneChange = {
-    border: isPhoneInput ? "1px solid red" : "1px solid #ccc",
+    border: isPhoneInput ? "1px solid #4F41DE" : "1px solid #ccc",
   };
 
   return (
