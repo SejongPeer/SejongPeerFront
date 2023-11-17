@@ -27,7 +27,7 @@ const HonbobStart1 = () => {
           className={style.honbobText}
           src={honbobEscape}
           alt="honbobEscape"
-        />{" "}
+        />
       </div>
 
       <div className={style.bottom}>

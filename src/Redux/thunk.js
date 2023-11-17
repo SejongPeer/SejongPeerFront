@@ -37,7 +37,6 @@ export const fetchData = (sourceComponent, navigate, id) => {
         });
         if (sourceComponent === "UserMenu") {
           navigate("/login");
-          console.log("안리안바보");
         } else if (sourceComponent === "Buddy") {
           alert("로그인 후 이용이 가능합니다.");
           navigate("/login");
