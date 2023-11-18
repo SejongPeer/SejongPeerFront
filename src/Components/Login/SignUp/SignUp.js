@@ -28,6 +28,10 @@ const SignUp = () => {
     }
   };
 
+  const gradeData = (userData) => {
+    setGradeValue(userData);
+  };
+
   const idData = (userId) => {
     setIdValue(userId);
   };
@@ -56,10 +60,6 @@ const SignUp = () => {
 
   const majorData = (userMajor) => {
     setMajorValue(userMajor);
-  };
-
-  const gradeData = (userGrade) => {
-    setGradeValue(userGrade);
   };
 
   const studentNumData = (userStudentNum) => {
@@ -226,7 +226,7 @@ const SignUp = () => {
           id="grade"
           title="학년"
           name="학년입력 (ex: 1)"
-          studentNumData={gradeData}
+          gradeData={gradeData}
           signUpErrorHandler={signUpErrorHandler}
         />
         <button
