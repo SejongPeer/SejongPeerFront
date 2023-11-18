@@ -13,6 +13,7 @@ const SignUp = () => {
   const [kakaoidValue, setKakaoValue] = useState("");
   const [phoneNumberValue, setPhoneNumberValue] = useState("");
   const [genderValue, setGenderValue] = useState("");
+  const [collegeValue, setCollegeValue] = useState("");
   const [majorValue, setMajorValue] = useState("");
   const [studentNumberValue, setStudentNumberValue] = useState("");
   const [gradeValue, setGradeValue] = useState("");
@@ -58,6 +59,10 @@ const SignUp = () => {
     setGenderValue(userGender);
   };
 
+  const collegeData = (userCollege) => {
+    setCollegeValue(userCollege);
+  };
+
   const majorData = (userMajor) => {
     setMajorValue(userMajor);
   };
@@ -77,6 +82,7 @@ const SignUp = () => {
     console.log("kakaoidValue : " + kakaoidValue);
     console.log("phoneNumberValue : " + phoneNumberValue);
     console.log("genderValue : " + genderValue);
+    console.log("collegeValue : " + collegeValue);
     console.log("majorValue : " + majorValue);
     console.log("studentNumberValue : " + studentNumberValue);
     console.log("gradeValue : " + gradeValue);
@@ -107,6 +113,7 @@ const SignUp = () => {
           kakaoId: kakaoidValue,
           phoneNumber: phoneNumberValue,
           gender: genderValue,
+          college: collegeValue,
           major: majorValue,
           studentNumber: studentNumberValue,
           grade: gradeValue,
@@ -213,6 +220,7 @@ const SignUp = () => {
           title="단과대/학과"
           name="단과대/학과 선택"
           majorData={majorData}
+          collegeData={collegeData}
           signUpErrorHandler={signUpErrorHandler}
         />
         <SignUpElement

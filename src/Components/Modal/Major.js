@@ -12,16 +12,19 @@ const Major = () => {
     const { setModalOpen } = useContext(MyContext);
     const { setModalContent } = useContext(MyContext);
     const { setMajorValue } = useContext(MyContext);
+    const { setCollegeValue } = useContext(MyContext);
 
     const [selectedCollege, setSelectedCollege] = useState('');
     const [selectedMajor, setSelectedMajor] = useState('');
     const [isCollegeClicked, setIsCollegeClicked] = useState(false);
 
     useEffect(() => {
-        if (selectedMajor) {
-            const sendMajor = selectedCollege + " / " + selectedMajor;
-            setMajorValue(sendMajor);
-            console.log("sendMajor" + sendMajor);
+        if (selectedMajor && selectedCollege) {
+            console.log(selectedCollege);
+            console.log(selectedMajor);
+            
+            setCollegeValue(selectedCollege);
+            setMajorValue(selectedMajor);
             cancelHandler();
         }
     }, [selectedMajor, selectedCollege]);
@@ -33,7 +36,6 @@ const Major = () => {
 
     const handleMajorClick = (text) => {
         setSelectedMajor(text);
-        console.log("대학 " + selectedCollege + "/ 과 " + selectedMajor);
     };
     
 

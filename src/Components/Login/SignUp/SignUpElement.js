@@ -29,40 +29,41 @@ const SignUpElement = (props) => {
     <div className={style.container}>
       {props.id !== "check" && <p className={style.title}>{props.title}</p>}
 
-      {isEmail ? (
-        <EmailBox
-          id={props.id}
-          name={props.name}
-          emailData={props.emailData}
-          errorHandler={errorHandler}
-        />
-      ) : isGender ? (
-        <GenderSignUp
-          id={props.id}
-          name={props.name}
-          genderData={props.genderData}
-        />
-      ) : isMajor ? (
-        <MajorSignUp
-          id={props.id}
-          name={props.name}
-          majorData={props.majorData}
-        />
-      ) : (
-        <InputTextBox
-          id={props.id}
-          name={props.name}
-          errorHandler={errorHandler}
-          idData={props.idData}
-          pwdData={props.pwdData}
-          nameData={props.nameData}
-          birthData={props.birthData}
-          kakaoData={props.kakaoData}
-          phoneNumData={props.phoneNumData}
-          studentNumData={props.studentNumData}
-          gradeData={props.gradeData}
-        />
-      )}
+        {isEmail ? (
+            <EmailBox
+                id={props.id}
+                name={props.name}
+                emailData={props.emailData}
+                errorHandler={errorHandler}
+            />
+        ) : isGender ? (
+            <GenderSignUp 
+                id={props.id}
+                name={props.name}
+                genderData={props.genderData}
+            />
+        ) : isMajor? (
+            <MajorSignUp 
+                id={props.id}
+                name={props.name}
+                majorData={props.majorData}
+            />
+        ) : (
+            <InputTextBox 
+                id={props.id}
+                name={props.name}
+                errorHandler={errorHandler}
+                
+                idData={props.idData}
+                pwdData={props.pwdData}
+                nameData={props.nameData}
+                birthData={props.birthData}
+                kakaoData={props.kakaoData}
+                phoneNumData={props.phoneNumData}
+                studentNumData={props.studentNumData}
+                gradeData={props.gradeData}
+            />
+        )}
 
       {isError && <p className={style.error}>{isError}</p>}
     </div>

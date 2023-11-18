@@ -43,6 +43,7 @@ const App = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [modalContent, setModalContent] = useState("");
   const [majorValue, setMajorValue] = useState("단과대/학과 선택");
+  const [collegeValue, setCollegeValue] = useState('');
   const [buddySubmit, setBuddySubmit] = useState(false);
   const [honbobSubmit, setHonbobSubmit] = useState(false);
 
