@@ -96,6 +96,7 @@ const SignUp = () => {
       kakaoidValue === "" ||
       phoneNumberValue === "" ||
       genderValue === "" ||
+      collegeValue === "" ||
       majorValue === "" ||
       studentNumberValue === "" ||
       gradeValue === ""
@@ -121,7 +122,7 @@ const SignUp = () => {
 
         try {
           const response = await fetch(
-            process.env.REACT_APP_BACK_SERVER + "/user/join",
+            process.env.REACT_APP_BACK_SERVER + "/apply/register",
             {
               method: "POST",
               body: JSON.stringify(join),
@@ -131,7 +132,7 @@ const SignUp = () => {
             }
           );
           const data = await response.json();
-          console.log("11" + data);
+          console.log(data);
 
           if (!response.ok) {
             throw new Error(data.message);
