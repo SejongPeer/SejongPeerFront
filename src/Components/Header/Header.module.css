@@ -1,11 +1,14 @@
 .header {
-    height: 5vh;
-    width: 100%;
-    background-color: #FAFAFA;
-    z-index: 5;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: fixed;
+  height: 5vh;
+  width: 100%;
+  background-color: #fafafa;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  margin-top: 2vh;
 }
-.headerNone{display: none;}
+.headerNone {
+  display: none;
+}

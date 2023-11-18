@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import style from "./MainPage.module.css";
 import MainBuddy from "./MainBuddy";
 import MainHonbob from "./MainHonbob";
-import reprot from "../../../Assets/report.png"
+import reprot from "../../../Assets/report.png";
 //import MainStudy from "./MainStudy";
 
 const MainPage = () => {
@@ -44,7 +44,7 @@ const MainPage = () => {
         <div className={style.report_user_box}>
           <span>악성 유저 신고</span>
           <div className={style.reprot_icon} onClick={reportUserHandler}>
-            <img src={reprot} alt="reprot"/> 
+            <img src={reprot} alt="reprot" />
           </div>
         </div>
       </footer>
