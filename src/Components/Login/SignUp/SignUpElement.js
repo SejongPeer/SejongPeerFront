@@ -45,6 +45,7 @@ const SignUpElement = (props) => {
             <MajorSignUp 
                 id={props.id}
                 name={props.name}
+                collegeData={props.collegeData}
                 majorData={props.majorData}
             />
         ) : (
