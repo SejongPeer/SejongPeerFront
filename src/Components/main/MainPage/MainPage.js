@@ -3,6 +3,7 @@ import style from "./MainPage.module.css";
 import MainBuddy from "./MainBuddy";
 import MainHonbob from "./MainHonbob";
 import reprot from "../../../Assets/report.png";
+import { useEffect } from "react";
 //import MainStudy from "./MainStudy";
 
 const MainPage = () => {
@@ -19,13 +20,27 @@ const MainPage = () => {
   // const readyHandler = () => {
   //   alert("준비중임");
   // }; _AgxobG
+
+  useEffect(() => {
+    if (window.Kakao) {
+      const script = document.createElement('script');
+      script.src = 'https://developers.kakao.com/sdk/js/kakao.min.js';
+      script.onload = () => {
+        const key = process.env.REACT_APP_KAKAO_KEY;
+        console.log(key)
+        console.log(process.env.REACT_APP_KAKAO_KEY)
+        window.Kakao.init(key);
+      };
+      document.head.appendChild(script);
+    }
+  }, []);
+
   const kakaoChat = () => {
-    navigate("http://pf.kakao.com/_AgxobG/chat");
-    /**
-    Kakao.Channel.chat({
-      channelPublicId: '_AgxobG' // 카카오톡 채널 홈 URL에 명시된 id로 설정합니다.
-    });
-    */
+    if (window.Kakao) {
+      window.Kakao.Channel.chat({
+        channelPublicId: '_AgxobG' // 여기에 채널의 고유 ID를 입력하세요.
+      });
+    }
   };
 
   return (
@@ -51,11 +66,9 @@ const MainPage = () => {
         </div>
         <div className={style.report_user_box}>
           <span>악성 유저 신고</span>
-            <Link to={"http://pf.kakao.com/_AgxobG/chat"} target="_blank">
-            <div className={style.reprot_icon}>
+            <div className={style.reprot_icon} onClick={kakaoChat}>
               <img src={reprot} alt="reprot" />
             </div>
-          </Link>
         </div>
       </footer>
     </div>
