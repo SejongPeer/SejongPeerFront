@@ -83,7 +83,7 @@ const ProgressBar = (props) => {
       updateStep[4] = false;
       prev = true;
       next = false;
-      if (props.gradeDiff.length !== 0) {
+      if (props.gradeDiff !== 0) {
         next = true;
       }
     }

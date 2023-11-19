@@ -2,6 +2,7 @@ import styles from "../CSS/Buddy_Final.module.css";
 import con from "../CSS/B_Container.module.css";
 import { useContext, useEffect } from "react";
 import { MyContext } from "../../../../App";
+import axios from "axios";
 
 const Final = (props) => {
   const Page1 = () => {
@@ -72,24 +73,53 @@ const Final = (props) => {
 
   let phoneNumber = localStorage.getItem("phoneNum");
   let kakaoId = localStorage.getItem("kakaoId");
+  // let buddyGradesString = JSON.stringify(buddyGrades);
 
   const buddySubmitHandler = async (e) => {
+    e.preventDefault();
     let matchingInfo = {
       sameGender: sameGender,
       buddyType: buddyType,
       buddyRange: buddyRange,
-      buddyGrades: buddyGrades,
+      buddyGrades: JSON.stringify(`${buddyGrades}`),
       phoneNumber: phoneNumber,
       kakaoId: kakaoId,
     };
-    console.log(matchingInfo);
+    console.log(JSON.stringify(matchingInfo));
+    /*
+    try {
+      const response = await axios.post(process.env.REACT_APP_BACK_SERVER + "/buddy/matching", matchingInfo, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+  
+      const data = response.data; // axios는 자동으로 JSON을 파싱합니다.
+  
+      alert("제출 성공");
+      console.log(data.message);
+      setBuddySubmit(false);
+    } catch (error) {
+      console.error("Error occurred:", error);
+      if (error.response) {
+        // 서버로부터의 응답이 있는 경우
+        console.error("Error message:", error.response.data.message);
+        alert(error.response.data.message);
+        setBuddySubmit(false);
+      } else {
+        // 서버로부터의 응답이 없는 경우
+        alert(error.message);
+        setBuddySubmit(false);
+      }
+    }
+    */
 
     try {
       const response = await fetch(
         process.env.REACT_APP_BACK_SERVER + "/buddy/matching",
         {
           method: "POST",
-          body: JSON.stringify(matchingInfo),
+          body: JSON.stringify(matchingInfo).replace("'", '"'),
           headers: {
             "Content-Type": "application/json",
           },
@@ -110,7 +140,9 @@ const Final = (props) => {
       console.error(error.message);
       alert(error.message);
       e.preventDefault();
+      setBuddySubmit(false);
     }
+
   };
 
   useEffect(() => {

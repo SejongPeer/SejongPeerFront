@@ -80,6 +80,7 @@
     height: 6vh;
     position: relative;
     top: 35%;
+    padding: 0 3vw;
   }
   .container {
     width: 100%;

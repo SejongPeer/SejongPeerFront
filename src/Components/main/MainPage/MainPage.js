@@ -27,8 +27,6 @@ const MainPage = () => {
       script.src = 'https://developers.kakao.com/sdk/js/kakao.min.js';
       script.onload = () => {
         const key = process.env.REACT_APP_KAKAO_KEY;
-        console.log(key)
-        console.log(process.env.REACT_APP_KAKAO_KEY)
         window.Kakao.init(key);
       };
       document.head.appendChild(script);
