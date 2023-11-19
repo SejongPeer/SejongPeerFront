@@ -6,7 +6,6 @@ import { MyContext } from "../../../App.js";
 const ProgressBar = (props) => {
   const [step, setStep] = useState(Array(5).fill(false));
   const [canMoveNext, setCanMoveNext] = useState(false);
-  const [canMovePrev, setCanMovePrev] = useState(false);
   const [isLastPage, setIsLastPage] = useState(false);
   const [isFirstPage, setIsFirstPage] = useState(false);
   const { setModalOpen } = useContext(MyContext);
@@ -91,14 +90,7 @@ const ProgressBar = (props) => {
     if (props.slide === 4) {
       updateStep[4] = true;
       prev = true;
-      next = false;
-      if (
-        props.phoneNum !== "" &&
-        props.phoneNum.length === 11 &&
-        props.kakao !== ""
-      ) {
-        next = true;
-      }
+      next = true;
     }
     if (props.slide === 5) {
       prev = true;
@@ -110,7 +102,6 @@ const ProgressBar = (props) => {
   
     setStep(updateStep);
     setCanMoveNext(next);
-    setCanMovePrev(prev);
   }, [
     props.choiceGender,
     props.grade,

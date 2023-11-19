@@ -18,7 +18,15 @@ const MainPage = () => {
   };
   // const readyHandler = () => {
   //   alert("준비중임");
-  // };
+  // }; _AgxobG
+  const kakaoChat = () => {
+    navigate("http://pf.kakao.com/_AgxobG/chat");
+    /**
+    Kakao.Channel.chat({
+      channelPublicId: '_AgxobG' // 카카오톡 채널 홈 URL에 명시된 id로 설정합니다.
+    });
+    */
+  };
 
   return (
     <div className={style.container}>
@@ -43,9 +51,11 @@ const MainPage = () => {
         </div>
         <div className={style.report_user_box}>
           <span>악성 유저 신고</span>
-          <div className={style.reprot_icon} onClick={reportUserHandler}>
-            <img src={reprot} alt="reprot" />
-          </div>
+            <Link to={"http://pf.kakao.com/_AgxobG/chat"} target="_blank">
+            <div className={style.reprot_icon}>
+              <img src={reprot} alt="reprot" />
+            </div>
+          </Link>
         </div>
       </footer>
     </div>

@@ -13,10 +13,10 @@ const GradeDiff = (props) => {
     const click1BtnHandler = () => {
         setFirstClicked(prev => !prev);
         setGrade(prevGrade => {
-            if (prevGrade.includes('1')) {
-                return prevGrade.filter(item => item !== '1');
+            if (prevGrade.includes("1")) {
+                return prevGrade.filter(item => item !== "1");
             } else {
-                return [...prevGrade, '1'];
+                return [...prevGrade, "1"];
             }
         });
         console.log(grade);
@@ -25,10 +25,10 @@ const GradeDiff = (props) => {
     const click2BtnHandler = () => {
         setSecondClicked(prev => !prev);
         setGrade(prevGrade => {
-            if (prevGrade.includes('2')) {
-                return prevGrade.filter(item => item !== '2');
+            if (prevGrade.includes("2")) {
+                return prevGrade.filter(item => item !== "2");
             } else {
-                return [...prevGrade, '2'];
+                return [...prevGrade, "2"];
             }
         });
         console.log(grade);
@@ -37,11 +37,10 @@ const GradeDiff = (props) => {
     const click3BtnHandler = () => {
         setThirdClicked(prev => !prev);
         setGrade(prevGrade => {
-            // 이미 배열에 '1'이 있으면 제거하고, 없으면 추가
-            if (prevGrade.includes('3')) {
-                return prevGrade.filter(item => item !== '3');
+            if (prevGrade.includes("3")) {
+                return prevGrade.filter(item => item !== "3");
             } else {
-                return [...prevGrade, '3'];
+                return [...prevGrade, "3"];
             }
         });
         console.log(grade);
@@ -50,10 +49,10 @@ const GradeDiff = (props) => {
     const click4BtnHandler = () => {
         setFourthClicked(prev => !prev);
         setGrade(prevGrade => {
-            if (prevGrade.includes('4')) {
-                return prevGrade.filter(item => item !== '4');
+            if (prevGrade.includes("4")) {
+                return prevGrade.filter(item => item !== "4");
             } else {
-                return [...prevGrade, '4'];
+                return [...prevGrade, "4"];
             }
         });
         console.log(grade);

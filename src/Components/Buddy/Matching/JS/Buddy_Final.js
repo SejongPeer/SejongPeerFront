@@ -34,34 +34,51 @@ const Final = (props) => {
     sameGender = "false";
   }
 
-  let finding = {};
+  let buddyType = {};
   if (props.grade === "선배") {
-    finding = "upper";
+    buddyType = "senior";
   } else if (props.grade === "후배") {
-    finding = "lower";
+    buddyType = "junior";
   } else {
-    finding = "same";
+    buddyType = "friend";
   }
 
-  let findingRange = {};
+  let buddyRange = {};
   if (props.major === "우리 학과 버디") {
-    findingRange = "sameMajor";
+    buddyRange = "major";
   } else if (props.major === "우리 단과대 버디") {
-    findingRange = "sameCollege";
+    buddyRange = "college";
   } else {
-    findingRange = "all";
+    buddyRange = "dontCare";
   }
 
-  let findingGrade = props.gradeDiff;
-  let phoneNumber = props.phoneNum;
-  let kakaoId = props.kakao;
+  let grades = [];
+  grades = props.gradeDiff;
+  const numberToWord = (grades) => {
+    switch (grades) {
+        case "1":
+            return "first";
+        case "2":
+            return "second";
+        case "3":
+            return "third";
+        case "4":
+            return "fourth";
+        default:
+            return grades;
+        }
+    };
+  let buddyGrades = grades.map(numberToWord);
+
+  let phoneNumber = localStorage.getItem("phoneNum");
+  let kakaoId = localStorage.getItem("kakaoId");
 
   const buddySubmitHandler = async (e) => {
     let matchingInfo = {
       sameGender: sameGender,
-      finding: finding,
-      findingRange: findingRange,
-      findingGrade: findingGrade,
+      buddyType: buddyType,
+      buddyRange: buddyRange,
+      buddyGrades: buddyGrades,
       phoneNumber: phoneNumber,
       kakaoId: kakaoId,
     };
@@ -69,7 +86,7 @@ const Final = (props) => {
 
     try {
       const response = await fetch(
-        process.env.REACT_APP_BACK_SERVER + "/apply/register",
+        process.env.REACT_APP_BACK_SERVER + "/buddy/matching",
         {
           method: "POST",
           body: JSON.stringify(matchingInfo),
@@ -98,7 +115,9 @@ const Final = (props) => {
 
   useEffect(() => {
     if (buddySubmit === true) {
-      buddySubmitHandler();
+      (async () => {
+        await buddySubmitHandler();
+      })();
     }
   }, [buddySubmit]);
 
@@ -148,7 +167,7 @@ const Final = (props) => {
             <div className={styles.complete}></div>
             <span>카카오톡 아이디</span>
           </div>
-          <div className={styles.textWrapper}>{props.kakao}</div>
+          <div className={styles.textWrapper}>{kakaoId}</div>
         </div>
 
         <div className={styles.infoWrapper} onClick={Page5}>
@@ -156,7 +175,7 @@ const Final = (props) => {
             <div className={styles.complete}></div>
             <span>전화번호</span>
           </div>
-          <div className={styles.textWrapper}>{props.phoneNum}</div>
+          <div className={styles.textWrapper}>{phoneNumber}</div>
         </div>
       </div>
     </div>
