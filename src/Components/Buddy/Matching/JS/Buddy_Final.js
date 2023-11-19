@@ -2,6 +2,7 @@ import styles from "../CSS/Buddy_Final.module.css";
 import con from "../CSS/B_Container.module.css";
 import { useContext, useEffect } from "react";
 import { MyContext } from "../../../../App";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const Final = (props) => {
@@ -53,6 +54,7 @@ const Final = (props) => {
     buddyRange = "dontCare";
   }
 
+  /*
   let grades = [];
   grades = props.gradeDiff;
   const numberToWord = (grades) => {
@@ -69,57 +71,34 @@ const Final = (props) => {
             return grades;
         }
     };
-  let buddyGrades = grades.map(numberToWord);
+    */
+  //let buddyGrades = grades.map(numberToWord);
+  let grades = props.gradeDiff.join(',');
+  console.log(grades);
+  let buddyGrades = grades;
 
   let phoneNumber = localStorage.getItem("phoneNum");
   let kakaoId = localStorage.getItem("kakaoId");
-  // let buddyGradesString = JSON.stringify(buddyGrades);
+
+  const navigate = useNavigate();
 
   const buddySubmitHandler = async (e) => {
-    e.preventDefault();
     let matchingInfo = {
       sameGender: sameGender,
       buddyType: buddyType,
       buddyRange: buddyRange,
-      buddyGrades: JSON.stringify(`${buddyGrades}`),
+      buddyGrades: buddyGrades,
       phoneNumber: phoneNumber,
       kakaoId: kakaoId,
     };
     console.log(JSON.stringify(matchingInfo));
-    /*
-    try {
-      const response = await axios.post(process.env.REACT_APP_BACK_SERVER + "/buddy/matching", matchingInfo, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-  
-      const data = response.data; // axios는 자동으로 JSON을 파싱합니다.
-  
-      alert("제출 성공");
-      console.log(data.message);
-      setBuddySubmit(false);
-    } catch (error) {
-      console.error("Error occurred:", error);
-      if (error.response) {
-        // 서버로부터의 응답이 있는 경우
-        console.error("Error message:", error.response.data.message);
-        alert(error.response.data.message);
-        setBuddySubmit(false);
-      } else {
-        // 서버로부터의 응답이 없는 경우
-        alert(error.message);
-        setBuddySubmit(false);
-      }
-    }
-    */
 
     try {
       const response = await fetch(
         process.env.REACT_APP_BACK_SERVER + "/buddy/matching",
         {
           method: "POST",
-          body: JSON.stringify(matchingInfo).replace("'", '"'),
+          body: JSON.stringify(matchingInfo),
           headers: {
             "Content-Type": "application/json",
           },
@@ -127,6 +106,7 @@ const Final = (props) => {
       );
 
       const data = await response.json(); // data 변수를 await로 초기화
+      console.log(data.message);
 
       if (!response.ok) {
         throw new Error(data.message);
@@ -135,11 +115,11 @@ const Final = (props) => {
       alert("제출 성공");
       console.log(data.message);
       setBuddySubmit(false);
+      navigate("/buddy/waiting");
     } catch (error) {
       console.error("Error occurred:", error);
       console.error(error.message);
       alert(error.message);
-      e.preventDefault();
       setBuddySubmit(false);
     }
 
@@ -147,9 +127,7 @@ const Final = (props) => {
 
   useEffect(() => {
     if (buddySubmit === true) {
-      (async () => {
-        await buddySubmitHandler();
-      })();
+        buddySubmitHandler();
     }
   }, [buddySubmit]);
 
@@ -191,7 +169,7 @@ const Final = (props) => {
             <div className={styles.complete}></div>
             <span>학년</span>
           </div>
-          <div className={styles.textWrapper}>{props.gradeDiff}</div>
+          <div className={styles.textWrapper}>{buddyGrades}</div>
         </div>
 
         <div className={styles.infoWrapper} onClick={Page5}>

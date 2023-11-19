@@ -8,8 +8,34 @@ const BuddyStart2 = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    const BuddyHandler = () => {
-        dispatch(fetchData("Buddy", navigate));
+    const BuddyHandler = async() => {
+        try {
+            const response = await fetch(
+                process.env.REACT_APP_BACK_SERVER + "/buddy/check_status",
+                {
+                method: "GET",
+                headers: {
+                    "Cache-Control": "no-cache, no-store, must-revalidate",
+                    Pragma: "no-cache",
+                    Expires: "0",
+                },
+                }
+            );
+            
+            if (response.status === 301) {
+                alert("버디를 찾은 사용자입니다.");
+            } else if (response.status === 302) {
+                alert("버디를 찾는중인 사용자입니다.");
+                navigate("/buddy/waiting");
+            } else if (response.status === 200) {
+                dispatch(fetchData("Buddy", navigate));
+            }
+
+        } catch (error) {
+            console.log(error.message);
+            alert(error.message);
+        }
+        
     };
     /** 
     const BuddyHandler = () => {
