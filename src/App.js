@@ -59,6 +59,8 @@ const App = () => {
         setBuddySubmit,
         honbobSubmit,
         setHonbobSubmit,
+        setCollegeValue,
+        collegeValue
       }}
     >
       <Router>

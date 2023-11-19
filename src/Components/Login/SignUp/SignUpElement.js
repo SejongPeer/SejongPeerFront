@@ -47,13 +47,13 @@ const SignUpElement = (props) => {
                 id={props.id}
                 name={props.name}
                 majorData={props.majorData}
+                collegeData={props.collegeData}
             />
         ) : (
             <InputTextBox 
                 id={props.id}
                 name={props.name}
                 errorHandler={errorHandler}
-                
                 idData={props.idData}
                 pwdData={props.pwdData}
                 nameData={props.nameData}

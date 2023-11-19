@@ -121,7 +121,7 @@
     /* justify-content: space-between; */
     width: 50%;
     gap: 3%;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     color: #333333;
     font-weight: 700;
   }
@@ -141,6 +141,7 @@
 
   .ftxtBox {
     width: 100%;
+    margin-left: 5vw;
   }
   .ftxt {
     font-size: 12px;

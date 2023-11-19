@@ -15,7 +15,7 @@ const Buddy_Matching = () => {
   const [choiceGender, setChoiceGender] = useState("");
   const [grade, setGrade] = useState("");
   const [major, setMajor] = useState("");
-  const [gradeDiff, setGradeDiff] = useState("");
+  const [gradeDiff, setGradeDiff] = useState([]);
   const [phoneNum, setPhoneNum] = useState("");
   const [kakao, setKakao] = useState("");
 
