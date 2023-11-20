@@ -6,7 +6,7 @@ const HonbobWaiting = () => {
   const moveToMain = () => {
     navigate("/main");
   };
-  const randomNum = Math.floor(Math.random() * 10 + 1);
+
   return (
     <div className={style.container}>
       <div className={style.TextBox}>
