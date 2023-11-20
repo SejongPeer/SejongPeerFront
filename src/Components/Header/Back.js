@@ -2,8 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import backicon from '../../Assets/back.png';
 import sejongpeertext from '../../Assets/peerLogo.png';
 import { useLocation } from 'react-router-dom';
-import sejongpeerlogo from '../../Assets/sejongpeer.png';
-import sejongbuddytext from '../../Assets/buddyText.png';
+import peerCat from '../../Assets/peerCat.png';
 import style from './Back.module.css';
 
 const Back = () => {
@@ -36,7 +35,7 @@ const Back = () => {
     return <button onClick={ChangeBack}
      className={style.wrapper}>
             {location.pathname !== "/main" && <img className={style.backicon} src={backicon} alt='backicon'/>}
-            {isMain && <img className={style.sejongpeerlogo} src={sejongpeerlogo} alt='sejongpeerlogo'/>}
+            {isMain && <img className={style.sejongpeerlogo} src={peerCat} alt='sejongpeerlogo'/>}
             <img className={style.sejongpeertext} src={sejongpeertext} alt='textLogo'/>
         </button>;
 };

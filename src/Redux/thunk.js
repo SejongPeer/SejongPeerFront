@@ -6,7 +6,6 @@ import {
   API_FAILURE_301,
   API_SUCCESS,
 } from "./Actions";
-import { useNavigate } from "react-router-dom";
 
 export const fetchData = (sourceComponent, navigate, id) => {
   return async (dispatch) => {
