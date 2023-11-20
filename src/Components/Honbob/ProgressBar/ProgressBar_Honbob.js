@@ -21,10 +21,10 @@ const ProgressBar = (props) => {
     props.moveBefore(true);
   };
 
-  const { honbobSubmit,setHonbobSubmit } = useContext(MyContext);
-  
-  const searchHandler=()=>{
-    if(canMoveNext===true){
+  const { honbobSubmit, setHonbobSubmit } = useContext(MyContext);
+
+  const searchHandler = () => {
+    if (canMoveNext === true) {
       setHonbobSubmit(true);
     }
   };
