@@ -2,7 +2,8 @@ import style from "./HonbobWaiting.module.css";
 import hohbobWaitingLogo from "../../../Assets/honbobWaitingLogo.png";
 import { MyContext } from "../../../App";
 import { useState, useEffect, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { redirect, useNavigate } from "react-router-dom";
+
 
 const HonbobWaiting = () => {
   //const [kakaohonbob, setKakao] = useState("");
@@ -47,12 +48,23 @@ const HonbobWaiting = () => {
       alert(error.message);
     }
   };
+
+  // const [text,setText]=useState(['.','.','.']);
+  const [dots, setDots] = useState('');
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setDots(prev => (prev.length < 3 ? prev + '.' : ''));
+    }, 400); 
+
+    return () => clearInterval(interval); 
+  }, []);
   
   return (
     <div className={style.container}>
       <div className={style.TextBox}>
         <img src={hohbobWaitingLogo} className={style.honbobWaitingImg} />
-        <p className={style.Text1}>밥짝꿍 찾는 중...</p>
+        <p className={style.Text1}>밥짝꿍 찾는 중{dots}</p>
         <p className={style.Text2}>
           <span className={style.Text2_span1}>*</span>
           <span className={style.Text2_span2}>15분 동안 매칭</span>이 되며,
