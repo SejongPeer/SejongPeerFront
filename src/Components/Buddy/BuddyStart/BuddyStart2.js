@@ -30,10 +30,12 @@ const BuddyStart2 = () => {
             } else if (response.status === 200) {
                 navigate("/buddy/matching");
             } else {
-                alert("로그인이 필요한 서비스입니다!")
+                alert("로그인이 필요한 서비스입니다!");
+                navigate("/login");
             }
         } catch (error) {
             alert("로그인이 필요한 서비스입니다!");
+            navigate("/login");
             console.log(error.message);
             alert(error.message);
         }

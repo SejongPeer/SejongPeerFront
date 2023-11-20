@@ -11,8 +11,6 @@ const HonbobWaiting = () => {
   const moveToMain = () => {
     navigate("/main");
   };
-  //const { honbobCancleSubmit, setHonbobCancleSubmit } = useContext(MyContext);
-
   const honbobCancleSubmitHandler = async () => {
     let findCancleInfo = {
       kakaoId: KaKaoDD,
@@ -49,13 +47,7 @@ const HonbobWaiting = () => {
       alert(error.message);
     }
   };
-
-  // useEffect(() => {
-  //   if (honbobCancleSubmit === true) {
-  //     honbobCancleSubmitHandler();
-  //   }
-  // }, [honbobCancleSubmit]);
-
+  
   return (
     <div className={style.container}>
       <div className={style.TextBox}>

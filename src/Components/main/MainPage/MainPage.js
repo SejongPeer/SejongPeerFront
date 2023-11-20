@@ -49,6 +49,12 @@ const MainPage = () => {
       <button onClick={HonbobHandler} className={style.btn}>
         <MainHonbob />
       </button>
+      <div className={style.report_user_box}>
+          <span>악성 유저 신고</span>
+            <div className={style.reprot_icon} onClick={kakaoChat}>
+              <img src={reprot} alt="reprot" />
+            </div>
+        </div>
       {/* <button className={style.btn} onClick={readyHandler}>
             <MainStudy />
         </button> */}
@@ -62,12 +68,7 @@ const MainPage = () => {
             <span>이용약관</span>
           </Link>
         </div>
-        <div className={style.report_user_box}>
-          <span>악성 유저 신고</span>
-            <div className={style.reprot_icon} onClick={kakaoChat}>
-              <img src={reprot} alt="reprot" />
-            </div>
-        </div>
+        
       </footer>
     </div>
   );

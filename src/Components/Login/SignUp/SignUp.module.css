@@ -6,6 +6,9 @@
   margin-bottom: 4rem;
   overflow: hidden;
 }
+.container h2{
+  margin-left: 5vw;
+}
 
 .form {
   display: flex;

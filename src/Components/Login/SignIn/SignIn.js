@@ -26,8 +26,6 @@ const SignIn = () => {
     setPWd(pwdinput);
   };
 
-  console.log(id, pwd);
-
   //login
   const LoginHandler = async (e) => {
     let login = {
@@ -53,10 +51,6 @@ const SignIn = () => {
         throw new Error(data.message);
       }
 
-      // console.log(id, pwd);
-
-      // console.log(response);
-      // console.log(response.user);
       console.log(data.user);
       // 로그인 성공 후, 로컬 스토리지에 저장
       localStorage.setItem("birth", data.user.birth);
