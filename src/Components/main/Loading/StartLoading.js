@@ -13,8 +13,7 @@ const StartLoading = () => {
     <div className={style.container}>
       <button onClick={MainHandler} className={style.start}>
         <Loadinglogo />
-        {/*<img className={style.textLogo} 
-            src={logo} alt='logo'/>*/}
+        {/*<img className={style.textLogo} src={logo} alt="logo" />*/}
       </button>
     </div>
   );
