@@ -2,6 +2,7 @@ import style from "./BuddyWaiting.module.css";
 import buddyTextRed from "../../../Assets/buddyTextRed.png";
 import buddyWaitingLogo from "../../../Assets/buddyWaitingLogo.png";
 import { useNavigate } from "react-router-dom";
+import { useEffect,useState } from 'react';
 const BuddyWaiting = ()=>{
     const navigate=useNavigate();
     const moveToMain=()=>{
@@ -35,12 +36,22 @@ const BuddyWaiting = ()=>{
             alert(error.message);
           }
     };
+
+    const [dots, setDots] = useState('');
+
+    useEffect(() => {
+      const interval = setInterval(() => {
+        setDots(prev => (prev.length < 3 ? prev + '.' : ''));
+      }, 400); 
+
+      return () => clearInterval(interval); 
+    }, []);
     return(
         <div className={style.container}>
             <div className={style.TextBox}>
             <img src={buddyTextRed} className={style.buddyLogo}/>
             <p className={style.Text1}>216명의 학생들이 버디를 찾고 있어요!</p>
-            <p className={style.ImgText}>열심히 찾는중...</p>
+            <p className={style.ImgText}>열심히 찾는중{dots}</p>
             <img src={buddyWaitingLogo} className={style.buddyWaitingImg} />
             </div>
     
