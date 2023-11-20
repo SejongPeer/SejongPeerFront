@@ -161,7 +161,7 @@ const Honbob_Matching = () => {
   }, [honbobSubmit]);
 
   return (
-    <div className={style.wrapper} styl e={mediaWidth}>
+    <div className={style.wrapper} style={mediaWidth}>
       <div className={style.formWrapper} style={Slide}>
         <PhoneNumHonbob
           sendPhoneNumData={PhoneNumData}
