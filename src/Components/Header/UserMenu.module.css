@@ -1,5 +1,5 @@
 .wrapper {
-    width: 24px;
+    width: 17vw;
     height: 24px;
     display: flex;
     border: none;
@@ -14,4 +14,10 @@
 .usericon{
     width: 24px;
     height: 24px;
+}
+
+.login{
+    font-size: 18px;
+    font-weight: 700;
+    color: #FF3838;
 }

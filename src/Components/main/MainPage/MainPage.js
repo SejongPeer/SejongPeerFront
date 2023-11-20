@@ -50,11 +50,11 @@ const MainPage = () => {
         <MainHonbob />
       </button>
       <div className={style.report_user_box}>
-          <span>악성 유저 신고</span>
-            <div className={style.reprot_icon} onClick={kakaoChat}>
-              <img src={reprot} alt="reprot" />
-            </div>
-        </div>
+        <div className={style.reprot_icon} onClick={kakaoChat}>
+            <img src={reprot} alt="reprot" />
+          </div>
+        <span>악성 유저 신고</span>
+      </div>
       {/* <button className={style.btn} onClick={readyHandler}>
             <MainStudy />
         </button> */}

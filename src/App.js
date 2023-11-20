@@ -47,6 +47,7 @@ const App = () => {
   const [buddySubmit, setBuddySubmit] = useState(false);
   const [honbobSubmit, setHonbobSubmit] = useState(false);
   const [KaKaoDD, setKaKaoDD] = useState("");
+  const [isLogined, setIsLogined] = useState(false);
   //const [honbobCancleSubmit, setHonbobCancleSubmit] = useState(false);
 
   return (
@@ -65,6 +66,8 @@ const App = () => {
         collegeValue,
         KaKaoDD,
         setKaKaoDD,
+        setIsLogined,
+        isLogined
       }}
     >
       <Router>
