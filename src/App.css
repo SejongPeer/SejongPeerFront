@@ -1,39 +1,40 @@
-
 .wrapper {
   display: grid;
   height: 100%;
   overflow: hidden;
   margin: auto;
   color: #333333;
-  background-color: #FAFAFA;
+  background-color: #fafafa;
 }
-.fixed{
+.fixed {
   position: fixed;
 }
 
 @media (min-width: 414px) {
   .wrapper {
-      display: grid;
-      height: 100%;
-      overflow: hidden;
-      margin: auto;
+    display: grid;
+    height: 100%;
+    overflow: hidden;
+    margin: auto;
   }
-  .fixed{
+  .fixed {
     position: fixed;
   }
-  .absolute{
+  .absolute {
     position: absolute;
   }
 }
 
-
 main {
   height: 100%;
   overflow-y: scroll;
-  background-color: #FAFAFA;
+  background-color: #fafafa;
 }
 
 @font-face {
-  font-family: "Pretendard Std Variable", "Pretendard Std", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  font-family: "Pretendard Std Variable", "Pretendard Std", Pretendard,
+    -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue",
+    "Segoe UI", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    sans-serif;
   src: url("./Assets/Pretendard-Black.woff");
-}        
+}

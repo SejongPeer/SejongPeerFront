@@ -1,4 +1,4 @@
-import { useState, useEffect,useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import ChoiceGenderHonbob from "./H_MyGender.js";
 import H_Gender from "./H_Gender.js";
 import PhoneNumHonbob from "./U_PhoneNum_h.js";
@@ -12,15 +12,15 @@ const Honbob_Matching = () => {
   const [myGenderHonbob, setMyGender] = useState("");
   const [phoneNumHonbob, setPhoneNum] = useState("");
   const [kakaohonbob, setKakao] = useState("");
+  const { KaKaoDD, setKaKaoDD } = useContext(MyContext);
 
   // 화면 넘기기 (다음 / 이전)
 
   // 화면 넓이 설정
   const [width, setWidth] = useState(window.innerWidth);
 
+  const navigate = useNavigate();
 
-  const navigate=useNavigate();
-  
   useEffect(() => {
     const handleResize = () => {
       let wrapperWidth = width;
@@ -90,35 +90,34 @@ const Honbob_Matching = () => {
     console.log("카톡 : " + kakaohonbob);
     setKakao(kakaohonbob);
   };
+  //setKaKaoDD(kakaohonbob);
 
-  const { honbobSubmit,setHonbobSubmit } = useContext(MyContext);
+  const { honbobSubmit, setHonbobSubmit } = useContext(MyContext);
 
-  let sameGender={};
+  let sameGender = {};
 
-  if(choiceGenderHonbob==="동성"){
-    sameGender="true";
+  if (choiceGenderHonbob === "동성") {
+    sameGender = "true";
+  } else {
+    sameGender = "false";
   }
-  else{
-    sameGender="false";
+
+  let myGender = {};
+  if (myGenderHonbob === "남자") {
+    myGender = "male";
+  } else {
+    myGender = "female";
   }
 
-
-  let myGender={};
-  if(myGenderHonbob==="남자"){
-    myGender="male";
-  }
-  else{
-    myGender="female";
-  }
-  let kakaoId=kakaohonbob;
-  let phoneNumber=phoneNumHonbob;
+  let kakaoId = kakaohonbob;
+  let phoneNumber = phoneNumHonbob;
 
   const honbobSubmitHandler = async (e) => {
     let findInfo = {
       kakaoId: kakaoId,
       phoneNumber: phoneNumber,
       myGender: myGender,
-      buddyGender:sameGender,
+      buddyGender: sameGender,
     };
     console.log(findInfo);
 
@@ -162,7 +161,7 @@ const Honbob_Matching = () => {
   }, [honbobSubmit]);
 
   return (
-    <div className={style.wrapper} style={mediaWidth}>
+    <div className={style.wrapper} styl e={mediaWidth}>
       <div className={style.formWrapper} style={Slide}>
         <PhoneNumHonbob
           sendPhoneNumData={PhoneNumData}
