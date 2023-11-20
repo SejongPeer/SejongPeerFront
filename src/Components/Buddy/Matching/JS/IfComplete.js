@@ -1,5 +1,4 @@
 import style from '../CSS/IfComplete.module.css';
-import { useNavigate } from 'react-router-dom';
 import buddyTextRed from '../../../../Assets/buddyTextRed.png';
 import buddyFlower from '../../../../Assets/buddyFlower.png';
 

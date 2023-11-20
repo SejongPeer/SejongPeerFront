@@ -1,11 +1,13 @@
 .header {
-    height: 60px;
-    width: 100%;
-    background-color: #FAFAFA;
-    z-index: 5;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: fixed;
+  height: 8vh;
+  width: 100%;
+  background-color: #fafafa;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
 }
-.headerNone{display: none;}
+.headerNone {
+  display: none;
+}

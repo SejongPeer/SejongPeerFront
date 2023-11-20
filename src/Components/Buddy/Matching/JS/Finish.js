@@ -12,9 +12,9 @@ const MatchingFinish = () => {
         <Link to='/buddy/ifcomplete'>
             <button className={style.btn2}>확인</button>
             </Link>
-            <Link to='/main'>
+        <Link to='/main'>
             <button className={style.back}>메인 홈페이지로 이동</button>
-            </Link>
+        </Link>
         </div>
     </div>;
 };

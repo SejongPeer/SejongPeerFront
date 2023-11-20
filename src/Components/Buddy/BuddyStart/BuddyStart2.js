@@ -1,17 +1,56 @@
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from "react-redux";
+import { fetchData } from "../../../Redux/thunk";
 import logo from '../../../Assets/sejongpeer.png';
 import style from './BuddyStart.module.css';
 
 const BuddyStart2 = () => {
     const navigate = useNavigate();
-    const BuddyHandler = () => {
-        navigate('/buddy/start3');
+    const dispatch = useDispatch();
+
+    const BuddyHandler = async() => {
+        try {
+            const response = await fetch(
+                process.env.REACT_APP_BACK_SERVER + "/buddy/check_status",
+                {
+                method: "GET",
+                headers: {
+                    "Cache-Control": "no-cache, no-store, must-revalidate",
+                    Pragma: "no-cache",
+                    Expires: "0",
+                },
+                }
+            );
+            
+            if (response.status === 301) {
+                alert("버디를 찾은 사용자입니다.");
+            } else if (response.status === 302) {
+                alert("버디를 찾는중인 사용자입니다.");
+                navigate("/buddy/waiting");
+            } else if (response.status === 200) {
+                navigate("/buddy/matching");
+            } else {
+                alert("로그인이 필요한 서비스입니다!");
+                navigate("/login");
+            }
+        } catch (error) {
+            alert("로그인이 필요한 서비스입니다!");
+            navigate("/login");
+            console.log(error.message);
+            alert(error.message);
+        }
+        
     };
+    /** 
+    const BuddyHandler = () => {
+        dispatch(fetchData("Buddy", navigate));
+    };
+    */
     const BackHandler = () => {
         navigate('/buddy/start1');
     };
-    const sejongbuddy1 = '세종버디는 세종대 학우들이 다른 학우들과 교류할 수 있도록 연결해주는 서비스 입니다.'; 
-    const sejongbuddy2 = '한 명의 학우와 매칭이 되며, 같은 학과뿐만 아니라 타학과 학우들과도 매칭이 가능합니다.';
+    const txt1 = "한명의 학우와 한 학기 동안 버디가 되며,\n 다음 학기에 새로운 버디를 찾을 수 있습니다.";
+    const duration = "매칭은 컨퍼런스 기간\n (11월 20일~11월 23일)에만 진행됩니다.";
 
     return <div className={style.container}>
         <div className={style.top}>
@@ -22,8 +61,9 @@ const BuddyStart2 = () => {
             </div>
 
             <div className={style.wrapper}>
-                <p className={style.text2}>{sejongbuddy1}</p>
-                <p className={style.text2}>{sejongbuddy2}</p>
+                <p className={style.text2}>버디(Buddy)는 <span className={style.highlight}>‘동료'</span>이자 <span className={style.highlight}>‘단짝'</span>이라는 의미로, 학교생활을 함께 할 <span className={style.highlight}>짝꿍을 찾는 서비스</span>입니다.</p>
+                <p className={style.text2}>{txt1}</p>
+                <p className={style.text_red}>{duration}</p>
             </div>
             
         </div>

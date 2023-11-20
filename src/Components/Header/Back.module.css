@@ -1,5 +1,6 @@
 .wrapper{
-    width: 124px;
+    width: 33vw;
+    max-width: 180px;
     height: 100%;
     display: flex;
     align-items: center;
@@ -17,10 +18,11 @@
 }
 
 .sejongpeerlogo{
-    width: 24px;
-    height: 24px;
+    width: 34px;
+    height: 20px;
 }
 .sejongpeertext{
     width: 86px;
     height: 20px;
+    margin-left: 7px;
 }

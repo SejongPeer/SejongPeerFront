@@ -1,112 +1,165 @@
-import React, { useContext, useState, useEffect } from 'react';
-import styles from './ProgressBar.module.css';
-import { MyContext } from '../../../App.js';
-
+import React, { useContext, useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
+import styles from "./ProgressBar.module.css";
+import { MyContext } from "../../../App.js";
 
 const ProgressBar = (props) => {
-    const [step, setStep] = useState(Array(6).fill(false));
-    const [canMoveNext, setCanMoveNext] = useState(false);
-    const [canMovePrev, setCanMovePrev] = useState(false);
-    const [isLastPage, setIsLastPage] = useState(false);
-    const { setModalOpen } = useContext(MyContext);
-    const { setModalContent } = useContext(MyContext);
+  const [step, setStep] = useState(Array(5).fill(false));
+  const [canMoveNext, setCanMoveNext] = useState(false);
+  const [isLastPage, setIsLastPage] = useState(false);
+  const [isFirstPage, setIsFirstPage] = useState(false);
+  const { setModalOpen } = useContext(MyContext);
+  const { setModalContent } = useContext(MyContext);
+  const [clickedPrev, setClickedPrev] = useState(false);
+  const navigate = useNavigate();
 
-    const moveRightHandler = () => {
-        props.moveNext(true);
-    };
-    const moveLeftHandler = () => {
-        props.moveBefore(true);
-    };
-    const submitHandler = () => {
-        setModalOpen(true);
-        setModalContent('buddyConfirm');
-    };
+  const moveRightHandler = () => {
+    props.moveNext();
+  };
+  const moveLeftHandler = () => {
+    setClickedPrev(true);
+    props.moveBefore();
+  };
+  const submitHandler = () => {
+    setModalOpen(true);
+    setModalContent("buddyConfirm");
+  };
+  const moveMainHandler = () => {
+    const backToMain = window.confirm("확인을 누르면 메인 화면으로 이동합니다.\n지금까지 작성한 내용들이 모두 초기화 됩니다.")
+    if (backToMain) {
+        navigate("/main");
+    }
+  };
 
-    useEffect(() => {
-        const updateStep = [...step];
-        let next = false;
-        let prev = false;
+  useEffect(() => {
+    const updateStep = [...step];
+    let next = false;
+    let prev = false;
 
-        if(props.slide === 0){
-            updateStep[0] = true;
-            prev = false;
-            if(props.choiceGender !== ''){
-                next = true;
-            }
-        }
+    
+    if (props.slide === 0) {
+      updateStep[0] = true;
+      updateStep[1] = false;
 
-        if(props.slide === 1){
-            updateStep[1] = true;
-            prev = true;
-            next = false;
-            if(props.grade !== ''){
-                next = true;
-            }
+      prev = false;
+      if (props.choiceGender !== "") {
+        next = true;
+        if (!clickedPrev) {
+        props.MoveNext();
         }
-        if(props.slide === 2){
-            updateStep[2] = true;
-            prev = true;
-            next = false;
-            if(props.major !== ''){
-                next = true;
-            }
-        }
-        if(props.slide === 3){
-            updateStep[3] = true;
-            prev = true;
-            next = false;
-            if(props.gradeDiff !== ''){
-                next = true;
-            }
-        }
-        if(props.slide === 4){
-            updateStep[4] = true;
-            prev = true;
-            next = false;
-            if(props.phoneNum !== '' && props.phoneNum.length === 11 && props.kakao !== ''){
-                next = true;
-            }
-        }
-        if(props.slide === 5){
-            updateStep[5] = true;
-            prev = true;
-            next = true;
-            setIsLastPage(true);
-        } else {
-            setIsLastPage(false);
-        }
-        setStep(updateStep);
-        setCanMoveNext(next);
-        setCanMovePrev(prev);
-        
-    }, [props.gender, props.choiceGender, props.grade, props.major, props.gradeDiff, props.studentNum, props.phoneNum, props.kakao, props.slide]);
+      } 
+      setIsFirstPage(true);
+    } else {
+      setIsFirstPage(false);
+    }
+  
 
-    const nextClass = canMoveNext ? styles.controller : styles.nonController;
-    const prevClass = canMovePrev ? styles.controller : styles.nonController;
+    if (props.slide === 1) {
+      updateStep[1] = true;
+      updateStep[2] = false;
+      prev = true;
+      next = false;
+      if (props.grade !== "") {
+        next = true;
+        if (!clickedPrev) {
+        props.MoveNext();
+        }
+      }
+    }
+    if (props.slide === 2) {
+      updateStep[2] = true;
+      updateStep[3] = false;
+      prev = true;
+      next = false;
+      if (props.major !== "") {
+        next = true;
+        if (!clickedPrev) {
+          props.MoveNext();
+        }
+      }
+    }
+    if (props.slide === 3) {
+      updateStep[3] = true;
+      updateStep[4] = false;
+      prev = true;
+      next = false;
+      if (props.gradeDiff !== 0) {
+        next = true;
+      }
+    }
+    if (props.slide === 4) {
+      updateStep[4] = true;
+      prev = true;
+      next = true;
+    }
+    if (props.slide === 5) {
+      prev = true;
+      next = true;
+      setIsLastPage(true);
+    } else {
+      setIsLastPage(false);
+    }
+  
+    setStep(updateStep);
+    setCanMoveNext(next);
+  }, [
+    props.choiceGender,
+    props.grade,
+    props.major,
+    props.gradeDiff,
+    props.phoneNum,
+    props.kakao,
+    props.slide,
+  ]);
 
-    return <div className={styles.progressBarWrapper}>
-    <div className={styles.test}>
+  const nextClass = canMoveNext ? styles.controller_next : styles.controller_next_none;
+
+  return (
+    <div className={styles.progressBarWrapper}>
+      <div className={styles.test}>
         <div className={styles.controllerWrapper}>
-            <button className={prevClass} onClick={moveLeftHandler} disabled={!canMovePrev}>이전</button>
-            {isLastPage ? (
-                <button className={styles.submitBtn} onClick={submitHandler}>제출</button>
-            ) : (
-                <button className={nextClass} onClick={moveRightHandler} disabled={!canMoveNext}>다음</button>
-                )}
+          {isFirstPage ? (
+            <button
+            className={styles.controller_prev}
+            onClick={moveMainHandler}
+          >
+            나가기
+          </button>
+          ) : (
+            <button
+            className={styles.controller_prev}
+            onClick={moveLeftHandler}
+          >
+            뒤로
+          </button>)}
+          {isLastPage ? (
+            <button className={styles.controller_next} onClick={submitHandler}>
+              제출
+            </button>
+          ) : (
+            <button
+              className={nextClass}
+              onClick={moveRightHandler}
+              disabled={!canMoveNext}
+            >
+              다음
+            </button>
+          )}
         </div>
         <div className={styles.barWrapper}>
-            {step.map((step, index) => (
-                <div
-                    key={index}
-                    className={styles.progress}
-                    style={{
-                        backgroundColor: step ? '#FF3838' : '#ccc',
-                    }}
-                ></div>
-            ))}
+          {step.map((step, index) => (
+            <div
+              key={index}
+              className={styles.progress}
+              style={{
+                backgroundColor: step ? "#FF3838" : "#ccc",
+              }}
+            ></div>
+          ))}
         </div>
+      </div>
     </div>
-    </div>;
+  );
 };
 
 export default ProgressBar;

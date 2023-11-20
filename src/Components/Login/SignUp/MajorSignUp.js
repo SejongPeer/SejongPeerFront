@@ -7,10 +7,16 @@ const MajorSignUp = (props) => {
     const { setModalOpen } = useContext(MyContext);
     const { setModalContent } = useContext(MyContext);
     const { majorValue } = useContext(MyContext);
+    const { collegeValue } = useContext(MyContext);
 
     useEffect(() => {
-        props.majorData(majorValue);
-    }, [majorValue, props]);
+        if (typeof props.collegeData === "function") {
+            props.collegeData(collegeValue);
+        }
+        if (typeof props.majorData === "function") {
+            props.majorData(majorValue);
+        }
+    }, [majorValue, collegeValue, props]);
 
     const onClickHandler = (event) => {
         setModalOpen(true);

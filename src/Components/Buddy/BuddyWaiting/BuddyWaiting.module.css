@@ -1,0 +1,82 @@
+.container {
+    margin-top: 5rem;
+    display: flex;
+    flex-direction: column;
+    height: 85%;
+    justify-content: space-between;
+    background-color: #fafafa;
+    gap: 3vh;
+  }
+  .TextBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 80vh;
+    justify-content: center;
+    gap: 1.5vh;
+  }
+  .Text1 {
+    font-size: 2vh;
+    width:70vw;
+    color: black;
+    font-weight: 600;
+    /* background-color: red; */
+    text-align: center;
+    margin: 1.5vh;
+  }
+  .ImgText{
+    font-size:2vh;
+    position:relative;
+    right:3vh;
+    top:7vh;
+    margin:0;
+    font-weight:800;
+  }
+
+  .buddyLogo{
+    width:20vh;
+    height:5vh;
+  }
+  .Text3{
+    font-weight: 600;
+    font-size: 2vh;
+    text-align: center;
+    color: #333333;
+    margin: 0.5vh;
+  }
+  .text4{
+    font-weight: 600;
+    font-size: 2vh;
+    color: #FF3838;
+  }
+  .BtnBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .moveToHomeBtn {
+    font-size: 2vh;
+    font-weight: 700;
+    width: 42vh;
+    height: 5.5vh;
+    margin: 15px 8px;
+    border-radius: 40px;
+    background-color: #FF3838;
+    border: none;
+    color: white;
+    cursor: pointer;
+  }
+  .cancelBtn {
+    font-size: 2vh;
+    font-weight: 700;
+    color: #999999;
+    background-color: transparent;
+    cursor: pointer;
+  }
+  .buddyWaitingImg{
+    width:35vh;
+    height:35vh;
+    background-color: #FAFAFA;
+  }
+  
+  
