@@ -25,19 +25,20 @@ const ProgressBar = (props) => {
   //   setModalContent("HonbobConfirm");
   // };
 
-  const { honbobSubmit,setHonbobSubmit } = useContext(MyContext);
-  const searchHandler=()=>{
-    if(canMoveNext===true){
+  const { honbobSubmit, setHonbobSubmit } = useContext(MyContext);
+  const searchHandler = () => {
+    if (canMoveNext === true) {
       setHonbobSubmit(true);
     }
-    
-  }
-  const moveToMain=()=>{
-    const backToMain = window.confirm("확인을 누르면 메인 화면으로 이동합니다.\n지금까지 작성한 내용들이 모두 초기화 됩니다.")
+  };
+  const moveToMain = () => {
+    const backToMain = window.confirm(
+      "확인을 누르면 메인 화면으로 이동합니다.\n지금까지 작성한 내용들이 모두 초기화 됩니다."
+    );
     if (backToMain) {
-        navigate("/main");
+      navigate("/main");
     }
-  }
+  };
 
   useEffect(() => {
     const updateStep = [...step];
@@ -46,7 +47,7 @@ const ProgressBar = (props) => {
 
     if (props.slide === 0) {
       updateStep[0] = true;
-      updateStep[1]=false;
+      updateStep[1] = false;
       prev = true;
       next = false;
       if (
@@ -60,27 +61,27 @@ const ProgressBar = (props) => {
       setIsLastPage(false);
     }
 
-    if(props.slide===1){
-      updateStep[1]=true;
-      updateStep[2]=false;
-      
-      prev=true;
-      next=false;
-      if(props.myGenderHonbob!==""){
-        next=true;
+    if (props.slide === 1) {
+      updateStep[1] = true;
+      updateStep[2] = false;
+
+      prev = true;
+      next = false;
+      if (props.myGenderHonbob !== "") {
+        next = true;
         if (!clickedPrev) {
           props.slideMove(props.slide + 1);
         }
       }
     }
 
-    if(props.slide===2){
-      updateStep[2]=true;
-      prev=true;
-      next=false;
+    if (props.slide === 2) {
+      updateStep[2] = true;
+      prev = true;
+      next = false;
       setIsLastPage(true);
-      if(props.choiceGenderHonbob!==""){
-        next=true;
+      if (props.choiceGenderHonbob !== "") {
+        next = true;
       }
     }
 
@@ -88,7 +89,6 @@ const ProgressBar = (props) => {
     setCanMoveNext(next);
     setCanMovePrev(prev);
   }, [
-    
     props.choiceGenderHonbob,
     props.myGenderHonbob,
     props.phoneNumHonbob,
@@ -96,36 +96,36 @@ const ProgressBar = (props) => {
     props.slide,
   ]);
 
-  const nextClass = canMoveNext ? styles.nextController : styles.nextNonController;
-  const prevClass = canMovePrev ? styles.prevController : styles.prevNonController;
-  
+  const nextClass = canMoveNext
+    ? styles.nextController
+    : styles.nextNonController;
+  const prevClass = canMovePrev
+    ? styles.prevController
+    : styles.prevNonController;
+
   return (
     <div className={styles.progressBarWrapper}>
       <div className={styles.test}>
         <div className={styles.controllerWrapper}>
-         {props.slide===0 ? 
-          <button 
-            className={styles.prevController}
-            onClick={moveToMain}
-          >
-            나가기
-          </button>
-          :
-          <button
-            className={prevClass}
-            onClick={moveLeftHandler}
-            disabled={!canMovePrev}
-          >
-            이전
-          </button>}
-          
+          {props.slide === 0 ? (
+            <button className={styles.prevController} onClick={moveToMain}>
+              나가기
+            </button>
+          ) : (
+            <button
+              className={prevClass}
+              onClick={moveLeftHandler}
+              disabled={!canMovePrev}
+            >
+              이전
+            </button>
+          )}
 
           {isLastPage ? (
             <button className={nextClass} onClick={searchHandler}>
               찾기
             </button>
           ) : (
-            
             <button
               className={nextClass}
               onClick={moveRightHandler}

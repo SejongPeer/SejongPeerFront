@@ -46,43 +46,42 @@
   margin-bottom: 16px;
 }
 
-.nextController{
+.nextController {
   height: 4vh;
   width: 15vw;
   margin: 3vw;
-  border: 1px solid #4F41DE;
+  border: 1px solid #4f41de;
   border-radius: 25px;
-  background-color: #4F41DE;
+  background-color: #4f41de;
   font-size: 0.9rem;
   font-weight: bold;
-  color: #FFFFFF;
+  color: #ffffff;
   cursor: pointer;
-
 }
-.nextNonController{
+.nextNonController {
   height: 4vh;
-  width: 15vw;
+  width: 17vw;
   margin: 3vw;
-  border: 1px solid #4F41DE;
+  border: 1px solid #4f41de;
   border-radius: 25px;
-  background-color: #4F41DE;
+  background-color: #4f41de;
   font-size: 0.9rem;
   font-weight: bold;
-  color: #FFFFFF;
+  color: #ffffff;
   cursor: pointer;
   opacity: 0.5;
 }
-.prevController{
+.prevController {
   height: 4vh;
-    width: 15vw;
-    margin: 3vw;
-    border: 2px solid #4F41DE;
-    border-radius: 25px;
-    background-color: transparent;
-    font-size: 0.9rem;
-    font-weight: bold;
-    color: #333333;
-    cursor: pointer;
+  width: 17vw;
+  margin: 3vw;
+  border: 2px solid #4f41de;
+  border-radius: 25px;
+  background-color: transparent;
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #333333;
+  cursor: pointer;
 }
 
 .submitBtn {
@@ -104,7 +103,7 @@
   height: 4px;
   display: flex;
   /* justify-content: space-between; */
-  justify-content:space-evenly;
+  justify-content: space-evenly;
   align-items: center;
 }
 .progress {
