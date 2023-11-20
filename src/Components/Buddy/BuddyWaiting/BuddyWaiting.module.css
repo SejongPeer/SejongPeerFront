@@ -5,6 +5,7 @@
     height: 85%;
     justify-content: space-between;
     background-color: #fafafa;
+    gap: 3vh;
   }
   .TextBox {
     display: flex;
@@ -12,6 +13,7 @@
     align-items: center;
     height: 80vh;
     justify-content: center;
+    gap: 1.5vh;
   }
   .Text1 {
     font-size: 2vh;
@@ -61,6 +63,7 @@
     font-weight: 700;
     color: #999999;
     background-color: transparent;
+    cursor: pointer;
   }
   .buddyWaitingImg{
     width:35vh;

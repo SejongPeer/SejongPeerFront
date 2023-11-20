@@ -52,7 +52,7 @@
 .buddyImg{
     width: 62vw;
     max-width: 250px;
-    height: 30vh;
+    height: 33vh;
     max-height: 260px;
 }
 .text{
@@ -66,6 +66,15 @@
     line-height: 1.5;
     color: #333333;
     text-align: center;
+    white-space: pre-line;
+}
+.text_red{
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 1.5;
+    color: #FF7474;
+    text-align: center;
+    white-space: pre-line;
 }
 .highlight{
     font-size: 16px;
