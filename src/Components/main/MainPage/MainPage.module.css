@@ -54,6 +54,8 @@
     font-size: 0.9rem;
     color: #333333;
     font-weight: 700;
+    margin-top: 2vh;
+    margin-left: auto;
   }
   .report_user_box img {
     width: 70%;
