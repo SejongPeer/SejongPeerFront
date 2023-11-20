@@ -11,14 +11,14 @@ const UserMenu = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const userId = localStorage.getItem("userId");
     console.log(userId);
+    console.log(isLoggedIn);
     useEffect(() => {
         if (userId === null) {
             setIsLoggedIn(false);
         } else {
             setIsLoggedIn(true);
         }
-        console.log(isLoggedIn)
-    },[]);
+    },[userId]);
     
     const LoginHandler = () => {
         dispatch(fetchData("UserMenu", navigate));
