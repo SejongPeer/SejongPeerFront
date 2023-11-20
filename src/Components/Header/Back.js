@@ -22,16 +22,6 @@ const Back = () => {
     };
     
     const location = useLocation();
-    const changeLogo = () => {
-        if(location.pathname.startsWith("/buddy/")){
-            return sejongbuddytext;
-        } else if (location.pathname.startsWith("/study/")){
-            return "";
-        } else {
-            return sejongpeertext;
-        }
-    };
-    const imgUrl = changeLogo();
 
     const ChangeBack = () => {
         if (location.pathname.startsWith("/login/")) {
@@ -47,7 +37,7 @@ const Back = () => {
      className={style.wrapper}>
             {location.pathname !== "/main" && <img className={style.backicon} src={backicon} alt='backicon'/>}
             {isMain && <img className={style.sejongpeerlogo} src={sejongpeerlogo} alt='sejongpeerlogo'/>}
-            <img className={style.sejongpeertext} src={imgUrl} alt='textLogo'/>
+            <img className={style.sejongpeertext} src={sejongpeertext} alt='textLogo'/>
         </button>;
 };
 

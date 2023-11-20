@@ -28,6 +28,14 @@ const MyPage = () => {
   const userId = localStorage.getItem("userId");
   const birth = localStorage.getItem("birth");
   const gender = localStorage.getItem("gender");
+  let gender_text = "";
+  if (gender === "male") {
+    gender_text = "남자";
+  }
+  if (gender === "female") {
+    gender_text = "여자";
+  }
+
   const kakaoId = localStorage.getItem("kakaoId");
   const major = localStorage.getItem("major");
   const name = localStorage.getItem("name");
@@ -65,7 +73,7 @@ const MyPage = () => {
         </div>
         <div className={styles.div1}>
           <p className={styles.leftFont}>성별</p>
-          <p className={styles.rightFont}>{gender}</p>
+          <p className={styles.rightFont}>{gender_text}</p>
         </div>
         <div className={styles.div1}>
           <p className={styles.leftFont}>단과대</p>
