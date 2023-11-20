@@ -14,6 +14,19 @@ const Honbob_Matching = () => {
   const [kakaohonbob, setKakao] = useState("");
   const { KaKaoDD, setKaKaoDD } = useContext(MyContext);
 
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const userId = localStorage.getItem("userId");
+
+
+
+  useEffect(() => {
+      if (userId === null) {
+          setIsLoggedIn(false);
+      } else {
+          setIsLoggedIn(true);
+      }
+  },[userId]);
+
   // 화면 넘기기 (다음 / 이전)
 
   // 화면 넓이 설정
@@ -67,12 +80,6 @@ const Honbob_Matching = () => {
     transform: "translateX(" + -width * slide + "px)",
   };
 
-  //Final에서
-  /*const slideMove = (page) => {
-    console.log("페이지 이동 " + page);
-    setSlide(page);
-  };*/
-
   //사용자가 입력한 정보
   const MyGenderChoiceData = (myGenderHonbob) => {
     console.log("내 성별 : " + myGenderHonbob);
@@ -109,9 +116,12 @@ const Honbob_Matching = () => {
     myGender = "female";
   }
 
-  let kakaoId = kakaohonbob;
-  let phoneNumber = phoneNumHonbob;
+ 
 
+  let kakaoId = isLoggedIn ? localStorage.getItem("kakaoId") : kakaohonbob;
+  let phoneNumber = isLoggedIn ? localStorage.getItem("phoneNum") : phoneNumHonbob;
+
+  
   const honbobSubmitHandler = async (e) => {
     let findInfo = {
       kakaoId: kakaoId,
@@ -120,7 +130,6 @@ const Honbob_Matching = () => {
       buddyGender: sameGender,
     };
     console.log(findInfo);
-
     try {
       const response = await fetch(
         process.env.REACT_APP_BACK_SERVER + "/honbob/matching",

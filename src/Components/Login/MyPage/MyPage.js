@@ -37,9 +37,10 @@ const MyPage = () => {
   }
 
   const kakaoId = localStorage.getItem("kakaoId");
+  const phoneNum = localStorage.getItem("phoneNum");
   const major = localStorage.getItem("major");
   const name = localStorage.getItem("name");
-  const phoneNum = localStorage.getItem("phoneNum");
+  
   const sejongEmail = localStorage.getItem("sejongEmail");
   const studentId = localStorage.getItem("studentId");
 
