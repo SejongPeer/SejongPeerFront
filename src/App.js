@@ -108,7 +108,7 @@ const App = () => {
               <Route path="/personalinfo" element={<Agree1 />} />
               <Route path="/useinfo" element={<Agree2 />} />
               <Route path="/mypage" element={<MyPage />} />
-              <Route path="/honbob/cancle" element={<HonbobWaiting />} />
+              <Route path="/honbob/cancel" element={<HonbobWaiting />} />
             </Routes>
           </main>
         </div>

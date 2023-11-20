@@ -1,11 +1,27 @@
-import { useState, useContext } from "react";
+import { useState, useContext,useEffect } from "react";
 import { MyContext } from "../../../../App";
 import con from "../CSS/H_Container.module.css";
 import box from "../CSS/H_InputBox.module.css";
 
 const PhoneNumHonbob = (props) => {
   const [isKaKaoInput, setIsKaKaoInput] = useState("");
+  const [isPhoneInput, setIsPhoneInput] = useState("");
   const { KaKaoDD, setKaKaoDD } = useContext(MyContext);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const userId = localStorage.getItem("userId");
+  const kakaoId = localStorage.getItem("kakaoId");
+  const phoneNum = localStorage.getItem("phoneNum");
+
+
+  useEffect(() => {
+      if (userId === null) {
+          setIsLoggedIn(false);
+      } else {
+          setIsLoggedIn(true);
+      }
+  },[userId]);
+
+
   const inputKaKaoChangeHandler = (event) => {
     setIsKaKaoInput(event.target.value);
     const kakao = event.target.value;
@@ -18,7 +34,7 @@ const PhoneNumHonbob = (props) => {
     border: isKaKaoInput ? "1px solid #4F41DE" : "1px solid #ccc",
   };
 
-  const [isPhoneInput, setIsPhoneInput] = useState("");
+  
   const inputPhoneChangeHandler = (event) => {
     const input = event.target.value;
     const phoneNum = input.replace(/[^0-9]/g, "");
@@ -41,7 +57,7 @@ const PhoneNumHonbob = (props) => {
         placeholder="카톡 아이디 입력"
         className={box.inputText}
         onChange={inputKaKaoChangeHandler}
-        value={isKaKaoInput}
+        value={isLoggedIn?kakaoId:isKaKaoInput}
         style={inputKaKaoChange}
       ></input>
 
@@ -50,7 +66,7 @@ const PhoneNumHonbob = (props) => {
         placeholder="전화번호 입력 (ex: 01012345678)"
         className={box.inputText}
         onChange={inputPhoneChangeHandler}
-        value={isPhoneInput}
+        value={isLoggedIn?phoneNum:isPhoneInput}
         style={inputPhoneChange}
       ></input>
     </div>
