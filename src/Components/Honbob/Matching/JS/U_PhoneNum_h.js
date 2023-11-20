@@ -1,16 +1,19 @@
-import { useState } from "react";
-
+import { useState, useContext } from "react";
+import { MyContext } from "../../../../App";
 import con from "../CSS/H_Container.module.css";
 import box from "../CSS/H_InputBox.module.css";
 
 const PhoneNumHonbob = (props) => {
   const [isKaKaoInput, setIsKaKaoInput] = useState("");
+  const { KaKaoDD, setKaKaoDD } = useContext(MyContext);
   const inputKaKaoChangeHandler = (event) => {
     setIsKaKaoInput(event.target.value);
-
     const kakao = event.target.value;
     props.sendKakaoData(kakao);
   };
+  setKaKaoDD(isKaKaoInput);
+  console.log(KaKaoDD);
+
   const inputKaKaoChange = {
     border: isKaKaoInput ? "1px solid #4F41DE" : "1px solid #ccc",
   };
