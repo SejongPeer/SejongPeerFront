@@ -20,14 +20,11 @@ const ProgressBar = (props) => {
     setClickedPrev(true);
     props.moveBefore(true);
   };
-  // const submitHandler = () => {
-  //   setModalOpen(true);
-  //   setModalContent("HonbobConfirm");
-  // };
 
-  const { honbobSubmit, setHonbobSubmit } = useContext(MyContext);
-  const searchHandler = () => {
-    if (canMoveNext === true) {
+  const { honbobSubmit,setHonbobSubmit } = useContext(MyContext);
+  
+  const searchHandler=()=>{
+    if(canMoveNext===true){
       setHonbobSubmit(true);
     }
   };
