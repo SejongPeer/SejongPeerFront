@@ -48,7 +48,7 @@
 
 .controller_next {
     height: 4vh;
-    width: 15vw;
+    width: 17vw;
     margin: 3vw;
     border: 1px solid #FF3838;
     border-radius: 25px;
@@ -60,7 +60,7 @@
 }
 .controller_next_none {
     height: 4vh;
-    width: 15vw;
+    width: 17vw;
     margin: 3vw;
     border: 1px solid #FF3838;
     border-radius: 25px;
@@ -73,7 +73,7 @@
 }
 .controller_prev{
     height: 4vh;
-    width: 15vw;
+    width: 17vw;
     margin: 3vw;
     border: 2px solid #FF3838;
     border-radius: 25px;

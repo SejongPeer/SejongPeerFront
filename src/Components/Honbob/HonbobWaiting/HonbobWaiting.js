@@ -35,9 +35,6 @@ const HonbobWaiting = () => {
       console.log(data.message);
       alert(data.message);
 
-      alert("혼밥취소 제출 성공");
-      console.log("혼밥취소 제출 성공");
-
       //setHonbobCancleSubmit(false);
 
       navigate("/main");

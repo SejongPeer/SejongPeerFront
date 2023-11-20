@@ -48,12 +48,12 @@
 
 .nextController {
   height: 4vh;
-  width: 15vw;
+  width: 17vw;
   margin: 3vw;
   border: 1px solid #4f41de;
   border-radius: 25px;
   background-color: #4f41de;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   font-weight: bold;
   color: #ffffff;
   cursor: pointer;
@@ -65,7 +65,7 @@
   border: 1px solid #4f41de;
   border-radius: 25px;
   background-color: #4f41de;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   font-weight: bold;
   color: #ffffff;
   cursor: pointer;
@@ -78,7 +78,7 @@
   border: 2px solid #4f41de;
   border-radius: 25px;
   background-color: transparent;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   font-weight: bold;
   color: #333333;
   cursor: pointer;
