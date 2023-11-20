@@ -4,7 +4,6 @@ import { MyContext } from "../../../App";
 import { useState, useEffect, useContext } from "react";
 import { redirect, useNavigate } from "react-router-dom";
 
-
 const HonbobWaiting = () => {
   //const [kakaohonbob, setKakao] = useState("");
   const { KaKaoDD, setKaKaoDD } = useContext(MyContext);
@@ -17,7 +16,7 @@ const HonbobWaiting = () => {
       kakaoId: KaKaoDD,
     };
 
-    // console.log("혼밥웨이팅js에서 KaKaoDD : " + KaKaoDD);
+    console.log("혼밥웨이팅js에서 KaKaoDD : " + KaKaoDD);
 
     try {
       const response = await fetch(
@@ -47,16 +46,16 @@ const HonbobWaiting = () => {
   };
 
   // const [text,setText]=useState(['.','.','.']);
-  const [dots, setDots] = useState('');
+  const [dots, setDots] = useState("");
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setDots(prev => (prev.length < 3 ? prev + '.' : ''));
-    }, 400); 
+      setDots((prev) => (prev.length < 3 ? prev + "." : ""));
+    }, 400);
 
-    return () => clearInterval(interval); 
+    return () => clearInterval(interval);
   }, []);
-  
+
   return (
     <div className={style.container}>
       <div className={style.TextBox}>
