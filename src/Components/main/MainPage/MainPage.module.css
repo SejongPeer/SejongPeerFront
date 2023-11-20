@@ -48,9 +48,8 @@
   .report_user_box {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    width: 40%;
-    gap: 10%;
+    width: 47%;
+    gap: 3%;
     font-size: 0.9rem;
     color: #333333;
     font-weight: 700;
