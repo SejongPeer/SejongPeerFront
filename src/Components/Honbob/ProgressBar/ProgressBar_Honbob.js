@@ -10,6 +10,17 @@ const ProgressBar = (props) => {
   const { setModalOpen } = useContext(MyContext);
   const { setModalContent } = useContext(MyContext);
   const [clickedPrev, setClickedPrev] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const userId = localStorage.getItem("userId");
+
+  useEffect(() => {
+    if (userId === null) {
+        setIsLoggedIn(false);
+    } else {
+        setIsLoggedIn(true);
+    }
+  },[userId]);
+
 
   const navigate = useNavigate();
 
@@ -48,6 +59,7 @@ const ProgressBar = (props) => {
       prev = true;
       next = false;
       if (
+        next = true||
         props.phoneNumHonbob !== "" &&
         props.phoneNumHonbob.length === 11 &&
         props.kakaoHonbob !== ""
