@@ -153,7 +153,6 @@ const Honbob_Matching = () => {
       console.log(data.message);
       setHonbobSubmit(false);
       navigate("/honbob/waiting");
-      // sethoSubmit(false);
     } catch (error) {
       console.error("Error occurred:", error);
       console.log("제출 실패");
@@ -164,7 +163,7 @@ const Honbob_Matching = () => {
   };
 
   useEffect(() => {
-    if (honbobSubmit === true) {
+    if (honbobSubmit === true && slide===2) {
       honbobSubmitHandler();
     }
   }, [honbobSubmit]);
