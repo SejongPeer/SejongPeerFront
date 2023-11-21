@@ -48,13 +48,13 @@
   .report_user_box {
     display: flex;
     align-items: center;
+    flex-direction: column;
     width: 47%;
     gap: 3%;
     font-size: 0.9rem;
     color: #333333;
     font-weight: 700;
     margin-top: 2vh;
-    margin-left: auto;
   }
   .report_user_box img {
     width: 70%;

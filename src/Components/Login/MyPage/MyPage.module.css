@@ -144,7 +144,7 @@
     color: white;
   }
 }
-@media (max-width: 768px) {
+@media (max-width: 376px) {
   .logoutContainer {
     height: 100%;
     overflow-y: scroll;
