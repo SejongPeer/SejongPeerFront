@@ -26,6 +26,7 @@ import Agree1 from "./Components/Login/SignUp/Agree1";
 import Agree2 from "./Components/Login/SignUp/Agree2";
 import Agree from "./Components/Login/SignUp/Agree";
 import MyPage from "./Components/Login/MyPage/MyPage";
+import StudyList from "./Components/Study/StudyList/StudyList.js";
 
 // const router = createBrowserRouter([
 //   {path: '/', element:<StartLoading />},
@@ -109,6 +110,7 @@ const App = () => {
               <Route path="/useinfo" element={<Agree2 />} />
               <Route path="/mypage" element={<MyPage />} />
               <Route path="/honbob/cancel" element={<HonbobWaiting />} />
+              <Route path="/study" element={<StudyList />} />
             </Routes>
           </main>
         </div>
