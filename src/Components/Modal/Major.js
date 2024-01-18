@@ -58,7 +58,6 @@ const Major = () => {
     };
 
     return <div>
-        <div onClick={cancelHandler} className={style.backdrop}/>
         <BottomModal>
             <header className={style.header}>
                 <div className={style.left}>

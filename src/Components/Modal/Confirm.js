@@ -25,7 +25,6 @@ const Confirm = (props) => {
     };
 
     return <div>
-        <div onClick={cancelHandler} className={style.backdrop}/>
         <BottomModal>
             <header className={style.header}>
                 <p>{props.firstTitle}</p>
