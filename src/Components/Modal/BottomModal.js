@@ -5,7 +5,7 @@ import style from './BottomModal.module.css';
 
 const BottomModal = (props) => {
     const [animate, setAnimate] = useState(false);
-    const { modalOpen } = useContext(MyContext);
+    const { modalOpen, setModalOpen } = useContext(MyContext);
 
     useEffect(() => {
         if (!modalOpen) {
@@ -15,7 +15,14 @@ const BottomModal = (props) => {
         }
       }, [modalOpen]);
 
-    return <div className={`${style.container} ${animate ? style.animate : ''}`}>{props.children}</div>;
+    const cancelHandler = () => {
+        setModalOpen(false);
+    };
+
+    return <div className={style.modal}>
+      <div onClick={cancelHandler} className={style.backdrop}/>
+      <div className={`${style.container} ${animate ? style.animate : ''}`}>{props.children}</div>
+    </div>;
 };
 
 export default BottomModal;
