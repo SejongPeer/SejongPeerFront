@@ -18,18 +18,12 @@ const StudyPost = () => {
       <div className={style.innerConatiner}>
         <div className={style.header}>
           <div className={style.leftBox}>
-            <button className={style.cancelBtn}>
-              <img src={cancelBtn} className={style.cancelBtnImg} />
-            </button>
-            <div className={style.textImgWrapper}>
-              <img src={StudyWriteText} className={style.textImg} />
-            </div>
+            <img src={cancelBtn} className={style.cancelBtn}></img>
+            <img src={StudyWriteText} className={style.textImgWrapper}></img>
           </div>
           <div className={style.rightBox}>
-            <button className={style.imgAddText}>사진 추가</button>
-            <button className={style.imgAddWrapper}>
-              <img src={ImgPost} className={style.imgAdd} />
-            </button>
+            <p className={style.addpostText}>사진 추가</p>
+            <img src={ImgPost} className={style.imgAddWrapper}></img>
           </div>
         </div>
         <div className={style.contentContainer}>
