@@ -4,6 +4,7 @@ import MainBuddy from "./MainBuddy";
 import MainHonbob from "./MainHonbob";
 import reprot from "../../../Assets/report.png";
 import { useEffect } from "react";
+import { DevOpsGuru } from "aws-sdk";
 //import MainStudy from "./MainStudy";
 
 const MainPage = () => {
@@ -46,13 +47,17 @@ const MainPage = () => {
 
   return (
     <div className={style.container}>
-      <button onClick={BuddyHandler} className={style.btn}>
-        <MainBuddy />
-      </button>
-      <button onClick={HonbobHandler} className={style.btn}>
-        <MainHonbob />
-      </button>
-      <button onClick={StudyHandler} className={style.btn}></button>
+      <div style={{ marginTop: "10vh" }}>
+        <div style={{ display: "flex", flexDirection: "row" }}>
+          <button onClick={BuddyHandler} className={style.btn}>
+            <MainBuddy />
+          </button>
+          <button onClick={HonbobHandler} className={style.btn}>
+            <MainHonbob />
+          </button>
+        </div>
+        <button onClick={StudyHandler} className={style.btn}></button>
+      </div>
       <div className={style.report_user_box}>
         <div className={style.reprot_icon} onClick={kakaoChat}>
           <img src={reprot} alt="reprot" />
