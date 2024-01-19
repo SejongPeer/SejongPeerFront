@@ -27,7 +27,7 @@ import Agree2 from "./Components/Login/SignUp/Agree2";
 import Agree from "./Components/Login/SignUp/Agree";
 import MyPage from "./Components/Login/MyPage/MyPage";
 import StudyList from "./Components/Study/StudyList/StudyList.js";
-import StudyPost from "./Components/Study/StudyPost/StudyPost";
+import StudyPostWrite from "./Components/Study/StudyPostWrite/StudyPostWrite.js";
 
 // const router = createBrowserRouter([
 //   {path: '/', element:<StartLoading />},
