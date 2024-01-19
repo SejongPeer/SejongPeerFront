@@ -17,6 +17,7 @@ const BottomModal = (props) => {
 
     const cancelHandler = () => {
         setModalOpen(false);
+        props.deleteHandler()
     };
 
     return <div className={style.modal}>
