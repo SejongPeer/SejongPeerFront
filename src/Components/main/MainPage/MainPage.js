@@ -14,6 +14,9 @@ const MainPage = () => {
   const HonbobHandler = () => {
     navigate("/honbob/start1");
   };
+  const StudyHandler = () => {
+    navigate("/studypost");
+  };
   const reportUserHandler = () => {
     alert("너 신고");
   };
@@ -23,8 +26,8 @@ const MainPage = () => {
 
   useEffect(() => {
     if (window.Kakao) {
-      const script = document.createElement('script');
-      script.src = 'https://developers.kakao.com/sdk/js/kakao.min.js';
+      const script = document.createElement("script");
+      script.src = "https://developers.kakao.com/sdk/js/kakao.min.js";
       script.onload = () => {
         const key = process.env.REACT_APP_KAKAO_KEY;
         window.Kakao.init(key);
@@ -36,7 +39,7 @@ const MainPage = () => {
   const kakaoChat = () => {
     if (window.Kakao) {
       window.Kakao.Channel.chat({
-        channelPublicId: '_AgxobG' // 여기에 채널의 고유 ID를 입력하세요.
+        channelPublicId: "_AgxobG", // 여기에 채널의 고유 ID를 입력하세요.
       });
     }
   };
@@ -49,10 +52,11 @@ const MainPage = () => {
       <button onClick={HonbobHandler} className={style.btn}>
         <MainHonbob />
       </button>
+      <button onClick={StudyHandler} className={style.btn}></button>
       <div className={style.report_user_box}>
         <div className={style.reprot_icon} onClick={kakaoChat}>
-            <img src={reprot} alt="reprot" />
-          </div>
+          <img src={reprot} alt="reprot" />
+        </div>
         <span>악성 유저 신고</span>
       </div>
       {/* <button className={style.btn} onClick={readyHandler}>
@@ -68,7 +72,6 @@ const MainPage = () => {
             <span>이용약관</span>
           </Link>
         </div>
-        
       </footer>
     </div>
   );
