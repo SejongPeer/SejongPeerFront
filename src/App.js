@@ -112,7 +112,7 @@ const App = () => {
               <Route path="/mypage" element={<MyPage />} />
               <Route path="/honbob/cancel" element={<HonbobWaiting />} />
               <Route path="/study" element={<StudyList />} />
-              <Route path="/studypost" element={<StudyPost />} />
+              <Route path="/studypost" element={<StudyPostWrite />} />
             </Routes>
           </main>
         </div>
