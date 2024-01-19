@@ -5,6 +5,10 @@ import ImgPost from "../../../Assets/ImgPost.png";
 import StudyWriteText from "../../../Assets/StudyWriteText.png";
 import { useState } from "react";
 
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import ko from 'date-fns/locale/ko';
+
 const StudyPostWrite = () => {
     const [text, setText] = useState("");
 
@@ -12,7 +16,15 @@ const StudyPostWrite = () => {
         const newText = e.target.value;
         setText(newText);
     };
+    const [dateRange, setDateRange] = useState({
+        startDate: null,
+        endDate: null,
+    });
 
+    const setChangeDate = (dates) => {
+        const [start, end] = dates;
+        setDateRange({ startDate: start, endDate: end });
+    };
     return (
         <div className={style.container}>
             <div className={style.innerConatiner}>
@@ -38,9 +50,11 @@ const StudyPostWrite = () => {
                         <div className={style.periodBox}>
                             <div className={style.periodWrapper}>
                                 <div className={style.period}>모집 기간</div>
+
                                 <img src={arrow} className={style.arrowImg} />
                             </div>
                         </div>
+
                         <div className={style.personNumBox}>
                             <div className={style.personNumWrapper}>
                                 <div className={style.personNum}>모집 인원</div>
