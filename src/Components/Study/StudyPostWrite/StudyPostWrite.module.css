@@ -1,3 +1,4 @@
+/* 데스크탑 */
 @media (min-width: 768px) {
   .container {
     width: 100vw;
@@ -29,55 +30,50 @@
   }
 
   .leftBox {
-    width: 15vw;
-    height: 5vh;
-    display: flex;
-    margin-left: 1vw;
-  }
-
-  .cancelBtn {
-    width: 4.5vh;
-    height: 4.5vh;
-    border: none;
-    background-color: transparent;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .cancelBtnImg {
-    width: 3.5vh;
-    height: 3.5vh;
-  }
-
-  .textImgWrapper {
-    width: 20vh;
-    height: 3.5vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 0.5vh;
-  }
-
-  .textImg {
-    width: 15vh;
-    height: 3.5vh;
-  }
-
-  .rightBox {
     width: 10vw;
     height: 5vh;
     display: flex;
-    /* margin-right: 1vw; */
+    margin-left: 1vw;
+    align-items: center;
   }
 
-  .imgAddText {
+  .cancelBtn {
+    width: 3vh;
+    height: 3vh;
+  }
+
+  .textImgWrapper {
+    width: 12vh;
+    height: 2.5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 1vh;
+  }
+
+  .textImg {
+    width: 12vh;
+    height: 2.5vh;
+  }
+
+  .rightBox {
+    width: 7vw;
+    height: 5vh;
+    display: flex;
+    margin-right: 1vw;
+    align-items: center;
+    /* justify-content: center; */
+  }
+
+  .addpostText {
     width: 10.5vh;
     height: 4.5vh;
     font-size: 1vw;
     border: none;
     background-color: transparent;
     font-weight: 600;
+    display: flex;
+    align-items: center;
   }
 
   .imgAddWrapper {
@@ -99,6 +95,7 @@
     display: flex;
     align-items: center;
     flex-direction: column;
+    margin-top: 1vh;
   }
 
   .topBox {
@@ -125,7 +122,7 @@
 
   .periodWrapper,
   .personNumWrapper {
-    width: 57vw;
+    width: 25vw;
     height: 4.6vh;
     display: flex;
     justify-content: center;
@@ -135,7 +132,7 @@
   .titleInput {
     border: none;
     height: 4.5vh;
-    width: 57vw;
+    width: 25vw;
     font-size: 2vh;
     display: flex;
     align-items: center;
@@ -146,7 +143,7 @@
   .personNum {
     border: none;
     height: 4.5vh;
-    width: 55vw;
+    width: 23vw;
     font-size: 2vh;
     display: flex;
     align-items: center;
@@ -172,7 +169,7 @@
 
   .contentArea {
     display: block;
-    width: 57vw;
+    width: 27vw;
     height: 40vh;
     border: none;
     resize: none;
@@ -183,7 +180,7 @@
   }
 
   .textLength {
-    width: 54vw;
+    width: 27vw;
     height: 4vh;
     display: flex;
     justify-content: flex-end;
@@ -208,14 +205,14 @@
   .openChatBox {
     display: flex;
     justify-content: center;
-    width: 57vw;
+    width: 28vw;
     height: 12vh;
     flex-direction: column;
     align-items: center;
   }
 
   .innerOpenChatBox {
-    width: 56vw;
+    width: 27vw;
     height: 11vh;
     display: flex;
     flex-direction: column;
@@ -226,16 +223,17 @@
   .openChatText {
     font-size: 1.8vh;
     color: red;
-    width: 55vw;
+    width: 26vw;
     height: 4.5vh;
   }
 
   .openChatInput {
-    width: 55vw;
+    width: 26vw;
     height: 4.5vh;
     font-size: 2vh;
     border: none;
     outline: none;
+
   }
 
   .tagBox {
@@ -247,7 +245,7 @@
   }
 
   .tagInput {
-    width: 58vw;
+    width: 26vw;
     height: 5vh;
     font-size: 1.8vh;
     border: none;
@@ -261,6 +259,9 @@
     justify-content: center;
     align-items: center;
     background-color: #ffffff;
+    /* position: fixed;
+    top: 90vh; */
+    margin-top: 1vh;
   }
 
   .postBtn {
@@ -276,6 +277,7 @@
   }
 }
 
+/* 모바일 */
 @media (max-width: 768px) {
   .container {
     width: 100vw;
@@ -304,7 +306,7 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    gap: 20%;
+    /* gap: 20%; */
   }
 
   .leftBox {
@@ -325,13 +327,8 @@
     align-items: center;
   }
 
-  .cancelBtnImg {
-    width: 3.5vh;
-    height: 3.5vh;
-  }
-
   .textImgWrapper {
-    /* width: 20vh; */
+    width: 15vh;
     height: 3vh;
     display: flex;
     justify-content: center;
@@ -344,34 +341,32 @@
   }
 
   .rightBox {
+    width: 25vw;
+    height: 5vh;
     display: flex;
+    justify-content: center;
     align-items: center;
   }
 
   .addpostText {
-    margin-right: 3vw;
-  }
-
-  .imgAddText {
-    width: 10.5vh;
+    width: 9vh;
     height: 4.5vh;
-    font-size: 1vw;
+    font-size: 3.5vw;
     border: none;
     background-color: transparent;
     font-weight: 600;
-    margin-right: 1vw;
+    display: flex;
+    align-items: center;
+
   }
 
   .imgAddWrapper {
-    width: 3vh;
-    height: 3vh;
-    border: none;
-    background-color: transparent;
-  }
-
-  .imgAdd {
     width: 4.5vh;
     height: 4.5vh;
+    border: none;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
   }
 
   .contentContainer {
@@ -381,6 +376,7 @@
     display: flex;
     align-items: center;
     flex-direction: column;
+    margin-top: 1vh;
   }
 
   .topBox {
@@ -407,7 +403,7 @@
 
   .periodWrapper,
   .personNumWrapper {
-    width: 57vw;
+    width: 80vw;
     height: 4.6vh;
     display: flex;
     justify-content: center;
@@ -417,7 +413,7 @@
   .titleInput {
     border: none;
     height: 4.5vh;
-    width: 57vw;
+    width: 82vw;
     font-size: 2vh;
     display: flex;
     align-items: center;
@@ -428,7 +424,7 @@
   .personNum {
     border: none;
     height: 4.5vh;
-    width: 55vw;
+    width: 78vw;
     font-size: 2vh;
     display: flex;
     align-items: center;
@@ -454,7 +450,7 @@
 
   .contentArea {
     display: block;
-    width: 57vw;
+    width: 82vw;
     height: 40vh;
     border: none;
     resize: none;
@@ -465,7 +461,7 @@
   }
 
   .textLength {
-    width: 54vw;
+    width: 82vw;
     height: 4vh;
     display: flex;
     justify-content: flex-end;
@@ -480,6 +476,7 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
+    align-items: center;
   }
 
   .openChatBox,
@@ -490,14 +487,14 @@
   .openChatBox {
     display: flex;
     justify-content: center;
-    width: 57vw;
+    width: 100vw;
     height: 12vh;
     flex-direction: column;
     align-items: center;
   }
 
   .innerOpenChatBox {
-    width: 56vw;
+    width: 83vw;
     height: 11vh;
     display: flex;
     flex-direction: column;
@@ -508,16 +505,17 @@
   .openChatText {
     font-size: 1.8vh;
     color: red;
-    width: 55vw;
+    width: 82vw;
     height: 4.5vh;
   }
 
   .openChatInput {
-    width: 55vw;
+    width: 82vw;
     height: 4.5vh;
     font-size: 2vh;
     border: none;
     outline: none;
+    padding: 0;
   }
 
   .tagBox {
@@ -529,7 +527,7 @@
   }
 
   .tagInput {
-    width: 58vw;
+    width: 82vw;
     height: 5vh;
     font-size: 1.8vh;
     border: none;
@@ -543,10 +541,11 @@
     justify-content: center;
     align-items: center;
     background-color: #ffffff;
+    margin-top: 1vh;
   }
 
   .postBtn {
-    width: 30vw;
+    width: 82vw;
     height: 6vh;
     background-color: #ff3838;
     text-align: center;
