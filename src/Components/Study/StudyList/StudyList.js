@@ -5,6 +5,8 @@ import StudyListPost from "./StudyListPost";
 import BottomModal from "../../Modal/BottomModal"
 import Filter_now from "./Filter_now";
 import { MyContext } from "../../../App";
+import Filter_Feild from "./Filter_Feild";
+import Filter_Member from "./Filter_Member";
 
 const StudyList = () => {
     const [posts, setPosts] = useState([
@@ -56,19 +58,32 @@ const StudyList = () => {
     const modalHandler = () => {
         setModalOpen(!modalOpen)
     }
+    const studyFilterHandler = () => {
+        setModalOpen(!modalOpen)
+        setIsClickedStudy(true)
+    }
+    const memberFilterHandler = () => {
+        setModalOpen(!modalOpen)
+        setIsClickedMember(true)
+    }
     const onFilterHandler = () => {
         setModalOpen(!modalOpen)
         setIsClickedOn(true)
+    }
+    const deleteHandler = () => {
+        setIsClickedStudy(false)
+        setIsClickedMember(false)
+        setIsClickedOn(false)
     }
 
     return <div className={style.container}>
         <div className={style.header}></div>
         <div className={style.filter_box}>
-            <div className={style.filter} onClick={modalHandler}>
+            <div className={style.filter} onClick={studyFilterHandler}>
                 <span>스터디</span>
                 <img src={select} alt="select" className={style.select}/>
             </div>
-            <div className={style.filter}>
+            <div className={style.filter} onClick={memberFilterHandler}>
                 <span>모집인원</span>
                 <img src={select} alt="select" className={style.select}/>
             </div>
@@ -87,8 +102,10 @@ const StudyList = () => {
             ))}
         </div>
         <div className={style.write_btn}>모집글 작성</div>
-        {modalOpen && <BottomModal>
-            {isClickedOn && <Filter_now></Filter_now>}
+        {modalOpen && <BottomModal deleteHandler = {deleteHandler}>
+            {isClickedStudy && <Filter_Feild />}
+            {isClickedMember && <Filter_Member />}
+            {isClickedOn && <Filter_now />}
         </BottomModal>}
     </div>
 }
