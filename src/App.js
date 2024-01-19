@@ -27,6 +27,7 @@ import Agree2 from "./Components/Login/SignUp/Agree2";
 import Agree from "./Components/Login/SignUp/Agree";
 import MyPage from "./Components/Login/MyPage/MyPage";
 import StudyList from "./Components/Study/StudyList/StudyList.js";
+import StudyPost from "./Components/Study/StudyPost/StudyPost";
 
 // const router = createBrowserRouter([
 //   {path: '/', element:<StartLoading />},
@@ -68,7 +69,7 @@ const App = () => {
         KaKaoDD,
         setKaKaoDD,
         setIsLogined,
-        isLogined
+        isLogined,
       }}
     >
       <Router>
@@ -111,6 +112,7 @@ const App = () => {
               <Route path="/mypage" element={<MyPage />} />
               <Route path="/honbob/cancel" element={<HonbobWaiting />} />
               <Route path="/study" element={<StudyList />} />
+              <Route path="/studypost" element={<StudyPost />} />
             </Routes>
           </main>
         </div>
