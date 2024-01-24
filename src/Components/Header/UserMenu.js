@@ -10,8 +10,6 @@ const UserMenu = () => {
     const dispatch = useDispatch();
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const userId = localStorage.getItem("userId");
-    console.log(userId);
-    console.log(isLoggedIn);
     useEffect(() => {
         if (userId === null) {
             setIsLoggedIn(false);
