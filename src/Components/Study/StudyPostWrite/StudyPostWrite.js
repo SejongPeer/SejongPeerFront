@@ -18,6 +18,17 @@ import StudyMember from "./StudyMember/StudyMember";
 const StudyPostWrite = () => {
     const [startDate, setStartDate] = useState(null);
     const [endDate, setEndDate] = useState(null);
+    const [startMember, setStartMember] = useState(0);
+    const [endMember, setEndMember] = useState(0);
+
+
+    const setStartMem = (num) => {
+        setStartMember(num);
+    }
+    const setEndMem = (num) => {
+        setEndMember(num);
+    }
+
     const [dateRange, setDateRange] = useState({
         startDate: null,
         endDate: null,
@@ -44,16 +55,17 @@ const StudyPostWrite = () => {
     const { modalOpen, setModalOpen } = useContext(MyContext);
 
     const studyFilterHandler = () => {
-        setModalOpen(!modalOpen)
-        setIsClickedStudy(true)
+        setModalOpen(!modalOpen);
+        setIsClickedStudy(true);
     }
     const memberFilterHandler = () => {
-        setModalOpen(!modalOpen)
-        setIsClickedMember(true)
+        setModalOpen(!modalOpen);
+        setIsClickedMember(true);
     }
     const deleteHandler = () => {
-        setIsClickedStudy(false)
+        setIsClickedStudy(false);
     }
+
 
     return (
         <div className={style.container}>
@@ -117,7 +129,7 @@ const StudyPostWrite = () => {
                             <div className={style.personNumWrapper}>
                                 <div className={style.personNumLeft}>
                                     <div className={style.personNum}>모집 인원</div>
-                                    <div className={style.personNumber}>2명~6명</div>
+                                    <div className={style.personNumber}>{startMember}명~{endMember}명</div>
                                 </div>
 
                                 <img src={arrow} className={style.arrowImg} onClick={memberFilterHandler} />
@@ -162,7 +174,11 @@ const StudyPostWrite = () => {
             </div>
             {modalOpen && <BottomModal deleteHandler={deleteHandler}>
                 {isClickedStudy && <StudyPostField />}
-                {isClickedMember && <StudyMember />}
+                {isClickedMember && <StudyMember
+                    setStartMem={setStartMem}
+                    setEndMem={setEndMem}
+
+                />}
             </BottomModal>}
         </div>
     );

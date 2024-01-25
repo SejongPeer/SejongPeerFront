@@ -3,7 +3,9 @@ import 'rc-slider/assets/index.css';
 import style from "./StudyMember.module.css"
 import { useState } from 'react';
 
-const StudyMember = () => {
+const StudyMember = (prop) => {
+
+
     const trackStyle = {
         backgroundColor: '#FF3838',
     };
@@ -20,11 +22,14 @@ const StudyMember = () => {
         width: '93%'
     }
 
+
     const [sliderValue, setSliderValue] = useState([2, 8]); // 슬라이더의 초기 값
 
     const handleSliderChange = (value) => {
         setSliderValue(value); // 슬라이더 값을 업데이트
-        console.log(sliderValue);
+        prop.setStartMem(value[0]);
+        prop.setEndMem(value[1]);
+        console.log(value);
     };
 
     return (
