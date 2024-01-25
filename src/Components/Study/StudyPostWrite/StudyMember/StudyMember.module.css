@@ -1,0 +1,63 @@
+.container {
+    width: 100%;
+    height: 40vh;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header {
+    width: 100%;
+    height: 18%;
+    display: flex;
+    align-items: center;
+    padding: 0 5%;
+    border-bottom: 1px solid #E5E5E5;
+}
+
+.header span {
+    font-size: 1.3rem;
+    color: #111111;
+    font-weight: 600;
+}
+
+.filter_wrapper {
+    width: 100%;
+    height: 45%;
+    padding: 0 5%;
+    margin-bottom: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10%;
+}
+
+.member_value {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.member_num {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.finish {
+    width: 90%;
+    height: 17%;
+    background-color: #FF3838;
+    border-radius: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.finish span {
+    font-size: 1.3rem;
+    color: #FFFFFF;
+    font-weight: 600;
+}

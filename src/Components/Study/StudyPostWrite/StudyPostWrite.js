@@ -3,28 +3,58 @@ import arrow from "../../../Assets/arrow.png";
 import cancelBtn from "../../../Assets/cancelBtn.png";
 import ImgPost from "../../../Assets/ImgPost.png";
 import StudyWriteText from "../../../Assets/StudyWriteText.png";
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import ko from 'date-fns/locale/ko';
+import { parseISO, format } from "date-fns";
+
+import { MyContext } from "../../../App";
+import BottomModal from "../../Modal/BottomModal"
+import StudyPostField from "./StudyPostField/StudyPostField";
+import StudyMember from "./StudyMember/StudyMember";
 
 const StudyPostWrite = () => {
+    const [startDate, setStartDate] = useState(null);
+    const [endDate, setEndDate] = useState(null);
+    const [dateRange, setDateRange] = useState({
+        startDate: null,
+        endDate: null,
+    });
     const [text, setText] = useState("");
 
     const handleTextChange = (e) => {
         const newText = e.target.value;
         setText(newText);
     };
-    const [dateRange, setDateRange] = useState({
-        startDate: null,
-        endDate: null,
-    });
 
     const setChangeDate = (dates) => {
         const [start, end] = dates;
+        setStartDate(start);
+        setEndDate(end);
         setDateRange({ startDate: start, endDate: end });
     };
+    const handleDatePickerFocus = (event) => {
+        event.target.blur();
+    };
+
+    const [isClickedStudy, setIsClickedStudy] = useState(false);
+    const [isClickedMember, setIsClickedMember] = useState(false);
+    const { modalOpen, setModalOpen } = useContext(MyContext);
+
+    const studyFilterHandler = () => {
+        setModalOpen(!modalOpen)
+        setIsClickedStudy(true)
+    }
+    const memberFilterHandler = () => {
+        setModalOpen(!modalOpen)
+        setIsClickedMember(true)
+    }
+    const deleteHandler = () => {
+        setIsClickedStudy(false)
+    }
+
     return (
         <div className={style.container}>
             <div className={style.innerConatiner}>
@@ -47,18 +77,50 @@ const StudyPostWrite = () => {
                                 type="text"
                             />
                         </div>
+                        <div className={style.categoryBox}>
+                            <div className={style.categoryWrapper}>
+                                <div className={style.category}>카테고리</div>
+                                <img src={arrow} className={style.arrowImg} onClick={studyFilterHandler} />
+                            </div>
+                        </div>
                         <div className={style.periodBox}>
                             <div className={style.periodWrapper}>
-                                <div className={style.period}>모집 기간</div>
+                                <div className={style.periodLeft}>
+                                    <div className={style.period}>모집 기간</div>
 
-                                <img src={arrow} className={style.arrowImg} />
+                                    <div className={style.periodDate}>{startDate && endDate
+                                        ? `${format(startDate, 'M월 d일')} ~ ${format(endDate, 'M월 d일')}`
+                                        : null
+                                    }</div>
+                                </div>
+
+                                <div className={style.datePickerContainer}>
+                                    <DatePicker
+                                        className={style.datePicker}
+                                        selectsRange={true}
+                                        locale={ko}
+                                        dateFormat="MM월dd일"
+                                        selected={dateRange.startDate}
+                                        startDate={dateRange.startDate}
+                                        endDate={dateRange.endDate}
+                                        onChange={(dates) => setChangeDate(dates)}
+                                        onFocus={handleDatePickerFocus}
+                                        showPopperArrow={false}
+                                    />
+
+                                </div>
+
                             </div>
                         </div>
 
                         <div className={style.personNumBox}>
                             <div className={style.personNumWrapper}>
-                                <div className={style.personNum}>모집 인원</div>
-                                <img src={arrow} className={style.arrowImg} />
+                                <div className={style.personNumLeft}>
+                                    <div className={style.personNum}>모집 인원</div>
+                                    <div className={style.personNumber}>2명~6명</div>
+                                </div>
+
+                                <img src={arrow} className={style.arrowImg} onClick={memberFilterHandler} />
                             </div>
                         </div>
                     </div>
@@ -70,17 +132,19 @@ const StudyPostWrite = () => {
                             rows="5"
                             cols="33"
                         />
-                        <div className={style.textLength}>{text.length}/1000자</div>
+                        <div className={style.textLengthBox}>
+                            <div className={style.textLength}>{text.length}/1000자</div>
+                        </div>
                     </div>
                     <div className={style.bottomBox}>
                         <div className={style.openChatBox}>
                             <div className={style.innerOpenChatBox}>
                                 <div className={style.openChatText}>
-                                    오픈채팅 링크를 통해 스터디 부원이 초대됩니다.
+                                    신청 수락 시, 오픈채팅 링크(카카오ID)가 신청자에게 전달됩니다.
                                 </div>
                                 <input
                                     className={style.openChatInput}
-                                    placeholder="오픈채팅 링크"
+                                    placeholder="오픈채팅 링크,또는 카카오ID 입력"
                                 />
                             </div>
                         </div>
@@ -96,6 +160,10 @@ const StudyPostWrite = () => {
                     <button className={style.postBtn}>모집글 올리기</button>
                 </div>
             </div>
+            {modalOpen && <BottomModal deleteHandler={deleteHandler}>
+                {isClickedStudy && <StudyPostField />}
+                {isClickedMember && <StudyMember />}
+            </BottomModal>}
         </div>
     );
 };

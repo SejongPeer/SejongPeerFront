@@ -106,11 +106,13 @@
     align-items: center;
     flex-direction: column;
     background-color: #ffffff;
+    margin-top: 1.5vh;
   }
 
   .titleBox,
   .periodBox,
-  .personNumBox {
+  .personNumBox,
+  .categoryBox {
     width: 28vw;
     height: 5vh;
     background-color: #ffffff;
@@ -120,12 +122,21 @@
     align-items: center;
   }
 
+
   .periodWrapper,
   .personNumWrapper {
     width: 25vw;
     height: 4.6vh;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .categoryWrapper {
+    width: 25vw;
+    height: 4.6vh;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
   }
 
@@ -133,26 +144,89 @@
     border: none;
     height: 4.5vh;
     width: 25vw;
-    font-size: 2vh;
+    font-size: 1.7vh;
     display: flex;
     align-items: center;
     outline: none;
   }
 
-  .period,
-  .personNum {
+  .personNumLeft {
     border: none;
     height: 4.5vh;
     width: 23vw;
-    font-size: 2vh;
+    font-size: 1.7vh;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
+  }
+
+  .periodLeft {
+    border: none;
+    height: 4.5vh;
+    width: 29vw;
+    font-size: 1.7vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
   }
 
   .arrowImg {
+    width: 3vh;
+    height: 3vh;
+  }
+
+  .period,
+  .personNum {
+    height: 4.5vh;
+    width: 8vh;
+    font-size: 1.7vh;
+    border: none;
+    display: flex;
+    align-items: center;
+  }
+
+  .personNumber,
+  .periodDate {
+    width: 18vh;
+    height: 4.5vh;
+    font-size: 1.7vh;
+    border: none;
+    display: flex;
+    align-items: center;
+  }
+
+  .category {
+    font-size: 1.7vh;
+    border: none;
+    display: flex;
+    align-items: center;
+  }
+
+  .datePickerContainer {
     width: 4vh;
     height: 4vh;
+    display: flex;
+    align-items: center;
+  }
+
+  .datePicker {
+    width: 3vh;
+    height: 3vh;
+    background-image: url("../../../Assets/calLogo.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    border: none;
+    cursor: pointer;
+    color: transparent;
+  }
+
+
+  .datePicker:focus {
+    outline: none;
+    border: none;
+    cursor: pointer;
+    color: transparent;
   }
 
   .middleBox {
@@ -165,11 +239,12 @@
     margin-top: 1vh;
     background-color: #ffffff;
     border-bottom: 1px #e5e5e5 solid;
+    margin-top: 2.5vh;
   }
 
   .contentArea {
     display: block;
-    width: 27vw;
+    width: 25vw;
     height: 40vh;
     border: none;
     resize: none;
@@ -179,12 +254,21 @@
     font-weight: 500;
   }
 
-  .textLength {
+  .textLengthBox {
     width: 27vw;
     height: 4vh;
     display: flex;
     justify-content: flex-end;
+  }
+
+  .textLength {
+    width: 8vw;
+    height: 4vh;
     color: #777777;
+    margin-right: 0.05vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .bottomBox {
@@ -385,11 +469,13 @@
     align-items: center;
     flex-direction: column;
     background-color: #ffffff;
+    margin-top: 1.5vh;
   }
 
   .titleBox,
   .periodBox,
-  .personNumBox {
+  .personNumBox,
+  .categoryBox {
     width: 100vw;
     height: 5vh;
     background-color: #ffffff;
@@ -401,10 +487,18 @@
 
   .periodWrapper,
   .personNumWrapper {
-    width: 80vw;
+    width: 81vw;
     height: 4.6vh;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .categoryWrapper {
+    width: 81vw;
+    height: 4.6vh;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
   }
 
@@ -412,28 +506,91 @@
     border: none;
     height: 4.5vh;
     width: 82vw;
-    font-size: 2vh;
+    font-size: 1.9vh;
     display: flex;
     align-items: center;
     outline: none;
   }
 
-  .period,
-  .personNum {
+  /* 모바일버전 추가됨 */
+  .periodLeft,
+  .personNumLeft {
     border: none;
     height: 4.5vh;
     width: 78vw;
-    font-size: 2vh;
+    font-size: 1.7vh;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
   }
 
-  .arrowImg {
+  .periodLeft {
+    border: none;
+    height: 4.5vh;
+    width: 80vw;
+    font-size: 1.7vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .period,
+  .personNum {
+    height: 4.5vh;
+    width: 15vw;
+    font-size: 1.7vh;
+    border: none;
+    display: flex;
+    align-items: center;
+
+  }
+
+  .personNumber,
+  .periodDate {
+    width: 18vh;
+    height: 4.5vh;
+    font-size: 1.7vh;
+    border: none;
+    display: flex;
+    align-items: center;
+  }
+
+  .category {
+    font-size: 1.7vh;
+    border: none;
+    display: flex;
+    align-items: center;
+  }
+
+  .datePickerContainer {
     width: 4vh;
     height: 4vh;
   }
 
+  .datePicker {
+    width: 3vh;
+    height: 3vh;
+    background-image: url("../../../Assets/calLogo.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    border: none;
+    cursor: pointer;
+    color: transparent;
+  }
+
+  .react-datepicker-popper {
+    margin-right: 10vw;
+  }
+
+  .datePicker:focus {
+    outline: none;
+    border: none;
+    cursor: pointer;
+    color: transparent;
+  }
+
+  /* 여기까지 */
   .middleBox {
     width: 100vw;
     height: 50vh;
@@ -444,6 +601,7 @@
     margin-top: 1vh;
     background-color: #ffffff;
     border-bottom: 1px #e5e5e5 solid;
+    margin-top: 2.5vh;
   }
 
   .contentArea {
@@ -458,12 +616,24 @@
     font-weight: 500;
   }
 
-  .textLength {
+
+
+  .textLengthBox {
     width: 82vw;
     height: 4vh;
     display: flex;
     justify-content: flex-end;
     color: #777777;
+  }
+
+  .textLength {
+    width: 10vw;
+    height: 4vh;
+    color: #777777;
+    margin-right: 0.05vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .bottomBox {
