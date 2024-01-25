@@ -233,7 +233,6 @@
     font-size: 2vh;
     border: none;
     outline: none;
-
   }
 
   .tagBox {
@@ -357,7 +356,6 @@
     font-weight: 600;
     display: flex;
     align-items: center;
-
   }
 
   .imgAddWrapper {
