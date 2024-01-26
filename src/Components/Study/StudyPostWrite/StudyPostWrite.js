@@ -129,7 +129,7 @@ const StudyPostWrite = () => {
                             <div className={style.personNumWrapper}>
                                 <div className={style.personNumLeft}>
                                     <div className={style.personNum}>모집 인원</div>
-                                    <div className={style.personNumber}>{startMember}명~{endMember}명</div>
+                                    <div className={style.personNumber}> {startMember !== 0 && endMember !== 0 ? `${startMember}명 ~ ${endMember}명` : null}</div>
                                 </div>
 
                                 <img src={arrow} className={style.arrowImg} onClick={memberFilterHandler} />
