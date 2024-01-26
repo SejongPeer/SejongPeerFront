@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import styles from "./ProgressBar.module.css";
 import { MyContext } from "../../../App.js";
 
@@ -25,9 +25,11 @@ const ProgressBar = (props) => {
     setModalContent("buddyConfirm");
   };
   const moveMainHandler = () => {
-    const backToMain = window.confirm("확인을 누르면 메인 화면으로 이동합니다.\n지금까지 작성한 내용들이 모두 초기화 됩니다.")
+    const backToMain = window.confirm(
+      "확인을 누르면 메인 화면으로 이동합니다.\n지금까지 작성한 내용들이 모두 초기화 됩니다."
+    );
     if (backToMain) {
-        navigate("/main");
+      navigate("/main");
     }
   };
 
@@ -36,7 +38,6 @@ const ProgressBar = (props) => {
     let next = false;
     let prev = false;
 
-    
     if (props.slide === 0) {
       updateStep[0] = true;
       updateStep[1] = false;
@@ -45,14 +46,13 @@ const ProgressBar = (props) => {
       if (props.choiceGender !== "") {
         next = true;
         if (!clickedPrev) {
-        props.MoveNext();
+          props.MoveNext();
         }
-      } 
+      }
       setIsFirstPage(true);
     } else {
       setIsFirstPage(false);
     }
-  
 
     if (props.slide === 1) {
       updateStep[1] = true;
@@ -62,7 +62,7 @@ const ProgressBar = (props) => {
       if (props.grade !== "") {
         next = true;
         if (!clickedPrev) {
-        props.MoveNext();
+          props.MoveNext();
         }
       }
     }
@@ -99,7 +99,7 @@ const ProgressBar = (props) => {
     } else {
       setIsLastPage(false);
     }
-  
+
     setStep(updateStep);
     setCanMoveNext(next);
   }, [
@@ -112,7 +112,9 @@ const ProgressBar = (props) => {
     props.slide,
   ]);
 
-  const nextClass = canMoveNext ? styles.controller_next : styles.controller_next_none;
+  const nextClass = canMoveNext
+    ? styles.controller_next
+    : styles.controller_next_none;
 
   return (
     <div className={styles.progressBarWrapper}>
@@ -120,18 +122,19 @@ const ProgressBar = (props) => {
         <div className={styles.controllerWrapper}>
           {isFirstPage ? (
             <button
-            className={styles.controller_prev}
-            onClick={moveMainHandler}
-          >
-            나가기
-          </button>
+              className={styles.controller_prev}
+              onClick={moveMainHandler}
+            >
+              나가기
+            </button>
           ) : (
             <button
-            className={styles.controller_prev}
-            onClick={moveLeftHandler}
-          >
-            뒤로
-          </button>)}
+              className={styles.controller_prev}
+              onClick={moveLeftHandler}
+            >
+              뒤로
+            </button>
+          )}
           {isLastPage ? (
             <button className={styles.controller_next} onClick={submitHandler}>
               제출
@@ -152,7 +155,7 @@ const ProgressBar = (props) => {
               key={index}
               className={styles.progress}
               style={{
-                backgroundColor: step ? "#FF3838" : "#ccc",
+                backgroundColor: step ? "#FF4B4B" : "#ccc",
               }}
             ></div>
           ))}

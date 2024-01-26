@@ -6,7 +6,7 @@
   margin-bottom: 4rem;
   overflow: hidden;
 }
-.container h2{
+.container h2 {
   margin-left: 5vw;
 }
 
@@ -46,7 +46,7 @@
   height: 52px;
   border-radius: 28px;
   border: none;
-  background-color: #ff3838;
+  background-color: #ff4b4b;
   top: 90%;
   color: #ffffff;
   font-size: 18px;

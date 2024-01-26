@@ -12,8 +12,9 @@ import { useNavigate } from "react-router-dom";
 const StudyList = () => {
   const [posts, setPosts] = useState([
     {
-      title: "같이 A+ 맞을 사람 구함",
-      member: "1/4",
+      index: 1,
+      title: '같이 A+ 맞을 사람 구함',
+      member: '1/4',
       like: 16,
       islike: true,
       image: true,
@@ -26,6 +27,7 @@ const StudyList = () => {
       state: "ongoing",
     },
     {
+      index: 2,
       title: "프로젝트 팀원 모집",
       member: "2/5",
       like: 20,
@@ -38,6 +40,7 @@ const StudyList = () => {
       state: "ongoing",
     },
     {
+      index: 3,
       title: "캡스톤 같은조 할사람 구함",
       member: "모집완료",
       like: 16,
@@ -56,8 +59,9 @@ const StudyList = () => {
       state: "ongoing",
     },
     {
-      title: "프로젝트 팀원 모집",
-      member: "2/5",
+      index: 4,
+      title: '프로젝트 팀원 모집',
+      member: '2/5',
       like: 20,
       comment: 5,
       date: "24.02.06",
@@ -68,8 +72,9 @@ const StudyList = () => {
       state: "ongoing",
     },
     {
-      title: "캡스톤 같은조 할사람 구함",
-      member: "모집완료",
+      index: 5,
+      title: '캡스톤 같은조 할사람 구함',
+      member: '모집완료',
       like: 16,
       comment: 3,
       date: "24.02.04",
@@ -81,56 +86,76 @@ const StudyList = () => {
     },
   ]);
 
+  //모달 오픈
+  const { modalOpen, setModalOpen } = useContext(MyContext);
   const [isClickedStudy, setIsClickedStudy] = useState(false);
   const [isClickedMember, setIsClickedMember] = useState(false);
   const [isClickedOn, setIsClickedOn] = useState(false);
-  const { modalOpen, setModalOpen } = useContext(MyContext);
-  const navigate = useNavigate();
-  const goPost = () => {
-    navigate("/studypost");
-  };
 
   const modalHandler = () => {
     setModalOpen(!modalOpen);
   };
-  const studyFilterHandler = () => {
+  const studyFilterModalHandler = () => {
     setModalOpen(!modalOpen);
     setIsClickedStudy(true);
   };
-  const memberFilterHandler = () => {
+
+  // 모집인원 모달 창 렌더링 여부
+  const memberFilterModalHandler = () => {
     setModalOpen(!modalOpen);
     setIsClickedMember(true);
   };
-  const onFilterHandler = () => {
+
+  // 모집여부 모달 창 렌더링 여부
+  const onFilterModalHandler = () => {
     setModalOpen(!modalOpen);
     setIsClickedOn(true);
   };
+
+  // 모달 닫을 때 내용 제거
   const deleteHandler = () => {
     setIsClickedStudy(false);
     setIsClickedMember(false);
     setIsClickedOn(false);
   };
 
+  //필터링 값
+  const [onFilter, setOnFilter] = useState(['ongoing', 'finish']);
+  // all - 모두, ongoing - 모집 중, finish - 모집완료
+  const onFilterHandler = (onFilter) => {
+    setOnFilter(onFilter)
+  };
+
+  // 필터링
+  const filterHandler = posts.filter(post => 
+    onFilter.includes(post.state)
+  );
+
+  const navigate = useNavigate();
+  const goPost = () => {
+    navigate("/studypost");
+  };
+
   return (
     <div className={style.container}>
       <div className={style.header}></div>
       <div className={style.filter_box}>
-        <div className={style.filter} onClick={studyFilterHandler}>
+        <div className={style.filter} onClick={studyFilterModalHandler}>
           <span>스터디</span>
           <img src={select} alt="select" className={style.select} />
         </div>
-        <div className={style.filter} onClick={memberFilterHandler}>
+        <div className={style.filter} onClick={memberFilterModalHandler}>
           <span>모집인원</span>
           <img src={select} alt="select" className={style.select} />
         </div>
-        <div className={style.filter} onClick={onFilterHandler}>
+        <div className={style.filter} onClick={onFilterModalHandler}>
           <span>모집여부</span>
           <img src={select} alt="select" className={style.select} />
         </div>
       </div>
       <div className={style.list_wrapper}>
-        {posts.map((post, index) => (
-          <StudyListPost post={post} index={index} />
+        {filterHandler.map((post) => (
+          <StudyListPost post={post} key={post.index} />
         ))}
       </div>
       <div className={style.write_btn} onClick={goPost}>
@@ -140,7 +165,11 @@ const StudyList = () => {
         <BottomModal deleteHandler={deleteHandler}>
           {isClickedStudy && <Filter_Feild />}
           {isClickedMember && <Filter_Member />}
-          {isClickedOn && <Filter_now />}
+          {isClickedOn && <Filter_now 
+            onFilterHandler={onFilterHandler}
+            deleteHandler={deleteHandler}
+            onFilter={onFilter}
+          />}
         </BottomModal>
       )}
     </div>

@@ -122,7 +122,6 @@
     align-items: center;
   }
 
-
   .periodWrapper,
   .personNumWrapper {
     width: 25vw;
@@ -220,7 +219,6 @@
     cursor: pointer;
     color: transparent;
   }
-
 
   .datePicker:focus {
     outline: none;
@@ -350,7 +348,7 @@
   .postBtn {
     width: 30vw;
     height: 6vh;
-    background-color: #ff3838;
+    background-color: #ff4b4b;
     text-align: center;
     color: #ffffff;
     border: none;
@@ -542,7 +540,6 @@
     border: none;
     display: flex;
     align-items: center;
-
   }
 
   .personNumber,
@@ -615,8 +612,6 @@
     font-size: 2vh;
     font-weight: 500;
   }
-
-
 
   .textLengthBox {
     width: 82vw;
@@ -715,7 +710,7 @@
   .postBtn {
     width: 82vw;
     height: 6vh;
-    background-color: #ff3838;
+    background-color: #ff4b4b;
     text-align: center;
     color: #ffffff;
     border: none;
