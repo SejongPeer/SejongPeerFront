@@ -1,17 +1,17 @@
-import style from "./StudyPostDetail.module.css";
-import serch from "../../../Assets/serch.png";
-import { useState, useContext } from "react";
-import { MyContext } from "../../../App";
-import { useNavigate } from "react-router-dom";
-import comment_down from "../../../Assets/comment_down.png";
-import scrap from "../../../Assets/scrap.png";
+import style from './StudyPostDetail.module.css';
+import serch from '../../../Assets/serch.png';
+import { useState, useContext } from 'react';
+import { MyContext } from '../../../App';
+import { useNavigate } from 'react-router-dom';
+import comment_down from '../../../Assets/comment_down.png';
+import scrap from '../../../Assets/scrap.png';
 
 const StudyListPostDetail = () => {
   const [isPopupVisible, setIsPopupVisible] = useState(false);
 
   const navigate = useNavigate();
   const BackHandler = () => {
-    navigate("/study");
+    navigate('/study');
   };
   const togglePopup = () => {
     setIsPopupVisible(!isPopupVisible);
@@ -28,7 +28,7 @@ const StudyListPostDetail = () => {
         <div className={style.flexContainer}>
           <div className={style.Application_period}>지원기간</div>
           <div className={style.Application_period2}>
-            {"  "}
+            {'  '}
             2024.01.20-2024.01.30
           </div>
         </div>
@@ -38,14 +38,14 @@ const StudyListPostDetail = () => {
           분들만 지원해주세요!! 주말마다 디자인인모션 같이 공부하실 분
           모집합니다~! A+ 노리고 공부하실 분들만 지원해주세요!! 주말마다
           디자인인모션 같이 공부하실 분 모집합니다~! A+ 노리고 공부하실 분들만
-          지원해주세요!!{" "}
+          지원해주세요!!{' '}
         </div>
         <div className={style.tag_container}>
           <button className={style.tag}>
-            <div className={style.tag2}>학교수업</div>
+            <div className={style.tag2}>학교수업!!!!</div>
           </button>
           <button className={style.tag_gray}>
-            <div className={style.tag2_gray}>C프로그래밍</div>
+            <div className={style.tag2_gray}>C프로그래밍!!!</div>
           </button>
         </div>
         <div className={style.line}></div>
@@ -64,7 +64,7 @@ const StudyListPostDetail = () => {
         <div className={style.comment_container}>
           <img
             src={comment_down}
-            alt="comment_down"
+            alt='comment_down'
             className={style.comment_down}
           ></img>
           <div className={style.comment_nickname}>글쓴이</div>
@@ -72,7 +72,7 @@ const StudyListPostDetail = () => {
         </div>
 
         <div className={style.comment_content}>
-          열심히 하신다면 참여가능합니다!{" "}
+          열심히 하신다면 참여가능합니다!{' '}
         </div>
 
         <div className={style.line}></div>
@@ -88,7 +88,7 @@ const StudyListPostDetail = () => {
         <div className={style.comment_container}>
           <img
             src={comment_down}
-            alt="comment_down"
+            alt='comment_down'
             className={style.comment_down}
           ></img>
           <div className={style.comment_nickname}>글쓴이</div>
@@ -96,15 +96,15 @@ const StudyListPostDetail = () => {
         </div>
 
         <div className={style.comment_content}>
-          열심히 하신다면 참여가능합니다!{" "}
+          열심히 하신다면 참여가능합니다!{' '}
         </div>
         <div className={style.comment_container}>
           <button className={style.scrap_button}>
-            <img src={scrap} alt="scrap" className={style.scrap}></img>
+            <img src={scrap} alt='scrap' className={style.scrap}></img>
           </button>
           <button className={style.apply} onClick={togglePopup}>
             지원하기(1/4)
-          </button>{" "}
+          </button>{' '}
         </div>
         {isPopupVisible && (
           <div className={style.popup}>

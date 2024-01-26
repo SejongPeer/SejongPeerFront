@@ -1,19 +1,19 @@
-import style from "./StudyPostWrite.module.css";
-import arrow from "../../../Assets/arrow.png";
-import cancelBtn from "../../../Assets/cancelBtn.png";
-import ImgPost from "../../../Assets/ImgPost.png";
-import StudyWriteText from "../../../Assets/StudyWriteText.png";
-import { useContext, useState } from "react";
+import style from './StudyPostWrite.module.css';
+import arrow from '../../../Assets/arrow.png';
+import cancelBtn from '../../../Assets/cancelBtn.png';
+import ImgPost from '../../../Assets/ImgPost.png';
+import StudyWriteText from '../../../Assets/StudyWriteText.png';
+import { useContext, useState } from 'react';
 
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-import ko from "date-fns/locale/ko";
-import { parseISO, format } from "date-fns";
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import ko from 'date-fns/locale/ko';
+import { parseISO, format } from 'date-fns';
 
-import { MyContext } from "../../../App";
-import BottomModal from "../../Modal/BottomModal";
-import StudyPostField from "./StudyPostField/StudyPostField";
-import StudyMember from "./StudyMember/StudyMember";
+import { MyContext } from '../../../App';
+import BottomModal from '../../Modal/BottomModal';
+import StudyPostField from './StudyPostField/StudyPostField';
+import StudyMember from './StudyMember/StudyMember';
 
 const StudyPostWrite = () => {
   const [startDate, setStartDate] = useState(null);
@@ -32,7 +32,7 @@ const StudyPostWrite = () => {
     startDate: null,
     endDate: null,
   });
-  const [text, setText] = useState("");
+  const [text, setText] = useState('');
 
   const handleTextChange = (e) => {
     const newText = e.target.value;
@@ -82,9 +82,9 @@ const StudyPostWrite = () => {
           <div className={style.topBox}>
             <div className={style.titleBox}>
               <input
-                placeholder="제목"
+                placeholder='제목'
                 className={style.titleInput}
-                type="text"
+                type='text'
               />
             </div>
             <div className={style.categoryBox}>
@@ -104,9 +104,9 @@ const StudyPostWrite = () => {
 
                   <div className={style.periodDate}>
                     {startDate && endDate
-                      ? `${format(startDate, "M월 d일")} ~ ${format(
+                      ? `${format(startDate, 'M월 d일')} ~ ${format(
                           endDate,
-                          "M월 d일"
+                          'M월 d일'
                         )}`
                       : null}
                   </div>
@@ -117,7 +117,7 @@ const StudyPostWrite = () => {
                     className={style.datePicker}
                     selectsRange={true}
                     locale={ko}
-                    dateFormat="MM월dd일"
+                    dateFormat='MM월dd일'
                     selected={dateRange.startDate}
                     startDate={dateRange.startDate}
                     endDate={dateRange.endDate}
@@ -134,7 +134,7 @@ const StudyPostWrite = () => {
                 <div className={style.personNumLeft}>
                   <div className={style.personNum}>모집 인원</div>
                   <div className={style.personNumber}>
-                    {" "}
+                    {' '}
                     {startMember !== 0 && endMember !== 0
                       ? `${startMember}명 ~ ${endMember}명`
                       : null}
@@ -152,10 +152,10 @@ const StudyPostWrite = () => {
           <div className={style.middleBox}>
             <textarea
               onChange={handleTextChange}
-              placeholder="내용을 입력하세요"
+              placeholder='내용을 입력하세요'
               className={style.contentArea}
-              rows="5"
-              cols="33"
+              rows='5'
+              cols='33'
             />
             <div className={style.textLengthBox}>
               <div className={style.textLength}>{text.length}/1000자</div>
@@ -169,14 +169,14 @@ const StudyPostWrite = () => {
                 </div>
                 <input
                   className={style.openChatInput}
-                  placeholder="오픈채팅 링크,또는 카카오ID 입력"
+                  placeholder='오픈채팅 링크,또는 카카오ID 입력'
                 />
               </div>
             </div>
             <div className={style.tagBox}>
               <input
                 className={style.tagInput}
-                placeholder="(선택) #태그입력(최대 3개)"
+                placeholder='(선택) #태그입력(최대 3개)'
               />
             </div>
           </div>
