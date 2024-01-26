@@ -40,9 +40,14 @@ const StudyListPostDetail = () => {
           디자인인모션 같이 공부하실 분 모집합니다~! A+ 노리고 공부하실 분들만
           지원해주세요!!{' '}
         </div>
-        <button className={style.tag}>
-          <div className={style.tag2}>학교수업</div>
-        </button>
+        <div className={style.tag_container}>
+          <button className={style.tag}>
+            <div className={style.tag2}>학교수업</div>
+          </button>
+          <button className={style.tag_gray}>
+            <div className={style.tag2_gray}>C프로그래밍</div>
+          </button>
+        </div>
         <div className={style.line}></div>
 
         <div className={style.comment_title}>댓글 4</div>
