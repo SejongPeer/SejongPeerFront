@@ -7,9 +7,17 @@ import comment_down from '../../../Assets/comment_down.png';
 import scrap from '../../../Assets/scrap.png';
 
 const StudyListPostDetail = () => {
+  const [isPopupVisible, setIsPopupVisible] = useState(false);
+
   const navigate = useNavigate();
   const BackHandler = () => {
     navigate('/study');
+  };
+  const togglePopup = () => {
+    setIsPopupVisible(!isPopupVisible);
+  };
+  const closePopup = () => {
+    setIsPopupVisible(false);
   };
 
   return (
@@ -89,8 +97,23 @@ const StudyListPostDetail = () => {
           <button className={style.scrap_button}>
             <img src={scrap} alt='scrap' className={style.scrap}></img>
           </button>
-          <button className={style.apply}>지원하기</button>
+          <button className={style.apply} onClick={togglePopup}>
+            지원하기(1/4)
+          </button>{' '}
         </div>
+        {isPopupVisible && (
+          <div className={style.popup}>
+            <div className={style.popupContent}>
+              지원 완료! <br />
+              닉네임과 학과 정보가 전달됩니다. <br />
+              게시자가 지원을 수락하면 오픈채팅방 링크가 메세지로 전달됩니다.
+              <br />
+              <button onClick={closePopup} className={style.confirmButton}>
+                확인
+              </button>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
