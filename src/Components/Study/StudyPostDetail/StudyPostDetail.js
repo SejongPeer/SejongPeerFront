@@ -45,7 +45,7 @@ const StudyListPostDetail = () => {
             <div className={style.tag2}>학교수업</div>
           </button>
           <button className={style.tag_gray}>
-            <div className={style.tag2_gray}>C프로그래밍</div>
+            <div className={style.tag2_gray}>C프로그래밍!!!</div>
           </button>
         </div>
         <div className={style.line}></div>
