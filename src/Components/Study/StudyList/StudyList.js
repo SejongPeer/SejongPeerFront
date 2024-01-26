@@ -1,12 +1,13 @@
-import { useContext, useState } from 'react';
-import style from './StudyList.module.css';
-import select from '../../../Assets/select.png';
-import StudyListPost from './StudyListPost';
-import BottomModal from '../../Modal/BottomModal';
-import Filter_now from './Filter_now';
-import { MyContext } from '../../../App';
-import Filter_Feild from './Filter_Feild';
-import Filter_Member from './Filter_Member';
+import { useContext, useState } from "react";
+import style from "./StudyList.module.css";
+import select from "../../../Assets/select.png";
+import StudyListPost from "./StudyListPost";
+import BottomModal from "../../Modal/BottomModal";
+import Filter_now from "./Filter_now";
+import { MyContext } from "../../../App";
+import Filter_Feild from "./Filter_Feild";
+import Filter_Member from "./Filter_Member";
+import { useNavigate } from "react-router-dom";
 
 const StudyList = () => {
   const [posts, setPosts] = useState([
@@ -18,38 +19,70 @@ const StudyList = () => {
       islike: true,
       image: true,
       comment: 3,
-      date: '24.02.04',
+      date: "24.02.04",
       tags: [
-        { name: 'JAVA 프로그래밍', type: 'tag_class' },
-        { name: '우미애', type: 'tag' },
+        { name: "JAVA 프로그래밍", type: "tag_class" },
+        { name: "우미애", type: "tag" },
       ],
-      state: 'ongoing',
+      state: "ongoing",
     },
     {
       index: 2,
+      title: "프로젝트 팀원 모집",
+      member: "2/5",
+      like: 20,
+      comment: 5,
+      date: "24.02.06",
+      tags: [
+        { name: "알고리즘", type: "tag_class" },
+        { name: "김교수", type: "tag" },
+      ],
+      state: "ongoing",
+    },
+    {
+      index: 3,
+      title: "캡스톤 같은조 할사람 구함",
+      member: "모집완료",
+      like: 16,
+      comment: 3,
+      date: "24.02.04",
+      tags: [
+        { name: "캡스톤 디자인A", type: "tag_class" },
+        { name: "송형규", type: "tag" },
+      ],
+      state: "finish",
+      date: "24.02.04",
+      tags: [
+        { name: "JAVA 프로그래밍", type: "tag_class" },
+        { name: "우미애", type: "tag" },
+      ],
+      state: "ongoing",
+    },
+    {
+      index: 4,
       title: '프로젝트 팀원 모집',
       member: '2/5',
       like: 20,
       comment: 5,
-      date: '24.02.06',
+      date: "24.02.06",
       tags: [
-        { name: '알고리즘', type: 'tag_class' },
-        { name: '김교수', type: 'tag' },
+        { name: "알고리즘", type: "tag_class" },
+        { name: "김교수", type: "tag" },
       ],
-      state: 'ongoing',
+      state: "ongoing",
     },
     {
-      index: 3,
+      index: 5,
       title: '캡스톤 같은조 할사람 구함',
       member: '모집완료',
       like: 16,
       comment: 3,
-      date: '24.02.04',
+      date: "24.02.04",
       tags: [
-        { name: '캡스톤 디자인A', type: 'tag_class' },
-        { name: '송형규', type: 'tag' },
+        { name: "캡스톤 디자인A", type: "tag_class" },
+        { name: "송형규", type: "tag" },
       ],
-      state: 'finish',
+      state: "finish",
     },
   ]);
 
@@ -59,7 +92,9 @@ const StudyList = () => {
   const [isClickedMember, setIsClickedMember] = useState(false);
   const [isClickedOn, setIsClickedOn] = useState(false);
 
-  // 스터디 리스트 선택 모달창 렌더링 여부
+  const modalHandler = () => {
+    setModalOpen(!modalOpen);
+  };
   const studyFilterModalHandler = () => {
     setModalOpen(!modalOpen);
     setIsClickedStudy(true);
@@ -96,30 +131,36 @@ const StudyList = () => {
     onFilter.includes(post.state)
   );
 
+  const navigate = useNavigate();
+  const goPost = () => {
+    navigate("/studypost");
+  };
+
   return (
     <div className={style.container}>
       <div className={style.header}></div>
       <div className={style.filter_box}>
         <div className={style.filter} onClick={studyFilterModalHandler}>
           <span>스터디</span>
-          <img src={select} alt='select' className={style.select} />
+          <img src={select} alt="select" className={style.select} />
         </div>
         <div className={style.filter} onClick={memberFilterModalHandler}>
           <span>모집인원</span>
-          <img src={select} alt='select' className={style.select} />
+          <img src={select} alt="select" className={style.select} />
         </div>
         <div className={style.filter} onClick={onFilterModalHandler}>
           <span>모집여부</span>
-          <img src={select} alt='select' className={style.select} />
+          <img src={select} alt="select" className={style.select} />
         </div>
       </div>
-
       <div className={style.list_wrapper}>
         {filterHandler.map((post) => (
           <StudyListPost post={post} key={post.index} />
         ))}
       </div>
-      <div className={style.write_btn}>모집글 작성</div>
+      <div className={style.write_btn} onClick={goPost}>
+        모집글 작성
+      </div>
       {modalOpen && (
         <BottomModal deleteHandler={deleteHandler}>
           {isClickedStudy && <Filter_Feild />}

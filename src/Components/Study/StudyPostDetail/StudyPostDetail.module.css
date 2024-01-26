@@ -84,6 +84,7 @@
   padding: 4px 8px;
   align-items: flex-start;
   gap: 10px;
+  font-weight: 500;
   border-radius: 15px;
   border: 1px solid var(--sub, #ff7474);
   margin-top: 15px;
@@ -96,6 +97,30 @@
   font-weight: 500;
   line-height: 16px;
   letter-spacing: -0.333px;
+}
+.tag_gray {
+  display: flex;
+  padding: 4px 8px;
+  align-items: flex-start;
+  gap: 10px;
+  font-weight: 500;
+  border-radius: 15px;
+  border: 1px solid var(--sub, #777777);
+  margin-top: 15px;
+}
+.tag2_gray {
+  color: var(--main, #777777);
+  font-family: Pretendard;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+  letter-spacing: -0.333px;
+}
+.tag_container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 .title,
 .title2,
@@ -175,6 +200,7 @@
   letter-spacing: -0.333px;
   margin-top: 15px;
 }
+
 .scrap_button {
   width: 52px;
   height: 52px;

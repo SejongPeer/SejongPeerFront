@@ -21,6 +21,15 @@
     cursor: pointer;
   }
 
+  .studyBtn {
+    width: 45vw;
+    height: 25vh;
+    margin-top: 2vh;
+    background-color: white;
+    border: 1px solid #e5e5e5;
+    border-radius: 24px;
+  }
+
   .more {
     font-size: 20px;
     font-weight: bold;
@@ -106,6 +115,15 @@
     border: 1px solid #e5e5e5;
     margin-top: 12px;
     cursor: pointer;
+    margin-right: 1vw;
+  }
+  .studyBtn {
+    width: 90vw;
+    height: 20vh;
+    margin-top: 2vh;
+    background-color: white;
+    border: 1px solid #e5e5e5;
+    border-radius: 24px;
   }
 
   .more {
