@@ -43,7 +43,7 @@
     height: 7vh;
     border: 1px solid white;
     border-radius: 35px;
-    background-color: #ff3838;
+    background-color: #ff4b4b;
   }
 
   .logoutFont {
@@ -93,7 +93,7 @@
     height: 7vh;
     border-radius: 35px;
     border: 1px solid white;
-    background-color: #ff3838;
+    background-color: #ff4b4b;
     color: white;
   }
 }
@@ -140,7 +140,7 @@
     height: 7vh;
     border-radius: 35px;
     border: 1px solid white;
-    background-color: #ff3838;
+    background-color: #ff4b4b;
     color: white;
   }
 }

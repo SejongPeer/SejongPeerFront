@@ -1,10 +1,13 @@
 import style from "./Filter_now.module.css"
 import check from "../../../Assets/check.png"
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { MyContext } from "../../../App";
 
-const Filter_now = () => {
+const Filter_now = (props) => {
+    const { setModalOpen } = useContext(MyContext);
     const [isNowCheck, SetIsNowCheck] = useState(false);
     const [isFinishCheck, SetIsFinishNowCheck] = useState(false);
+    const [filterConditions, setFilterConditions] = useState([props.onFilter]);
 
     const checkNowHandler = () => {
         SetIsNowCheck(!isNowCheck)
@@ -13,7 +16,26 @@ const Filter_now = () => {
         SetIsFinishNowCheck(!isFinishCheck)
     }
 
+    useEffect(() => {
+        const newConditions = [];
+        if (isNowCheck) {
+          newConditions.push('ongoing');
+        }
+        if (isFinishCheck) {
+          newConditions.push('finish');
+        }
+        setFilterConditions(newConditions);
+    }, [isNowCheck, isFinishCheck]);
+    
+
+    const onSubmitHandler = () => {
+        props.onFilterHandler(filterConditions);
+        setModalOpen(false);
+        props.deleteHandler();
+    };
+
     const finishBtn = isNowCheck || isFinishCheck ? style.finish : style.finish_n;
+
     return <div className={style.container}>
         <header className={style.header}>
             <span>모집여부</span>
@@ -32,9 +54,9 @@ const Filter_now = () => {
                 </div>
             </div>
         </div>
-        <div className={finishBtn}>
+        <button className={finishBtn} onClick={onSubmitHandler} disabled={!isNowCheck && !isFinishCheck}>
             <span>확인</span>
-        </div>
+        </button>
     </div>
 };
 

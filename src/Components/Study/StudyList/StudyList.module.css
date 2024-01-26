@@ -84,7 +84,7 @@
 .tag_class span {
   white-space: nowrap;
   font-size: 0.9rem;
-  color: #ff3838;
+  color: #ff4b4b;
 }
 .tag_contest {
   width: auto;
@@ -136,7 +136,7 @@
 .member_ongoing {
   font-size: 1.2rem;
   font-weight: 700;
-  color: #ff3838;
+  color: #ff4b4b;
   margin: 2% 0;
 }
 .member_finish {
@@ -185,7 +185,7 @@
   max-width: 200px;
   height: 6%;
   max-height: 60px;
-  background-color: #ff3838;
+  background-color: #ff4b4b;
   border-radius: 35px;
   color: white;
   font-size: 1.2rem;

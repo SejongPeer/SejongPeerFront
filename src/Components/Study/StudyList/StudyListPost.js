@@ -4,7 +4,7 @@ import comment from "../../../Assets/comment.png"
 import picture from "../../../Assets/image.png"
 
 const StudyListPost = (props) => {
-    return <div key={props.index} className={style.post_wrapper}>
+    return <div className={style.post_wrapper}>
                 <div className={style.post_top}>
                     <div className={style.tag_wrapper}>
                         {props.post.tags && props.post.tags.map((tag, tagIndex) => (

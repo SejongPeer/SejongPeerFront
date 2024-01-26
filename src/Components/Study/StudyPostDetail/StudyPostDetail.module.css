@@ -25,7 +25,7 @@
   letter-spacing: -0.333px;
 }
 .Application_period {
-  color: var(--main, #ff3838);
+  color: var(--main, #ff4b4b);
   font-family: Pretendard;
   font-size: 14px;
   font-style: normal;
@@ -89,7 +89,7 @@
   margin-top: 15px;
 }
 .tag2 {
-  color: var(--main, #ff3838);
+  color: var(--main, #ff4b4b);
   font-family: Pretendard;
   font-size: 12px;
   font-style: normal;
@@ -163,7 +163,7 @@
   height: 52px;
   flex-shrink: 0;
   border-radius: 28px;
-  background: var(--main, #ff3838);
+  background: var(--main, #ff4b4b);
   color: #fff;
 
   text-align: center;
@@ -213,7 +213,7 @@
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
-  background-color: #ff3838;
+  background-color: #ff4b4b;
   color: white;
   font-family: Pretendard;
   font-size: 16px;
