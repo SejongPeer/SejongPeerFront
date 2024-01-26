@@ -16,7 +16,7 @@ const MainPage = () => {
     navigate("/honbob/start1");
   };
   const StudyHandler = () => {
-    navigate("/studypost");
+    navigate("/study");
   };
   const reportUserHandler = () => {
     alert("너 신고");
@@ -47,8 +47,14 @@ const MainPage = () => {
 
   return (
     <div className={style.container}>
-      <div style={{ marginTop: "10vh" }}>
-        <div style={{ display: "flex", flexDirection: "row" }}>
+      <div
+        style={{
+          marginTop: "10vh",
+          padding: "2vh",
+          // backgroundColor: "#FFF7F7",
+        }}
+      >
+        <div style={{ display: "flex", flexDirection: "row", gap: "3%" }}>
           <button onClick={BuddyHandler} className={style.btn}>
             <MainBuddy />
           </button>
@@ -56,7 +62,7 @@ const MainPage = () => {
             <MainHonbob />
           </button>
         </div>
-        <button onClick={StudyHandler} className={style.btn}></button>
+        <button onClick={StudyHandler} className={style.studyBtn}></button>
       </div>
       <div className={style.report_user_box}>
         <div className={style.reprot_icon} onClick={kakaoChat}>
