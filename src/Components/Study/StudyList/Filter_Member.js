@@ -1,23 +1,23 @@
-import Slider from 'rc-slider';
-import 'rc-slider/assets/index.css';
-import style from './Filter_Member.module.css';
-import { useState } from 'react';
+import Slider from "rc-slider";
+import "rc-slider/assets/index.css";
+import style from "./Filter_Member.module.css";
+import { useState } from "react";
 
 const Filter_Member = () => {
   const trackStyle = {
-    backgroundColor: '#FF3838',
+    backgroundColor: "#FF4B4B",
   };
   const handleStyle = {
-    backgroundColor: '#FF3838',
-    border: 'solid 2px #FF3838',
-    cursor: 'pointer',
-    width: '16px',
-    height: '16px',
-    opacity: '1',
-    boxShodow: '0 0 0 3px #FFF',
+    backgroundColor: "#FF4B4B",
+    border: "solid 2px #FF4B4B",
+    cursor: "pointer",
+    width: "16px",
+    height: "16px",
+    opacity: "1",
+    boxShodow: "0 0 0 3px #FFF",
   };
   const sliderwidth = {
-    width: '93%',
+    width: "93%",
   };
 
   const [sliderValue, setSliderValue] = useState([2, 8]); // 슬라이더의 초기 값
