@@ -29,6 +29,7 @@ import MyPage from "./Components/Login/MyPage/MyPage";
 import StudyList from "./Components/Study/StudyList/StudyList.js";
 import StudyPostDeatil from "./Components/Study/StudyPostDetail/StudyPostDetail.js";
 import StudyPostWrite from "./Components/Study/StudyPostWrite/StudyPostWrite.js";
+import Sejong from "./Components/Login/SignUp/Sejong.js";
 
 // const router = createBrowserRouter([
 //   {path: '/', element:<StartLoading />},
@@ -115,6 +116,7 @@ const App = () => {
               <Route path="/study" element={<StudyList />} />
               <Route path="/study/detail" element={<StudyPostDeatil />} />
               <Route path="/studypost" element={<StudyPostWrite />} />
+              <Route path="/checksejong" element={<Sejong />} />
             </Routes>
           </main>
         </div>
