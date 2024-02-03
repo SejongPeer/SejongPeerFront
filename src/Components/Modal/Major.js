@@ -8,6 +8,8 @@ import style from './Major.module.css';
 import back from '../../Assets/back.png';
 import close from '../../Assets/close.png';
 
+import search from '../../Assets/search.png';
+
 const Major = () => {
     const { setModalOpen } = useContext(MyContext);
     const { setModalContent } = useContext(MyContext);
@@ -17,12 +19,13 @@ const Major = () => {
     const [selectedCollege, setSelectedCollege] = useState('');
     const [selectedMajor, setSelectedMajor] = useState('');
     const [isCollegeClicked, setIsCollegeClicked] = useState(false);
+    const [searchContent, setSearchContent] = useState('');
 
     useEffect(() => {
         if (selectedMajor && selectedCollege) {
             console.log(selectedCollege);
             console.log(selectedMajor);
-            
+
             setCollegeValue(selectedCollege);
             setMajorValue(selectedMajor);
             cancelHandler();
@@ -37,7 +40,7 @@ const Major = () => {
     const handleMajorClick = (text) => {
         setSelectedMajor(text);
     };
-    
+
 
     const BackHandler = () => {
         setIsCollegeClicked(false);
@@ -48,61 +51,110 @@ const Major = () => {
         setModalContent('');
     };
 
-    
+    const handleInput = (e) => {
+        setSearchContent(e.target.value);
+    }
+
+    let foundValues = [];
+
+    // 객체의 값 중에서 searchInput이 포함된 값이 있는지 확인
+    Object.values(EIE).forEach(departments =>
+        departments.forEach(department => {
+            if (searchContent !== '') {
+                const index = department.indexOf(searchContent);
+                if (index !== -1) {
+                    // searchInput이 포함된 경우
+                    const i = foundValues.indexOf(department);
+                    if (i == -1) {
+                        foundValues.push(department);
+                    }
+
+                }
+            }
+
+        })
+    );
+
+    if (foundValues.length > 0) {
+        console.log(`찾은 값들: ${foundValues.join(', ')}`);
+    } else {
+        console.log(`${searchContent}은(는) EIE 객체의 값 중에 포함되어 있지 않습니다.`);
+    }
 
     const Collegeselect = {
-        display : isCollegeClicked ? "none" : "block",
+        display: isCollegeClicked ? "none" : "block",
     };
     const Major = {
-        display : isCollegeClicked ? "block" : "none",
+        display: isCollegeClicked ? "block" : "none",
     };
+    const Search = {
+        display: searchContent ? "block" : "none",
+    };
+
 
     return <div>
         <BottomModal>
             <header className={style.header}>
                 <div className={style.left}>
-
-                {isCollegeClicked ? 
-                    <button 
-                    className={style.back}
-                    onClick={BackHandler}>
-                        <img src={back} alt="back"/>
-                    </button>
-                    :
-                    <div></div>
-                }
-
+                    {isCollegeClicked ?
+                        <button
+                            className={style.back}
+                            onClick={BackHandler}>
+                            <img src={back} alt="back" />
+                        </button>
+                        :
+                        <div></div>
+                    }
                     <p className={style.title} onClick={BackHandler}>단과대학 선택</p>
                 </div>
-
                 <button className={style.close} onClick={cancelHandler}>
-                    <img src={close} alt="close"/>
+                    <img src={close} alt="close" />
                 </button>
 
             </header>
 
-            <ul className={style.ul} style={Collegeselect}>
-                {collegeDummy.college.map((element) => (
-                    <li 
-                        key={element.id}
-                        className={`${style.list} ${selectedCollege === element.text ? style.selected : ''}`}
-                        onClick={() => handleCollegeClick(element.text)}>
-                        {element.text}
-                    </li>
-                ))}
-            </ul>
+            <div className={style.search_container}>
+                <div className={style.search_wrapper}>
+                    <img src={search} alt='search' />
+                    <input className={style.search_input} type='text' placeholder='검색어 입력' onChange={handleInput} />
+                </div>
+            </div>
 
-            {selectedCollege && EIE[selectedCollege] && (
-                <ul className={style.ul} style={Major}>
-                {EIE[selectedCollege].map((dummy, index) => (
-                    <li 
-                    key={index}
-                    className={`${style.list} ${selectedCollege === index.text ? style.selected : ''}`}
-                    onClick={() => handleMajorClick(dummy)}
-                    >{dummy}</li>
-                ))}
+            {!searchContent && (
+                <ul className={style.ul} style={Collegeselect}>
+                    {collegeDummy.college.map((element) => (
+                        <li
+                            key={element.id}
+                            className={`${style.list} ${selectedCollege === element.text ? style.selected : ''}`}
+                            onClick={() => handleCollegeClick(element.text)}>
+                            {element.text}
+                        </li>
+                    ))}
                 </ul>
             )}
+
+            {selectedCollege && EIE[selectedCollege] && !searchContent && (
+                <ul className={style.ul} style={Major}>
+                    {EIE[selectedCollege].map((dummy, index) => (
+                        <li
+                            key={index}
+                            className={`${style.list} ${selectedCollege === index.text ? style.selected : ''}`}
+                            onClick={() => handleMajorClick(dummy)}
+                        >{dummy}</li>
+                    ))}
+                </ul>
+            )}
+            {searchContent && (
+                <ul className={style.ul} style={Search} >
+                    {foundValues.map((val, index) => (
+                        <li
+                            key={index}
+                            className={style.list}
+                        >{val}</li>
+                    ))}
+                </ul>
+            )}
+
         </BottomModal>
     </div>
 };
