@@ -11,7 +11,7 @@
   margin-left: 2.5px;
 }
 .inputText:active {
-  border: 1px solid #ff3838;
+  border: 1px solid #ff4b4b;
 }
 
 .majorbox {
@@ -41,7 +41,7 @@
   right: 2.5%;
   position: absolute;
   transform: translateY(10%);
-  background-color: #ff3838;
+  background-color: #ff4b4b;
   cursor: pointer;
 }
 .emailCheckBtn {

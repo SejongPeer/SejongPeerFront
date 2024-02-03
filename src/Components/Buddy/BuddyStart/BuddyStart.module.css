@@ -27,7 +27,7 @@
   height: 56px;
   margin: 8px;
   border-radius: 40px;
-  background-color: #ff3838;
+  background-color: #FF4B4B;
   border: none;
   color: white;
   cursor: pointer;
@@ -39,7 +39,7 @@
   height: 52px;
   margin: 8px;
   border-radius: 40px;
-  background-color: #ff3838;
+  background-color: #FF4B4B;
   border: none;
   color: white;
   cursor: pointer;
@@ -87,7 +87,7 @@
   font-size: 16px;
   font-weight: 600;
   line-height: 1.5;
-  color: #ff3838;
+  color: #FF4B4B;
 }
 
 .flex {
@@ -101,7 +101,7 @@
 }
 .title {
   font-size: 24px;
-  color: #ff3838;
+  color: #FF4B4B;
   font-weight: 800;
   margin: 8px 5px;
 }
