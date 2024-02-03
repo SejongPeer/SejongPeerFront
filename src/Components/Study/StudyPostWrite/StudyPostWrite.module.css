@@ -17,7 +17,7 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    margin-top: 14vh;
+    margin-top: 16vh;
   }
 
   .header {
@@ -350,7 +350,7 @@
   .postBtn {
     width: 30vw;
     height: 6vh;
-    background-color: #ff3838;
+    background-color: #FF4B4B;
     text-align: center;
     color: #ffffff;
     border: none;
@@ -715,7 +715,7 @@
   .postBtn {
     width: 82vw;
     height: 6vh;
-    background-color: #ff3838;
+    background-color: #FF4B4B;
     text-align: center;
     color: #ffffff;
     border: none;
