@@ -17,6 +17,7 @@ const SignUp = () => {
   const [majorValue, setMajorValue] = useState("");
   const [studentNumberValue, setStudentNumberValue] = useState("");
   const [gradeValue, setGradeValue] = useState("");
+  const [nicknameValue, setNicknameValue] = useState("");
 
   const [error, setError] = useState("가입완료 되었습니다.");
 
@@ -71,6 +72,10 @@ const SignUp = () => {
     setStudentNumberValue(userStudentNum);
   };
 
+  const nickNameData = (userNickName) => {
+    setNicknameValue(userNickName);
+  }//추가
+
   //POST
   async function submitHandler(e) {
     console.log("-------------------------------");
@@ -86,6 +91,7 @@ const SignUp = () => {
     console.log("majorValue : " + majorValue);
     console.log("studentNumberValue : " + studentNumberValue);
     console.log("gradeValue : " + gradeValue);
+    console.log("nicknameValue : " + nicknameValue);
 
     if (
       idValue === "" ||
@@ -99,7 +105,8 @@ const SignUp = () => {
       collegeValue === "" ||
       majorValue === "" ||
       studentNumberValue === "" ||
-      gradeValue === ""
+      gradeValue === "" ||
+      nicknameValue === "" 
     ) {
       alert("모든 양식의 작성을 완료해주세요");
       e.preventDefault();
@@ -118,6 +125,7 @@ const SignUp = () => {
           major: majorValue,
           studentNumber: studentNumberValue,
           grade: gradeValue,
+          nickname : nicknameValue,
         };
 
         try {
@@ -160,11 +168,18 @@ const SignUp = () => {
     <div className={style.container}>
       <h2 className={style.h2}>회원가입</h2>
       <div className={style.form}>
-        <SignUpElement
+      <SignUpElement
+  id="nickname" // 'nickname'
+  title="닉네임 입력"
+  name="닉네임 입력"
+  idData={nickNameData}
+  signUpErrorHandler={signUpErrorHandler}
+/>
+         <SignUpElement
           id="userId"
-          title="아이디(8자 이상)"
-          name="아이디 입력"
-          idData={idData}
+          title="닉네임 입력"
+          name="닉네임 입력"
+          idData={nickNameData}
           signUpErrorHandler={signUpErrorHandler}
         />
         <SignUpElement

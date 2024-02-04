@@ -6,12 +6,14 @@ import EmailBox from "./EmailBox";
 import GenderSignUp from "./GenderSignUp";
 import MajorSignUp from "./MajorSignUp";
 import IDCheckBox from "./IDCheckBox";
-
+import NickNameBox from "./NickNameBox";
 
 const SignUpElement = (props) => {
   const [isEmail, setIsEmail] = useState(false);
   const [isError, setIsError] = useState("");
   const [isID, setIsID] = useState(false);
+  const [isNickname, setIsNickname] = useState(false);
+
 
   const isGender = props.id === "gender";
   const isMajor = props.id === "major";
@@ -30,7 +32,8 @@ const SignUpElement = (props) => {
   }, [props.id]);
   
   useEffect(() => {
-    setIsID(props.id === "userId"); // 아이디 입력 필드를 위한 상태 설정
+    setIsNickname(props.id === "nickname"); // 닉네임 필드 식별
+    setIsID(props.id === "userId");
     setIsEmail(props.id === "email");
   }, [props.id]);
 
@@ -38,7 +41,15 @@ const SignUpElement = (props) => {
     <div className={style.container}>
       {props.id !== "check" && <p className={style.title}>{props.title}</p>}
 
-        {isID ? (
+        {isNickname ? (
+        <NickNameBox
+          id={props.id}
+          name={props.name}
+          value={props.nickNameData} // 수정: 닉네임 데이터를 올바르게 전달
+          errorHandler={errorHandler}
+          idData={props.idData} // 닉네임 데이터를 상위 컴포넌트로 전달하는 함수
+        />
+      ) :isID ? (
             <IDCheckBox
                 id={props.id}
                 name={props.name}
