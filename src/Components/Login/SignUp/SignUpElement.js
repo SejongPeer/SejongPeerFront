@@ -5,10 +5,14 @@ import style from "./SignUpElement.module.css";
 import EmailBox from "./EmailBox";
 import GenderSignUp from "./GenderSignUp";
 import MajorSignUp from "./MajorSignUp";
+import IDCheckBox from "./IDCheckBox";
+
 
 const SignUpElement = (props) => {
   const [isEmail, setIsEmail] = useState(false);
   const [isError, setIsError] = useState("");
+  const [isID, setIsID] = useState(false);
+
   const isGender = props.id === "gender";
   const isMajor = props.id === "major";
 
@@ -24,12 +28,24 @@ const SignUpElement = (props) => {
       setIsEmail(false);
     }
   }, [props.id]);
+  
+  useEffect(() => {
+    setIsID(props.id === "userId"); // 아이디 입력 필드를 위한 상태 설정
+    setIsEmail(props.id === "email");
+  }, [props.id]);
 
   return (
     <div className={style.container}>
       {props.id !== "check" && <p className={style.title}>{props.title}</p>}
 
-        {isEmail ? (
+        {isID ? (
+            <IDCheckBox
+                id={props.id}
+                name={props.name}
+                idData={props.userid}
+                errorHandler={errorHandler}
+            />
+        ) : isEmail ? (
             <EmailBox
                 id={props.id}
                 name={props.name}
@@ -51,10 +67,10 @@ const SignUpElement = (props) => {
             />
         ) : (
             <InputTextBox 
-                id={props.id}
-                name={props.name}
+                //id={props.id}
+                name={props.name} 
                 errorHandler={errorHandler}
-                idData={props.idData}
+                //idData={props.idData}
                 pwdData={props.pwdData}
                 nameData={props.nameData}
                 birthData={props.birthData}
