@@ -18,7 +18,7 @@ const Sejong = () => {
     console.log(id);
     console.log(pwd);
     axios
-      .post("/api?method=PortalSSOToken", {
+      .post("/api?method=ClassicSession", {
         id: id,
         pw: pwd,
       })
