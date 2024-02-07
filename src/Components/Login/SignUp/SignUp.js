@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import SignUpElement from "./SignUpElement";
 
 import style from "./SignUp.module.css";
@@ -20,6 +20,9 @@ const SignUp = () => {
   const [nicknameValue, setNicknameValue] = useState("");
 
   const [error, setError] = useState("가입완료 되었습니다.");
+  const [step, setStep] = useState(1);
+  const [fadeEffect, setFadeEffect] = useState('');
+
 
   const navigate = useNavigate();
 
@@ -28,6 +31,10 @@ const SignUp = () => {
     if (error === "") {
       setError("가입완료 되었습니다.");
     }
+  };
+
+  const nextStepHandler = () => {
+    setStep((prevStep) => prevStep + 1);
   };
 
   const gradeData = (userData) => {
@@ -164,104 +171,47 @@ const SignUp = () => {
     }
   }
 
+
+  useEffect(() => {
+    setFadeEffect('fade-in transition-effect'); // CSS 클래스 추가
+    const timeoutId = setTimeout(() => setFadeEffect(''), 500); // 효과 지속 시간 후 클래스 제거
+    return () => clearTimeout(timeoutId);
+  }, [step]);
+
   return (
     <div className={style.container}>
       <h2 className={style.h2}>회원가입</h2>
-      <div className={style.form}>
-      <SignUpElement
-  id="nickname" // 'nickname'
-  title="닉네임 입력"
-  name="닉네임 입력"
-  idData={nickNameData}
-  signUpErrorHandler={signUpErrorHandler}
-/>
-         <SignUpElement
-          id="userId"
-          title="닉네임 입력"
-          name="닉네임 입력"
-          idData={nickNameData}
-          signUpErrorHandler={signUpErrorHandler}
+        <div className={`${style.form} ${fadeEffect}`}>
+        {step === 1 && (
+          <>
+            <SignUpElement id="userId" title="아이디 입력" name="아이디 입력" idData={idData} signUpErrorHandler={signUpErrorHandler} />
+            <div className="special-gap">
+            <SignUpElement id="pwd" title="비밀번호(10자이상의 영문, 숫자)" name="비밀번호 입력" pwdData={pwdData} signUpErrorHandler={signUpErrorHandler} />
+            </div>
+            <div className="special-gap">
+            <SignUpElement id="pwd" name="비밀번호 확인" pwdData={pwdData} signUpErrorHandler={signUpErrorHandler}
         />
-        <SignUpElement
-          id="pwd"
-          title="비밀번호(10자이상의 영문, 숫자)"
-          name="비밀번호 입력"
-          pwdData={pwdData}
-          signUpErrorHandler={signUpErrorHandler}
-        />
-        <SignUpElement
-          id="email"
-          title="세종대학교 이메일 (@sju.ac.kr 앞부분 작성)"
-          name="학교 이메일 입력"
-          emailData={emailData}
-          signUpErrorHandler={signUpErrorHandler}
-        />
-        <SignUpElement
-          id="name"
-          title="이름"
-          name="이름 입력"
-          nameData={nameData}
-          signUpErrorHandler={signUpErrorHandler}
-        />
-        <SignUpElement
-          id="birth"
-          title="생년월일 (8자리 ex : 20230101)"
-          name="생년월일 8자리 숫자만 입력"
-          birthData={birthData}
-          signUpErrorHandler={signUpErrorHandler}
-        />
-        <SignUpElement
-          id="kakaoid"
-          title="카카오톡 아이디"
-          name="카카오톡 아이디 입력"
-          kakaoData={kakaoData}
-          signUpErrorHandler={signUpErrorHandler}
-        />
-        <SignUpElement
-          id="phoneNum"
-          title="전화번호"
-          name="전화번호 -없이 입력"
-          phoneNumData={phoneNumData}
-          signUpErrorHandler={signUpErrorHandler}
-        />
-        <SignUpElement
-          id="gender"
-          title="성별"
-          name="준비중"
-          genderData={genderData}
-          signUpErrorHandler={signUpErrorHandler}
-        />
-        <SignUpElement
-          id="major"
-          title="단과대/학과"
-          name="단과대/학과 선택"
-          majorData={majorData}
-          collegeData={collegeData}
-          signUpErrorHandler={signUpErrorHandler}
-        />
-        <SignUpElement
-          id="studentNum"
-          title="학번"
-          name="학번입력 (ex: 22)"
-          studentNumData={studentNumData}
-          signUpErrorHandler={signUpErrorHandler}
-        />
-        <SignUpElement
-          id="grade"
-          title="학년"
-          name="학년입력 (ex: 1)"
-          gradeData={gradeData}
-          signUpErrorHandler={signUpErrorHandler}
-        />
-        <button
-          type="submit"
-          className={style.submitBtn}
-          onClick={submitHandler}
-        >
-          가입하기
-        </button>
+            </div>
+            <SignUpElement id="name" title="이름" name="이름 입력" nameData={nameData} signUpErrorHandler={signUpErrorHandler} />
+            <SignUpElement id="studentNum" title="학번" name="학번입력 (ex: 22)" studentNumData={studentNumData} signUpErrorHandler={signUpErrorHandler} />
+            <button className={style.submitBtn} onClick={nextStepHandler}>다음</button>
+          </>
+        )}
       </div>
-    </div>
+      <div className={`${style.form} ${fadeEffect}`}>
+        {step === 2 && ( 
+          <>          
+            <SignUpElement id="nickname" title="닉네임 입력" name="닉네임 입력" idData={nickNameData} signUpErrorHandler={signUpErrorHandler} />
+            <SignUpElement id="kakaoid" title="카카오톡 아이디" name="카카오톡 아이디 입력" kakaoData={kakaoData} signUpErrorHandler={signUpErrorHandler} />
+            <SignUpElement id="phoneNum" title="전화번호" name="전화번호 -없이 입력" phoneNumData={phoneNumData} signUpErrorHandler={signUpErrorHandler} />
+            <SignUpElement id="gender" title="성별" name="준비중" genderData={genderData} signUpErrorHandler={signUpErrorHandler} />
+            <SignUpElement id="major" title="단과대/학과" name="단과대/학과 선택" majorData={majorData} collegeData={collegeData} signUpErrorHandler={signUpErrorHandler} />
+            {/* Optional: You might want to include a 'Back' button here to allow the user to go back to the previous step */}
+            <button type="submit" className={style.submitBtn} onClick={submitHandler}>가입하기</button> 
+            </>  
+        )}
+      </div>
+      </div>
   );
 };
 

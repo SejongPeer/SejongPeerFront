@@ -54,3 +54,25 @@
   margin: 60px 0px 15px 0px;
   cursor: pointer;
 }
+
+.special-gap {
+  margin-bottom: 5px;  
+}
+/*비밀번호 확인 마진*/
+
+.fade-in {
+  animation: fadeIn 0.5s ease-out; 
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.transition-effect {
+  transition: opacity 0.5s ease-out; /* opacity 변화에 대한 전환 효과 적용 */
+}
