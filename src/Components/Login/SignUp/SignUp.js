@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import SignUpElement from "./SignUpElement";
-
 import style from "./SignUp.module.css";
 
 const SignUp = () => {
@@ -15,6 +14,7 @@ const SignUp = () => {
   const [genderValue, setGenderValue] = useState("");
   const [collegeValue, setCollegeValue] = useState("");
   const [majorValue, setMajorValue] = useState("");
+  const [doublemajorValue, setDoubleMajorValue] = useState("");
   const [studentNumberValue, setStudentNumberValue] = useState("");
   const [gradeValue, setGradeValue] = useState("");
   const [nicknameValue, setNicknameValue] = useState("");
@@ -22,6 +22,7 @@ const SignUp = () => {
   const [error, setError] = useState("가입완료 되었습니다.");
   const [step, setStep] = useState(1);
   const [fadeEffect, setFadeEffect] = useState('');
+  const [doubleMajorChecked, setDoubleMajorChecked] = useState(false); // Checkbox state for 복수/부전공
 
 
   const navigate = useNavigate();
@@ -75,6 +76,10 @@ const SignUp = () => {
     setMajorValue(userMajor);
   };
 
+  const doublemajorData = (userDoubleMajor) => {
+    setDoubleMajorValue(userDoubleMajor);
+  };//복수전공데이터추가
+
   const studentNumData = (userStudentNum) => {
     setStudentNumberValue(userStudentNum);
   };
@@ -82,6 +87,7 @@ const SignUp = () => {
   const nickNameData = (userNickName) => {
     setNicknameValue(userNickName);
   }//추가
+
 
   //POST
   async function submitHandler(e) {
@@ -180,7 +186,7 @@ const SignUp = () => {
 
   return (
     <div className={style.container}>
-      <h2 className={style.h2}>회원가입</h2>
+      <h2 className={style.h2}>기본정보</h2>
         <div className={`${style.form} ${fadeEffect}`}>
         {step === 1 && (
           <>
@@ -206,13 +212,26 @@ const SignUp = () => {
             <SignUpElement id="phoneNum" title="전화번호" name="전화번호 -없이 입력" phoneNumData={phoneNumData} signUpErrorHandler={signUpErrorHandler} />
             <SignUpElement id="gender" title="성별" name="준비중" genderData={genderData} signUpErrorHandler={signUpErrorHandler} />
             <SignUpElement id="major" title="단과대/학과" name="단과대/학과 선택" majorData={majorData} collegeData={collegeData} signUpErrorHandler={signUpErrorHandler} />
-            {/* Optional: You might want to include a 'Back' button here to allow the user to go back to the previous step */}
+            <div style={{ display: 'flex', alignItems: 'center', color: doubleMajorChecked ? 'black' : 'grey' }}>
+              <input
+                type="checkbox"
+                id="double_major_checkbox"
+                checked={doubleMajorChecked}
+                onChange={(e) => setDoubleMajorChecked(e.target.checked)}
+                style={{ marginRight: '10px' ,marginTop: '15px'}}
+              />
+            <label htmlFor="double_major_checkbox"
+                  style={{ marginTop: '10px'}}>복수/부전공</label>
+            </div>
+            {doubleMajorChecked && (
+            <SignUpElement id="double_major" name="복수전공/부전공 선택" doublemajorData={doublemajorData} collegeData={collegeData} signUpErrorHandler={signUpErrorHandler} />
+            )}
             <button type="submit" className={style.submitBtn} onClick={submitHandler}>가입하기</button> 
             </>  
         )}
       </div>
       </div>
-  );
+  ); 
 };
 
 export default SignUp;
