@@ -26,6 +26,7 @@ import Agree1 from "./Components/Login/SignUp/Agree1";
 import Agree2 from "./Components/Login/SignUp/Agree2";
 import Agree from "./Components/Login/SignUp/Agree";
 import MyPage from "./Components/Login/MyPage/MyPage";
+import Modify from "./Components/Login/MyPage/Modify/Modify";
 import StudyList from "./Components/Study/StudyList/StudyList.js";
 import StudyPostDeatil from "./Components/Study/StudyPostDetail/StudyPostDetail.js";
 import StudyPostWrite from "./Components/Study/StudyPostWrite/StudyPostWrite.js";
@@ -113,6 +114,7 @@ const App = () => {
               <Route path="/personalinfo" element={<Agree1 />} />
               <Route path="/useinfo" element={<Agree2 />} />
               <Route path="/mypage" element={<MyPage />} />
+              <Route path="/modify" element={<Modify />} />
               <Route path="/honbob/cancel" element={<HonbobWaiting />} />
               <Route path="/study" element={<StudyList />} />
               <Route path="/study/detail" element={<StudyPostDeatil />} />

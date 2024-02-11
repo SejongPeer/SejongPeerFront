@@ -4,6 +4,9 @@ import axios from "axios";
 
 const MyPage = () => {
   const navigate = useNavigate();
+  const goModify = () => {
+    navigate("/modify");
+  };
   const handleLogout = () => {
     axios
       .get(`${process.env.REACT_APP_BACK_SERVER + "/logout"}`)
@@ -40,55 +43,49 @@ const MyPage = () => {
   const phoneNum = localStorage.getItem("phoneNum");
   const major = localStorage.getItem("major");
   const name = localStorage.getItem("name");
-  
+
   const sejongEmail = localStorage.getItem("sejongEmail");
   const studentId = localStorage.getItem("studentId");
 
   return (
-    <>
-      <h2 className={styles.myInfo}>내 정보</h2>
-      <div className={styles.logoutContainer}>
-        <div className={styles.div1}>
-          <p className={styles.leftFont}>아이디</p>
-          <p className={styles.rightFont}>{userId}</p>
-        </div>
-        <div className={styles.div1}>
-          <p className={styles.leftFont}>이메일</p>
-          <p className={styles.rightFont}>{sejongEmail}</p>
-        </div>
-        <div className={styles.div1}>
-          <p className={styles.leftFont}>카카오톡 아이디</p>
-          <p className={styles.rightFont}>{kakaoId}</p>
-        </div>
-        <div className={styles.div1}>
-          <p className={styles.leftFont}>전화번호</p>
-          <p className={styles.rightFont}>{phoneNum}</p>
-        </div>
-        <div className={styles.div1}>
-          <p className={styles.leftFont}>이름</p>
-          <p className={styles.rightFont}>{name}</p>
-        </div>
-        <div className={styles.div1}>
-          <p className={styles.leftFont}>생년월일</p>
-          <p className={styles.rightFont}>{birth}</p>
-        </div>
-        <div className={styles.div1}>
-          <p className={styles.leftFont}>성별</p>
-          <p className={styles.rightFont}>{gender_text}</p>
-        </div>
-        <div className={styles.div1}>
-          <p className={styles.leftFont}>단과대</p>
-          <p className={styles.rightFont}>{major}</p>
-        </div>
-        <div className={styles.div1}>
-          <p className={styles.leftFont}>학번</p>
-          <p className={styles.rightFont}>{studentId} 학번</p>
-        </div>
-        <button className={styles.logoutButton} onClick={handleLogout}>
-          <p className={styles.logoutFont}>로그아웃</p>
+    <div className={styles.container1}>
+      <p style={{ fontWeight: "700", marginBottom: "0px" }}>매칭정보</p>
+      <div className={styles.container2}>
+        <button className={styles.button}>
+          <div className={styles.container3}>
+            <p className={styles.word}>세종스터디</p>
+            <p style={{ fontWeight: "700" }}>내 게시글 확인</p>
+          </div>
+          <div className={styles.rightImg}></div>
         </button>
       </div>
-    </>
+      <p style={{ fontWeight: "700", marginBottom: "0px" }}>내 정보</p>
+      <div className={styles.container2}>
+        <button className={styles.button} onClick={goModify}>
+          <div className={styles.container3}>
+            <p className={styles.word}>세종스터디</p>
+            <p style={{ fontWeight: "700" }}>내 게시글 확인</p>
+          </div>
+          <div className={styles.rightImg}></div>
+        </button>
+      </div>
+      <p style={{ fontWeight: "700", marginBottom: "0px" }}>사용방법</p>
+      <div className={styles.container4}>
+        <button className={styles.button2}>asd</button>
+        <button className={styles.button2}>asd</button>
+        <button className={styles.button2}>asd</button>
+      </div>
+      <p style={{ fontWeight: "700", marginBottom: "0px" }}>이용안내</p>
+      <div>
+        <p style={{ textDecoration: "underline" }}>개인정보처리방침</p>
+        <p style={{ textDecoration: "underline" }}>이용약관</p>
+        <p style={{ textDecoration: "underline" }}>커뮤니티 이용규칙</p>
+        <p style={{ textDecoration: "underline" }}>공지사항</p>
+      </div>
+      <button className={styles.logout}>
+        <p style={{ fontWeight: "700", fontSize: "1.3em" }}>로그아웃</p>
+      </button>
+    </div>
   );
 };
 
