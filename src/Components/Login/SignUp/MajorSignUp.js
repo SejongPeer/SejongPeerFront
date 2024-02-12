@@ -24,9 +24,9 @@ const MajorSignUp = (props) => {
         event.preventDefault();
     }
 
-    return <button 
-    onClick={onClickHandler} 
-    className={style.majorbox}>{majorValue}</button>;
+    return <button
+        onClick={onClickHandler}
+        className={style.majorbox}>{majorValue}</button>;
 };
 
 export default MajorSignUp;

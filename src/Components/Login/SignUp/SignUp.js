@@ -119,7 +119,7 @@ const SignUp = () => {
       majorValue === "" ||
       studentNumberValue === "" ||
       gradeValue === "" ||
-      nicknameValue === "" 
+      nicknameValue === ""
     ) {
       alert("모든 양식의 작성을 완료해주세요");
       e.preventDefault();
@@ -138,7 +138,7 @@ const SignUp = () => {
           major: majorValue,
           studentNumber: studentNumberValue,
           grade: gradeValue,
-          nickname : nicknameValue,
+          nickname: nicknameValue,
         };
 
         try {
@@ -165,8 +165,8 @@ const SignUp = () => {
           console.log(err.message);
           alert(
             "제출에 실패했습니다. 다시 시도해주세요. (에러 내용: " +
-              err.message +
-              ")"
+            err.message +
+            ")"
           );
           e.preventDefault();
         }
@@ -187,16 +187,16 @@ const SignUp = () => {
   return (
     <div className={style.container}>
       <h2 className={style.h2}>기본정보</h2>
-        <div className={`${style.form} ${fadeEffect}`}>
+      <div className={`${style.form} ${fadeEffect}`}>
         {step === 1 && (
           <>
             <SignUpElement id="userId" title="아이디 입력" name="아이디 입력" idData={idData} signUpErrorHandler={signUpErrorHandler} />
             <div className="special-gap">
-            <SignUpElement id="pwd" title="비밀번호(10자이상의 영문, 숫자)" name="비밀번호 입력" pwdData={pwdData} signUpErrorHandler={signUpErrorHandler} />
+              <SignUpElement id="pwd" title="비밀번호(10자이상의 영문, 숫자)" name="비밀번호 입력" pwdData={pwdData} signUpErrorHandler={signUpErrorHandler} />
             </div>
             <div className="special-gap">
-            <SignUpElement id="pwd" name="비밀번호 확인" pwdData={pwdData} signUpErrorHandler={signUpErrorHandler}
-        />
+              <SignUpElement id="pwd" name="비밀번호 확인" pwdData={pwdData} signUpErrorHandler={signUpErrorHandler}
+              />
             </div>
             <SignUpElement id="name" title="이름" name="이름 입력" nameData={nameData} signUpErrorHandler={signUpErrorHandler} />
             <SignUpElement id="studentNum" title="학번" name="학번입력 (ex: 22)" studentNumData={studentNumData} signUpErrorHandler={signUpErrorHandler} />
@@ -205,8 +205,8 @@ const SignUp = () => {
         )}
       </div>
       <div className={`${style.form} ${fadeEffect}`}>
-        {step === 2 && ( 
-          <>          
+        {step === 2 && (
+          <>
             <SignUpElement id="nickname" title="닉네임 입력" name="닉네임 입력" idData={nickNameData} signUpErrorHandler={signUpErrorHandler} />
             <SignUpElement id="kakaoid" title="카카오톡 아이디" name="카카오톡 아이디 입력" kakaoData={kakaoData} signUpErrorHandler={signUpErrorHandler} />
             <SignUpElement id="phoneNum" title="전화번호" name="전화번호 -없이 입력" phoneNumData={phoneNumData} signUpErrorHandler={signUpErrorHandler} />
@@ -218,20 +218,20 @@ const SignUp = () => {
                 id="double_major_checkbox"
                 checked={doubleMajorChecked}
                 onChange={(e) => setDoubleMajorChecked(e.target.checked)}
-                style={{ marginRight: '10px' ,marginTop: '15px'}}
+                style={{ marginRight: '10px', marginTop: '15px' }}
               />
-            <label htmlFor="double_major_checkbox"
-                  style={{ marginTop: '10px'}}>복수/부전공</label>
+              <label htmlFor="double_major_checkbox"
+                style={{ marginTop: '10px' }}>복수/부전공</label>
             </div>
             {doubleMajorChecked && (
-            <SignUpElement id="double_major" name="복수전공/부전공 선택" doublemajorData={doublemajorData} collegeData={collegeData} signUpErrorHandler={signUpErrorHandler} />
+              <SignUpElement id="double_major" name="복수전공/부전공 선택" doublemajorData={doublemajorData} collegeData={collegeData} signUpErrorHandler={signUpErrorHandler} />
             )}
-            <button type="submit" className={style.submitBtn} onClick={submitHandler}>가입하기</button> 
-            </>  
+            <button type="submit" className={style.submitBtn} onClick={submitHandler}>가입하기</button>
+          </>
         )}
       </div>
-      </div>
-  ); 
+    </div>
+  );
 };
 
 export default SignUp;

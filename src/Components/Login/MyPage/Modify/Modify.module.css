@@ -1,61 +1,118 @@
 @media (min-width: 768px) {
-  .container1 {
-    width: 35vw;
-    margin-top: 8vh;
+  .container {
+    width: 28vw;
+    margin-top: 7.3vh;
     padding: 1vw 2vw 0 2vw;
-    background-color: white;
+    background-color: #FBE4E4;
     border: 1px solid #e5e5e5;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
   }
+
+  .container1 {
+    background-color: #FFFFFF;
+    width: 28vw;
+    height: 36vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .myInformBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 28vw;
+    height: 27vh;
+  }
+
+  .informTitleBox {
+    width: 26vw;
+    height: 5vh;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    /* align-items: flex-start; */
+    flex-direction: row;
+    margin-top: 2vh;
+    gap: 2%;
+  }
+
+  .myInformDiv {
+    width: 25vw;
+    height: 5vh;
+    border-radius: 20px;
+    border: 1px solid rgb(124, 124, 124);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1vh;
+  }
+
+  .focused {
+    width: 25vw;
+    height: 5vh;
+    border-radius: 20px;
+    border: 2px solid rgb(0, 0, 0);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1vh;
+  }
+
+  .myInformInput::placeholder {
+    text-align: right;
+  }
+
+  .myInformName {
+    font-weight: 700;
+    margin-left: 2vw;
+  }
+
+  .myInformInput {
+    width: 7vw;
+    height: 4vh;
+    font-size: 1.8vh;
+    margin-right: 2vw;
+    outline: none;
+    border: none;
+  }
+
+
   .container2 {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 1vh;
-    padding: 2vh 0 2vh 0;
-  }
-  .container3 {
-    width: 31vw;
-    height: 10vh;
-    /* border: 1px solid #e5e5e5; */
-    /* padding: 0 2vw 0 2vw; */
-  }
-  .container4 {
-    display: flex;
-    justify-content: center;
-    gap: 1%;
-    margin-top: 1vh;
-  }
-  .word {
-    font-weight: 700;
-    color: #ff4b4b;
-  }
-  .button {
-    width: 31vw;
-    height: 10vh;
-    display: flex;
-    justify-content: space-around;
     align-items: center;
-    gap: 70%;
-    border-radius: 18px;
-    background-color: white;
-    border: 1px solid #e5e5e5;
+    background-color: #FFFFFF;
+    width: 28vw;
+    height: 12vh;
+    margin-top: 1.5vh;
   }
-  .button2 {
-    width: 10vw;
-    height: 10vh;
-    border-radius: 18px;
-    background-color: white;
-    border: 1px solid #e5e5e5;
+
+  .departBox {
+    width: 26vw;
+    height: 5vh;
   }
+
   .modify {
+    position: absolute;
+    bottom: 2vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 31vw;
+    width: 26vw;
     height: 6vh;
     border-radius: 34px;
     background-color: #ff4b4b;
     color: white;
     border: 1px solid #e5e5e5;
+    margin-top: 5vh;
   }
 }
