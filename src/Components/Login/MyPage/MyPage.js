@@ -48,43 +48,86 @@ const MyPage = () => {
   const studentId = localStorage.getItem("studentId");
 
   return (
-    <div className={styles.container1}>
-      <p style={{ fontWeight: "700", marginBottom: "0px" }}>매칭정보</p>
-      <div className={styles.container2}>
-        <button className={styles.button}>
-          <div className={styles.container3}>
-            <p className={styles.word}>세종스터디</p>
-            <p style={{ fontWeight: "700" }}>내 게시글 확인</p>
-          </div>
-          <div className={styles.rightImg}></div>
-        </button>
+    <div className={styles.container}>
+      <div className={styles.container1}>
+        <div className={styles.informTitleBox}>
+          <p style={{ fontWeight: "700", marginBottom: "0px" }} className={styles.informTitle}>매칭정보</p>
+        </div>
+
+        <div className={styles.matchingBox}>
+          <button className={styles.matchingButton}>
+            <div className={styles.leftBox}>
+              <div className={`${styles.redWord} ${styles.checkWord}`}>세종스터디</div>
+              <div className={`${styles.blackWord} ${styles.checkWord}`} style={{ fontWeight: "700" }}>내 게시글 확인</div>
+            </div>
+            <div className={styles.rightImg}></div>
+          </button>
+          <button className={styles.matchingButton}>
+            <div className={styles.leftBox}>
+              <div className={`${styles.redWord} ${styles.checkWord}`}>세종피어</div>
+              <div className={`${styles.blackWord} ${styles.checkWord}`} style={{ fontWeight: "700" }}>매칭 상대 확인</div>
+            </div>
+            <div className={styles.rightImg}></div>
+          </button>
+          <button className={styles.matchingButton}>
+            <div className={styles.leftBox}>
+              <div className={`${styles.redWord} ${styles.checkWord}`}>혼밥탈출</div>
+              <div className={`${styles.blackWord} ${styles.checkWord}`} style={{ fontWeight: "700" }}>밥짝꿍 확인</div>
+            </div>
+            <div className={styles.rightImg}></div>
+          </button>
+        </div>
       </div>
-      <p style={{ fontWeight: "700", marginBottom: "0px" }}>내 정보</p>
       <div className={styles.container2}>
-        <button className={styles.button} onClick={goModify}>
-          <div className={styles.container3}>
-            <p className={styles.word}>세종스터디</p>
-            <p style={{ fontWeight: "700" }}>내 게시글 확인</p>
-          </div>
-          <div className={styles.rightImg}></div>
-        </button>
+        <div className={styles.informTitleBox}>
+          <p style={{ fontWeight: "700", marginBottom: "0px" }}>내 정보</p>
+        </div>
+
+        <div className={styles.myInformBox}>
+          <button className={styles.myInformBtn} onClick={goModify}>
+            <div className={styles.leftBox}>
+              <div className={`${styles.blackWord} ${styles.myInformWord}`} style={{ fontWeight: "700" }} >정준수</div>
+              <div className={`${styles.blackWord} ${styles.myInformWord}`} >미디어 커뮤니케이션 학과</div>
+            </div>
+            <div className={styles.rightArrow}></div>
+          </button>
+
+        </div>
       </div>
-      <p style={{ fontWeight: "700", marginBottom: "0px" }}>사용방법</p>
+      <div className={styles.container3}>
+        <div className={styles.informTitleBox}>
+          <p style={{ fontWeight: "700", marginBottom: "0px" }}>사용방법</p>
+        </div>
+        <div className={styles.useInformBox}>
+          <button className={styles.useInformBtn}>
+            <div className={styles.redWord2} style={{ fontWeight: "900" }} >세종스터디</div>
+            <div style={{ fontWeight: "bold" }}>사용법</div>
+          </button>
+          <button className={styles.useInformBtn}>
+            <div className={styles.redWord2} style={{ fontWeight: "900" }} >세종피어</div>
+            <div style={{ fontWeight: "bold" }}>사용법</div>
+          </button>
+          <button className={styles.useInformBtn}>
+            <div className={styles.redWord2} style={{ fontWeight: "900" }} >혼밥탈출</div>
+            <div style={{ fontWeight: "bold" }}>사용법</div>
+          </button>
+        </div>
+      </div>
       <div className={styles.container4}>
-        <button className={styles.button2}>asd</button>
-        <button className={styles.button2}>asd</button>
-        <button className={styles.button2}>asd</button>
-      </div>
-      <p style={{ fontWeight: "700", marginBottom: "0px" }}>이용안내</p>
-      <div>
-        <p style={{ textDecoration: "underline" }}>개인정보처리방침</p>
-        <p style={{ textDecoration: "underline" }}>이용약관</p>
-        <p style={{ textDecoration: "underline" }}>커뮤니티 이용규칙</p>
-        <p style={{ textDecoration: "underline" }}>공지사항</p>
+        <div className={styles.informTitleBox}>
+          <p style={{ fontWeight: "700", marginBottom: "0px" }}>이용안내</p>
+        </div>
+        <div className={styles.ruleBox}>
+          <div style={{ textDecoration: "underline" }}>개인정보처리방침</div>
+          <div style={{ textDecoration: "underline" }}>이용약관</div>
+          <div style={{ textDecoration: "underline" }}>커뮤니티 이용규칙</div>
+          <div style={{ textDecoration: "underline" }}>공지사항</div>
+        </div>
       </div>
       <button className={styles.logout}>
         <p style={{ fontWeight: "700", fontSize: "1.3em" }}>로그아웃</p>
       </button>
+      <button className={styles.secession}>탈퇴하기</button>
     </div>
   );
 };

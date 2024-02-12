@@ -119,7 +119,7 @@ const Major = () => {
                     <input className={style.search_input} type='text' placeholder='검색어 입력' onChange={handleInput} />
                 </div>
             </div>
-
+            {/* College고를경우 */}
             {!searchContent && (
                 <ul className={style.ul} style={Collegeselect}>
                     {collegeDummy.college.map((element) => (
@@ -132,7 +132,7 @@ const Major = () => {
                     ))}
                 </ul>
             )}
-
+            {/* 학과고를경우 */}
             {selectedCollege && EIE[selectedCollege] && !searchContent && (
                 <ul className={style.ul} style={Major}>
                     {EIE[selectedCollege].map((dummy, index) => (
@@ -144,6 +144,8 @@ const Major = () => {
                     ))}
                 </ul>
             )}
+
+            {/* 검색해서 학과 고를 경우 */}
             {searchContent && (
                 <ul className={style.ul} style={Search} >
                     {foundValues.map((val, index) => (

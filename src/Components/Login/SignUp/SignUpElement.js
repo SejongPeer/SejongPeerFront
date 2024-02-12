@@ -30,7 +30,7 @@ const SignUpElement = (props) => {
       setIsEmail(false);
     }
   }, [props.id]);
-  
+
   useEffect(() => {
     setIsNickname(props.id === "nickname"); // 닉네임 필드 식별
     setIsID(props.id === "userId");
@@ -41,7 +41,7 @@ const SignUpElement = (props) => {
     <div className={style.container}>
       {props.id !== "check" && <p className={style.title}>{props.title}</p>}
 
-        {isNickname ? (
+      {isNickname ? (
         <NickNameBox
           id={props.id}
           name={props.name}
@@ -49,48 +49,48 @@ const SignUpElement = (props) => {
           errorHandler={errorHandler}
           idData={props.idData} // 닉네임 데이터를 상위 컴포넌트로 전달하는 함수
         />
-      ) :isID ? (
-            <IDCheckBox
-                id={props.id}
-                name={props.name}
-                idData={props.userid}
-                errorHandler={errorHandler}
-            />
-        ) : isEmail ? (
-            <EmailBox
-                id={props.id}
-                name={props.name}
-                emailData={props.emailData}
-                errorHandler={errorHandler}
-            />
-        ) : isGender ? (
-            <GenderSignUp 
-                id={props.id}
-                name={props.name}
-                genderData={props.genderData}
-            />
-        ) : isMajor? (
-            <MajorSignUp 
-                id={props.id}
-                name={props.name}
-                majorData={props.majorData}
-                collegeData={props.collegeData}
-            />
-        ) : (
-            <InputTextBox 
-                //id={props.id}
-                name={props.name} 
-                errorHandler={errorHandler}
-                //idData={props.idData}
-                pwdData={props.pwdData}
-                nameData={props.nameData}
-                birthData={props.birthData}
-                kakaoData={props.kakaoData}
-                phoneNumData={props.phoneNumData}
-                studentNumData={props.studentNumData}
-                gradeData={props.gradeData}
-            />
-        )}
+      ) : isID ? (
+        <IDCheckBox
+          id={props.id}
+          name={props.name}
+          idData={props.userid}
+          errorHandler={errorHandler}
+        />
+      ) : isEmail ? (
+        <EmailBox
+          id={props.id}
+          name={props.name}
+          emailData={props.emailData}
+          errorHandler={errorHandler}
+        />
+      ) : isGender ? (
+        <GenderSignUp
+          id={props.id}
+          name={props.name}
+          genderData={props.genderData}
+        />
+      ) : isMajor ? (
+        <MajorSignUp
+          id={props.id}
+          name={props.name}
+          majorData={props.majorData}
+          collegeData={props.collegeData}
+        />
+      ) : (
+        <InputTextBox
+          //id={props.id}
+          name={props.name}
+          errorHandler={errorHandler}
+          //idData={props.idData}
+          pwdData={props.pwdData}
+          nameData={props.nameData}
+          birthData={props.birthData}
+          kakaoData={props.kakaoData}
+          phoneNumData={props.phoneNumData}
+          studentNumData={props.studentNumData}
+          gradeData={props.gradeData}
+        />
+      )}
 
       {isError && <p className={style.error}>{isError}</p>}
     </div>
