@@ -44,12 +44,11 @@ const FindId = () => {
   
   return (
     <div className={style.container}>
-      <div className={style.explain_box}>
-        <p className={style.explain_title}>아이디 찾기</p>
+      <div className={style.explain_box2}>
+        <p className={style.explain_title}>아이디/비밀번호 찾기</p>
         <p className={style.explain}>
-          세종대학교 통합 로그인을 통해 인증합니다.
+          세종대학교 포털로그인
         </p>
-        <p className={style.explain}>(세종대학교 포털 ID/PW)</p>
       </div>
       <SignInBox inputID={inputID} name="포털 로그인 아이디(학번)" />
       <SignInBox inputPwd={inputPwd} name="포털 로그인 비밀번호" id="pwd" />

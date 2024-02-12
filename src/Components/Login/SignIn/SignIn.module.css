@@ -51,13 +51,19 @@
   color: #111111;
   margin: 4% 0;
 }
+.explain_box2 {
+  width: 100%;
+  height: 15%;
+  padding: 0 10%;
+  margin: 1%;
+}
 .explain {
   font-size: 1rem;
   font-weight: 500;
   color: #555555;
   margin: 2% 0;
 }
-.sejong{
+.sejong {
   font-size: 0.8rem;
   color: #777777;
 }
