@@ -54,7 +54,9 @@ const App = () => {
   const [honbobSubmit, setHonbobSubmit] = useState(false);
   const [KaKaoDD, setKaKaoDD] = useState("");
   const [isLogined, setIsLogined] = useState(false);
-  //const [honbobCancleSubmit, setHonbobCancleSubmit] = useState(false);
+  const [name, setName] = useState('');
+  const [studentNum, setStudentNum] = useState('');
+  const [peerId, setPeerId] = useState('');
 
   return (
     <MyContext.Provider
@@ -74,6 +76,12 @@ const App = () => {
         setKaKaoDD,
         setIsLogined,
         isLogined,
+        name,
+        setName,
+        studentNum,
+        setStudentNum,
+        peerId,
+        setPeerId
       }}
     >
       <Router>

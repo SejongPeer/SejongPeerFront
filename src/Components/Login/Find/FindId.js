@@ -1,13 +1,15 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import style from "../SignIn/SignIn.module.css";
 import SignInBox from "../SignIn/SignInBox";
 import axios from "axios";
+import { MyContext } from "../../../App";
+import { useNavigate } from "react-router-dom";
 
 const FindId = () => {
+  const navigate = useNavigate();
   const [id, setId] = useState("");
   const [pwd, setPWd] = useState("");
-  const [name, setName] = useState("");
-  const [studentId, setStudentId] = useState("");
+  const { setName, setPeerId, setStudentNum, studentNum, name } = useContext(MyContext);
 
   const inputID = (idinput) => {
     setId(idinput);
@@ -16,31 +18,32 @@ const FindId = () => {
     setPWd(pwdinput);
   };
 
-  const isSejong = () => {
+  const isSejong = async() => {
     console.log(id);
     console.log(pwd);
-    axios
+    
+    try {
+      // 세종어스 확인
+      const response1 = await axios
       .post("/api?method=ClassicSession", {
         id: id,
         pw: pwd,
-      })
-      .then((response) => {
-        let nameData = response.data.result.body.name;
+      });
+        let nameData = response1.data.result.body.name;
+        setStudentNum(id);
         setName(nameData);
-        setStudentId(id);
-        findIdHandler();
-        })
-      .catch((err) => console.log(err.message));
-  };
 
-  const findIdHandler = () => {
-    axios.post("", {
-        studentId : studentId,
+      // 아이디 찾기
+      const response2 = await axios
+      .post("", {
+        studentNum : studentNum,
         name : name
-    })
-    .then((response) => console.log(response.data))
-    .catch((err) => console.log(err.data))
-  }
+      });
+      navigate("/login/resetpwd");
+    } catch(err) {
+      console.log(err.message);
+    }
+  };
   
   return (
     <div className={style.container}>
