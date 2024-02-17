@@ -1,9 +1,13 @@
 import { useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import SignUpElement from "./SignUpElement";
 import style from "./SignUp.module.css";
+import { MyContext } from "../../../App";
 
 const SignUp = () => {
+
+  const { name, setName } = useContext(MyContext);
+
   const [idValue, setIdValue] = useState("");
   const [pwdValue, setPwdValue] = useState("");
   const [emailValue, setEmailValue] = useState("");
@@ -15,6 +19,7 @@ const SignUp = () => {
   const [collegeValue, setCollegeValue] = useState("");
   const [majorValue, setMajorValue] = useState("");
   const [doublemajorValue, setDoubleMajorValue] = useState("");
+  const [doubleCollegeValue, setDoubleCollegeValue] = useState("");
   const [studentNumberValue, setStudentNumberValue] = useState("");
   const [gradeValue, setGradeValue] = useState("");
   const [nicknameValue, setNicknameValue] = useState("");
@@ -23,6 +28,7 @@ const SignUp = () => {
   const [step, setStep] = useState(1);
   const [fadeEffect, setFadeEffect] = useState('');
   const [doubleMajorChecked, setDoubleMajorChecked] = useState(false); // Checkbox state for 복수/부전공
+
 
 
   const navigate = useNavigate();
@@ -80,6 +86,9 @@ const SignUp = () => {
     setDoubleMajorValue(userDoubleMajor);
   };//복수전공데이터추가
 
+  const doubleCollegeData = (userDoubleCollege) => {
+    setDoubleCollegeValue(userDoubleCollege);
+  }
   const studentNumData = (userStudentNum) => {
     setStudentNumberValue(userStudentNum);
   };
@@ -224,7 +233,7 @@ const SignUp = () => {
                 style={{ marginTop: '10px' }}>복수/부전공</label>
             </div>
             {doubleMajorChecked && (
-              <SignUpElement id="double_major" name="복수전공/부전공 선택" doublemajorData={doublemajorData} collegeData={collegeData} signUpErrorHandler={signUpErrorHandler} />
+              <SignUpElement id="double_major" name="복수전공/부전공 선택" doublemajorData={doublemajorData} doubleCollegeData={doubleCollegeData} signUpErrorHandler={signUpErrorHandler} />
             )}
             <button type="submit" className={style.submitBtn} onClick={submitHandler}>가입하기</button>
           </>

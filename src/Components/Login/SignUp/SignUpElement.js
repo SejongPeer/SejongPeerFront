@@ -17,6 +17,7 @@ const SignUpElement = (props) => {
 
   const isGender = props.id === "gender";
   const isMajor = props.id === "major";
+  const isDoubleMajor = props.id === "double_major";
 
   const errorHandler = (error) => {
     setIsError(error);
@@ -76,21 +77,29 @@ const SignUpElement = (props) => {
           majorData={props.majorData}
           collegeData={props.collegeData}
         />
-      ) : (
-        <InputTextBox
-          //id={props.id}
+      ) : isDoubleMajor ? (
+        <MajorSignUp
+          id={props.id}
           name={props.name}
-          errorHandler={errorHandler}
-          //idData={props.idData}
-          pwdData={props.pwdData}
-          nameData={props.nameData}
-          birthData={props.birthData}
-          kakaoData={props.kakaoData}
-          phoneNumData={props.phoneNumData}
-          studentNumData={props.studentNumData}
-          gradeData={props.gradeData}
+          doublemajorData={props.doublemajorData}
+          doubleCollegeData={props.doubleCollegeData}
         />
-      )}
+      ) :
+        (
+          <InputTextBox
+            //id={props.id}
+            name={props.name}
+            errorHandler={errorHandler}
+            //idData={props.idData}
+            pwdData={props.pwdData}
+            nameData={props.nameData}
+            birthData={props.birthData}
+            kakaoData={props.kakaoData}
+            phoneNumData={props.phoneNumData}
+            studentNumData={props.studentNumData}
+            gradeData={props.gradeData}
+          />
+        )}
 
       {isError && <p className={style.error}>{isError}</p>}
     </div>
