@@ -1,18 +1,23 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import style from "../SignIn/SignIn.module.css";
 import SignInBox from "../SignIn/SignInBox";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { MyContext } from "../../../App";
 
 const Sejong = () => {
   const [id, setId] = useState("");
   const [pwd, setPWd] = useState("");
-
+  const navigate = useNavigate();
   const inputID = (idinput) => {
     setId(idinput);
   };
   const inputPwd = (pwdinput) => {
     setPWd(pwdinput);
   };
+
+  const { name, setName } = useContext(MyContext);
+  const { studentNum, setStudentNum } = useContext(MyContext);
 
   const isSejong = () => {
     console.log(id);
@@ -22,7 +27,22 @@ const Sejong = () => {
         id: id,
         pw: pwd,
       })
-      .then((response) => console.log(response.data))
+      .then(
+        (response) => {
+          // console.log(response.data)
+          let result = response.data.result.is_auth;
+          console.log(response.data.result.body.name);
+          if (result === false)
+            alert("아이디 및 비밀번호가 일치하지 않습니다")
+          else if (result === true) {
+            console.log("인증성공")
+            setName(response.data.result.body.name)
+            setStudentNum()
+            navigate("/login/signup");
+          }
+
+        },
+      )
       .catch((err) => console.log(err.message));
   };
 

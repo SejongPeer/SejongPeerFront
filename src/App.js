@@ -19,6 +19,7 @@ import Finish from "./Components/Buddy/Matching/JS/Finish";
 import IfComplete from "./Components/Buddy/Matching/JS/IfComplete";
 import SignIn from "./Components/Login/SignIn/SignIn";
 import SignUp from "./Components/Login/SignUp/SignUp";
+import Auth from "./Components/Login/SignUp/Auth/Auth.js"
 import Major from "./Components/Modal/Major";
 import FindId from "./Components/Login/Find/FindId";
 import ResetPwd from "./Components/Login/Find/ResetPwd";
@@ -49,6 +50,8 @@ const App = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [modalContent, setModalContent] = useState("");
   const [majorValue, setMajorValue] = useState("단과대/학과 선택");
+  const [doubleMajorValue, setDoubleMajorValue] = useState("복수/부전공 선택");
+  const [doubleCollegeValue, setDoubleCollegeValue] = useState("");
   const [collegeValue, setCollegeValue] = useState("");
   const [buddySubmit, setBuddySubmit] = useState(false);
   const [honbobSubmit, setHonbobSubmit] = useState(false);
@@ -66,6 +69,10 @@ const App = () => {
         setModalContent,
         majorValue,
         setMajorValue,
+        doubleMajorValue,
+        setDoubleMajorValue,
+        doubleCollegeValue,
+        setDoubleCollegeValue,
         buddySubmit,
         setBuddySubmit,
         honbobSubmit,
@@ -96,6 +103,7 @@ const App = () => {
                 />
               )}
               {modalContent === "selectMajor" && <Major />}
+              {modalContent === "selectDoubleMajor" && <Major id="double" />}
             </>
           )}
           <Header />
@@ -116,6 +124,7 @@ const App = () => {
               <Route path="/honbob/start1" element={<HonbobStart1 />} />
               <Route path="/login" element={<SignIn />} />
               <Route path="/login/signup" element={<SignUp />} />
+              <Route path="/login/auth" element={<Auth />} />
               <Route path="/login/findid" element={<FindId />} />
               <Route path="/login/resetpwd" element={<ResetPwd />} />
               <Route path="/login/agree" element={<Agree />} />

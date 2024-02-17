@@ -10,27 +10,50 @@ import close from '../../Assets/close.png';
 
 import search from '../../Assets/search.png';
 
-const Major = () => {
+const Major = (props) => {
     const { setModalOpen } = useContext(MyContext);
     const { setModalContent } = useContext(MyContext);
     const { setMajorValue } = useContext(MyContext);
     const { setCollegeValue } = useContext(MyContext);
+    const { setDoubleMajorValue } = useContext(MyContext);
+    const { setDoubleCollegeValue } = useContext(MyContext);
+
 
     const [selectedCollege, setSelectedCollege] = useState('');
     const [selectedMajor, setSelectedMajor] = useState('');
+    const [seletedDoubleC, setSelectedDoubleC] = useState('');
+    const [selectedDoubleM, setSelectedDoubleM] = useState('');
     const [isCollegeClicked, setIsCollegeClicked] = useState(false);
     const [searchContent, setSearchContent] = useState('');
+
+    const isDouble = props.id === "double";
+
 
     useEffect(() => {
         if (selectedMajor && selectedCollege) {
             console.log(selectedCollege);
             console.log(selectedMajor);
-
             setCollegeValue(selectedCollege);
             setMajorValue(selectedMajor);
             cancelHandler();
         }
     }, [selectedMajor, selectedCollege]);
+
+    useEffect(() => {
+        if (seletedDoubleC && selectedDoubleM) {
+            console.log(selectedDoubleM);
+            console.log(seletedDoubleC);
+            setDoubleCollegeValue(seletedDoubleC);
+            setDoubleMajorValue(selectedDoubleM);
+            cancelHandler();
+        }
+    }, [seletedDoubleC, selectedDoubleM]);
+
+    const handleDoubleCollege = (text) => {
+        setSelectedCollege(text);
+        setSelectedDoubleC(text);
+        setIsCollegeClicked(true);
+    }
 
     const handleCollegeClick = (text) => {
         setSelectedCollege(text);
@@ -40,6 +63,10 @@ const Major = () => {
     const handleMajorClick = (text) => {
         setSelectedMajor(text);
     };
+
+    const handleDoubleMajor = (text) => {
+        setSelectedDoubleM(text);
+    }
 
 
     const BackHandler = () => {
@@ -93,71 +120,153 @@ const Major = () => {
 
 
     return <div>
-        <BottomModal>
-            <header className={style.header}>
-                <div className={style.left}>
-                    {isCollegeClicked ?
-                        <button
-                            className={style.back}
-                            onClick={BackHandler}>
-                            <img src={back} alt="back" />
-                        </button>
-                        :
-                        <div></div>
-                    }
-                    <p className={style.title} onClick={BackHandler}>단과대학 선택</p>
+        {isDouble ? (
+            //복수전공 선택일 경우
+            <BottomModal>
+                <header className={style.header}>
+                    <div className={style.left}>
+                        {isCollegeClicked ?
+                            <button
+                                className={style.back}
+                                onClick={BackHandler}>
+                                <img src={back} alt="back" />
+                            </button>
+                            :
+                            <div></div>
+                        }
+                        <p className={style.title} onClick={BackHandler}>단과대학 선택</p>
+                    </div>
+                    <button className={style.close} onClick={cancelHandler}>
+                        <img src={close} alt="close" />
+                    </button>
+
+                </header>
+
+                <div className={style.search_container}>
+                    <div className={style.search_wrapper}>
+                        <img src={search} alt='search' />
+                        <input className={style.search_input} type='text' placeholder='검색어 입력' onChange={handleInput} />
+                    </div>
                 </div>
-                <button className={style.close} onClick={cancelHandler}>
-                    <img src={close} alt="close" />
-                </button>
 
-            </header>
+                {/* College고를경우 */}
+                {!searchContent && (
+                    <ul className={style.ul} style={Collegeselect}>
+                        {collegeDummy.college.map((element) => (
+                            <li
+                                key={element.id}
+                                className={`${style.list} ${selectedCollege === element.text ? style.selected : ''}`}
+                                onClick={() => handleDoubleCollege(element.text)}>
+                                {element.text}
+                            </li>
+                        ))}
+                    </ul>
+                )}
+                {/* 학과고를경우 */}
+                {selectedCollege && EIE[selectedCollege] && !searchContent && (
+                    <ul className={style.ul} style={Major}>
+                        {EIE[selectedCollege].map((dummy, index) => (
+                            <li
+                                key={index}
+                                className={`${style.list} ${selectedCollege === index.text ? style.selected : ''}`}
+                                onClick={() => handleDoubleMajor(dummy)}
+                            >{dummy}</li>
+                        ))}
+                    </ul>
+                )}
 
-            <div className={style.search_container}>
-                <div className={style.search_wrapper}>
-                    <img src={search} alt='search' />
-                    <input className={style.search_input} type='text' placeholder='검색어 입력' onChange={handleInput} />
+                {/* 검색해서 학과 고를 경우 */}
+                {searchContent && (
+                    <ul className={style.ul} style={Search} >
+                        {foundValues.map((val, index) => (
+                            <li
+                                key={index}
+                                className={style.list}
+                            >{val}</li>
+                        ))}
+                    </ul>
+                )}
+
+            </BottomModal>
+
+        ) : (
+            //첫 단과대/학과 선택일 경우
+            <BottomModal>
+                <header className={style.header}>
+                    <div className={style.left}>
+                        {isCollegeClicked ?
+                            <button
+                                className={style.back}
+                                onClick={BackHandler}>
+                                <img src={back} alt="back" />
+                            </button>
+                            :
+                            <div></div>
+                        }
+                        <p className={style.title} onClick={BackHandler}>단과대학 선택</p>
+                    </div>
+                    <button className={style.close} onClick={cancelHandler}>
+                        <img src={close} alt="close" />
+                    </button>
+
+                </header>
+
+                <div className={style.search_container}>
+                    <div className={style.search_wrapper}>
+                        <img src={search} alt='search' />
+                        <input className={style.search_input} type='text' placeholder='검색어 입력' onChange={handleInput} />
+                    </div>
                 </div>
-            </div>
-            {/* College고를경우 */}
-            {!searchContent && (
-                <ul className={style.ul} style={Collegeselect}>
-                    {collegeDummy.college.map((element) => (
-                        <li
-                            key={element.id}
-                            className={`${style.list} ${selectedCollege === element.text ? style.selected : ''}`}
-                            onClick={() => handleCollegeClick(element.text)}>
-                            {element.text}
-                        </li>
-                    ))}
-                </ul>
-            )}
-            {/* 학과고를경우 */}
-            {selectedCollege && EIE[selectedCollege] && !searchContent && (
-                <ul className={style.ul} style={Major}>
-                    {EIE[selectedCollege].map((dummy, index) => (
-                        <li
-                            key={index}
-                            className={`${style.list} ${selectedCollege === index.text ? style.selected : ''}`}
-                            onClick={() => handleMajorClick(dummy)}
-                        >{dummy}</li>
-                    ))}
-                </ul>
-            )}
 
-            {/* 검색해서 학과 고를 경우 */}
-            {searchContent && (
-                <ul className={style.ul} style={Search} >
-                    {foundValues.map((val, index) => (
-                        <li
-                            key={index}
-                            className={style.list}
-                        >{val}</li>
-                    ))}
-                </ul>
-            )}
+                {/* College고를경우 */}
+                {
+                    !searchContent && (
+                        <ul className={style.ul} style={Collegeselect}>
+                            {collegeDummy.college.map((element) => (
+                                <li
+                                    key={element.id}
+                                    className={`${style.list} ${selectedCollege === element.text ? style.selected : ''}`}
+                                    onClick={() => handleCollegeClick(element.text)}>
+                                    {element.text}
+                                </li>
+                            ))}
+                        </ul>
+                    )
+                }
+                {/* 학과고를경우 */}
+                {
+                    selectedCollege && EIE[selectedCollege] && !searchContent && (
+                        <ul className={style.ul} style={Major}>
+                            {EIE[selectedCollege].map((dummy, index) => (
+                                <li
+                                    key={index}
+                                    className={`${style.list} ${selectedCollege === index.text ? style.selected : ''}`}
+                                    onClick={() => handleMajorClick(dummy)}
+                                >{dummy}</li>
+                            ))}
+                        </ul>
+                    )
+                }
 
-        </BottomModal>
+                {/* 검색해서 학과 고를 경우 */}
+                {
+                    searchContent && (
+                        <ul className={style.ul} style={Search} >
+                            {foundValues.map((val, index) => (
+                                <li
+                                    key={index}
+                                    className={style.list}
+                                >{val}</li>
+                            ))}
+                        </ul>
+                    )
+                }
+
+            </BottomModal >
+        )
+
+        }
+
     </div>
 };
 

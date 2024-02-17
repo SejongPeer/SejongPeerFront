@@ -55,13 +55,21 @@ const Agree = () => {
     }
   };
 
-  const goSignUp = () => {
+  // const goSignUp = () => {
+  //   if (agree !== true) {
+  //     alert("모두 동의를 해야 회원가입이 가능합니다.");
+  //   } else {
+  //     navigate("/login/signup");
+  //   }
+  // };
+  const moveToAuth = () => {
     if (agree !== true) {
       alert("모두 동의를 해야 회원가입이 가능합니다.");
     } else {
-      navigate("/login/signup");
+      navigate("/login/auth");
+      // navigate("/checksejong");
     }
-  };
+  }
 
   console.log("agree " + agree);
   console.log("agree1 " + agree1);
@@ -119,7 +127,7 @@ const Agree = () => {
           </button>
         </div>
 
-        <button onClick={goSignUp} className={sub.submitBtn}>
+        <button onClick={moveToAuth} className={sub.submitBtn}>
           동의 및 회원가입
         </button>
       </div>

@@ -62,6 +62,7 @@ const SignIn = () => {
       localStorage.setItem("phoneNum", data.user.phoneNum);
       localStorage.setItem("sejongEmail", data.user.sejongEmail);
       localStorage.setItem("studentId", data.user.studentId);
+
       alert("로그인 성공 메인페이지로 이동합니다.");
       navigate("/main");
     } catch (error) {
