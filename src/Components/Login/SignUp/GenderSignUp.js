@@ -7,13 +7,13 @@ const GenderSignUp = (props) => {
     const maleClickHandler = (e) => {
         setMaleClicked(true);
         setFemaleClicked(false);
-        props.genderData("male");
+        props.genderData("MALE");
         e.preventDefault();
     }
     const femaleClickHandler = (e) => {
         setMaleClicked(false);
         setFemaleClicked(true);
-        props.genderData("female");
+        props.genderData("FEMALE");
         e.preventDefault();
     }
 

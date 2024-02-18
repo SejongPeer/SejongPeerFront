@@ -49,22 +49,6 @@ const InputTextBox = (props) => {
     } else if (props.id === "name") {
       props.nameData(inputValue);
 
-      //Birth
-    } else if (props.id === "birth") {
-      console.log("Original Input:", inputValue);
-      let b = inputValue.replace(/[^0-9]/g, "");
-      console.log("Original Input:1111", b);
-      props.birthData(b);
-
-      if (b.length < 8) {
-        props.errorHandler("* 생년월일은 8자로 작성해주세요");
-      } else if (b.length === 8) {
-        props.errorHandler("");
-      } else if (b.length > 8) {
-        props.errorHandler("* 생년월일은 8자로 작성해주세요");
-        event.preventDefault();
-      }
-
       //Kakaoid
     } else if (props.id === "kakaoid") {
       props.kakaoData(inputValue);
