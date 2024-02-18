@@ -10,9 +10,13 @@ const SignUp = () => {
 
   const [idValue, setIdValue] = useState("");
   const [pwdValue, setPwdValue] = useState("");
-  const [emailValue, setEmailValue] = useState("");
+  const [pwdCheckValue, setPwdCheckValue] = useState("");  //비밀번호 확인 추가
+
   const [nameValue, setNameValue] = useState("");
-  const [birthValue, setBirthValue] = useState("");
+  const [studentNumberValue, setStudentNumberValue] = useState("");
+  const [gradeValue, setGradeValue] = useState("");
+
+  const [nicknameValue, setNicknameValue] = useState("");
   const [kakaoidValue, setKakaoValue] = useState("");
   const [phoneNumberValue, setPhoneNumberValue] = useState("");
   const [genderValue, setGenderValue] = useState("");
@@ -20,9 +24,8 @@ const SignUp = () => {
   const [majorValue, setMajorValue] = useState("");
   const [doublemajorValue, setDoubleMajorValue] = useState("");
   const [doubleCollegeValue, setDoubleCollegeValue] = useState("");
-  const [studentNumberValue, setStudentNumberValue] = useState("");
-  const [gradeValue, setGradeValue] = useState("");
-  const [nicknameValue, setNicknameValue] = useState("");
+  //const [emailValue, setEmailValue] = useState("");
+  //const [birthValue, setBirthValue] = useState("");
 
   const [error, setError] = useState("가입완료 되었습니다.");
   const [step, setStep] = useState(1);
@@ -54,14 +57,12 @@ const SignUp = () => {
   const pwdData = (userPwd) => {
     setPwdValue(userPwd);
   };
-  const emailData = (userEmail) => {
-    setEmailValue(userEmail);
+  const pwdCheckData = (userPwd) => {
+    setPwdCheckValue(userPwd);
   };
+  
   const nameData = (userName) => {
     setNameValue(userName);
-  };
-  const birthData = (userBirth) => {
-    setBirthValue(userBirth);
   };
   const kakaoData = (userKakaoId) => {
     setKakaoValue(userKakaoId);
@@ -96,63 +97,81 @@ const SignUp = () => {
   const nickNameData = (userNickName) => {
     setNicknameValue(userNickName);
   }//추가
-
+  // const emailData = (userEmail) => {
+  //   setEmailValue(userEmail);
+  // };
+  // const birthData = (userBirth) => {
+  //   setBirthValue(userBirth);
+  // };
 
   //POST
   async function submitHandler(e) {
     console.log("-------------------------------");
     console.log("idValue : " + idValue);
     console.log("pwdValue : " + pwdValue);
-    console.log("emailValue : " + emailValue);
+    console.log("pwdCheckValue : " + pwdCheckValue);
     console.log("nameValue : " + nameValue);
-    console.log("birthValue : " + birthValue);
+    console.log("studentNumberValue : "+ studentNumberValue);
+    console.log("gradeValue : " + gradeValue);
+
+    console.log("nicknameValue : " + nicknameValue);
     console.log("kakaoidValue : " + kakaoidValue);
     console.log("phoneNumberValue : " + phoneNumberValue);
     console.log("genderValue : " + genderValue);
     console.log("collegeValue : " + collegeValue);
     console.log("majorValue : " + majorValue);
-    console.log("studentNumberValue : " + studentNumberValue);
-    console.log("gradeValue : " + gradeValue);
-    console.log("nicknameValue : " + nicknameValue);
+    console.log("doubleCollegeValue : " + doublemajorValue);
+    console.log("doubleCollegeValue : " + doubleCollegeValue);
+
+    //console.log("emailValue : " + emailValue);
+    //console.log("birthValue : " + birthValue);
 
     if (
       idValue === "" ||
       pwdValue === "" ||
-      emailValue === "" ||
+      pwdCheckValue === "" ||
       nameValue === "" ||
-      birthValue === "" ||
+      studentNumberValue === "" ||
+      gradeValue === "" ||
+
+      nicknameValue === "" ||
       kakaoidValue === "" ||
       phoneNumberValue === "" ||
       genderValue === "" ||
       collegeValue === "" ||
-      majorValue === "" ||
-      studentNumberValue === "" ||
-      gradeValue === "" ||
-      nicknameValue === ""
+      majorValue === "" 
+      // doublemajorValue === "" || 얘네는 선택사항
+      // doubleCollegeValue === ""
+      //emailValue === "" ||
+      //birthValue === "" ||
     ) {
       alert("모든 양식의 작성을 완료해주세요");
       e.preventDefault();
     } else {
       if (error === "가입완료 되었습니다.") {
         const join = {
-          username: idValue,
+          account: idValue,
           password: pwdValue,
-          email: emailValue,
-          koreanName: nameValue,
-          birthday: birthValue,
-          kakaoId: kakaoidValue,
+          passwordCheck: pwdCheckValue,
+          name: nameValue,
+          studentId: studentNumberValue,
+          grade: gradeValue,
+
+          nickname: nicknameValue,
+          kakaoAccount: kakaoidValue,
           phoneNumber: phoneNumberValue,
           gender: genderValue,
           college: collegeValue,
           major: majorValue,
-          studentNumber: studentNumberValue,
-          grade: gradeValue,
-          nickname: nicknameValue,
+          subMajor: doublemajorValue,
+          subCollege: doubleCollegeValue,
+          //email: emailValue,
+          //birthday: birthValue,
         };
 
         try {
           const response = await fetch(
-            process.env.REACT_APP_BACK_SERVER + "/apply/register",
+            process.env.REACT_APP_BACK_SERVER + "/member/sign-up",
             {
               method: "POST",
               body: JSON.stringify(join),
@@ -187,12 +206,6 @@ const SignUp = () => {
   }
 
 
-  useEffect(() => {
-    setFadeEffect('fade-in transition-effect'); // CSS 클래스 추가
-    const timeoutId = setTimeout(() => setFadeEffect(''), 500); // 효과 지속 시간 후 클래스 제거
-    return () => clearTimeout(timeoutId);
-  }, [step]);
-
   return (
     <div className={style.container}>
       <h2 className={style.h2}>기본정보</h2>
@@ -204,11 +217,12 @@ const SignUp = () => {
               <SignUpElement id="pwd" title="비밀번호(10자이상의 영문, 숫자)" name="비밀번호 입력" pwdData={pwdData} signUpErrorHandler={signUpErrorHandler} />
             </div>
             <div className="special-gap">
-              <SignUpElement id="pwd" name="비밀번호 확인" pwdData={pwdData} signUpErrorHandler={signUpErrorHandler}
+              <SignUpElement id="pwd" name="비밀번호 확인" pwdData={pwdCheckData} signUpErrorHandler={signUpErrorHandler}
               />
             </div>
             <SignUpElement id="name" title="이름" name="이름 입력" nameData={nameData} signUpErrorHandler={signUpErrorHandler} />
             <SignUpElement id="studentNum" title="학번" name="학번입력 (ex: 22)" studentNumData={studentNumData} signUpErrorHandler={signUpErrorHandler} />
+            <SignUpElement id="Grade" title="학년" name="학년입력 (ex: 2)" gradeValue={gradeData} signUpErrorHandler={signUpErrorHandler} />
             <button className={style.submitBtn} onClick={nextStepHandler}>다음</button>
           </>
         )}

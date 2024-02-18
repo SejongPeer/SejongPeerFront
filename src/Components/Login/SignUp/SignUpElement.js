@@ -14,7 +14,6 @@ const SignUpElement = (props) => {
   const [isID, setIsID] = useState(false);
   const [isNickname, setIsNickname] = useState(false);
 
-
   const isGender = props.id === "gender";
   const isMajor = props.id === "major";
   const isDoubleMajor = props.id === "double_major";
