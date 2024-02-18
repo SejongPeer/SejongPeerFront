@@ -120,7 +120,7 @@ const SignUp = () => {
     console.log("genderValue : " + genderValue);
     console.log("collegeValue : " + collegeValue);
     console.log("majorValue : " + majorValue);
-    console.log("doubleCollegeValue : " + doublemajorValue);
+    console.log("doublemajorValue : " + doublemajorValue);
     console.log("doubleCollegeValue : " + doubleCollegeValue);
 
     //console.log("emailValue : " + emailValue);
@@ -222,7 +222,7 @@ const SignUp = () => {
             </div>
             <SignUpElement id="name" title="이름" name="이름 입력" nameData={nameData} signUpErrorHandler={signUpErrorHandler} />
             <SignUpElement id="studentNum" title="학번" name="학번입력 (ex: 22)" studentNumData={studentNumData} signUpErrorHandler={signUpErrorHandler} />
-            <SignUpElement id="Grade" title="학년" name="학년입력 (ex: 2)" gradeValue={gradeData} signUpErrorHandler={signUpErrorHandler} />
+            <SignUpElement id="Grade" title="학년" name="학년입력 (ex: 2)" gradeData={gradeData} signUpErrorHandler={signUpErrorHandler} />
             <button className={style.submitBtn} onClick={nextStepHandler}>다음</button>
           </>
         )}

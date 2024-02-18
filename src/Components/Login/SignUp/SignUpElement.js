@@ -34,7 +34,7 @@ const SignUpElement = (props) => {
   useEffect(() => {
     setIsNickname(props.id === "nickname"); // 닉네임 필드 식별
     setIsID(props.id === "userId");
-    setIsEmail(props.id === "email");
+    //setIsEmail(props.id === "email");
   }, [props.id]);
 
   return (
@@ -53,14 +53,7 @@ const SignUpElement = (props) => {
         <IDCheckBox
           id={props.id}
           name={props.name}
-          idData={props.userid}
-          errorHandler={errorHandler}
-        />
-      ) : isEmail ? (
-        <EmailBox
-          id={props.id}
-          name={props.name}
-          emailData={props.emailData}
+          idData={props.idData}
           errorHandler={errorHandler}
         />
       ) : isGender ? (
@@ -86,20 +79,20 @@ const SignUpElement = (props) => {
       ) :
         (
           <InputTextBox
-            //id={props.id}
+            id={props.id}
+            idData={props.idData}
             name={props.name}
             errorHandler={errorHandler}
-            //idData={props.idData}
             pwdData={props.pwdData}
+            pwdCheckData={props.pwdCheckData}
             nameData={props.nameData}
-            birthData={props.birthData}
+            //birthData={props.birthData}
             kakaoData={props.kakaoData}
             phoneNumData={props.phoneNumData}
             studentNumData={props.studentNumData}
             gradeData={props.gradeData}
           />
         )}
-
       {isError && <p className={style.error}>{isError}</p>}
     </div>
   );
