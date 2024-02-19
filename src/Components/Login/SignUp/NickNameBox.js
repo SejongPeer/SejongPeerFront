@@ -8,12 +8,12 @@ const NickNameBox = (props) => {
     // 사용자 입력 처리 핸들러
     const handleNicknameChange = (event) => {
         setNickname(event.target.value);
-        if (props.idData) props.idData(event.target.value); // 상위 컴포넌트로 입력 데이터를 전달
+        if (props.nickNameData) props.nickNameData(event.target.value); // 상위 컴포넌트로 입력 데이터를 전달
     };
 
     // 닉네임 중복 확인 요청을 처리하는 핸들러
     const checkNicknameDuplicate = async () => {
-       
+
         try {
             // 서버에 아이디 중복 확인 요청. 가정된 API 엔드포인트: '/api/usernickname/check'
             const response = await fetch('/api/usernickname/check', {
@@ -35,18 +35,19 @@ const NickNameBox = (props) => {
         } catch (error) {
             console.error('There was an error!', error);
             alert('오류가 발생했습니다. 다시 시도해주세요.');
-        }    };
+        }
+    };
 
     return (
         <div className={style.relative}>
             <div className={style.emailContainer}>
-            <input
-                className={style.inputText}
-                value={usernickname}
-                onChange={handleNicknameChange}
-                placeholder="닉네임을 입력해주세요"
-            />
-            <button className={style.idcheckBtn} onClick={checkNicknameDuplicate}>중복 확인</button>
+                <input
+                    className={style.inputText}
+                    value={usernickname}
+                    onChange={handleNicknameChange}
+                    placeholder="닉네임을 입력해주세요"
+                />
+                <button className={style.idcheckBtn} onClick={checkNicknameDuplicate}>중복 확인</button>
             </div>
         </div>
     );

@@ -9,7 +9,7 @@ const InputTextBox = (props) => {
   function handleKeyPress(event) {
     const charCode = event.which ? event.which : event.keyCode;
     if (charCode > 31 && (charCode < 48 || charCode > 57)) {
-      event.preventDefault(); 
+      event.preventDefault();
     }
   }
 
@@ -24,7 +24,7 @@ const InputTextBox = (props) => {
       } else {
         props.errorHandler("* 아이디는 8자 이상 작성해주세요");
       }
-    //패스워드 
+      //패스워드 
     } else if (props.id === "pwd") {
       props.pwdData(inputValue);
       // 영어와 숫자를 모두 포함하는지 확인하는 정규 표현식
@@ -79,7 +79,7 @@ const InputTextBox = (props) => {
         props.errorHandler("");
       } else {
         props.errorHandler("* 학번은 1자로 작성해주세요");
-      }    
+      }
     }//닉네임 
     else if (props.id === "nickname") {
       props.nickNameData(inputValue);
@@ -115,7 +115,7 @@ const InputTextBox = (props) => {
     }//(복수전공)학과 
     else if (props.id === "double_college") {
       props.doubleCollegeData(inputValue);
-    } 
+    }
     else {
       console.log("Unhandled input type: ", props.id);
     }

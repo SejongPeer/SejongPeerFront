@@ -34,6 +34,9 @@ const SignUpElement = (props) => {
   useEffect(() => {
     setIsNickname(props.id === "nickname"); // 닉네임 필드 식별
     setIsID(props.id === "userId");
+    console.log("이름 : ", props.title);
+    console.log("nicknameState=", isNickname);
+    console.log("IdState=", isID);
     //setIsEmail(props.id === "email");
   }, [props.id]);
 
@@ -47,7 +50,7 @@ const SignUpElement = (props) => {
           name={props.name}
           value={props.nickNameData} // 수정: 닉네임 데이터를 올바르게 전달
           errorHandler={errorHandler}
-          idData={props.idData} // 닉네임 데이터를 상위 컴포넌트로 전달하는 함수
+          nickNameData={props.nickNameData} // 닉네임 데이터를 상위 컴포넌트로 전달하는 함수
         />
       ) : isID ? (
         <IDCheckBox
@@ -90,7 +93,7 @@ const SignUpElement = (props) => {
             phoneNumData={props.phoneNumData}
             studentNumData={props.studentNumData}
             gradeData={props.gradeData}
-            //birthData={props.birthData}
+          //birthData={props.birthData}
 
           />
         )}

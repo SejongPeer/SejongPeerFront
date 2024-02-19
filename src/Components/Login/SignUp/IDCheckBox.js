@@ -7,16 +7,17 @@ const IDCheckBox = (props) => {
     // 사용자 입력 처리 핸들러
     const handleUsernameChange = (event) => {
         setUsername(event.target.value);
+        if (props.idData) props.idData(event.target.value); // 상위 컴포넌트로 입력 데이터를 전달
     };
-    
+
     // 아이디 중복 확인 요청을 처리하는 핸들러
     const checkUsernameDuplicate = async () => {
         if (username.length >= 8) {
             props.errorHandler("");
-          } else {
+        } else {
             props.errorHandler("* 아이디는 8자 이상 작성해주세요");
-          }
-    
+        }
+
         try {
             // 서버에 아이디 중복 확인 요청. 가정된 API 엔드포인트: '/api/username/check'
             const response = await fetch('/api/username/check', {
@@ -44,13 +45,13 @@ const IDCheckBox = (props) => {
     return (
         <div className={style.relative}>
             <div className={style.emailContainer}>
-            <input
-                className={style.inputText}
-                value={props.userid}
-                onChange={handleUsernameChange}
-                placeholder="아이디를 입력하세요 (8자 이상)"
-            />
-            <button className={style.idcheckBtn} onClick={checkUsernameDuplicate}>중복 확인</button>
+                <input
+                    className={style.inputText}
+                    value={props.userid}
+                    onChange={handleUsernameChange}
+                    placeholder="아이디를 입력하세요 (8자 이상)"
+                />
+                <button className={style.idcheckBtn} onClick={checkUsernameDuplicate}>중복 확인</button>
             </div>
         </div>
     );
