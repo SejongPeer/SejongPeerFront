@@ -8,6 +8,7 @@ const IDCheckBox = (props) => {
     const handleUsernameChange = (event) => {
         setUsername(event.target.value);
         if (props.idData) props.idData(event.target.value); // 상위 컴포넌트로 입력 데이터를 전달
+
     };
 
     // 아이디 중복 확인 요청을 처리하는 핸들러

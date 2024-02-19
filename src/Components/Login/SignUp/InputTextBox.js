@@ -4,8 +4,8 @@ import style from "./InputTextBox.module.css";
 const InputTextBox = (props) => {
   const [inputNum, setInputNum] = useState(false);
   //const [birthNum, setBirthNum] = useState("");
-  const isPWD = props.id === "pwd" || "pwdCheck";
-
+  const isPWD = props.id === "pwd" || props.id === "pwdCheck";
+  
   function handleKeyPress(event) {
     const charCode = event.which ? event.which : event.keyCode;
     if (charCode > 31 && (charCode < 48 || charCode > 57)) {
@@ -62,13 +62,13 @@ const InputTextBox = (props) => {
     }//학번 
     else if (props.id === "studentNum") {
       props.studentNumData(inputValue);
-      if (inputValue.length < 2) {
-        props.errorHandler("* 학번은 2자로 작성해주세요");
-      } else if (inputValue.length === 2) {
-        props.errorHandler("");
-      } else {
-        props.errorHandler("* 학번은 2자로 작성해주세요");
-      }
+      // if (inputValue.length < 2) {
+      //   props.errorHandler("* 학번은 2자로 작성해주세요");
+      // } else if (inputValue.length === 2) {
+      //   props.errorHandler("");
+      // } else {
+      //   props.errorHandler("* 학번은 2자로 작성해주세요");
+      // }
       //학년
     } else if (props.id === "grade") {
       console.log("학년 입력 값:", inputValue); // 사용자 입력 값을 콘솔에 출력
