@@ -31,7 +31,6 @@ const SignUp = () => {
   const [step, setStep] = useState(1);
   const [fadeEffect, setFadeEffect] = useState('');
   const [doubleMajorChecked, setDoubleMajorChecked] = useState(false); // Checkbox state for 복수/부전공
-  const [date1, setDate1] = useState("2022/12/12 23:10:43");
 
 
   const navigate = useNavigate();
@@ -54,7 +53,7 @@ const SignUp = () => {
   const idData = (userId) => {
     setIdValue(userId);
   };
-  const pwdData = (userPwd) => {
+  const pwdData =  (userPwd) => {
     setPwdValue(userPwd);
   };
   const pwdCheckData = (userPwd) => {
@@ -123,7 +122,7 @@ const SignUp = () => {
     console.log("majorValue : " + majorValue);
     console.log("doublemajorValue : " + doublemajorValue);
     console.log("doubleCollegeValue : " + doubleCollegeValue);
-    console.log("날짜:", date1);
+
     //console.log("emailValue : " + emailValue);
     //console.log("birthValue : " + birthValue);
 
@@ -183,7 +182,6 @@ const SignUp = () => {
           );
           const data = await response.json();
           console.log(data);
-
           if (!response.ok) {
             throw new Error(data.message);
           }
@@ -218,8 +216,7 @@ const SignUp = () => {
               <SignUpElement id="pwd" title="비밀번호(10자이상의 영문, 숫자)" name="비밀번호 입력" pwdData={pwdData} signUpErrorHandler={signUpErrorHandler} />
             </div>
             <div className="special-gap">
-              <SignUpElement id="pwdCheck" name="비밀번호 확인" pwdCheckData={pwdCheckData} signUpErrorHandler={signUpErrorHandler}
-              />
+              <SignUpElement id="pwdCheck" name="비밀번호 확인" pwdCheckData={pwdCheckData} signUpErrorHandler={signUpErrorHandler}/>
             </div>
             <SignUpElement id="name" title="이름" name="이름 입력" nameData={nameData} signUpErrorHandler={signUpErrorHandler} />
             <SignUpElement id="studentNum" title="학번" name="학번입력 (ex: 22)" studentNumData={studentNumData} signUpErrorHandler={signUpErrorHandler} />
@@ -230,7 +227,7 @@ const SignUp = () => {
       </div>
       <div className={`${style.form} ${fadeEffect}`}>
         {step === 2 && (
-          <>
+          <> 
             <SignUpElement id="nickname" title="닉네임 입력" name="닉네임 입력" nickNameData={nickNameData} signUpErrorHandler={signUpErrorHandler} />
             <SignUpElement id="kakaoid" title="카카오톡 아이디" name="카카오톡 아이디 입력" kakaoData={kakaoData} signUpErrorHandler={signUpErrorHandler} />
             <SignUpElement id="phoneNum" title="전화번호" name="전화번호 -없이 입력" phoneNumData={phoneNumData} signUpErrorHandler={signUpErrorHandler} />

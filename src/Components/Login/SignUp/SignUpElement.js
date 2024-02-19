@@ -9,7 +9,6 @@ import IDCheckBox from "./IDCheckBox";
 import NickNameBox from "./NickNameBox";
 
 const SignUpElement = (props) => {
-  //const [isEmail, setIsEmail] = useState(false);
   const [isError, setIsError] = useState("");
   const [isID, setIsID] = useState(false);
   const [isNickname, setIsNickname] = useState(false);
@@ -37,7 +36,6 @@ const SignUpElement = (props) => {
     console.log("이름 : ", props.title);
     console.log("nicknameState=", isNickname);
     console.log("IdState=", isID);
-    //setIsEmail(props.id === "email");
   }, [props.id]);
 
   return (
@@ -93,8 +91,6 @@ const SignUpElement = (props) => {
             phoneNumData={props.phoneNumData}
             studentNumData={props.studentNumData}
             gradeData={props.gradeData}
-          //birthData={props.birthData}
-
           />
         )}
       {isError && <p className={style.error}>{isError}</p>}
