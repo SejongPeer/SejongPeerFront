@@ -162,11 +162,9 @@ const SignUp = () => {
           subMajor: doublemajorValue,
           grade: gradeValue,
           gender: genderValue,
-          birthDay: date1,
           phoneNumber: phoneNumberValue,
           nickname: nicknameValue,
           kakaoAccount: kakaoidValue,
-
 
           //email: emailValue,
           //birthday: birthValue,
@@ -178,9 +176,9 @@ const SignUp = () => {
             {
               method: "POST",
               body: JSON.stringify(join),
-              // headers: {
-              //   "Content-Type": "application/json",
-              // },
+              headers: {
+                "Content-Type": "application/json",
+              },
             }
           );
           const data = await response.json();
