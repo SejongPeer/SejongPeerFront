@@ -31,7 +31,7 @@ const SignUp = () => {
   const [step, setStep] = useState(1);
   const [fadeEffect, setFadeEffect] = useState('');
   const [doubleMajorChecked, setDoubleMajorChecked] = useState(false); // Checkbox state for 복수/부전공
-
+  const [date1, setDate1] = useState("2022/12/12 23:10:43");
 
 
   const navigate = useNavigate();
@@ -60,7 +60,7 @@ const SignUp = () => {
   const pwdCheckData = (userPwd) => {
     setPwdCheckValue(userPwd);
   };
-  
+
   const nameData = (userName) => {
     setNameValue(userName);
   };
@@ -104,6 +104,7 @@ const SignUp = () => {
   //   setBirthValue(userBirth);
   // };
 
+
   //POST
   async function submitHandler(e) {
     console.log("-------------------------------");
@@ -111,7 +112,7 @@ const SignUp = () => {
     console.log("pwdValue : " + pwdValue);
     console.log("pwdCheckValue : " + pwdCheckValue);
     console.log("nameValue : " + nameValue);
-    console.log("studentNumberValue : "+ studentNumberValue);
+    console.log("studentNumberValue : " + studentNumberValue);
     console.log("gradeValue : " + gradeValue);
 
     console.log("nicknameValue : " + nicknameValue);
@@ -122,7 +123,7 @@ const SignUp = () => {
     console.log("majorValue : " + majorValue);
     console.log("doublemajorValue : " + doublemajorValue);
     console.log("doubleCollegeValue : " + doubleCollegeValue);
-
+    console.log("날짜:", date1);
     //console.log("emailValue : " + emailValue);
     //console.log("birthValue : " + birthValue);
 
@@ -139,7 +140,7 @@ const SignUp = () => {
       phoneNumberValue === "" ||
       genderValue === "" ||
       collegeValue === "" ||
-      majorValue === "" 
+      majorValue === ""
       // doublemajorValue === "" || 얘네는 선택사항
       // doubleCollegeValue === ""
       //emailValue === "" ||
@@ -149,22 +150,24 @@ const SignUp = () => {
       e.preventDefault();
     } else {
       if (error === "가입완료 되었습니다.") {
-        const join = {
+        let join = {
           account: idValue,
           password: pwdValue,
           passwordCheck: pwdCheckValue,
           name: nameValue,
           studentId: studentNumberValue,
-          grade: gradeValue,
-
-          nickname: nicknameValue,
-          kakaoAccount: kakaoidValue,
-          phoneNumber: phoneNumberValue,
-          gender: genderValue,
           college: collegeValue,
           major: majorValue,
-          subMajor: doublemajorValue,
           subCollege: doubleCollegeValue,
+          subMajor: doublemajorValue,
+          grade: gradeValue,
+          gender: genderValue,
+          birthDay: date1,
+          phoneNumber: phoneNumberValue,
+          nickname: nicknameValue,
+          kakaoAccount: kakaoidValue,
+
+
           //email: emailValue,
           //birthday: birthValue,
         };
@@ -175,9 +178,9 @@ const SignUp = () => {
             {
               method: "POST",
               body: JSON.stringify(join),
-              headers: {
-                "Content-Type": "application/json",
-              },
+              // headers: {
+              //   "Content-Type": "application/json",
+              // },
             }
           );
           const data = await response.json();
@@ -230,7 +233,7 @@ const SignUp = () => {
       <div className={`${style.form} ${fadeEffect}`}>
         {step === 2 && (
           <>
-            <SignUpElement id="nickname" title="닉네임 입력" name="닉네임 입력" idData={nickNameData} signUpErrorHandler={signUpErrorHandler} />
+            <SignUpElement id="nickname" title="닉네임 입력" name="닉네임 입력" nickNameData={nickNameData} signUpErrorHandler={signUpErrorHandler} />
             <SignUpElement id="kakaoid" title="카카오톡 아이디" name="카카오톡 아이디 입력" kakaoData={kakaoData} signUpErrorHandler={signUpErrorHandler} />
             <SignUpElement id="phoneNum" title="전화번호" name="전화번호 -없이 입력" phoneNumData={phoneNumData} signUpErrorHandler={signUpErrorHandler} />
             <SignUpElement id="gender" title="성별" name="준비중" genderData={genderData} signUpErrorHandler={signUpErrorHandler} />
