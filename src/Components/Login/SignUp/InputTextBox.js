@@ -4,7 +4,7 @@ import style from "./InputTextBox.module.css";
 const InputTextBox = (props) => {
   const [inputNum, setInputNum] = useState(false);
   //const [birthNum, setBirthNum] = useState("");
-  const isPWD = props.id === "pwd" && "pwdCheck";
+  const isPWD = props.id === "pwd" || "pwdCheck";
 
   function handleKeyPress(event) {
     const charCode = event.which ? event.which : event.keyCode;
@@ -17,6 +17,7 @@ const InputTextBox = (props) => {
     let inputValue = event.target.value;
     //아이디
     if (props.id === "userId") {
+      console.log("User ID 입력 값:", inputValue); // 사용자 입력 값을 콘솔에 출력
       props.idData(inputValue);
       if (inputValue.length >= 8) {
         props.errorHandler("");
@@ -39,8 +40,9 @@ const InputTextBox = (props) => {
       } else {
         props.errorHandler("* 비밀번호는 10자이상으로 작성해주세요");
       }
+      //패스워드 확인
     } else if (props.id === "pwdCheck") {
-      props.pwdData(inputValue);
+      props.pwdCheckData(inputValue);
       // 영어와 숫자를 모두 포함하는지 확인하는 정규 표현식
       const regex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,16}$/;
       if (inputValue.length >= 10) {
@@ -54,11 +56,11 @@ const InputTextBox = (props) => {
       } else {
         props.errorHandler("* 비밀번호는 10자이상으로 작성해주세요");
       }
-      props.pwdCheckData(inputValue);
     }//이름
     else if (props.id === "name") {
       props.nameData(inputValue);
-    } else if (props.id === "studentNum") {
+    }//학번 
+    else if (props.id === "studentNum") {
       props.studentNumData(inputValue);
       if (inputValue.length < 2) {
         props.errorHandler("* 학번은 2자로 작성해주세요");
@@ -67,7 +69,9 @@ const InputTextBox = (props) => {
       } else {
         props.errorHandler("* 학번은 2자로 작성해주세요");
       }
+      //학년
     } else if (props.id === "grade") {
+      console.log("학년 입력 값:", inputValue); // 사용자 입력 값을 콘솔에 출력
       props.gradeData(inputValue);
       if (inputValue.length < 1) {
         props.errorHandler("* 학년은 1자로 작성해주세요");
@@ -76,9 +80,6 @@ const InputTextBox = (props) => {
       } else {
         props.errorHandler("* 학번은 1자로 작성해주세요");
       }    
-    }//학년 
-    else if (props.id === "grade") {
-      props.gradeData(inputValue);
     }//닉네임 
     else if (props.id === "nickname") {
       props.nickNameData(inputValue);
@@ -99,23 +100,24 @@ const InputTextBox = (props) => {
           props.errorHandler("* 전화번호는 11자리로 입력해주세요");
           event.preventDefault();
         }
-      }    } else if (props.id === "gender") {
+      }//성별    
+    } else if (props.id === "gender") {
       props.genderData(inputValue);
-    }//학부 
+    }//단과대
     else if (props.id === "major") {
       props.majorData(inputValue);
-    }//전공 
+    }//학과
     else if (props.id === "college") {
       props.collegeData(inputValue);
-    }//(복수전공)학부 
+    }//(복수전공)단과대
     else if (props.id === "double_major") {
       props.doublemajorData(inputValue);
-    }//(복수전공)전공 
+    }//(복수전공)학과 
     else if (props.id === "double_college") {
       props.doubleCollegeData(inputValue);
     } 
     else {
-      console.warn("Unhandled input type: ", props.id);
+      console.log("Unhandled input type: ", props.id);
     }
   };
 

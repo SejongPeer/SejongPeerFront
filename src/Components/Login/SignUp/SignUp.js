@@ -217,12 +217,12 @@ const SignUp = () => {
               <SignUpElement id="pwd" title="비밀번호(10자이상의 영문, 숫자)" name="비밀번호 입력" pwdData={pwdData} signUpErrorHandler={signUpErrorHandler} />
             </div>
             <div className="special-gap">
-              <SignUpElement id="pwd" name="비밀번호 확인" pwdData={pwdCheckData} signUpErrorHandler={signUpErrorHandler}
+              <SignUpElement id="pwdCheck" name="비밀번호 확인" pwdCheckData={pwdCheckData} signUpErrorHandler={signUpErrorHandler}
               />
             </div>
             <SignUpElement id="name" title="이름" name="이름 입력" nameData={nameData} signUpErrorHandler={signUpErrorHandler} />
             <SignUpElement id="studentNum" title="학번" name="학번입력 (ex: 22)" studentNumData={studentNumData} signUpErrorHandler={signUpErrorHandler} />
-            <SignUpElement id="Grade" title="학년" name="학년입력 (ex: 2)" gradeData={gradeData} signUpErrorHandler={signUpErrorHandler} />
+            <SignUpElement id="grade" title="학년" name="학년입력 (ex: 2)" gradeData={gradeData} signUpErrorHandler={signUpErrorHandler} />
             <button className={style.submitBtn} onClick={nextStepHandler}>다음</button>
           </>
         )}

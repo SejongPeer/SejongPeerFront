@@ -9,7 +9,7 @@ import IDCheckBox from "./IDCheckBox";
 import NickNameBox from "./NickNameBox";
 
 const SignUpElement = (props) => {
-  const [isEmail, setIsEmail] = useState(false);
+  //const [isEmail, setIsEmail] = useState(false);
   const [isError, setIsError] = useState("");
   const [isID, setIsID] = useState(false);
   const [isNickname, setIsNickname] = useState(false);
@@ -23,13 +23,13 @@ const SignUpElement = (props) => {
     props.signUpErrorHandler(error);
   };
 
-  useEffect(() => {
-    if (props.id === "email") {
-      setIsEmail(true);
-    } else {
-      setIsEmail(false);
-    }
-  }, [props.id]);
+  // useEffect(() => {
+  //   if (props.id === "email") {
+  //     setIsEmail(true);
+  //   } else {
+  //     setIsEmail(false);
+  //   }
+  // }, [props.id]);
 
   useEffect(() => {
     setIsNickname(props.id === "nickname"); // 닉네임 필드 식별
@@ -86,11 +86,12 @@ const SignUpElement = (props) => {
             pwdData={props.pwdData}
             pwdCheckData={props.pwdCheckData}
             nameData={props.nameData}
-            //birthData={props.birthData}
             kakaoData={props.kakaoData}
             phoneNumData={props.phoneNumData}
             studentNumData={props.studentNumData}
             gradeData={props.gradeData}
+            //birthData={props.birthData}
+
           />
         )}
       {isError && <p className={style.error}>{isError}</p>}
