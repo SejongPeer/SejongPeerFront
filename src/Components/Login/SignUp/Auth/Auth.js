@@ -28,6 +28,7 @@ const Auth = () => {
                         console.log("인증성공");
                         alert("인증성공!!!!");
                         setName(response.data.result.body.name);
+                        setGrade(response.data.result.body.grade);
                         setStudentNum(Id);
                         navigate("/login/signup");
                     }
@@ -39,6 +40,7 @@ const Auth = () => {
 
     const { name, setName } = useContext(MyContext);
     const { studentNum, setStudentNum } = useContext(MyContext);
+    const { grade, setGrade } = useContext(MyContext);
 
     const handleId = (e) => {
         setId(e.target.value);

@@ -7,12 +7,14 @@ import { MyContext } from "../../../App";
 const SignUp = () => {
 
   const { name, setName } = useContext(MyContext);
+  const { studentNum, setStudentNum } = useContext(MyContext);
+  const { grade, setGrade } = useContext(MyContext);
 
   const [idValue, setIdValue] = useState("");
   const [pwdValue, setPwdValue] = useState("");
   const [pwdCheckValue, setPwdCheckValue] = useState("");  //비밀번호 확인 추가
 
-  const [nameValue, setNameValue] = useState("");
+  const [nameValue, setNameValue] = useState(name);
   const [studentNumberValue, setStudentNumberValue] = useState("");
   const [gradeValue, setGradeValue] = useState("");
 
@@ -53,7 +55,7 @@ const SignUp = () => {
   const idData = (userId) => {
     setIdValue(userId);
   };
-  const pwdData =  (userPwd) => {
+  const pwdData = (userPwd) => {
     setPwdValue(userPwd);
   };
   const pwdCheckData = (userPwd) => {
@@ -216,18 +218,18 @@ const SignUp = () => {
               <SignUpElement id="pwd" title="비밀번호(10자이상의 영문, 숫자)" name="비밀번호 입력" pwdData={pwdData} signUpErrorHandler={signUpErrorHandler} />
             </div>
             <div className="special-gap">
-              <SignUpElement id="pwdCheck" name="비밀번호 확인" pwdCheckData={pwdCheckData} signUpErrorHandler={signUpErrorHandler}/>
+              <SignUpElement id="pwdCheck" name="비밀번호 확인" pwdCheckData={pwdCheckData} signUpErrorHandler={signUpErrorHandler} />
             </div>
-            <SignUpElement id="name" title="이름" name="이름 입력" nameData={nameData} signUpErrorHandler={signUpErrorHandler} />
-            <SignUpElement id="studentNum" title="학번" name="학번입력 (ex: 22)" studentNumData={studentNumData} signUpErrorHandler={signUpErrorHandler} />
-            <SignUpElement id="grade" title="학년" name="학년입력 (ex: 2)" gradeData={gradeData} signUpErrorHandler={signUpErrorHandler} />
+            <SignUpElement id="name" title="이름" name={name} nameData={nameData} signUpErrorHandler={signUpErrorHandler} />
+            <SignUpElement id="studentNum" title="학번" name={studentNum} studentNumData={studentNumData} signUpErrorHandler={signUpErrorHandler} />
+            <SignUpElement id="grade" title="학년" name={grade} gradeData={gradeData} signUpErrorHandler={signUpErrorHandler} />
             <button className={style.submitBtn} onClick={nextStepHandler}>다음</button>
           </>
         )}
       </div>
       <div className={`${style.form} ${fadeEffect}`}>
         {step === 2 && (
-          <> 
+          <>
             <SignUpElement id="nickname" title="닉네임 입력" name="닉네임 입력" nickNameData={nickNameData} signUpErrorHandler={signUpErrorHandler} />
             <SignUpElement id="kakaoid" title="카카오톡 아이디" name="카카오톡 아이디 입력" kakaoData={kakaoData} signUpErrorHandler={signUpErrorHandler} />
             <SignUpElement id="phoneNum" title="전화번호" name="전화번호 -없이 입력" phoneNumData={phoneNumData} signUpErrorHandler={signUpErrorHandler} />

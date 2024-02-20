@@ -59,6 +59,7 @@ const App = () => {
   const [isLogined, setIsLogined] = useState(false);
   const [name, setName] = useState('');
   const [studentNum, setStudentNum] = useState('');
+  const [grade, setGrade] = useState('');
   const [peerId, setPeerId] = useState('');
 
   return (
@@ -85,6 +86,8 @@ const App = () => {
         isLogined,
         name,
         setName,
+        grade,
+        setGrade,
         studentNum,
         setStudentNum,
         peerId,

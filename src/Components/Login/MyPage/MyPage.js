@@ -64,7 +64,7 @@ const MyPage = () => {
           </button>
           <button className={styles.matchingButton}>
             <div className={styles.leftBox}>
-              <div className={`${styles.redWord} ${styles.checkWord}`}>세종피어</div>
+              <div className={`${styles.redWord} ${styles.checkWord}`}>세종버디</div>
               <div className={`${styles.blackWord} ${styles.checkWord}`} style={{ fontWeight: "700" }}>매칭 상대 확인</div>
             </div>
             <div className={styles.rightImg}></div>

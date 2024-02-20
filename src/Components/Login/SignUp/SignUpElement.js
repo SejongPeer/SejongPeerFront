@@ -33,9 +33,7 @@ const SignUpElement = (props) => {
   useEffect(() => {
     setIsNickname(props.id === "nickname"); // 닉네임 필드 식별
     setIsID(props.id === "userId");
-    console.log("이름 : ", props.title);
-    console.log("nicknameState=", isNickname);
-    console.log("IdState=", isID);
+
   }, [props.id]);
 
   return (
