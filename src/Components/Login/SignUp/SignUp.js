@@ -15,8 +15,8 @@ const SignUp = () => {
   const [pwdCheckValue, setPwdCheckValue] = useState("");  //비밀번호 확인 추가
 
   const [nameValue, setNameValue] = useState(name);
-  const [studentNumberValue, setStudentNumberValue] = useState("");
-  const [gradeValue, setGradeValue] = useState("");
+  const [studentNumberValue, setStudentNumberValue] = useState(studentNum);
+  const [gradeValue, setGradeValue] = useState(grade);
 
   const [nicknameValue, setNicknameValue] = useState("");
   const [kakaoidValue, setKakaoValue] = useState("");
@@ -206,8 +206,7 @@ const SignUp = () => {
     }
   }
 
-
-  return (
+return(
     <div className={style.container}>
       <h2 className={style.h2}>기본정보</h2>
       <div className={`${style.form} ${fadeEffect}`}>
@@ -215,10 +214,10 @@ const SignUp = () => {
           <>
             <SignUpElement id="userId" title="아이디 입력" name="아이디 입력" idData={idData} signUpErrorHandler={signUpErrorHandler} />
             <div className="special-gap">
-              <SignUpElement id="pwd" title="비밀번호(10자이상의 영문, 숫자)" name="비밀번호 입력" pwdData={pwdData} signUpErrorHandler={signUpErrorHandler} />
+              <SignUpElement id="pwd" title="비밀번호(10자이상의 영문, 숫자)" name="비밀번호 입력" pwdData={pwdData} signUpErrorHandler={signUpErrorHandler}/>
             </div>
             <div className="special-gap">
-              <SignUpElement id="pwdCheck" name="비밀번호 확인" pwdCheckData={pwdCheckData} signUpErrorHandler={signUpErrorHandler} />
+              <SignUpElement id="pwdCheck" name="비밀번호 확인" pwdCheckData={pwdCheckData} signUpErrorHandler={signUpErrorHandler} pwdValue={pwdValue}/>
             </div>
             <SignUpElement id="name" title="이름" name={name} nameData={nameData} signUpErrorHandler={signUpErrorHandler} />
             <SignUpElement id="studentNum" title="학번" name={studentNum} studentNumData={studentNumData} signUpErrorHandler={signUpErrorHandler} />
@@ -254,7 +253,7 @@ const SignUp = () => {
         )}
       </div>
     </div>
-  );
+);
 };
 
 export default SignUp;

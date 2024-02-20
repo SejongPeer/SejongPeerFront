@@ -83,6 +83,7 @@ const SignUpElement = (props) => {
             name={props.name}
             errorHandler={errorHandler}
             pwdData={props.pwdData}
+            pwdValue={props.pwdValue}
             pwdCheckData={props.pwdCheckData}
             nameData={props.nameData}
             kakaoData={props.kakaoData}
