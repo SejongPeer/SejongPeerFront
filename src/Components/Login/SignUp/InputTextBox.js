@@ -5,7 +5,11 @@ const InputTextBox = (props) => {
   const [inputNum, setInputNum] = useState(false);
   //const [birthNum, setBirthNum] = useState("");
   const isPWD = props.id === "pwd" || props.id === "pwdCheck";
-  
+  const isAuthData = props.id === "studentNum" || props.id === "grade" || props.id === "name";
+
+
+  // console.log("아이디 : ", props.id, "확인 ", isAuthData);
+
   function handleKeyPress(event) {
     const charCode = event.which ? event.which : event.keyCode;
     if (charCode > 31 && (charCode < 48 || charCode > 57)) {
@@ -73,13 +77,13 @@ const InputTextBox = (props) => {
     } else if (props.id === "grade") {
       console.log("학년 입력 값:", inputValue); // 사용자 입력 값을 콘솔에 출력
       props.gradeData(inputValue);
-      if (inputValue.length < 1) {
-        props.errorHandler("* 학년은 1자로 작성해주세요");
-      } else if (inputValue.length === 1) {
-        props.errorHandler("");
-      } else {
-        props.errorHandler("* 학번은 1자로 작성해주세요");
-      }
+      // if (inputValue.length < 1) {
+      //   props.errorHandler("* 학년은 1자로 작성해주세요");
+      // } else if (inputValue.length === 1) {
+      //   props.errorHandler("");
+      // } else {
+      //   props.errorHandler("* 학번은 1자로 작성해주세요");
+      // }
     }//닉네임 
     else if (props.id === "nickname") {
       props.nickNameData(inputValue);
@@ -141,6 +145,7 @@ const InputTextBox = (props) => {
           placeholder={props.name}
           onKeyDown={handleKeyPress}//숫자가 아닌 입력 방지
           onChange={inputHandler}
+          disabled={isAuthData}
         />
       ) : isPWD ? (//패스워드입력
         <input
@@ -154,6 +159,7 @@ const InputTextBox = (props) => {
           className={style.inputText}
           placeholder={props.name}
           onChange={inputHandler}
+          disabled={isAuthData}
         />
       )}
     </div>
