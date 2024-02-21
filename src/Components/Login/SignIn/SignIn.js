@@ -35,6 +35,9 @@ const SignIn = () => {
       password: pwd,
     };
 
+    console.log(id);
+    console.log(pwd);
+
     try {
       const response = await fetch(
         process.env.REACT_APP_BACK_SERVER + "/auth/sign-in",
@@ -46,7 +49,7 @@ const SignIn = () => {
           },
         }
       );
-     
+
       if (!response.ok) {
         const errorData = await response.json(); // 오류 응답을 처리합니다.
         throw new Error(data.message);
@@ -54,21 +57,29 @@ const SignIn = () => {
 
       const data = await response.json(); // data 변수를 await로 초기화
 
-      console.log(data.user);
-      console.log(id);
-      console.log(pwd);
+      console.log(data);
+      console.log(data.data.accessToken);
+      console.log(data.data.refreshToken);
+      // console.log(data.user);
+      // console.log(id);
+      // console.log(pwd);
 
       // 로그인 성공 후, 로컬 스토리지에 저장
       //localStorage.setItem("birth", data.user.birth);
       //localStorage.setItem("gender", data.user.gender);
-      localStorage.setItem("userId", data.id);
-      localStorage.setItem("pwd", data.pwd);
+      // localStorage.setItem("userId", id);
+      // localStorage.setItem("pwd", pwd);
       //localStorage.setItem("kakaoId", data.user.kakaoId);
       //localStorage.setItem("major", data.user.major);
       //localStorage.setItem("name", data.user.name);
       //localStorage.setItem("phoneNum", data.user.phoneNum);
       //localStorage.setItem("sejongEmail", data.user.sejongEmail);
       //localStorage.setItem("studentId", data.user.studentId);
+
+
+      //토큰
+      localStorage.setItem("accessToken", data.data.accessToken);
+      localStorage.setItem("refreshToken", data.data.refreshToken);
 
       alert("로그인 성공 메인페이지로 이동합니다.");
       navigate("/main");
