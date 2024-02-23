@@ -213,8 +213,8 @@ return(
       <div className={`${style.form} ${fadeEffect}`}>
         {step === 1 && (
           <>
-           <IDCheckBox idData={idData} errorHandler={signUpErrorHandler} setIsIdExist={setIsIdExist} />
-            {/* <SignUpElement id="userId" title="아이디 입력" name="아이디 입력" idData={idData}  signUpErrorHandler={signUpErrorHandler} /> */}
+           {/* <IDCheckBox idData={idData} errorHandler={signUpErrorHandler} setIsIdExist={setIsIdExist} /> */}
+            <SignUpElement id="userId" title="아이디 입력" name="아이디 입력" idData={idData}  signUpErrorHandler={signUpErrorHandler} />
             <div className="special-gap">
               <SignUpElement id="pwd" title="비밀번호(10자이상의 영문, 숫자)" name="비밀번호 입력" pwdData={pwdData} signUpErrorHandler={signUpErrorHandler}/>
             </div>
