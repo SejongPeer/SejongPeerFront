@@ -1,14 +1,17 @@
 import { useState } from 'react';
 import style from './InputTextBox.module.css';
+import { useEffect } from 'react';
+
 
 const IDCheckBox = (props) => {
     const [username, setUsername] = useState('');
+    //중복확인 시 응답 받아오는 함수 (true 일 경우 중복된 아이디, false 인 경우 사용 가능한 아이디)
+    const [isIdExist, setIsIdExist] = useState(null);
 
     // 사용자 입력 처리 핸들러
     const handleUsernameChange = (event) => {
         setUsername(event.target.value);
         if (props.idData) props.idData(event.target.value); // 상위 컴포넌트로 입력 데이터를 전달
-
     };
 
     // 아이디 중복 확인 요청을 처리하는 핸들러
@@ -18,31 +21,41 @@ const IDCheckBox = (props) => {
         } else {
             props.errorHandler("* 아이디는 8자 이상 작성해주세요");
         }
-
         try {
-            // 서버에 아이디 중복 확인 요청. 가정된 API 엔드포인트: '/api/username/check'
-            const response = await fetch('/api/username/check', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ username: username }),
-            });
-
+            // 서버에 아이디 중복 확인 요청. 
+            const response = await fetch(
+                `${process.env.REACT_APP_BACK_SERVER}/member/check-account?account=${username}`,
+                {
+                    method: 'GET',
+                }
+            );
             const data = await response.json();
 
-            // 서버로부터 받은 응답을 바탕으로 중복 여부 
-            if (data.isDuplicate) {
-                alert('중복되는 아이디 입니다.');
+            //console.log(response);
+            //console.log("아이디 있음? : " + data.data.isExist);
+
+
+            if (data.data.isExist) {
+                alert('중복되는 아이디 입니다. 다른 아이디를 입력하세요');
+                props.errorHandler("중복되는 아이디 입니다. 다른 아이디를 입력하세요");
+                setIsIdExist(true); // 수정: props로 받은 setIsIdExist 사용
+                console.log("isIdExist 값 : "+data.data.isExist);
+                console.log("중복 O : " + isIdExist); // 아이디가 존재하지 않으므로 사용 가능
             } else {
                 alert('사용 가능한 아이디입니다.');
+                props.errorHandler("사용 가능한 아이디 입니다.");
+                setIsIdExist(false); // 아이디가 존재하지 않으므로 사용 가능
+                console.log("isIdExist 값 : "+data.data.isExist);
+                console.log("중복 X : " + isIdExist); // 아이디가 존재하지 않으므로 사용 가능
             }
         } catch (error) {
             console.error('There was an error!', error);
             alert('오류가 발생했습니다. 다시 시도해주세요.');
         }
+
     };
 
+  
     return (
         <div className={style.relative}>
             <div className={style.emailContainer}>
@@ -52,7 +65,9 @@ const IDCheckBox = (props) => {
                     onChange={handleUsernameChange}
                     placeholder="아이디를 입력하세요 (8자 이상)"
                 />
-                <button className={style.idcheckBtn} onClick={checkUsernameDuplicate}>중복 확인</button>
+                <button className={style.idcheckBtn} onClick={() => {
+               checkUsernameDuplicate();
+               }}>중복 확인</button>            
             </div>
         </div>
     );
