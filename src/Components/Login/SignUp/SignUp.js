@@ -3,8 +3,9 @@ import { useState, useEffect, useContext } from "react";
 import SignUpElement from "./SignUpElement";
 import style from "./SignUp.module.css";
 import { MyContext } from "../../../App";
+import IDCheckBox from "../SignUp/IDCheckBox";
 
-const SignUp = () => {
+const SignUp = (props) => {
 
   const { name, setName } = useContext(MyContext);
   const { studentNum, setStudentNum } = useContext(MyContext);
@@ -33,18 +34,23 @@ const SignUp = () => {
   const [step, setStep] = useState(1);
   const [fadeEffect, setFadeEffect] = useState('');
   const [doubleMajorChecked, setDoubleMajorChecked] = useState(false); // Checkbox state for 복수/부전공
-
-
   const navigate = useNavigate();
+  
+  //중복확인 시 응답 받아오는 함수 (true 일 경우 중복된 아이디, false 인 경우 사용 가능한 아이디)
+  const [isIdExist, setIsIdExist] = useState("");
 
+  useEffect(() => {
+    console.log("isIdExist 상태: ", isIdExist);
+  }, [isIdExist]);
+  
   const signUpErrorHandler = (error) => {
     setError(error);
     if (error === "") {
       setError("가입완료 되었습니다.");
     }
   };
-
-  const nextStepHandler = () => {
+ 
+  const nextStepHandler = () => {//중복 아이디일 경우 다음 단계로 못 넘어감
     setStep((prevStep) => prevStep + 1);
   };
 
@@ -98,12 +104,7 @@ const SignUp = () => {
   const nickNameData = (userNickName) => {
     setNicknameValue(userNickName);
   }//추가
-  // const emailData = (userEmail) => {
-  //   setEmailValue(userEmail);
-  // };
-  // const birthData = (userBirth) => {
-  //   setBirthValue(userBirth);
-  // };
+
 
 
   //POST
@@ -212,7 +213,8 @@ return(
       <div className={`${style.form} ${fadeEffect}`}>
         {step === 1 && (
           <>
-            <SignUpElement id="userId" title="아이디 입력" name="아이디 입력" idData={idData} signUpErrorHandler={signUpErrorHandler} />
+           <IDCheckBox idData={idData} errorHandler={signUpErrorHandler} setIsIdExist={setIsIdExist} />
+            {/* <SignUpElement id="userId" title="아이디 입력" name="아이디 입력" idData={idData}  signUpErrorHandler={signUpErrorHandler} /> */}
             <div className="special-gap">
               <SignUpElement id="pwd" title="비밀번호(10자이상의 영문, 숫자)" name="비밀번호 입력" pwdData={pwdData} signUpErrorHandler={signUpErrorHandler}/>
             </div>
@@ -222,7 +224,7 @@ return(
             <SignUpElement id="name" title="이름" name={name} nameData={nameData} signUpErrorHandler={signUpErrorHandler} />
             <SignUpElement id="studentNum" title="학번" name={studentNum} studentNumData={studentNumData} signUpErrorHandler={signUpErrorHandler} />
             <SignUpElement id="grade" title="학년" name={grade} gradeData={gradeData} signUpErrorHandler={signUpErrorHandler} />
-            <button className={style.submitBtn} onClick={nextStepHandler}>다음</button>
+            <button className={style.submitBtn} onClick={nextStepHandler} >다음</button>
           </>
         )}
       </div>
