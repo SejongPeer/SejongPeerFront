@@ -1,8 +1,8 @@
-import React, { useContext, useState, useEffect } from "react";
-import styles from "./ProgressBar_Honbob.module.css";
-import { MyContext } from "../../../App.js";
-import { useNavigate } from "react-router-dom";
-const ProgressBar = (props) => {
+import React, { useContext, useState, useEffect } from 'react';
+import styles from './ProgressBar_Honbob.module.css';
+import { MyContext } from '../../../App.js';
+import { useNavigate } from 'react-router-dom';
+const ProgressBar = props => {
   const [step, setStep] = useState(Array(3).fill(false));
   const [canMoveNext, setCanMoveNext] = useState(false);
   const [canMovePrev, setCanMovePrev] = useState(false);
@@ -11,16 +11,15 @@ const ProgressBar = (props) => {
   const { setModalContent } = useContext(MyContext);
   const [clickedPrev, setClickedPrev] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const userId = localStorage.getItem("userId");
+  const userId = localStorage.getItem('userId');
 
   useEffect(() => {
     if (userId === null) {
-        setIsLoggedIn(false);
+      setIsLoggedIn(false);
     } else {
-        setIsLoggedIn(true);
+      setIsLoggedIn(true);
     }
-  },[userId]);
-
+  }, [userId]);
 
   const navigate = useNavigate();
 
@@ -41,10 +40,10 @@ const ProgressBar = (props) => {
   };
   const moveToMain = () => {
     const backToMain = window.confirm(
-      "확인을 누르면 메인 화면으로 이동합니다.\n지금까지 작성한 내용들이 모두 초기화 됩니다."
+      '확인을 누르면 메인 화면으로 이동합니다.\n지금까지 작성한 내용들이 모두 초기화 됩니다.'
     );
     if (backToMain) {
-      navigate("/main");
+      navigate('/main');
     }
   };
 
@@ -59,10 +58,12 @@ const ProgressBar = (props) => {
       prev = true;
       next = false;
       if (
-        next = true||
-        props.phoneNumHonbob !== "" &&
-        props.phoneNumHonbob.length === 11 &&
-        props.kakaoHonbob !== ""
+        // eslint-disable-next-line no-cond-assign
+        (next =
+          true ||
+          (props.phoneNumHonbob !== '' &&
+            props.phoneNumHonbob.length === 11 &&
+            props.kakaoHonbob !== ''))
       ) {
         next = true;
       }
@@ -76,7 +77,7 @@ const ProgressBar = (props) => {
 
       prev = true;
       next = false;
-      if (props.myGenderHonbob !== "") {
+      if (props.myGenderHonbob !== '') {
         next = true;
         if (!clickedPrev) {
           props.slideMove(props.slide + 1);
@@ -89,7 +90,7 @@ const ProgressBar = (props) => {
       prev = true;
       next = false;
       setIsLastPage(true);
-      if (props.choiceGenderHonbob !== "") {
+      if (props.choiceGenderHonbob !== '') {
         next = true;
       }
     }
@@ -150,7 +151,7 @@ const ProgressBar = (props) => {
               key={index}
               className={styles.progress}
               style={{
-                backgroundColor: step ? "#4F41DE" : "#ccc",
+                backgroundColor: step ? '#4F41DE' : '#ccc',
               }}
             ></div>
           ))}
