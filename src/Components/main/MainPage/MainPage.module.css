@@ -5,7 +5,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 15vh;
+    margin-top: 10vh;
     background-color: #fafafa;
   }
 
@@ -13,8 +13,8 @@
     margin-top: 112px;
     border: none;
     background-color: #ffffff;
-    width: 335px;
-    height: 216px;
+    width: 12vw;
+    height: 12vw;
     border-radius: 24px;
     border: 1px solid #e5e5e5;
     margin-top: 12px;
@@ -22,12 +22,22 @@
   }
 
   .studyBtn {
-    width: 45vw;
+    width: 25vw;
     height: 25vh;
     margin-top: 2vh;
     background-color: white;
     border: 1px solid #e5e5e5;
     border-radius: 24px;
+    background-image: url("../../../Assets/hide.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+
+  .sejongStudy2 {
+    width: 6vw;
+    height: 2.5vh;
+    margin-left: 1vw;
   }
 
   .more {
@@ -48,7 +58,7 @@
     width: 100%;
     height: 3vh;
     position: relative;
-    top: 23%;
+    top: 15%;
     padding: 0px 5vw;
     display: flex;
     align-items: center;
@@ -56,14 +66,17 @@
   }
   .report_user_box {
     display: flex;
+    justify-content: center;
     align-items: center;
-    flex-direction: column;
-    width: 47%;
+    flex-direction: row;
+    width: 25vw;
     gap: 3%;
     font-size: 0.9rem;
     color: #333333;
     font-weight: 700;
     margin-top: 2vh;
+    border-radius: 20px;
+    background-color: white;
   }
   .report_user_box img {
     width: 70%;
@@ -73,7 +86,7 @@
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    border: 2px solid #e5e5e5;
+    /* border: 2px solid #e5e5e5; */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -109,8 +122,8 @@
     margin-top: 112px;
     border: none;
     background-color: #ffffff;
-    width: 45vw;
-    height: 216px;
+    width: 42vw;
+    height: 42vw;
     border-radius: 24px;
     border: 1px solid #e5e5e5;
     margin-top: 12px;
@@ -124,6 +137,10 @@
     background-color: white;
     border: 1px solid #e5e5e5;
     border-radius: 24px;
+    background-image: url("../../../Assets/hide.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
   }
 
   .more {
@@ -142,9 +159,13 @@
   .report_user_box {
     width: 100%;
     display: flex;
-    flex-direction: column;
+    /* flex-direction: row; */
+    background-color: white;
+    width: 90vw;
+    border-radius: 20px;
+    justify-content: center;
     align-items: center;
-    gap: 5%;
+    gap: 3%;
     font-size: 0.8rem;
     color: #333333;
     font-weight: 700;
@@ -158,7 +179,7 @@
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    border: 2px solid #e5e5e5;
+    /* border: 2px solid #e5e5e5; */
     display: flex;
     align-items: center;
     justify-content: center;

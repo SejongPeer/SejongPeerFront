@@ -13,8 +13,8 @@ const StudyList = () => {
   const [posts, setPosts] = useState([
     {
       index: 1,
-      title: '같이 A+ 맞을 사람 구함',
-      member: '1/4',
+      title: "같이 A+ 맞을 사람 구함",
+      member: "1/4",
       like: 16,
       islike: true,
       image: true,
@@ -60,8 +60,8 @@ const StudyList = () => {
     },
     {
       index: 4,
-      title: '프로젝트 팀원 모집',
-      member: '2/5',
+      title: "프로젝트 팀원 모집",
+      member: "2/5",
       like: 20,
       comment: 5,
       date: "24.02.06",
@@ -73,8 +73,8 @@ const StudyList = () => {
     },
     {
       index: 5,
-      title: '캡스톤 같은조 할사람 구함',
-      member: '모집완료',
+      title: "캡스톤 같은조 할사람 구함",
+      member: "모집완료",
       like: 16,
       comment: 3,
       date: "24.02.04",
@@ -120,20 +120,18 @@ const StudyList = () => {
   };
 
   //필터링 값
-  const [onFilter, setOnFilter] = useState(['ongoing', 'finish']);
+  const [onFilter, setOnFilter] = useState(["ongoing", "finish"]);
   // all - 모두, ongoing - 모집 중, finish - 모집완료
   const onFilterHandler = (onFilter) => {
-    setOnFilter(onFilter)
+    setOnFilter(onFilter);
   };
 
   // 필터링
-  const filterHandler = posts.filter(post => 
-    onFilter.includes(post.state)
-  );
+  const filterHandler = posts.filter((post) => onFilter.includes(post.state));
 
   const navigate = useNavigate();
   const goPost = () => {
-    navigate("/studypost");
+    navigate("/study/post");
   };
 
   return (
@@ -165,11 +163,13 @@ const StudyList = () => {
         <BottomModal deleteHandler={deleteHandler}>
           {isClickedStudy && <Filter_Feild />}
           {isClickedMember && <Filter_Member />}
-          {isClickedOn && <Filter_now 
-            onFilterHandler={onFilterHandler}
-            deleteHandler={deleteHandler}
-            onFilter={onFilter}
-          />}
+          {isClickedOn && (
+            <Filter_now
+              onFilterHandler={onFilterHandler}
+              deleteHandler={deleteHandler}
+              onFilter={onFilter}
+            />
+          )}
         </BottomModal>
       )}
     </div>
