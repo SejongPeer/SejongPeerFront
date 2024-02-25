@@ -4,8 +4,7 @@ import MainBuddy from "./MainBuddy";
 import MainHonbob from "./MainHonbob";
 import reprot from "../../../Assets/report.png";
 import { useEffect } from "react";
-import { DevOpsGuru } from "aws-sdk";
-//import MainStudy from "./MainStudy";
+import sejongStudy2 from "../../../Assets/sejongStudy2.png";
 
 const MainPage = () => {
   const navigate = useNavigate();
@@ -16,7 +15,8 @@ const MainPage = () => {
     navigate("/honbob/start1");
   };
   const StudyHandler = () => {
-    navigate("/study");
+    // navigate("/study");
+    alert("4월 중 서비스 예정입니다!");
   };
   const reportUserHandler = () => {
     alert("너 신고");
@@ -54,7 +54,14 @@ const MainPage = () => {
           // backgroundColor: "#FFF7F7",
         }}
       >
-        <div style={{ display: "flex", flexDirection: "row", gap: "3%" }}>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "center",
+            gap: "4%",
+          }}
+        >
           <button onClick={BuddyHandler} className={style.btn}>
             <MainBuddy />
           </button>
@@ -62,13 +69,29 @@ const MainPage = () => {
             <MainHonbob />
           </button>
         </div>
-        <button onClick={StudyHandler} className={style.studyBtn}></button>
+        <div onClick={StudyHandler} className={style.studyBtn}>
+          {/* <div
+            style={{
+              display: "flex",
+              alignItems: "flex-end",
+              marginTop: "2vh",
+            }}
+          >
+            <img src={sejongStudy2} className={style.sejongStudy2}></img>
+            <p style={{ margin: "0 0 0 0.5vw", fontWeight: "800" }}>
+              인생 팀원 구하기
+            </p>
+          </div>
+          <div>
+            <button style={{ width: "8vw", height: "8vw" }}></button>
+          </div> */}
+        </div>
       </div>
       <div className={style.report_user_box}>
         <div className={style.reprot_icon} onClick={kakaoChat}>
           <img src={reprot} alt="reprot" />
         </div>
-        <span>악성 유저 신고</span>
+        <span style={{ color: "#555", fontWeight: "800" }}>악성 유저 신고</span>
       </div>
       {/* <button className={style.btn} onClick={readyHandler}>
             <MainStudy />
