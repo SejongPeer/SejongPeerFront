@@ -105,6 +105,10 @@ const SignUp = (props) => {
     setNicknameValue(userNickName);
   }//추가
 
+  const prevStepHandler = () => {//회원가입 뒤로가기
+    setStep(1);
+  };
+
 
 
   //POST
@@ -251,6 +255,7 @@ return(
               <SignUpElement id="double_major" name="복수전공/부전공 선택" doublemajorData={doublemajorData} doubleCollegeData={doubleCollegeData} signUpErrorHandler={signUpErrorHandler} />
             )}
             <button type="submit" className={style.submitBtn} onClick={submitHandler}>가입하기</button>
+            <p className={style.prevPageText} onClick={prevStepHandler}>이전 페이지</p>
           </>
         )}
       </div>
