@@ -17,9 +17,9 @@ const IDCheckBox = (props) => {
     // 아이디 중복 확인 요청을 처리하는 핸들러
     const checkUsernameDuplicate = async () => {
         if (username.length < 4 || username.length > 24) {
-            props.errorHandler("");
-        } else {
             props.errorHandler("아이디는 4자 이상 24자 이하로 작성해주세요");
+        } else {
+            props.errorHandler("");
         }
         //아이디 영어+숫자 최소 4자 이상 24자 이하
         if (username.length < 4 || username.length > 24 ) {
