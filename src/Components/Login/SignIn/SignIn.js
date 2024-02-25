@@ -100,12 +100,8 @@ const SignIn = () => {
       </button>
       <div>
         <button onClick={goFindIdHandler} className={style.findBtn}>
-          아이디 찾기
-        </button>
-        <span className={style.line}> | </span>
-        <button onClick={goResetPwdHandler} className={style.findBtn}>
-          비밀번호 찾기
-        </button>
+          ID • PW 찾기
+        </button>        
         <span className={style.line}> | </span>
         <button onClick={goSignUpHandler} className={style.signUpBtn}>
           회원가입

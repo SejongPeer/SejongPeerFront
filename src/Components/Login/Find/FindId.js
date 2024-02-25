@@ -56,7 +56,7 @@ const FindId = () => {
       <SignInBox inputID={inputID} name="포털 로그인 아이디(학번)" />
       <SignInBox inputPwd={inputPwd} name="포털 로그인 비밀번호" id="pwd" />
       <button className={style.signInBtn} onClick={isSejong}>
-        통합 로그인 인증
+      아이디/비밀번호 찾기
       </button>
       <a href="http://portal.sejong.ac.kr/" className={style.sejong}>
         http://portal.sejong.ac.kr/
