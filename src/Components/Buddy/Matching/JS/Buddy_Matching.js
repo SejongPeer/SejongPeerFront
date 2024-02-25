@@ -15,7 +15,7 @@ const Buddy_Matching = () => {
   const [choiceGender, setChoiceGender] = useState("");
   const [grade, setGrade] = useState("");
   const [major, setMajor] = useState("");
-  const [gradeDiff, setGradeDiff] = useState([]);
+  const [gradeDiff, setGradeDiff] = useState("");
   const [phoneNum, setPhoneNum] = useState("");
   const [kakao, setKakao] = useState("");
 
@@ -46,8 +46,8 @@ const Buddy_Matching = () => {
   // 다음
   const MoveNext = () => {
     setSlide(prevSlide => {
-      if (prevSlide >= 5) {
-        return 5;
+      if (prevSlide >= 4) {
+        return 4;
       } else {
         return prevSlide + 1;
       }
@@ -94,23 +94,14 @@ const Buddy_Matching = () => {
     console.log("학년 : " + gradeDiff);
     setGradeDiff(gradeDiff);
   };
-  const PhoneNumData = (phoneNum) => {
-    console.log("핸드폰 : " + phoneNum);
-    setPhoneNum(phoneNum);
-  };
-  const KaKaoData = (kakao) => {
-    console.log("카톡 : " + kakao);
-    setKakao(kakao);
-  };
 
   return (
     <div className={style.wrapper} style={mediaWidth}>
       <div className={style.formWrapper} style={Slide}>
         <ChoiceGender sendChoiceGenderData={GenderChoiceData} />
-        <Grade sendGradeData={GradeData} />
         <Major sendMajorData={MajorData} />
+        <Grade sendGradeData={GradeData} />
         <GradeDiff sendGradeDiffData={GradeDiffData} />
-        <PhoneNum sendPhoneNumData={PhoneNumData} sendKakaoData={KaKaoData} />
         <Final
           choiceGender={choiceGender}
           grade={grade}

@@ -41,7 +41,7 @@
 .textWrapper {
   width: 335px;
   height: 40px;
-  border-radius: 30px;
+  border-radius: 12px;
   font-size: 16px;
   padding: 0px 15px;
   display: flex;
@@ -52,7 +52,7 @@
 .textWrapperHalf {
   width: 161px;
   height: 40px;
-  border-radius: 30px;
+  border-radius: 12px;
   font-size: 16px;
   padding: 0px 15px;
   display: flex;

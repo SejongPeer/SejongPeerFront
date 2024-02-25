@@ -10,9 +10,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 70%;
+  height: 80%;
   justify-content: center;
-  gap: 10vh;
 }
 .bottom {
   display: flex;
@@ -44,70 +43,78 @@
   color: white;
   cursor: pointer;
 }
-
-.buddyText {
-  width: 172px;
-  height: 40px;
+@font-face {
+  font-family: 'omyupretty';
+  src: url(../../fonts/omyu\ pretty.ttf);
 }
+@font-face {
+  font-family: 'jalnan';
+  src: url(../../fonts/Jalnan2.otf);
+}
+
 .buddyImg {
   width: 62vw;
   max-width: 250px;
-  height: 33vh;
+  height: 20vh;
   max-height: 260px;
+  margin: 5%;
 }
-.text {
-  font-size: 18px;
-  font-weight: 600;
-  color: #333333;
+.buddyImg2{
+  width: 70vw;
+  height: 15vh;
 }
-.text2 {
-  font-size: 16px;
-  font-weight: 600;
-  line-height: 1.5;
-  color: #333333;
-  text-align: center;
-  white-space: pre-line;
-}
-.text_red {
-  font-size: 16px;
-  font-weight: 800;
-  line-height: 1.5;
-  color: #ff7474;
-  text-align: center;
-  white-space: pre-line;
-}
-.highlight {
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 1.5;
-  text-align: center;
-  color: #ff7474;
-}
-.text3 {
-  font-size: 16px;
-  font-weight: 600;
-  line-height: 1.5;
-  color: #FF4B4B;
-}
-
-.flex {
+.imgBack{
+  width: 85%;
+  height: 40%;
+  border-radius: 50%;
+  background-color: #FFF7F7;
+  margin: 15% 0;
   display: flex;
   align-items: center;
-  width: auto;
+  justify-content: center;
 }
-.logo {
-  width: 32px;
-  height: 32px;
+.explain{
+  font-size: 1.3rem;
+  font-weight: 600;  
+  margin: 0;
+  font-family: 'omyupretty';
 }
-.title {
-  font-size: 24px;
+.sejongbuddy{
+  font-size: 3rem;
+  font-weight: 600;
+  margin: 0;
+  font-family: 'jalnan';
   color: #FF4B4B;
-  font-weight: 800;
-  margin: 8px 5px;
+  margin-top: 3%;
+}
+
+.text {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #333333;
+  margin: 4% 0;
+}
+.text_red {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #FF4B4B;
+}
+.text2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #555555;
+  margin: 4% 0;
+  line-height: 160%;
 }
 
 .wrapper {
-  width: 310px;
+  width: 80vw;
+}
+.title {
+  font-size: 24px;
+  color: #111111;
+  font-weight: 800;
+  margin: 4% 0;
 }
 
 .back {

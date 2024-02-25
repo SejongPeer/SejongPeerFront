@@ -11,7 +11,7 @@ html {
     align-items: center;
     position: relative;
     margin-top: 100px;
-    background-color: #FAFAFA;
+    background-color: #FFF7F7;
 }
 
 .titlebox{
@@ -26,6 +26,14 @@ html {
     font-size: 20px;
     font-weight: bold;
     text-align: center;
+}
+.title2{
+    margin: 0;
+    position: absolute;
+    left: 25%;
+    top: 1%;
+    color: #777777;
+    font-size: 1rem;
 }
 
 .finaltitle{
