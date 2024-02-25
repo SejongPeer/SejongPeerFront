@@ -18,8 +18,8 @@
   }
   .text {
     font-size: 1em;
-    color: #666666;
-    font-weight: 600;
+    color: #111;
+    font-weight: 800;
     margin: 1vh 0 0 0;
   }
 
@@ -29,9 +29,10 @@
   }
 
   .right {
-    width: 8vw;
-    height: 15vh;
-    margin-left: 12vw;
+    width: 7vw;
+    height: 13vh;
+    margin-left: 4vw;
+    margin-top: 2vh;
   }
 }
 
@@ -47,26 +48,27 @@
     width: 100%;
     padding-top: 20px;
     text-align: left;
-    margin-left: 10px;
+    margin-left: 1vw;
   }
   .left {
-    width: 127px;
-    height: 32px;
+    width: 20vw;
+    height: 5vw;
   }
   .text {
-    font-size: 1em;
-    color: #666666;
-    font-weight: 600;
-    margin: 1vh 0 0 0;
-  }
+     font-size: 1em;
+     color: #111;
+     font-weight: 800;
+     margin: 1vh 0 0 0;
+   }
 
   .wrapperRight {
     width: 184px;
     height: 184px;
   }
   .right {
-    width: 30vw;
-    height: 15vh;
-    margin-left: 10vw;
+    width: 20vw;
+    height: 10vh;
+    margin-left: 8vw;
+    margin-top: 2vh;
   }
 }

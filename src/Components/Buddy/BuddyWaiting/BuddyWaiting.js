@@ -3,6 +3,8 @@ import buddyTextRed from "../../../Assets/buddyTextRed.png";
 import buddyWaitingLogo from "../../../Assets/buddyWaitingLogo.png";
 import { useNavigate } from "react-router-dom";
 import { useEffect,useState } from 'react';
+import waitingCat from "../../../Assets/waitingCat.png"
+
 const BuddyWaiting = ()=>{
     const navigate=useNavigate();
     const moveToMain=()=>{
@@ -37,29 +39,19 @@ const BuddyWaiting = ()=>{
           }
     };
 
-    const [dots, setDots] = useState('');
-
-    useEffect(() => {
-      const interval = setInterval(() => {
-        setDots(prev => (prev.length < 3 ? prev + '.' : ''));
-      }, 400); 
-
-      return () => clearInterval(interval); 
-    }, []);
     return(
         <div className={style.container}>
             <div className={style.TextBox}>
-            <img src={buddyTextRed} className={style.buddyLogo}/>
-            <p className={style.Text1}>216명의 학생들이 버디를 찾고 있어요!</p>
-            <p className={style.ImgText}>열심히 찾는중{dots}</p>
-            <img src={buddyWaitingLogo} className={style.buddyWaitingImg} />
+              <p className={style.title}>세종버디</p>
+              <p className={style.text1}>216명의 학생들이 버디를 찾고 있어요!</p>
+              <img src={waitingCat} className={style.buddyWaitingImg} alt="waitingCat"/>
             </div>
     
             <div className={style.BtnBox}>
-    
-            <p className={style.Text3}>버디 매칭은 최대 4일 정도 소요됩니다.</p>
-            <button className={style.moveToHomeBtn} onClick={moveToMain}>메인 페이지로 이동</button>
-            <button className={style.cancelBtn} onClick={cancelBuddy}>버디 신청 취소</button>
+              <p className={style.text2}>버디를 찾으면 상대방의 정보(과, 학년) 확인 후 수락 / 거절할 수 있습니다!(최대 3회)</p>
+              <p className={style.text3}>* 거절 시 한 시간 버디이용 제한 패널티가 부여됩니다.</p>
+              <button className={style.moveToHomeBtn} onClick={moveToMain}>메인 페이지로 이동</button>
+              <button className={style.cancelBtn} onClick={cancelBuddy}>버디 신청 취소</button>
             </div>
         </div>
     )
