@@ -1,58 +1,59 @@
 .container {
-  margin-top: 5rem;
+  margin-top: 12vh;
   display: flex;
   flex-direction: column;
   height: 85%;
-  justify-content: space-between;
   background-color: #fafafa;
-  gap: 3vh;
+  align-items: center;
+  justify-content: space-evenly;
 }
 .TextBox {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 80vh;
-  justify-content: center;
-  gap: 1.5vh;
+  height: 45vh;
 }
-.Text1 {
-  font-size: 2vh;
+.title {
+  font-family: "jalnan";
+  color: #ff4b4b;
+  font-size: 3rem;
+  margin: 0;
+}
+.text1 {
+  font-size: 1rem;
   width: 70vw;
   color: black;
-  font-weight: 600;
-  /* background-color: red; */
+  font-weight: 700;
   text-align: center;
-  margin: 1.5vh;
-}
-.ImgText {
-  font-size: 2vh;
-  position: relative;
-  right: 3vh;
-  top: 7vh;
   margin: 0;
-  font-weight: 800;
+}
+.buddyWaitingImg {
+  width: 30vh;
+  height: 30vh;
+  background-color: transparent;
+  margin-top: 2vh;
 }
 
-.buddyLogo {
-  width: 20vh;
-  height: 5vh;
-}
-.Text3 {
-  font-weight: 600;
-  font-size: 2vh;
-  text-align: center;
-  color: #333333;
-  margin: 0.5vh;
-}
-.text4 {
-  font-weight: 600;
-  font-size: 2vh;
-  color: #ff4b4b;
-}
+
 .BtnBox {
+  width: 80%;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+.text2 {
+  font-weight: 600;
+  font-size: 1rem;
+  text-align: center;
+  color: #555555;
+  margin: 0.5vh;
+}
+.text3 {
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-align: center;
+  color: #FF7474;
+  margin: 0.5vh;
 }
 .moveToHomeBtn {
   font-size: 2vh;
@@ -73,8 +74,8 @@
   background-color: transparent;
   cursor: pointer;
 }
-.buddyWaitingImg {
-  width: 35vh;
-  height: 35vh;
-  background-color: #fafafa;
+
+@font-face {
+  font-family: "jalnan";
+  src: url(../../fonts/Jalnan2.otf);
 }

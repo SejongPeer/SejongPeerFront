@@ -123,9 +123,6 @@ const Final = (props) => {
     <div className={con.container}>
       <div className={con.titlebox}>
         <p className={con.finaltitle}>입력하신 정보를 확인해주세요</p>
-        <p className={con.explain}>
-          각 정보를 클릭하면 정보를 입력했던 페이지로 이동합니다.
-        </p>
       </div>
       
       <div className={styles.wrapper}>
@@ -137,14 +134,15 @@ const Final = (props) => {
           <div className={styles.textWrapper}>{props.choiceGender}</div>
         </div>
       
-        <div className={styles.infoWrapperHalf} onClick={Page2}>
+        <div className={styles.infoWrapper} onClick={Page2}>
           <div className={styles.titleWrapper}>
             <div className={styles.complete}></div>
             <span>버디범위</span>
           </div>
-          <div className={styles.textWrapperHalf}>{props.major}</div>
+          <div className={styles.textWrapper}>{props.major}</div>
         </div>
 
+        <div className={styles.flex}> 
         <div className={styles.infoWrapperHalf} onClick={Page3}>
           <div className={styles.titleWrapper}>
             <div className={styles.complete}></div>
@@ -153,12 +151,13 @@ const Final = (props) => {
           <div className={styles.textWrapperHalf}>{props.grade}</div>
         </div>
 
-        <div className={styles.infoWrapper} onClick={Page4}>
+        <div className={styles.infoWrapperHalf} onClick={Page4}>
           <div className={styles.titleWrapper}>
             <div className={styles.complete}></div>
             <span>버디학년</span>
           </div>
-          <div className={styles.textWrapper}>{buddyGrades}</div>
+          <div className={styles.textWrapperHalf}>{buddyGrades}</div>
+        </div>
         </div>
 
         <div className={styles.infoWrapper}>
