@@ -39,8 +39,7 @@
   align-items: center;
 }
 
-
-.second_box{
+.second_box {
   width: 100%;
   display: flex;
   align-items: center;
@@ -48,49 +47,49 @@
   gap: 3%;
   margin-top: 5%;
 }
-.second_check{
+.second_check {
   height: 110%;
   width: 6%;
-  background-color: #FFFFFF;
-  border: solid 1px #E5E5E5;
+  background-color: #ffffff;
+  border: solid 1px #e5e5e5;
   border-radius: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.second_text{
+.second_text {
   color: #777777;
   font-size: 1rem;
   font-family: "prtendard";
   font-weight: 500;
 }
-.check2{
+.check2 {
   width: 65%;
   height: 40%;
 }
-.tip_box{
+.tip_box {
   width: 80%;
   height: auto;
   display: flex;
   margin-top: 20%;
 }
-.tip{
+.tip {
   color: #111111;
   font-weight: 700;
   font-size: 1rem;
   position: relative;
 }
-.tip_text{
+.tip_text {
   color: #555555;
   font-size: 0.9rem;
   margin-left: 1%;
   width: 70%;
 }
-.tip_nugul{
-  width: 33vw;
-  height: 15vh;
+.tip_nugul {
+  width: 33%;
+  height: 21%;
   position: absolute;
-  top: 63%;
+  top: 55vh;
   right: 5%;
 }
 

@@ -13,10 +13,11 @@ import BuddyMatching from "./Components/Buddy/Matching/JS/Buddy_Matching";
 import BuddyWaiting from "./Components/Buddy/BuddyWaiting/BuddyWaiting";
 import Honbob_Matching from "./Components/Honbob/Matching/JS/Honbob_Matching";
 import HonbobWaiting from "./Components/Honbob/HonbobWaiting/HonbobWaiting.js";
+import BuddyAccept from "./Components/Buddy/BuddyWaiting/BuddyAccept.js";
+
 import HonbobStart1 from "./Components/Honbob/HonbobStart/HonbobStart1.js";
 import Confirm from "./Components/Modal/Confirm";
-import Finish from "./Components/Buddy/Matching/JS/Finish";
-import IfComplete from "./Components/Buddy/Matching/JS/IfComplete";
+
 import SignIn from "./Components/Login/SignIn/SignIn";
 import SignUp from "./Components/Login/SignUp/SignUp";
 import Auth from "./Components/Login/SignUp/Auth/Auth.js";
@@ -121,8 +122,7 @@ const App = () => {
               <Route path="/buddy/start3" element={<BuddyStart3 />} />
               <Route path="/buddy/matching" element={<BuddyMatching />} />
               <Route path="/buddy/waiting" element={<BuddyWaiting />} />
-              <Route path="/buddy/matching/finish" element={<Finish />} />
-              <Route path="/buddy/ifcomplete" element={<IfComplete />} />
+              <Route path="/buddy/accept" element={<BuddyAccept />} />
 
               <Route path="/honbob/matching" element={<Honbob_Matching />} />
               <Route path="/honbob/waiting" element={<HonbobWaiting />} />
@@ -145,7 +145,7 @@ const App = () => {
               <Route path="/study/detail" element={<StudyPostDeatil />} />
               <Route path="/study/post" element={<StudyPostWrite />} />
               <Route path="/study/filter" element={<StudyFilter />} />
-
+                
               <Route path="/checksejong" element={<Sejong />} />
             </Routes>
           </main>
