@@ -8,72 +8,57 @@ const GradeDiff = (props) => {
     const [secondClicked, setSecondClicked] = useState(false);
     const [thirdClicked, setThirdClicked] = useState(false);
     const [fourthClicked, setFourthClicked] = useState(false);
-    const [grade, setGrade] = useState([]);
+    const [anyClicked, setAnyClicked] = useState(false);
 
     const click1BtnHandler = () => {
-        setFirstClicked(prev => !prev);
-        setGrade(prevGrade => {
-            if (prevGrade.includes(1)) {
-                return prevGrade.filter(item => item !== 1);
-            } else {
-                return [...prevGrade, 1];
-            }
-        });
-        console.log(grade);
-        //props.sendGradeData(grade);
+        setFirstClicked(true);
+        setSecondClicked(false);
+        setThirdClicked(false);
+        setFourthClicked(false);
+        setAnyClicked(false)
+        props.sendGradeDiffData("1");
     };
     const click2BtnHandler = () => {
-        setSecondClicked(prev => !prev);
-        setGrade(prevGrade => {
-            if (prevGrade.includes(2)) {
-                return prevGrade.filter(item => item !== 2);
-            } else {
-                return [...prevGrade, 2];
-            }
-        });
-        console.log(grade);
-        //props.sendGradeData(grade);
+        setFirstClicked(false);
+        setSecondClicked(true);
+        setThirdClicked(false);
+        setFourthClicked(false);
+        setAnyClicked(false)
+        props.sendGradeDiffData("2");
     };
     const click3BtnHandler = () => {
-        setThirdClicked(prev => !prev);
-        setGrade(prevGrade => {
-            if (prevGrade.includes(3)) {
-                return prevGrade.filter(item => item !== 3);
-            } else {
-                return [...prevGrade, 3];
-            }
-        });
-        console.log(grade);
-        //props.sendGradeData(grade);
+        setFirstClicked(false);
+        setSecondClicked(false);
+        setThirdClicked(true);
+        setFourthClicked(false);
+        setAnyClicked(false)
+        props.sendGradeDiffData("3");
     };
     const click4BtnHandler = () => {
-        setFourthClicked(prev => !prev);
-        setGrade(prevGrade => {
-            if (prevGrade.includes(4)) {
-                return prevGrade.filter(item => item !== 4);
-            } else {
-                return [...prevGrade, 4];
-            }
-        });
-        console.log(grade);
-        //props.sendGradeData(grade);
+        setFirstClicked(false);
+        setSecondClicked(false);
+        setThirdClicked(false);
+        setFourthClicked(true);
+        setAnyClicked(false)
+        props.sendGradeDiffData("4");
     };
-
-    useEffect(() => {
-        const sortedGrade = [...grade].sort((a, b) => a - b);
-        props.sendGradeDiffData(sortedGrade);
-        console.log(sortedGrade);
-    },[grade])
-
-    
+    const click5BtnHandler = () => {
+        setFirstClicked(false);
+        setSecondClicked(false);
+        setThirdClicked(false);
+        setFourthClicked(false);
+        setAnyClicked(true)
+        props.sendGradeDiffData("상관없음");
+    };
 
     const clickFirstBtnColor = firstClicked ? btn3.clicked : btn3.selectBtn3;
     const clickSecondBtnColor = secondClicked ? btn3.clicked : btn3.selectBtn3;
     const clickThirdBtnColor = thirdClicked ? btn3.clicked : btn3.selectBtn3;
     const clickFourthBtnColor = fourthClicked ? btn3.clicked : btn3.selectBtn3;
+    const clickAnyBtnColor = anyClicked ? btn3.clicked : btn3.selectBtn3;
 
     return <div className={con.container}>
-        <p className={con.title}>버디가 몇학년이었으면 좋겠나요?<br/> (중복선택 가능)</p>
+        <p className={con.title}>버디가 몇학년이었으면 좋겠나요?</p>
         <div className={con.btn3}>
             <button className={clickFirstBtnColor} onClick={click1BtnHandler}>
                 <span>1학년</span>
@@ -90,6 +75,10 @@ const GradeDiff = (props) => {
             <button className={clickFourthBtnColor} onClick={click4BtnHandler}>
                 <span>4학년</span>
                 {fourthClicked && <img className={btn3.check} src={check} alt='check'/>}
+            </button>
+            <button className={clickAnyBtnColor} onClick={click5BtnHandler}>
+                <span>상관없음</span>
+                {anyClicked && <img className={btn3.check} src={check} alt='check'/>}
             </button>
         </div>
     </div>;

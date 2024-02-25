@@ -59,7 +59,7 @@ const ProgressBar = (props) => {
       updateStep[2] = false;
       prev = true;
       next = false;
-      if (props.grade !== "") {
+      if (props.major !== "") {
         next = true;
         if (!clickedPrev) {
           props.MoveNext();
@@ -71,7 +71,7 @@ const ProgressBar = (props) => {
       updateStep[3] = false;
       prev = true;
       next = false;
-      if (props.major !== "") {
+      if (props.grade !== "") {
         next = true;
         if (!clickedPrev) {
           props.MoveNext();
@@ -83,16 +83,15 @@ const ProgressBar = (props) => {
       updateStep[4] = false;
       prev = true;
       next = false;
-      if (props.gradeDiff !== 0) {
+      if (props.gradeDiff !== "") {
         next = true;
+        if (!clickedPrev) {
+          props.MoveNext();
+        }
       }
     }
     if (props.slide === 4) {
       updateStep[4] = true;
-      prev = true;
-      next = true;
-    }
-    if (props.slide === 5) {
       prev = true;
       next = true;
       setIsLastPage(true);
@@ -107,8 +106,6 @@ const ProgressBar = (props) => {
     props.grade,
     props.major,
     props.gradeDiff,
-    props.phoneNum,
-    props.kakao,
     props.slide,
   ]);
 

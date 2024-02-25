@@ -2,11 +2,13 @@ import { useState } from 'react';
 import check from '../../../../Assets/check.png';
 import con from '../CSS/B_Container.module.css';
 import btn3 from '../CSS/B_Btn3.module.css';
+import nugul from "../../../../Assets/nugul.png"
 
 const Major = (props) => {
     const [isMajorClicked, setIsMajorClicked] = useState(false);
     const [isCollegeClicked, setIsCollegeClicked] = useState(false);
     const [isAnyClicked, setIsAnyClicked] = useState(false);
+    const[isSecond, setIsSecond] = useState(false);
 
     const clickMajorBtnHandler = () => {
         setIsMajorClicked(!isMajorClicked);
@@ -38,6 +40,10 @@ const Major = (props) => {
 
     };
 
+    const clickSecondHandler = () => {
+        setIsSecond(!isSecond);
+    }
+
 
     const clickMajorBtnColor = isMajorClicked ? btn3.clicked : btn3.selectBtn3;
     const clickCollegeBtnColor = isCollegeClicked ? btn3.clicked : btn3.selectBtn3;
@@ -64,6 +70,19 @@ const Major = (props) => {
             onClick={clickAnyBtnHandler}>
             <span>상관없음</span>
             {isAnyClicked && <img className={btn3.check} src={check} alt='check'/>}</button>
+
+            <div className={btn3.second_box}>
+                <div className={btn3.second_check} onClick={clickSecondHandler}>
+                    {isSecond ? <img className={btn3.check2} src={check} alt='check'></img>
+                    :<div></div>}
+                </div>
+                <span className={btn3.second_text}>복수/부전공 학과 기준으로 찾기</span>
+            </div>
+        </div>
+        <div className={btn3.tip_box}>
+            <span className={btn3.tip}>TIP. </span>
+            <span className={btn3.tip_text}>[인공지능 융합대학]은 단과대 단위로 설정 시 24학번만 매칭 됩니다!</span>
+            <img src={nugul} alt='nugul' className={btn3.tip_nugul}></img>
         </div>
     </div>;
 };

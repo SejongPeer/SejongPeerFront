@@ -27,7 +27,7 @@ const ChoiceGender = (props) => {
 
   return (
     <div className={con.container}>
-      <p className={con.title}>버디의 성별을 선택해주세요!</p>
+      <p className={con.title}>같은 성별의 버디를 원하시나요?</p>
       <div>
         <button className={clickSameBtnColor} onClick={clickSameBtnHandler}>
           동성

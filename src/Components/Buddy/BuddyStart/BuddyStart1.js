@@ -1,6 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import buddyTextRed from '../../../Assets/buddyText2.png';
-import buddyCat from '../../../Assets/honbobWaitingLogo.png';
+import buddyStart1 from "../../../Assets/buddyStart1.png"
 import style from './BuddyStart.module.css';
 
 const BuddyStart1 = () => {
@@ -12,12 +11,9 @@ const BuddyStart1 = () => {
   return (
     <div className={style.container}>
       <div className={style.top}>
-        <img
-          className={style.buddyText}
-          src={buddyTextRed}
-          alt='buddyTextRed'
-        />
-        <img className={style.buddyImg} src={buddyCat} alt='buddyCat' />
+        <img className={style.buddyImg} src={buddyStart1} alt='buddyStart1' />
+        <p className={style.explain}>캠퍼스 짝꿍이 필요할 땐?</p>
+        <p className={style.sejongbuddy}>세종버디</p>
       </div>
       <div className={style.bottom}>
         <p className={style.text}>222명의 학생들이 버디를 찾고 있어요</p>

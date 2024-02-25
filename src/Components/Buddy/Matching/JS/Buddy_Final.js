@@ -22,10 +22,6 @@ const Final = (props) => {
     const page = 3;
     props.slideMove(page);
   };
-  const Page5 = () => {
-    const page = 4;
-    props.slideMove(page);
-  };
 
   const { buddySubmit, setBuddySubmit } = useContext(MyContext);
 
@@ -41,8 +37,10 @@ const Final = (props) => {
     buddyType = "senior";
   } else if (props.grade === "후배") {
     buddyType = "junior";
-  } else {
+  } else if (props.grade === "동기") {
     buddyType = "friend";
+  } else {
+    buddyType = "dontCare";
   }
 
   let buddyRange = {};
@@ -54,28 +52,18 @@ const Final = (props) => {
     buddyRange = "dontCare";
   }
 
-  /*
-  let grades = [];
-  grades = props.gradeDiff;
-  const numberToWord = (grades) => {
-    switch (grades) {
-        case "1":
-            return "first";
-        case "2":
-            return "second";
-        case "3":
-            return "third";
-        case "4":
-            return "fourth";
-        default:
-            return grades;
-        }
-    };
-    */
-  //let buddyGrades = grades.map(numberToWord);
-  let grades = props.gradeDiff.join(',');
-  console.log(grades);
-  let buddyGrades = grades;
+  let buddyGrades = {};
+  if (props.gradeDiff === "1") {
+    buddyGrades = "1"
+  } else if (props.gradeDiff === "2") {
+    buddyGrades = "2"
+  } else if (props.gradeDiff === "3") {
+    buddyGrades = "3"
+  } else if (props.gradeDiff === "4") {
+    buddyGrades = "4"
+  } else {
+    buddyGrades = "any"
+  }
 
   let phoneNumber = localStorage.getItem("phoneNum");
   let kakaoId = localStorage.getItem("kakaoId");
@@ -139,40 +127,41 @@ const Final = (props) => {
           각 정보를 클릭하면 정보를 입력했던 페이지로 이동합니다.
         </p>
       </div>
+      
       <div className={styles.wrapper}>
         <div className={styles.infoWrapper} onClick={Page1}>
           <div className={styles.titleWrapper}>
             <div className={styles.complete}></div>
-            <span>짝성별</span>
+            <span>버디성별</span>
           </div>
           <div className={styles.textWrapper}>{props.choiceGender}</div>
         </div>
-
-        <div className={styles.infoWrapper} onClick={Page2}>
+      
+        <div className={styles.infoWrapperHalf} onClick={Page2}>
           <div className={styles.titleWrapper}>
             <div className={styles.complete}></div>
-            <span>짝종류</span>
+            <span>버디범위</span>
           </div>
-          <div className={styles.textWrapper}>{props.grade}</div>
+          <div className={styles.textWrapperHalf}>{props.major}</div>
         </div>
 
-        <div className={styles.infoWrapper} onClick={Page3}>
+        <div className={styles.infoWrapperHalf} onClick={Page3}>
           <div className={styles.titleWrapper}>
             <div className={styles.complete}></div>
-            <span>탐색범위</span>
+            <span>버디관계</span>
           </div>
-          <div className={styles.textWrapper}>{props.major}</div>
+          <div className={styles.textWrapperHalf}>{props.grade}</div>
         </div>
 
         <div className={styles.infoWrapper} onClick={Page4}>
           <div className={styles.titleWrapper}>
             <div className={styles.complete}></div>
-            <span>학년</span>
+            <span>버디학년</span>
           </div>
           <div className={styles.textWrapper}>{buddyGrades}</div>
         </div>
 
-        <div className={styles.infoWrapper} onClick={Page5}>
+        <div className={styles.infoWrapper}>
           <div className={styles.titleWrapper}>
             <div className={styles.complete}></div>
             <span>카카오톡 아이디</span>
@@ -180,7 +169,7 @@ const Final = (props) => {
           <div className={styles.textWrapper}>{kakaoId}</div>
         </div>
 
-        <div className={styles.infoWrapper} onClick={Page5}>
+        <div className={styles.infoWrapper}>
           <div className={styles.titleWrapper}>
             <div className={styles.complete}></div>
             <span>전화번호</span>

@@ -1,6 +1,6 @@
 .selectBtn3 {
   font-size: 18px;
-  font-weight: bold;
+  font-weight: 600;
   width: 340px;
   height: 60px;
   margin: 8px;
@@ -10,7 +10,7 @@
   cursor: pointer;
   border: 1px solid #e5e5e5;
   background-color: white;
-  color: #333333;
+  color: #555555;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -23,9 +23,9 @@
 
 .clicked {
   background: #ffffff;
-  color: #333333;
+  color: #555555;
   font-size: 18px;
-  font-weight: bold;
+  font-weight: 600;
   width: 340px;
   height: 60px;
   margin: 8px;
@@ -37,4 +37,64 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+
+.second_box{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3%;
+  margin-top: 5%;
+}
+.second_check{
+  height: 110%;
+  width: 6%;
+  background-color: #FFFFFF;
+  border: solid 1px #E5E5E5;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.second_text{
+  color: #777777;
+  font-size: 1rem;
+  font-family: "prtendard";
+  font-weight: 500;
+}
+.check2{
+  width: 65%;
+  height: 40%;
+}
+.tip_box{
+  width: 80%;
+  height: auto;
+  display: flex;
+  margin-top: 20%;
+}
+.tip{
+  color: #111111;
+  font-weight: 700;
+  font-size: 1rem;
+  position: relative;
+}
+.tip_text{
+  color: #555555;
+  font-size: 0.9rem;
+  margin-left: 1%;
+  width: 70%;
+}
+.tip_nugul{
+  width: 33vw;
+  height: 15vh;
+  position: absolute;
+  top: 63%;
+  right: 5%;
+}
+
+@font-face {
+  font-family: "prtendard";
+  src: url(../../../fonts/Pretendard-Regular.otf);
 }
