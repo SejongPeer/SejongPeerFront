@@ -1,13 +1,23 @@
 @media (min-width: 768px) {
   .container {
     width: 28vw;
-    margin-top: 7vh;
+    /* background-color: #FBE4E4;
+    border: 1px solid #e5e5e5; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .outerContainer {
+    width: 28vw;
+    margin-top: 7.7vh;
     padding: 1vw 2vw 0 2vw;
     background-color: #FBE4E4;
     border: 1px solid #e5e5e5;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
   }
 
   .container1 {
@@ -35,7 +45,7 @@
 
   .matchingButton {
     width: 26vw;
-    height: 7vh;
+    height: 9vh;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -44,17 +54,33 @@
     border: 1px solid #e5e5e5;
   }
 
+  .hideBtn {
+    width: 26vw;
+    height: 9vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 18px;
+    background-color: white;
+    border: 1px solid #e5e5e5;
+    background-image: url("../../../Assets/releaseWaiting.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+  }
+
   .leftBox {
     display: flex;
     flex-direction: column;
     align-items: center;
     /* justify-content: left; */
     width: 10vw;
-    gap: 0.5vh;
+    gap: 1vh;
   }
 
   .redWord {
     font-weight: 700;
+    font-size: 2vh;
     color: #ff4b4b;
     height: 2vh;
     width: 7vw;
@@ -65,11 +91,26 @@
     text-align: left;
   }
 
-  .rightImg {
-    width: 5vh;
-    height: 5vh;
-    background-color: rgb(212, 212, 212);
+
+  .buddyImg,
+  .honbobImg {
+    width: 7vh;
+    height: 7vh;
     margin-right: 1vw;
+  }
+
+  .buddyImg {
+    background-image: url("../../../Assets/sejongBuddycat.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+  }
+
+  .honbobImg {
+    background-image: url("../../../Assets/sejongHonbobcat.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
   }
 
   .container2 {
@@ -194,6 +235,251 @@
   .secession {
     color: #999999;
     width: 26vw;
+    height: 6vh;
+    background-color: transparent;
+  }
+
+}
+
+/* 모바일 */
+@media (max-width: 768px) {
+
+  .container {
+    width: 100vw;
+    margin-top: 7vh;
+    padding: 1vw 2vw 0 2vw;
+    background-color: #FBE4E4;
+    border: 1px solid #e5e5e5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .outerContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    margin-top: 1vh;
+  }
+
+  .container1 {
+    background-color: #ffffff;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .informTitleBox {
+    width: 90vw;
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .matchingBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1vh;
+    padding: 2vh 0 2vh 0;
+  }
+
+  .matchingButton {
+    width: 90vw;
+    height: 9vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 18px;
+    background-color: white;
+    border: 1px solid #e5e5e5;
+  }
+
+  .hideBtn {
+    width: 90vw;
+    height: 9vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 18px;
+    background-color: white;
+    border: 1px solid #e5e5e5;
+    background-image: url("../../../Assets/releaseWaiting.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+  }
+
+  .leftBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: left; */
+    width: 40vw;
+    gap: 1vh;
+  }
+
+  .redWord {
+    font-weight: 700;
+    font-size: 2vh;
+    color: #ff4b4b;
+    height: 2vh;
+    width: 30vw;
+  }
+
+  .checkWord {
+    width: 30vw;
+    text-align: left;
+  }
+
+
+  .buddyImg,
+  .honbobImg {
+    width: 7vh;
+    height: 7vh;
+    margin-right: 0.2vw;
+  }
+
+  .buddyImg {
+    background-image: url("../../../Assets/sejongBuddycat.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+  }
+
+  .honbobImg {
+    background-image: url("../../../Assets/sejongHonbobcat.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+  }
+
+  .container2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    width: 100vw;
+    height: 17vh;
+    margin-top: 1vh;
+  }
+
+  .myInformBox {
+    width: 90vw;
+    height: 10vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .myInformBtn {
+    width: 90vw;
+    height: 7vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 18px;
+    background-color: #FAFAFA;
+    border: 1px solid #e5e5e5;
+  }
+
+  .myInformWord {
+    width: 40vw;
+    text-align: left;
+    margin-left: 8vw;
+  }
+
+  .rightArrow {
+    width: 2vh;
+    height: 2vh;
+    background-image: url("../../../Assets/right_arrow.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    margin-right: 1vw;
+
+  }
+
+  .container3 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    width: 100vw;
+    height: 15vh;
+    margin-top: 0.03vh;
+  }
+
+  .useInformBox {
+    display: flex;
+    justify-content: space-around;
+    gap: 1%;
+    margin-top: 1vh;
+    width: 90vw;
+    height: 8.5vh;
+  }
+
+  .useInformBtn {
+    width: 30vw;
+    height: 7vh;
+    border-radius: 18px;
+    background-color: white;
+    border: 1px solid #e5e5e5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .redWord2 {
+    color: #ff4b4b;
+    font-weight: 900;
+    font-size: 2vh;
+  }
+
+  .container4 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    width: 100vw;
+    height: 17vh;
+    margin-top: 1vh;
+  }
+
+  .ruleBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 90vw;
+    height: 20vh;
+    gap: 0.5vh;
+  }
+
+  .logout {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90vw;
+    height: 6vh;
+    border-radius: 34px;
+    background-color: white;
+    border: 1px solid #e5e5e5;
+    margin-top: 2vh;
+  }
+
+  .secession {
+    color: #999999;
+    width: 90vw;
     height: 6vh;
     background-color: transparent;
   }
