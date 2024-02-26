@@ -1,11 +1,10 @@
-import styles from "../CSS/Buddy_Final.module.css";
-import con from "../CSS/B_Container.module.css";
-import { useContext, useEffect } from "react";
-import { MyContext } from "../../../../App";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import styles from '../CSS/Buddy_Final.module.css';
+import con from '../CSS/B_Container.module.css';
+import { useContext, useEffect } from 'react';
+import { MyContext } from '../../../../App';
+import { useNavigate } from 'react-router-dom';
 
-const Final = (props) => {
+const Final = props => {
   const Page1 = () => {
     const page = 0;
     props.slideMove(page);
@@ -26,69 +25,70 @@ const Final = (props) => {
   const { buddySubmit, setBuddySubmit } = useContext(MyContext);
 
   let sameGender;
-  if (props.choiceGender === "동성") {
-    sameGender = "true";
+  if (props.choiceGender === '동성') {
+    sameGender = 'SAME';
   } else {
-    sameGender = "false";
+    sameGender = 'NO_MATTER';
   }
 
   let buddyType = {};
-  if (props.grade === "선배") {
-    buddyType = "senior";
-  } else if (props.grade === "후배") {
-    buddyType = "junior";
-  } else if (props.grade === "동기") {
-    buddyType = "friend";
+  if (props.grade === '선배') {
+    buddyType = 'SENIOR';
+  } else if (props.grade === '후배') {
+    buddyType = 'JUNIOR';
+  } else if (props.grade === '동기') {
+    buddyType = 'MATE';
   } else {
-    buddyType = "dontCare";
+    buddyType = 'NO_MATTER';
   }
 
   let buddyRange = {};
-  if (props.major === "우리 학과 버디") {
-    buddyRange = "major";
-  } else if (props.major === "우리 단과대 버디") {
-    buddyRange = "college";
+  if (props.major === '우리 학과 버디') {
+    buddyRange = 'SAME_DEPARTMENT';
+  } else if (props.major === '우리 단과대 버디') {
+    buddyRange = 'SAME_COLLEGE';
   } else {
-    buddyRange = "dontCare";
+    buddyRange = 'NO_MATTER';
   }
+  let sub = props.subMajor;
+
 
   let buddyGrades = {};
-  if (props.gradeDiff === "1") {
-    buddyGrades = "1"
-  } else if (props.gradeDiff === "2") {
-    buddyGrades = "2"
-  } else if (props.gradeDiff === "3") {
-    buddyGrades = "3"
-  } else if (props.gradeDiff === "4") {
-    buddyGrades = "4"
+  if (props.gradeDiff === '1') {
+    buddyGrades = 'GRADE_1';
+  } else if (props.gradeDiff === '2') {
+    buddyGrades = 'GRADE_2';
+  } else if (props.gradeDiff === '3') {
+    buddyGrades = 'GRADE_3';
+  } else if (props.gradeDiff === '4') {
+    buddyGrades = 'GRADE_4';
   } else {
-    buddyGrades = "any"
+    buddyGrades = 'NO_MATTER';
   }
 
-  let phoneNumber = localStorage.getItem("phoneNum");
-  let kakaoId = localStorage.getItem("kakaoId");
+  let phoneNumber = localStorage.getItem('phoneNum');
+  let kakaoId = localStorage.getItem('kakaoId');
 
   const navigate = useNavigate();
 
-  const buddySubmitHandler = async (e) => {
+  const buddySubmitHandler = async e => {
     let matchingInfo = {
-      sameGender: sameGender,
-      buddyType: buddyType,
-      buddyRange: buddyRange,
-      buddyGrades: buddyGrades,
-      phoneNumber: phoneNumber,
-      kakaoId: kakaoId,
+      genderOption : sameGender,
+      classTypeOption : buddyType,
+      collegeMajorOption : buddyRange,
+      isSubMajor : sub,
+      gradeOption : buddyGrades,
     };
     console.log(JSON.stringify(matchingInfo));
 
     try {
       const response = await fetch(
-        process.env.REACT_APP_BACK_SERVER + "/buddy/matching",
+        process.env.REACT_APP_BACK_SERVER + '/buddy/register',
         {
-          method: "POST",
+          method: 'POST',
           body: JSON.stringify(matchingInfo),
           headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
           },
         }
       );
@@ -100,22 +100,21 @@ const Final = (props) => {
         throw new Error(data.message);
       }
 
-      alert("제출 성공");
+      alert('제출 성공');
       console.log(data.message);
       setBuddySubmit(false);
-      navigate("/buddy/waiting");
+      navigate('/buddy/waiting');
     } catch (error) {
-      console.error("Error occurred:", error);
+      console.error('Error occurred:', error);
       console.error(error.message);
       alert(error.message);
       setBuddySubmit(false);
     }
-
   };
 
   useEffect(() => {
     if (buddySubmit === true) {
-        buddySubmitHandler();
+      buddySubmitHandler();
     }
   }, [buddySubmit]);
 
@@ -124,7 +123,7 @@ const Final = (props) => {
       <div className={con.titlebox}>
         <p className={con.finaltitle}>입력하신 정보를 확인해주세요</p>
       </div>
-      
+
       <div className={styles.wrapper}>
         <div className={styles.infoWrapper} onClick={Page1}>
           <div className={styles.titleWrapper}>
@@ -133,7 +132,7 @@ const Final = (props) => {
           </div>
           <div className={styles.textWrapper}>{props.choiceGender}</div>
         </div>
-      
+
         <div className={styles.infoWrapper} onClick={Page2}>
           <div className={styles.titleWrapper}>
             <div className={styles.complete}></div>
@@ -142,22 +141,22 @@ const Final = (props) => {
           <div className={styles.textWrapper}>{props.major}</div>
         </div>
 
-        <div className={styles.flex}> 
-        <div className={styles.infoWrapperHalf} onClick={Page3}>
-          <div className={styles.titleWrapper}>
-            <div className={styles.complete}></div>
-            <span>버디관계</span>
+        <div className={styles.flex}>
+          <div className={styles.infoWrapperHalf} onClick={Page3}>
+            <div className={styles.titleWrapper}>
+              <div className={styles.complete}></div>
+              <span>버디관계</span>
+            </div>
+            <div className={styles.textWrapperHalf}>{props.grade}</div>
           </div>
-          <div className={styles.textWrapperHalf}>{props.grade}</div>
-        </div>
 
-        <div className={styles.infoWrapperHalf} onClick={Page4}>
-          <div className={styles.titleWrapper}>
-            <div className={styles.complete}></div>
-            <span>버디학년</span>
+          <div className={styles.infoWrapperHalf} onClick={Page4}>
+            <div className={styles.titleWrapper}>
+              <div className={styles.complete}></div>
+              <span>버디학년</span>
+            </div>
+            <div className={styles.textWrapperHalf}>{buddyGrades}</div>
           </div>
-          <div className={styles.textWrapperHalf}>{buddyGrades}</div>
-        </div>
         </div>
 
         <div className={styles.infoWrapper}>

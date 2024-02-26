@@ -15,6 +15,7 @@ const Buddy_Matching = () => {
   const [choiceGender, setChoiceGender] = useState("");
   const [grade, setGrade] = useState("");
   const [major, setMajor] = useState("");
+  const [subMajor, setSubMajor] = useState(false);
   const [gradeDiff, setGradeDiff] = useState("");
   const [phoneNum, setPhoneNum] = useState("");
   const [kakao, setKakao] = useState("");
@@ -90,6 +91,10 @@ const Buddy_Matching = () => {
     console.log("범위 : " + major);
     setMajor(major);
   };
+  const subMajorData = (sub) => {
+    console.log("복수/부전공");
+    setSubMajor(sub);
+  }
   const GradeDiffData = (gradeDiff) => {
     console.log("학년 : " + gradeDiff);
     setGradeDiff(gradeDiff);
@@ -99,7 +104,8 @@ const Buddy_Matching = () => {
     <div className={style.wrapper} style={mediaWidth}>
       <div className={style.formWrapper} style={Slide}>
         <ChoiceGender sendChoiceGenderData={GenderChoiceData} />
-        <Major sendMajorData={MajorData} />
+        <Major sendMajorData={MajorData} 
+        sendSubMajorData={subMajorData}/>
         <Grade sendGradeData={GradeData} />
         <GradeDiff sendGradeDiffData={GradeDiffData} />
         <Final
@@ -120,6 +126,7 @@ const Buddy_Matching = () => {
         choiceGender={choiceGender}
         grade={grade}
         major={major}
+        subMajor={subMajor}
         gradeDiff={gradeDiff}
         phoneNum={phoneNum}
         kakao={kakao}

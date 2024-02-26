@@ -42,6 +42,7 @@ const Major = (props) => {
 
     const clickSecondHandler = () => {
         setIsSecond(!isSecond);
+        props.sendSubMajorData(isSecond);
     }
 
 
