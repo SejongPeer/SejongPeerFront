@@ -1,8 +1,5 @@
 import style from "./BuddyWaiting.module.css";
-import buddyTextRed from "../../../Assets/buddyTextRed.png";
-import buddyWaitingLogo from "../../../Assets/buddyWaitingLogo.png";
 import { useNavigate } from "react-router-dom";
-import { useEffect,useState } from 'react';
 import waitingCat from "../../../Assets/waitingCat.png"
 
 const BuddyWaiting = ()=>{

@@ -1,0 +1,76 @@
+.container {
+  margin-top: 8vh;
+  display: flex;
+  flex-direction: column;
+  height: 85%;
+  background-color: #fafafa;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.title {
+  font-size: 1.6rem;
+  color: #ff4b4b;
+  font-weight: 700;
+  margin: 4% 0;
+}
+.buddy_succes {
+  width: 90vw;
+  height: 30vh;
+}
+
+.info_box {
+  width: 90%;
+  height: 25vh;
+  border: 1px solid #e5e5e5;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 0 5%;
+  margin-top: 5%;
+}
+.info_wrapper {
+  width: 100%;
+  text-align: left;
+}
+.info_name {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 2% 0;
+  color: #555555;
+}
+.info {
+  margin: 2% 0;
+  font-size: 1rem;
+  color: #555555;
+}
+
+.info_kakao_box {
+  width: 105%;
+  height: 30%;
+  border: solid 1.5px #ff4b4b;
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5%;
+}
+.kakao_title {
+    font-weight: 700;
+    color: #111111;
+}
+.kakao_id {
+    color: #777777;
+}
+
+.go_home{
+    width: 90%;
+    height: 7vh;
+    background-color: #FF4B4B;
+    border-radius: 28px;
+    color: #FFFFFF;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-top: 4%;
+}
