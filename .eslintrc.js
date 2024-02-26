@@ -32,5 +32,6 @@ module.exports = {
     'no-dupe-keys': 0,
     'no-fallthrough': 0,
     'react/no-unescaped-entities': 0,
+    'no-undef' : 0,
   },
 };
