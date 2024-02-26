@@ -12,7 +12,7 @@ const BuddyWaiting = ()=>{
             const response = await fetch(
               process.env.REACT_APP_BACK_SERVER + "/buddy/cancel",
               {
-                method: "POST",
+                method: "GET",
                 body: JSON.stringify(),
                 headers: {
                   "Content-Type": "application/json",
@@ -32,7 +32,8 @@ const BuddyWaiting = ()=>{
             navigate("/main");
           } catch (error) {
             console.error(error.message);
-            alert(error.message);
+            console.log(error.message);
+            alert("알 수 없는 오류가 발생했습니다.");
           }
     };
 

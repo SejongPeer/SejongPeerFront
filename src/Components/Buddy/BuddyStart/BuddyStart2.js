@@ -10,7 +10,7 @@ const BuddyStart2 = () => {
     const BuddyHandler = async() => {
         try {
             const response = await fetch(
-                process.env.REACT_APP_BACK_SERVER + "/buddy/check_status",
+                process.env.REACT_APP_BACK_SERVER + "/buddy/check-matching-status",
                 {
                 method: "GET",
                 headers: {
@@ -21,22 +21,11 @@ const BuddyStart2 = () => {
                 }
             );
             
-            if (response.status === 301) {
-                alert("버디를 찾은 사용자입니다.");
-            } else if (response.status === 302) {
-                alert("버디를 찾는중인 사용자입니다.");
-                navigate("/buddy/waiting");
-            } else if (response.status === 200) {
-                navigate("/buddy/matching");
-            } else {
-                alert("로그인이 필요한 서비스입니다!");
-                navigate("/login");
-            }
+            console.log(response.data)
         } catch (error) {
             alert("로그인이 필요한 서비스입니다!");
             navigate("/login");
             console.log(error.message);
-            alert(error.message);
         }
         
     };
