@@ -43,7 +43,7 @@ jobs:
           aws s3 cp \
             --recursive \
             --region ap-northeast-2 \
-            build s3://sejongpeer
+            build s3://sejongpeer.com
 
       - name: Invalidate CloudFront Cache
         env:
