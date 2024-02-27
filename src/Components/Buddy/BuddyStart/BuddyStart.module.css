@@ -3,6 +3,7 @@
   display: flex;
   flex-direction: column;
   height: 85%;
+  max-width: 415px;
   justify-content: space-between;
   background-color: #fafafa;
 }
@@ -26,7 +27,7 @@
   height: 56px;
   margin: 8px;
   border-radius: 40px;
-  background-color: #FF4B4B;
+  background-color: #ff4b4b;
   border: none;
   color: white;
   cursor: pointer;
@@ -38,7 +39,7 @@
   height: 52px;
   margin: 8px;
   border-radius: 40px;
-  background-color: #FF4B4B;
+  background-color: #ff4b4b;
   border: none;
   color: white;
   cursor: pointer;
@@ -59,32 +60,32 @@
   max-height: 260px;
   margin: 5%;
 }
-.buddyImg2{
+.buddyImg2 {
   width: 70vw;
   height: 15vh;
 }
-.imgBack{
+.imgBack {
   width: 85%;
   height: 40%;
   border-radius: 50%;
-  background-color: #FFF7F7;
+  background-color: #fff7f7;
   margin: 15% 0;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.explain{
+.explain {
   font-size: 1.3rem;
-  font-weight: 600;  
+  font-weight: 600;
   margin: 0;
   font-family: 'omyupretty';
 }
-.sejongbuddy{
+.sejongbuddy {
   font-size: 3rem;
   font-weight: 600;
   margin: 0;
   font-family: 'jalnan';
-  color: #FF4B4B;
+  color: #ff4b4b;
   margin-top: 3%;
 }
 
@@ -97,7 +98,7 @@
 .text_red {
   font-size: 1.1rem;
   font-weight: 700;
-  color: #FF4B4B;
+  color: #ff4b4b;
 }
 .text2 {
   font-size: 1.1rem;

@@ -1,53 +1,55 @@
-import { useNavigate } from "react-router-dom";
-import backicon from "../../Assets/back.png";
-import sejongpeertext from "../../Assets/sejongpeertext.png";
-import sejongBuddy from "../../Assets/sejongBuddy.png";
-import { useLocation } from "react-router-dom";
-import sejongStudy from "../../Assets/sejongStudy.png";
-import sejongHonbob from "../../Assets/sejongHonbob.png";
-import login from "../../Assets/login.png";
-import style from "./Back.module.css";
+import { useNavigate } from 'react-router-dom';
+import backicon from '../../Assets/back.png';
+import sejongpeertext from '../../Assets/sejongpeertext.png';
+import sejongBuddy from '../../Assets/sejongBuddy.png';
+import { useLocation } from 'react-router-dom';
+import sejongStudy from '../../Assets/sejongStudy.png';
+import sejongHonbob from '../../Assets/sejongHonbob.png';
+import login from '../../Assets/login.png';
+import style from './Back.module.css';
+import mypage from '../../Assets/mypage.png';
 
 const Back = () => {
   const navigate = useNavigate();
   const backHandler = () => {
-    navigate("/main");
+    navigate(-1);
   };
   const goLoginHandler = () => {
-    navigate("/login");
+    navigate('/login');
   };
   const warningMessage = () => {
     const backToMain = window.confirm(
-      "확인을 누르면 메인 화면으로 이동합니다.\n지금까지 작성한 내용들이 모두 초기화 됩니다."
+      '확인을 누르면 메인 화면으로 이동합니다.\n지금까지 작성한 내용들이 모두 초기화 됩니다.'
     );
     if (backToMain) {
-      navigate("/main");
+      navigate('/main');
     }
   };
 
   const location = useLocation();
 
   const ChangeBack = () => {
-    if (location.pathname.startsWith("/login/")) {
+    if (location.pathname.startsWith('/login/')) {
       goLoginHandler();
-    } else if (location.pathname === "/buddy/matching") {
+    } else if (location.pathname === '/buddy/matching') {
       warningMessage();
     } else {
       backHandler();
     }
   };
-  const isMain = location.pathname === "/main" ? true : false;
+  const isMain = location.pathname === '/main' ? true : false;
   // 로그인
-  const isLoginPath = location.pathname.startsWith("/login");
+  const isLoginPath = location.pathname.startsWith('/login');
   // 회원가입
-  const isSignUpPath = location.pathname.startsWith("/buddy");
-  const isBuddyPath = location.pathname.startsWith("/buddy");
-  const isStudyPath = location.pathname.startsWith("/study");
-  const isHonbobPath = location.pathname.startsWith("/honbob/");
+  const isSignUpPath = location.pathname.startsWith('/buddy');
+  const isBuddyPath = location.pathname.startsWith('/buddy');
+  const isStudyPath = location.pathname.startsWith('/study');
+  const isHonbobPath = location.pathname.startsWith('/honbob/');
+  const ismyPage = location.pathname.startsWith('/mypage');
 
   return (
     <button onClick={ChangeBack} className={style.wrapper}>
-      {location.pathname !== "/main" && (
+      {location.pathname !== '/main' && (
         <img className={style.backicon} src={backicon} alt="backicon" />
       )}
       {isMain && (
@@ -80,6 +82,9 @@ const Back = () => {
           src={sejongHonbob}
           alt="sejongpeerlogo"
         />
+      )}
+      {ismyPage && (
+        <img className={style.mypagelogo} src={mypage} alt="mypage" />
       )}
       {/* {isStudy && (
         <img

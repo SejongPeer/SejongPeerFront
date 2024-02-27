@@ -141,7 +141,7 @@ const App = () => {
               <Route path="/personalinfo" element={<Agree1 />} />
               <Route path="/useinfo" element={<Agree2 />} />
               <Route path="/mypage" element={<MyPage />} />
-              <Route path="/modify" element={<Modify />} />
+              <Route path="/mypage/modify" element={<Modify />} />
 
               <Route path="/study" element={<StudyList />} />
               <Route path="/study/detail" element={<StudyPostDeatil />} />
