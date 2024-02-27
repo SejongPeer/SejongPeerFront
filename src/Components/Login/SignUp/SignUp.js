@@ -37,6 +37,7 @@ const SignUp = props => {
   const [isIdExist, setIsIdExist] = useState(true);
   const [isNicknameExist, setIsNicknameExist] = useState(true);
 
+
   useEffect(() => {
     console.log('isIdExist 상태: ', isIdExist);
   }, [isIdExist]);
@@ -123,6 +124,13 @@ const SignUp = props => {
 
   //POST
   async function submitHandler(e) {
+    e.preventDefault();
+
+    // 복수전공 체크 여부에 따라 변수 값을 조정
+    const finalDoubleMajorValue = doubleMajorChecked ? doublemajorValue : null;
+    const finalDoubleCollegeValue = doubleMajorChecked
+      ? doubleCollegeValue
+      : null;
     console.log('-------------------------------');
     console.log('idValue : ' + idValue);
     console.log('pwdValue : ' + pwdValue);
@@ -175,8 +183,10 @@ const SignUp = props => {
           studentId: studentNumberValue,
           college: collegeValue,
           major: majorValue,
-          subCollege: doubleCollegeValue,
-          subMajor: doublemajorValue,
+          // subCollege: doubleCollegeValue,
+          // subMajor: doublemajorValue,
+          subCollege: finalDoubleCollegeValue,
+          subMajor: finalDoubleMajorValue,
           grade: gradeValue,
           gender: genderValue,
           phoneNumber: phoneNumberValue,
@@ -203,7 +213,9 @@ const SignUp = props => {
           if (!response.ok) {
             throw new Error(data.message);
           }
-          alert(data.message + ' 로그인 페이지로 이동합니다.');
+
+          alert('로그인 페이지로 이동합니다.');
+
           navigate('/login');
         } catch (err) {
           console.error('Error occurred:', err);
