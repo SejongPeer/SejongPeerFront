@@ -1,5 +1,5 @@
 import style from "./HonbobWaiting.module.css";
-import hohbobWaitingLogo from "../../../Assets/honbobWaitingLogo.png";
+import hohbobWaitingLogo from "../../../Assets/honbobWaitingImg.png";
 import { MyContext } from "../../../App";
 import { useState, useEffect, useContext } from "react";
 import { redirect, useNavigate } from "react-router-dom";
@@ -16,7 +16,7 @@ const HonbobWaiting = () => {
       kakaoId: KaKaoDD,
     };
 
-    console.log("혼밥웨이팅js에서 KaKaoDD : " + KaKaoDD);
+    // console.log("혼밥웨이팅js에서 KaKaoDD : " + KaKaoDD);
 
     try {
       const response = await fetch(
@@ -71,7 +71,7 @@ const HonbobWaiting = () => {
 
       <div className={style.BtnBox}>
         <p className={style.Text3}>
-          매칭 시,메시지로 상대방의 정보가 전달됩니다.
+          매칭 시 밥짝꿍의 카카오톡ID와 선호메뉴가 전달됩니다.
         </p>
         <button className={style.moveToHomeBtn} onClick={moveToMain}>
           홈페이지로 이동

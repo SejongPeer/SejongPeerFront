@@ -54,30 +54,10 @@ const ProgressBar = props => {
 
     if (props.slide === 0) {
       updateStep[0] = true;
-      updateStep[1] = false;
-      prev = true;
-      next = false;
-      if (
-        // eslint-disable-next-line no-cond-assign
-        (next =
-          true ||
-          (props.phoneNumHonbob !== '' &&
-            props.phoneNumHonbob.length === 11 &&
-            props.kakaoHonbob !== ''))
-      ) {
-        next = true;
-      }
-    } else {
-      setIsLastPage(false);
-    }
+      prev = false;
+      next = true;
 
-    if (props.slide === 1) {
-      updateStep[1] = true;
-      updateStep[2] = false;
-
-      prev = true;
-      next = false;
-      if (props.myGenderHonbob !== '') {
+      if (props.choiceGenderHonbob !== '') {
         next = true;
         if (!clickedPrev) {
           props.slideMove(props.slide + 1);
@@ -85,24 +65,48 @@ const ProgressBar = props => {
       }
     }
 
-    if (props.slide === 2) {
-      updateStep[2] = true;
+    if (props.slide === 1) {
+      updateStep[0] = false;
+      updateStep[1] = true;
       prev = true;
-      next = false;
-      setIsLastPage(true);
-      if (props.choiceGenderHonbob !== '') {
+      next = true;
+      if (
+        // eslint-disable-next-line no-cond-assign
+        (next =
+          true ||
+          (props.phoneNumHonbob !== ''))
+      ) {
         next = true;
       }
+      // if (!clickedPrev) {
+      //   props.slideMove(props.slide + 1);
+      // }
     }
+
+    if (props.slide === 2) {
+      updateStep[2] = true;
+      updateStep[1] = false;
+      setIsLastPage(true);
+      prev = true;
+      next = false;
+      if (props.myGenderHonbob !== '') {
+        next = true;
+        // if (!clickedPrev) {
+        //   props.slideMove(props.slide + 1);
+        // }
+      }
+    }
+    else {
+      setIsLastPage(false);
+    }
+
+
 
     setStep(updateStep);
     setCanMoveNext(next);
     setCanMovePrev(prev);
   }, [
     props.choiceGenderHonbob,
-    props.myGenderHonbob,
-    props.phoneNumHonbob,
-    props.kakaoHonbob,
     props.slide,
   ]);
 
@@ -151,7 +155,7 @@ const ProgressBar = props => {
               key={index}
               className={styles.progress}
               style={{
-                backgroundColor: step ? '#4F41DE' : '#ccc',
+                backgroundColor: step ? '#FF4B4B' : '#ccc',
               }}
             ></div>
           ))}

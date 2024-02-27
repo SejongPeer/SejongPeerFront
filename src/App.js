@@ -17,6 +17,7 @@ import BuddyAccept from "./Components/Buddy/BuddyWaiting/BuddyAccept.js";
 import BuddySuccess from "./Components/Buddy/BuddyWaiting/BuddySuccess.js";
 
 import HonbobStart1 from "./Components/Honbob/HonbobStart/HonbobStart1.js";
+
 import Confirm from "./Components/Modal/Confirm";
 
 import SignIn from "./Components/Login/SignIn/SignIn";
@@ -147,7 +148,7 @@ const App = () => {
               <Route path="/study/detail" element={<StudyPostDeatil />} />
               <Route path="/study/post" element={<StudyPostWrite />} />
               <Route path="/study/filter" element={<StudyFilter />} />
-                
+
               <Route path="/checksejong" element={<Sejong />} />
             </Routes>
           </main>

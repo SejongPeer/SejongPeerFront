@@ -1,279 +1,235 @@
-/* 데스크탑 css */
-
 @media (min-width: 768px) {
-  .container {
-    margin-top: 5rem;
+  .Container {
+    width: 100vw;
+    height: 100vh;
     display: flex;
-    flex-direction: column;
-    height: 85%;
-    justify-content: space-between;
-    background-color: #fafafa;
-  }
-  .top2 {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 70%;
     justify-content: center;
   }
-  .top3 {
-    color: #333;
-    font-family: Pretendard;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 24px; /* 150% */
-    letter-spacing: -0.333px;
+
+  .InnerContainer {
+    /* width: 450px; */
+    width: 28vw;
+    height: 100vh;
+    /* background-color: aliceblue; */
+    background-color: transparent;
   }
-  .bottom {
+
+  .top {
+    margin-top: 10vh;
+    width: 28vw;
+    height: 6vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: end;
+  }
+
+  .informBtn {
+    margin-right: 1vw;
+    border-radius: 24px;
+    width: 10vw;
+    height: 5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2vh;
+    border: 2px solid #E5E5E5;
+    background-color: transparent;
+  }
+
+  .informImg {
+    background-image: url("../../../Assets/warningLogo.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    width: 3vh;
+    height: 3vh;
+    margin-left: 0.5vw;
+  }
+
+  .middle {
+    width: 28vw;
+    height: 75vh;
+    margin-top: 3vh;
+    background-color: transparent;
     display: flex;
     flex-direction: column;
+    /* justify-content: center; */
     align-items: center;
   }
 
-  .btn1 {
-    font-size: 20px;
-    font-weight: 700;
-    width: 335px;
-    height: 56px;
-    margin: 8px;
-    border-radius: 40px;
-    background-color: #4f41de;
-    border: none;
-    color: white;
-    cursor: pointer;
-  }
-  .btn2 {
-    font-size: 18px;
-    font-weight: 700;
-    width: 335px;
-    height: 52px;
-    margin: 8px;
-    border-radius: 40px;
-    background-color: #4f41de;
-    border: none;
-    color: white;
-    cursor: pointer;
-  }
-
-  .honbobText {
+  .honbobLogo {
+    height: 45vh;
     width: 15vw;
-    height: 7vh;
-    margin-top: -5vh;
-    margin-bottom: 5vh;
-  }
-  .honbobImg {
-    width: 191px;
-    height: 64px;
-    margin-top: 120px;
-  }
-  .text {
-    font-size: 18px;
-    font-weight: 600;
-    color: #333333;
-  }
-  .text1 {
-    color: var(--font_02, #333);
-    font-family: Pretendard;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 24px; /* 150% */
-    letter-spacing: -0.333px;
-    position: relative;
-    bottom: 5vh;
-    left: 4vw;
-    margin: 0;
-  }
-  .text2 {
-    font-size: 16px;
-    font-weight: 600;
-    line-height: 1.5;
-    color: #333333;
-  }
-  .text3 {
-    font-size: 16px;
-    font-weight: 600;
-    line-height: 1.5;
-    color: #4f41de;
+    background-image: url("../../../Assets/honbobStartLogo.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
   }
 
-  .text4 {
-    color: #4f41de;
-    text-align: center;
-    font-family: Jalnan;
-    font-size: 48px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 64px; /* 133.333% */
-    letter-spacing: -0.333px;
-  }
-
-  .flex {
+  .informContext {
+    margin-top: 3vh;
+    font-weight: 600;
+    gap: 2%;
     display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    width: auto;
-  }
-  .logo {
-    width: 32px;
-    height: 32px;
-  }
-  .title {
-    font-size: 24px;
-    color: #4f41de;
-    font-weight: 800;
-    margin: 8px 5px;
   }
 
-  .wrapper {
-    width: 310px;
+  .context1 {
+    margin: 0.5vh;
+    font-size: 2vh;
   }
 
-  .back {
-    font-size: 16px;
+  .findContext {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
     font-weight: 600;
-    color: #999999;
-    border: none;
-    background-color: transparent;
+    margin-top: 5vh;
+    font-size: 2vh;
+    width: 20vw;
+  }
+
+  .raccoon {
+    width: 4vh;
+    height: 4vh;
+    background-image: url("../../../Assets/raccoonImg.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+  }
+
+  .submitBtn {
+    width: 26vw;
+    height: 7vh;
+    border-radius: 32px;
+    color: #FFFFFF;
+    background-color: #FF4B4B;
+    font-size: 2.5vh;
+    margin-top: 4vh;
+    font-weight: 600;
     cursor: pointer;
+
   }
 }
-/* //////////////////////////////////////////////////////////////// */
 
-/* 모바일 css */
 @media (max-width: 768px) {
-  .container {
-    margin-top: 5rem;
+  .Container {
+    width: 100vw;
+    height: 100vh;
     display: flex;
-    flex-direction: column;
-    height: 85%;
-    justify-content: space-between;
-    background-color: #fafafa;
-  }
-  .top2 {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 70%;
     justify-content: center;
   }
-  .top3 {
-    color: #333;
-    font-family: Pretendard;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 24px; /* 150% */
-    letter-spacing: -0.333px;
+
+  .InnerContainer {
+    /* width: 450px; */
+    width: 100vw;
+    height: 100vh;
+    /* background-color: aliceblue; */
+    background-color: transparent;
   }
-  .bottom {
+
+  .top {
+    margin-top: 10vh;
+    width: 100vw;
+    height: 6vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: end;
+  }
+
+  .informBtn {
+    margin-right: 4vw;
+    border-radius: 24px;
+    width: 40vw;
+    height: 5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2vh;
+    border: 2px solid #E5E5E5;
+    background-color: transparent;
+  }
+
+  .informImg {
+    background-image: url("../../../Assets/warningLogo.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    width: 3vh;
+    height: 3vh;
+    margin-left: 0.5vw;
+  }
+
+  .middle {
+    width: 100vw;
+    height: 75vh;
+    margin-top: 3vh;
+    background-color: transparent;
     display: flex;
     flex-direction: column;
+    /* justify-content: center; */
     align-items: center;
   }
 
-  .btn1 {
-    font-size: 20px;
-    font-weight: 700;
-    width: 335px;
-    height: 56px;
-    margin: 8px;
-    border-radius: 40px;
-    background-color: #4f41de;
-    border: none;
-    color: white;
-    cursor: pointer;
-  }
-  .btn2 {
-    font-size: 18px;
-    font-weight: 700;
-    width: 335px;
-    height: 52px;
-    margin: 8px;
-    border-radius: 40px;
-    background-color: #4f41de;
-    border: none;
-    color: white;
-    cursor: pointer;
+  .honbobLogo {
+    height: 38vh;
+    width: 50vw;
+    background-image: url("../../../Assets/honbobStartLogo.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
   }
 
-  .honbobText {
-    width: 60vw;
-    height: 8vh;
-    margin-top: -8vh;
-  }
-  .honbobImg {
-    width: 191px;
-    height: 64px;
-    margin-top: 120px;
-  }
-  .text {
-    font-size: 18px;
+  .informContext {
+    margin-top: 3vh;
     font-weight: 600;
-    color: #333333;
-  }
-  .text1 {
-    color: var(--font_02, #333);
-    font-family: Pretendard;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 24px; /* 150% */
-    letter-spacing: -0.333px;
-    position: relative;
-    bottom: 7vh;
-    left: 16vw;
-  }
-  .text2 {
-    font-size: 16px;
-    font-weight: 600;
-    line-height: 1.5;
-    color: #333333;
-  }
-  .text3 {
-    font-size: 16px;
-    font-weight: 600;
-    line-height: 1.5;
-    color: #4f41de;
-  }
-
-  .text4 {
-    color: #4f41de;
-    text-align: center;
-    font-family: Jalnan;
-    font-size: 48px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 64px; /* 133.333% */
-    letter-spacing: -0.333px;
-  }
-
-  .flex {
+    gap: 2%;
     display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    width: auto;
-  }
-  .logo {
-    width: 32px;
-    height: 32px;
-  }
-  .title {
-    font-size: 24px;
-    color: #4f41de;
-    font-weight: 800;
-    margin: 8px 5px;
   }
 
-  .wrapper {
-    width: 310px;
+  .context1 {
+    margin: 0.5vh;
+    font-size: 2vh;
   }
 
-  .back {
-    font-size: 16px;
+  .findContext {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
     font-weight: 600;
-    color: #999999;
-    border: none;
-    background-color: transparent;
+    margin-top: 9vh;
+    font-size: 2vh;
+    width: 80vw;
+  }
+
+  .raccoon {
+    width: 5vh;
+    height: 5vh;
+    background-image: url("../../../Assets/raccoonImg.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+  }
+
+  .submitBtn {
+    width: 90vw;
+    height: 7vh;
+    border-radius: 32px;
+    color: #FFFFFF;
+    background-color: #FF4B4B;
+    font-size: 2.5vh;
+    margin-top: 4vh;
+    font-weight: 600;
     cursor: pointer;
+
   }
 }

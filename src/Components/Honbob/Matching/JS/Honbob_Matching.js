@@ -1,6 +1,8 @@
 import { useState, useEffect, useContext } from "react";
 import ChoiceGenderHonbob from "./H_MyGender.js";
 import H_Gender from "./H_Gender.js";
+import H_Menu from "./H_Menu.js";
+import H_informCheck from "./H_InformCheck.js";
 import PhoneNumHonbob from "./U_PhoneNum_h.js";
 import ProgressBar from "../../ProgressBar/ProgressBar_Honbob";
 import style from "../CSS/Honbob_Matching.module.css";
@@ -9,9 +11,7 @@ import { useNavigate } from "react-router-dom";
 const Honbob_Matching = () => {
   const [slide, setSlide] = useState(0);
   const [choiceGenderHonbob, setChoiceGender] = useState("");
-  const [myGenderHonbob, setMyGender] = useState("");
-  const [phoneNumHonbob, setPhoneNum] = useState("");
-  const [kakaohonbob, setKakao] = useState("");
+  const [choiceMenu, setChoiceMenu] = useState("");
   const { KaKaoDD, setKaKaoDD } = useContext(MyContext);
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -20,12 +20,12 @@ const Honbob_Matching = () => {
 
 
   useEffect(() => {
-      if (userId === null) {
-          setIsLoggedIn(false);
-      } else {
-          setIsLoggedIn(true);
-      }
-  },[userId]);
+    if (userId === null) {
+      setIsLoggedIn(false);
+    } else {
+      setIsLoggedIn(true);
+    }
+  }, [userId]);
 
   // 화면 넘기기 (다음 / 이전)
 
@@ -81,23 +81,14 @@ const Honbob_Matching = () => {
   };
 
   //사용자가 입력한 정보
-  const MyGenderChoiceData = (myGenderHonbob) => {
-    console.log("내 성별 : " + myGenderHonbob);
-    setMyGender(myGenderHonbob);
-  };
+
   const GenderChoiceData = (choiceGenderHonbob) => {
     console.log("동성이성(혼밥) : " + choiceGenderHonbob);
     setChoiceGender(choiceGenderHonbob);
   };
-  const PhoneNumData = (phoneNumHonbob) => {
-    console.log("핸드폰 : " + phoneNumHonbob);
-    setPhoneNum(phoneNumHonbob);
-  };
-  const KaKaoData = (kakaohonbob) => {
-    console.log("카톡 : " + kakaohonbob);
-    setKakao(kakaohonbob);
-  };
-  //setKaKaoDD(kakaohonbob);
+  const menuChoiceData = (choiceMenu) => {
+    setChoiceMenu(choiceMenu);
+  }
 
   const { honbobSubmit, setHonbobSubmit } = useContext(MyContext);
 
@@ -109,22 +100,14 @@ const Honbob_Matching = () => {
     sameGender = "false";
   }
 
-  let myGender = {};
-  if (myGenderHonbob === "남자") {
-    myGender = "male";
-  } else {
-    myGender = "female";
-  }
 
- 
+  //수정->alert?
+  let kakaoId = isLoggedIn ? localStorage.getItem("kakaoId") : null;
+  let phoneNumber = isLoggedIn ? localStorage.getItem("phoneNum") : null;
 
-  let kakaoId = isLoggedIn ? localStorage.getItem("kakaoId") : kakaohonbob;
-  let phoneNumber = isLoggedIn ? localStorage.getItem("phoneNum") : phoneNumHonbob;
 
-  
   const honbobSubmitHandler = async (e) => {
     let findInfo = {
-      kakaoId: kakaoId,
       phoneNumber: phoneNumber,
       myGender: myGender,
       buddyGender: sameGender,
@@ -163,7 +146,7 @@ const Honbob_Matching = () => {
   };
 
   useEffect(() => {
-    if (honbobSubmit === true && slide===2) {
+    if (honbobSubmit === true && slide === 2) {
       honbobSubmitHandler();
     }
   }, [honbobSubmit]);
@@ -171,12 +154,15 @@ const Honbob_Matching = () => {
   return (
     <div className={style.wrapper} style={mediaWidth}>
       <div className={style.formWrapper} style={Slide}>
-        <PhoneNumHonbob
+        <H_Gender sendChoiceGenderData={GenderChoiceData} />
+        <H_Menu sendMenuData={menuChoiceData} />
+        <H_informCheck />
+        {/* <PhoneNumHonbob
           sendPhoneNumData={PhoneNumData}
           sendKakaoData={KaKaoData}
-        />
-        <ChoiceGenderHonbob sendChoiceMyGenderData={MyGenderChoiceData} />
-        <H_Gender sendChoiceGenderData={GenderChoiceData} />
+        /> */}
+        {/* <ChoiceGenderHonbob sendChoiceMyGenderData={MyGenderChoiceData} /> */}
+
       </div>
       <ProgressBar
         moveNext={MoveNext}
@@ -184,9 +170,6 @@ const Honbob_Matching = () => {
         slide={slide}
         setSlide={setSlide}
         choiceGenderHonbob={choiceGenderHonbob}
-        myGenderHonbob={myGenderHonbob}
-        phoneNumHonbob={phoneNumHonbob}
-        kakaohonbob={kakaohonbob}
         slideMove={slideMove}
       />
     </div>

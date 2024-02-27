@@ -39,6 +39,7 @@ const H_Gender = (props) => {
           상관없음
         </button>
       </div>
+      <div className={con.fightImg}></div>
     </div>
   );
 };

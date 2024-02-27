@@ -1,0 +1,82 @@
+.menuContainer {
+    width: 40vh;
+    display: flex;
+    flex-direction: row;
+    /* 수직으로 아이템을 배치합니다. */
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+    gap: 2%;
+}
+
+.item {
+    font-size: 18px;
+    font-weight: bold;
+    width: 40%;
+    aspect-ratio: 1;
+    /* margin-left: 3vh; */
+    padding-top: 20px;
+    border-radius: 40px;
+    border: 1px solid #e5e5e5;
+    cursor: pointer;
+    background-color: white;
+    color: #333333;
+}
+
+.menuBox {
+    margin-bottom: 1vh;
+    ;
+}
+
+.imgBox {
+    width: 15vh;
+    height: 10vh;
+    margin-bottom: 1vh;
+}
+
+.item-0 {
+    background-image: url("../../../../Assets/KoreanFood.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+}
+
+.item-1 {
+    background-image: url("../../../../Assets/westernFood.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+}
+
+.item-2 {
+    background-image: url("../../../../Assets/ChineseFood.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+}
+
+.item-3 {
+    background-image: url("../../../../Assets/JapaneseFood.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+}
+
+.menuBtn {
+    font-size: 20px;
+    font-weight: bold;
+    width: 45%;
+    aspect-ratio: 1;
+    margin-bottom: 1vh;
+    padding-top: 20px;
+    border-radius: 40px;
+    /* border: 1px solid #e5e5e5; */
+    cursor: pointer;
+    background-color: white;
+    color: #333333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
