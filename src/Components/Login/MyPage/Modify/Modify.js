@@ -136,8 +136,18 @@ const Modify = () => {
             </div>
           </div>
           <div className={styles.container2}>
-            <div className={styles.informTitleBox}>
-              <div style={{ fontWeight: '700', marginBottom: '0px' }}>
+            <div
+              className={styles.informTitleBox}
+              style={{ margin: '1.2vh 0 0 0' }}
+            >
+              <div
+                style={{
+                  fontSize: '1.2em',
+                  fontWeight: '700',
+                  marginBottom: '0px',
+                  color: 'black',
+                }}
+              >
                 내 학과
               </div>
               <div
@@ -151,8 +161,13 @@ const Modify = () => {
               </div>
             </div>
             <div className={styles.departBox}>
-              <div style={{ fontWeight: '600', color: '#555555' }}>
-                소프트웨어학과 · 3학년
+              <div
+                style={{
+                  fontWeight: '600',
+                  color: '#555555',
+                }}
+              >
+                {myPageData.major}
               </div>
             </div>
           </div>

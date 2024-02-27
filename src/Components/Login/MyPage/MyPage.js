@@ -22,6 +22,7 @@ const MyPage = () => {
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+              'Refresh-Token': localStorage.getItem('refreshToken'),
             },
           }
         );
