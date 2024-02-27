@@ -45,19 +45,40 @@
   width: 335px;
   height: 40px;
   border-radius: 12px;
-  font-size: 16px;
+  font-size: 1rem;
+  font-weight: 600;
   padding: 0px 15px;
   display: flex;
   align-items: center;
   border: 1px solid #ff4b4b;
   background-color: #FFFFFF;
 }
-
+.textWrapper_grade{
+  width: 335px;
+  height: 40px;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0px 15px;
+  display: flex;
+  align-items: center;
+  border: 1px solid #ff4b4b;
+  background-color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.sub{
+  font-size: 16px;
+  color: #777777;
+  font-weight: 600;
+}
 .textWrapperHalf {
   width: 161px;
   height: 40px;
   border-radius: 12px;
-  font-size: 16px;
+  font-size: 1rem;
+  font-weight: 600;
   padding: 0px 15px;
   display: flex;
   align-items: center;

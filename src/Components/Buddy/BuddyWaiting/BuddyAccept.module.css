@@ -1,5 +1,5 @@
 .container {
-  margin-top: 11vh;
+  margin-top: 8vh;
   display: flex;
   flex-direction: column;
   height: 85%;
@@ -13,8 +13,10 @@
   margin: 4% 0;
 }
 .find_buddy {
-  width: 83%;
-  height: 50%;
+  width: 80vw;
+  height: 80vw;
+  max-width: 320px;
+  max-height: 320px;
 }
 
 .info_box {

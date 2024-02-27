@@ -15,12 +15,14 @@
 }
 .buddy_succes {
   width: 90vw;
-  height: 30vh;
+  height: 60vw;
+  max-width: 360px;
+  max-height: 320px;
 }
 
 .info_box {
   width: 90%;
-  height: 25vh;
+  height: 23vh;
   border: 1px solid #e5e5e5;
   border-radius: 16px;
   display: flex;

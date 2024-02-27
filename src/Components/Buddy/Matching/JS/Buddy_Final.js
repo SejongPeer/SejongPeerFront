@@ -5,6 +5,7 @@ import { MyContext } from '../../../../App';
 import { useNavigate } from 'react-router-dom';
 
 const Final = props => {
+  //각 정보 클릭 시, 페이지 이동 
   const Page1 = () => {
     const page = 0;
     props.slideMove(page);
@@ -24,6 +25,7 @@ const Final = props => {
 
   const { buddySubmit, setBuddySubmit } = useContext(MyContext);
 
+  // 버디 성별
   let sameGender;
   if (props.choiceGender === '동성') {
     sameGender = 'SAME';
@@ -31,6 +33,19 @@ const Final = props => {
     sameGender = 'NO_MATTER';
   }
 
+  //버디 범위
+  let buddyRange = {};
+  if (props.major === '우리 학과 버디') {
+    buddyRange = 'SAME_DEPARTMENT';
+  } else if (props.major === '우리 단과대 버디') {
+    buddyRange = 'SAME_COLLEGE';
+  } else {
+    buddyRange = 'NO_MATTER';
+  }
+  //복수/부전공
+  let sub = props.subMajor;
+
+  //버디 관계
   let buddyType = {};
   if (props.grade === '선배') {
     buddyType = 'SENIOR';
@@ -42,35 +57,33 @@ const Final = props => {
     buddyType = 'NO_MATTER';
   }
 
-  let buddyRange = {};
-  if (props.major === '우리 학과 버디') {
-    buddyRange = 'SAME_DEPARTMENT';
-  } else if (props.major === '우리 단과대 버디') {
-    buddyRange = 'SAME_COLLEGE';
-  } else {
-    buddyRange = 'NO_MATTER';
-  }
-  let sub = props.subMajor;
-
-
+  //버디 학년
   let buddyGrades = {};
+  let buddyText = ''
   if (props.gradeDiff === '1') {
     buddyGrades = 'GRADE_1';
+    buddyText = '1학년';
   } else if (props.gradeDiff === '2') {
     buddyGrades = 'GRADE_2';
+    buddyText = '2학년';
   } else if (props.gradeDiff === '3') {
     buddyGrades = 'GRADE_3';
+    buddyText = '3학년';
   } else if (props.gradeDiff === '4') {
     buddyGrades = 'GRADE_4';
+    buddyText = '4학년';
   } else {
     buddyGrades = 'NO_MATTER';
+    buddyText = '상관없음';
   }
 
+  //전화번호 / 카톡아이디
   let phoneNumber = localStorage.getItem('phoneNum');
   let kakaoId = localStorage.getItem('kakaoId');
 
   const navigate = useNavigate();
 
+  //통신 함수
   const buddySubmitHandler = async e => {
     let matchingInfo = {
       genderOption : sameGender,
@@ -138,7 +151,11 @@ const Final = props => {
             <div className={styles.complete}></div>
             <span>버디범위</span>
           </div>
-          <div className={styles.textWrapper}>{props.major}</div>
+          <div className={styles.textWrapper_grade}>
+           <span>{props.major}</span>
+           {sub ? 
+           <span className={styles.sub}>(복수/부전공 기준)</span> : <span></span>}
+          </div>
         </div>
 
         <div className={styles.flex}>
@@ -155,7 +172,7 @@ const Final = props => {
               <div className={styles.complete}></div>
               <span>버디학년</span>
             </div>
-            <div className={styles.textWrapperHalf}>{buddyGrades}</div>
+            <div className={styles.textWrapperHalf}>{buddyText}</div>
           </div>
         </div>
 
