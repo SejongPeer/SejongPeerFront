@@ -50,11 +50,11 @@ const MajorSignUp = (props) => {
     return (isDoubleMajor ? (
         <button
             onClick={DoubleMajorHandler}
-            className={style.majorbox}> {doubleMajorValue}</button >
+            className={style.majorbox}>{props.doublemajorValue}</button>
     ) : (
         <button
             onClick={onClickHandler}
-            className={style.majorbox}> {majorValue}</button >
+            className={style.majorbox}>{props.majorValue}</button>
     )
 
     );

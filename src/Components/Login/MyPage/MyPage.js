@@ -75,6 +75,10 @@ const MyPage = () => {
 
   const accessToken = localStorage.getItem('accessToken');
   const refreshToken = localStorage.getItem('refreshToken');
+  const kakaoId = localStorage.getItem('kakaoId');
+  const phoneNum = localStorage.getItem('phoneNum');
+  const major = localStorage.getItem('major');
+  const name = localStorage.getItem('name');
 
   // 내 정보 조회
   useEffect(() => {

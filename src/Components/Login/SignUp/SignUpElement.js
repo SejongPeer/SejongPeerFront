@@ -45,6 +45,8 @@ const SignUpElement = props => {
           value={props.nickNameData} // 수정: 닉네임 데이터를 올바르게 전달
           errorHandler={errorHandler}
           nickNameData={props.nickNameData} // 닉네임 데이터를 상위 컴포넌트로 전달하는 함수
+          nicknameExistHandler={props.nicknameExistHandler}
+          nicknameValue={props.nicknameValue}
         />
       ) : isID ? (
         <IDCheckBox
@@ -52,12 +54,16 @@ const SignUpElement = props => {
           name={props.name}
           idData={props.idData}
           errorHandler={errorHandler}
+          idExistHandler={props.idExistHandler}
+          isIdExist={props.isIdExist}
+          idValue={props.idValue}
         />
       ) : isGender ? (
         <GenderSignUp
           id={props.id}
           name={props.name}
           genderData={props.genderData}
+          genderValue={props.genderValue}
         />
       ) : isMajor ? (
         <MajorSignUp
@@ -65,6 +71,8 @@ const SignUpElement = props => {
           name={props.name}
           majorData={props.majorData}
           collegeData={props.collegeData}
+          collegeValue={props.collegeValue}
+          majorValue={props.majorValue}
         />
       ) : isDoubleMajor ? (
         <MajorSignUp
@@ -72,23 +80,30 @@ const SignUpElement = props => {
           name={props.name}
           doublemajorData={props.doublemajorData}
           doubleCollegeData={props.doubleCollegeData}
+          doubleCollegeValue={props.doubleCollegeValue}
+          doublemajorValue={props.doublemajorValue}
         />
-      ) : (
-        <InputTextBox
-          id={props.id}
-          idData={props.idData}
-          name={props.name}
-          errorHandler={errorHandler}
-          pwdData={props.pwdData}
-          pwdValue={props.pwdValue}
-          pwdCheckData={props.pwdCheckData}
-          nameData={props.nameData}
-          kakaoData={props.kakaoData}
-          phoneNumData={props.phoneNumData}
-          studentNumData={props.studentNumData}
-          gradeData={props.gradeData}
-        />
-      )}
+      ) :
+        (
+          <InputTextBox
+            id={props.id}
+            idData={props.idData}
+            name={props.name}
+            errorHandler={errorHandler}
+            pwdData={props.pwdData}
+            pwdValue={props.pwdValue}
+            pwdCheckValue={props.pwdCheckValue}
+            pwdCheckData={props.pwdCheckData}
+            nameData={props.nameData}
+            kakaoData={props.kakaoData}
+            phoneNumData={props.phoneNumData}
+            studentNumData={props.studentNumData}
+            gradeData={props.gradeData}
+            kakaoidValue={props.kakaoidValue}
+            phoneNumberValue={props.phoneNumberValue}
+          />
+        )}
+
       {isError && <p className={style.error}>{isError}</p>}
     </div>
   );
