@@ -55,20 +55,20 @@
     height: 5vw;
   }
   .text {
-     font-size: 1em;
-     color: #111;
-     font-weight: 800;
-     margin: 1vh 0 0 0;
-   }
+    font-size: 1em;
+    color: #111;
+    font-weight: 800;
+    margin: 1vh 0 0 0;
+  }
 
   .wrapperRight {
     width: 184px;
     height: 184px;
   }
   .right {
-    width: 20vw;
-    height: 10vh;
-    margin-left: 8vw;
+    width: 18vw;
+    height: 9vh;
+    margin-left: 10vw;
     margin-top: 2vh;
   }
 }
