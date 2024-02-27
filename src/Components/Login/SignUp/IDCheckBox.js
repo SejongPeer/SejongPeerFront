@@ -5,8 +5,6 @@ import { useEffect } from 'react';
 
 const IDCheckBox = (props) => {
     const [username, setUsername] = useState('');
-    //중복확인 시 응답 받아오는 함수 (true 일 경우 중복된 아이디, false 인 경우 사용 가능한 아이디)
-    const [isIdExist, setIsIdExist] = useState(null);
 
     // 사용자 입력 처리 핸들러
     const handleUsernameChange = (event) => {
@@ -36,20 +34,18 @@ const IDCheckBox = (props) => {
                 );
                 const data = await response.json();
 
-                //console.log(response);
-                //console.log("아이디 있음? : " + data.data.isExist);
                 if (data.data.isExist) {
                     alert('중복되는 아이디 입니다. 다른 아이디를 입력하세요');
                     props.errorHandler("중복되는 아이디 입니다. 다른 아이디를 입력하세요");
-                    setIsIdExist(true); // 수정: props로 받은 setIsIdExist 사용
+                    props.idExistHandler(true); // 수정: props로 받은 setIsIdExist 사용
                     console.log("isIdExist 값 : " + data.data.isExist);
-                    console.log("중복 O : " + isIdExist); // 아이디가 존재하지 않으므로 사용 가능
+                    console.log("중복 O : " + props.isIdExist); // 아이디가 존재하지 않으므로 사용 가능
                 } else {
                     alert('사용 가능한 아이디입니다.');
                     props.errorHandler("사용 가능한 아이디 입니다.");
-                    setIsIdExist(false); // 아이디가 존재하지 않으므로 사용 가능
+                    props.idExistHandler(false); // 아이디가 존재하지 않으므로 사용 가능
                     console.log("isIdExist 값 : " + data.data.isExist);
-                    console.log("중복 X : " + isIdExist); // 아이디가 존재하지 않으므로 사용 가능
+                    console.log("중복 X : " + props.isIdExist); // 아이디가 존재하지 않으므로 사용 가능
                 }
             } catch (error) {
                 console.error('There was an error!', error);
@@ -65,7 +61,7 @@ const IDCheckBox = (props) => {
             <div className={style.emailContainer}>
                 <input
                     className={style.inputText}
-                    value={props.userid}
+                    value={props.idValue}
                     onChange={handleUsernameChange}
                     placeholder="아이디를 입력하세요 (8자 이상)"
                 />

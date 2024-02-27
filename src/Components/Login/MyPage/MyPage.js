@@ -86,24 +86,18 @@ const MyPage = () => {
   // }, [myPageData]);
 
   const handleLogout = () => {
-    axios
-      .get(`${process.env.REACT_APP_BACK_SERVER + '/logout'}`)
-      .then(
-        response => console.log(response),
-        localStorage.removeItem('userId'),
-        localStorage.removeItem('birth'),
-        localStorage.removeItem('gender'),
-        localStorage.removeItem('kakaoId'),
-        localStorage.removeItem('major'),
-        localStorage.removeItem('name'),
-        localStorage.removeItem('phoneNum'),
-        localStorage.removeItem('sejongEmail'),
-        localStorage.removeItem('studentId'),
-        console.log('로그아웃 성공!'),
-        alert('로그아웃 되었습니다!'),
-        navigate('/main')
-      )
-      .catch(error => console.log(error));
+    localStorage.removeItem("userId");
+    localStorage.removeItem("gender");
+    localStorage.removeItem("kakaoId");
+    localStorage.removeItem("major");
+    localStorage.removeItem("name");
+    localStorage.removeItem("phoneNum");
+    localStorage.removeItem("studentId");
+    localStorage.removeItem("refreshToken");
+    localStorage.removeItem("accessToken");
+    console.log("로그아웃 성공!");
+    alert("로그아웃 되었습니다!");
+    navigate("/main");
   };
 
   const userId = localStorage.getItem('userId');
@@ -116,6 +110,7 @@ const MyPage = () => {
   if (gender === 'female') {
     gender_text = '여자';
   }
+
 
   const kakaoId = localStorage.getItem('kakaoId');
   const phoneNum = localStorage.getItem('phoneNum');

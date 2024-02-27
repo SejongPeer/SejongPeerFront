@@ -26,8 +26,6 @@ const SignUp = props => {
   const [majorValue, setMajorValue] = useState('');
   const [doublemajorValue, setDoubleMajorValue] = useState('');
   const [doubleCollegeValue, setDoubleCollegeValue] = useState('');
-  //const [emailValue, setEmailValue] = useState("");
-  //const [birthValue, setBirthValue] = useState("");
 
   const [error, setError] = useState('가입완료 되었습니다.');
   const [step, setStep] = useState(1);
@@ -36,7 +34,9 @@ const SignUp = props => {
   const navigate = useNavigate();
 
   //중복확인 시 응답 받아오는 함수 (true 일 경우 중복된 아이디, false 인 경우 사용 가능한 아이디)
-  const [isIdExist, setIsIdExist] = useState('');
+  const [isIdExist, setIsIdExist] = useState(true);
+  const [isNicknameExist, setIsNicknameExist] = useState(true);
+
 
   useEffect(() => {
     console.log('isIdExist 상태: ', isIdExist);
@@ -49,9 +49,21 @@ const SignUp = props => {
     }
   };
 
+  const idExistHandler = exist => {
+    setIsIdExist(exist);
+  };
+
+  const nicknameExistHandler = nick => {
+    setIsNicknameExist(nick)
+  };
+
   const nextStepHandler = () => {
     //중복 아이디일 경우 다음 단계로 못 넘어감
-    setStep(prevStep => prevStep + 1);
+    if (isIdExist) {
+      alert('아이디 중복확인을 해주세요.');
+    } else {
+      setStep(prevStep => prevStep + 1);
+    }
   };
 
   const gradeData = userData => {
@@ -159,6 +171,8 @@ const SignUp = props => {
     ) {
       alert('모든 양식의 작성을 완료해주세요');
       e.preventDefault();
+    } else if (isNicknameExist) {
+      alert("닉네임 중복검사를 진행해주세요.")
     } else {
       if (error === '가입완료 되었습니다.') {
         let join = {
@@ -199,7 +213,9 @@ const SignUp = props => {
           if (!response.ok) {
             throw new Error(data.message);
           }
+
           alert('로그인 페이지로 이동합니다.');
+
           navigate('/login');
         } catch (err) {
           console.error('Error occurred:', err);
@@ -231,6 +247,9 @@ const SignUp = props => {
               name="아이디 입력"
               idData={idData}
               signUpErrorHandler={signUpErrorHandler}
+              idExistHandler={idExistHandler}
+              isIdExist={isIdExist}
+              idValue={idValue}
             />
             <div className="special-gap">
               <SignUpElement
@@ -239,6 +258,7 @@ const SignUp = props => {
                 name="비밀번호 입력"
                 pwdData={pwdData}
                 signUpErrorHandler={signUpErrorHandler}
+                pwdValue={pwdValue}
               />
             </div>
             <div className="special-gap">
@@ -248,6 +268,7 @@ const SignUp = props => {
                 pwdCheckData={pwdCheckData}
                 signUpErrorHandler={signUpErrorHandler}
                 pwdValue={pwdValue}
+                pwdCheckValue={pwdCheckValue}
               />
             </div>
             <SignUpElement
@@ -286,6 +307,8 @@ const SignUp = props => {
               name="닉네임 입력"
               nickNameData={nickNameData}
               signUpErrorHandler={signUpErrorHandler}
+              nicknameExistHandler={nicknameExistHandler}
+              nicknameValue={nicknameValue}
             />
             <SignUpElement
               id="kakaoid"
@@ -293,6 +316,7 @@ const SignUp = props => {
               name="카카오톡 아이디 입력"
               kakaoData={kakaoData}
               signUpErrorHandler={signUpErrorHandler}
+              kakaoidValue={kakaoidValue}
             />
             <SignUpElement
               id="phoneNum"
@@ -300,6 +324,7 @@ const SignUp = props => {
               name="전화번호 -없이 입력"
               phoneNumData={phoneNumData}
               signUpErrorHandler={signUpErrorHandler}
+              phoneNumberValue={phoneNumberValue}
             />
             <SignUpElement
               id="gender"
@@ -307,6 +332,7 @@ const SignUp = props => {
               name="준비중"
               genderData={genderData}
               signUpErrorHandler={signUpErrorHandler}
+              genderValue={genderValue}
             />
             <SignUpElement
               id="major"
@@ -315,6 +341,8 @@ const SignUp = props => {
               majorData={majorData}
               collegeData={collegeData}
               signUpErrorHandler={signUpErrorHandler}
+              collegeValue={collegeValue}
+              majorValue={majorValue}
             />
             <div
               style={{
@@ -344,6 +372,8 @@ const SignUp = props => {
                 doublemajorData={doublemajorData}
                 doubleCollegeData={doubleCollegeData}
                 signUpErrorHandler={signUpErrorHandler}
+                doublemajorValue={doublemajorValue}
+                doubleCollegeValue={doubleCollegeValue}
               />
             )}
             <button
