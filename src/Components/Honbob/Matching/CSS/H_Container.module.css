@@ -14,34 +14,46 @@ html {
     background-color: #FAFAFA;
 }
 
-.titlebox{
+.titlebox {
     text-align: center;
     margin: 10px 0px 15px 0px;
 }
-.explain{
+
+.explain {
     font-size: 14px;
 }
-.title{
+
+.title {
     margin: 30px 0px 40px 0px;
     font-size: 20px;
     font-weight: bold;
     text-align: center;
 }
 
-.finaltitle{
+.finaltitle {
     font-size: 20px;
     font-weight: bold;
     margin-bottom: 10px;
 }
 
 
-.startPage{
+.startPage {
     top: 90px;
 }
 
-.btn3{
+.btn3 {
     display: flex;
     flex-direction: column;
+}
+
+.fightImg {
+    margin-top: 8vh;
+    background-image: url("../../../../Assets/fightCat.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 100% 100%;
+    width: 40vh;
+    height: 30vh;
 }
 
 @media (max-height: 670px) {
@@ -55,31 +67,34 @@ html {
         margin-top: 70px;
         overflow-y: scroll;
     }
-    
-    .titlebox{
+
+    .titlebox {
         text-align: center;
         margin: 0px;
     }
-    .explain{
+
+    .explain {
         font-size: 14px;
     }
-    .title{
+
+    .title {
         margin: 20px 0px 30px 0px;
         font-size: 20px;
         font-weight: bold;
     }
-    .finaltitle{
+
+    .finaltitle {
         font-size: 20px;
         font-weight: bold;
         margin: 0px;
     }
-    
-    
-    .startPage{
+
+
+    .startPage {
         top: 90px;
     }
-    
-    .btn3{
+
+    .btn3 {
         display: flex;
         flex-direction: column;
     }

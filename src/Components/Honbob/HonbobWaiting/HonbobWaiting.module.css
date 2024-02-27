@@ -6,37 +6,47 @@
   justify-content: space-between;
   background-color: #fafafa;
 }
+
 .TextBox {
   display: flex;
   flex-direction: column;
   align-items: center;
   height: 80vh;
   justify-content: center;
+  margin-top: 4vh;
 }
+
 .Text1 {
   font-size: 3vh;
-  color: #4f41de;
+  color: #FF4B4B;
   font-weight: bold;
   margin: 0;
 }
+
 .Text2 {
   text-align: center;
   color: #666666;
 }
-.Text2_span1{
-  color:#4f41de;
+
+.Text2_span1 {
+  color: #FF4B4B;
 }
-.Text2_span2{
-  font-weight:600;
+
+.Text2_span2 {
+  font-weight: 600;
 }
-.Text3{
-  font-weight: 700;
+
+.Text3 {
+  font-weight: 600;
+  color: #FF4B4B;
 }
+
 .BtnBox {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
 .moveToHomeBtn {
   font-size: 2vh;
   font-weight: 700;
@@ -44,11 +54,12 @@
   height: 5.5vh;
   margin: 8px;
   border-radius: 40px;
-  background-color: #4f41de;
+  background-color: #FF4B4B;
   border: none;
   color: white;
   cursor: pointer;
 }
+
 .cancelBtn {
   font-size: 2vh;
   font-weight: 700;
@@ -56,9 +67,10 @@
   background-color: transparent;
   cursor: pointer;
 }
-.honbobWaitingImg{
-  width:32vh;
-  height:32vh;
-  background-color: #FAFAFA;
-}
 
+.honbobWaitingImg {
+  width: 27dvh;
+  height: 30vh;
+  background-color: #FAFAFA;
+  margin-bottom: 2vh;
+}
