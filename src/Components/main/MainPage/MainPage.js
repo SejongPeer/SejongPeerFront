@@ -96,17 +96,6 @@ const MainPage = () => {
       {/* <button className={style.btn} onClick={readyHandler}>
             <MainStudy />
         </button> */}
-      <footer className={style.footer}>
-        <div className={style.ftxtBox}>
-          <Link to={"/personalinfo"} target="_blank" className={style.ftxt}>
-            <span>개인정보처리방침</span>
-          </Link>
-          <span className={style.ftxt}> | </span>
-          <Link to={"/useinfo"} target="_blank" className={style.ftxt}>
-            <span>이용약관</span>
-          </Link>
-        </div>
-      </footer>
     </div>
   );
 };

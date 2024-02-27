@@ -1,34 +1,33 @@
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchData } from "../../Redux/thunk";
 import usermenu from "../../Assets/usermenu.png";
 import style from "./UserMenu.module.css";
 import { useEffect, useState } from "react";
 
 const UserMenu = () => {
-  const navigate = useNavigate();
-  const goLogin = () => {
-    navigate("/login");
-  };
-  const dispatch = useDispatch();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const userId = localStorage.getItem("userId");
+  const refreshToken = localStorage.getItem("refreshToken");
+  const accessToken = localStorage.getItem("accessToken");
+  
   useEffect(() => {
-    if (userId === null) {
+    if (refreshToken === null & accessToken === null) {
       setIsLoggedIn(false);
     } else {
       setIsLoggedIn(true);
     }
-  }, [userId]);
+  }, [refreshToken, accessToken]);
 
-  const LoginHandler = () => {
-    dispatch(fetchData("UserMenu", navigate));
+  const navigate = useNavigate();
+  const goLogin = () => {
+    navigate("/login");
+  };
+  const goMyPage = () => {
+    navigate("/mypage");
   };
 
   return (
-    <button onClick={LoginHandler} className={style.wrapper}>
+    <button className={style.wrapper}>
       {isLoggedIn ? (
-        <img className={style.usericon} src={usermenu} alt="usericon" />
+        <img onClick={goMyPage} className={style.usericon} src={usermenu} alt="usericon" />
       ) : (
         <span className={style.login} onClick={goLogin}>
           로그인
