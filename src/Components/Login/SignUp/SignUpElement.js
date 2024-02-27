@@ -1,22 +1,22 @@
-import { useEffect, useState } from "react";
-import InputTextBox from "./InputTextBox";
+import { useEffect, useState } from 'react';
+import InputTextBox from './InputTextBox';
 
-import style from "./SignUpElement.module.css";
-import GenderSignUp from "./GenderSignUp";
-import MajorSignUp from "./MajorSignUp";
-import IDCheckBox from "./IDCheckBox";
-import NickNameBox from "./NickNameBox";
+import style from './SignUpElement.module.css';
+import GenderSignUp from './GenderSignUp';
+import MajorSignUp from './MajorSignUp';
+import IDCheckBox from './IDCheckBox';
+import NickNameBox from './NickNameBox';
 
-const SignUpElement = (props) => {
-  const [isError, setIsError] = useState("");
+const SignUpElement = props => {
+  const [isError, setIsError] = useState('');
   const [isID, setIsID] = useState(false);
   const [isNickname, setIsNickname] = useState(false);
 
-  const isGender = props.id === "gender";
-  const isMajor = props.id === "major";
-  const isDoubleMajor = props.id === "double_major";
+  const isGender = props.id === 'gender';
+  const isMajor = props.id === 'major';
+  const isDoubleMajor = props.id === 'double_major';
 
-  const errorHandler = (error) => {
+  const errorHandler = error => {
     setIsError(error);
     props.signUpErrorHandler(error);
   };
@@ -30,14 +30,13 @@ const SignUpElement = (props) => {
   // }, [props.id]);
 
   useEffect(() => {
-    setIsNickname(props.id === "nickname"); // 닉네임 필드 식별
-    setIsID(props.id === "userId");
-
+    setIsNickname(props.id === 'nickname'); // 닉네임 필드 식별
+    setIsID(props.id === 'userId');
   }, [props.id]);
 
   return (
     <div className={style.container}>
-      {props.id !== "check" && <p className={style.title}>{props.title}</p>}
+      {props.id !== 'check' && <p className={style.title}>{props.title}</p>}
 
       {isNickname ? (
         <NickNameBox
@@ -74,23 +73,22 @@ const SignUpElement = (props) => {
           doublemajorData={props.doublemajorData}
           doubleCollegeData={props.doubleCollegeData}
         />
-      ) :
-        (
-          <InputTextBox
-            id={props.id}
-            idData={props.idData}
-            name={props.name}
-            errorHandler={errorHandler}
-            pwdData={props.pwdData}
-            pwdValue={props.pwdValue}
-            pwdCheckData={props.pwdCheckData}
-            nameData={props.nameData}
-            kakaoData={props.kakaoData}
-            phoneNumData={props.phoneNumData}
-            studentNumData={props.studentNumData}
-            gradeData={props.gradeData}
-          />
-        )}
+      ) : (
+        <InputTextBox
+          id={props.id}
+          idData={props.idData}
+          name={props.name}
+          errorHandler={errorHandler}
+          pwdData={props.pwdData}
+          pwdValue={props.pwdValue}
+          pwdCheckData={props.pwdCheckData}
+          nameData={props.nameData}
+          kakaoData={props.kakaoData}
+          phoneNumData={props.phoneNumData}
+          studentNumData={props.studentNumData}
+          gradeData={props.gradeData}
+        />
+      )}
       {isError && <p className={style.error}>{isError}</p>}
     </div>
   );
