@@ -4,19 +4,13 @@ import styles from '../MyPage/MyPage.module.css';
 import axios from 'axios';
 
 const MyPage = () => {
-  const [myPageData, setMyPageData] = useState(1);
-  const [accessToken, setAccessToken] = useState(
-    localStorage.getItem('accessToken')
-  );
-  const [refreshToken, setRefreshToken] = useState(
-    localStorage.getItem('refreshToken')
-  );
+  const [myPageData, setMyPageData] = useState({});
 
   const navigate = useNavigate();
   const goModify = () => {
     navigate('/mypage/modify');
   };
-
+  // 탈퇴하기
   const handleDeleteAccount = async () => {
     const confirmDelete = window.confirm(
       '정말로 탈퇴하시겠습니까? 이 작업은 되돌릴 수 없습니다.'
@@ -28,6 +22,7 @@ const MyPage = () => {
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+              'Refresh-Token': localStorage.getItem('refreshToken'),
             },
           }
         );
@@ -46,62 +41,30 @@ const MyPage = () => {
       }
     }
   };
-  // useEffect(() => {
-  //   const getDate = async (e) => {
-  //     try {
-  //       const response = await fetch(
-  //         process.env.REACT_APP_BACK_SERVER + "/member/my-page",
-  //         {
-  //           method: "GET",
-  //           headers: {
-  //             "Content-Type": "application/json",
-  //             'Authorization': `Bearer ${accessToken}`,
-  //             'Refresh-Token': `Bearer ${refreshToken}`,
-  //           },
-  //         }
-  //       );
-
-  //       if (!response.ok) {
-  //         const errorData = await response.json(); // 오류 응답을 처리합니다.
-  //         throw new Error(data.message);
-  //       }
-
-  //       const data = await response.json(); // data 변수를 await로 초기화
-  //       setMyPageData(data.data);
-  //       // console.log(data.data);
-
-  //     } catch (error) {
-  //       console.error("Error occurred:", error);
-  //       console.error(error.message);
-  //       alert(error.message);
-  //       e.preventDefault();
-  //     }
-  //   };
-  //   getDate();
-  // }, []);
-
-  // useEffect(() => {
-  //   console.log(myPageData.name);
-
-  // }, [myPageData]);
-
+  // 로그아웃
   const handleLogout = () => {
-    localStorage.removeItem("userId");
-    localStorage.removeItem("gender");
-    localStorage.removeItem("kakaoId");
-    localStorage.removeItem("major");
-    localStorage.removeItem("name");
-    localStorage.removeItem("phoneNum");
-    localStorage.removeItem("studentId");
-    localStorage.removeItem("refreshToken");
-    localStorage.removeItem("accessToken");
-    console.log("로그아웃 성공!");
-    alert("로그아웃 되었습니다!");
-    navigate("/main");
+    axios
+      .get(`${process.env.REACT_APP_BACK_SERVER + '/logout'}`)
+      .then(
+        response => console.log(response),
+        localStorage.removeItem('userId'),
+        localStorage.removeItem('birth'),
+        localStorage.removeItem('gender'),
+        localStorage.removeItem('kakaoId'),
+        localStorage.removeItem('major'),
+        localStorage.removeItem('name'),
+        localStorage.removeItem('phoneNum'),
+        localStorage.removeItem('sejongEmail'),
+        localStorage.removeItem('studentId'),
+        localStorage.removeItem('accessToken'),
+        localStorage.removeItem('refreshToken'),
+        console.log('로그아웃 성공!'),
+        alert('로그아웃 되었습니다!'),
+        navigate('/main')
+      )
+      .catch(error => console.log(error));
   };
 
-  const userId = localStorage.getItem('userId');
-  const birth = localStorage.getItem('birth');
   const gender = localStorage.getItem('gender');
   let gender_text = '';
   if (gender === 'male') {
@@ -111,14 +74,47 @@ const MyPage = () => {
     gender_text = '여자';
   }
 
-
+  const accessToken = localStorage.getItem('accessToken');
+  const refreshToken = localStorage.getItem('refreshToken');
   const kakaoId = localStorage.getItem('kakaoId');
   const phoneNum = localStorage.getItem('phoneNum');
   const major = localStorage.getItem('major');
   const name = localStorage.getItem('name');
 
-  const sejongEmail = localStorage.getItem('sejongEmail');
-  const studentId = localStorage.getItem('studentId');
+  // 내 정보 조회
+  useEffect(() => {
+    const fetchMyPageData = async () => {
+      try {
+        const response = await axios.get(
+          `${process.env.REACT_APP_BACK_SERVER}/member/my-page`,
+          {
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+              'Refresh-Token': refreshToken,
+            },
+          }
+        );
+
+        if (response.status === 200) {
+          setMyPageData(response.data.data);
+          console.log(response.data);
+          console.log(response.data.data.name);
+        } else {
+          // Handle response error
+          throw new Error('Failed to fetch my page data');
+        }
+      } catch (error) {
+        console.error('Error fetching my page data:', error);
+        alert('Error fetching your information. Please try again.');
+      }
+    };
+
+    if (accessToken && refreshToken) {
+      fetchMyPageData();
+    } else {
+      navigate('/login');
+    }
+  }, [accessToken, refreshToken, navigate]);
 
   return (
     <div className={styles.container}>
@@ -188,12 +184,12 @@ const MyPage = () => {
                       className={`${styles.blackWord} ${styles.myInformWord}`}
                       style={{ fontWeight: '700', fontSize: '1.8vh' }}
                     >
-                      정준수
+                      {myPageData.name}
                     </div>
                     <div
                       className={`${styles.blackWord} ${styles.myInformWord}`}
                     >
-                      소프트웨어학과
+                      {myPageData.major}
                     </div>
                   </div>
                   <div className={styles.rightArrow}></div>
@@ -254,7 +250,12 @@ const MyPage = () => {
               </div>
             </div>
             <button className={styles.logout}>
-              <p style={{ fontWeight: '700', fontSize: '1.3em' }}>로그아웃</p>
+              <p
+                style={{ fontWeight: '700', fontSize: '1.3em' }}
+                onClick={handleLogout}
+              >
+                로그아웃
+              </p>
             </button>
             <p className={styles.secession} onClick={handleDeleteAccount}>
               탈퇴하기
