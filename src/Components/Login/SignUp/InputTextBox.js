@@ -1,21 +1,11 @@
-import { useEffect, useState } from "react";
 import style from "./InputTextBox.module.css";
 
 const InputTextBox = (props) => {
-  const [inputNum, setInputNum] = useState(false);
-  //const [birthNum, setBirthNum] = useState("");
-  const isPWD = props.id === "pwd" || props.id === "pwdCheck";
+  const isPWD = props.id === "pwd";
+  const isPWDCheck = props.id === "pwdCheck";
   const isAuthData = props.id === "studentNum" || props.id === "grade" || props.id === "name";
-
-
-  // console.log("아이디 : ", props.id, "확인 ", isAuthData);
-
-  function handleKeyPress(event) {
-    const charCode = event.which ? event.which : event.keyCode;
-    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
-      event.preventDefault();
-    }
-  }
+  const isKakao = props.id === "kakaoid";
+  const isPhone = props.id === "phoneNum";
 
   const inputHandler = (event) => {
     let inputValue = event.target.value;
@@ -48,7 +38,6 @@ const InputTextBox = (props) => {
       //패스워드 확인
     } else if (props.id === "pwdCheck") {
       props.pwdCheckData(inputValue);
-      //props.pwdCheckData(event.target.value); // 상태 업데이트
 
       const regex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,16}$/;
       console.log(inputValue);
@@ -68,24 +57,10 @@ const InputTextBox = (props) => {
     }//학번 
     else if (props.id === "studentNum") {
       props.studentNumData(inputValue);
-      // if (inputValue.length < 2) {
-      //   props.errorHandler("* 학번은 2자로 작성해주세요");
-      // } else if (inputValue.length === 2) {
-      //   props.errorHandler("");
-      // } else {
-      //   props.errorHandler("* 학번은 2자로 작성해주세요");
-      // }
       //학년
     } else if (props.id === "grade") {
       console.log("학년 입력 값:", inputValue); // 사용자 입력 값을 콘솔에 출력
       props.gradeData(inputValue);
-      // if (inputValue.length < 1) {
-      //   props.errorHandler("* 학년은 1자로 작성해주세요");
-      // } else if (inputValue.length === 1) {
-      //   props.errorHandler("");
-      // } else {
-      //   props.errorHandler("* 학번은 1자로 작성해주세요");
-      // }
     }//닉네임 
     else if (props.id === "nickname") {
       props.nickNameData(inputValue);
@@ -127,49 +102,37 @@ const InputTextBox = (props) => {
     }
   };
 
-  useEffect(() => {//숫자
-    if (
-      props.id === "phoneNum" ||
-      props.id === "studentNum" ||
-      props.id === "grade"
-    ) {
-      setInputNum(true);
-    } else {
-      setInputNum(false);
-    }
-  }, [props.id]);
-
-  // useEffect(() => {
-  //   // 비밀번호와 비밀번호 확인 필드의 값이 변경될 때마다 실행
-  //   if (props.pwdValue && props.pwdCheckValue) {
-  //     if (props.pwdValue !== props.pwdCheckValue) {
-  //       // 비밀번호와 비밀번호 확인이 다를 경우, 에러 메시지를 표시
-  //       props.errorHandler("동일하게 비밀번호를 입력해 주세요");
-  //       console.log(props.pwdValue);
-  //     } else {
-  //       // 비밀번호와 비밀번호 확인이 동일할 경우, 에러 메시지를 제거
-  //       props.errorHandler("");
-  //     }
-  //   }
-  // }, [props.pwdValue, props.pwdCheckValue, props.errorHandler]); // 의존성 배열에는 비밀번호, 비밀번호 확인 값과 에러 핸들링 함수를 포함
-
-
   return (
     <div className={style.relative}>
-      {inputNum ? (
-        <input
-          className={style.inputText}
-          placeholder={props.name}
-          onKeyDown={handleKeyPress}//숫자가 아닌 입력 방지
-          onChange={inputHandler}
-          disabled={isAuthData}
-        />
-      ) : isPWD ? (//패스워드입력
+      {isPWD ? (//패스워드입력
         <input
           className={style.inputText}
           type="password"
           placeholder={props.name}
           onChange={inputHandler}
+          value={props.pwdValue}
+        />
+      ) : isPWDCheck ? (//패스워드입력
+        <input
+          className={style.inputText}
+          type="password"
+          placeholder={props.name}
+          onChange={inputHandler}
+          value={props.pwdCheckValue}
+        />
+      ) : isKakao ? (
+        <input
+          value={props.kakaoidValue}
+          className={style.inputText}
+          placeholder={props.name}
+          onChange={inputHandler}
+        />
+      ) : isPhone ? (
+        <input
+          className={style.inputText}
+          placeholder={props.name}
+          onChange={inputHandler}
+          value={props.phoneNumberValue}
         />
       ) : (
         <input

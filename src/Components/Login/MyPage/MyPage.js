@@ -61,13 +61,12 @@ const MyPage = () => {
     localStorage.removeItem("major");
     localStorage.removeItem("name");
     localStorage.removeItem("phoneNum");
-    localStorage.removeItem("sejongEmail");
     localStorage.removeItem("studentId");
     localStorage.removeItem("refreshToken");
     localStorage.removeItem("accessToken");
     console.log("로그아웃 성공!");
     alert("로그아웃 되었습니다!");
-    navigate("/main")
+    navigate("/main");
   };
 
   const userId = localStorage.getItem("userId");
@@ -85,8 +84,6 @@ const MyPage = () => {
   const phoneNum = localStorage.getItem("phoneNum");
   const major = localStorage.getItem("major");
   const name = localStorage.getItem("name");
-
-  const sejongEmail = localStorage.getItem("sejongEmail");
   const studentId = localStorage.getItem("studentId");
 
   return (
