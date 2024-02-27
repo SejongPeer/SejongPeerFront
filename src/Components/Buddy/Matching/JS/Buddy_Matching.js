@@ -17,8 +17,6 @@ const Buddy_Matching = () => {
   const [major, setMajor] = useState("");
   const [subMajor, setSubMajor] = useState(false);
   const [gradeDiff, setGradeDiff] = useState("");
-  const [phoneNum, setPhoneNum] = useState("");
-  const [kakao, setKakao] = useState("");
 
   // 화면 넓이 설정
   const [width, setWidth] = useState(window.innerWidth);
@@ -65,7 +63,6 @@ const Buddy_Matching = () => {
       }
     });
   };
-  
 
   // 슬라이드별 이동
   const Slide = {
@@ -74,8 +71,9 @@ const Buddy_Matching = () => {
 
   //Final에서
   const slideMove = (page) => {
-    console.log("페이지 이동 " + page);
-    setSlide(page);
+    const p = page;
+    console.log("페이지 이동 " + p);
+    setSlide(p);
   };
 
   //사용자가 입력한 정보
@@ -92,7 +90,7 @@ const Buddy_Matching = () => {
     setMajor(major);
   };
   const subMajorData = (sub) => {
-    console.log("복수/부전공");
+    console.log("복수/부전공" + sub);
     setSubMajor(sub);
   }
   const GradeDiffData = (gradeDiff) => {
@@ -104,7 +102,8 @@ const Buddy_Matching = () => {
     <div className={style.wrapper} style={mediaWidth}>
       <div className={style.formWrapper} style={Slide}>
         <ChoiceGender sendChoiceGenderData={GenderChoiceData} />
-        <Major sendMajorData={MajorData} 
+        <Major 
+        sendMajorData={MajorData} 
         sendSubMajorData={subMajorData}/>
         <Grade sendGradeData={GradeData} />
         <GradeDiff sendGradeDiffData={GradeDiffData} />
@@ -112,12 +111,12 @@ const Buddy_Matching = () => {
           choiceGender={choiceGender}
           grade={grade}
           major={major}
+          subMajor={subMajor}
           gradeDiff={gradeDiff}
-          phoneNum={phoneNum}
-          kakao={kakao}
           slideMove={slideMove}
         />
       </div>
+      
       <ProgressBar
         moveNext={MoveNext}
         moveBefore={MoveBefore}
@@ -128,9 +127,6 @@ const Buddy_Matching = () => {
         major={major}
         subMajor={subMajor}
         gradeDiff={gradeDiff}
-        phoneNum={phoneNum}
-        kakao={kakao}
-        MoveNext={MoveNext}
       />
     </div>
   );

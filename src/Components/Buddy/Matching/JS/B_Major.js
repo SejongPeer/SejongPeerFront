@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import check from '../../../../Assets/check.png';
 import con from '../CSS/B_Container.module.css';
 import btn3 from '../CSS/B_Btn3.module.css';
@@ -22,7 +22,7 @@ const Major = (props) => {
 
     const clickCollegeBtnHandler = () => {
         setIsMajorClicked(false);
-        setIsCollegeClicked(!isCollegeClicked);
+        setIsCollegeClicked(true);
         setIsAnyClicked(false);
 
         const major = "우리 단과대 버디";
@@ -33,7 +33,7 @@ const Major = (props) => {
     const clickAnyBtnHandler = () => {
         setIsMajorClicked(false);
         setIsCollegeClicked(false);
-        setIsAnyClicked(!isAnyClicked);
+        setIsAnyClicked(true);
 
         const major = "상관없음";
         props.sendMajorData(major);
@@ -41,10 +41,11 @@ const Major = (props) => {
     };
 
     const clickSecondHandler = () => {
-        setIsSecond(!isSecond);
-        props.sendSubMajorData(isSecond);
-    }
-
+        let second = !isSecond;
+        setIsSecond(second);
+        props.sendSubMajorData(second);
+    };
+    
 
     const clickMajorBtnColor = isMajorClicked ? btn3.clicked : btn3.selectBtn3;
     const clickCollegeBtnColor = isCollegeClicked ? btn3.clicked : btn3.selectBtn3;

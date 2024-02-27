@@ -41,12 +41,15 @@ const ProgressBar = (props) => {
     if (props.slide === 0) {
       updateStep[0] = true;
       updateStep[1] = false;
+      updateStep[2] = false;
+      updateStep[3] = false;
+      updateStep[4] = false;
 
       prev = false;
       if (props.choiceGender !== "") {
         next = true;
         if (!clickedPrev) {
-          props.MoveNext();
+          props.moveNext();
         }
       }
       setIsFirstPage(true);
@@ -57,24 +60,27 @@ const ProgressBar = (props) => {
     if (props.slide === 1) {
       updateStep[1] = true;
       updateStep[2] = false;
+      updateStep[3] = false;
+      updateStep[4] = false;
       prev = true;
       next = false;
       if (props.major !== "") {
         next = true;
         if (!clickedPrev) {
-          props.MoveNext();
+          props.moveNext();
         }
       }
     }
     if (props.slide === 2) {
       updateStep[2] = true;
       updateStep[3] = false;
+      updateStep[4] = false;
       prev = true;
       next = false;
       if (props.grade !== "") {
         next = true;
         if (!clickedPrev) {
-          props.MoveNext();
+          props.moveNext();
         }
       }
     }
@@ -86,7 +92,7 @@ const ProgressBar = (props) => {
       if (props.gradeDiff !== "") {
         next = true;
         if (!clickedPrev) {
-          props.MoveNext();
+          props.moveNext();
         }
       }
     }
