@@ -48,8 +48,8 @@
   margin-top: 5%;
 }
 .second_check {
-  height: 110%;
-  width: 6%;
+  height: 30px;
+  width: 30px;
   background-color: #ffffff;
   border: solid 1px #e5e5e5;
   border-radius: 4px;
@@ -71,7 +71,7 @@
   width: 80%;
   height: auto;
   display: flex;
-  margin-top: 20%;
+  margin: 15% 0 0 0;
 }
 .tip {
   color: #111111;
@@ -89,7 +89,7 @@
   width: 30vw;
   height: 30vw;
   position: absolute;
-  top: 55vh;
+  top: 50vh;
   right: 5%;
 }
 

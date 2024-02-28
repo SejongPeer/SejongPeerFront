@@ -2,6 +2,7 @@ import { useState } from 'react';
 import btn3 from '../CSS/B_Btn3.module.css';
 import con from '../CSS/B_Container.module.css';
 import check from '../../../../Assets/check.png';
+import buddyImg3 from  "../../../../Assets/buddyImg3.png"
 
 const GradeDiff = props => {
   const [firstClicked, setFirstClicked] = useState(false);
@@ -59,7 +60,7 @@ const GradeDiff = props => {
 
   return (
     <div className={con.container}>
-      <p className={con.title}>버디가 몇학년이었으면 좋겠나요?</p>
+      <p className={con.title}>원하는 버디의 학년을 선택하세요</p>
       <div className={con.btn3}>
         <button className={clickFirstBtnColor} onClick={click1BtnHandler}>
           <span>1학년</span>
@@ -90,6 +91,7 @@ const GradeDiff = props => {
           {anyClicked && <img className={btn3.check} src={check} alt="check" />}
         </button>
       </div>
+      <img className={con.img3} src={buddyImg3} alt="buddyImg3"/>
     </div>
   );
 };

@@ -173,7 +173,7 @@ const Final = props => {
               <span>버디학년</span>
             </div>
             <div className={styles.textWrapperHalf}>{buddyText}</div>
-          </div>
+          </div>``
         </div>
 
         <div className={styles.infoWrapper}>

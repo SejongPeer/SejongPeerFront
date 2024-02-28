@@ -12,7 +12,11 @@ import mypage from '../../Assets/mypage.png';
 const Back = () => {
   const navigate = useNavigate();
   const backHandler = () => {
-    navigate(-1);
+    if (location.pathname === "/main") {
+      navigate("/main");
+    } else {
+      navigate(-1);
+    }
   };
   const goLoginHandler = () => {
     navigate('/login');
@@ -29,9 +33,7 @@ const Back = () => {
   const location = useLocation();
 
   const ChangeBack = () => {
-    if (location.pathname.startsWith('/login/')) {
-      goLoginHandler();
-    } else if (location.pathname === '/buddy/matching') {
+    if (location.pathname === '/buddy/matching') {
       warningMessage();
     } else {
       backHandler();
