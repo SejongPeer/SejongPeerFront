@@ -2,6 +2,7 @@ import { useState } from 'react';
 import check from '../../../../Assets/check.png';
 import con from '../CSS/B_Container.module.css';
 import btn3 from '../CSS/B_Btn3.module.css';
+import buddyImg3 from "../../../../Assets/buddyImg3.png"
 
 const Grade = (props) => {
     const [isSeniorClicked, setIsSeniorClicked] = useState(false);
@@ -60,7 +61,7 @@ const Grade = (props) => {
 
     return <div className={con.container}>
         <p className={con.title2}>(학번기준)</p>
-        <p className={con.title}>어떤 버디를 원하시나요?</p>
+        <p className={con.title}>선/후배/동기 중 원하는 조건을 선택하세요.</p>
         <div className={con.btn3}>
             <button 
             className={clickSeniorBtnColor}
@@ -85,6 +86,8 @@ const Grade = (props) => {
             <span>상관없음</span>
             {isAnyClicked && <img className={btn3.check} src={check} alt='check'/>}</button>
         </div>
+
+        <img className={con.img3} src={buddyImg3} alt='buddyImg3'/>
     </div>;
 };
 

@@ -17,8 +17,8 @@ const GenderSignUp = (props) => {
         e.preventDefault();
     }
 
-    const clickMaleBtnColor = maleCilcked ? style.clicked : style.btn;
-    const clickFemaleBtnColor = femaleCilcked ? style.clicked : style.btn;
+    const clickMaleBtnColor = maleCilcked || props.genderValue === "MALE" ? style.clicked : style.btn ;
+    const clickFemaleBtnColor = femaleCilcked || props.genderValue === "FEMALE" ? style.clicked : style.btn;
     return <div className={style.genderContainer}>
 
         <button 

@@ -10,21 +10,19 @@ const BuddyStart2 = () => {
   const BuddyHandler = async () => {
     try {
       const response = await fetch(
-        process.env.REACT_APP_BACK_SERVER + '/buddyMatching/status',
+        process.env.REACT_APP_BACK_SERVER + '/buddy/check-matching-status',
         {
           method: 'GET',
           headers: {
-            'Cache-Control': 'no-cache, no-store, must-revalidate',
-            Pragma: 'no-cache',
-            Expires: '0',
+            Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+            'Refresh-Token': localStorage.getItem('refreshToken'),
           },
         }
       );
 
       console.log(response.data);
     } catch (error) {
-      alert('로그인이 필요한 서비스입니다!');
-      navigate('/login');
+      alert('에러가 발생했습니다.');
       console.log(error.message);
     }
   };
