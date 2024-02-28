@@ -1,14 +1,25 @@
-import { useContext, useState } from "react";
+import { useContext, useState,useEffect } from "react";
 import style from "../SignIn/SignIn.module.css";
 import css from "./ResetPwd.module.css";
 import SignInBox from "../SignIn/SignInBox";
 import axios from "axios";
 import { MyContext } from "../../../App";
+import { useLocation } from 'react-router-dom';
+
 
 const ResetPwd = () => {
   const [peerPwd, setpeerPwd] = useState("");
   const [peerPwd2, setpeerPwd2] = useState("");
   const { studentNum, peerId } = useContext(MyContext);
+  const location = useLocation();
+
+  // location.state에서 findAccount 데이터에 접근
+  const findAccount = location.state?.findAccount;
+
+  // Component가 마운트될 때 console.log를 통해 데이터를 출력합니다.
+  useEffect(() => {
+    console.log('findAccount:', findAccount);
+  }, [findAccount]);
 
   const resetPwdHandler = () => {
     if (peerPwd === peerPwd2) {
@@ -21,7 +32,7 @@ const ResetPwd = () => {
       .then((response) => console.log(response.data))
       .catch((err) => console.log(err.data));
     } else {
-      alert("비밀번호가 일치하지 않습니다.")
+      alert("비밀번호가 일치하지 않습니다.");
     }
   };
 
@@ -36,11 +47,11 @@ const ResetPwd = () => {
   return (
     <div className={style.container}>
       <div className={css.explain_box}>
-        <p className={css.explain}>회원님의 ID는</p>
-        <input type="text" className={css.show_id}></input>
-        <p className={css.explain}>
-          입니다.
-        </p>
+      <p className={css.explain}>회원님의 ID는</p>
+<div className={css.show_id}>{findAccount}</div>
+<p className={css.explain}>
+  입니다.
+</p>
       </div>
       <div className={css.reset_title}>
         <span className={css.explain}>비밀번호 변경하기</span>
