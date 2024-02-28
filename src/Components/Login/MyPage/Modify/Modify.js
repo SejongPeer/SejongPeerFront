@@ -67,13 +67,53 @@ const Modify = () => {
     setFocusedDiv(null);
   };
 
-  const handleSubmit = async e => {
-    e.preventDefault();
-    const KaKaoId = newKaKaoId !== '' ? newKaKaoId : myPageData.kakaoAccount;
-    const PhoneNum = newPhoneNum !== '' ? newPhoneNum : myPageData.phoneNumber;
-    const NickName = newNickName !== '' ? newNickName : myPageData.nickName;
+  useEffect(() => {
+    console.log("newPhone ", newPhoneNum);
+  }, [newPhoneNum]);
 
-    let modifyData = {};
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const KaKaoId = newKaKaoId !== '' ? newKaKaoId : null;
+    const PhoneNum = newPhoneNum !== '' ? newPhoneNum : null;
+    const NickName = newNickName !== '' ? newNickName : null;
+
+    let modifyData = {
+      kakaoAccount: KaKaoId,
+      nickname: NickName,
+      phoneNumber: PhoneNum,
+    };
+    console.log(KaKaoId);
+    console.log(NickName);
+    console.log(PhoneNum);
+
+    try {
+      const response = await fetch(
+        process.env.REACT_APP_BACK_SERVER + "/member/my-page",
+        {
+          method: "PATCH",
+          body: JSON.stringify(modifyData),
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${accessToken}`,
+            'Refresh-Token': refreshToken,
+          },
+        }
+      );
+
+      if (!response.ok) {
+        const errorData = await response.json(); // 오류 응답을 처리합니다.
+        throw new Error(data.message);
+      }
+
+      const data = await response.json(); // data 변수를 await로 초기화
+
+      alert("수정 성공");
+    } catch (error) {
+      // console.error("Error occurred:", error);
+      // console.error(error.message);
+      // alert(error.message);
+      e.preventDefault();
+    }
   };
 
   return (
@@ -102,7 +142,8 @@ const Modify = () => {
                 <div className={styles.myInformName}>닉네임</div>
                 <input
                   className={styles.myInformInput}
-                  value={newNickName || myPageData.nickname} // newNickName이 비어있으면 myPageData에서 기존 값을 사용
+                  value={newNickName} // newNickName이 비어있으면 myPageData에서 기존 값을 사용
+                  placeholder={myPageData.nickname}
                   onFocus={() => handleInputFocus('nickName')}
                   onChange={handleNickName}
                   onBlur={handleInputBlur}
@@ -115,7 +156,8 @@ const Modify = () => {
                 <div className={styles.myInformName}>카카오톡 아이디</div>
                 <input
                   className={styles.myInformInput}
-                  value={newKaKaoId || myPageData.kakaoAccount}
+                  placeholder={myPageData.kakaoAccount}
+                  value={newKaKaoId}
                   onFocus={() => handleInputFocus('kakaoId')}
                   onChange={handleKaKaoId}
                   onBlur={handleInputBlur}
@@ -127,7 +169,8 @@ const Modify = () => {
                 <div className={styles.myInformName}>전화번호</div>
                 <input
                   className={styles.myInformInput}
-                  value={newPhoneNum || myPageData.phoneNumber}
+                  placeholder={myPageData.phoneNumber}
+                  value={newPhoneNum}
                   onFocus={() => handleInputFocus('phoneNum')}
                   onChange={handlePhoneNum}
                   onBlur={handleInputBlur}
