@@ -1,0 +1,174 @@
+@media (min-width:768px) {
+    .container {
+        margin-top: 8vh;
+        display: flex;
+        flex-direction: column;
+        height: 85%;
+        background-color: #fafafa;
+        align-items: center;
+    }
+
+    .Text {
+        font-size: 3vh;
+        color: #FF4B4B;
+        margin-top: 8vh;
+        font-weight: 700;
+    }
+
+    .imgBox {
+        width: 45vh;
+        height: 35vh;
+        margin-top: 5vh;
+        background-image: url("../../../Assets/honbobSuccessImg.png");
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+    }
+
+    .informBox {
+        width: 45vh;
+        height: 15vh;
+        margin-top: 5vh;
+        border-radius: 16px;
+        border: 3px solid #E5E5E5;
+        padding: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .innerBox {
+        width: 40vh;
+        height: 13vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+
+    .IdBox {
+        display: flex;
+        border: 3px solid #FF4B4B;
+        border-radius: 24px;
+        justify-content: space-between;
+        width: 40vh;
+        height: 4vh;
+        align-items: center;
+        padding-left: 1vw;
+        padding-right: 1vw;
+    }
+
+    .name {
+        font-weight: 700;
+        font-size: 2vh;
+    }
+
+    .prefer {
+        color: #555555;
+    }
+
+    .KaKaoTitle {
+        font-weight: 600;
+        font-size: 1.5vh;
+    }
+
+    .moveToHome {
+        width: 45vh;
+        height: 6vh;
+        color: #FFFFFF;
+        margin-top: 5vh;
+        font-size: 2vh;
+        font-weight: 600;
+        border-radius: 28px;
+        background-color: #FF4B4B;
+    }
+}
+
+/* 모바일 */
+@media(max-width:768px) {
+    .container {
+        margin-top: 12vh;
+        display: flex;
+        flex-direction: column;
+        height: 85%;
+        background-color: #fafafa;
+        align-items: center;
+    }
+
+    .Text {
+        font-size: 3vh;
+        color: #FF4B4B;
+        margin-top: 8vh;
+        font-weight: 700;
+    }
+
+    .imgBox {
+        width: 40vh;
+        height: 25vh;
+        margin-top: 5vh;
+        background-image: url("../../../Assets/honbobSuccessImg.png");
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+    }
+
+    .informBox {
+        width: 40vh;
+        height: 15vh;
+        margin-top: 5vh;
+        border-radius: 16px;
+        border: 2px solid #E5E5E5;
+        padding: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .innerBox {
+        width: 35vh;
+        height: 13vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+
+    .IdBox {
+        display: flex;
+        border: 1px solid #FF4B4B;
+        border-radius: 24px;
+        justify-content: space-between;
+        width: 35vh;
+        height: 4vh;
+        align-items: center;
+        padding-left: 2vw;
+        padding-right: 2vw;
+    }
+
+    .name {
+        font-weight: 700;
+        font-size: 2vh;
+    }
+
+    .prefer {
+        color: #555555;
+    }
+
+    .KaKaoTitle {
+        font-weight: 600;
+        font-size: 1.5vh;
+    }
+
+    .KaKaoId {
+        font-size: 1.5vh;
+    }
+
+    .moveToHome {
+        width: 42vh;
+        height: 6vh;
+        color: #FFFFFF;
+        margin-top: 8vh;
+        font-size: 2vh;
+        font-weight: 600;
+        border-radius: 28px;
+        background-color: #FF4B4B;
+    }
+}

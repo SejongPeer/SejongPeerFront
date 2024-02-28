@@ -1,5 +1,5 @@
 import style from "./HonbobWaiting.module.css";
-import hohbobWaitingLogo from "../../../Assets/honbobWaitingImg.png";
+import honbobWaitingLogo from "../../../Assets/honbobWaitingImg.png";
 import { MyContext } from "../../../App";
 import { useState, useEffect, useContext } from "react";
 import { redirect, useNavigate } from "react-router-dom";
@@ -59,7 +59,7 @@ const HonbobWaiting = () => {
   return (
     <div className={style.container}>
       <div className={style.TextBox}>
-        <img src={hohbobWaitingLogo} className={style.honbobWaitingImg} />
+        <img src={honbobWaitingLogo} className={style.honbobWaitingImg} />
         <p className={style.Text1}>밥짝꿍 찾는 중{dots}</p>
         <p className={style.Text2}>
           <span className={style.Text2_span1}>*</span>

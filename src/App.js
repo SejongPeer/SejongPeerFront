@@ -13,6 +13,7 @@ import BuddyMatching from "./Components/Buddy/Matching/JS/Buddy_Matching";
 import BuddyWaiting from "./Components/Buddy/BuddyWaiting/BuddyWaiting";
 import Honbob_Matching from "./Components/Honbob/Matching/JS/Honbob_Matching";
 import HonbobWaiting from "./Components/Honbob/HonbobWaiting/HonbobWaiting.js";
+import HonbobSuccess from "./Components/Honbob/HonbobSuccess/HonbobSuccess.js";
 import BuddyAccept from "./Components/Buddy/BuddyWaiting/BuddyAccept.js";
 import BuddySuccess from "./Components/Buddy/BuddyWaiting/BuddySuccess.js";
 
@@ -131,6 +132,7 @@ const App = () => {
               <Route path="/honbob/waiting" element={<HonbobWaiting />} />
               <Route path="/honbob/start1" element={<HonbobStart1 />} />
               <Route path="/honbob/cancel" element={<HonbobWaiting />} />
+              <Route path="/honbob/success" element={<HonbobSuccess />} />
 
               <Route path="/login" element={<SignIn />} />
               <Route path="/login/signup" element={<SignUp />} />
