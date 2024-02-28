@@ -32,14 +32,22 @@ const FindId = () => {
         let nameData = response1.data.result.body.name;
         setStudentNum(id);
         setName(nameData);
+        console.log("학번 : " +id);
+        console.log("이름 : "+ nameData);
+        console.log("학번 + 이름 :" + studentNum + name);
 
-      // 아이디 찾기
+      //아이디 찾기
       const response2 = await axios
-      .post("", {
-        studentNum : studentNum,
-        name : name
+      .post(`${process.env.REACT_APP_BACK_SERVER}/member/help/find-account`,{
+        studentId : studentNum,
+        name : name,
       });
-      navigate("/login/resetpwd");
+      console.log(response2.data.data.account);
+      console.log(response2.data);
+
+      let findAccount = response2.data.data.account;
+
+      navigate("/login/resetpwd", { state: { findAccount: findAccount } });
     } catch(err) {
       console.log(err.message);
     }
