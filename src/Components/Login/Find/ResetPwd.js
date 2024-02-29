@@ -5,43 +5,51 @@ import SignInBox from "../SignIn/SignInBox";
 import axios from "axios";
 import { MyContext } from "../../../App";
 import { useLocation } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 
 const ResetPwd = () => {
-  const [peerPwd, setpeerPwd] = useState("");
-  const [peerPwd2, setpeerPwd2] = useState("");
-  const { studentNum, peerId } = useContext(MyContext);
+  const [inputPwd, setinputPwd] = useState("");
+  const [inputPwd2, setinputPwd2] = useState("");
   const location = useLocation();
+  const navigate = useNavigate();
 
-  // location.state에서 findAccount 데이터에 접근
+  // location.state -> findAccount 데이터에 접근
   const findAccount = location.state?.findAccount;
+  const studentNum = location.state?.studentNum;
 
-  // Component가 마운트될 때 console.log를 통해 데이터를 출력합니다.
+  // Component가 마운트 console.log 데이터를 출력
   useEffect(() => {
     console.log('findAccount:', findAccount);
-  }, [findAccount]);
+    console.log('studentId:' ,studentNum);
+  }, [findAccount, studentNum]);
 
   const resetPwdHandler = () => {
-    if (peerPwd === peerPwd2) {
+    if (inputPwd === inputPwd2) {
       axios
-      .post("", {
+      .put(`${process.env.REACT_APP_BACK_SERVER}/member/help/reset-password`,{
         studentId: studentNum,
-        peerId: peerId,
-        peerPwd: peerPwd,
+        account:findAccount,
+        password: inputPwd,
+        passwordCheck: inputPwd2,
       })
-      .then((response) => console.log(response.data))
+      .then((response) => console.log(response.data),
+      alert("비밀번호 변경이 정상적으로 이루어 졌습니다."),
+      navigate("/login")
+      )
       .catch((err) => console.log(err.data));
+
     } else {
       alert("비밀번호가 일치하지 않습니다.");
     }
   };
 
   const inputPwdHandler = (inputPwd) => {
-    setpeerPwd(inputPwd);
+    setinputPwd(inputPwd);
   };
 
-  const inputPwdHandler2 = (inputPwd) => {
-    setpeerPwd2(inputPwd);
+  const inputPwdHandler2 = (inputPwd2) => {
+    setinputPwd2(inputPwd2);
   }
 
   return (
@@ -54,15 +62,16 @@ const ResetPwd = () => {
 </p>
       </div>
       <div className={css.reset_title}>
-        <span className={css.explain}>비밀번호 변경하기</span>
-        <p className={css.explain_sub}>새로운 비밀번호(10-16자의 영문 + 숫자)</p>
+        <span className={css.explain} value={inputPwd}>비밀번호 변경하기</span>
+        <p className={css.explain_sub}value={inputPwd2}>새로운 비밀번호(10-16자의 영문 + 숫자)</p>
       </div>
       <SignInBox 
-      inputPwdHandler={inputPwdHandler} 
-      name="비밀번호 입력"/>
-      <SignInBox 
-      inputPwdHandler2={inputPwdHandler2} 
-      name="비밀번호 재입력"/>
+  inputID={inputPwdHandler} 
+  name="비밀번호 입력"/>
+<SignInBox 
+  inputPwd={inputPwdHandler2} 
+  id="pwd" 
+  name="비밀번호 재입력"/>
       <button className={style.signInBtn} onClick={resetPwdHandler}>
         비밀번호 변경하기
       </button>

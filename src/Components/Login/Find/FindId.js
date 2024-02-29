@@ -9,7 +9,7 @@ const FindId = () => {
   const navigate = useNavigate();
   const [id, setId] = useState("");
   const [pwd, setPWd] = useState("");
-  const { setName, setPeerId, setStudentNum, studentNum, name } = useContext(MyContext);
+  const { setName, setStudentNum, studentNum, name } = useContext(MyContext);
 
   const inputID = (idinput) => {
     setId(idinput);
@@ -46,8 +46,9 @@ const FindId = () => {
       console.log(response2.data);
 
       let findAccount = response2.data.data.account;
+      
+      navigate("/login/resetpwd", { state: { findAccount, studentNum } });
 
-      navigate("/login/resetpwd", { state: { findAccount: findAccount } });
     } catch(err) {
       console.log(err.message);
     }
