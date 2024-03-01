@@ -5,11 +5,17 @@ import { useEffect } from 'react';
 
 const IDCheckBox = (props) => {
     const [username, setUsername] = useState('');
+    const [rightIdMessage, setRightIdMessage] = useState('');
 
+    //중복되지 않은 아이디를 입력한 경우
+    const RightIdHandler = (message) =>{
+        setRightIdMessage(message);
+    }
     // 사용자 입력 처리 핸들러
     const handleUsernameChange = (event) => {
         setUsername(event.target.value);
         if (props.idData) props.idData(event.target.value); // 상위 컴포넌트로 입력 데이터를 전달
+        setRightIdMessage('');
     };
 
     // 아이디 중복 확인 요청을 처리하는 핸들러
@@ -37,15 +43,15 @@ const IDCheckBox = (props) => {
                 if (data.data.isExist) {
                     alert('중복되는 아이디 입니다. 다른 아이디를 입력하세요');
                     props.errorHandler("중복되는 아이디 입니다. 다른 아이디를 입력하세요");
-                    props.idExistHandler(true); // 수정: props로 받은 setIsIdExist 사용
+                    props.idExistHandler(true); 
                     console.log("isIdExist 값 : " + data.data.isExist);
-                    console.log("중복 O : " + props.isIdExist); // 아이디가 존재하지 않으므로 사용 가능
+                    console.log("중복 O : " + props.isIdExist); // 아이디가 존재 X 사용 O
                 } else {
                     alert('사용 가능한 아이디입니다.');
-                    props.errorHandler("사용 가능한 아이디 입니다.");
-                    props.idExistHandler(false); // 아이디가 존재하지 않으므로 사용 가능
+                    RightIdHandler("사용 가능한 아이디 입니다.");
+                    props.idExistHandler(false); // 아이디가 존재 X 사용 O
                     console.log("isIdExist 값 : " + data.data.isExist);
-                    console.log("중복 X : " + props.isIdExist); // 아이디가 존재하지 않으므로 사용 가능
+                    console.log("중복 X : " + props.isIdExist); // 아이디가 존재 X 사용 O
                 }
             } catch (error) {
                 console.error('There was an error!', error);
@@ -68,6 +74,7 @@ const IDCheckBox = (props) => {
                 <button className={style.idcheckBtn} onClick={() => {
                     checkUsernameDuplicate();
                 }}>중복 확인</button>
+                {rightIdMessage && <div className={style.RightId}>{rightIdMessage}</div>}
             </div>
         </div>
     );

@@ -83,3 +83,10 @@
   background-color: #ff4b4b;
   cursor: pointer;
 }
+
+.RightId {
+  color: #6B9900;
+  font-weight: 500;
+  font-size: 14px;
+  margin: 4px 0px;
+}
