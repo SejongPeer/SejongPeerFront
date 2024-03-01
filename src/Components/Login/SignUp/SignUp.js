@@ -125,7 +125,6 @@ const SignUp = props => {
   //POST
   async function submitHandler(e) {
     e.preventDefault();
-
     // 복수전공 체크 여부에 따라 변수 값을 조정
     const finalDoubleMajorValue = doubleMajorChecked ? doublemajorValue : null;
     const finalDoubleCollegeValue = doubleMajorChecked
@@ -147,9 +146,8 @@ const SignUp = props => {
     console.log('majorValue : ' + majorValue);
     console.log('doublemajorValue : ' + doublemajorValue);
     console.log('doubleCollegeValue : ' + doubleCollegeValue);
-
-    //console.log("emailValue : " + emailValue);
-    //console.log("birthValue : " + birthValue);
+    
+    let errorClassName = "";
 
     if (
       idValue === '' ||
@@ -164,10 +162,6 @@ const SignUp = props => {
       genderValue === '' ||
       collegeValue === '' ||
       majorValue === ''
-      // doublemajorValue === "" || 얘네는 선택사항
-      // doubleCollegeValue === ""
-      //emailValue === "" ||
-      //birthValue === "" ||
     ) {
       alert('모든 양식의 작성을 완료해주세요');
       e.preventDefault();
@@ -192,11 +186,7 @@ const SignUp = props => {
           phoneNumber: phoneNumberValue,
           nickname: nicknameValue,
           kakaoAccount: kakaoidValue,
-
-          //email: emailValue,
-          //birthday: birthValue,
         };
-
         try {
           const response = await fetch(
             process.env.REACT_APP_BACK_SERVER + '/member/sign-up',
@@ -210,6 +200,9 @@ const SignUp = props => {
           );
           const data = await response.json();
           console.log(data);
+          console.log(data.data.errorClassName);
+          errorClassName = data.data.errorClassName;
+
           if (!response.ok) {
             throw new Error(data.message);
           }
@@ -220,11 +213,17 @@ const SignUp = props => {
         } catch (err) {
           console.error('Error occurred:', err);
           console.log(err.message);
+
+          if(errorClassName == "DUPLICATED_STUDENT_ID"){
+            alert("학번 당 한 개의 계정만 생성할 수 있습니다.");
+          }
+          else{
           alert(
             '제출에 실패했습니다. 다시 시도해주세요. (에러 내용: ' +
               err.message +
               ')'
           );
+          }
           e.preventDefault();
         }
       } else {
