@@ -50,7 +50,7 @@
 
 .nextController {
   height: 4vh;
-  width: 17vw;
+  width: 150px;
   margin: 3vw;
   border: 1px solid #FF4B4B;
   border-radius: 25px;
@@ -63,7 +63,7 @@
 
 .nextNonController {
   height: 4vh;
-  width: 17vw;
+  width: 150px;
   margin: 3vw;
   border: 1px solid #FF4B4B;
   border-radius: 25px;
@@ -77,7 +77,7 @@
 
 .prevController {
   height: 4vh;
-  width: 17vw;
+  width: 150px;
   margin: 3vw;
   border: 2px solid #FF4B4B;
   border-radius: 25px;
@@ -116,4 +116,46 @@
   max-width: 124px;
   height: 100%;
   background-color: #ccc;
+}
+
+@media(max-width:768px) {
+  .nextController {
+    height: 4vh;
+    width: 100px;
+    margin: 3vw;
+    border: 1px solid #FF4B4B;
+    border-radius: 25px;
+    background-color: #FF4B4B;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: #ffffff;
+    cursor: pointer;
+  }
+
+  .nextNonController {
+    height: 4vh;
+    width: 100px;
+    margin: 3vw;
+    border: 1px solid #FF4B4B;
+    border-radius: 25px;
+    background-color: #FF4B4B;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: #ffffff;
+    cursor: pointer;
+    opacity: 0.5;
+  }
+
+  .prevController {
+    height: 4vh;
+    width: 100px;
+    margin: 3vw;
+    border: 2px solid #FF4B4B;
+    border-radius: 25px;
+    background-color: transparent;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: #333333;
+    cursor: pointer;
+  }
 }

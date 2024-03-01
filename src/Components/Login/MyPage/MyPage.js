@@ -112,152 +112,154 @@ const MyPage = () => {
   }, [accessToken, refreshToken, navigate]);
 
   return (
-    <div className={styles.container}>
-      {myPageData && (
-        <>
-          <div className={styles.outerContainer}>
-            <div className={styles.container1}>
-              <div className={styles.informTitleBox}>
-                <p
-                  style={{ fontWeight: '700', marginBottom: '0px' }}
-                  className={styles.informTitle}
-                >
-                  매칭정보
-                </p>
-              </div>
+    <div className={styles.Container}>
+      <div className={styles.container}>
+        {myPageData && (
+          <>
+            <div className={styles.outerContainer}>
+              <div className={styles.container1}>
+                <div className={styles.informTitleBox}>
+                  <p
+                    style={{ fontWeight: '700', marginBottom: '0px' }}
+                    className={styles.informTitle}
+                  >
+                    매칭정보
+                  </p>
+                </div>
 
-              <div className={styles.matchingBox}>
-                {/* <button className={styles.matchingButton}>
+                <div className={styles.matchingBox}>
+                  {/* <button className={styles.matchingButton}>
     <div className={styles.leftBox}>
       <div className={`${styles.redWord} ${styles.checkWord}`}>세종스터디</div>
       <div className={`${styles.blackWord} ${styles.checkWord}`} style={{ fontWeight: "700" }}>내 게시글 확인</div>
     </div>
     <div className={styles.rightImg}></div>
   </button> */}
-                <button className={styles.hideBtn}></button>
-                <button className={styles.matchingButton}>
-                  <div className={styles.leftBox}>
-                    <div className={`${styles.redWord} ${styles.checkWord}`}>
-                      세종버디
+                  <button className={styles.hideBtn}></button>
+                  <button className={styles.matchingButton}>
+                    <div className={styles.leftBox}>
+                      <div className={`${styles.redWord} ${styles.checkWord}`}>
+                        세종버디
+                      </div>
+                      <div
+                        className={`${styles.blackWord} ${styles.checkWord}`}
+                        style={{ fontWeight: '700' }}
+                      >
+                        매칭 상대 확인
+                      </div>
                     </div>
+                    <div className={styles.buddyImg}></div>
+                  </button>
+                  <button className={styles.matchingButton}>
+                    <div className={styles.leftBox}>
+                      <div className={`${styles.redWord} ${styles.checkWord}`}>
+                        혼밥탈출
+                      </div>
+                      <div
+                        className={`${styles.blackWord} ${styles.checkWord}`}
+                        style={{ fontWeight: '700' }}
+                      >
+                        밥짝꿍 확인
+                      </div>
+                    </div>
+                    <div className={styles.honbobImg}></div>
+                  </button>
+                </div>
+              </div>
+              <div className={styles.container2}>
+                <div className={styles.informTitleBox}>
+                  <p style={{ fontWeight: '700', marginBottom: '0px' }}>
+                    내 정보
+                  </p>
+                </div>
+
+                <div className={styles.myInformBox}>
+                  <button className={styles.myInformBtn} onClick={goModify}>
+                    <div className={styles.leftBox}>
+                      <div
+                        className={`${styles.blackWord} ${styles.myInformWord}`}
+                        style={{ fontWeight: '700', fontSize: '1.8vh' }}
+                      >
+                        {myPageData.name}
+                      </div>
+                      <div
+                        className={`${styles.blackWord} ${styles.myInformWord}`}
+                      >
+                        {myPageData.major}
+                      </div>
+                    </div>
+                    <div className={styles.rightArrow}></div>
+                  </button>
+                </div>
+              </div>
+              <div className={styles.container3}>
+                <div className={styles.informTitleBox}>
+                  <p style={{ fontWeight: '700', marginBottom: '0px' }}>
+                    사용방법
+                  </p>
+                </div>
+                <div className={styles.useInformBox}>
+                  <button className={styles.useInformBtn}>
                     <div
-                      className={`${styles.blackWord} ${styles.checkWord}`}
-                      style={{ fontWeight: '700' }}
+                      className={styles.redWord2}
+                      style={{ fontWeight: '900' }}
                     >
-                      매칭 상대 확인
+                      세종스터디
                     </div>
-                  </div>
-                  <div className={styles.buddyImg}></div>
-                </button>
-                <button className={styles.matchingButton}>
-                  <div className={styles.leftBox}>
-                    <div className={`${styles.redWord} ${styles.checkWord}`}>
+                    <div style={{ fontWeight: 'bold' }}>사용법</div>
+                  </button>
+                  <button className={styles.useInformBtn}>
+                    <div
+                      className={styles.redWord2}
+                      style={{ fontWeight: '900' }}
+                    >
+                      세종피어
+                    </div>
+                    <div style={{ fontWeight: 'bold' }}>사용법</div>
+                  </button>
+                  <button className={styles.useInformBtn}>
+                    <div
+                      className={styles.redWord2}
+                      style={{ fontWeight: '900' }}
+                    >
                       혼밥탈출
                     </div>
-                    <div
-                      className={`${styles.blackWord} ${styles.checkWord}`}
-                      style={{ fontWeight: '700' }}
-                    >
-                      밥짝꿍 확인
-                    </div>
-                  </div>
-                  <div className={styles.honbobImg}></div>
-                </button>
-              </div>
-            </div>
-            <div className={styles.container2}>
-              <div className={styles.informTitleBox}>
-                <p style={{ fontWeight: '700', marginBottom: '0px' }}>
-                  내 정보
-                </p>
-              </div>
-
-              <div className={styles.myInformBox}>
-                <button className={styles.myInformBtn} onClick={goModify}>
-                  <div className={styles.leftBox}>
-                    <div
-                      className={`${styles.blackWord} ${styles.myInformWord}`}
-                      style={{ fontWeight: '700', fontSize: '1.8vh' }}
-                    >
-                      {myPageData.name}
-                    </div>
-                    <div
-                      className={`${styles.blackWord} ${styles.myInformWord}`}
-                    >
-                      {myPageData.major}
-                    </div>
-                  </div>
-                  <div className={styles.rightArrow}></div>
-                </button>
-              </div>
-            </div>
-            <div className={styles.container3}>
-              <div className={styles.informTitleBox}>
-                <p style={{ fontWeight: '700', marginBottom: '0px' }}>
-                  사용방법
-                </p>
-              </div>
-              <div className={styles.useInformBox}>
-                <button className={styles.useInformBtn}>
-                  <div
-                    className={styles.redWord2}
-                    style={{ fontWeight: '900' }}
-                  >
-                    세종스터디
-                  </div>
-                  <div style={{ fontWeight: 'bold' }}>사용법</div>
-                </button>
-                <button className={styles.useInformBtn}>
-                  <div
-                    className={styles.redWord2}
-                    style={{ fontWeight: '900' }}
-                  >
-                    세종피어
-                  </div>
-                  <div style={{ fontWeight: 'bold' }}>사용법</div>
-                </button>
-                <button className={styles.useInformBtn}>
-                  <div
-                    className={styles.redWord2}
-                    style={{ fontWeight: '900' }}
-                  >
-                    혼밥탈출
-                  </div>
-                  <div style={{ fontWeight: 'bold' }}>사용법</div>
-                </button>
-              </div>
-            </div>
-            <div className={styles.container4}>
-              <div className={styles.informTitleBox}>
-                <p style={{ fontWeight: '700', marginBottom: '0px' }}>
-                  이용안내
-                </p>
-              </div>
-              <div className={styles.ruleBox}>
-                <div style={{ textDecoration: 'underline' }}>
-                  개인정보처리방침
+                    <div style={{ fontWeight: 'bold' }}>사용법</div>
+                  </button>
                 </div>
-                <div style={{ textDecoration: 'underline' }}>이용약관</div>
-                <div style={{ textDecoration: 'underline' }}>
-                  커뮤니티 이용규칙
-                </div>
-                <div style={{ textDecoration: 'underline' }}>공지사항</div>
               </div>
+              <div className={styles.container4}>
+                <div className={styles.informTitleBox}>
+                  <p style={{ fontWeight: '700', marginBottom: '0px' }}>
+                    이용안내
+                  </p>
+                </div>
+                <div className={styles.ruleBox}>
+                  <div style={{ textDecoration: 'underline' }}>
+                    개인정보처리방침
+                  </div>
+                  <div style={{ textDecoration: 'underline' }}>이용약관</div>
+                  <div style={{ textDecoration: 'underline' }}>
+                    커뮤니티 이용규칙
+                  </div>
+                  <div style={{ textDecoration: 'underline' }}>공지사항</div>
+                </div>
+              </div>
+              <button className={styles.logout}>
+                <p
+                  style={{ fontWeight: '700', fontSize: '1.3em' }}
+                  onClick={handleLogout}
+                >
+                  로그아웃
+                </p>
+              </button>
+              <button className={styles.secession} onClick={handleDeleteAccount}>
+                탈퇴하기
+              </button>
             </div>
-            <button className={styles.logout}>
-              <p
-                style={{ fontWeight: '700', fontSize: '1.3em' }}
-                onClick={handleLogout}
-              >
-                로그아웃
-              </p>
-            </button>
-            <p className={styles.secession} onClick={handleDeleteAccount}>
-              탈퇴하기
-            </p>
-          </div>
-        </>
-      )}
+          </>
+        )}
+      </div>
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import con from "../CSS/H_Container.module.css";
 import style from "../CSS/H_Menu.module.css";
-const H_Menu = () => {
+const H_Menu = (props) => {
     // const [isClicked, setIsClicked] = useState(null);
     const [clickedIndex, setClickedIndex] = useState(null);
     const menu = ["한식", "양식", "중식", "일식", "학식", "상관없음"]
@@ -9,6 +9,32 @@ const H_Menu = () => {
     const menuChoice = (index) => {
         setClickedIndex(index);
         console.log("선택된 index: ", index);
+        if (index == 0) {
+            props.setChoiceMenu("KOREAN");
+            props.setChoiceMenuKorean("한식");
+        }
+        else if (index == 1) {
+            props.setChoiceMenu("WESTERN");
+            props.setChoiceMenuKorean("양식");
+        }
+        else if (index == 2) {
+            props.setChoiceMenu("CHINESE");
+            props.setChoiceMenuKorean("중식");
+        }
+        else if (index == 3) {
+            props.setChoiceMenu("JAPENESE");
+            props.setChoiceMenuKorean("일식");
+        }
+        else if (index == 4) {
+            props.setChoiceMenu("CAFETERIA");
+            props.setChoiceMenuKorean("학식");
+        }
+        else {
+            props.setChoiceMenu("NO_MATTER");
+            props.setChoiceMenuKorean("상관없음");
+        }
+
+
     }
 
     return (

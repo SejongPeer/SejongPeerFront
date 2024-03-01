@@ -54,9 +54,9 @@ const ProgressBar = props => {
 
     if (props.slide === 0) {
       updateStep[0] = true;
+      updateStep[1] = false;
+      updateStep[2] = false;
       prev = false;
-      next = true;
-
       if (props.choiceGenderHonbob !== '') {
         next = true;
         if (!clickedPrev) {
@@ -66,47 +66,56 @@ const ProgressBar = props => {
     }
 
     if (props.slide === 1) {
-      updateStep[0] = false;
+      updateStep[0] = true;
       updateStep[1] = true;
+      updateStep[2] = false;
       prev = true;
-      next = true;
-      if (
-        // eslint-disable-next-line no-cond-assign
-        (next =
-          true ||
-          (props.phoneNumHonbob !== ''))
-      ) {
+      console.log("chiceMenu:", props.choiceMenu);
+      if (props.choiceMenu !== '') {
         next = true;
+        if (!clickedPrev) {
+          props.slideMove(props.slide + 1);
+        }
       }
+      // if (
+      //   // eslint-disable-next-line no-cond-assign
+      //   (next =
+      //     true ||
+      //     (props.choiceMenu !== ''))
+      // ) {
+
+      // }
+      // if (props.choiceMenu !== '') {
+      //   next = true;
+      //   if (!clickedPrev) {
+      //     props.slideMove(props.slide + 1);
+      //   }
+      // }
       // if (!clickedPrev) {
       //   props.slideMove(props.slide + 1);
       // }
     }
 
     if (props.slide === 2) {
+      updateStep[0] = true;
+      updateStep[1] = true;
       updateStep[2] = true;
-      updateStep[1] = false;
       setIsLastPage(true);
       prev = true;
       next = false;
-      if (props.myGenderHonbob !== '') {
+      if (props.choiceMenu !== '') {
         next = true;
-        // if (!clickedPrev) {
-        //   props.slideMove(props.slide + 1);
-        // }
       }
     }
     else {
       setIsLastPage(false);
     }
-
-
-
     setStep(updateStep);
     setCanMoveNext(next);
     setCanMovePrev(prev);
   }, [
     props.choiceGenderHonbob,
+    props.choiceMenu,
     props.slide,
   ]);
 
