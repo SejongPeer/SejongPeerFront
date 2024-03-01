@@ -9,14 +9,16 @@ const H_Gender = (props) => {
   const clickSameBtnHandler = () => {
     setIsSameClicked(true);
     setIsDontCareClicked(false);
-    const choiceGender = "동성";
+    const choiceGender = "SAME";
+    props.setChoiceGenderKorean("동성");
     props.sendChoiceGenderData(choiceGender);
   };
 
   const clickDontCareBtnHandler = () => {
     setIsSameClicked(false);
     setIsDontCareClicked(true);
-    const choiceGender = "상관없음";
+    const choiceGender = "NO_MATTER";
+    props.setChoiceGenderKorean("상관없음");
     props.sendChoiceGenderData(choiceGender);
   };
 

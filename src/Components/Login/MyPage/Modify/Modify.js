@@ -117,109 +117,121 @@ const Modify = () => {
   };
 
   return (
-    <div className={styles.ContainerBox}>
-      {myPageData && (
-        <div className={styles.outerContainer}>
-          <div className={styles.container1}>
-            <div className={styles.informTitleBox}>
-              <div style={{ fontWeight: '700', marginBottom: '0px' }}>
-                정보 수정
+    <div className={styles.Container}>
+      <div className={styles.ContainerBox}>
+        {myPageData && (
+          <div className={styles.outerContainer}>
+            <div className={styles.container1}>
+              <div className={styles.informTitleBox}>
+                <div style={{ fontWeight: '700', marginBottom: '0px' }}>
+                  정보 수정
+                </div>
+                <div
+                  style={{
+                    color: '#ff4b4b',
+                    fontSize: '1.5vh',
+                    fontWeight: '700',
+                  }}
+                >
+                  *각 정보 클릭 시, 수정 가능
+                </div>
               </div>
-              <div
-                style={{
-                  color: '#ff4b4b',
-                  fontSize: '1.5vh',
-                  fontWeight: '700',
-                }}
-              >
-                *각 정보 클릭 시, 수정 가능
-              </div>
-            </div>
-            <div className={styles.myInformBox}>
-              <div
-                className={`${focusedDiv === 'nickName' ? styles.focused : styles.myInformDiv}`}
-              >
-                <div className={styles.myInformName}>닉네임</div>
-                <input
-                  className={styles.myInformInput}
-                  value={newNickName} // newNickName이 비어있으면 myPageData에서 기존 값을 사용
-                  placeholder={myPageData.nickname}
-                  onFocus={() => handleInputFocus('nickName')}
-                  onChange={handleNickName}
-                  onBlur={handleInputBlur}
-                />
-              </div>
+              <div className={styles.myInformBox}>
+                <div
+                  className={`${focusedDiv === 'nickName' ? styles.focused : styles.myInformDiv}`}
+                >
+                  <div className={styles.myInformName}>닉네임</div>
+                  <input
+                    className={styles.myInformInput}
+                    value={newNickName} // newNickName이 비어있으면 myPageData에서 기존 값을 사용
+                    placeholder={myPageData.nickname}
+                    onFocus={() => handleInputFocus('nickName')}
+                    onChange={handleNickName}
+                    onBlur={handleInputBlur}
+                  />
+                </div>
+                <div
+                  className={styles.IdBox}
+                >
+                  <div className={styles.myInformName}>아이디</div>
+                  <input
+                    className={styles.myInformInput}
+                    placeholder={myPageData.account}
+                    disabled
+                  />
+                </div>
+                <div
+                  className={`${focusedDiv === 'kakaoId' ? styles.focused : styles.myInformDiv}`}
+                >
+                  <div className={styles.myInformName}>카카오톡 아이디</div>
+                  <input
+                    className={styles.myInformInput}
+                    placeholder={myPageData.kakaoAccount}
+                    value={newKaKaoId}
+                    onFocus={() => handleInputFocus('kakaoId')}
+                    onChange={handleKaKaoId}
+                    onBlur={handleInputBlur}
+                  />
+                </div>
 
-              <div
-                className={`${focusedDiv === 'kakaoId' ? styles.focused : styles.myInformDiv}`}
-              >
-                <div className={styles.myInformName}>카카오톡 아이디</div>
-                <input
-                  className={styles.myInformInput}
-                  placeholder={myPageData.kakaoAccount}
-                  value={newKaKaoId}
-                  onFocus={() => handleInputFocus('kakaoId')}
-                  onChange={handleKaKaoId}
-                  onBlur={handleInputBlur}
-                />
-              </div>
-              <div
-                className={`${focusedDiv === 'phoneNum' ? styles.focused : styles.myInformDiv}`}
-              >
-                <div className={styles.myInformName}>전화번호</div>
-                <input
-                  className={styles.myInformInput}
-                  placeholder={myPageData.phoneNumber}
-                  value={newPhoneNum}
-                  onFocus={() => handleInputFocus('phoneNum')}
-                  onChange={handlePhoneNum}
-                  onBlur={handleInputBlur}
-                />
+                <div
+                  className={`${focusedDiv === 'phoneNum' ? styles.focused : styles.myInformDiv}`}
+                >
+                  <div className={styles.myInformName}>전화번호</div>
+                  <input
+                    className={styles.myInformInput}
+                    placeholder={myPageData.phoneNumber}
+                    value={newPhoneNum}
+                    onFocus={() => handleInputFocus('phoneNum')}
+                    onChange={handlePhoneNum}
+                    onBlur={handleInputBlur}
+                  />
+                </div>
               </div>
             </div>
-          </div>
-          <div className={styles.container2}>
-            <div
-              className={styles.informTitleBox}
-              style={{ margin: '1.2vh 0 0 0' }}
-            >
+            <div className={styles.container2}>
               <div
-                style={{
-                  fontSize: '1.2em',
-                  fontWeight: '700',
-                  marginBottom: '0px',
-                  color: 'black',
-                }}
+                className={styles.informTitleBox}
+                style={{ margin: '1.2vh 0 0 0' }}
               >
-                내 학과
+                <div
+                  style={{
+                    fontSize: '1.2em',
+                    fontWeight: '700',
+                    marginBottom: '0px',
+                    color: 'black',
+                  }}
+                >
+                  내 학과
+                </div>
+                <div
+                  style={{
+                    color: '#ff4b4b',
+                    fontSize: '1.5vh',
+                    fontWeight: '700',
+                  }}
+                >
+                  *학과 정보는 새로운 학기에 수정 가능합니다.
+                </div>
               </div>
-              <div
-                style={{
-                  color: '#ff4b4b',
-                  fontSize: '1.5vh',
-                  fontWeight: '700',
-                }}
-              >
-                *학과 정보는 새로운 학기에 수정 가능합니다.
+              <div className={styles.departBox}>
+                <div
+                  style={{
+                    fontWeight: '600',
+                    color: '#555555',
+                  }}
+                >
+                  {myPageData.major}
+                </div>
               </div>
             </div>
-            <div className={styles.departBox}>
-              <div
-                style={{
-                  fontWeight: '600',
-                  color: '#555555',
-                }}
-              >
-                {myPageData.major}
-              </div>
-            </div>
-          </div>
 
-          <button className={styles.modify} onClick={handleSubmit}>
-            <p style={{ fontWeight: '400', fontSize: '1.3em' }}>수정하기</p>
-          </button>
-        </div>
-      )}
+            <button className={styles.modify} onClick={handleSubmit}>
+              <p style={{ fontWeight: '400', fontSize: '1.3em' }}>수정하기</p>
+            </button>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

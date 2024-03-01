@@ -27,7 +27,7 @@
   .informBtn {
     margin-right: 1vw;
     border-radius: 24px;
-    width: 10vw;
+    width: 20vh;
     height: 5vh;
     display: flex;
     justify-content: center;
@@ -60,7 +60,7 @@
 
   .honbobLogo {
     height: 45vh;
-    width: 15vw;
+    width: 27vh;
     background-image: url("../../../Assets/honbobStartLogo.png");
     background-repeat: no-repeat;
     background-position: center;
@@ -70,6 +70,7 @@
   .informContext {
     margin-top: 3vh;
     font-weight: 600;
+    width: 30vh;
     gap: 2%;
     display: flex;
     flex-direction: column;
@@ -90,7 +91,7 @@
     font-weight: 600;
     margin-top: 5vh;
     font-size: 2vh;
-    width: 20vw;
+    width: 40vh;
   }
 
   .raccoon {
@@ -103,7 +104,7 @@
   }
 
   .submitBtn {
-    width: 26vw;
+    width: 40vh;
     height: 7vh;
     border-radius: 32px;
     color: #FFFFFF;

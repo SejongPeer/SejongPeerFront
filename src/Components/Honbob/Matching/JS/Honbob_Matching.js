@@ -1,9 +1,7 @@
 import { useState, useEffect, useContext } from "react";
-import ChoiceGenderHonbob from "./H_MyGender.js";
 import H_Gender from "./H_Gender.js";
 import H_Menu from "./H_Menu.js";
 import H_informCheck from "./H_InformCheck.js";
-import PhoneNumHonbob from "./U_PhoneNum_h.js";
 import ProgressBar from "../../ProgressBar/ProgressBar_Honbob";
 import style from "../CSS/Honbob_Matching.module.css";
 import { MyContext } from "../../../../App";
@@ -11,7 +9,9 @@ import { useNavigate } from "react-router-dom";
 const Honbob_Matching = () => {
   const [slide, setSlide] = useState(0);
   const [choiceGenderHonbob, setChoiceGender] = useState("");
+  const [choiceGenderKorean, setChoiceGenderKorean] = useState("");
   const [choiceMenu, setChoiceMenu] = useState("");
+  const [choiceMenuKorean, setChoiceMenuKorean] = useState("");
   const { KaKaoDD, setKaKaoDD } = useContext(MyContext);
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -58,7 +58,7 @@ const Honbob_Matching = () => {
   const MoveNext = () => {
     setSlide(slide + 1);
     if (slide >= 3) {
-      setSlide(3);
+      setSlide(2);
     }
   };
 
@@ -106,21 +106,26 @@ const Honbob_Matching = () => {
   let phoneNumber = isLoggedIn ? localStorage.getItem("phoneNum") : null;
 
 
-  const honbobSubmitHandler = async (e) => {
-    let findInfo = {
-      phoneNumber: phoneNumber,
-      myGender: myGender,
-      buddyGender: sameGender,
+  const honbobSubmitHandler = async e => {
+    console.log("kakao :", kakaoId);
+    console.log("phone:", phoneNumber);
+    console.log("choiceMenu:", choiceMenu);
+    console.log("gender:", choiceGenderHonbob);
+    let matchingInfo = {
+      genderOption: choiceGenderHonbob,
+      menuCategoryOption: choiceMenu,
     };
-    console.log(findInfo);
+    console.log(matchingInfo);
     try {
       const response = await fetch(
-        process.env.REACT_APP_BACK_SERVER + "/honbob/matching",
+        process.env.REACT_APP_BACK_SERVER + "/honbab/register",
         {
           method: "POST",
-          body: JSON.stringify(findInfo),
+          body: JSON.stringify(matchingInfo),
           headers: {
             "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+            'Refresh-Token': localStorage.getItem('refreshToken'),
           },
         }
       );
@@ -154,24 +159,23 @@ const Honbob_Matching = () => {
   return (
     <div className={style.wrapper} style={mediaWidth}>
       <div className={style.formWrapper} style={Slide}>
-        <H_Gender sendChoiceGenderData={GenderChoiceData} />
-        <H_Menu sendMenuData={menuChoiceData} />
-        <H_informCheck />
-        {/* <PhoneNumHonbob
-          sendPhoneNumData={PhoneNumData}
-          sendKakaoData={KaKaoData}
-        /> */}
-        {/* <ChoiceGenderHonbob sendChoiceMyGenderData={MyGenderChoiceData} /> */}
+        <H_Gender sendChoiceGenderData={GenderChoiceData} setChoiceGenderKorean={setChoiceGenderKorean} />
+        <H_Menu setChoiceMenu={setChoiceMenu} setChoiceMenuKorean={setChoiceMenuKorean} />
+        <H_informCheck choiceMenuKorean={choiceMenuKorean} choiceGenderKorean={choiceGenderKorean} />
+
 
       </div>
-      <ProgressBar
-        moveNext={MoveNext}
-        moveBefore={MoveBefore}
-        slide={slide}
-        setSlide={setSlide}
-        choiceGenderHonbob={choiceGenderHonbob}
-        slideMove={slideMove}
-      />
+      <div className={style.barWrapper}>
+        <ProgressBar
+          moveNext={MoveNext}
+          moveBefore={MoveBefore}
+          slide={slide}
+          setSlide={setSlide}
+          choiceGenderHonbob={choiceGenderHonbob}
+          choiceMenu={choiceMenu}
+          slideMove={slideMove}
+        />
+      </div>
     </div>
   );
 };

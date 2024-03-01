@@ -21,6 +21,16 @@
   height: 92%;
   transition: transform 0.3s ease 0.1s;
   margin: auto;
+  /* background-color: rebeccapurple; */
+}
+
+/* 화면 축소시 옆으로 붙는거  */
+.barWrapper {
+  display: flex;
+  justify-content: center;
+  height: 8%;
+  transition: transform 0.3s ease 0.1s;
+  margin: auto;
 }
 
 * {
