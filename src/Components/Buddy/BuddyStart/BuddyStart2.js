@@ -26,11 +26,7 @@ const BuddyStart2 = () => {
       console.log(error.message);
     }
   };
-  /** 
-    const BuddyHandler = () => {
-        dispatch(fetchData("Buddy", navigate));
-    };
-    */
+
   const BackHandler = () => {
     navigate('/buddy/start1');
   };

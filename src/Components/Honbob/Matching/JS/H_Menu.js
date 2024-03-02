@@ -22,7 +22,7 @@ const H_Menu = (props) => {
             props.setChoiceMenuKorean("중식");
         }
         else if (index == 3) {
-            props.setChoiceMenu("JAPENESE");
+            props.setChoiceMenu("JAPANESE");
             props.setChoiceMenuKorean("일식");
         }
         else if (index == 4) {

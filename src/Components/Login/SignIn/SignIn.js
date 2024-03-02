@@ -57,23 +57,26 @@ const SignIn = () => {
 
       const data = await response.json(); // data 변수를 await로 초기화
 
+      console.log(data)
+
 
       // console.log(data.user);
       // console.log(id);
       // console.log(pwd);
 
       // 로그인 성공 후, 로컬 스토리지에 저장
-      //localStorage.setItem("birth", data.user.birth);
-      //localStorage.setItem("gender", data.user.gender);
-      // localStorage.setItem("userId", id);
-      // localStorage.setItem("pwd", pwd);
-      //localStorage.setItem("kakaoId", data.user.kakaoId);
-      //localStorage.setItem("major", data.user.major);
-      //localStorage.setItem("name", data.user.name);
-      //localStorage.setItem("phoneNum", data.user.phoneNum);
-      //localStorage.setItem("sejongEmail", data.user.sejongEmail);
-      //localStorage.setItem("studentId", data.user.studentId);
-
+      localStorage.setItem("userId", id);
+      localStorage.setItem("pwd", pwd);
+      localStorage.setItem("kakaoAccount", data.data.kakaoAccount);
+      localStorage.setItem("name", data.data.name);
+      localStorage.setItem("grade", data.data.grade);
+      localStorage.setItem("major", data.data.major);
+      localStorage.setItem("minor", data.data.minor); // null 값이 가능하므로 처리 필요 없음
+      localStorage.setItem("nickname", data.data.nickname);
+      localStorage.setItem("phoneNumber", data.data.phoneNumber);
+      localStorage.setItem("account", data.data.account);
+      localStorage.setItem("studentId", data.data.studentId);
+      localStorage.setItem("gender", data.data.gender);
 
       //토큰
       localStorage.setItem("accessToken", data.data.accessToken);
@@ -99,7 +102,7 @@ const SignIn = () => {
       <div>
         <button onClick={goFindIdHandler} className={style.findBtn}>
           ID • PW 찾기
-        </button>        
+        </button>
         <span className={style.line}> | </span>
         <button onClick={goSignUpHandler} className={style.signUpBtn}>
           회원가입
