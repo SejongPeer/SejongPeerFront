@@ -3,8 +3,11 @@ import style from './MainPage.module.css';
 import MainBuddy from './MainBuddy';
 import MainHonbob from './MainHonbob';
 import reprot from '../../../Assets/report.png';
-import { useEffect } from 'react';
-import sejongStudy2 from '../../../Assets/sejongStudy2.png';
+import { useEffect, useState } from 'react';
+import honbobUse from '../../../Assets/honbobUse.png';
+import buddyUse from '../../../Assets/buddyUse.png'
+
+const images = [honbobUse, buddyUse];
 
 const MainPage = () => {
   const navigate = useNavigate();
@@ -24,6 +27,16 @@ const MainPage = () => {
   // const readyHandler = () => {
   //   alert("준비중임");
   // }; _AgxobG
+
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentImageIndex(prevIndex => (prevIndex + 1) % images.length);
+    }, 2000); // 2초마다 이미지 변경
+
+    return () => clearInterval(timer);
+  }, []);
 
   useEffect(() => {
     if (window.Kakao) {
@@ -49,17 +62,18 @@ const MainPage = () => {
     <div className={style.container}>
       <div
         style={{
-          marginTop: '12vh',
+          // marginTop: '12vh',
           padding: '2vh',
           // backgroundColor: "#FFF7F7",
         }}
       >
+        <img className={style.useImg} src={images[currentImageIndex]}></img>
         <div
           style={{
             display: 'flex',
             flexDirection: 'row',
             justifyContent: 'center',
-            gap: '4%',
+            gap: '5.5%',
           }}
         >
           <button onClick={BuddyHandler} className={style.btn}>
