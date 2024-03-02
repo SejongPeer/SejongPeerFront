@@ -31,6 +31,8 @@ const BuddyStart2 = () => {
         navigate('/buddy/waiting');
       } else if (data.data.status === 'FOUND_BUDDY') {
         navigate('/buddy/accept')
+      } else if (data.data.status === "MATCHING_COMPLETED") {
+        navigate()
       }
 
     } catch (error) {
