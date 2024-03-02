@@ -9,6 +9,11 @@
     background-color: #fafafa;
   }
 
+  .useImg {
+    width: 25vw;
+    height: 18vh;
+  }
+
   .btn {
     margin-top: 112px;
     border: none;
@@ -124,6 +129,11 @@
     background-color: #fafafa;
   }
 
+  .useImg {
+    width: 90vw;
+    height: 15vh;
+  }
+
   .btn {
     margin-top: 112px;
     border: none;
@@ -177,7 +187,7 @@
     font-size: 0.8rem;
     color: #333333;
     font-weight: 700;
-    margin-top: 2vh;
+    margin-top: 1vh;
   }
 
   .report_user_box img {

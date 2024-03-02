@@ -1,16 +1,55 @@
 import { useNavigate } from "react-router-dom";
-import honbobEscape from "../../../Assets/honbobEscape.png";
 import { useDispatch } from "react-redux";
 import style from "./HonbobStart.module.css";
-import { fetchData } from "../../../Redux/thunk";
-import sejongHonbobcat from "../../../Assets/sejongHonbobcat.png";
 
 const HonbobStart1 = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const accessToken = localStorage.getItem('accessToken');
+  const refreshToken = localStorage.getItem('refreshToken');
 
-  const HonbobHandler = () => {
-    dispatch(fetchData("Honbob", navigate("/honbob/matching")));
+  const HonbobHandler = async () => {
+
+    try {
+      const response = await fetch(process.env.REACT_APP_BACK_SERVER + '/honbob/check-matching-status', {
+        method: 'GET',
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+          'Refresh-Token': localStorage.getItem('refreshToken'),
+        },
+      });
+      console.log(response)
+      // const data = await response.json();
+      if (data.isMatched) {
+        navigate('/honbob/matching');
+      } else {
+        alert('No match found yet. Please try again later.');
+
+      }
+    } catch (error) {
+      console.error('Error checking matching status:', error);
+      alert('Failed to check matching status. Please try again.');
+    }
+  };
+
+  const BuddyHandler = async () => {
+    try {
+      const response = await fetch(
+        process.env.REACT_APP_BACK_SERVER + '/honbob/check-matching-status',
+        {
+          method: 'GET',
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+            'Refresh-Token': localStorage.getItem('refreshToken'),
+          },
+        }
+      );
+
+      console.log(response.data);
+    } catch (error) {
+      alert('에러가 발생했습니다.');
+      console.log(error.message);
+    }
   };
 
   return (
