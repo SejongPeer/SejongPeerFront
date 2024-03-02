@@ -5,7 +5,7 @@ import { MyContext } from '../../../../App';
 import { useNavigate } from 'react-router-dom';
 
 const Final = props => {
-  //각 정보 클릭 시, 페이지 이동 
+  //각 정보 클릭 시, 페이지 이동
   const Page1 = () => {
     const page = 0;
     props.slideMove(page);
@@ -59,7 +59,7 @@ const Final = props => {
 
   //버디 학년
   let buddyGrades = {};
-  let buddyText = ''
+  let buddyText = '';
   if (props.gradeDiff === '1') {
     buddyGrades = 'GRADE_1';
     buddyText = '1학년';
@@ -78,19 +78,19 @@ const Final = props => {
   }
 
   //전화번호 / 카톡아이디
-  let phoneNumber = localStorage.getItem('phoneNum');
-  let kakaoId = localStorage.getItem('kakaoId');
+  let phoneNumber = localStorage.getItem('phoneNumber');
+  let kakaoId = localStorage.getItem('kakaoAccount');
 
   const navigate = useNavigate();
 
   //통신 함수
   const buddySubmitHandler = async e => {
     let matchingInfo = {
-      genderOption : sameGender,
-      classTypeOption : buddyType,
-      collegeMajorOption : buddyRange,
-      isSubMajor : sub,
-      gradeOption : buddyGrades,
+      genderOption: sameGender,
+      classTypeOption: buddyType,
+      collegeMajorOption: buddyRange,
+      gradeOption: buddyGrades,
+      isSubMajor: sub,
     };
     console.log(JSON.stringify(matchingInfo));
 
@@ -102,6 +102,8 @@ const Final = props => {
           body: JSON.stringify(matchingInfo),
           headers: {
             'Content-Type': 'application/json',
+            Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+            'Refresh-Token': localStorage.getItem('refreshToken'),
           },
         }
       );
@@ -152,9 +154,12 @@ const Final = props => {
             <span>버디범위</span>
           </div>
           <div className={styles.textWrapper_grade}>
-           <span>{props.major}</span>
-           {sub ? 
-           <span className={styles.sub}>(복수/부전공 기준)</span> : <span></span>}
+            <span>{props.major}</span>
+            {sub ? (
+              <span className={styles.sub}>(복수/부전공 기준)</span>
+            ) : (
+              <span></span>
+            )}
           </div>
         </div>
 
@@ -166,14 +171,14 @@ const Final = props => {
             </div>
             <div className={styles.textWrapperHalf}>{props.grade}</div>
           </div>
-
           <div className={styles.infoWrapperHalf} onClick={Page4}>
             <div className={styles.titleWrapper}>
               <div className={styles.complete}></div>
               <span>버디학년</span>
             </div>
             <div className={styles.textWrapperHalf}>{buddyText}</div>
-          </div>``
+          </div>
+          
         </div>
 
         <div className={styles.infoWrapper}>

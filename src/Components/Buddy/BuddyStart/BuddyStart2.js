@@ -19,8 +19,22 @@ const BuddyStart2 = () => {
           },
         }
       );
+      const data = await response.json();
+      console.log(data);
+      console.log(data.message);
+      console.log(data.data.status);
+      //console.log(response.data);
 
-      console.log(response.data);
+      if (data.data.status === null || data.data.status === 'CANCEL') {
+        navigate('/buddy/matching');
+      } else if (data.data.status === 'IN_PROGRESS') {
+        navigate('/buddy/waiting');
+      } else if (data.data.status === 'FOUND_BUDDY') {
+        navigate('/buddy/accept')
+      } else if (data.data.status === "MATCHING_COMPLETED") {
+        navigate()
+      }
+
     } catch (error) {
       alert('에러가 발생했습니다.');
       console.log(error.message);
