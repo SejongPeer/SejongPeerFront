@@ -2,7 +2,7 @@ name: deploy-to-s3
 
 on:
   push:
-    branches: [master]
+    branches: [Yunbeom]
 
 jobs:
   build:
