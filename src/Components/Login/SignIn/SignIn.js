@@ -59,11 +59,6 @@ const SignIn = () => {
       const data = await response.json(); // data 변수를 await로 초기화
 
       console.log(data)
-      console.log(data.data.accessToken)
-      console.log(data.data.refreshToken)
-      // console.log(data.user);
-      // console.log(id);
-      // console.log(pwd);
 
       // 로그인 성공 후, 로컬 스토리지에 저장
       localStorage.setItem("userId", id);
