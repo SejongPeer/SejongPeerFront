@@ -1,5 +1,14 @@
+.entire_Container {
+  width: 100vw;
+  height: 200vh;
+  background-color: #FFF7F7;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .container {
-  background-color: #fafafa;
+  background-color: #FFF7F7;
   display: flex;
   flex-direction: column;
   margin-top: 5rem;

@@ -93,6 +93,7 @@ const SignIn = () => {
   };
 
   return (
+    <div className={style.entire_Container}>
     <div className={style.container}>
       <SignInBox inputID={inputID} name="아이디" />
       <SignInBox inputPwd={inputPwd} name="비밀번호" id="pwd" />
@@ -108,6 +109,7 @@ const SignIn = () => {
           회원가입
         </button>
       </div>
+    </div>
     </div>
   );
 };

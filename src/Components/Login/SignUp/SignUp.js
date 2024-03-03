@@ -211,11 +211,11 @@ const SignUp = props => {
 
           navigate('/login');
         } catch (err) {
-          console.error('Error occurred:', err);
-          console.log(err.message);
+          //console.error('Error occurred:', err);
+          //console.log(err.message);
 
-          if(errorClassName == "DUPLICATED_STUDENT_ID"){
-            alert("학번 당 한 개의 계정만 생성할 수 있습니다.");
+          if(errorClassName == "DUPLICATED_STUDENT_ID" || errorClassName == "DUPLICATED_PHONE_NUMBER"){
+            alert("한 학번과 전화번호 당 한 개의 계정만 생성할 수 있습니다.");
           }
           else{
           alert(
@@ -234,6 +234,7 @@ const SignUp = props => {
   }
 
   return (
+    <div className={style.entire_Container}>
     <div className={style.container}>
       <h2 className={style.h2}>기본정보</h2>
       <div className={`${style.form} ${fadeEffect}`}>
@@ -388,6 +389,7 @@ const SignUp = props => {
           </>
         )}
       </div>
+    </div>
     </div>
   );
 };

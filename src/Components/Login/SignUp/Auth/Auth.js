@@ -24,7 +24,7 @@ const Auth = () => {
         if (result === false) alert('아이디 및 비밀번호가 일치하지 않습니다');
         else if (result === true) {
           console.log('인증성공');
-          alert('인증성공!!!!');
+          alert('포털 인증성공');
           setName(response.data.result.body.name);
           setGrade(response.data.result.body.grade);
           setStudentNum(Id);

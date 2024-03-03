@@ -47,6 +47,7 @@ const Sejong = () => {
   };
 
   return (
+    <div className={style.entire_Container}>
     <div className={style.container}>
       <div className={style.explain_box}>
         <p className={style.explain_title}>세종대학교 학생 인증</p>
@@ -63,6 +64,7 @@ const Sejong = () => {
       <a href="http://portal.sejong.ac.kr/" className={style.sejong}>
         http://portal.sejong.ac.kr/
       </a>
+    </div>
     </div>
   );
 };
