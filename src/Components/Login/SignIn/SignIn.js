@@ -51,6 +51,7 @@ const SignIn = () => {
       );
 
       if (!response.ok) {
+        alert("아이디나 비밀번호가 일치하지 않습니다.");
         const errorData = await response.json(); // 오류 응답을 처리합니다.
         throw new Error(data.message);
       }
@@ -87,7 +88,7 @@ const SignIn = () => {
     } catch (error) {
       console.error("Error occurred:", error);
       console.error(error.message);
-      alert(error.message);
+      //alert(error.message);
       e.preventDefault();
     }
   };
