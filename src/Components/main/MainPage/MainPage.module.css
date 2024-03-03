@@ -133,6 +133,50 @@
     width: 90vw;
     height: 15vh;
   }
+  .slider {
+    overflow: hidden;
+    position: relative;
+  }
+
+  .useImg {
+    transition: transform 0.5s ease-in-out;
+  }
+  @keyframes slideIn {
+    from {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideOut {
+    from {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    to {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+  }
+
+  .slideIn {
+    transform: translateX(0);
+  }
+
+  .slideOut {
+    transform: translateX(-100%);
+  }
+  .slide-in {
+    animation: slideIn 1s forwards;
+  }
+
+  .slide-out {
+    animation: slideOut 1s forwards;
+  }
 
   .btn {
     margin-top: 112px;
