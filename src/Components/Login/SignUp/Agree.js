@@ -82,6 +82,7 @@ const Agree = () => {
   const agree2border = agree2 ? box.agreebox_agree : box.agreebox;
 
   return (
+    <div className={box.entire_Container}>
     <div className={box.container}>
       <div className={box.auto}>
         <div className={box.inputText}>
@@ -131,6 +132,7 @@ const Agree = () => {
           동의 및 회원가입
         </button>
       </div>
+    </div>
     </div>
   );
 };

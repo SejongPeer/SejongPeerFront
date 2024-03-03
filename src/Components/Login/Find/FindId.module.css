@@ -1,24 +1,83 @@
-.cnt {
-  margin: 3px 0px;
+.entire_Container {
+    background-color: #FFF7F7;
+    width: 100vw;
+    height: 150vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
-.submitBtn {
+.aaa{
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.container {
+  background-color: #fafafa;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10vh;
+}
+
+.signInBtn {
   width: 335px;
-  height: 52px;
-  border-radius: 28px;
+  height: 56px;
+  border-radius: 50px;
   border: none;
   background-color: #ff4b4b;
-  top: 90%;
   color: #ffffff;
   font-size: 18px;
-  font-weight: 700;
-  margin: 15px 0px;
-}
-.send {
-  margin: 4px 0px;
-  font-weight: 500;
-  font-size: 14px;
   text-align: center;
+  margin: 12px 0px;
+  font-weight: bold;
+  cursor: pointer;
 }
-.underline {
-  text-decoration: underline;
+.findBtn {
+  border: none;
+  background-color: transparent;
+  font-size: 14px;
+  color: #999999;
+  font-weight: 500;
+  cursor: pointer;
+}
+.signUpBtn {
+  border: none;
+  background-color: transparent;
+  font-size: 14px;
+  color: #ff4b4b;
+  font-weight: 500;
+  cursor: pointer;
+}
+.line {
+  color: #c5c5c5;
+  font-size: 14px;
+}
+.explain_box {
+  width: 100%;
+  height: 15%;
+  padding: 0 10%;
+  margin-bottom: 5%;
+}
+.explain_title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #111111;
+  margin: 4% 0;
+}
+.explain_box2 {
+  width: 100%;
+  height: 15%;
+  padding: 0 10%;
+  margin: 1%;
+}
+.explain {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #555555;
+  margin: 2% 0;
+}
+.sejong {
+  font-size: 0.8rem;
+  color: #777777;
 }

@@ -53,6 +53,7 @@ const ResetPwd = () => {
   }
 
   return (
+    <div className={style.entire_Container}>
     <div className={style.container}>
       <div className={css.explain_box}>
       <p className={css.explain}>회원님의 ID는</p>
@@ -65,16 +66,19 @@ const ResetPwd = () => {
         <span className={css.explain} value={inputPwd}>비밀번호 변경하기</span>
         <p className={css.explain_sub}value={inputPwd2}>새로운 비밀번호(10-16자의 영문 + 숫자)</p>
       </div>
+      <div className={css.resetPwdWrapper}>
       <SignInBox 
-  inputID={inputPwdHandler} 
-  name="비밀번호 입력"/>
-<SignInBox 
-  inputPwd={inputPwdHandler2} 
-  id="pwd" 
-  name="비밀번호 재입력"/>
+        inputID={inputPwdHandler} 
+        name="비밀번호 입력"/>
+      <SignInBox 
+      inputPwd={inputPwdHandler2} 
+      id="pwd" 
+      name="비밀번호 재입력"/>
       <button className={style.signInBtn} onClick={resetPwdHandler}>
         비밀번호 변경하기
       </button>
+      </div>
+    </div>
     </div>
   );
 };

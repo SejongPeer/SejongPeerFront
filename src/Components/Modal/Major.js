@@ -142,12 +142,12 @@ const Major = (props) => {
 
                 </header>
 
-                <div className={style.search_container}>
+                {/* <div className={style.search_container}>
                     <div className={style.search_wrapper}>
                         <img src={search} alt='search' />
                         <input className={style.search_input} type='text' placeholder='검색어 입력' onChange={handleInput} />
                     </div>
-                </div>
+                </div> */}
 
                 {/* College고를경우 */}
                 {!searchContent && (
@@ -211,12 +211,12 @@ const Major = (props) => {
 
                 </header>
 
-                <div className={style.search_container}>
+                {/* <div className={style.search_container}>
                     <div className={style.search_wrapper}>
                         <img src={search} alt='search' />
                         <input className={style.search_input} type='text' placeholder='검색어 입력' onChange={handleInput} />
                     </div>
-                </div>
+                </div> */}
 
                 {/* College고를경우 */}
                 {
