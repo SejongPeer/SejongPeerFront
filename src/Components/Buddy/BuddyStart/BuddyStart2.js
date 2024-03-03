@@ -25,12 +25,19 @@ const BuddyStart2 = () => {
 
       if (data.data === null || data.data.status === 'CANCEL') {
         navigate('/buddy/matching');
+      } else if (data.data.status === "DENIED") {
+        alert("상대가 매칭을 거절했습니다. 다시 신청해주세요.");
+        navigate('/buddy/matching');
       } else if (data.data.status === 'IN_PROGRESS') {
         navigate('/buddy/waiting');
       } else if (data.data.status === 'FOUND_BUDDY') {
         navigate('/buddy/accept')
       } else if (data.data.status === "MATCHING_COMPLETED") {
-        navigate()
+        navigate('/buddy/success')
+      }else if (data.data.status === "ACCEPT") {
+        alert("신청 수락을 했습니다. 상대방이 수락할때까지 기다려 주세요.");
+      } else if (data.data.status === "REJECT") {
+        alert("거절 패널티 1시간이 부과되었습니다. 1시간 이후에 다시 신청해 주세요.");
       }
 
     } catch (error) {
