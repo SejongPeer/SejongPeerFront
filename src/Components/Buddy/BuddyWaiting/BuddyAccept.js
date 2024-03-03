@@ -4,6 +4,8 @@ import { useEffect, useRef, useState } from 'react';
 
 const BuddyAccept = () => {
   const [isAccept, setIsAccept] = useState('');
+  const [buddyMajor, setBuddyMajor] = useState('');
+  const [buddyGrade, setBuddyGrade] = useState('');
   const isFirstRender = useRef(true);
 
   // 버튼클릭 핸들러
@@ -19,6 +21,7 @@ const BuddyAccept = () => {
   //상태변환
   useEffect(() => {
     if (isFirstRender.current) {
+      getInfoHandler();
       isFirstRender.current = false;
     } else {
       acceptHandler(isAccept);
@@ -45,7 +48,7 @@ const BuddyAccept = () => {
     }
   };
 
-  // 통신
+  // 수락/거절 통신
   const sendResult = (accept) => {
     let acceptInfo = {
         isAccept : accept
@@ -64,15 +67,35 @@ const BuddyAccept = () => {
     .catch(error => console.error('Error:', error));
   }
 
+  //상대 정보 가져오기
+  const getInfoHandler = () => {
+    fetch(process.env.REACT_APP_BACK_SERVER + '/buddy/partner/details', {
+      method: 'GET',
+      headers : {
+        Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+        'Refresh-Token': localStorage.getItem('refreshToken'),
+      }
+    })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+      setBuddyMajor(data.data.collegeMajor);
+      setBuddyGrade(data.data.grade);
+      console.log(data.data.collegeMajor);
+      console.log(data.data.grade);
+    })
+    .catch((error) => console.log(error))
+  }
+
   return (
     <div className={style.container}>
       <p className={style.title}>버디를 찾았습니다!</p>
       <img className={style.find_buddy} src={findBuddy} alt="findBuddy" />
 
       <div className={style.info_box}>
-        <span className={style.info}>미디어커뮤니케이션학과</span>
+        <span className={style.info}>{buddyMajor}</span>
         <div className={style.dot}></div>
-        <span className={style.info}>3학년</span>
+        <span className={style.info}>{buddyGrade}학년</span>
       </div>
 
       <div>

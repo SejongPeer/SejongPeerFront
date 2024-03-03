@@ -122,7 +122,6 @@ const App = () => {
 
               <Route path="/buddy/start1" element={<BuddyStart1 />} />
               <Route path="/buddy/start2" element={<BuddyStart2 />} />
-              <Route path="/buddy/start3" element={<BuddyStart3 />} />
               <Route path="/buddy/matching" element={<BuddyMatching />} />
               <Route path="/buddy/waiting" element={<BuddyWaiting />} />
               <Route path="/buddy/accept" element={<BuddyAccept />} />

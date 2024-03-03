@@ -1,11 +1,9 @@
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
 import BuddyStart from '../../../Assets/buddyStart2.png';
 import style from './BuddyStart.module.css';
 
 const BuddyStart2 = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
 
   const BuddyHandler = async () => {
     try {
@@ -25,7 +23,7 @@ const BuddyStart2 = () => {
       console.log(data.data.status);
       //console.log(response.data);
 
-      if (data.data.status === null || data.data.status === 'CANCEL') {
+      if (data.data === null || data.data.status === 'CANCEL') {
         navigate('/buddy/matching');
       } else if (data.data.status === 'IN_PROGRESS') {
         navigate('/buddy/waiting');

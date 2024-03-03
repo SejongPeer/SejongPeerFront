@@ -11,11 +11,21 @@ const images = [honbobUse, buddyUse];
 
 const MainPage = () => {
   const navigate = useNavigate();
+  const refreshToken = localStorage.getItem("refreshToken");
+  const accessToken = localStorage.getItem("accessToken");
   const BuddyHandler = () => {
-    navigate('/buddy/start1');
+    if (refreshToken === null || accessToken === null) {
+      alert("로그인 후 이용 가능한 서비스입니다!")
+    } else {
+      navigate('/buddy/start1');
+    }
   };
   const HonbobHandler = () => {
-    navigate('/honbob/start1');
+    if (refreshToken === null || accessToken === null) {
+      alert("로그인 후 이용 가능한 서비스입니다!")
+    } else {
+      navigate('/honbob/start1');
+    }
   };
   const StudyHandler = () => {
     // navigate("/study");
