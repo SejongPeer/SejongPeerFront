@@ -39,11 +39,16 @@ const MainPage = () => {
   // }; _AgxobG
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [slideIn, setSlideIn] = useState(true);
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentImageIndex(prevIndex => (prevIndex + 1) % images.length);
-    }, 2000); // 2초마다 이미지 변경
+      setSlideIn(false); // Trigger the slide out animation
+      setTimeout(() => {
+        setCurrentImageIndex(prevIndex => (prevIndex + 1) % images.length);
+        setSlideIn(true); // Reset to slide in the new image
+      }, 200); // This should be less than your setInterval time
+    }, 2000);
 
     return () => clearInterval(timer);
   }, []);

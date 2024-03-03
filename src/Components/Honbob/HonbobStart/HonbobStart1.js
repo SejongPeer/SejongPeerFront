@@ -8,29 +8,39 @@ const HonbobStart1 = () => {
   const refreshToken = localStorage.getItem('refreshToken');
 
   const HonbobHandler = async () => {
-
     try {
-      const response = await fetch(process.env.REACT_APP_BACK_SERVER + '/honbob/check-matching-status', {
-        method: 'GET',
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
-          'Refresh-Token': localStorage.getItem('refreshToken'),
-        },
-      });
-      console.log(response)
-      // const data = await response.json();
-      if (data.isMatched) {
-        navigate('/honbob/matching');
-      } else {
-        alert('No match found yet. Please try again later.');
-
+      const response = await fetch(
+        process.env.REACT_APP_BACK_SERVER + '/honbab/check-matching-status',
+        {
+          method: 'GET',
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+            'Refresh-Token': localStorage.getItem('refreshToken'),
+          },
+        }
+      );
+      if (!response.ok) {
+        throw new Error('Network response was not ok'); // 응답 상태가 좋지 않을 경우 에러를 발생시킴
       }
+      const data = await response.json(); // 주석 해제하여 JSON 응답을 파싱
+      console.log(data);
+      console.log(data.data.status);
+      if (data.data === null || data.data.status === 'TIME_OUT') {
+        navigate('/honbob/matching');
+      } else if (data.data.status === 'IN_PROGRESS') {
+        alert('매칭 중입니다!')
+        navigate('/honbob/waiting');
+      } else if (data.data.status === 'MATCHING_COMPLETED') {
+        alert('매칭에 성공했습니다!')
+        navigate('/honbob/accept')
+      }
+
     } catch (error) {
-      console.error('Error checking matching status:', error);
-      alert('Failed to check matching status. Please try again.');
+      console.error('에러 체크:', error);
+      alert('매칭 체크 실패!');
     }
   };
+
 
   const BuddyHandler = async () => {
     try {

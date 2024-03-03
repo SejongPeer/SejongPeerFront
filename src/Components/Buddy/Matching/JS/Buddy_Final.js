@@ -135,7 +135,7 @@ const Final = props => {
 
   return (
     <div className={con.container}>
-        <p className={con.title}>입력하신 정보를 확인해주세요</p>
+      <p className={con.title}>입력하신 정보를 확인해주세요</p>
 
       <div className={styles.wrapper}>
         <div className={styles.infoWrapper} onClick={Page1}>
@@ -176,7 +176,7 @@ const Final = props => {
             </div>
             <div className={styles.textWrapperHalf}>{buddyText}</div>
           </div>
-          
+
         </div>
 
         <div className={styles.infoWrapper}>
