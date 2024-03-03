@@ -45,8 +45,8 @@ jobs:
             --region ap-northeast-2 \
             build s3://sejongpeer.com
 
-      # - name: Invalidate CloudFront Cache
-      #   env:
-      #     CLOUD_FRONT_ID: ${{ secrets.CDN_DISTRIBUTION_ID }}
-      #   run: |
-      #     aws cloudfront create-invalidation --distribution-id $CLOUD_FRONT_ID --paths "/*"
+      - name: Invalidate CloudFront Cache
+        env:
+          CLOUD_FRONT_ID: ${{ secrets.CDN_DISTRIBUTION_ID }}
+        run: |
+          aws cloudfront create-invalidation --distribution-id $CLOUD_FRONT_ID --paths "/*"
