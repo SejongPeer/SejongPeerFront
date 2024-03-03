@@ -135,9 +135,7 @@ const Final = props => {
 
   return (
     <div className={con.container}>
-      <div className={con.titlebox}>
-        <p className={con.finaltitle}>입력하신 정보를 확인해주세요</p>
-      </div>
+        <p className={con.title}>입력하신 정보를 확인해주세요</p>
 
       <div className={styles.wrapper}>
         <div className={styles.infoWrapper} onClick={Page1}>

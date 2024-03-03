@@ -60,7 +60,7 @@
 .second_text {
   color: #777777;
   font-size: 1rem;
-  font-family: "prtendard";
+  font-family: 'prtendard';
   font-weight: 500;
 }
 .check2 {
@@ -76,6 +76,7 @@
 .tip {
   color: #111111;
   font-weight: 700;
+  max-width: 390px;
   font-size: 1rem;
   position: relative;
 }
@@ -88,12 +89,32 @@
 .tip_nugul {
   width: 30vw;
   height: 30vw;
+  max-width: 120px;
+  max-height: 120px;
   position: absolute;
   top: 50vh;
   right: 5%;
 }
 
 @font-face {
-  font-family: "prtendard";
+  font-family: 'prtendard';
   src: url(../../../fonts/Pretendard-Regular.otf);
+}
+
+@media (min-width: 500px) {
+  .tip_box {
+    width: 40%;
+    height: auto;
+    display: flex;
+    margin: 15% 0 0 0;
+  }
+  .tip_nugul {
+    width: 30vw;
+    height: 30vw;
+    max-width: 120px;
+    max-height: 120px;
+    position: absolute;
+    top: 53vh;
+    right: 25%;
+  }
 }

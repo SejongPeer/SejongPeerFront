@@ -2,9 +2,10 @@
   margin-top: 8vh;
   display: flex;
   flex-direction: column;
-  height: 85%;
+  height: 90%;
   background-color: #fafafa;
   align-items: center;
+  justify-content: center;
 }
 .title {
   font-size: 1.6rem;

@@ -1,5 +1,5 @@
 .progressBarWrapper {
-  height: 6%;
+  height: 10%;
   width: 100%;
   position: fixed;
   display: flex;
@@ -28,7 +28,7 @@
 
 @media (max-height: 670px) {
   .progressBarWrapper {
-    height: 7.5%;
+    height: 10%;
     width: 100%;
     position: fixed;
     display: flex;
@@ -39,46 +39,46 @@
 
 .controllerWrapper {
   width: 100%;
-  height: 50%;
+  height: 55%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 16px;
+
 }
 
 .controller_next {
-  height: 4vh;
-  width: 17vw;
-  margin: 3vw;
+  height: 100%;
+  width: 20vw;
+  margin-right: 3%;
   border: 1px solid #ff4b4b;
   border-radius: 25px;
   background-color: #ff4b4b;
-  font-size: 0.8rem;
+  font-size: 1rem;
   font-weight: bold;
   color: #ffffff;
   cursor: pointer;
 }
 .controller_next_none {
-  height: 4vh;
-  width: 17vw;
-  margin: 3vw;
+  height: 100%;
+  width: 20vw;
+  margin-right: 3%;
   border: 1px solid #ff4b4b;
   border-radius: 25px;
   background-color: #ff4b4b;
-  font-size: 0.8rem;
+  font-size: 1rem;
   font-weight: bold;
   color: #ffffff;
   cursor: pointer;
   opacity: 0.5;
 }
 .controller_prev {
-  height: 4vh;
-  width: 17vw;
-  margin: 3vw;
+  height: 100%;
+  width: 20vw;
+  margin-left: 3%;
   border: 2px solid #ff4b4b;
   border-radius: 25px;
   background-color: transparent;
-  font-size: 0.8rem;
+  font-size: 1rem;
   font-weight: bold;
   color: #333333;
   cursor: pointer;
