@@ -17,7 +17,7 @@ const Auth = () => {
       id: Id,
       pw: passWord,
     }
-    fetch('/api?method=ClassicSession', {
+    fetch('/sejong?method=ClassicSession', {
         method: 'POST',
         body: JSON.stringify(info),
         headers: {
@@ -26,8 +26,7 @@ const Auth = () => {
       })
       .then((response) => {
         console.log(response);
-        response.json()})
-      .then((data) => console.log(data))
+      })
       .catch(error => console.error('Error:', error));
 
   };
