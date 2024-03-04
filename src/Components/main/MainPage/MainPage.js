@@ -5,7 +5,9 @@ import MainHonbob from './MainHonbob';
 import reprot from '../../../Assets/report.png';
 import { useEffect, useState } from 'react';
 import honbobUse from '../../../Assets/honbobUse.png';
-import buddyUse from '../../../Assets/buddyUse.png'
+import buddyUse from '../../../Assets/buddyUse.png';
+import buddyButton from '../../../Assets/buddyButton.png';
+import honbobButton from '../../../Assets/honbobButton.png';
 
 const images = [honbobUse, buddyUse];
 
@@ -145,30 +147,50 @@ const MainPage = () => {
     }
   };
 
+  const urls = [
+    'https://sejonghonbab.simple.ink/', // 혼밥 이용방법
+    'https://sejongbuddy.simple.ink/', // 세종버디 이용방법
+  ];
+
+  // 이미지 클릭 이벤트 핸들러, 인덱스에 해당하는 URL로 이동
+  const onImageClick = index => {
+    const url = urls[index];
+    if (url) {
+      window.open(url, '_blank');
+    }
+  };
+
   return (
     <div className={style.container}>
       <div
         style={{
-          // marginTop: '12vh',
           padding: '2vh',
-          // backgroundColor: "#FFF7F7",
         }}
       >
-        <img className={style.useImg} src={images[currentImageIndex]}></img>
+        <img
+          className={style.useImg}
+          src={images[currentImageIndex]}
+          onClick={() => onImageClick(currentImageIndex)}
+        ></img>
         <div
           style={{
             display: 'flex',
             flexDirection: 'row',
             justifyContent: 'center',
-            gap: '5.5%',
+            gap: '5%',
+            marginTop: '1vh',
           }}
         >
-          <button onClick={BuddyHandler} className={style.btn}>
-            <MainBuddy />
-          </button>
-          <button onClick={HonbobHandler} className={style.btn}>
-            <MainHonbob />
-          </button>
+          <img
+            src={buddyButton}
+            className={style.btn1}
+            onClick={BuddyHandler}
+          ></img>
+          <img
+            src={honbobButton}
+            className={style.btn1}
+            onClick={HonbobHandler}
+          ></img>
         </div>
         <div onClick={StudyHandler} className={style.studyBtn}>
           {/* <div
@@ -188,8 +210,8 @@ const MainPage = () => {
           </div> */}
         </div>
       </div>
-      <div className={style.report_user_box}>
-        <div className={style.reprot_icon} onClick={kakaoChat}>
+      <div className={style.report_user_box} onClick={kakaoChat}>
+        <div className={style.reprot_icon}>
           <img src={reprot} alt="reprot" />
         </div>
         <span style={{ color: '#555', fontWeight: '800' }}>악성 유저 신고</span>
