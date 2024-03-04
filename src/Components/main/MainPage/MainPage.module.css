@@ -16,7 +16,7 @@
   }
 
   .btn1 {
-    background-color: #ffffff;
+    /* background-color: #ffffff; */
     cursor: pointer;
     width: 24vh;
   }
@@ -202,9 +202,9 @@
   }
 
   .btn1 {
-    background-color: #ffffff;
+    /* background-color: #ffffff; */
     cursor: pointer;
-    width: 20vh;
+    width: 43vw;
   }
 
   .btn2 {

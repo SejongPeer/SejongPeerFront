@@ -17,7 +17,7 @@ const MainPage = () => {
   const accessToken = localStorage.getItem("accessToken");
 
   // 버디 상태 확인
-  const BuddyHandler = async() => {
+  const BuddyHandler = async () => {
     if (refreshToken === null || accessToken === null) {
       alert("로그인 후 이용 가능한 서비스입니다!");
       navigate('/login');
@@ -38,7 +38,7 @@ const MainPage = () => {
         console.log(data.message);
         console.log(data.data);
         //console.log(response.data);
-  
+
         if (data.data === null || data.data.status === 'CANCEL') {
           navigate('/buddy/start1');
         } else if (data.data.status === "DENIED") {
@@ -58,16 +58,16 @@ const MainPage = () => {
           alert("매칭 성공");
           navigate('/buddy/success');
         }
-  
+
       } catch (error) {
         alert('에러가 발생했습니다.');
         console.log(error.message);
       }
     }
   };
-  
+
   //혼밥 상태 확인
-  const HonbobHandler = async() => {
+  const HonbobHandler = async () => {
     if (refreshToken === null || accessToken === null) {
       alert("로그인 후 이용 가능한 서비스입니다!");
       navigate('/login');

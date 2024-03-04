@@ -12,34 +12,36 @@ const Auth = () => {
   const isSejong = () => {
     console.log(Id);
     console.log(passWord);
+
     let info = {
       id: Id,
       pw: passWord,
     }
     fetch('/api?method=ClassicSession', {
-        method: 'POST',
-        body: JSON.stringify(info),
-        headers: {
-          'Content-Type': 'application/json',
-        }
-      })
+      method: 'POST',
+      body: JSON.stringify(info),
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    })
       .then((response) => response.json())
       .then((data) => console.log(data))
       .catch(error => console.error('Error:', error));
+
   };
   // console.log(response.data.result.is_auth);
-        // let result = response.data.result.is_auth;
-        // console.log(response.data.result.body.name);
-        // if (result === true) {
-        //   console.log('인증성공');
-        //   alert('인증성공!!!!');
-        //   setName(response.data.result.body.name);
-        //   setGrade(response.data.result.body.grade);
-        //   setStudentNum(Id);
-        //   navigate('/login/signup');
-        // } else {
-        //   alert('아이디 및 비밀번호가 일치하지 않습니다');
-        // })
+  // let result = response.data.result.is_auth;
+  // console.log(response.data.result.body.name);
+  // if (result === true) {
+  //   console.log('인증성공');
+  //   alert('인증성공!!!!');
+  //   setName(response.data.result.body.name);
+  //   setGrade(response.data.result.body.grade);
+  //   setStudentNum(Id);
+  //   navigate('/login/signup');
+  // } else {
+  //   alert('아이디 및 비밀번호가 일치하지 않습니다');
+  // })
 
   const { name, setName } = useContext(MyContext);
   const { studentNum, setStudentNum } = useContext(MyContext);

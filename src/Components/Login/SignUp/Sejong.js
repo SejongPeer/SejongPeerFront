@@ -48,23 +48,23 @@ const Sejong = () => {
 
   return (
     <div className={style.entire_Container}>
-    <div className={style.container}>
-      <div className={style.explain_box}>
-        <p className={style.explain_title}>세종대학교 학생 인증</p>
-        <p className={style.explain}>
-          세종대학교 통합 로그인을 통해 인증합니다.
-        </p>
-        <p className={style.explain}>(세종대학교 포털 ID/PW)</p>
+      <div className={style.container}>
+        <div className={style.explain_box}>
+          <p className={style.explain_title}>세종대학교 학생 인증</p>
+          <p className={style.explain}>
+            세종대학교 통합 로그인을 통해 인증합니다.
+          </p>
+          <p className={style.explain}>(세종대학교 포털 ID/PW)</p>
+        </div>
+        <SignInBox inputID={inputID} name="포털 로그인 아이디(학번)" />
+        <SignInBox inputPwd={inputPwd} name="포털 로그인 비밀번호" id="pwd" />
+        <button className={style.signInBtn} onClick={isSejong}>
+          통합 로그인 인증
+        </button>
+        <a href="http://portal.sejong.ac.kr/" className={style.sejong}>
+          http://portal.sejong.ac.kr/
+        </a>
       </div>
-      <SignInBox inputID={inputID} name="포털 로그인 아이디(학번)" />
-      <SignInBox inputPwd={inputPwd} name="포털 로그인 비밀번호" id="pwd" />
-      <button className={style.signInBtn} onClick={isSejong}>
-        통합 로그인 인증
-      </button>
-      <a href="http://portal.sejong.ac.kr/" className={style.sejong}>
-        http://portal.sejong.ac.kr/
-      </a>
-    </div>
     </div>
   );
 };
