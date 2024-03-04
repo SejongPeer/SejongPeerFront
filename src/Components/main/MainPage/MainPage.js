@@ -13,22 +13,97 @@ const images = [honbobUse, buddyUse];
 
 const MainPage = () => {
   const navigate = useNavigate();
-  const refreshToken = localStorage.getItem('refreshToken');
-  const accessToken = localStorage.getItem('accessToken');
-  const BuddyHandler = () => {
+  const refreshToken = localStorage.getItem("refreshToken");
+  const accessToken = localStorage.getItem("accessToken");
+
+  // 버디 상태 확인
+  const BuddyHandler = async() => {
     if (refreshToken === null || accessToken === null) {
-      alert('로그인 후 이용 가능한 서비스입니다!');
+      alert("로그인 후 이용 가능한 서비스입니다!");
+      navigate('/login');
     } else {
-      navigate('/buddy/start1');
+      try {
+        const response = await fetch(
+          process.env.REACT_APP_BACK_SERVER + '/buddy/check-matching-status',
+          {
+            method: 'GET',
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+              'Refresh-Token': localStorage.getItem('refreshToken'),
+            },
+          }
+        );
+        const data = await response.json();
+        console.log(data);
+        console.log(data.message);
+        console.log(data.data);
+        //console.log(response.data);
+  
+        if (data.data === null || data.data.status === 'CANCEL') {
+          navigate('/buddy/start1');
+        } else if (data.data.status === "DENIED") {
+          alert("상대가 매칭을 거절했습니다. 다시 신청해주세요.");
+        } else if (data.data.status === "MATCHING_COMPLETED") {
+          navigate('/buddy/success')
+        } else if (data.data.status === "ACCEPT") {
+          alert("신청 수락을 했습니다. 상대방이 수락할때까지 기다려 주세요.");
+        } else if (data.data.status === "REJECT") {
+          alert("거절 패널티 1시간이 부과되었습니다. 1시간 이후에 다시 신청해 주세요.");
+        } else if (data.data.status === "IN_PROGRESS") {
+          alert("매칭중입니다!");
+          navigate('/buddy/waiting');
+        }
+  
+      } catch (error) {
+        alert('에러가 발생했습니다.');
+        console.log(error.message);
+      }
     }
   };
-  const HonbobHandler = () => {
+  
+  //혼밥 상태 확인
+  const HonbobHandler = async() => {
     if (refreshToken === null || accessToken === null) {
-      alert('로그인 후 이용 가능한 서비스입니다!');
+      alert("로그인 후 이용 가능한 서비스입니다!");
+      navigate('/login');
     } else {
-      navigate('/honbob/start1');
+      try {
+        const response = await fetch(
+          process.env.REACT_APP_BACK_SERVER + '/honbab/check-matching-status',
+          {
+            method: 'GET',
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+              'Refresh-Token': localStorage.getItem('refreshToken'),
+            },
+          }
+        );
+        if (!response.ok) {
+          throw new Error('Network response was not ok'); // 응답 상태가 좋지 않을 경우 에러를 발생시킴
+        }
+        const data = await response.json(); // 주석 해제하여 JSON 응답을 파싱
+        console.log(data);
+        console.log(data.data);
+        if (data.data === null) {
+          console.log(data.data)
+          navigate('/honbob/start1');
+        } else if (data.data.status === 'TIME_OUT') {
+          alert("매칭 시간이 만료되었습니다! 다시 정보를 입력해주세요!");
+          navigate('/honbob/start1');
+        } else if (data.data.status === 'IN_PROGRESS') {
+          alert('매칭 중입니다!');
+          navigate('/honbob/waiting');
+        } else if (data.data.status === 'MATCHING_COMPLETED') {
+          alert('매칭에 성공했습니다!');
+          navigate('/honbob/accept');
+        }
+      } catch (error) {
+        console.error('에러 체크:', error);
+        alert('매칭 체크 실패!');
+      }
     }
   };
+
   const StudyHandler = () => {
     // navigate("/study");
     alert('4월 중 서비스 예정입니다!');
@@ -36,9 +111,6 @@ const MainPage = () => {
   const reportUserHandler = () => {
     alert('너 신고');
   };
-  // const readyHandler = () => {
-  //   alert("준비중임");
-  // }; _AgxobG
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [slideIn, setSlideIn] = useState(true);

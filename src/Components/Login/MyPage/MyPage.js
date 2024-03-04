@@ -111,6 +111,80 @@ const MyPage = () => {
     }
   }, [accessToken, refreshToken, navigate]);
 
+  //버디 매칭상대 확인
+  const BuddyHandler = async () => {
+    try {
+      const response = await fetch(
+        process.env.REACT_APP_BACK_SERVER + '/buddy/check-matching-status',
+        {
+          method: 'GET',
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+            'Refresh-Token': localStorage.getItem('refreshToken'),
+          },
+        }
+      );
+      const data = await response.json();
+      console.log(data);
+      console.log(data.message);
+      console.log(data.data);
+      //console.log(response.data);
+
+      if (data.data === null || data.data.status === 'CANCEL') {
+        alert("아직 신청을 하지 않았습니다. 매칭 정보를 입력해 주세요.");
+        navigate('/buddy/matching');
+      } else if (data.data.status === "DENIED") {
+        alert("상대가 매칭을 거절했습니다. 다시 신청해주세요.");
+      } else if (data.data.status === "MATCHING_COMPLETED") {
+        navigate('/buddy/success')
+      } else if (data.data.status === "ACCEPT") {
+        alert("신청 수락을 했습니다. 상대방이 수락할때까지 기다려 주세요.");
+      } else if (data.data.status === "REJECT") {
+        alert("거절 패널티 1시간이 부과되었습니다. 1시간 이후에 다시 신청해 주세요.");
+      }
+
+    } catch (error) {
+      alert('에러가 발생했습니다.');
+      console.log(error.message);
+    }
+  };
+
+  //혼밥 매칭상대 확인
+  const HonbobHandler = async () => {
+    try {
+      const response = await fetch(
+        process.env.REACT_APP_BACK_SERVER + '/honbab/check-matching-status',
+        {
+          method: 'GET',
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+            'Refresh-Token': localStorage.getItem('refreshToken'),
+          },
+        }
+      );
+      if (!response.ok) {
+        throw new Error('Network response was not ok'); // 응답 상태가 좋지 않을 경우 에러를 발생시킴
+      }
+      const data = await response.json(); // 주석 해제하여 JSON 응답을 파싱
+      console.log(data);
+      console.log(data.data);
+      if (data.data === null || data.data.status === 'TIME_OUT') {
+        console.log(data.data)
+        alert("아직 신청을 하지 않았습니다. 매칭 정보를 입력해 주세요!")
+        navigate('/honbob/matching');
+      } else if (data.data.status === 'IN_PROGRESS') {
+        alert('매칭 중입니다!');
+        navigate('/honbob/waiting');
+      } else if (data.data.status === 'MATCHING_COMPLETED') {
+        alert('매칭에 성공했습니다!');
+        navigate('/honbob/accept');
+      }
+    } catch (error) {
+      console.error('에러 체크:', error);
+      alert('매칭 체크 실패!');
+    }
+  };
+
   return (
     <div className={styles.Container}>
       <div className={styles.container}>
@@ -136,7 +210,7 @@ const MyPage = () => {
     <div className={styles.rightImg}></div>
   </button> */}
                   <button className={styles.hideBtn}></button>
-                  <button className={styles.matchingButton}>
+                  <button onClick={BuddyHandler} className={styles.matchingButton}>
                     <div className={styles.leftBox}>
                       <div className={`${styles.redWord} ${styles.checkWord}`}>
                         세종버디
@@ -150,7 +224,7 @@ const MyPage = () => {
                     </div>
                     <div className={styles.buddyImg}></div>
                   </button>
-                  <button className={styles.matchingButton}>
+                  <button onClick={HonbobHandler} className={styles.matchingButton}>
                     <div className={styles.leftBox}>
                       <div className={`${styles.redWord} ${styles.checkWord}`}>
                         혼밥탈출

@@ -52,6 +52,36 @@
   font-family: 'jalnan';
   src: url(../../fonts/Jalnan2.otf);
 }
+.inform_con{
+  width: 100%;
+  display: flex;
+}
+.informBtn {
+  margin-right: 1vw;
+  border-radius: 24px;
+  width: 20vh;
+  height: 5vh;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  font-size: 2vh;
+  border: 2px solid #E5E5E5;
+  background-color: transparent;
+  margin-left: auto;
+  position: absolute;
+  top: 10%;
+  right: 5%;
+}
+
+.informImg {
+  background-image: url("../../../Assets/warningLogo.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  width: 3vh;
+  height: 3vh;
+  margin-left: 0.5vw;
+}
 
 .buddyImg {
   width: 62vw;

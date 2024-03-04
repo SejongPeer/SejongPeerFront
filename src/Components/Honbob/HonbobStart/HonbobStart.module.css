@@ -30,7 +30,7 @@
     width: 20vh;
     height: 5vh;
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     font-size: 2vh;
     border: 2px solid #E5E5E5;
@@ -149,7 +149,7 @@
     width: 40vw;
     height: 5vh;
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     font-size: 2vh;
     border: 2px solid #E5E5E5;
