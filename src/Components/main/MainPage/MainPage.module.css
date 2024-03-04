@@ -10,11 +10,17 @@
   }
 
   .useImg {
-    width: 25vw;
+    width: 50vh;
     height: 18vh;
+    cursor: pointer;
   }
 
-  .btn {
+  .btn1 {
+    background-color: #ffffff;
+    cursor: pointer;
+    width: 24vh;
+  }
+  .btn2 {
     margin-top: 112px;
     border: none;
     background-color: #ffffff;
@@ -27,7 +33,7 @@
   }
 
   .studyBtn {
-    width: 25vw;
+    /* width: 25vw; */
     height: 25vh;
     margin-top: 2vh;
     background-color: white;
@@ -75,7 +81,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: row;
-    width: 25vw;
+    width: 50vh;
     gap: 3%;
     font-size: 0.9rem;
     color: #333333;
@@ -140,6 +146,7 @@
 
   .useImg {
     transition: transform 0.5s ease-in-out;
+    cursor: pointer;
   }
   @keyframes slideIn {
     from {
@@ -189,6 +196,18 @@
     margin-top: 12px;
     cursor: pointer;
     margin-right: 1vw;
+  }
+
+  .btn1 {
+    background-color: #ffffff;
+    cursor: pointer;
+    width: 20vh;
+  }
+
+  .btn2 {
+    background-color: #ffffff;
+    cursor: pointer;
+    width: 20vh;
   }
 
   .studyBtn {
