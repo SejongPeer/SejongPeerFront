@@ -6,7 +6,9 @@
     flex-direction: column;
     align-items: center;
     margin-top: 10vh;
-    background-color: #fafafa;
+    background-color: #FFF7F7;
+    width: 100vw;
+    height: 112vh;
   }
 
   .useImg {
@@ -134,7 +136,9 @@
     flex-direction: column;
     align-items: center;
     margin-top: 10vh;
-    background-color: #fafafa;
+    background-color: #FFF7F7;
+    width: 100vw;
+    height: 112vh;
   }
 
   .useImg {
