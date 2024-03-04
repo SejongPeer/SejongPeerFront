@@ -17,9 +17,11 @@ const Auth = () => {
         id: Id,
         pw: passWord,
       })
-      .then(response => {response.json()})
-      .then((data) => console.log(data)
-        // console.log(response.data.result.is_auth);
+      .then((response) => response.json())
+      .then((data) => console.log(data))
+      .catch(error => console.error('Error:', error));
+  };
+  // console.log(response.data.result.is_auth);
         // let result = response.data.result.is_auth;
         // console.log(response.data.result.body.name);
         // if (result === true) {
@@ -32,9 +34,6 @@ const Auth = () => {
         // } else {
         //   alert('아이디 및 비밀번호가 일치하지 않습니다');
         // })
-      )
-      .catch(err => console.log(err.message));
-  };
 
   const { name, setName } = useContext(MyContext);
   const { studentNum, setStudentNum } = useContext(MyContext);
