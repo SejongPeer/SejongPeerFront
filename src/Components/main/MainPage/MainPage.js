@@ -41,7 +41,9 @@ const MainPage = () => {
           navigate('/buddy/start1');
         } else if (data.data.status === "DENIED") {
           alert("상대가 매칭을 거절했습니다. 다시 신청해주세요.");
+          navigate('/buddy/start1');
         } else if (data.data.status === "MATCHING_COMPLETED") {
+          alert("매칭에 성공했습니다. 정보를 확인해주세요!")
           navigate('/buddy/success')
         } else if (data.data.status === "ACCEPT") {
           alert("신청 수락을 했습니다. 상대방이 수락할때까지 기다려 주세요.");
@@ -50,6 +52,9 @@ const MainPage = () => {
         } else if (data.data.status === "IN_PROGRESS") {
           alert("매칭중입니다!");
           navigate('/buddy/waiting');
+        } else if (data.data.status === 'FOUND_BUDDY') {
+          alert("매칭 성공");
+          navigate('/buddy/success');
         }
   
       } catch (error) {
@@ -125,6 +130,19 @@ const MainPage = () => {
     return () => clearInterval(timer);
   }, []);
 
+  const urls = [
+    'https://sejonghonbab.simple.ink/', // 혼밥 이용방법
+    'https://sejongbuddy.simple.ink/', // 세종버디 이용방법
+  ];
+
+  // 이미지 클릭 이벤트 핸들러, 인덱스에 해당하는 URL로 이동
+  const onImageClick = index => {
+    const url = urls[index];
+    if (url) {
+      window.open(url, '_blank');
+    }
+  };
+
   useEffect(() => {
     if (window.Kakao) {
       const script = document.createElement('script');
@@ -154,7 +172,9 @@ const MainPage = () => {
           // backgroundColor: "#FFF7F7",
         }}
       >
-        <img className={style.useImg} src={images[currentImageIndex]}></img>
+        <img className={style.useImg} 
+        src={images[currentImageIndex]}
+        onClick={() => onImageClick(currentImageIndex)}></img>
         <div
           style={{
             display: 'flex',

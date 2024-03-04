@@ -9,11 +9,15 @@ const HonbobStart1 = () => {
     navigate('/honbob/matching');
   };
 
+  const infoHandler = () => {
+    window.open('https://sejonghonbab.simple.ink/', '_blank');
+  };
+
   return (
     <div className={style.Container}>
       <div className={style.InnerContainer}>
         <div className={style.top}>
-          <button className={style.informBtn}>
+          <button onClick={infoHandler} className={style.informBtn}>
             이용방법 확인 <div className={style.informImg}></div>
           </button>
         </div>

@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import styles from '../MyPage/MyPage.module.css';
 import axios from 'axios';
@@ -185,6 +185,22 @@ const MyPage = () => {
     }
   };
 
+  //혼밥 사용방법
+  const honbabInfoHandler = () => {
+    window.open('https://sejonghonbab.simple.ink/', '_blank');
+  };
+  //버디 사용방법
+  const buddyInfoHandler = () => {
+    window.open('https://sejongbuddy.simple.ink/', '_blank');
+  };
+
+  const agree1 = () => {
+    navigate('/personalinfo');
+  };
+  const agree2 = () => {
+    navigate('/useinfo');
+  };
+
   return (
     <div className={styles.Container}>
       <div className={styles.container}>
@@ -282,7 +298,7 @@ const MyPage = () => {
                     </div>
                     <div style={{ fontWeight: 'bold' }}>사용법</div>
                   </button>
-                  <button className={styles.useInformBtn}>
+                  <button onClick={buddyInfoHandler} className={styles.useInformBtn}>
                     <div
                       className={styles.redWord2}
                       style={{ fontWeight: '900' }}
@@ -291,7 +307,7 @@ const MyPage = () => {
                     </div>
                     <div style={{ fontWeight: 'bold' }}>사용법</div>
                   </button>
-                  <button className={styles.useInformBtn}>
+                  <button onClick={honbabInfoHandler} className={styles.useInformBtn}>
                     <div
                       className={styles.redWord2}
                       style={{ fontWeight: '900' }}
@@ -309,10 +325,8 @@ const MyPage = () => {
                   </p>
                 </div>
                 <div className={styles.ruleBox}>
-                  <div style={{ textDecoration: 'underline' }}>
-                    개인정보처리방침
-                  </div>
-                  <div style={{ textDecoration: 'underline' }}>이용약관</div>
+                <Link to={"/personalinfo"} style={{ textDecoration: 'underline', color: '#333333' }} target="_blank">개인정보처리방침</Link>
+                <Link to={"/useinfo"} style={{ textDecoration: 'underline', color: '#333333' }} target="_blank">이용약관</Link>
                   <div style={{ textDecoration: 'underline' }}>
                     커뮤니티 이용규칙
                   </div>

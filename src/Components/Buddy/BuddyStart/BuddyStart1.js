@@ -7,12 +7,15 @@ const BuddyStart1 = () => {
   const BuddyHandler = () => {
     navigate('/buddy/start2');
   };
+  const infoHandler = () => {
+    window.open('https://sejongbuddy.simple.ink/', '_blank');
+  };
 
   return (
     <div className={style.container}>
       <div className={style.top}>
         <div className={style.inform_con}>
-          <button className={style.informBtn}>
+          <button onClick={infoHandler} className={style.informBtn}>
             이용방법 확인 <div className={style.informImg}></div>
           </button>
         </div>
