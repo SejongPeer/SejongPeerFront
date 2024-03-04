@@ -54,7 +54,7 @@ const BuddyWaiting = ()=>{
             </div>
     
             <div className={style.BtnBox}>
-              <p className={style.text2}>버디를 찾으면 상대방의 정보(과, 학년) 확인 후 수락 / 거절할 수 있습니다!(최대 3회)</p>
+              <p className={style.text2}>버디를 찾으면 상대방의 정보(과, 학년) 확인 후 수락 / 거절할 수 있습니다!</p>
               <p className={style.text3}>* 거절 시 한 시간 버디이용 제한 패널티가 부여됩니다.</p>
               <button className={style.moveToHomeBtn} onClick={moveToMain}>메인 페이지로 이동</button>
               <button className={style.cancelBtn} onClick={buddyCancel}>버디 신청 취소</button>
