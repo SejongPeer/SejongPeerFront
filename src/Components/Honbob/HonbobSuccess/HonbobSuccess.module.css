@@ -113,7 +113,7 @@
 
     .informBox {
         width: 40vh;
-        height: 15vh;
+        height: 18vh;
         margin-top: 5vh;
         border-radius: 16px;
         border: 2px solid #E5E5E5;
@@ -137,7 +137,7 @@
         border-radius: 24px;
         justify-content: space-between;
         width: 35vh;
-        height: 4vh;
+        height: 5vh;
         align-items: center;
         padding-left: 2vw;
         padding-right: 2vw;

@@ -79,8 +79,8 @@
   }
 
   .authA {
-    text-decoration: none;
     margin-top: 1vh;
+    color: #333333;
   }
 }
 
@@ -125,7 +125,7 @@
 
   .inputBox {
     width: 100vw;
-    height: 12vh;
+    height: 15vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -136,10 +136,10 @@
 
   .inputContent {
     width: 90vw;
-    height: 6vh;
+    height: 6.5vh;
     border-radius: 35px;
     border: 1px solid #e5e5e5;
-    padding-left: 2vw;
+    padding-left: 4vw;
     font-size: 2vh;
   }
 
@@ -165,7 +165,7 @@
   }
 
   .authA {
-    text-decoration: none;
     margin-top: 1vh;
+    color: #333333;
   }
 }

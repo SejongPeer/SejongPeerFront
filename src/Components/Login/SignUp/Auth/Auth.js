@@ -18,17 +18,18 @@ const Auth = () => {
         pw: passWord,
       })
       .then(response => {
-        // console.log(response.data)
+        console.log(response.data.result.is_auth);
         let result = response.data.result.is_auth;
         console.log(response.data.result.body.name);
-        if (result === false) alert('아이디 및 비밀번호가 일치하지 않습니다');
-        else if (result === true) {
+        if (result === true) {
           console.log('인증성공');
           alert('인증성공!!!!');
           setName(response.data.result.body.name);
           setGrade(response.data.result.body.grade);
           setStudentNum(Id);
           navigate('/login/signup');
+        } else {
+          alert('아이디 및 비밀번호가 일치하지 않습니다');
         }
       })
       .catch(err => console.log(err.message));

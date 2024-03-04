@@ -43,6 +43,7 @@
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
+    cursor: pointer;
   }
 
   .sejongStudy2 {
@@ -89,6 +90,7 @@
     margin-top: 2vh;
     border-radius: 20px;
     background-color: white;
+    cursor: pointer;
   }
 
   .report_user_box img {
@@ -138,6 +140,7 @@
   .useImg {
     width: 90vw;
     height: 15vh;
+    cursor: pointer;
   }
   .slider {
     overflow: hidden;

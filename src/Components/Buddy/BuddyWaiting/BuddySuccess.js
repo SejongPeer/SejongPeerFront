@@ -3,13 +3,13 @@ import buddySucces from '../../../Assets/buddySuccess.png'
 import { useEffect, useRef, useState } from 'react';
 
 const BuddySuccess = () => {
-    const [major, setMajor] = useState('');
-    const [grade, setGrade] = useState('');
-    const [name, setName] = useState('');
-    const [kakao, setKakao] = useState('');
-    const isFirstRender = useRef(true);
+  const [major, setMajor] = useState('');
+  const [grade, setGrade] = useState('');
+  const [name, setName] = useState('');
+  const [kakao, setKakao] = useState('');
+  const isFirstRender = useRef(true);
 
-    //상태변환
+  //상태변환
   useEffect(() => {
     if (isFirstRender.current) {
       getInfoHandler();
