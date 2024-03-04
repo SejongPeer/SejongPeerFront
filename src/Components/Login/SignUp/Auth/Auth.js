@@ -12,10 +12,16 @@ const Auth = () => {
   const isSejong = () => {
     console.log(Id);
     console.log(passWord);
-    axios
-      .post('/api?method=ClassicSession', {
-        id: Id,
-        pw: passWord,
+    let info = {
+      id: Id,
+      pw: passWord,
+    }
+    fetch('/api?method=ClassicSession', {
+        method: 'POST',
+        body: JSON.stringify(info),
+        headers: {
+          'Content-Type': 'application/json',
+        }
       })
       .then((response) => response.json())
       .then((data) => console.log(data))
