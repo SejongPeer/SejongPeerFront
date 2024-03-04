@@ -165,19 +165,6 @@ const MainPage = () => {
     }
   };
 
-  const urls = [
-    'https://sejonghonbab.simple.ink/', // 혼밥 이용방법
-    'https://sejongbuddy.simple.ink/', // 세종버디 이용방법
-  ];
-
-  // 이미지 클릭 이벤트 핸들러, 인덱스에 해당하는 URL로 이동
-  const onImageClick = index => {
-    const url = urls[index];
-    if (url) {
-      window.open(url, '_blank');
-    }
-  };
-
   return (
     <div className={style.container}>
       <div
@@ -185,17 +172,9 @@ const MainPage = () => {
           padding: '2vh',
         }}
       >
-<<<<<<< HEAD
         <img className={style.useImg} 
         src={images[currentImageIndex]}
         onClick={() => onImageClick(currentImageIndex)}></img>
-=======
-        <img
-          className={style.useImg}
-          src={images[currentImageIndex]}
-          onClick={() => onImageClick(currentImageIndex)}
-        ></img>
->>>>>>> 4ce02975c4904d23902955ecf7aa8b2bb5223cd5
         <div
           style={{
             display: 'flex',
