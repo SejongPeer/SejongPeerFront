@@ -50,7 +50,7 @@ jobs:
           aws s3 cp \
             --recursive \
             --region ap-northeast-2 \
-            build s3://sejongpeer.com
+            build s3://sejongpeer.co.kr
 
       - name: Invalidate CloudFront Cache
         env:
@@ -62,4 +62,4 @@ jobs:
         env:
           CLOUD_FRONT_ID: ${{ secrets.CDN_DISTRIBUTION_ID }}
         run: |
-          aws cloudfront list-conflicting-aliases --distribution-id $CLOUD_FRONT_ID --alias sejongpeer.com
+          aws cloudfront list-conflicting-aliases --distribution-id $CLOUD_FRONT_ID --alias sejongpeer.co.kr

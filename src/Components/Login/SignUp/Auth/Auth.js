@@ -23,7 +23,7 @@ const Auth = () => {
         console.log(response.data.result.body.name);
         if (result === true) {
           console.log('인증성공');
-          alert('포털 인증성공');
+          alert('인증성공!!!!');
           setName(response.data.result.body.name);
           setGrade(response.data.result.body.grade);
           setStudentNum(Id);

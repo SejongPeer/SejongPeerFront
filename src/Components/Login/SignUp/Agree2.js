@@ -7,7 +7,7 @@ const Agree2 = () => {
       <p>
         <strong>제 1 조 (목적)</strong>
         <br />본 약관은 세종피어가 운영하는 웹 사이트 (&lt;a
-        href="http://www.sejongpeer.com"&gt;http://www.sejongpeer.com/&lt;/a&gt;)의
+        href="http://www.sejongpeer.co.kr"&gt;http://www.sejongpeer.co.kr/&lt;/a&gt;)의
         제반 서비스의 이용조건 및 절차에 관한 사항 및 기타 필요한 사항을
         규정함을 목적으로 한다.
       </p>
