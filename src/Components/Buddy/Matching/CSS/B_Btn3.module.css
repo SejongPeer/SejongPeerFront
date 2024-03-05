@@ -72,7 +72,7 @@
   width: 80%;
   height: auto;
   display: flex;
-  margin: 15% 0 0 0;
+  margin: 5vh 0 0 0;
 }
 .tip {
   color: #111111;
@@ -103,7 +103,7 @@
     width: 350px;
     height: auto;
     display: flex;
-    margin: 15% 0 0 0;
+    margin: 5vh 0 0 0;
   }
   .tip_nugul {
     width: 30vw;
