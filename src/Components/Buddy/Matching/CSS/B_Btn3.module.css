@@ -67,6 +67,7 @@
   width: 65%;
   height: 40%;
 }
+
 .tip_box {
   width: 80%;
   height: auto;
@@ -76,9 +77,8 @@
 .tip {
   color: #111111;
   font-weight: 700;
-  max-width: 390px;
+  max-width: 340px;
   font-size: 1rem;
-  position: relative;
 }
 .tip_text {
   color: #555555;
@@ -91,9 +91,6 @@
   height: 30vw;
   max-width: 120px;
   max-height: 120px;
-  position: absolute;
-  top: 50vh;
-  right: 5%;
 }
 
 @font-face {
@@ -103,7 +100,7 @@
 
 @media (min-width: 500px) {
   .tip_box {
-    width: 40%;
+    width: 350px;
     height: auto;
     display: flex;
     margin: 15% 0 0 0;
@@ -113,8 +110,5 @@
     height: 30vw;
     max-width: 120px;
     max-height: 120px;
-    position: absolute;
-    top: 53vh;
-    right: 25%;
   }
 }
