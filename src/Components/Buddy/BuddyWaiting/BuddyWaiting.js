@@ -1,12 +1,43 @@
 import style from "./BuddyWaiting.module.css";
 import { useNavigate } from "react-router-dom";
 import waitingCat from "../../../Assets/waitingCat.png"
+import { useEffect, useRef, useState } from "react";
 
 const BuddyWaiting = ()=>{
-    const navigate=useNavigate();
+    const [countBuddy, setCountBuddy] = useState(0);
+    const navigate = useNavigate();
+    const isFirstRender = useRef(true);
+
+    useEffect(() => {
+      if (isFirstRender.current) {
+        countBuddyHandler();
+      }
+    }, []);
     const moveToMain=()=>{
         navigate("/main");
-    }
+    };
+
+    const countBuddyHandler = async() => {
+      try {
+        const response = await fetch(
+          process.env.REACT_APP_BACK_SERVER + "/buddy/active-count",
+          {
+            method: 'GET',
+          }
+        );
+          const data = await response.json();
+          setCountBuddy(data.data.count);
+  
+          if (!response.ok) {
+            throw new Error(data.message);
+          }
+  
+  
+      } catch(error) {
+        console.log(error.message);
+      }
+      
+    };
 
     const cancelBuddy = async() => {
       if (confirm("신청을 취소하시겠습니까?")) {
@@ -47,7 +78,7 @@ const BuddyWaiting = ()=>{
         <div className={style.container}>
             <div className={style.TextBox}>
               <p className={style.title}>세종버디</p>
-              <p className={style.text1}>216명의 학생들이 버디를 찾고 있어요!</p>
+              <p className={style.text1}>{countBuddy}명의 학생들이 버디를 찾고 있어요!</p>
               <img src={waitingCat} className={style.buddyWaitingImg} alt="waitingCat"/>
             </div>
     

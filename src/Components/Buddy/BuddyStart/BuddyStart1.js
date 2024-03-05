@@ -1,14 +1,45 @@
 import { useNavigate } from 'react-router-dom';
 import buddyStart1 from "../../../Assets/buddyStart1.png"
 import style from './BuddyStart.module.css';
+import { useEffect, useRef, useState } from 'react';
 
 const BuddyStart1 = () => {
+  const [countBuddy, setCountBuddy] = useState(0);
   const navigate = useNavigate();
+  const isFirstRender = useRef(true);
+  useEffect(() => {
+    if (isFirstRender.current) {
+      countBuddyHandler();
+    }
+  }, []);
+
   const BuddyHandler = () => {
     navigate('/buddy/start2');
   };
   const infoHandler = () => {
     window.open('https://sejongbuddy.simple.ink/', '_blank');
+  };
+
+  const countBuddyHandler = async() => {
+    try {
+      const response = await fetch(
+        process.env.REACT_APP_BACK_SERVER + "/buddy/active-count",
+        {
+          method: 'GET',
+        }
+      );
+        const data = await response.json();
+        setCountBuddy(data.data.count);
+
+        if (!response.ok) {
+          throw new Error(data.message);
+        }
+
+
+    } catch(error) {
+      console.log(error.message);
+    }
+    
   };
 
   return (
@@ -26,7 +57,7 @@ const BuddyStart1 = () => {
       </div>
 
       <div className={style.bottom}>
-        <p className={style.text}>222명의 학생들이 버디를 찾고 있어요</p>
+        <p className={style.text}>{countBuddy}명의 학생들이 버디를 찾고 있어요</p>
         <button onClick={BuddyHandler} className={style.btn1}>
           세종버디 시작
         </button>
