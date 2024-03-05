@@ -60,8 +60,10 @@ const Grade = (props) => {
 
 
     return <div className={con.container}>
+        <div className={con.title_box}>
         <p className={con.title2}>(학번기준)</p>
         <p className={con.title}>선/후배/동기 중 원하는 조건을 선택하세요.</p>
+        </div>
         <div className={con.btn3}>
             <button 
             className={clickSeniorBtnColor}
