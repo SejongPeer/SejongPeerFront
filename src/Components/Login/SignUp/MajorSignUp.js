@@ -54,10 +54,8 @@ const MajorSignUp = (props) => {
     ) : (
         <button
             onClick={onClickHandler}
-            className={style.majorbox}>{props.majorValue}</button>
-            
+            className={style.majorbox}>{props.majorValue}</button>     
     )
-
     );
 };
 
