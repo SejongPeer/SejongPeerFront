@@ -55,8 +55,8 @@ const MainPage = () => {
           alert("매칭중입니다!");
           navigate('/buddy/waiting');
         } else if (data.data.status === 'FOUND_BUDDY') {
-          alert("매칭 성공");
-          navigate('/buddy/success');
+          alert("버디를 찾았습니다!");
+          navigate('/buddy/accept');
         }
 
       } catch (error) {

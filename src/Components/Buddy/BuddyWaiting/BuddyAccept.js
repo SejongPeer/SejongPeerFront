@@ -11,10 +11,8 @@ const BuddyAccept = () => {
   // 버튼클릭 핸들러
   const acceptClick = () => {
     setIsAccept(true);
-    setIsAccept(true);
   };
   const declineClick = () => {
-    setIsAccept(true);
     setIsAccept(false);
   };
 
@@ -50,6 +48,7 @@ const BuddyAccept = () => {
 
   // 수락/거절 통신
   const sendResult = (accept) => {
+    console.log(accept);
     let acceptInfo = {
         isAccept : accept
     }
