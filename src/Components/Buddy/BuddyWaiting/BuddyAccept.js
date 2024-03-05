@@ -1,12 +1,14 @@
 import style from './BuddyAccept.module.css';
 import findBuddy from '../../../Assets/findBuddy.png';
 import { useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router';
 
 const BuddyAccept = () => {
   const [isAccept, setIsAccept] = useState('');
   const [buddyMajor, setBuddyMajor] = useState('');
   const [buddyGrade, setBuddyGrade] = useState('');
   const isFirstRender = useRef(true);
+  const navigate = useNavigate();
 
   // 버튼클릭 핸들러
   const acceptClick = () => {
@@ -37,7 +39,7 @@ const BuddyAccept = () => {
         setIsAccept('')
       }
     } else if (accept === false) {
-      if (confirm('매칭을 거절하시겠습니까?')) {
+      if (confirm('매칭을 거절하면 1시간동안 매칭을 못하는 패널티가 부과됩니다.\n그래도 매칭을 거절하시겠습니까?')) {
         console.log('거절');
         sendResult(false);
       } else {
@@ -62,7 +64,16 @@ const BuddyAccept = () => {
         }
     })
     .then((response) => response.json())
-    .then((data) => console.log(data))
+    .then((data) => {
+      console.log(data);
+      if (accept) {
+        alert("매칭이 수락되었습니다! \n상대방이 매칭을 수락할 때까지 기다려주세요.");
+        navigate('/main');
+      } else {
+        alert('매칭이 거절되었습니다. \n거절 패널티로 1시간동안 매칭을 등록할 수 없습니다.');
+        navigate('/main');
+      }
+    })
     .catch(error => console.error('Error:', error));
   }
 
