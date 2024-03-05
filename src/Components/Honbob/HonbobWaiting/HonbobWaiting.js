@@ -5,43 +5,43 @@ import { useState, useEffect, useContext } from "react";
 import { redirect, useNavigate } from "react-router-dom";
 
 const HonbobWaiting = () => {
-  //const [kakaohonbob, setKakao] = useState("");
-  const { KaKaoDD, setKaKaoDD } = useContext(MyContext);
   const navigate = useNavigate();
   const moveToMain = () => {
     navigate("/main");
   };
+
   const honbobCancleSubmitHandler = async () => {
-    let findCancleInfo = {
-      kakaoId: KaKaoDD,
-    };
+    if(confirm('신청을 취소하시겠습니까?')) {
+      try {
+        const response = await fetch(
+          process.env.REACT_APP_BACK_SERVER + "/honbab/cancel",
+          {
+            method: "GET",
+            body: JSON.stringify(),
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+              'Refresh-Token': localStorage.getItem('refreshToken'),
+            },
+          }
+        );
+  
+        const data = await response.json();
+        console.log(data.message);
 
-    // console.log("혼밥웨이팅js에서 KaKaoDD : " + KaKaoDD);
-
-    try {
-      const response = await fetch(
-        process.env.REACT_APP_BACK_SERVER + "/honbob/cancel",
-        {
-          method: "POST",
-          body: JSON.stringify(findCancleInfo),
-          headers: {
-            "Content-Type": "application/json",
-          },
+        if (!response.ok) {
+          throw new Error(data.message);
         }
-      );
 
-      const data = await response.json();
-      console.log(data.message);
-      alert(data.message);
-
-      //setHonbobCancleSubmit(false);
-
-      navigate("/main");
-    } catch (error) {
-      console.error("에러 발생", error);
-      console.log("신청취소실패");
-      console.error(error.message);
-      alert(error.message);
+        alert("매칭 신청을 취소했습니다!");
+        navigate("/main");
+  
+      } catch (error) {
+        console.error("에러 발생", error);
+        console.error(error.message);
+        alert("오류가 발생했습니다.");
+      }
+    } else {
+      alert("신청이 취소되지 않았습니다.");
     }
   };
 
