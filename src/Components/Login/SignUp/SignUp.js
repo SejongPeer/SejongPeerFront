@@ -146,7 +146,7 @@ const SignUp = props => {
     console.log('majorValue : ' + majorValue);
     console.log('doublemajorValue : ' + doublemajorValue);
     console.log('doubleCollegeValue : ' + doubleCollegeValue);
-    
+
     let errorClassName = "";
 
     if (
@@ -214,15 +214,15 @@ const SignUp = props => {
           //console.error('Error occurred:', err);
           //console.log(err.message);
 
-          if(errorClassName == "DUPLICATED_STUDENT_ID" || errorClassName == "DUPLICATED_PHONE_NUMBER"){
+          if (errorClassName == "DUPLICATED_STUDENT_ID" || errorClassName == "DUPLICATED_PHONE_NUMBER") {
             alert("한 학번과 전화번호 당 한 개의 계정만 생성할 수 있습니다.");
           }
-          else{
-          alert(
-            '제출에 실패했습니다. 다시 시도해주세요. (에러 내용: ' +
+          else {
+            alert(
+              '제출에 실패했습니다. 다시 시도해주세요. (에러 내용: ' +
               err.message +
               ')'
-          );
+            );
           }
           e.preventDefault();
         }
@@ -235,161 +235,165 @@ const SignUp = props => {
 
   return (
     <div className={style.entire_Container}>
-    <div className={style.container}>
-      <h2 className={style.h2}>기본정보</h2>
-      <div className={`${style.form} ${fadeEffect}`}>
-        {step === 1 && (
-          <>
-            {/* <IDCheckBox idData={idData} errorHandler={signUpErrorHandler} setIsIdExist={setIsIdExist} /> */}
-            <SignUpElement
-              id="userId"
-              title="아이디 입력"
-              name="아이디 입력"
-              idData={idData}
-              signUpErrorHandler={signUpErrorHandler}
-              idExistHandler={idExistHandler}
-              isIdExist={isIdExist}
-              idValue={idValue}
-            />
-            <div className="special-gap">
+      <div className={style.container}>
+        <h2 className={style.h2}>기본정보</h2>
+        <div className={`${style.form} ${fadeEffect}`}>
+          {step === 1 && (
+            <>
+              {/* <IDCheckBox idData={idData} errorHandler={signUpErrorHandler} setIsIdExist={setIsIdExist} /> */}
               <SignUpElement
-                id="pwd"
-                title="비밀번호(10자이상의 영문, 숫자)"
-                name="비밀번호 입력"
-                pwdData={pwdData}
+                id="userId"
+                title="아이디 입력"
+                name="아이디 입력"
+                idData={idData}
                 signUpErrorHandler={signUpErrorHandler}
-                pwdValue={pwdValue}
+                idExistHandler={idExistHandler}
+                isIdExist={isIdExist}
+                idValue={idValue}
               />
-            </div>
-            <div className="special-gap">
+              <div className="special-gap">
+                <SignUpElement
+                  id="pwd"
+                  title="비밀번호(10자이상의 영문, 숫자)"
+                  name="비밀번호 입력"
+                  pwdData={pwdData}
+                  signUpErrorHandler={signUpErrorHandler}
+                  pwdValue={pwdValue}
+                />
+              </div>
+              <div className="special-gap">
+                <SignUpElement
+                  id="pwdCheck"
+                  name="비밀번호 확인"
+                  pwdCheckData={pwdCheckData}
+                  signUpErrorHandler={signUpErrorHandler}
+                  pwdValue={pwdValue}
+                  pwdCheckValue={pwdCheckValue}
+                />
+              </div>
               <SignUpElement
-                id="pwdCheck"
-                name="비밀번호 확인"
-                pwdCheckData={pwdCheckData}
+                id="name"
+                title="이름"
+                name={name}
+                nameData={nameData}
                 signUpErrorHandler={signUpErrorHandler}
-                pwdValue={pwdValue}
-                pwdCheckValue={pwdCheckValue}
               />
-            </div>
-            <SignUpElement
-              id="name"
-              title="이름"
-              name={name}
-              nameData={nameData}
-              signUpErrorHandler={signUpErrorHandler}
-            />
-            <SignUpElement
-              id="studentNum"
-              title="학번"
-              name={studentNum}
-              studentNumData={studentNumData}
-              signUpErrorHandler={signUpErrorHandler}
-            />
-            <SignUpElement
-              id="grade"
-              title="학년"
-              name={grade}
-              gradeData={gradeData}
-              signUpErrorHandler={signUpErrorHandler}
-            />
-            <button className={style.submitBtn} onClick={nextStepHandler}>
-              다음
-            </button>
-          </>
-        )}
-      </div>
-      <div className={`${style.form} ${fadeEffect}`}>
-        {step === 2 && (
-          <>
-            <SignUpElement
-              id="nickname"
-              title="닉네임 입력"
-              name="닉네임 입력"
-              nickNameData={nickNameData}
-              signUpErrorHandler={signUpErrorHandler}
-              nicknameExistHandler={nicknameExistHandler}
-              nicknameValue={nicknameValue}
-            />
-            <SignUpElement
-              id="kakaoid"
-              title="카카오톡 아이디"
-              name="카카오톡 아이디 입력"
-              kakaoData={kakaoData}
-              signUpErrorHandler={signUpErrorHandler}
-              kakaoidValue={kakaoidValue}
-            />
-            <SignUpElement
-              id="phoneNum"
-              title="전화번호"
-              name="전화번호 -없이 입력"
-              phoneNumData={phoneNumData}
-              signUpErrorHandler={signUpErrorHandler}
-              phoneNumberValue={phoneNumberValue}
-            />
-            <SignUpElement
-              id="gender"
-              title="성별"
-              name="준비중"
-              genderData={genderData}
-              signUpErrorHandler={signUpErrorHandler}
-              genderValue={genderValue}
-            />
-            <SignUpElement
-              id="major"
-              title="단과대/학과"
-              name="단과대/학과 선택"
-              majorData={majorData}
-              collegeData={collegeData}
-              signUpErrorHandler={signUpErrorHandler}
-              collegeValue={collegeValue}
-              majorValue={majorValue}
-            />
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                color: doubleMajorChecked ? 'black' : 'grey',
-              }}
-            >
-              <input
-                type="checkbox"
-                id="double_major_checkbox"
-                checked={doubleMajorChecked}
-                onChange={e => setDoubleMajorChecked(e.target.checked)}
-                style={{ marginRight: '10px', marginTop: '15px' }}
+              <SignUpElement
+                id="studentNum"
+                title="학번"
+                name={studentNum}
+                studentNumData={studentNumData}
+                signUpErrorHandler={signUpErrorHandler}
               />
-              <label
-                htmlFor="double_major_checkbox"
-                style={{ marginTop: '10px' }}
+              <SignUpElement
+                id="grade"
+                title="학년"
+                name={grade}
+                gradeData={gradeData}
+                signUpErrorHandler={signUpErrorHandler}
+              />
+              <button className={style.submitBtn} onClick={nextStepHandler}>
+                다음
+              </button>
+            </>
+          )}
+        </div>
+        <div className={`${style.form} ${fadeEffect}`}>
+          {step === 2 && (
+            <>
+              <SignUpElement
+                id="nickname"
+                title="닉네임 입력"
+                name="닉네임 입력"
+                nickNameData={nickNameData}
+                signUpErrorHandler={signUpErrorHandler}
+                nicknameExistHandler={nicknameExistHandler}
+                nicknameValue={nicknameValue}
+              />
+              <SignUpElement
+                id="kakaoid"
+                title="카카오톡 아이디"
+                name="카카오톡 아이디 입력"
+                kakaoData={kakaoData}
+                signUpErrorHandler={signUpErrorHandler}
+                kakaoidValue={kakaoidValue}
+              />
+              <SignUpElement
+                id="phoneNum"
+                title="전화번호"
+                name="전화번호 -없이 입력"
+                phoneNumData={phoneNumData}
+                signUpErrorHandler={signUpErrorHandler}
+                phoneNumberValue={phoneNumberValue}
+              />
+              <div className={style.Info}>
+              *전화번호로 매칭 정보가 전달됩니다. 정확하게 작성해주세요.              </div>  
+              <SignUpElement
+                id="gender"
+                title="성별"
+                name="준비중"
+                genderData={genderData}
+                signUpErrorHandler={signUpErrorHandler}
+                genderValue={genderValue}
+              />
+              <SignUpElement
+                id="major"
+                title="단과대/학과"
+                name="단과대/학과 선택"
+                majorData={majorData}
+                collegeData={collegeData}
+                signUpErrorHandler={signUpErrorHandler}
+                collegeValue={collegeValue}
+                majorValue={majorValue}
+              />
+              <div
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  color: doubleMajorChecked ? 'black' : 'grey',
+                }}
               >
-                복수/부전공
-              </label>
-            </div>
-            {doubleMajorChecked && (
-              <SignUpElement
-                id="double_major"
-                name="복수전공/부전공 선택"
-                doublemajorData={doublemajorData}
-                doubleCollegeData={doubleCollegeData}
-                signUpErrorHandler={signUpErrorHandler}
-                doublemajorValue={doublemajorValue}
-                doubleCollegeValue={doubleCollegeValue}
-              />
-            )}
-            <button
-              type="submit"
-              className={style.submitBtn}
-              onClick={submitHandler}
-            >
-              가입하기
-            </button>
-            <p className={style.prevPageText} onClick={prevStepHandler}>
-              이전 페이지
-            </p>
-          </>
-        )}
+                <input
+                  type="checkbox"
+                  id="double_major_checkbox"
+                  checked={doubleMajorChecked}
+                  onChange={e => setDoubleMajorChecked(e.target.checked)}
+                  style={{ marginRight: '10px', marginTop: '15px' }}
+                />
+                <label
+                  htmlFor="double_major_checkbox"
+                  style={{ marginTop: '10px' }}
+                >
+                  복수/부전공
+                </label>
+              </div>
+              {doubleMajorChecked && (
+                <SignUpElement
+                  id="double_major"
+                  name="복수전공/부전공 선택"
+                  doublemajorData={doublemajorData}
+                  doubleCollegeData={doubleCollegeData}
+                  signUpErrorHandler={signUpErrorHandler}
+                  doublemajorValue={doublemajorValue}
+                  doubleCollegeValue={doubleCollegeValue}
+                />
+              )}
+              <div className={style.Info}>
+                *학과선택은 2024 수강편람을 기준으로 정리되었있습니다.
+              </div>            <button
+                type="submit"
+                className={style.submitBtn}
+                onClick={submitHandler}
+              >
+                가입하기
+              </button>
+              <p className={style.prevPageText} onClick={prevStepHandler}>
+                이전 페이지
+              </p>
+            </>
+          )}
+        </div>
       </div>
-    </div>
     </div>
   );
 };

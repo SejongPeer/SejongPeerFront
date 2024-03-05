@@ -41,7 +41,6 @@
   font-weight: 700;
   font-size: 18px;
   margin-top: 0; 
-
 }
 
 @media (min-width: 420px) {
@@ -96,7 +95,14 @@
 }
 
 .transition-effect {
-  transition: opacity 0.5s ease-out; /* opacity 변화에 대한 전환 효과 적용 */
+  transition: opacity 0.5s ease-out; 
+}
+
+.Info {
+  color:gray;
+  font-weight: 500;
+  font-size: 12.5px;
+  margin: 6px 0px;
 }
 
 
