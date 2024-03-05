@@ -93,7 +93,6 @@ const MainPage = () => {
           console.log(data.data);
           navigate('/honbob/start1');
         } else if (data.data.status === 'TIME_OUT') {
-          alert("매칭 시간이 만료되었습니다! 다시 정보를 입력해주세요!");
           navigate('/honbob/start1');
         } else if (data.data.status === 'IN_PROGRESS') {
           alert('매칭 중입니다!');
