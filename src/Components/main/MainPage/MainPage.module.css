@@ -135,10 +135,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 10vh;
+    margin-top: 8vh;
     background-color: #FFF7F7;
     width: 100vw;
-    height: 112vh;
+    height: 90vh;
   }
 
   .useImg {
