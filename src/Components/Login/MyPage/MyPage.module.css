@@ -484,11 +484,14 @@
     background-color: white;
     border: 1px solid #e5e5e5;
     margin-top: 2vh;
+    cursor: pointer;
   }
 
   .secession {
     color: #999999;
     display: flex;
     background-color: transparent;
+    cursor: pointer;
+    margin: 3%;
   }
 }

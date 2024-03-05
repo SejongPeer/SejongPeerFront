@@ -34,7 +34,7 @@ const Auth = () => {
           setStudentNum(Id);
           navigate("/login/signup");
         }
-      },
+      }
     )
     .catch((err) => console.log(err.message));
   };
