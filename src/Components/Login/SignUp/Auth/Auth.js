@@ -20,18 +20,20 @@ const Auth = () => {
     })
     .then(
       (response) => {
-        // console.log(response.data)
+        console.log(response);
+        console.log(response.data);
+        console.log(response.data.result);
         let result = response.data.result.is_auth;
-        console.log(response.data.result.body.name);
         if (result === false)
           alert("아이디 및 비밀번호가 일치하지 않습니다")
         else if (result === true) {
-          console.log("인증성공")
-          setName(response.data.result.body.name)
-          setStudentNum()
+          alert("인증 완료!");
+          console.log(response.data.result.body);
+          setName(response.data.result.body.name);
+          setGrade(response.data.result.body.grade);
+          setStudentNum(Id);
           navigate("/login/signup");
         }
-
       },
     )
     .catch((err) => console.log(err.message));
