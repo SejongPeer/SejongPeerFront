@@ -89,8 +89,8 @@ const MainPage = () => {
         const data = await response.json(); // 주석 해제하여 JSON 응답을 파싱
         console.log(data);
         console.log(data.data);
-        if (data.data === null) {
-          console.log(data.data)
+        if (data.data === null || data.data.status === 'CANCEL') {
+          console.log(data.data);
           navigate('/honbob/start1');
         } else if (data.data.status === 'TIME_OUT') {
           alert("매칭 시간이 만료되었습니다! 다시 정보를 입력해주세요!");
