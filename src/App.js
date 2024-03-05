@@ -38,7 +38,6 @@ import StudyPostDeatil from "./Components/Study/StudyPostDetail/StudyPostDetail.
 import StudyPostWrite from "./Components/Study/StudyPostWrite/StudyPostWrite.js";
 import StudyFilter from "./Components/Study/StudyFilterPage/StudyFIlterPage.js";
 import Sejong from "./Components/Login/SignUp/Sejong.js";
-import RouteChangeTracker from './RouteChangeTracker';
 
 // const router = createBrowserRouter([
 //   {path: '/', element:<StartLoading />},
@@ -101,8 +100,7 @@ const App = () => {
         setPeerId,
       }}
     >
-      <BrowserRouter>
-      <RouteChangeTracker />
+      <Router>
         <div className="wrapper">
           {modalOpen && (
             <>
@@ -157,7 +155,7 @@ const App = () => {
               </Routes>
             </main>
           </div>
-        </BrowserRouter>
+        </Router>
     </MyContext.Provider>
   );
 };
