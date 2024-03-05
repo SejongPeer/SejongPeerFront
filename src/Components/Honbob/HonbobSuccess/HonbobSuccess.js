@@ -33,7 +33,17 @@ const HonbobSuccess = () => {
             setGrade(data.data.grade);
             setName(data.data.name);
             setKakao(data.data.kakaoAccount);
-            setMenu(data.data.menuCategoryOption);
+            if (data.data.menuCategoryOption === 'KOREAN') {
+                setMenu('한식');
+            } else if (data.data.menuCategoryOption === 'CHINESE') {
+                setMenu('중식');
+            } else if (data.data.menuCategoryOption === 'JAPENESE') {
+                setMenu('일식');
+            } else if (data.data.menuCategoryOption === 'WESTERN') {
+                setMenu('양식');
+            } else {
+                setMenu('상관없음');
+            }
             console.log(data.data.collegeMajor);
             console.log(data.data.grade);
             console.log(data.data.name);

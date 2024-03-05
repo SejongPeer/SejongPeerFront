@@ -99,7 +99,7 @@ const MainPage = () => {
           navigate('/honbob/waiting');
         } else if (data.data.status === 'MATCHING_COMPLETED') {
           alert('매칭에 성공했습니다!');
-          navigate('/honbob/accept');
+          navigate('/honbob/success');
         }
       } catch (error) {
         console.error('에러 체크:', error);
