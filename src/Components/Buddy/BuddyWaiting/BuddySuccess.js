@@ -12,11 +12,11 @@ const BuddySuccess = () => {
   //상태변환
   useEffect(() => {
     if (isFirstRender.current) {
-      getInfoHandler();
+      getBuddyInfoHandler();
     }
   }, []);
 
-    const getInfoHandler = () => {
+    const getBuddyInfoHandler = () => {
         fetch(process.env.REACT_APP_BACK_SERVER + '/buddy/matched/partner/details', {
             method: 'GET',
             headers : {

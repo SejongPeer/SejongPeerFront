@@ -13,22 +13,28 @@ const Auth = () => {
     console.log(Id);
     console.log(passWord);
 
-    let info = {
+    axios
+    .post("/api?method=ClassicSession", {
       id: Id,
       pw: passWord,
-    }
-    fetch('/sejong?method=ClassicSession', {
-        method: 'POST',
-        body: JSON.stringify(info),
-        headers: {
-          'Content-Type': 'application/json',
+    })
+    .then(
+      (response) => {
+        // console.log(response.data)
+        let result = response.data.result.is_auth;
+        console.log(response.data.result.body.name);
+        if (result === false)
+          alert("아이디 및 비밀번호가 일치하지 않습니다")
+        else if (result === true) {
+          console.log("인증성공")
+          setName(response.data.result.body.name)
+          setStudentNum()
+          navigate("/login/signup");
         }
-      })
-      .then((response) => {
-        console.log(response);
-      })
-      .catch(error => console.error('Error:', error));
 
+      },
+    )
+    .catch((err) => console.log(err.message));
   };
   // console.log(response.data.result.is_auth);
   // let result = response.data.result.is_auth;
