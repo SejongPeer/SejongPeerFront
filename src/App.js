@@ -136,6 +136,7 @@ const App = () => {
               <Route path="/login" element={<SignIn />} />
               <Route path="/login/signup" element={<SignUp />} />
               <Route path="/login/auth" element={<Auth />} />
+              <Route path="/login/sejong" element={<Sejong />}></Route>
               <Route path="/login/findid" element={<FindId />} />
               <Route path="/login/resetpwd" element={<ResetPwd />} />
               <Route path="/login/agree" element={<Agree />} />

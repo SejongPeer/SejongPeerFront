@@ -133,6 +133,9 @@ const MyPage = () => {
       if (data.data === null || data.data.status === 'CANCEL') {
         alert("아직 신청을 하지 않았습니다. 매칭 정보를 입력해 주세요.");
         navigate('/buddy/matching');
+      } else if (data.data.status === "IN_PROGRESS") {
+        alert("매칭중입니다!");
+        navigate('/buddy/waiting');
       } else if (data.data.status === "DENIED") {
         alert("상대가 매칭을 거절했습니다. 다시 신청해주세요.");
       } else if (data.data.status === "MATCHING_COMPLETED") {

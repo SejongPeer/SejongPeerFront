@@ -6,7 +6,7 @@ module.exports = function (app) {
     createProxyMiddleware({
       target: 'https://auth.imsejong.com',
       changeOrigin: true,
-      pathRewrite: { '/sejong': '/auth' },
+      pathRewrite: { '/api': '/auth' },
     })
   );
 
