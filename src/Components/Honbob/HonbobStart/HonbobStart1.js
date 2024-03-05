@@ -1,9 +1,17 @@
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import style from './HonbobStart.module.css';
+import { useEffect, useRef, useState } from 'react';
 
 const HonbobStart1 = () => {
+  const [countHonbab, setCountHonbab] = useState(0);
   const navigate = useNavigate();
+  const isFirstRender = useRef(true);
+  useEffect(() => {
+    if (isFirstRender.current) {
+      countHonbabHandler();
+    }
+  }, []);
 
   const HonbobHandler = async () => {
     navigate('/honbob/matching');
@@ -11,6 +19,29 @@ const HonbobStart1 = () => {
 
   const infoHandler = () => {
     window.open('https://sejonghonbab.simple.ink/', '_blank');
+  };
+
+  const countHonbabHandler = async() => {
+    try {
+      const response = await fetch(
+        process.env.REACT_APP_BACK_SERVER + "/honbab/active-count",
+        {
+          method: 'GET',
+        }
+      );
+        const data = await response.json();
+        console.log(data.data.count);
+        setCountHonbab(data.data.count);
+
+        if (!response.ok) {
+          throw new Error(data.message);
+        }
+
+
+    } catch(error) {
+      console.log(error.message);
+    }
+    
   };
 
   return (
@@ -35,7 +66,7 @@ const HonbobStart1 = () => {
           <div className={style.findContext}>
             <div className={style.raccoon}></div>{' '}
             <div>
-              <span style={{ fontWeight: '700' }}>216</span>명의 학생들이
+              <span style={{ fontWeight: '700' }}>{countHonbab}</span>명의 학생들이
               밥짝꿍을 찾고있어요!
             </div>
           </div>
