@@ -1,6 +1,7 @@
 // import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { useState, createContext } from "react";
+import { BrowserRouter } from 'react-router-dom';
 import "./App.css";
 
 import Header from "./Components/Header/Header.js";
@@ -37,6 +38,7 @@ import StudyPostDeatil from "./Components/Study/StudyPostDetail/StudyPostDetail.
 import StudyPostWrite from "./Components/Study/StudyPostWrite/StudyPostWrite.js";
 import StudyFilter from "./Components/Study/StudyFilterPage/StudyFIlterPage.js";
 import Sejong from "./Components/Login/SignUp/Sejong.js";
+import RouteChangeTracker from './RouteChangeTracker';
 
 // const router = createBrowserRouter([
 //   {path: '/', element:<StartLoading />},
@@ -51,6 +53,7 @@ import Sejong from "./Components/Login/SignUp/Sejong.js";
 export const MyContext = createContext();
 
 const App = () => {
+  // RouteChangeTracker();
   const [modalOpen, setModalOpen] = useState(false);
   const [modalContent, setModalContent] = useState("");
   const [majorValue, setMajorValue] = useState("단과대/학과 선택");
@@ -98,7 +101,8 @@ const App = () => {
         setPeerId,
       }}
     >
-      <Router>
+      <BrowserRouter>
+      <RouteChangeTracker />
         <div className="wrapper">
           {modalOpen && (
             <>
@@ -114,24 +118,23 @@ const App = () => {
             </>
           )}
           <Header />
+            <main className={modalContent === "buddyConfirm" ? "fixed" : ""}>
+              <Routes>
+                <Route exact path="/" element={<StartLoading />} />
+                <Route path="/main" element={<MainPage />} />
 
-          <main className={modalContent === "buddyConfirm" ? "fixed" : ""}>
-            <Routes>
-              <Route exact path="/" element={<StartLoading />} />
-              <Route path="/main" element={<MainPage />} />
+                <Route path="/buddy/start1" element={<BuddyStart1 />} />
+                <Route path="/buddy/start2" element={<BuddyStart2 />} />
+                <Route path="/buddy/matching" element={<BuddyMatching />} />
+                <Route path="/buddy/waiting" element={<BuddyWaiting />} />
+                <Route path="/buddy/accept" element={<BuddyAccept />} />
+                <Route path="/buddy/success" element={<BuddySuccess />} />
 
-              <Route path="/buddy/start1" element={<BuddyStart1 />} />
-              <Route path="/buddy/start2" element={<BuddyStart2 />} />
-              <Route path="/buddy/matching" element={<BuddyMatching />} />
-              <Route path="/buddy/waiting" element={<BuddyWaiting />} />
-              <Route path="/buddy/accept" element={<BuddyAccept />} />
-              <Route path="/buddy/success" element={<BuddySuccess />} />
-
-              <Route path="/honbob/matching" element={<Honbob_Matching />} />
-              <Route path="/honbob/waiting" element={<HonbobWaiting />} />
-              <Route path="/honbob/start1" element={<HonbobStart1 />} />
-              <Route path="/honbob/cancel" element={<HonbobWaiting />} />
-              <Route path="/honbob/success" element={<HonbobSuccess />} />
+                <Route path="/honbob/matching" element={<Honbob_Matching />} />
+                <Route path="/honbob/waiting" element={<HonbobWaiting />} />
+                <Route path="/honbob/start1" element={<HonbobStart1 />} />
+                <Route path="/honbob/cancel" element={<HonbobWaiting />} />
+                <Route path="/honbob/success" element={<HonbobSuccess />} />
 
               <Route path="/login" element={<SignIn />} />
               <Route path="/login/signup" element={<SignUp />} />
@@ -141,21 +144,20 @@ const App = () => {
               <Route path="/login/resetpwd" element={<ResetPwd />} />
               <Route path="/login/agree" element={<Agree />} />
 
-              <Route path="/personalinfo" element={<Agree1 />} />
-              <Route path="/useinfo" element={<Agree2 />} />
-              <Route path="/mypage" element={<MyPage />} />
-              <Route path="/mypage/modify" element={<Modify />} />
+                <Route path="/personalinfo" element={<Agree1 />} />
+                <Route path="/useinfo" element={<Agree2 />} />
+                <Route path="/mypage" element={<MyPage />} />
+                <Route path="/mypage/modify" element={<Modify />} />
 
-              <Route path="/study" element={<StudyList />} />
-              <Route path="/study/detail" element={<StudyPostDeatil />} />
-              <Route path="/study/post" element={<StudyPostWrite />} />
-              <Route path="/study/filter" element={<StudyFilter />} />
-
-              <Route path="/checksejong" element={<Sejong />} />
-            </Routes>
-          </main>
-        </div>
-      </Router>
+                <Route path="/study" element={<StudyList />} />
+                <Route path="/study/detail" element={<StudyPostDeatil />} />
+                <Route path="/study/post" element={<StudyPostWrite />} />
+                <Route path="/study/filter" element={<StudyFilter />} />
+                <Route path="/checksejong" element={<Sejong />} />
+              </Routes>
+            </main>
+          </div>
+        </BrowserRouter>
     </MyContext.Provider>
   );
 };

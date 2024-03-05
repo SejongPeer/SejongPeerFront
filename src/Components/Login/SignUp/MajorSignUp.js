@@ -1,6 +1,6 @@
 import { useContext, useEffect } from 'react';
 import { MyContext } from '../../../App';
-
+import Vector from '../../../Assets/Vector.png'
 import style from './InputTextBox.module.css';
 
 const MajorSignUp = (props) => {
@@ -55,6 +55,7 @@ const MajorSignUp = (props) => {
         <button
             onClick={onClickHandler}
             className={style.majorbox}>{props.majorValue}</button>
+            
     )
 
     );
