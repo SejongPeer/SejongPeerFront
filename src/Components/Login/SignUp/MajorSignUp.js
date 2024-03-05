@@ -47,15 +47,16 @@ const MajorSignUp = (props) => {
     }
 
 
-    return (isDoubleMajor ? (
-        <button
-            onClick={DoubleMajorHandler}
-            className={style.majorbox}>{props.doublemajorValue}</button>
-    ) : (
-        <button
-            onClick={onClickHandler}
-            className={style.majorbox}>{props.majorValue}</button>     
-    )
+    return (
+        <div className={style.majorSelectionContainer}>
+            <button
+                onClick={onClickHandler}
+                className={style.majorbox}>
+                {isDoubleMajor ? props.doublemajorValue : props.majorValue}
+                <img src={Vector} alt="Select" className={style.vectorImage} />
+
+            </button>
+        </div>
     );
 };
 
