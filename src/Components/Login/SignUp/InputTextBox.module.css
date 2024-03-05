@@ -89,3 +89,9 @@
   font-size: 14px;
   margin: 4px 0px;
 }
+
+.vectorImage {
+  width: 10px; 
+  height: 10px;
+  margin-right: 20px;
+}

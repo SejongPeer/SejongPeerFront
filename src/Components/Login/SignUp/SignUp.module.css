@@ -26,6 +26,7 @@
   overflow: scroll;
   margin: auto;
 }
+
 @media (min-height: 1000px) {
   .form {
     display: flex;
@@ -97,4 +98,6 @@
 .transition-effect {
   transition: opacity 0.5s ease-out; /* opacity 변화에 대한 전환 효과 적용 */
 }
+
+
 
