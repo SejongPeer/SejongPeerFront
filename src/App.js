@@ -55,8 +55,8 @@ const App = () => {
   // RouteChangeTracker();
   const [modalOpen, setModalOpen] = useState(false);
   const [modalContent, setModalContent] = useState("");
-  const [majorValue, setMajorValue] = useState("단과대/학과 선택");
-  const [doubleMajorValue, setDoubleMajorValue] = useState("복수/부전공 선택");
+  const [majorValue, setMajorValue] = useState("학과를 선택해주세요");
+  const [doubleMajorValue, setDoubleMajorValue] = useState("학과를 선택해주세요");
   const [doubleCollegeValue, setDoubleCollegeValue] = useState("");
   const [collegeValue, setCollegeValue] = useState("");
   const [buddySubmit, setBuddySubmit] = useState(false);
