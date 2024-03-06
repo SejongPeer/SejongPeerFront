@@ -2,7 +2,8 @@
   font-size: 18px;
   font-weight: bold;
   width: 161px;
-  height: 184px;
+  /* height: 184px; */
+  aspect-ratio: 1;
   margin: 6px;
   padding-top: 20px;
   border-radius: 40px;
@@ -10,6 +11,7 @@
   cursor: pointer;
   background-color: white;
   color: #333333;
+  padding-bottom: 1vh;
 }
 
 .clicked {
@@ -18,10 +20,12 @@
   font-size: 18px;
   font-weight: bold;
   width: 161px;
-  height: 184px;
+  /* height: 184px; */
+  aspect-ratio: 1;
   margin: 6px;
   padding-top: 20px;
   border-radius: 40px;
   cursor: pointer;
   border: 3px solid #FF4B4B;
+  padding-bottom: 1vh;
 }

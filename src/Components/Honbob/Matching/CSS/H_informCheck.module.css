@@ -7,7 +7,8 @@
 }
 
 .divBox {
-    border: 2px solid #FF7474;
+    border: 3px solid #FF7474;
+    font-weight: 600;
     width: 35vh;
     height: 5vh;
     display: flex;
@@ -17,5 +18,6 @@
     font-size: 1.7vh;
     color: #555555;
     margin-bottom: 1vh;
-    margin-top: 0.5vh
+    margin-top: 0.5vh;
+    background-color: #FFFFFF;
 }
