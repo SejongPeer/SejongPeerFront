@@ -107,7 +107,19 @@ const Modify = () => {
 
       const data = await response.json(); // data 변수를 await로 초기화
 
-      alert('수정 성공');
+
+      if (newKaKaoId !== '') {
+        localStorage.setItem("kakaoAccount", KaKaoId);
+      }
+      if (newPhoneNum !== '') {
+        localStorage.setItem("phoneNumber", PhoneNum);
+      }
+      if (newNickName !== '') {
+        localStorage.setItem("nickname", NickName);
+      }
+
+
+      alert("수정 성공");
     } catch (error) {
       // console.error("Error occurred:", error);
       // console.error(error.message);
