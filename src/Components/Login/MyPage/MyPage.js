@@ -13,7 +13,7 @@ const MyPage = () => {
   // 탈퇴하기
   const handleDeleteAccount = async () => {
     const confirmDelete = window.confirm(
-      '정말로 탈퇴하시겠습니까? 이 작업은 되돌릴 수 없습니다.'
+      '회원 탈퇴 시 같은 학번으로 다시 회원가입이 불가합니다. 그래도 하시겠습니까?'
     );
     if (confirmDelete) {
       try {
@@ -301,7 +301,7 @@ const MyPage = () => {
                       className={styles.redWord2}
                       style={{ fontWeight: '900' }}
                     >
-                      세종피어
+                      세종버디
                     </div>
                     <div style={{ fontWeight: 'bold' }}>사용법</div>
                   </button>
@@ -323,8 +323,8 @@ const MyPage = () => {
                   </p>
                 </div>
                 <div className={styles.ruleBox}>
-                <Link to={"/personalinfo"} style={{ textDecoration: 'underline', color: '#333333' }} target="_blank">개인정보처리방침</Link>
-                <Link to={"/useinfo"} style={{ textDecoration: 'underline', color: '#333333' }} target="_blank">이용약관</Link>
+                  <Link to={"/personalinfo"} style={{ textDecoration: 'underline', color: '#333333' }} target="_blank">개인정보처리방침</Link>
+                  <Link to={"/useinfo"} style={{ textDecoration: 'underline', color: '#333333' }} target="_blank">이용약관</Link>
                   <div style={{ textDecoration: 'underline' }}>
                     커뮤니티 이용규칙
                   </div>
@@ -333,13 +333,13 @@ const MyPage = () => {
               </div>
               <button className={styles.logout}>
                 <p
-                  style={{ fontWeight: '700', fontSize: '1.3em' }}
+                  style={{ fontWeight: '700', fontSize: '1.3em', cursor: "pointer" }}
                   onClick={handleLogout}
                 >
                   로그아웃
                 </p>
               </button>
-              <button className={styles.secession} onClick={handleDeleteAccount}>
+              <button style={{ cursor: "pointer" }} className={styles.secession} onClick={handleDeleteAccount}>
                 탈퇴하기
               </button>
             </div>
