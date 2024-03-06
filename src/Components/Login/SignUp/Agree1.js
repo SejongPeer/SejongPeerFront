@@ -300,13 +300,13 @@ const Agree1 = () => {
       <p>
         ▶ 개인정보 보호책임자
         <br />
-        성명 : 정해성
+        성명 : 차윤범
         <br />
-        직책 : 개발
+        직책 : BE 개발
         <br />
         직급 : 개발
         <br />
-        연락처 :010-5444-7857, wjdgotjd9908@naver.com
+        연락처 :010-2735-4233, sejongpeer@gmail.com
         <br />※ 개인정보 보호 담당부서로 연결됩니다.
       </p>
 
@@ -344,9 +344,9 @@ const Agree1 = () => {
         <br />
         부서명 : BackEnd
         <br />
-        담당자 : 정해성
+        담당자 : 차윤범
         <br />
-        연락처 : 010-5444-7857, wjdgotjd9908@naver.com
+        연락처 : 010-2735-4233, sejongpeer@gmail.com
       </p>
 
       <p>

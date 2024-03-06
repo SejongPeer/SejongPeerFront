@@ -77,11 +77,13 @@
     color: #ffffff;
     padding-left: 2vw;
     font-size: 2vh;
+    cursor: pointer;
   }
 
   .authA {
     margin-top: 1vh;
     color: #333333;
+    cursor: pointer;
   }
 }
 
@@ -164,10 +166,12 @@
     font-weight: 700;
     padding-left: 2vw;
     font-size: 2vh;
+    cursor: pointer;
   }
 
   .authA {
     margin-top: 1vh;
     color: #777777;
+    cursor: pointer;
   }
 }
