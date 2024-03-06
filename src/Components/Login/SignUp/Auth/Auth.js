@@ -13,54 +13,32 @@ const Auth = () => {
     console.log(passWord);
 
     axios
-<<<<<<< Updated upstream
-    .post(process.env.REACT_APP_BACK_SERVER + '/auth/sejong-auth', {
-      id: Id,
-      pw: passWord,
-    }, {
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-    .then(
-      (response) => {
+      .post(
+        process.env.REACT_APP_BACK_SERVER + '/auth/sejong-auth',
+        {
+          id: Id,
+          pw: passWord,
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      )
+      .then(response => {
         console.log(response.data.data);
 
         let result = response.data.data.isAuth;
-        if (result === false)
-          alert("아이디 및 비밀번호가 일치하지 않습니다")
+        if (result === false) alert('아이디 및 비밀번호가 일치하지 않습니다');
         else if (result === true) {
-          alert("인증 완료!");
+          alert('인증 완료!');
           setName(response.data.data.name);
           setGrade(response.data.data.grade);
           setStudentNum(Id);
-          navigate("/login/signup");
-=======
-      .post("/api?method=ClassicSession", {
-        id: Id,
-        pw: passWord,
-      })
-      .then(
-        (response) => {
-          console.log(response);
-          console.log(response.data);
-          console.log(response.data.result);
-          let result = response.data.result.is_auth;
-          if (result === false)
-            alert("아이디 및 비밀번호가 일치하지 않습니다")
-          else if (result === true) {
-            alert("인증 완료!");
-            console.log(response.data.result.body);
-            setName(response.data.result.body.name);
-            setGrade(response.data.result.body.grade);
-            setStudentNum(Id);
-            navigate("/login/signup");
-          }
->>>>>>> Stashed changes
+          navigate('/login/signup');
         }
-      )
-      .catch((err) => console.log(err.message));
-
+      })
+      .catch(err => console.log(err.message));
   };
 
   const { name, setName } = useContext(MyContext);
