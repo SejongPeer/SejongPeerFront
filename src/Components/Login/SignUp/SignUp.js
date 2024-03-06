@@ -187,7 +187,6 @@ const SignUp = props => {
           navigate('/login');
         } catch (err) {
           console.log(err.message);
-
           if (errorClassName == "DUPLICATED_STUDENT_ID" || errorClassName == "DUPLICATED_PHONE_NUMBER") {
             alert("한 학번과 전화번호 당 한 개의 계정만 생성할 수 있습니다.");
           }
@@ -336,7 +335,8 @@ const SignUp = props => {
                   id="double_major_checkbox"
                   checked={doubleMajorChecked}
                   onChange={e => setDoubleMajorChecked(e.target.checked)}
-                  style={{ marginRight: '10px', marginTop: '15px' }}
+                  style={{ marginRight: '10px', marginTop: '15px',
+                  cursor: 'pointer' }}
                 />
                 <label
                   htmlFor="double_major_checkbox"

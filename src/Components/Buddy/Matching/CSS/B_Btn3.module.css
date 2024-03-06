@@ -48,6 +48,7 @@
   justify-content: center;
   gap: 3%;
   margin-top: 5%;
+  cursor: pointer;
 }
 .second_check {
   height: 30px;
@@ -58,6 +59,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 .second_text {
   color: #777777;
