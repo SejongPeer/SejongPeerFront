@@ -3,6 +3,7 @@ import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { MyContext } from '../../../../App';
 import axios from 'axios';
+
 const Auth = () => {
   const [Id, setId] = useState('');
   const [passWord, setPassWord] = useState('');
@@ -35,10 +36,10 @@ const Auth = () => {
             setStudentNum(Id);
             navigate("/login/signup");
           }
+
         }
       )
       .catch((err) => console.log(err.message));
-
   };
 
   const { name, setName } = useContext(MyContext);

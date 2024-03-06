@@ -126,10 +126,8 @@ const SignUp = props => {
   async function submitHandler(e) {
     e.preventDefault();
     // 복수전공 체크 여부에 따라 변수 값을 조정
+    const finalDoubleCollegeValue = doubleCollegeValue ? doubleCollegeValue : null;
     const finalDoubleMajorValue = doubleMajorChecked ? doublemajorValue : null;
-    const finalDoubleCollegeValue = doubleMajorChecked
-      ? doubleCollegeValue
-      : null;
     console.log('-------------------------------');
     console.log('idValue : ' + idValue);
     console.log('pwdValue : ' + pwdValue);
@@ -144,8 +142,8 @@ const SignUp = props => {
     console.log('genderValue : ' + genderValue);
     console.log('collegeValue : ' + collegeValue);
     console.log('majorValue : ' + majorValue);
-    console.log('doublemajorValue : ' + doublemajorValue);
-    console.log('doubleCollegeValue : ' + doubleCollegeValue);
+    console.log('doubleCollegeValue : ' + finalDoubleCollegeValue);
+    console.log('doublemajorValue : ' + finalDoubleMajorValue);
 
     let errorClassName = "";
 
@@ -199,27 +197,29 @@ const SignUp = props => {
             }
           );
           const data = await response.json();
-          console.log(data);
-          console.log(data.data.errorClassName);
-          errorClassName = data.data.errorClassName;
+          if (data.data !== null) {
+            console.log(data);
+            console.log(data.data.errorClassName);
+            errorClassName = data.data.errorClassName;
 
-          if (!response.ok) {
-            throw new Error(data.message);
+            if (!response.ok) {
+              throw new Error(data.message);
+            }
           }
-
           alert('로그인 페이지로 이동합니다.');
 
           navigate('/login');
         } catch (err) {
-          //console.error('Error occurred:', err);
-          //console.log(err.message);
-
           if (errorClassName == "DUPLICATED_STUDENT_ID" || errorClassName == "DUPLICATED_PHONE_NUMBER") {
             alert("한 학번과 전화번호 당 한 개의 계정만 생성할 수 있습니다.");
           }
+          else if(errorClassName == "MethodArgumentNotValidException" ){
+            alert("닉네임은 2자 이상 8자 이하 한글, 영어, 숫자만 입력해주세요.");
+          }
           else {
+            console.log("6");
             alert(
-              '제출에 실패했습니다. 다시 시도해주세요. (에러 내용: ' +
+              ' 실패했습니다. 다시 시도해주세요. (에러 내용: ' +
               err.message +
               ')'
             );
@@ -227,6 +227,7 @@ const SignUp = props => {
           e.preventDefault();
         }
       } else {
+        console.log(error);
         alert(error);
         e.preventDefault();
       }
@@ -327,7 +328,7 @@ const SignUp = props => {
                 phoneNumberValue={phoneNumberValue}
               />
               <div className={style.Info}>
-              *전화번호로 매칭 정보가 전달됩니다. 정확하게 작성해주세요.             </div>  
+                *전화번호로 매칭 정보가 전달됩니다. 정확하게 작성해주세요.             </div>
               <SignUpElement
                 id="gender"
                 title="성별"
@@ -339,7 +340,7 @@ const SignUp = props => {
               <SignUpElement
                 id="major"
                 title="단과대/학과"
-                name="학과를 선택해주세요"
+                name="단과대/학과 선택"
                 majorData={majorData}
                 collegeData={collegeData}
                 signUpErrorHandler={signUpErrorHandler}
@@ -379,7 +380,7 @@ const SignUp = props => {
                 />
               )}
               <div className={style.Info}>
-              *학과선택은 2024 수강편람을 기준으로 정리되었습니다.              </div>            
+                *학과선택은 2024 수강편람을 기준으로 정리되었습니다.              </div>
               <button
                 type="submit"
                 className={style.submitBtn}

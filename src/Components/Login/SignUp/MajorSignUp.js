@@ -46,16 +46,19 @@ const MajorSignUp = (props) => {
         event.preventDefault();
     }
 
-
+    // if (props.id === "double_major") {
+    //     console.log(props.props.doublemajorValue);
+    // }
     return (
         <div className={style.majorSelectionContainer}>
             <button
-                onClick={onClickHandler}
+                onClick={isDoubleMajor ? DoubleMajorHandler : onClickHandler}
                 className={style.majorbox}>
                 {isDoubleMajor ? props.doublemajorValue : props.majorValue}
                 <img src={Vector} alt="Select" className={style.vectorImage} />
             </button>
         </div>
+
     );
 };
 
