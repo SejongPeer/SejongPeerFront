@@ -47,7 +47,7 @@ const MyPage = () => {
       localStorage.removeItem('userId'),
       localStorage.removeItem('birth'),
       localStorage.removeItem('gender'),
-      localStorage.removeItem('kakaoAccount'),
+      localStorage.removeItem('kakaoId'),
       localStorage.removeItem('major'),
       localStorage.removeItem('name'),
       localStorage.removeItem('phoneNum'),
@@ -71,7 +71,7 @@ const MyPage = () => {
 
   const accessToken = localStorage.getItem('accessToken');
   const refreshToken = localStorage.getItem('refreshToken');
-  const kakaoId = localStorage.getItem('kakaoAccount');
+  const kakaoId = localStorage.getItem('kakaoId');
   const phoneNum = localStorage.getItem('phoneNum');
   const major = localStorage.getItem('major');
   const name = localStorage.getItem('name');
@@ -131,22 +131,25 @@ const MyPage = () => {
       //console.log(response.data);
 
       if (data.data === null || data.data.status === 'CANCEL') {
-        alert('아직 신청을 하지 않았습니다. 매칭 정보를 입력해 주세요.');
-        navigate('/buddy/matching');
-      } else if (data.data.status === 'IN_PROGRESS') {
-        alert('매칭중입니다!');
+        navigate('/buddy/start1');
+      } else if (data.data.status === "DENIED") {
+        alert("상대가 매칭을 거절했습니다. 다시 신청해주세요.");
+        navigate('/buddy/start1');
+      } else if (data.data.status === "MATCHING_COMPLETED") {
+        alert("매칭에 성공했습니다. 정보를 확인해주세요!")
+        navigate('/buddy/success')
+      } else if (data.data.status === "ACCEPT") {
+        alert("신청 수락을 했습니다. 상대방이 수락할때까지 기다려 주세요.");
+      } else if (data.data.status === "REJECT") {
+        alert("거절 패널티 1시간이 부과되었습니다. 1시간 이후에 다시 신청해 주세요.");
+      } else if (data.data.status === "IN_PROGRESS") {
+        alert("매칭중입니다!");
         navigate('/buddy/waiting');
-      } else if (data.data.status === 'DENIED') {
-        alert('상대가 매칭을 거절했습니다. 다시 신청해주세요.');
-      } else if (data.data.status === 'MATCHING_COMPLETED') {
-        navigate('/buddy/success');
-      } else if (data.data.status === 'ACCEPT') {
-        alert('신청 수락을 했습니다. 상대방이 수락할때까지 기다려 주세요.');
-      } else if (data.data.status === 'REJECT') {
-        alert(
-          '거절 패널티 1시간이 부과되었습니다. 1시간 이후에 다시 신청해 주세요.'
-        );
+      } else if (data.data.status === 'FOUND_BUDDY') {
+        alert("버디를 찾았습니다!");
+        navigate('/buddy/accept');
       }
+
     } catch (error) {
       alert('에러가 발생했습니다.');
       console.log(error.message);
@@ -173,8 +176,8 @@ const MyPage = () => {
       console.log(data);
       console.log(data.data);
       if (data.data === null || data.data.status === 'TIME_OUT') {
-        console.log(data.data);
-        alert('아직 신청을 하지 않았습니다. 매칭 정보를 입력해 주세요!');
+        console.log(data.data)
+        alert("아직 신청을 하지 않았습니다. 매칭 정보를 입력해 주세요!")
         navigate('/honbob/matching');
       } else if (data.data.status === 'IN_PROGRESS') {
         alert('매칭 중입니다!');
@@ -183,7 +186,7 @@ const MyPage = () => {
         alert('매칭에 성공했습니다!');
         navigate('/honbob/success');
       } else if (data.data.status === 'FOUND_BUDDY') {
-        alert('버디를 찾았습니다!');
+        alert("버디를 찾았습니다!");
         navigate('/buddy/accept');
       }
     } catch (error) {
@@ -233,10 +236,7 @@ const MyPage = () => {
     <div className={styles.rightImg}></div>
   </button> */}
                   <button className={styles.hideBtn}></button>
-                  <button
-                    onClick={BuddyHandler}
-                    className={styles.matchingButton}
-                  >
+                  <button onClick={BuddyHandler} className={styles.matchingButton}>
                     <div className={styles.leftBox}>
                       <div className={`${styles.redWord} ${styles.checkWord}`}>
                         세종버디
@@ -250,10 +250,7 @@ const MyPage = () => {
                     </div>
                     <div className={styles.buddyImg}></div>
                   </button>
-                  <button
-                    onClick={HonbobHandler}
-                    className={styles.matchingButton}
-                  >
+                  <button onClick={HonbobHandler} className={styles.matchingButton}>
                     <div className={styles.leftBox}>
                       <div className={`${styles.redWord} ${styles.checkWord}`}>
                         혼밥탈출
@@ -311,10 +308,7 @@ const MyPage = () => {
                     </div>
                     <div style={{ fontWeight: 'bold' }}>사용법</div>
                   </button>
-                  <button
-                    onClick={buddyInfoHandler}
-                    className={styles.useInformBtn}
-                  >
+                  <button onClick={buddyInfoHandler} className={styles.useInformBtn}>
                     <div
                       className={styles.redWord2}
                       style={{ fontWeight: '900' }}
@@ -323,10 +317,7 @@ const MyPage = () => {
                     </div>
                     <div style={{ fontWeight: 'bold' }}>사용법</div>
                   </button>
-                  <button
-                    onClick={honbabInfoHandler}
-                    className={styles.useInformBtn}
-                  >
+                  <button onClick={honbabInfoHandler} className={styles.useInformBtn}>
                     <div
                       className={styles.redWord2}
                       style={{ fontWeight: '900' }}
@@ -344,20 +335,8 @@ const MyPage = () => {
                   </p>
                 </div>
                 <div className={styles.ruleBox}>
-                  <Link
-                    to={'/personalinfo'}
-                    style={{ textDecoration: 'underline', color: '#333333' }}
-                    target="_blank"
-                  >
-                    개인정보처리방침
-                  </Link>
-                  <Link
-                    to={'/useinfo'}
-                    style={{ textDecoration: 'underline', color: '#333333' }}
-                    target="_blank"
-                  >
-                    이용약관
-                  </Link>
+                <Link to={"/personalinfo"} style={{ textDecoration: 'underline', color: '#333333' }} target="_blank">개인정보처리방침</Link>
+                <Link to={"/useinfo"} style={{ textDecoration: 'underline', color: '#333333' }} target="_blank">이용약관</Link>
                   <div style={{ textDecoration: 'underline' }}>
                     커뮤니티 이용규칙
                   </div>
@@ -372,10 +351,7 @@ const MyPage = () => {
                   로그아웃
                 </p>
               </button>
-              <button
-                className={styles.secession}
-                onClick={handleDeleteAccount}
-              >
+              <button className={styles.secession} onClick={handleDeleteAccount}>
                 탈퇴하기
               </button>
             </div>
