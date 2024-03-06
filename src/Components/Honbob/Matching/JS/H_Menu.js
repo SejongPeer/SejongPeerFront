@@ -8,7 +8,6 @@ const H_Menu = (props) => {
 
     const menuChoice = (index) => {
         setClickedIndex(index);
-        console.log("선택된 index: ", index);
         if (index == 0) {
             props.setChoiceMenu("KOREAN");
             props.setChoiceMenuKorean("한식");

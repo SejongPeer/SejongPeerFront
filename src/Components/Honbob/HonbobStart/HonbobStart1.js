@@ -30,7 +30,6 @@ const HonbobStart1 = () => {
         }
       );
         const data = await response.json();
-        console.log(data.data.count);
         setCountHonbab(data.data.count);
 
         if (!response.ok) {

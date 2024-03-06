@@ -44,14 +44,10 @@ const IDCheckBox = (props) => {
                     alert('중복되는 아이디 입니다. 다른 아이디를 입력하세요');
                     props.errorHandler("중복되는 아이디 입니다. 다른 아이디를 입력하세요");
                     props.idExistHandler(true); 
-                    console.log("isIdExist 값 : " + data.data.isExist);
-                    console.log("중복 O : " + props.isIdExist); // 아이디가 존재 X 사용 O
                 } else {
                     alert('사용 가능한 아이디입니다.');
                     RightIdHandler("사용 가능한 아이디 입니다.");
                     props.idExistHandler(false); // 아이디가 존재 X 사용 O
-                    console.log("isIdExist 값 : " + data.data.isExist);
-                    console.log("중복 X : " + props.isIdExist); // 아이디가 존재 X 사용 O
                 }
             } catch (error) {
                 console.error('There was an error!', error);

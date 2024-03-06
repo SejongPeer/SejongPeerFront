@@ -71,7 +71,6 @@ const Honbob_Matching = () => {
   };
 
   const slideMove = (page) => {
-    console.log("페이지 이동 " + page);
     setSlide(page);
   };
 
@@ -83,7 +82,6 @@ const Honbob_Matching = () => {
   //사용자가 입력한 정보
 
   const GenderChoiceData = (choiceGenderHonbob) => {
-    console.log("동성이성(혼밥) : " + choiceGenderHonbob);
     setChoiceGender(choiceGenderHonbob);
   };
   const menuChoiceData = (choiceMenu) => {
@@ -107,15 +105,10 @@ const Honbob_Matching = () => {
 
 
   const honbobSubmitHandler = async e => {
-    console.log("kakao :", kakaoId);
-    console.log("phone:", phoneNumber);
-    console.log("choiceMenu:", choiceMenu);
-    console.log("gender:", choiceGenderHonbob);
     let matchingInfo = {
       genderOption: choiceGenderHonbob,
       menuCategoryOption: choiceMenu,
     };
-    console.log(matchingInfo);
     try {
       const response = await fetch(
         process.env.REACT_APP_BACK_SERVER + "/honbab/register",
@@ -137,13 +130,9 @@ const Honbob_Matching = () => {
       }
 
       alert("제출 성공");
-      console.log("제출 성공");
-      console.log(data.message);
       setHonbobSubmit(false);
       navigate("/honbob/waiting");
     } catch (error) {
-      console.error("Error occurred:", error);
-      console.log("제출 실패");
       console.error(error.message);
       alert(error.message);
       e.preventDefault();

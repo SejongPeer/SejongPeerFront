@@ -50,7 +50,6 @@ const Modify = () => {
 
         const data = await response.json(); // data 변수를 await로 초기화
         setMyPageData(data.data);
-        console.log(data.data);
       } catch (error) {
         console.error('Error occurred:', error);
         alert(error.message);
@@ -67,10 +66,6 @@ const Modify = () => {
     setFocusedDiv(null);
   };
 
-  useEffect(() => {
-    console.log('newPhone ', newPhoneNum);
-  }, [newPhoneNum]);
-
   const handleSubmit = async e => {
     e.preventDefault();
     const KaKaoId = newKaKaoId !== '' ? newKaKaoId : null;
@@ -82,9 +77,6 @@ const Modify = () => {
       nickname: NickName,
       phoneNumber: PhoneNum,
     };
-    console.log(KaKaoId);
-    console.log(NickName);
-    console.log(PhoneNum);
 
     try {
       const response = await fetch(
@@ -121,9 +113,7 @@ const Modify = () => {
 
       alert("수정 성공");
     } catch (error) {
-      // console.error("Error occurred:", error);
-      // console.error(error.message);
-      // alert(error.message);
+      console.error(error.message);
       e.preventDefault();
     }
   };

@@ -37,11 +37,6 @@ const SignUp = props => {
   const [isIdExist, setIsIdExist] = useState(true);
   const [isNicknameExist, setIsNicknameExist] = useState(true);
 
-
-  useEffect(() => {
-    console.log('isIdExist 상태: ', isIdExist);
-  }, [isIdExist]);
-
   const signUpErrorHandler = error => {
     setError(error);
     if (error === '') {
@@ -130,22 +125,6 @@ const SignUp = props => {
     const finalDoubleCollegeValue = doubleMajorChecked
       ? doubleCollegeValue
       : null;
-    console.log('-------------------------------');
-    console.log('idValue : ' + idValue);
-    console.log('pwdValue : ' + pwdValue);
-    console.log('pwdCheckValue : ' + pwdCheckValue);
-    console.log('nameValue : ' + nameValue);
-    console.log('studentNumberValue : ' + studentNumberValue);
-    console.log('gradeValue : ' + gradeValue);
-
-    console.log('nicknameValue : ' + nicknameValue);
-    console.log('kakaoidValue : ' + kakaoidValue);
-    console.log('phoneNumberValue : ' + phoneNumberValue);
-    console.log('genderValue : ' + genderValue);
-    console.log('collegeValue : ' + collegeValue);
-    console.log('majorValue : ' + majorValue);
-    console.log('doublemajorValue : ' + doublemajorValue);
-    console.log('doubleCollegeValue : ' + doubleCollegeValue);
 
     let errorClassName = "";
 
@@ -200,8 +179,6 @@ const SignUp = props => {
           );
           const data = await response.json();
           if (data.data !== null) {
-            console.log(data);
-            console.log(data.data.errorClassName);
             errorClassName = data.data.errorClassName;
 
             if (!response.ok) {
@@ -212,15 +189,12 @@ const SignUp = props => {
 
           navigate('/login');
         } catch (err) {
-          //console.error('Error occurred:', err);
-          //console.log(err.message);
+          console.log(err.message);
 
-          console.log("5");
           if (errorClassName == "DUPLICATED_STUDENT_ID" || errorClassName == "DUPLICATED_PHONE_NUMBER") {
             alert("한 학번과 전화번호 당 한 개의 계정만 생성할 수 있습니다.");
           }
           else {
-            console.log("6");
             alert(
               '제출에 실패했습니다. 다시 시도해주세요. (에러 내용: ' +
               err.message +

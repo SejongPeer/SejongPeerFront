@@ -10,9 +10,6 @@ const Auth = () => {
 
   const navigate = useNavigate();
   const isSejong = () => {
-    console.log(Id);
-    console.log(passWord);
-
     axios
     .post(process.env.REACT_APP_BACK_SERVER + '/auth/sejong-auth', {
       id: Id,
@@ -23,7 +20,6 @@ const Auth = () => {
       }
     })
     .then((response) => {
-        console.log(response.data.data);
         let result = response.data.data.isAuth;
         if (result === false) alert('아이디 및 비밀번호가 일치하지 않습니다');
         else if (result === true) {
