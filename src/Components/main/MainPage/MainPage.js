@@ -92,7 +92,7 @@ const MainPage = () => {
         if (data.data === null || data.data.status === 'CANCEL') {
           console.log(data.data);
           navigate('/honbob/start1');
-        } else if (data.data.status === 'TIME_OUT') {
+        } else if (data.data.status === 'TIME_OUT' || data.data.status === 'EXPIRED') {
           navigate('/honbob/start1');
         } else if (data.data.status === 'IN_PROGRESS') {
           alert('매칭 중입니다!');
