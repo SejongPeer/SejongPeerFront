@@ -28,7 +28,7 @@ const Auth = () => {
           setGrade(response.data.data.grade);
           navigate("/login/signup");
         }
-    })
+     })
       .catch((err) => console.log(err.message));
   };
 

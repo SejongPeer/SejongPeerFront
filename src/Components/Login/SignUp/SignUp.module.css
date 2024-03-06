@@ -15,7 +15,7 @@
   margin-bottom: 4rem;
 }
 .container h2 {
-  margin-left: 1vw;
+  margin-left: 1px;
 }
 
 .form {
@@ -38,7 +38,21 @@
 .h2 {
   font-weight: 700;
   font-size: 18px;
-  margin-top: 0; 
+  margin-top: 0;
+  margin-left: 1px;
+}
+
+.prevPageText {
+  color: #999;
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1px; 
+  letter-spacing: -0.333px;
+  cursor: pointer;
+  margin-top: 23px;
 }
 
 @media (min-width: 420px) {
@@ -47,6 +61,7 @@
     margin: 20px 2rem;
     font-size: 18px;
     text-align: left;
+    margin-left: 1px;
   }
 }
 .submitBtn {
@@ -73,7 +88,7 @@
   line-height: 1px; 
   letter-spacing: -0.333px;
   cursor: pointer;
-  margin-top: 10px;
+  margin-top: 23px;
 }
 
 .special-gap {

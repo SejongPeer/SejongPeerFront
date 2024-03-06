@@ -19,8 +19,8 @@ const Loadinglogo = () => {
           style={{ position: "relative", top: "80px" }}
           className="react-player"
           url={loading1}
-          width="350px"
-          height="350px"
+          width="250px"
+          height="250px"
           playing={true}
           muted={true}
           controls={false}

@@ -121,10 +121,8 @@ const SignUp = props => {
   async function submitHandler(e) {
     e.preventDefault();
     // 복수전공 체크 여부에 따라 변수 값을 조정
+    const finalDoubleCollegeValue = doubleCollegeValue ? doubleCollegeValue : null;
     const finalDoubleMajorValue = doubleMajorChecked ? doublemajorValue : null;
-    const finalDoubleCollegeValue = doubleMajorChecked
-      ? doubleCollegeValue
-      : null;
 
     let errorClassName = "";
 
@@ -190,13 +188,15 @@ const SignUp = props => {
           navigate('/login');
         } catch (err) {
           console.log(err.message);
-
           if (errorClassName == "DUPLICATED_STUDENT_ID" || errorClassName == "DUPLICATED_PHONE_NUMBER") {
             alert("한 학번과 전화번호 당 한 개의 계정만 생성할 수 있습니다.");
           }
+          else if(errorClassName == "MethodArgumentNotValidException" ){
+            alert("닉네임은 2자 이상 8자 이하 한글, 영어, 숫자만 입력해주세요.");
+          }
           else {
             alert(
-              '제출에 실패했습니다. 다시 시도해주세요. (에러 내용: ' +
+              ' 실패했습니다. 다시 시도해주세요. (에러 내용: ' +
               err.message +
               ')'
             );
@@ -317,7 +317,7 @@ const SignUp = props => {
               <SignUpElement
                 id="major"
                 title="단과대/학과"
-                name="학과를 선택해주세요"
+                name="단과대/학과 선택"
                 majorData={majorData}
                 collegeData={collegeData}
                 signUpErrorHandler={signUpErrorHandler}
