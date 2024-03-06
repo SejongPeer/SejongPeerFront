@@ -1,11 +1,11 @@
 .selectBtn {
   font-size: 18px;
   font-weight: bold;
-  width: 161px;
+  width: 151px;
+  height: 152px;
   /* height: 184px; */
   aspect-ratio: 1;
   margin: 6px;
-  padding-top: 20px;
   border-radius: 40px;
   border: 1px solid #e5e5e5;
   cursor: pointer;
@@ -19,11 +19,11 @@
   color: #333333;
   font-size: 18px;
   font-weight: bold;
-  width: 161px;
+  width: 151px;
+  height: 152px;
   /* height: 184px; */
   aspect-ratio: 1;
   margin: 6px;
-  padding-top: 20px;
   border-radius: 40px;
   cursor: pointer;
   border: 3px solid #FF4B4B;

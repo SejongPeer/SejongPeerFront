@@ -92,10 +92,11 @@
 /* 모바일 */
 @media(max-width:768px) {
     .container {
-        margin-top: 12vh;
+        margin-top: 10vh;
         display: flex;
         flex-direction: column;
         height: 85%;
+        width: 100%;
         background-color: #fafafa;
         align-items: center;
     }
@@ -171,11 +172,11 @@
     }
 
     .moveToHome {
-        width: 42vh;
+        width: 90%;
         height: 8.5vh;
         max-height: 56px;
         color: #FFFFFF;
-        margin-top: 4vh;
+        margin-top: 2vh;
         font-size: 2vh;
         font-weight: 600;
         border-radius: 28px;
