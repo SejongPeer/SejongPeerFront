@@ -11,24 +11,31 @@ const Auth = () => {
   const navigate = useNavigate();
   const isSejong = () => {
     axios
-    .post(process.env.REACT_APP_BACK_SERVER + '/auth/sejong-auth', {
-      id: Id,
-      pw: passWord,
-    }, {
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-    .then((response) => {
-        let result = response.data.data.isAuth;
-        if (result === false) alert('아이디 및 비밀번호가 일치하지 않습니다');
-        else if (result === true) {
-          alert('인증 완료!');
-          setName(response.data.data.name);
-          setGrade(response.data.data.grade);
-          navigate("/login/signup");
+      .post(process.env.REACT_APP_BACK_SERVER + '/auth/sejong-auth', {
+        id: Id,
+        pw: passWord,
+      }, {
+        headers: {
+          'Content-Type': 'application/json'
         }
-    })
+      })
+      .then(
+        (response) => {
+          console.log(response.data.data);
+
+          let result = response.data.data.isAuth;
+          if (result === false)
+            alert("아이디 및 비밀번호가 일치하지 않습니다")
+          else if (result === true) {
+            alert("인증 완료!");
+            setName(response.data.data.name);
+            setGrade(response.data.data.grade);
+            setStudentNum(Id);
+            navigate("/login/signup");
+          }
+
+        }
+      )
       .catch((err) => console.log(err.message));
   };
 
