@@ -225,7 +225,8 @@
 
   .submitBtn {
     width: 90vw;
-    height: 7vh;
+    height: 8.5vh;
+    max-height: 56px;
     border-radius: 32px;
     color: #FFFFFF;
     background-color: #FF4B4B;

@@ -50,7 +50,8 @@
 
 .info_kakao_box {
   width: 105%;
-  height: 30%;
+  height: 8.5vh;
+  max-height: 56px;
   border: solid 1.5px #ff4b4b;
   border-radius: 24px;
   display: flex;
@@ -68,7 +69,8 @@
 
 .go_home{
     width: 90%;
-    height: 7vh;
+    height: 8.5vh;
+    max-height: 56px;
     background-color: #FF4B4B;
     border-radius: 28px;
     color: #FFFFFF;
