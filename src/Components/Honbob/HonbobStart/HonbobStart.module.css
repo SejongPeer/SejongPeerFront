@@ -171,7 +171,7 @@
   .middle {
     width: 100vw;
     height: 75vh;
-    margin-top: 3vh;
+    margin-top: 2vh;
     background-color: transparent;
     display: flex;
     flex-direction: column;
@@ -209,7 +209,7 @@
     align-items: center;
     justify-content: space-evenly;
     font-weight: 600;
-    margin-top: 9vh;
+    margin-top: 3vh;
     font-size: 2vh;
     width: 80vw;
   }
@@ -231,7 +231,7 @@
     color: #FFFFFF;
     background-color: #FF4B4B;
     font-size: 2.5vh;
-    margin-top: 4vh;
+    margin-top: 5vh;
     font-weight: 600;
     cursor: pointer;
 

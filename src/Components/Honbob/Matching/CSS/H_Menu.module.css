@@ -64,12 +64,11 @@
 }
 
 .menuBtn {
-    font-size: 20px;
+    font-size: 1.1rem;
     font-weight: bold;
     width: 45%;
     aspect-ratio: 1;
     margin-bottom: 1vh;
-    padding-top: 20px;
     border-radius: 40px;
     /* border: 1px solid #e5e5e5; */
     cursor: pointer;
