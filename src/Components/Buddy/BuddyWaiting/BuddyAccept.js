@@ -50,12 +50,13 @@ const BuddyAccept = () => {
 
   // 수락/거절 통신
   const sendResult = (accept) => {
+    console.log('수락?거절?' + accept)
     let acceptInfo = {
-      isAccept : true
+      isAccept : accept
     }
     console.log(JSON.stringify(acceptInfo))
     
-    fetch(process.env.REACT_APP_BACK_SERVER + '/buddyMatching/status', {
+    fetch(process.env.REACT_APP_BACK_SERVER + '/buddy-matching/status', {
         method: 'POST',
         body: JSON.stringify(acceptInfo),
         headers: {
