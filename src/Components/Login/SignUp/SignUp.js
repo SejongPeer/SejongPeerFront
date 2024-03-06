@@ -336,7 +336,8 @@ const SignUp = props => {
                   id="double_major_checkbox"
                   checked={doubleMajorChecked}
                   onChange={e => setDoubleMajorChecked(e.target.checked)}
-                  style={{ marginRight: '10px', marginTop: '15px' }}
+                  style={{ marginRight: '10px', marginTop: '15px',
+                  cursor: 'pointer' }}
                 />
                 <label
                   htmlFor="double_major_checkbox"
