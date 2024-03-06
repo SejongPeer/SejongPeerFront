@@ -199,14 +199,15 @@ const SignUp = props => {
             }
           );
           const data = await response.json();
-          console.log(data);
-          console.log(data.data.errorClassName);
-          errorClassName = data.data.errorClassName;
+          if (data.data !== null) {
+            console.log(data);
+            console.log(data.data.errorClassName);
+            errorClassName = data.data.errorClassName;
 
-          if (!response.ok) {
-            throw new Error(data.message);
+            if (!response.ok) {
+              throw new Error(data.message);
+            }
           }
-
           alert('로그인 페이지로 이동합니다.');
 
           navigate('/login');
@@ -214,10 +215,12 @@ const SignUp = props => {
           //console.error('Error occurred:', err);
           //console.log(err.message);
 
+          console.log("5");
           if (errorClassName == "DUPLICATED_STUDENT_ID" || errorClassName == "DUPLICATED_PHONE_NUMBER") {
             alert("한 학번과 전화번호 당 한 개의 계정만 생성할 수 있습니다.");
           }
           else {
+            console.log("6");
             alert(
               '제출에 실패했습니다. 다시 시도해주세요. (에러 내용: ' +
               err.message +
@@ -227,6 +230,7 @@ const SignUp = props => {
           e.preventDefault();
         }
       } else {
+        console.log(error);
         alert(error);
         e.preventDefault();
       }
@@ -327,7 +331,7 @@ const SignUp = props => {
                 phoneNumberValue={phoneNumberValue}
               />
               <div className={style.Info}>
-              *전화번호로 매칭 정보가 전달됩니다. 정확하게 작성해주세요.             </div>  
+                *전화번호로 매칭 정보가 전달됩니다. 정확하게 작성해주세요.             </div>
               <SignUpElement
                 id="gender"
                 title="성별"
@@ -379,7 +383,7 @@ const SignUp = props => {
                 />
               )}
               <div className={style.Info}>
-              *학과선택은 2024 수강편람을 기준으로 정리되었습니다.              </div>            
+                *학과선택은 2024 수강편람을 기준으로 정리되었습니다.              </div>
               <button
                 type="submit"
                 className={style.submitBtn}
