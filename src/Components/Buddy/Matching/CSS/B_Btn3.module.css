@@ -14,6 +14,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  z-index: 3;
 }
 
 .check {
@@ -37,6 +38,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  z-index: 3;
 }
 
 .second_box {
