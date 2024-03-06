@@ -20,9 +20,6 @@ const FindId = () => {
   };
 
   const isSejong = async() => {
-    console.log(id);
-    console.log(pwd);
-    
     try {
       // 세종어스 확인
       const response1 = await axios
@@ -47,8 +44,6 @@ const FindId = () => {
         studentId : studentNum,
         name : name,
       });
-      console.log(response2.data.data.account);
-      console.log(response2.data);
 
       let findAccount = response2.data.data.account;
       

@@ -31,8 +31,6 @@ const Major = (props) => {
 
     useEffect(() => {
         if (selectedMajor && selectedCollege) {
-            console.log(selectedCollege);
-            console.log(selectedMajor);
             setCollegeValue(selectedCollege);
             setMajorValue(selectedMajor);
             cancelHandler();
@@ -41,8 +39,6 @@ const Major = (props) => {
 
     useEffect(() => {
         if (seletedDoubleC && selectedDoubleM) {
-            console.log(selectedDoubleM);
-            console.log(seletedDoubleC);
             setDoubleCollegeValue(seletedDoubleC);
             setDoubleMajorValue(selectedDoubleM);
             cancelHandler();
@@ -102,11 +98,11 @@ const Major = (props) => {
         })
     );
 
-    if (foundValues.length > 0) {
-        console.log(`찾은 값들: ${foundValues.join(', ')}`);
-    } else {
-        console.log(`${searchContent}은(는) EIE 객체의 값 중에 포함되어 있지 않습니다.`);
-    }
+    // if (foundValues.length > 0) {
+    //     console.log(`찾은 값들: ${foundValues.join(', ')}`);
+    // } else {
+    //     console.log(`${searchContent}은(는) EIE 객체의 값 중에 포함되어 있지 않습니다.`);
+    // }
 
     const Collegeselect = {
         display: isCollegeClicked ? "none" : "block",

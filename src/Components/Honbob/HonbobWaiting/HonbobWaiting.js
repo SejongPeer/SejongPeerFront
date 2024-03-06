@@ -26,7 +26,6 @@ const HonbobWaiting = () => {
         );
   
         const data = await response.json();
-        console.log(data.message);
 
         if (!response.ok) {
           throw new Error(data.message);
@@ -36,7 +35,6 @@ const HonbobWaiting = () => {
         navigate("/main");
   
       } catch (error) {
-        console.error("에러 발생", error);
         console.error(error.message);
         alert("오류가 발생했습니다.");
       }

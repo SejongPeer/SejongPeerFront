@@ -50,11 +50,9 @@ const BuddyAccept = () => {
 
   // 수락/거절 통신
   const sendResult = (accept) => {
-    console.log('수락?거절?' + accept)
     let acceptInfo = {
       isAccept : accept
     }
-    console.log(JSON.stringify(acceptInfo))
     
     fetch(process.env.REACT_APP_BACK_SERVER + '/buddyMatching/status', {
         method: 'POST',
@@ -67,7 +65,6 @@ const BuddyAccept = () => {
     })
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
       if (accept) {
         alert("매칭이 수락되었습니다! \n상대방이 매칭을 수락할 때까지 기다려주세요.");
         navigate('/main');
@@ -90,11 +87,8 @@ const BuddyAccept = () => {
     })
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
       setBuddyMajor(data.data.collegeMajor);
       setBuddyGrade(data.data.grade);
-      console.log(data.data.collegeMajor);
-      console.log(data.data.grade);
     })
     .catch((error) => console.log(error))
   }

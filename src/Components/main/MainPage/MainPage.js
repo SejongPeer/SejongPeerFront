@@ -35,10 +35,6 @@ const MainPage = () => {
           }
         );
         const data = await response.json();
-        console.log(data);
-        console.log(data.message);
-        console.log(data.data);
-        //console.log(response.data);
 
         if (data.data === null || data.data.status === 'CANCEL') {
           navigate('/buddy/start1');
@@ -88,10 +84,7 @@ const MainPage = () => {
           throw new Error('Network response was not ok'); // 응답 상태가 좋지 않을 경우 에러를 발생시킴
         }
         const data = await response.json(); // 주석 해제하여 JSON 응답을 파싱
-        console.log(data);
-        console.log(data.data);
         if (data.data === null || data.data.status === 'CANCEL') {
-          console.log(data.data);
           navigate('/honbob/start1');
         } else if (data.data.status === 'TIME_OUT' || data.data.status === 'EXPIRED') {
           navigate('/honbob/start1');

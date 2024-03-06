@@ -71,10 +71,6 @@ const Agree = () => {
     }
   }
 
-  console.log("agree " + agree);
-  console.log("agree1 " + agree1);
-  console.log("agree2 " + agree2);
-
   const agreeborder = agree ? box.agreebox_agree : box.agreebox;
 
   const agree1border = agree1 ? box.agreebox_agree : box.agreebox;

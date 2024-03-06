@@ -72,29 +72,23 @@ const Buddy_Matching = () => {
   //Final에서
   const slideMove = (page) => {
     const p = page;
-    console.log("페이지 이동 " + p);
     setSlide(p);
   };
 
   //사용자가 입력한 정보
   const GenderChoiceData = (choiceGender) => {
-    console.log("동성이성 : " + choiceGender);
     setChoiceGender(choiceGender);
   };
   const GradeData = (grade) => {
-    console.log("어떤 짝 : " + grade);
     setGrade(grade);
   };
   const MajorData = (major) => {
-    console.log("범위 : " + major);
     setMajor(major);
   };
   const subMajorData = (sub) => {
-    console.log("복수/부전공" + sub);
     setSubMajor(sub);
   }
   const GradeDiffData = (gradeDiff) => {
-    console.log("학년 : " + gradeDiff);
     setGradeDiff(gradeDiff);
   };
 

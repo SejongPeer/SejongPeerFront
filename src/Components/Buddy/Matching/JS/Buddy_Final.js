@@ -92,7 +92,6 @@ const Final = props => {
       gradeOption: buddyGrades,
       isSubMajor: sub,
     };
-    console.log(JSON.stringify(matchingInfo));
 
     try {
       const response = await fetch(
@@ -109,19 +108,16 @@ const Final = props => {
       );
 
       const data = await response.json(); // data 변수를 await로 초기화
-      console.log(data.message);
 
       if (!response.ok) {
         throw new Error(data.message);
       }
 
       alert('제출 성공');
-      console.log(data.message);
       setBuddySubmit(false);
       navigate('/buddy/waiting');
     } catch (error) {
       console.error('Error occurred:', error);
-      console.error(error.message);
       alert(error.message);
       setBuddySubmit(false);
     }

@@ -11,9 +11,7 @@ const InputTextBox = (props) => {
     let inputValue = event.target.value;
     //아이디
     if (props.id === "userId") {
-      console.log("User ID 입력 값:", inputValue); // 사용자 입력 값을 콘솔에 출력
       props.idData(inputValue);
-      console.log(props.idValue);
       if (inputValue.length >= 8) {
         props.errorHandler("");
       } else {
@@ -40,8 +38,6 @@ const InputTextBox = (props) => {
       props.pwdCheckData(inputValue);
 
       const regex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,16}$/;
-      console.log(inputValue);
-      console.log(props.pwdValue);
       if (inputValue !== props.pwdValue) {
         props.errorHandler("동일하게 비밀번호를 입력해 주세요");
       } else if (!regex.test(inputValue)) {
@@ -59,7 +55,6 @@ const InputTextBox = (props) => {
       props.studentNumData(inputValue);
       //학년
     } else if (props.id === "grade") {
-      console.log("학년 입력 값:", inputValue); // 사용자 입력 값을 콘솔에 출력
       props.gradeData(inputValue);
     }//닉네임 
     else if (props.id === "nickname") {

@@ -46,9 +46,6 @@ const MajorSignUp = (props) => {
         event.preventDefault();
     }
 
-    // if (props.id === "double_major") {
-    //     console.log(props.props.doublemajorValue);
-    // }
     return (
         <div className={style.majorSelectionContainer}>
             <button

@@ -28,7 +28,6 @@ const PhoneNumHonbob = (props) => {
     props.sendKakaoData(kakao);
   };
   setKaKaoDD(isKaKaoInput);
-  console.log(KaKaoDD);
 
   const inputKaKaoChange = {
     border: isKaKaoInput ? "1px solid #4F41DE" : "1px solid #ccc",

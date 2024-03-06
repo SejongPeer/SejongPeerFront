@@ -37,11 +37,6 @@ const SignUp = props => {
   const [isIdExist, setIsIdExist] = useState(true);
   const [isNicknameExist, setIsNicknameExist] = useState(true);
 
-
-  useEffect(() => {
-    console.log('isIdExist 상태: ', isIdExist);
-  }, [isIdExist]);
-
   const signUpErrorHandler = error => {
     setError(error);
     if (error === '') {
@@ -128,22 +123,9 @@ const SignUp = props => {
     // 복수전공 체크 여부에 따라 변수 값을 조정
     const finalDoubleCollegeValue = doubleCollegeValue ? doubleCollegeValue : null;
     const finalDoubleMajorValue = doubleMajorChecked ? doublemajorValue : null;
-    console.log('-------------------------------');
-    console.log('idValue : ' + idValue);
-    console.log('pwdValue : ' + pwdValue);
-    console.log('pwdCheckValue : ' + pwdCheckValue);
-    console.log('nameValue : ' + nameValue);
-    console.log('studentNumberValue : ' + studentNumberValue);
-    console.log('gradeValue : ' + gradeValue);
-
-    console.log('nicknameValue : ' + nicknameValue);
-    console.log('kakaoidValue : ' + kakaoidValue);
-    console.log('phoneNumberValue : ' + phoneNumberValue);
-    console.log('genderValue : ' + genderValue);
-    console.log('collegeValue : ' + collegeValue);
-    console.log('majorValue : ' + majorValue);
-    console.log('doubleCollegeValue : ' + finalDoubleCollegeValue);
-    console.log('doublemajorValue : ' + finalDoubleMajorValue);
+    const finalDoubleCollegeValue = doubleMajorChecked
+      ? doubleCollegeValue
+      : null;
 
     let errorClassName = "";
 
@@ -198,8 +180,6 @@ const SignUp = props => {
           );
           const data = await response.json();
           if (data.data !== null) {
-            console.log(data);
-            console.log(data.data.errorClassName);
             errorClassName = data.data.errorClassName;
 
             if (!response.ok) {
@@ -210,6 +190,8 @@ const SignUp = props => {
 
           navigate('/login');
         } catch (err) {
+          console.log(err.message);
+
           if (errorClassName == "DUPLICATED_STUDENT_ID" || errorClassName == "DUPLICATED_PHONE_NUMBER") {
             alert("한 학번과 전화번호 당 한 개의 계정만 생성할 수 있습니다.");
           }
@@ -217,7 +199,6 @@ const SignUp = props => {
             alert("닉네임은 2자 이상 8자 이하 한글, 영어, 숫자만 입력해주세요.");
           }
           else {
-            console.log("6");
             alert(
               ' 실패했습니다. 다시 시도해주세요. (에러 내용: ' +
               err.message +
