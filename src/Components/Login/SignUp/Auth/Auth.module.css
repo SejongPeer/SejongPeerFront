@@ -1,6 +1,6 @@
 @media (min-width: 768px) {
   .container {
-    background-color: #FFF7F7;
+    background-color: #fff7f7;
     display: flex;
     flex-direction: column;
     height: 100vh;
@@ -9,7 +9,7 @@
 
   .innerBox {
     margin-top: 8vh;
-    height: 100vw;
+    height: 100vh;
     width: 28vw;
     /* background-color: #FBE4E4; */
     display: flex;
@@ -70,7 +70,7 @@
 
   .authBtn {
     width: 26vw;
-    height: 6vh;
+    height: 8.5vh;
     border-radius: 35px;
     border: none;
     background-color: #ff4b4b;
@@ -87,7 +87,7 @@
 
 @media (max-width: 768px) {
   .container {
-    background-color: #FFF7F7;
+    background-color: #fff7f7;
     display: flex;
     flex-direction: column;
     height: 100vh;
@@ -95,12 +95,11 @@
   }
 
   .innerBox {
-    margin-top: 8vh;
-    height: 100vw;
+    margin-top: 10vh;
+    height: 100vh;
     width: 28vw;
     /* background-color: #FBE4E4; */
     display: flex;
-    align-items: center;
   }
 
   .auto {
@@ -156,11 +155,13 @@
 
   .authBtn {
     width: 90vw;
-    height: 6vh;
+    height: 8.5vh;
+    max-height: 52px;
     border-radius: 35px;
     border: none;
     background-color: #ff4b4b;
     color: #ffffff;
+    font-weight: 700;
     padding-left: 2vw;
     font-size: 2vh;
   }

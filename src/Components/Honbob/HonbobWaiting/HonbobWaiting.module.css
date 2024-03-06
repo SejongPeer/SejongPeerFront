@@ -51,7 +51,8 @@
   font-size: 2vh;
   font-weight: 700;
   width: 42vh;
-  height: 5.5vh;
+  height: 8.5vh;
+  max-height: 56px;
   margin: 8px;
   border-radius: 40px;
   background-color: #FF4B4B;

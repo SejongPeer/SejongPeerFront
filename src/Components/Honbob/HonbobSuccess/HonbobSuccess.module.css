@@ -6,7 +6,6 @@
         height: 85%;
         background-color: #fafafa;
         align-items: center;
-        justify-content: space-evenly;
     }
 
     .Text {
@@ -99,7 +98,6 @@
         height: 85%;
         background-color: #fafafa;
         align-items: center;
-        justify-content: center;
     }
 
     .Text {
@@ -146,7 +144,8 @@
         border-radius: 24px;
         justify-content: space-between;
         width: 100%;
-        height: 6vh;
+        height: 8.5vh;
+        max-height: 56px;
         align-items: center;
         padding: 0 4vw;
     }
@@ -173,9 +172,10 @@
 
     .moveToHome {
         width: 42vh;
-        height: 6vh;
+        height: 8.5vh;
+        max-height: 56px;
         color: #FFFFFF;
-        margin-top: 8vh;
+        margin-top: 4vh;
         font-size: 2vh;
         font-weight: 600;
         border-radius: 28px;

@@ -26,20 +26,24 @@ const FindId = () => {
     try {
       // 세종어스 확인
       const response1 = await axios
-      .post("/api?method=ClassicSession", {
+      .post(process.env.REACT_APP_BACK_SERVER + '/auth/sejong-auth', {
         id: id,
         pw: pwd,
-      });
-        let nameData = response1.data.result.body.name;
-        setStudentNum(id);
-        setName(nameData);
-        console.log("학번 : " +id);
-        console.log("이름 : "+ nameData);
-        console.log("학번 + 이름 :" + studentNum + name);
+      })
+      .then((response) => {
+        let result = response.data.data.isAuth;
+        if (result === false)
+          alert("아이디 및 비밀번호가 일치하지 않습니다")
+        else if (result === true) {
+          alert("인증 완료!");
+          setStudentNum(id);
+          setName(response.data.data.name);
+        }
+      })
 
       //아이디 찾기
       const response2 = await axios
-      .post(`${process.env.REACT_APP_BACK_SERVER}/member/help/find-account`,{
+      .post(process.env.REACT_APP_BACK_SERVER + '/member/help/find-account',{
         studentId : studentNum,
         name : name,
       });
