@@ -5,6 +5,7 @@ import style from './SignUp.module.css';
 import { MyContext } from '../../../App';
 import IDCheckBox from '../SignUp/IDCheckBox';
 
+
 const SignUp = props => {
   const { name, setName } = useContext(MyContext);
   const { studentNum, setStudentNum } = useContext(MyContext);
@@ -32,6 +33,7 @@ const SignUp = props => {
   const [fadeEffect, setFadeEffect] = useState('');
   const [doubleMajorChecked, setDoubleMajorChecked] = useState(false); // Checkbox state for 복수/부전공
   const navigate = useNavigate();
+
 
   //중복확인 시 응답 받아오는 함수 (true 일 경우 중복된 아이디, false 인 경우 사용 가능한 아이디)
   const [isIdExist, setIsIdExist] = useState(true);

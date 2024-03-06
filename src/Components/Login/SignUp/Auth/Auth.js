@@ -2,14 +2,17 @@ import style from '../Auth/Auth.module.css';
 import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { MyContext } from '../../../../App';
+import Loading from '../../../Loading/Loading';
 import axios from 'axios';
 
 const Auth = () => {
   const [Id, setId] = useState('');
   const [passWord, setPassWord] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
   const isSejong = () => {
+    setLoading(true);
     axios
       .post(process.env.REACT_APP_BACK_SERVER + '/auth/sejong-auth', {
         id: Id,
@@ -31,6 +34,7 @@ const Auth = () => {
             setName(response.data.data.name);
             setGrade(response.data.data.grade);
             setStudentNum(Id);
+            setLoading(false);
             navigate("/login/signup");
           }
 
@@ -94,6 +98,7 @@ const Auth = () => {
             </a>
           </div>
         </div>
+        {loading ? <Loading /> : null}
       </div>
     </div>
   );
