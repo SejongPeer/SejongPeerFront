@@ -25,6 +25,7 @@ jobs:
           touch .env
           echo REACT_APP_BACK_SERVER=${{ secrets.REACT_APP_BACK_SERVER }} >> .env
           echo REACT_APP_KAKAO_KEY=${{ secrets.REACT_APP_KAKAO_KEY }} >> .env
+          echo REACT_APP_SEJONG_AUTH_API_URL=${{ secrets.REACT_APP_SEJONG_AUTH_API_URL }} >> .env
           cat .env
 
       - name: Install Dependencies
@@ -44,8 +45,6 @@ jobs:
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          REACT_APP_BACK_SERVER: ${{ secrets.REACT_APP_BACK_SERVER }}
-          REACT_APP_KAKAO_KEY: ${{ secrets.REACT_APP_KAKAO_KEY }}
         run: |
           aws s3 cp \
             --recursive \
