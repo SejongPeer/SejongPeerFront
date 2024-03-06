@@ -4,7 +4,7 @@ module.exports = function (app) {
   app.use(
     '/api',
     createProxyMiddleware({
-      target: 'https://auth.imsejong.com',
+      target: process.env.REACT_APP_SEJONG_AUTH_API_URL,
       changeOrigin: true,
       pathRewrite: { '/api': '/auth' },
     })
@@ -13,7 +13,7 @@ module.exports = function (app) {
   app.use(
     '/api',
     createProxyMiddleware({
-      target: 'https://www.api-sejongpeer.shop/api/v1',
+      target: process.env.REACT_APP_BACK_SERVER,
       changeOrigin: true,
       pathRewrite: { '/api': '/auth' },
     })
