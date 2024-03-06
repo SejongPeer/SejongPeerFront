@@ -56,7 +56,7 @@ const BuddyAccept = () => {
     }
     console.log(JSON.stringify(acceptInfo))
     
-    fetch(process.env.REACT_APP_BACK_SERVER + '/buddy-matching/status', {
+    fetch(process.env.REACT_APP_BACK_SERVER + '/buddyMatching/status', {
         method: 'POST',
         body: JSON.stringify(acceptInfo),
         headers: {
