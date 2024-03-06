@@ -5,12 +5,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 10vh;
-    background-color: #FFF7F7;
+    margin-top: 8vh;
+    background-color: #fff7f7;
     width: 100vw;
-    height: 112vh;
+    height: 90vh;
   }
-
   .useImg {
     width: 50vh;
     height: 18vh;
@@ -40,7 +39,7 @@
     margin-top: 2vh;
     background-color: white;
     border: 1px solid #e5e5e5;
-    border-radius: 24px;
+    border-radius: 16px;
     background-image: url('../../../Assets/hide.png');
     background-repeat: no-repeat;
     background-position: center center;
@@ -135,10 +134,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 8vh;
-    background-color: #FFF7F7;
+    margin-top: 7vh;
+    background-color: #fff7f7;
     width: 100vw;
-    height: 90vh;
+    height: 85vh;
   }
 
   .useImg {
@@ -223,7 +222,7 @@
     margin-top: 2vh;
     background-color: white;
     border: 1px solid #e5e5e5;
-    border-radius: 24px;
+    border-radius: 16px;
     background-image: url('../../../Assets/hide.png');
     background-repeat: no-repeat;
     background-position: center;
@@ -257,7 +256,7 @@
     font-size: 0.8rem;
     color: #333333;
     font-weight: 700;
-    margin-top: 1vh;
+    margin-top: 5vh;
   }
 
   .report_user_box img {
