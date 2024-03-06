@@ -54,7 +54,6 @@ const MajorSignUp = (props) => {
                 className={style.majorbox}>
                 {isDoubleMajor ? props.doublemajorValue : props.majorValue}
                 <img src={Vector} alt="Select" className={style.vectorImage} />
-
             </button>
         </div>
     );

@@ -22,17 +22,22 @@ const Sejong = () => {
   const isSejong = () => {
     console.log(id);
     console.log(pwd);
+    
     axios
-      .post("/api?method=ClassicSession", {
-        id: id,
-        pw: pwd,
-      })
-      .then(
-        (response) => {
-          // console.log(response.data)
-          let result = response.data.result.is_auth;
-          console.log(response.data.result.body.name);
-          if (result === false)
+    .post(process.env.REACT_APP_BACK_SERVER + '/auth/sejong-auth', {
+      id: id,
+      pw: pwd,
+    }, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(
+      (response) => {
+        console.log(response.data.data);
+
+        let result = response.data.data.isAuth;
+        if (result === false)
             alert("아이디 및 비밀번호가 일치하지 않습니다")
           else if (result === true) {
             console.log("인증성공")
@@ -40,10 +45,9 @@ const Sejong = () => {
             setStudentNum()
             navigate("/login/signup");
           }
-
-        },
-      )
-      .catch((err) => console.log(err.message));
+      }
+    )
+    .catch((err) => console.log(err.message));
   };
 
   return (

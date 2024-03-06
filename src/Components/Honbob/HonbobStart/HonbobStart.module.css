@@ -35,6 +35,7 @@
     font-size: 2vh;
     border: 2px solid #E5E5E5;
     background-color: transparent;
+    color: #333333;
   }
 
   .informImg {
@@ -120,7 +121,7 @@
 @media (max-width: 768px) {
   .Container {
     width: 100vw;
-    height: 100vh;
+    height: 90vh;
     display: flex;
     justify-content: center;
   }
@@ -128,7 +129,7 @@
   .InnerContainer {
     /* width: 450px; */
     width: 100vw;
-    height: 100vh;
+    height: 100%;
     /* background-color: aliceblue; */
     background-color: transparent;
   }
@@ -154,6 +155,7 @@
     font-size: 2vh;
     border: 2px solid #E5E5E5;
     background-color: transparent;
+    color: #333333;
   }
 
   .informImg {
@@ -223,7 +225,8 @@
 
   .submitBtn {
     width: 90vw;
-    height: 7vh;
+    height: 8.5vh;
+    max-height: 56px;
     border-radius: 32px;
     color: #FFFFFF;
     background-color: #FF4B4B;

@@ -1,9 +1,8 @@
 import style from '../Auth/Auth.module.css';
 import { useState, useContext } from 'react';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { MyContext } from '../../../../App';
-
+import axios from 'axios';
 const Auth = () => {
   const [Id, setId] = useState('');
   const [passWord, setPassWord] = useState('');
@@ -41,19 +40,6 @@ const Auth = () => {
       })
       .catch(err => console.log(err.message));
   };
-  // console.log(response.data.result.is_auth);
-  // let result = response.data.result.is_auth;
-  // console.log(response.data.result.body.name);
-  // if (result === true) {
-  //   console.log('인증성공');
-  //   alert('인증성공!!!!');
-  //   setName(response.data.result.body.name);
-  //   setGrade(response.data.result.body.grade);
-  //   setStudentNum(Id);
-  //   navigate('/login/signup');
-  // } else {
-  //   alert('아이디 및 비밀번호가 일치하지 않습니다');
-  // })
 
   const { name, setName } = useContext(MyContext);
   const { studentNum, setStudentNum } = useContext(MyContext);

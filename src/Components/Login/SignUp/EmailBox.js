@@ -104,7 +104,7 @@ const EmailBox = (props) => {
                 props.errorHandler('* 이메일 혹은 인증코드를 확인해주세요');
                 e.preventDefault();
             }
-    };
+    }
 
     //이메일 전송 성공했을시
     const checkNumber = sendEmail ? style.emailBtn : style.emailCheckBtn;

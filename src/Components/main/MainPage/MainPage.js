@@ -5,11 +5,12 @@ import MainHonbob from './MainHonbob';
 import reprot from '../../../Assets/report.png';
 import { useEffect, useState } from 'react';
 import honbobUse from '../../../Assets/honbobUse.png';
+import peerUse from '../../../Assets/peerUse.png';
 import buddyUse from '../../../Assets/buddyUse.png';
 import buddyButton from '../../../Assets/buddyButton.png';
 import honbobButton from '../../../Assets/honbobButton.png';
 
-const images = [honbobUse, buddyUse];
+const images = [honbobUse, buddyUse, peerUse];
 
 const MainPage = () => {
   const navigate = useNavigate();
@@ -92,7 +93,7 @@ const MainPage = () => {
         if (data.data === null || data.data.status === 'CANCEL') {
           console.log(data.data);
           navigate('/honbob/start1');
-        } else if (data.data.status === 'TIME_OUT') {
+        } else if (data.data.status === 'TIME_OUT' || data.data.status === 'EXPIRED') {
           navigate('/honbob/start1');
         } else if (data.data.status === 'IN_PROGRESS') {
           alert('매칭 중입니다!');
@@ -121,12 +122,12 @@ const MainPage = () => {
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setSlideIn(false); // Trigger the slide out animation
+      setSlideIn(false);
       setTimeout(() => {
         setCurrentImageIndex(prevIndex => (prevIndex + 1) % images.length);
-        setSlideIn(true); // Reset to slide in the new image
-      }, 200); // This should be less than your setInterval time
-    }, 2000);
+        setSlideIn(true);
+      }, 200);
+    }, 3500);
 
     return () => clearInterval(timer);
   }, []);
@@ -134,6 +135,7 @@ const MainPage = () => {
   const urls = [
     'https://sejonghonbab.simple.ink/', // 혼밥 이용방법
     'https://sejongbuddy.simple.ink/', // 세종버디 이용방법
+    'https://sejongpeer.simple.ink/' // FAQ
   ];
 
   // 이미지 클릭 이벤트 핸들러, 인덱스에 해당하는 URL로 이동
@@ -171,9 +173,9 @@ const MainPage = () => {
           padding: '2vh',
         }}
       >
-        <img className={style.useImg} 
-        src={images[currentImageIndex]}
-        onClick={() => onImageClick(currentImageIndex)}></img>
+        <img className={style.useImg}
+          src={images[currentImageIndex]}
+          onClick={() => onImageClick(currentImageIndex)}></img>
         <div
           style={{
             display: 'flex',

@@ -1,6 +1,7 @@
 import style from './BuddySuccess.module.css'
 import buddySucces from '../../../Assets/buddySuccess.png'
 import { useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const BuddySuccess = () => {
   const [major, setMajor] = useState('');
@@ -8,6 +9,11 @@ const BuddySuccess = () => {
   const [name, setName] = useState('');
   const [kakao, setKakao] = useState('');
   const isFirstRender = useRef(true);
+  const navigate = useNavigate();
+
+  const goHome = () => {
+    navigate('/main');
+  }
 
   //상태변환
   useEffect(() => {
@@ -56,7 +62,7 @@ const BuddySuccess = () => {
             </div>
         </div>
 
-        <button className={style.go_home}>홈페이지로 이동</button>
+        <button onClick={goHome} className={style.go_home}>홈페이지로 이동</button>
     </div>
 };
 

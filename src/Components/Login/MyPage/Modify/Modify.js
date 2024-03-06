@@ -68,10 +68,10 @@ const Modify = () => {
   };
 
   useEffect(() => {
-    console.log("newPhone ", newPhoneNum);
+    console.log('newPhone ', newPhoneNum);
   }, [newPhoneNum]);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async e => {
     e.preventDefault();
     const KaKaoId = newKaKaoId !== '' ? newKaKaoId : null;
     const PhoneNum = newPhoneNum !== '' ? newPhoneNum : null;
@@ -88,12 +88,12 @@ const Modify = () => {
 
     try {
       const response = await fetch(
-        process.env.REACT_APP_BACK_SERVER + "/member/my-page",
+        process.env.REACT_APP_BACK_SERVER + '/member/my-page',
         {
-          method: "PATCH",
+          method: 'PATCH',
           body: JSON.stringify(modifyData),
           headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
             Authorization: `Bearer ${accessToken}`,
             'Refresh-Token': refreshToken,
           },
@@ -106,6 +106,18 @@ const Modify = () => {
       }
 
       const data = await response.json(); // data 변수를 await로 초기화
+
+
+      if (newKaKaoId !== '') {
+        localStorage.setItem("kakaoAccount", KaKaoId);
+      }
+      if (newPhoneNum !== '') {
+        localStorage.setItem("phoneNumber", PhoneNum);
+      }
+      if (newNickName !== '') {
+        localStorage.setItem("nickname", NickName);
+      }
+
 
       alert("수정 성공");
     } catch (error) {
@@ -150,9 +162,7 @@ const Modify = () => {
                     onBlur={handleInputBlur}
                   />
                 </div>
-                <div
-                  className={styles.IdBox}
-                >
+                <div className={styles.IdBox}>
                   <div className={styles.myInformName}>아이디</div>
                   <input
                     className={styles.myInformInput}
@@ -168,7 +178,7 @@ const Modify = () => {
                     className={styles.myInformInput}
                     placeholder={myPageData.kakaoAccount}
                     value={newKaKaoId}
-                    onFocus={() => handleInputFocus('kakaoId')}
+                    onFocus={() => handleInputFocus('kakaoAccount')}
                     onChange={handleKaKaoId}
                     onBlur={handleInputBlur}
                   />
