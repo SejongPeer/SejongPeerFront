@@ -3,6 +3,7 @@
     background-color: #FFF7F7;
     display: flex;
     flex-direction: column;
+    height: 100vh;
     /* margin: 5rem 0; */
   }
 
@@ -89,6 +90,7 @@
     background-color: #FFF7F7;
     display: flex;
     flex-direction: column;
+    height: 100vh;
     /* margin: 5rem 0; */
   }
 
