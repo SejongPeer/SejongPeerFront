@@ -313,7 +313,7 @@ const SignUp = props => {
               <SignUpElement
                 id="kakaoid"
                 title="카카오톡 아이디"
-                name="카카오톡 아이디 입력"
+                name="카카오톡 아이디 입력(매칭 상대방에게 전달)"
                 kakaoData={kakaoData}
                 signUpErrorHandler={signUpErrorHandler}
                 kakaoidValue={kakaoidValue}
@@ -321,13 +321,13 @@ const SignUp = props => {
               <SignUpElement
                 id="phoneNum"
                 title="전화번호"
-                name="전화번호 -없이 입력"
+                name="전화번호 - 없이 입력"
                 phoneNumData={phoneNumData}
                 signUpErrorHandler={signUpErrorHandler}
                 phoneNumberValue={phoneNumberValue}
               />
               <div className={style.Info}>
-              *전화번호로 매칭 정보가 전달됩니다. 정확하게 작성해주세요.              </div>  
+              *전화번호로 매칭 정보가 전달됩니다. 정확하게 작성해주세요.             </div>  
               <SignUpElement
                 id="gender"
                 title="성별"
@@ -339,7 +339,7 @@ const SignUp = props => {
               <SignUpElement
                 id="major"
                 title="단과대/학과"
-                name="단과대/학과 선택"
+                name="학과를 선택해주세요"
                 majorData={majorData}
                 collegeData={collegeData}
                 signUpErrorHandler={signUpErrorHandler}
@@ -379,8 +379,8 @@ const SignUp = props => {
                 />
               )}
               <div className={style.Info}>
-                *학과선택은 2024 수강편람을 기준으로 정리되었있습니다.
-              </div>            <button
+              *학과선택은 2024 수강편람을 기준으로 정리되었습니다.              </div>            
+              <button
                 type="submit"
                 className={style.submitBtn}
                 onClick={submitHandler}
