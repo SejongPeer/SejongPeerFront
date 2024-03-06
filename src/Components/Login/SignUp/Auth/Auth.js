@@ -14,9 +14,13 @@ const Auth = () => {
     console.log(passWord);
 
     axios
-    .post("/api?method=ClassicSession", {
+    .post('/api?method=ClassicSession', {
       id: Id,
       pw: passWord,
+    }, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
     })
     .then(
       (response) => {
