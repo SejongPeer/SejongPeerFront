@@ -55,8 +55,8 @@ const MainPage = () => {
           alert("매칭중입니다!");
           navigate('/buddy/waiting');
         } else if (data.data.status === 'FOUND_BUDDY') {
-          alert("매칭 성공");
-          navigate('/buddy/success');
+          alert("버디를 찾았습니다!");
+          navigate('/buddy/accept');
         }
 
       } catch (error) {
@@ -89,18 +89,17 @@ const MainPage = () => {
         const data = await response.json(); // 주석 해제하여 JSON 응답을 파싱
         console.log(data);
         console.log(data.data);
-        if (data.data === null) {
-          console.log(data.data)
+        if (data.data === null || data.data.status === 'CANCEL') {
+          console.log(data.data);
           navigate('/honbob/start1');
         } else if (data.data.status === 'TIME_OUT') {
-          alert("매칭 시간이 만료되었습니다! 다시 정보를 입력해주세요!");
           navigate('/honbob/start1');
         } else if (data.data.status === 'IN_PROGRESS') {
           alert('매칭 중입니다!');
           navigate('/honbob/waiting');
         } else if (data.data.status === 'MATCHING_COMPLETED') {
           alert('매칭에 성공했습니다!');
-          navigate('/honbob/accept');
+          navigate('/honbob/success');
         }
       } catch (error) {
         console.error('에러 체크:', error);

@@ -111,7 +111,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 2vh;
   }
 
   .topInnerBox {
@@ -166,6 +165,6 @@
 
   .authA {
     margin-top: 1vh;
-    color: #333333;
+    color: #777777;
   }
 }

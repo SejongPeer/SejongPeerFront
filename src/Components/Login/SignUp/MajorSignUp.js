@@ -1,6 +1,6 @@
 import { useContext, useEffect } from 'react';
 import { MyContext } from '../../../App';
-
+import Vector from '../../../Assets/Vector.png'
 import style from './InputTextBox.module.css';
 
 const MajorSignUp = (props) => {
@@ -47,16 +47,16 @@ const MajorSignUp = (props) => {
     }
 
 
-    return (isDoubleMajor ? (
-        <button
-            onClick={DoubleMajorHandler}
-            className={style.majorbox}>{props.doublemajorValue}</button>
-    ) : (
-        <button
-            onClick={onClickHandler}
-            className={style.majorbox}>{props.majorValue}</button>
-    )
+    return (
+        <div className={style.majorSelectionContainer}>
+            <button
+                onClick={onClickHandler}
+                className={style.majorbox}>
+                {isDoubleMajor ? props.doublemajorValue : props.majorValue}
+                <img src={Vector} alt="Select" className={style.vectorImage} />
 
+            </button>
+        </div>
     );
 };
 

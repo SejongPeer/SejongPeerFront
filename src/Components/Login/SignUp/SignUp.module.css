@@ -1,6 +1,6 @@
 .entire_Container {
   width: 100vw;
-  height: 200vh;
+  height: 100vh;
   background-color: #FFF7F7;
   display: flex;
   flex-direction: column;
@@ -26,6 +26,7 @@
   overflow: scroll;
   margin: auto;
 }
+
 @media (min-height: 1000px) {
   .form {
     display: flex;
@@ -40,7 +41,6 @@
   font-weight: 700;
   font-size: 18px;
   margin-top: 0; 
-
 }
 
 @media (min-width: 420px) {
@@ -73,6 +73,7 @@
   font-weight: 500;
   line-height: 1px; 
   letter-spacing: -0.333px;
+  cursor: pointer;
 }
 
 .special-gap {
@@ -94,6 +95,15 @@
 }
 
 .transition-effect {
-  transition: opacity 0.5s ease-out; /* opacity 변화에 대한 전환 효과 적용 */
+  transition: opacity 0.5s ease-out; 
 }
+
+.Info {
+  color:gray;
+  font-weight: 500;
+  font-size: 12.5px;
+  margin: 6px 0px;
+}
+
+
 
