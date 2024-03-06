@@ -38,11 +38,9 @@ const NickNameBox = (props) => {
                 if (data.data.isExist) {
                     alert('중복되는 닉네임 입니다. 다른 닉네임을 입력하세요.');
                     props.errorHandler("중복되는 아이디 입니다. 다른 아이디를 입력하세요");
-                    console.log("중복된 닉네임. : " + data.data.isExist);
                     props.nicknameExistHandler(true);
                 } else {
                     alert('사용 가능한 닉네임입니다.');
-                    console.log("사용 가능한 닉네임. : " + data.data.isExist);
                     props.nicknameExistHandler(false);
                 }
             } catch (error) {

@@ -19,10 +19,7 @@ const Sejong = () => {
   const { name, setName } = useContext(MyContext);
   const { studentNum, setStudentNum } = useContext(MyContext);
 
-  const isSejong = () => {
-    console.log(id);
-    console.log(pwd);
-    
+  const isSejong = () => {  
     axios
     .post(process.env.REACT_APP_BACK_SERVER + '/auth/sejong-auth', {
       id: id,
@@ -34,13 +31,10 @@ const Sejong = () => {
     })
     .then(
       (response) => {
-        console.log(response.data.data);
-
         let result = response.data.data.isAuth;
         if (result === false)
             alert("아이디 및 비밀번호가 일치하지 않습니다")
           else if (result === true) {
-            console.log("인증성공")
             setName(response.data.result.body.name)
             setStudentNum()
             navigate("/login/signup");

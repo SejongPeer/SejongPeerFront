@@ -10,9 +10,6 @@ const Auth = () => {
 
   const navigate = useNavigate();
   const isSejong = () => {
-    console.log(Id);
-    console.log(passWord);
-
     axios
       .post(process.env.REACT_APP_BACK_SERVER + '/auth/sejong-auth', {
         id: Id,

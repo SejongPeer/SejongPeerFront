@@ -18,12 +18,6 @@ const ResetPwd = () => {
   const findAccount = location.state?.findAccount;
   const studentNum = location.state?.studentNum;
 
-  // Component가 마운트 console.log 데이터를 출력
-  useEffect(() => {
-    console.log('findAccount:', findAccount);
-    console.log('studentId:' ,studentNum);
-  }, [findAccount, studentNum]);
-
   const resetPwdHandler = () => {
     if (inputPwd === inputPwd2) {
       axios
@@ -33,10 +27,10 @@ const ResetPwd = () => {
         password: inputPwd,
         passwordCheck: inputPwd2,
       })
-      .then((response) => console.log(response.data),
-      alert("비밀번호 변경이 정상적으로 이루어 졌습니다."),
-      navigate("/login")
-      )
+      .then((response) => {
+        alert("비밀번호 변경이 정상적으로 이루어 졌습니다."),
+        navigate("/login")
+      })
       .catch((err) => console.log(err.data));
 
     } else {

@@ -43,7 +43,7 @@ const MyPage = () => {
   };
   // 로그아웃
   const handleLogout = () => {
-    response => console.log(response),
+    response =>
       localStorage.removeItem('userId'),
       localStorage.removeItem('birth'),
       localStorage.removeItem('gender'),
@@ -92,15 +92,12 @@ const MyPage = () => {
 
         if (response.status === 200) {
           setMyPageData(response.data.data);
-          console.log(response.data);
-          console.log(response.data.data.name);
         } else {
           // Handle response error
           throw new Error('Failed to fetch my page data');
         }
       } catch (error) {
-        console.error('Error fetching my page data:', error);
-        alert('Error fetching your information. Please try again.');
+        console.error(error);
       }
     };
 
@@ -125,10 +122,6 @@ const MyPage = () => {
         }
       );
       const data = await response.json();
-      console.log(data);
-      console.log(data.message);
-      console.log(data.data);
-      //console.log(response.data);
 
       if (data.data === null || data.data.status === 'CANCEL') {
         navigate('/buddy/start1');
@@ -173,21 +166,16 @@ const MyPage = () => {
         throw new Error('Network response was not ok'); // 응답 상태가 좋지 않을 경우 에러를 발생시킴
       }
       const data = await response.json(); // 주석 해제하여 JSON 응답을 파싱
-      console.log(data);
-      console.log(data.data);
-      if (data.data === null || data.data.status === 'TIME_OUT') {
-        console.log(data.data)
-        alert("아직 신청을 하지 않았습니다. 매칭 정보를 입력해 주세요!")
-        navigate('/honbob/matching');
+      if (data.data === null || data.data.status === 'CANCEL') {
+        navigate('/honbob/start1');
+      } else if (data.data.status === 'TIME_OUT' || data.data.status === 'EXPIRED') {
+        navigate('/honbob/start1');
       } else if (data.data.status === 'IN_PROGRESS') {
         alert('매칭 중입니다!');
         navigate('/honbob/waiting');
       } else if (data.data.status === 'MATCHING_COMPLETED') {
         alert('매칭에 성공했습니다!');
         navigate('/honbob/success');
-      } else if (data.data.status === 'FOUND_BUDDY') {
-        alert("버디를 찾았습니다!");
-        navigate('/buddy/accept');
       }
     } catch (error) {
       console.error('에러 체크:', error);

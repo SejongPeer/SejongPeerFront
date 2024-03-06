@@ -35,9 +35,6 @@ const SignIn = () => {
       password: pwd,
     };
 
-    console.log(id);
-    console.log(pwd);
-
     try {
       const response = await fetch(
         process.env.REACT_APP_BACK_SERVER + "/auth/sign-in",
@@ -57,8 +54,6 @@ const SignIn = () => {
       }
 
       const data = await response.json(); // data 변수를 await로 초기화
-
-      console.log(data)
 
       // 로그인 성공 후, 로컬 스토리지에 저장
       localStorage.setItem("userId", id);
@@ -81,7 +76,6 @@ const SignIn = () => {
       alert("로그인 성공 메인페이지로 이동합니다.");
       navigate("/main");
     } catch (error) {
-      console.error("Error occurred:", error);
       console.error(error.message);
       //alert(error.message);
       e.preventDefault();

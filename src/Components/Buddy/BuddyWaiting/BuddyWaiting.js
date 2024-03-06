@@ -55,17 +55,14 @@ const BuddyWaiting = ()=>{
           );
     
           const data = await response.json(); // data 변수를 await로 초기화
-          console.log(data.message);
     
           if (!response.ok) {
             throw new Error(data.message);
           }
     
           alert("버디 신청이 취소되었습니다.");
-          console.log(data.message);
           navigate("/main");
         } catch (error) {
-          console.error(error.message);
           console.log(error.message);
           alert("오류가 발생했습니다.");
         }

@@ -28,7 +28,6 @@ const HonbobSuccess = () => {
           })
           .then((response) => response.json())
           .then((data) => {
-            console.log(data);
             setMajor(data.data.collegeMajor);
             setGrade(data.data.grade);
             setName(data.data.name);
@@ -44,10 +43,6 @@ const HonbobSuccess = () => {
             } else {
                 setMenu('상관없음');
             }
-            console.log(data.data.collegeMajor);
-            console.log(data.data.grade);
-            console.log(data.data.name);
-            console.log(data.data.kakaoAccount);
           })
           .catch((error) => console.log(error))
     };
