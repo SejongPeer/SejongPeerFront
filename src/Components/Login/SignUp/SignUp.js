@@ -123,10 +123,6 @@ const SignUp = props => {
     // 복수전공 체크 여부에 따라 변수 값을 조정
     const finalDoubleCollegeValue = doubleCollegeValue ? doubleCollegeValue : null;
     const finalDoubleMajorValue = doubleMajorChecked ? doublemajorValue : null;
-    const finalDoubleCollegeValue = doubleMajorChecked
-      ? doubleCollegeValue
-      : null;
-
     let errorClassName = "";
 
     if (
@@ -191,11 +187,10 @@ const SignUp = props => {
           navigate('/login');
         } catch (err) {
           console.log(err.message);
-
           if (errorClassName == "DUPLICATED_STUDENT_ID" || errorClassName == "DUPLICATED_PHONE_NUMBER") {
             alert("한 학번과 전화번호 당 한 개의 계정만 생성할 수 있습니다.");
           }
-          else if(errorClassName == "MethodArgumentNotValidException" ){
+          else if (errorClassName == "MethodArgumentNotValidException") {
             alert("닉네임은 2자 이상 8자 이하 한글, 영어, 숫자만 입력해주세요.");
           }
           else {
@@ -340,7 +335,8 @@ const SignUp = props => {
                   id="double_major_checkbox"
                   checked={doubleMajorChecked}
                   onChange={e => setDoubleMajorChecked(e.target.checked)}
-                  style={{ marginRight: '10px', marginTop: '15px' }}
+                  style={{ marginRight: '10px', marginTop: '15px',
+                  cursor: 'pointer' }}
                 />
                 <label
                   htmlFor="double_major_checkbox"

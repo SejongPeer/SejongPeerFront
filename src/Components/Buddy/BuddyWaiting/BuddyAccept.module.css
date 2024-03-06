@@ -63,6 +63,7 @@
     font-size: 1.3rem;
     font-weight: 700;
     background-color: #FFFFFF;
+    cursor: pointer;
 }
 .accept_btn {
     width: 45%;
@@ -72,4 +73,5 @@
     font-size: 1.3rem;
     font-weight: 700;
     background-color: #FF4B4B;
+    cursor: pointer;
 }
