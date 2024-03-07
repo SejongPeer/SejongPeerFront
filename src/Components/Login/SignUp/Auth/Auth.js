@@ -24,8 +24,6 @@ const Auth = () => {
       })
       .then(
         (response) => {
-          //console.log(response.data.data);
-
           let result = response.data.data.isAuth;
           if (result === false)
             alert("아이디 및 비밀번호가 일치하지 않습니다")
@@ -37,7 +35,7 @@ const Auth = () => {
             setLoading(false);
             navigate("/login/signup");
           }
-
+          setLoading(false);
         }
       )
       .catch((err) => console.log(err.message));
