@@ -72,7 +72,7 @@ const SignUpElement = props => {
           majorData={props.majorData}
           collegeData={props.collegeData}
           collegeValue={props.collegeValue}
-          majorValue={props.majorValue}  
+          majorValue={props.majorValue}
         />
       ) : isDoubleMajor ? (
         <MajorSignUp

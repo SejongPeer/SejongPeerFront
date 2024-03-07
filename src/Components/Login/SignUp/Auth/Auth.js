@@ -34,6 +34,9 @@ const Auth = () => {
             setStudentNum(Id);
             setLoading(false);
             navigate("/login/signup");
+            localStorage.setItem('name', name)
+            localStorage.setItem('grade', grade)
+            localStorage.setItem('studentId', Id)
           }
           setLoading(false);
         }
@@ -53,53 +56,53 @@ const Auth = () => {
   };
   return (
     <div className={style.entire_Container}>
-    <div className={style.container}>
-      <div className={style.innerBox}>
-        <div className={style.auto}>
-          <div className={style.topBox}>
-            <div className={style.topInnerBox}>
-              <div style={{ fontSize: '2.5vh', fontWeight: '700' }}>
-                세종대학교 학생 인증
-              </div>
-              <div style={{ fontSize: '1.8vh', fontWeight: '500' }}>
-                세종대학교 통합 로그인을 통해 인증합니다.
-              </div>
-              <div style={{ fontSize: '1.8vh', fontWeight: '500' }}>
-                (세종대학교 포털 ID/PW)
+      <div className={style.container}>
+        <div className={style.innerBox}>
+          <div className={style.auto}>
+            <div className={style.topBox}>
+              <div className={style.topInnerBox}>
+                <div style={{ fontSize: '2.5vh', fontWeight: '700' }}>
+                  세종대학교 학생 인증
+                </div>
+                <div style={{ fontSize: '1.8vh', fontWeight: '500' }}>
+                  세종대학교 통합 로그인을 통해 인증합니다.
+                </div>
+                <div style={{ fontSize: '1.8vh', fontWeight: '500' }}>
+                  (세종대학교 포털 ID/PW)
+                </div>
               </div>
             </div>
+            <div className={style.inputBox}>
+              <input
+                className={style.inputContent}
+                type="text"
+                placeholder="포털 로그인 아이디(학번)"
+                onChange={handleId}
+              />
+              <input
+                className={style.inputContent}
+                type="password"
+                placeholder="포털 로그인 비밀번호"
+                onChange={handlePassWord}
+              />
+            </div>
+            <div className={style.authBox}>
+              <button className={style.authBtn} onClick={isSejong}>
+                통합 로그인 인증
+              </button>
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                className={style.authA}
+                href="http://portal.sejong.ac.kr"
+              >
+                http://portal.sejong.ac.kr
+              </a>
+            </div>
           </div>
-          <div className={style.inputBox}>
-            <input
-              className={style.inputContent}
-              type="text"
-              placeholder="포털 로그인 아이디(학번)"
-              onChange={handleId}
-            />
-            <input
-              className={style.inputContent}
-              type="password"
-              placeholder="포털 로그인 비밀번호"
-              onChange={handlePassWord}
-            />
-          </div>
-          <div className={style.authBox}>
-            <button className={style.authBtn} onClick={isSejong}>
-              통합 로그인 인증
-            </button>
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
-              className={style.authA}
-              href="http://portal.sejong.ac.kr"
-            >
-              http://portal.sejong.ac.kr
-            </a>
-          </div>
+          {loading ? <Loading /> : null}
         </div>
-        {loading ? <Loading /> : null}
       </div>
-    </div>
     </div>
   );
 };
