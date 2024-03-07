@@ -2,14 +2,17 @@ import style from '../Auth/Auth.module.css';
 import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { MyContext } from '../../../../App';
+import Loading from '../../../Loading/Loading';
 import axios from 'axios';
 
 const Auth = () => {
   const [Id, setId] = useState('');
   const [passWord, setPassWord] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
   const isSejong = () => {
+    setLoading(true);
     axios
       .post(process.env.REACT_APP_BACK_SERVER + '/auth/sejong-auth', {
         id: Id,
@@ -21,19 +24,18 @@ const Auth = () => {
       })
       .then(
         (response) => {
-          console.log(response.data.data);
-
           let result = response.data.data.isAuth;
           if (result === false)
             alert("아이디 및 비밀번호가 일치하지 않습니다")
           else if (result === true) {
-            alert("인증 완료!");
+            alert("인증 완료");
             setName(response.data.data.name);
             setGrade(response.data.data.grade);
             setStudentNum(Id);
+            setLoading(false);
             navigate("/login/signup");
           }
-
+          setLoading(false);
         }
       )
       .catch((err) => console.log(err.message));
@@ -50,6 +52,7 @@ const Auth = () => {
     setPassWord(e.target.value);
   };
   return (
+    <div className={style.entire_Container}>
     <div className={style.container}>
       <div className={style.innerBox}>
         <div className={style.auto}>
@@ -94,7 +97,9 @@ const Auth = () => {
             </a>
           </div>
         </div>
+        {loading ? <Loading /> : null}
       </div>
+    </div>
     </div>
   );
 };

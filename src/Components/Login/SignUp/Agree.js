@@ -1,9 +1,9 @@
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import check from "../../../Assets/check2.png";
-import check2 from "../../../Assets/check3.png";
-import box from "./Agree.module.css";
-import sub from "./SignUp.module.css";
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import check from '../../../Assets/check2.png';
+import check2 from '../../../Assets/check3.png';
+import box from './Agree.module.css';
+import sub from './SignUp.module.css';
 
 const Agree = () => {
   const [agree, setAgree] = useState(false);
@@ -64,12 +64,12 @@ const Agree = () => {
   // };
   const moveToAuth = () => {
     if (agree !== true) {
-      alert("모두 동의를 해야 회원가입이 가능합니다.");
+      alert('모두 동의를 해야 회원가입이 가능합니다.');
     } else {
-      navigate("/login/auth");
+      navigate('/login/auth');
       // navigate("/checksejong");
     }
-  }
+  };
 
   const agreeborder = agree ? box.agreebox_agree : box.agreebox;
 
@@ -79,56 +79,56 @@ const Agree = () => {
 
   return (
     <div className={box.entire_Container}>
-    <div className={box.container}>
-      <div className={box.auto}>
-        <div className={box.inputText}>
-          <span className={box.text}>전체 약관 동의</span>
-          <button className={agreeborder} onClick={agreeHandler}>
-            {agree ? (
-              <img src={check2} className={box.agree} alt="check2" />
-            ) : (
-              <img src={check} className={box.agree} alt="check" />
-            )}
-          </button>
-        </div>
-
-        <div className={box.flex}>
-          <div className={box.left}>
-            <p className={box.essential}>[필수]</p>
-            <Link to={"/personalinfo"} className={box.link} target="_blank">
-              개인정보 수집 동의 &gt;
-            </Link>
+      <div className={box.container}>
+        <div className={box.auto}>
+          <div className={box.inputText}>
+            <span className={box.text}>전체 약관 동의</span>
+            <button className={agreeborder} onClick={agreeHandler}>
+              {agree ? (
+                <img src={check2} className={box.agree} alt="check2" />
+              ) : (
+                <img src={check} className={box.agree} alt="check" />
+              )}
+            </button>
           </div>
-          <button className={agree1border} onClick={agree1Handler}>
-            {agree1 ? (
-              <img src={check2} className={box.agree} alt="check2" />
-            ) : (
-              <img src={check} className={box.agree} alt="check" />
-            )}
-          </button>
-        </div>
 
-        <div className={box.flex}>
-          <div className={box.left}>
-            <p className={box.essential}>[필수]</p>
-            <Link to={"/useinfo"} className={box.link} target="_blank">
-              이용약관 동의 &gt;
-            </Link>
+          <div className={box.flex}>
+            <div className={box.left}>
+              <p className={box.essential}>[필수]</p>
+              <Link to={'/personalinfo2'} className={box.link} target="_blank">
+                개인정보 수집 동의 &gt;
+              </Link>
+            </div>
+            <button className={agree1border} onClick={agree1Handler}>
+              {agree1 ? (
+                <img src={check2} className={box.agree} alt="check2" />
+              ) : (
+                <img src={check} className={box.agree} alt="check" />
+              )}
+            </button>
           </div>
-          <button className={agree2border} onClick={agree2Handler}>
-            {agree2 ? (
-              <img src={check2} className={box.agree} alt="check2" />
-            ) : (
-              <img src={check} className={box.agree} alt="check" />
-            )}
+
+          <div className={box.flex}>
+            <div className={box.left}>
+              <p className={box.essential}>[필수]</p>
+              <Link to={'/useinfo'} className={box.link} target="_blank">
+                이용약관 동의 &gt;
+              </Link>
+            </div>
+            <button className={agree2border} onClick={agree2Handler}>
+              {agree2 ? (
+                <img src={check2} className={box.agree} alt="check2" />
+              ) : (
+                <img src={check} className={box.agree} alt="check" />
+              )}
+            </button>
+          </div>
+
+          <button onClick={moveToAuth} className={sub.submitBtn}>
+            동의 및 회원가입
           </button>
         </div>
-
-        <button onClick={moveToAuth} className={sub.submitBtn}>
-          동의 및 회원가입
-        </button>
       </div>
-    </div>
     </div>
   );
 };

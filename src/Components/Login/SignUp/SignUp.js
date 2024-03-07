@@ -5,6 +5,7 @@ import style from './SignUp.module.css';
 import { MyContext } from '../../../App';
 import IDCheckBox from '../SignUp/IDCheckBox';
 
+
 const SignUp = props => {
   const { name, setName } = useContext(MyContext);
   const { studentNum, setStudentNum } = useContext(MyContext);
@@ -32,6 +33,7 @@ const SignUp = props => {
   const [fadeEffect, setFadeEffect] = useState('');
   const [doubleMajorChecked, setDoubleMajorChecked] = useState(false); // Checkbox state for 복수/부전공
   const navigate = useNavigate();
+
 
   //중복확인 시 응답 받아오는 함수 (true 일 경우 중복된 아이디, false 인 경우 사용 가능한 아이디)
   const [isIdExist, setIsIdExist] = useState(true);
@@ -220,7 +222,7 @@ const SignUp = props => {
               {/* <IDCheckBox idData={idData} errorHandler={signUpErrorHandler} setIsIdExist={setIsIdExist} /> */}
               <SignUpElement
                 id="userId"
-                title="아이디 입력"
+                title="아이디 입력(4자 이상 24자 이하)"
                 name="아이디 입력"
                 idData={idData}
                 signUpErrorHandler={signUpErrorHandler}
@@ -231,7 +233,7 @@ const SignUp = props => {
               <div className="special-gap">
                 <SignUpElement
                   id="pwd"
-                  title="비밀번호(10자이상의 영문, 숫자)"
+                  title="비밀번호(10자 이상의 영문, 숫자)"
                   name="비밀번호 입력"
                   pwdData={pwdData}
                   signUpErrorHandler={signUpErrorHandler}
