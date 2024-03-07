@@ -71,7 +71,7 @@ const IDCheckBox = props => {
           className={style.inputText}
           value={props.idValue}
           onChange={handleUsernameChange}
-          placeholder="아이디를 입력하세요 (8자 이상)"
+          placeholder="아이디를 입력하세요"
         />
         <button
           className={style.idcheckBtn}
