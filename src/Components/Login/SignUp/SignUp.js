@@ -222,7 +222,7 @@ const SignUp = props => {
               {/* <IDCheckBox idData={idData} errorHandler={signUpErrorHandler} setIsIdExist={setIsIdExist} /> */}
               <SignUpElement
                 id="userId"
-                title="아이디 입력"
+                title="아이디 입력(4자 이상 24자 이하)"
                 name="아이디 입력"
                 idData={idData}
                 signUpErrorHandler={signUpErrorHandler}
@@ -233,7 +233,7 @@ const SignUp = props => {
               <div className="special-gap">
                 <SignUpElement
                   id="pwd"
-                  title="비밀번호(10자이상의 영문, 숫자)"
+                  title="비밀번호(10자 이상의 영문, 숫자)"
                   name="비밀번호 입력"
                   pwdData={pwdData}
                   signUpErrorHandler={signUpErrorHandler}
