@@ -14,14 +14,14 @@ const NickNameBox = (props) => {
     const checkNicknameDuplicate = async () => {
         //닉네임 최소 2자, 8자 이하
         if (nickname.length < 2 || nickname.length > 8) {
-            props.errorHandler("닉네임은 2자 이상, 8자 아내로 작성해주세요");
+            props.errorHandler("닉네임은 2자 이상, 8자 이내로 작성해주세요");
 
         } else {
             props.errorHandler("");
         }
-       //닉네임 최소 2자, 8자 이하
-        if (nickname.length < 2 || nickname.length > 8 ) {
-            alert('닉네임은 2자 이상, 8자 아내로 작성해주세요');
+        //닉네임 최소 2자, 8자 이하
+        if (nickname.length < 2 || nickname.length > 8) {
+            alert('닉네임은 2자 이상, 8자 이내로 작성해주세요');
         }
         else {
             try {
