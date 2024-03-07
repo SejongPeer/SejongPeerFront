@@ -9,6 +9,8 @@ const InputTextBox = props => {
   const isPhone = props.id === 'phoneNum';
 
   const inputHandler = event => {
+    const regex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d!@#$%^&*\-=+|;:'",.?/~]*$/;
+
     let inputValue = event.target.value;
     //아이디
     if (props.id === 'userId') {
@@ -22,7 +24,7 @@ const InputTextBox = props => {
     } else if (props.id === 'pwd') {
       props.pwdData(inputValue);
       // 영어와 숫자를 모두 포함하는지 확인하는 정규 표현식
-      const regex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d!@#$%^&*\-=+|;:'",.?/~]*$/;
+
       if (inputValue.length >= 10) {
         if (regex.test(inputValue)) {
           props.errorHandler('');
@@ -38,7 +40,6 @@ const InputTextBox = props => {
     } else if (props.id === 'pwdCheck') {
       props.pwdCheckData(inputValue);
 
-      const regex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d!@#$%^&*\-=+|;:'",.?/~]*$/;
       if (inputValue !== props.pwdValue) {
         props.errorHandler('동일하게 비밀번호를 입력해 주세요');
       } else if (!regex.test(inputValue)) {
