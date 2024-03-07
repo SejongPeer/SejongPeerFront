@@ -32,7 +32,7 @@ const FindId = () => {
         if (result === false)
           alert("아이디 및 비밀번호가 일치하지 않습니다")
         else if (result === true) {
-          alert("인증 완료!");
+          alert("인증 완료");
           setStudentNum(id);
           setName(response.data.data.name);
         }

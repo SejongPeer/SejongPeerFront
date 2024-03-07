@@ -73,7 +73,7 @@ const SignIn = () => {
       localStorage.setItem("accessToken", data.data.accessToken);
       localStorage.setItem("refreshToken", data.data.refreshToken);
 
-      alert("로그인 성공 메인페이지로 이동합니다.");
+      //alert("로그인 성공 메인페이지로 이동합니다.");
       navigate("/main");
     } catch (error) {
       console.error(error.message);

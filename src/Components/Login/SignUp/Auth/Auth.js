@@ -30,7 +30,7 @@ const Auth = () => {
           if (result === false)
             alert("아이디 및 비밀번호가 일치하지 않습니다")
           else if (result === true) {
-            alert("인증 완료!");
+            alert("인증 완료");
             setName(response.data.data.name);
             setGrade(response.data.data.grade);
             setStudentNum(Id);
