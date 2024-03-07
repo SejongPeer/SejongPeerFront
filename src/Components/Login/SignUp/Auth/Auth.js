@@ -24,7 +24,7 @@ const Auth = () => {
       })
       .then(
         (response) => {
-          console.log(response.data.data);
+          //console.log(response.data.data);
 
           let result = response.data.data.isAuth;
           if (result === false)
@@ -54,6 +54,7 @@ const Auth = () => {
     setPassWord(e.target.value);
   };
   return (
+    <div className={style.entire_Container}>
     <div className={style.container}>
       <div className={style.innerBox}>
         <div className={style.auto}>
@@ -100,6 +101,7 @@ const Auth = () => {
         </div>
         {loading ? <Loading /> : null}
       </div>
+    </div>
     </div>
   );
 };
