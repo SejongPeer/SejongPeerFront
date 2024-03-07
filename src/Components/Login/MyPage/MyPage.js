@@ -54,8 +54,8 @@ const MyPage = () => {
       localStorage.removeItem('studentId'),
       localStorage.removeItem('accessToken'),
       localStorage.removeItem('refreshToken'),
-      console.log('로그아웃 성공!'),
-      alert('로그아웃 되었습니다!'),
+      console.log('로그아웃 성공'),
+      alert('로그아웃 되었습니다'),
       navigate('/main');
   };
 
