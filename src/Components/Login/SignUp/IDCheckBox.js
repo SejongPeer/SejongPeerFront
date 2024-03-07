@@ -22,16 +22,21 @@ const IDCheckBox = props => {
     return regexp.test(username);
   };
 
+  const validateAccountMsg =
+    '아이디는 공백없이 4자 이상 24자 이하로 작성해주세요';
+  const existAccountMsg = '중복되는 아이디 입니다. 다른 아이디를 입력하세요';
+  const availableAccountMsg = '사용 가능한 아이디입니다.';
+
   // 아이디 중복 확인 요청을 처리하는 핸들러
   const checkUsernameDuplicate = async () => {
     if (!isValidUsername(username)) {
-      props.errorHandler('아이디는 공백없이 4자 이상 24자 이하로 작성해주세요');
+      props.errorHandler(validateAccountMsg);
     } else {
       props.errorHandler('');
     }
     //아이디 영어+숫자 최소 4자 이상 24자 이하
     if (!isValidUsername(username)) {
-      alert('아이디는 공백없이 4자 이상 24자 이하로 작성해주세요');
+      alert(validateAccountMsg);
     } else {
       try {
         // 서버에 아이디 중복 확인 요청.
@@ -44,14 +49,12 @@ const IDCheckBox = props => {
         const data = await response.json();
 
         if (data.data.isExist) {
-          alert('중복되는 아이디 입니다. 다른 아이디를 입력하세요');
-          props.errorHandler(
-            '중복되는 아이디 입니다. 다른 아이디를 입력하세요'
-          );
+          alert(existAccountMsg);
+          props.errorHandler(existAccountMsg);
           props.idExistHandler(true);
         } else {
-          alert('사용 가능한 아이디입니다.');
-          RightIdHandler('사용 가능한 아이디 입니다.');
+          alert(availableAccountMsg);
+          RightIdHandler(availableAccountMsg);
           props.idExistHandler(false); // 아이디가 존재 X 사용 O
         }
       } catch (error) {

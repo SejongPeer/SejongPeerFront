@@ -14,21 +14,22 @@ const NickNameBox = props => {
     const regexp = /^[a-zA-Z가-힣ㄱ-ㅎㅏ-ㅣ0-9]{2,8}$/;
     return regexp.test(nickname);
   }
+  const validateNicknameMsg =
+    '공백없이 2자 이상 8자 이하 한글, 영어, 숫자만 작성해주세요.';
+  const existNicknameMsg = '중복되는 닉네임 입니다. 다른 닉네임을 입력하세요.';
 
   // 닉네임 중복 확인 요청을 처리 핸들러
   const checkNicknameDuplicate = async () => {
     // 사용 예시
     if (!isValidNickname(nickname)) {
-      props.errorHandler(
-        '공백없이 2자 이상 8자 이하 한글, 영어, 숫자만 작성해주세요.'
-      );
+      props.errorHandler(validateNicknameMsg);
     } else {
       props.errorHandler('');
     }
 
     //닉네임 최소 2자, 8자 이하
     if (!isValidNickname(nickname)) {
-      alert('공백없이 2자 이상 8자 이하 한글, 영어, 숫자만 작성해주세요.');
+      alert(validateNicknameMsg);
     } else {
       try {
         const response = await fetch(
@@ -42,10 +43,8 @@ const NickNameBox = props => {
 
         // 서버로부터 받은 응답을 바탕으로 중복 여부
         if (data.data.isExist) {
-          alert('중복되는 닉네임 입니다. 다른 닉네임을 입력하세요.');
-          props.errorHandler(
-            '중복되는 아이디 입니다. 다른 아이디를 입력하세요'
-          );
+          alert(existNicknameMsg);
+          props.errorHandler(existNicknameMsg);
           props.nicknameExistHandler(true);
         } else {
           alert('사용 가능한 닉네임입니다.');
