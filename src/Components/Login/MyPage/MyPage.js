@@ -363,14 +363,14 @@ const MyPage = () => {
                   <div style={{ textDecoration: 'underline' }}>공지사항</div>
                 </div>
               </div>
-              <button className={styles.logout}>
+              <button style={{ cursor: 'pointer', }} className={styles.logout} onClick={handleLogout}>
                 <p
                   style={{
                     fontWeight: '700',
                     fontSize: '1.3em',
-                    cursor: 'pointer',
+
                   }}
-                  onClick={handleLogout}
+
                 >
                   로그아웃
                 </p>
