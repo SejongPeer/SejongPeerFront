@@ -91,10 +91,17 @@ const Modify = () => {
           },
         }
       );
-
+      console.log(response);
       if (!response.ok) {
-        const errorData = await response.json(); // 오류 응답을 처리합니다.
-        throw new Error(data.message);
+
+        const errorData = await response.json();
+        if (errorData.data) {
+          alert(errorData.data.message);
+        }
+        else {
+          throw new Error(errorData.message);
+        }
+
       }
 
       const data = await response.json(); // data 변수를 await로 초기화
@@ -161,7 +168,7 @@ const Modify = () => {
                   />
                 </div>
                 <div
-                  className={`${focusedDiv === 'kakaoId' ? styles.focused : styles.myInformDiv}`}
+                  className={`${focusedDiv === 'kakaoAccount' ? styles.focused : styles.myInformDiv}`}
                 >
                   <div className={styles.myInformName}>카카오톡 아이디</div>
                   <input
