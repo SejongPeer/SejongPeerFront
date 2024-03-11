@@ -56,8 +56,6 @@ const SignIn = () => {
       const data = await response.json(); // data 변수를 await로 초기화
 
       // 로그인 성공 후, 로컬 스토리지에 저장
-      localStorage.setItem("userId", id);
-      localStorage.setItem("pwd", pwd);
       localStorage.setItem("kakaoAccount", data.data.kakaoAccount);
       localStorage.setItem("name", data.data.name);
       localStorage.setItem("grade", data.data.grade);
