@@ -7,16 +7,19 @@ import IDCheckBox from '../SignUp/IDCheckBox';
 
 
 const SignUp = props => {
-  const { name, setName } = useContext(MyContext);
-  const { studentNum, setStudentNum } = useContext(MyContext);
-  const { grade, setGrade } = useContext(MyContext);
+  // const { name, setName } = useContext(MyContext);
+  // const { studentNum, setStudentNum } = useContext(MyContext);
+  // const { grade, setGrade } = useContext(MyContext);
 
+  const name = localStorage.getItem('name')
+  const studentId = localStorage.getItem('studentId')
+  const grade = localStorage.getItem('grade')
   const [idValue, setIdValue] = useState('');
   const [pwdValue, setPwdValue] = useState('');
   const [pwdCheckValue, setPwdCheckValue] = useState(''); //비밀번호 확인 추가
 
   const [nameValue, setNameValue] = useState(name);
-  const [studentNumberValue, setStudentNumberValue] = useState(studentNum);
+  const [studentNumberValue, setStudentNumberValue] = useState(studentId);
   const [gradeValue, setGradeValue] = useState(grade);
 
   const [nicknameValue, setNicknameValue] = useState('');
@@ -222,7 +225,7 @@ const SignUp = props => {
               {/* <IDCheckBox idData={idData} errorHandler={signUpErrorHandler} setIsIdExist={setIsIdExist} /> */}
               <SignUpElement
                 id="userId"
-                title="아이디 입력(4자 이상 24자 이하)"
+                title="아이디 입력(공백 없이 4-24자)"
                 name="아이디 입력"
                 idData={idData}
                 signUpErrorHandler={signUpErrorHandler}
@@ -260,7 +263,7 @@ const SignUp = props => {
               <SignUpElement
                 id="studentNum"
                 title="학번"
-                name={studentNum}
+                name={studentId}
                 studentNumData={studentNumData}
                 signUpErrorHandler={signUpErrorHandler}
               />
@@ -337,8 +340,10 @@ const SignUp = props => {
                   id="double_major_checkbox"
                   checked={doubleMajorChecked}
                   onChange={e => setDoubleMajorChecked(e.target.checked)}
-                  style={{ marginRight: '10px', marginTop: '15px',
-                  cursor: 'pointer' }}
+                  style={{
+                    marginRight: '10px', marginTop: '15px',
+                    cursor: 'pointer'
+                  }}
                 />
                 <label
                   htmlFor="double_major_checkbox"
