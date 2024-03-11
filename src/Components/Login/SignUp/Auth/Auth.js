@@ -33,10 +33,10 @@ const Auth = () => {
             setGrade(response.data.data.grade);
             setStudentNum(Id);
             setLoading(false);
+            localStorage.setItem('name', response.data.data.name);
+            localStorage.setItem('grade', response.data.data.grade);
+            localStorage.setItem('studentId', Id);
             navigate("/login/signup");
-            localStorage.setItem('name', name)
-            localStorage.setItem('grade', grade)
-            localStorage.setItem('studentId', Id)
           }
           setLoading(false);
         }

@@ -79,3 +79,10 @@
     margin-top: 4%;
     cursor: pointer;
 }
+.cancelBtn {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #999999;
+  background-color: transparent;
+  cursor: pointer;
+}

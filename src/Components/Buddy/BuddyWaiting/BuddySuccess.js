@@ -15,6 +15,10 @@ const BuddySuccess = () => {
     navigate('/main');
   }
 
+  const restart = () => {
+    navigate('/buddy/matching');
+  }
+
   //상태변환
   useEffect(() => {
     if (isFirstRender.current) {
@@ -63,6 +67,7 @@ const BuddySuccess = () => {
         </div>
 
         <button onClick={goHome} className={style.go_home}>홈페이지로 이동</button>
+        {/* <button className={style.cancelBtn} onClick={restart}>새로운 버디 찾기! (최대 3명)</button> */}
     </div>
 };
 
