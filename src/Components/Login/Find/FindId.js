@@ -50,7 +50,15 @@ const FindId = () => {
       navigate("/login/resetpwd", { state: { findAccount, studentNum } });
 
     } catch(err) {
-      console.log(err.message);
+      console.error(err);
+      if(err.response && err.response.status === 404){
+          console.log("404 에러 발생: ", err.response.status);
+          alert("해당 정보로 가입된 계정이 존재하지 않습니다.");
+      }
+      else if(err.response && err.response.status === 400){
+        console.log("400 에러 발생: ", err.response.status);
+        alert("이름 또는 전화번호를 입력하지 않았습니다.");
+      }
     }
   };
   
