@@ -11,35 +11,44 @@ const HonbobWaiting = () => {
   };
 
   const honbobCancleSubmitHandler = async () => {
-    if(confirm('신청을 취소하시겠습니까?')) {
-      try {
-        const response = await fetch(
-          process.env.REACT_APP_BACK_SERVER + "/honbab/cancel",
-          {
-            method: "GET",
-            body: JSON.stringify(),
-            headers: {
-              Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
-              'Refresh-Token': localStorage.getItem('refreshToken'),
-            },
-          }
-        );
-  
-        const data = await response.json();
+    const status = checkMatchingStatus();
 
-        if (!response.ok) {
-          throw new Error(data.message);
+    if (status) {
+      alert("이미 매칭이 완료 되었습니다.");
+      navigate("/honbob/success");
+    }
+    else {
+      if (confirm('신청을 취소하시겠습니까?')) {
+        try {
+          const response = await fetch(
+            process.env.REACT_APP_BACK_SERVER + "/honbab/cancel",
+            {
+              method: "GET",
+              body: JSON.stringify(),
+              headers: {
+                Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+                'Refresh-Token': localStorage.getItem('refreshToken'),
+              },
+            }
+          );
+
+          const data = await response.json();
+
+          if (!response.ok) {
+            throw new Error(data.message);
+          }
+
+          alert("매칭 신청을 취소했습니다!");
+          navigate("/main");
+
+        } catch (error) {
+          console.error(error.message);
+          alert("오류가 발생했습니다.");
         }
 
-        alert("매칭 신청을 취소했습니다!");
-        navigate("/main");
-  
-      } catch (error) {
-        console.error(error.message);
-        alert("오류가 발생했습니다.");
+      } else {
+        alert("신청이 취소되지 않았습니다.");
       }
-    } else {
-      alert("신청이 취소되지 않았습니다.");
     }
   };
 
@@ -53,6 +62,44 @@ const HonbobWaiting = () => {
 
     return () => clearInterval(interval);
   }, []);
+
+
+  const checkMatchingStatus = async () => {
+    try {
+      const response = await fetch(
+        process.env.REACT_APP_BACK_SERVER + '/honbab/check-matching-status',
+        {
+          method: 'GET',
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+            'Refresh-Token': localStorage.getItem('refreshToken'),
+          },
+        }
+      );
+      if (!response.ok) {
+        throw new Error('Network response was not ok'); // 응답 상태가 좋지 않을 경우 에러를 발생시킴
+      }
+
+
+      const data = await response.json(); // 주석 해제하여 JSON 응답을 파싱
+      if (data.data.status === 'MATCHING_COMPLETED') {
+        return true;
+      }
+      return false;
+    } catch (error) {
+      console.error('에러 체크:', error);
+      alert('매칭 체크 실패!');
+    }
+  };
+
+  useEffect(() => {
+    checkMatchingStatus();
+    const intervalId = setInterval(() => checkMatchingStatus(), 3000); // 3초마다 확인 (맞게 조절)
+
+
+    return () => clearInterval(intervalId);
+  }, []);
+
 
   return (
     <div className={style.container}>
