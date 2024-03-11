@@ -18,7 +18,7 @@ const InputTextBox = props => {
       if (inputValue.length >= 8) {
         props.errorHandler('');
       } else {
-        props.errorHandler('* 아이디는 8자 이상 작성해주세요');
+        //props.errorHandler('* 아이디는 8자 이상 작성해주세요');
       }
       //패스워드
     } else if (props.id === 'pwd') {

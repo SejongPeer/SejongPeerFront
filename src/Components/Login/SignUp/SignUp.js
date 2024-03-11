@@ -225,7 +225,7 @@ const SignUp = props => {
               {/* <IDCheckBox idData={idData} errorHandler={signUpErrorHandler} setIsIdExist={setIsIdExist} /> */}
               <SignUpElement
                 id="userId"
-                title="아이디 입력(4자 이상 24자 이하)"
+                title="아이디 입력(공백 없이 4-24자)"
                 name="아이디 입력"
                 idData={idData}
                 signUpErrorHandler={signUpErrorHandler}

@@ -63,6 +63,7 @@ const ResetPwd = () => {
       <div className={css.resetPwdWrapper}>
       <SignInBox 
         inputID={inputPwdHandler} 
+        id="pwd" 
         name="비밀번호 입력"/>
       <SignInBox 
       inputPwd={inputPwdHandler2} 
