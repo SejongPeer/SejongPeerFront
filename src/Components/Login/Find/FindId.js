@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 // import style from "../SignIn/SignIn.module.css";
 import style from "../Find/FindId.module.css";
 import SignInBox from "../SignIn/SignInBox";
@@ -11,6 +11,7 @@ const FindId = () => {
   const [id, setId] = useState("");
   const [pwd, setPWd] = useState("");
   const { setName, setStudentNum, studentNum, name } = useContext(MyContext);
+  const [authState, setAuthState] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const inputID = (idinput) => {
@@ -21,28 +22,57 @@ const FindId = () => {
   };
 
   const isSejong = async () => {
-
     try {
       setLoading(true);
-      // 세종어스 확인
-      const response1 = await axios
-        .post(process.env.REACT_APP_BACK_SERVER + '/auth/sejong-auth', {
-          id: id,
-          pw: pwd,
-        })
-        .then((response) => {
-          let result = response.data.data.isAuth;
-          if (result === false)
-            alert("아이디 및 비밀번호가 일치하지 않습니다")
-          else if (result === true) {
-            alert("인증 완료");
-            setStudentNum(id);
-            setName(response.data.data.name);
-          }
-          setLoading(false);
-        })
 
-      //아이디 찾기
+      // 세종어스 확인
+      const response1 = await axios.post(process.env.REACT_APP_BACK_SERVER + '/auth/sejong-auth', {
+        id: id,
+        pw: pwd,
+      });
+
+      let result = response1.data.data.isAuth;
+
+      if (result === false) {
+        alert("아이디 및 비밀번호가 일치하지 않습니다");
+      } else if (result === true) {
+        alert("인증 완료");
+        console.log(id);
+        setStudentNum(id);
+        setName(response1.data.data.name);
+        setLoading(false);
+        setAuthState(true);
+        // // handleFindAccount 함수를 비동기로 처리
+        // await handleFindAccount();
+
+      }
+      setLoading(false);
+
+    } catch (err) {
+      console.error(err);
+      if (err.response && err.response.status === 404) {
+        console.log("404 에러 발생: ", err.response.status);
+        alert("해당 정보로 가입된 계정이 존재하지 않습니다.");
+      } else if (err.response && err.response.status === 400) {
+        console.log("400 에러 발생: ", err.response.status);
+        alert("아이디 또는 비밀번호를 입력하지 않았습니다.");
+      }
+
+      setLoading(false);
+    }
+  };
+
+
+  useEffect(() => {
+    if (authState) {
+      handleFindAccount();
+    }
+  }, [authState]);
+  const handleFindAccount = async () => {
+
+    try {
+      console.log("id=", studentNum);
+      console.log("name=", name);
       const response2 = await axios
         .post(process.env.REACT_APP_BACK_SERVER + '/member/help/find-account', {
           studentId: studentNum,
@@ -50,20 +80,13 @@ const FindId = () => {
         });
 
       let findAccount = response2.data.data.account;
-
       navigate("/login/resetpwd", { state: { findAccount, studentNum } });
 
     } catch (err) {
-      console.error(err);
-      if (err.response && err.response.status === 404) {
-        console.log("404 에러 발생: ", err.response.status);
-        alert("해당 정보로 가입된 계정이 존재하지 않습니다.");
-      }
-      else if (err.response && err.response.status === 400) {
+      if (err.response && err.response.status === 400) {
         console.log("400 에러 발생: ", err.response.status);
-        alert("이름 또는 전화번호를 입력하지 않았습니다.");
+        // alert("아이디 또는 비밀번호를 입력하지 않았습니다.");
       }
-      setLoading(false);
     }
   };
 
