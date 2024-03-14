@@ -76,6 +76,7 @@
     width: 40vw;
     height: 8.5vh;
     max-height: 56px;
+    max-width: 380px;
     background-color: #FF4B4B;
     border-radius: 28px;
     color: #FFFFFF;
@@ -84,6 +85,7 @@
     margin-top: 4%;
     cursor: pointer;
 }
+
 }
 .inner_container{
   width: 300%;
@@ -141,9 +143,10 @@
 }
 
 .go_home{
-    width: 90%;
+    width: 40%;
     height: 8.5vh;
     max-height: 56px;
+    max-width: 380px;
     background-color: #FF4B4B;
     border-radius: 28px;
     color: #FFFFFF;
