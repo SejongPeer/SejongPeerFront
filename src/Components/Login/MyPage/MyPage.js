@@ -43,23 +43,22 @@ const MyPage = () => {
   };
   // 로그아웃
   const handleLogout = () => {
-    response => 
-      localStorage.removeItem('account'),
-      localStorage.removeItem('grade'),
-      localStorage.removeItem('gender'),
-      localStorage.removeItem('major'),
-      localStorage.removeItem('minor'),
-      localStorage.removeItem('name'),
-      localStorage.removeItem('nickname'),
-      localStorage.removeItem('phoneNumber'),
-      localStorage.removeItem('studentId'),
-      localStorage.removeItem('accessToken'),
-      localStorage.removeItem('refreshToken'),
-      localStorage.removeItem('kakaoAccount'),
-      localStorage.removeItem('pwd'),
-      localStorage.removeItem('userId'),
-      console.log('로그아웃 성공'),
-      alert('로그아웃 되었습니다'),
+      localStorage.removeItem('account');
+      localStorage.removeItem('grade');
+      localStorage.removeItem('gender');
+      localStorage.removeItem('major');
+      localStorage.removeItem('minor');
+      localStorage.removeItem('name');
+      localStorage.removeItem('nickname');
+      localStorage.removeItem('phoneNumber');
+      localStorage.removeItem('studentId');
+      localStorage.removeItem('accessToken');
+      localStorage.removeItem('refreshToken');
+      localStorage.removeItem('kakaoAccount');
+      localStorage.removeItem('pwd');
+      localStorage.removeItem('userId');
+      console.log('로그아웃 성공');
+      alert('로그아웃 되었습니다');
       navigate('/main');
   };
 
