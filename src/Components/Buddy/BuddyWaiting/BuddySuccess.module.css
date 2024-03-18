@@ -15,8 +15,8 @@
   margin: 4% 0;
 }
 .buddy_succes {
-  width: 86vw;
-  height: 62vw;
+  width: 80vw;
+  height: 58vw;
   max-width: 360px;
   max-height: 320px;
 }
@@ -142,6 +142,12 @@
     color: #777777;
 }
 
+
+.tip{
+  color: #111111;
+  margin: 1% 0;
+  font-weight: 700;
+}
 .go_home{
     width: 90%;
     height: 8.5vh;

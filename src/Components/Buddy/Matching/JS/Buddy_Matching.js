@@ -3,7 +3,6 @@ import ChoiceGender from "./B_Gender";
 import Grade from "./B_BuddyType";
 import Major from "./B_Major";
 import GradeDiff from "./B_Grade";
-import PhoneNum from "./U_PhoneNum";
 import Final from "./Buddy_Final";
 import ProgressBar from "../../ProgressBar/ProgressBar.js";
 

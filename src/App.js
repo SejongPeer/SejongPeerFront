@@ -1,27 +1,28 @@
-// import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { useState, createContext, useEffect } from 'react';
 import './App.css';
 import { jwtDecode } from 'jwt-decode';
 
+//메인 컴포넌트
 import Header from './Components/Header/Header.js';
 import StartLoading from './Components/main/Loading/StartLoading.js';
 import MainPage from './Components/main/MainPage/MainPage.js';
+//버디 컴포넌트
 import BuddyStart1 from './Components/Buddy/BuddyStart/BuddyStart1.js';
 import BuddyStart2 from './Components/Buddy/BuddyStart/BuddyStart2.js';
-import BuddyStart3 from './Components/Buddy/BuddyStart/BuddyStart3.js';
 import BuddyMatching from './Components/Buddy/Matching/JS/Buddy_Matching';
 import BuddyWaiting from './Components/Buddy/BuddyWaiting/BuddyWaiting';
+import BuddyAccept from './Components/Buddy/BuddyWaiting/BuddyAccept.js';
+import BuddySuccess from './Components/Buddy/BuddyWaiting/BuddySuccess.js';
+import Confirm from './Components/Modal/Confirm';
+
+//혼밥 컴포넌트
 import Honbob_Matching from './Components/Honbob/Matching/JS/Honbob_Matching';
 import HonbobWaiting from './Components/Honbob/HonbobWaiting/HonbobWaiting.js';
 import HonbobSuccess from './Components/Honbob/HonbobSuccess/HonbobSuccess.js';
-import BuddyAccept from './Components/Buddy/BuddyWaiting/BuddyAccept.js';
-import BuddySuccess from './Components/Buddy/BuddyWaiting/BuddySuccess.js';
-
 import HonbobStart1 from './Components/Honbob/HonbobStart/HonbobStart1.js';
 
-import Confirm from './Components/Modal/Confirm';
-
+//회원가입/로그인
 import SignIn from './Components/Login/SignIn/SignIn';
 import SignUp from './Components/Login/SignUp/SignUp';
 import Auth from './Components/Login/SignUp/Auth/Auth.js';
@@ -32,19 +33,20 @@ import Agree1 from './Components/Login/SignUp/Agree1';
 import Agree2 from './Components/Login/SignUp/Agree2';
 import Agree3 from './Components/Login/SignUp/Agree3';
 import Agree from './Components/Login/SignUp/Agree';
+
+//마이페이지
 import MyPage from './Components/Login/MyPage/MyPage';
 import Modify from './Components/Login/MyPage/Modify/Modify';
+
+//스터디
 import StudyList from './Components/Study/StudyList/StudyList.js';
 import StudyPostDeatil from './Components/Study/StudyPostDetail/StudyPostDetail.js';
 import StudyPostWrite from './Components/Study/StudyPostWrite/StudyPostWrite.js';
 import StudyFilter from './Components/Study/StudyFilterPage/StudyFIlterPage.js';
-import Sejong from './Components/Login/SignUp/Sejong.js';
-
 
 export const MyContext = createContext();
 
 const App = () => {
-  // RouteChangeTracker();
   const [modalOpen, setModalOpen] = useState(false);
   const [modalContent, setModalContent] = useState('');
   const [majorValue, setMajorValue] = useState('단과대/학과 선택');
@@ -53,7 +55,6 @@ const App = () => {
   const [collegeValue, setCollegeValue] = useState('');
   const [buddySubmit, setBuddySubmit] = useState(false);
   const [honbobSubmit, setHonbobSubmit] = useState(false);
-  const [KaKaoDD, setKaKaoDD] = useState('');
   const [isLogined, setIsLogined] = useState(false);
   const [name, setName] = useState('');
   const [studentNum, setStudentNum] = useState('');
@@ -62,7 +63,7 @@ const App = () => {
 
   // 타이머 재설정
   const initializeApp = () => {
-    const token = localStorage.getItem('accessToken');
+    const token = localStorage.getItem('refreshToken');
     if (token) {
       setLogoutTimer(token);
     }
@@ -108,8 +109,6 @@ const App = () => {
         setHonbobSubmit,
         setCollegeValue,
         collegeValue,
-        KaKaoDD,
-        setKaKaoDD,
         setIsLogined,
         isLogined,
         name,
@@ -160,7 +159,6 @@ const App = () => {
               <Route path="/login" element={<SignIn />} />
               <Route path="/login/signup" element={<SignUp />} />
               <Route path="/login/auth" element={<Auth />} />
-              <Route path="/login/sejong" element={<Sejong />}></Route>
               <Route path="/login/findid" element={<FindId />} />
               <Route path="/login/resetpwd" element={<ResetPwd />} />
               <Route path="/login/agree" element={<Agree />} />
@@ -175,7 +173,6 @@ const App = () => {
               <Route path="/study/detail" element={<StudyPostDeatil />} />
               <Route path="/study/post" element={<StudyPostWrite />} />
               <Route path="/study/filter" element={<StudyFilter />} />
-              <Route path="/checksejong" element={<Sejong />} />
             </Routes>
           </main>
         </div>
