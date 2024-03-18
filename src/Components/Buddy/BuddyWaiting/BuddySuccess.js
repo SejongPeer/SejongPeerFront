@@ -132,7 +132,7 @@ const BuddySuccess = () => {
         </div>
         
       </div>
-
+        <p className={style.tip}>*옆으로 넘겨 다른 버디를 확인해주세요</p>
         <button onClick={goHome} className={style.go_home}>홈페이지로 이동</button>
         <button className={style.cancelBtn} onClick={restart}>새로운 버디 찾기! (최대 3명)</button>
     </div>

@@ -12,7 +12,6 @@ const Honbob_Matching = () => {
   const [choiceGenderKorean, setChoiceGenderKorean] = useState("");
   const [choiceMenu, setChoiceMenu] = useState("");
   const [choiceMenuKorean, setChoiceMenuKorean] = useState("");
-  const { KaKaoDD, setKaKaoDD } = useContext(MyContext);
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const userId = localStorage.getItem("userId");

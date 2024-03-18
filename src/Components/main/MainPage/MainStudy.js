@@ -4,7 +4,7 @@ import ready from "../../../Assets/ready.png";
 import nugool from "../../../Assets/nugulman.png";
 import style from "./MainStudy.module.css";
 
-const MainBuddy = () => {
+const MainStudy = () => {
   return (
     <div className={style.container}>
       {/* <div className={style.wrapperLeft}>
@@ -23,4 +23,4 @@ const MainBuddy = () => {
   );
 };
 
-export default MainBuddy;
+export default MainStudy;
