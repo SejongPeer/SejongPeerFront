@@ -1,19 +1,18 @@
 import SignInBox from "./SignInBox";
 import { useNavigate } from "react-router-dom";
-
+// import { jwtDecode } from "jwt-decode";
 import style from "./SignIn.module.css";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { MyContext } from "../../../App";
 
 const SignIn = () => {
+  const { setLogoutTimer } = useContext(MyContext);
   const navigate = useNavigate();
   const goSignUpHandler = () => {
     navigate("/login/agree");
   };
   const goFindIdHandler = () => {
     navigate("/login/findid");
-  };
-  const goResetPwdHandler = () => {
-    navigate("/login/resetpwd");
   };
 
   const [id, setId] = useState("");
@@ -70,12 +69,12 @@ const SignIn = () => {
       //토큰
       localStorage.setItem("accessToken", data.data.accessToken);
       localStorage.setItem("refreshToken", data.data.refreshToken);
-
-      //alert("로그인 성공 메인페이지로 이동합니다.");
+      //로그인 타이머
+      setLogoutTimer(data.data.accessToken);
       navigate("/main");
+
     } catch (error) {
       console.error(error.message);
-      //alert(error.message);
       e.preventDefault();
     }
   };

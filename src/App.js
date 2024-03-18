@@ -1,8 +1,8 @@
 // import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { useState, createContext } from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import { useState, createContext, useEffect } from 'react';
 import './App.css';
+import { jwtDecode } from 'jwt-decode';
 
 import Header from './Components/Header/Header.js';
 import StartLoading from './Components/main/Loading/StartLoading.js';
@@ -40,15 +40,6 @@ import StudyPostWrite from './Components/Study/StudyPostWrite/StudyPostWrite.js'
 import StudyFilter from './Components/Study/StudyFilterPage/StudyFIlterPage.js';
 import Sejong from './Components/Login/SignUp/Sejong.js';
 
-// const router = createBrowserRouter([
-//   {path: '/', element:<StartLoading />},
-//   {path: '/main', element:<MainPage />},
-//   {path: '/buddy/start1', element:<BuddyStart1 />},
-//   {path: '/buddy/start2', element:<BuddyStart2 />},
-//   {path: '/buddy/start3', element:<BuddyStart3 />},
-//   {path: '/buddy/matching', element:<BuddyMatching />},
-//   {path: '/buddy/matching/finish', element: <Finish />},
-// ]);
 
 export const MyContext = createContext();
 
@@ -68,6 +59,36 @@ const App = () => {
   const [studentNum, setStudentNum] = useState('');
   const [grade, setGrade] = useState('');
   const [peerId, setPeerId] = useState('');
+
+  // 타이머 재설정
+  const initializeApp = () => {
+    const token = localStorage.getItem('accessToken');
+    if (token) {
+      setLogoutTimer(token);
+    }
+  };
+
+  useEffect(() => {
+    initializeApp();
+  }, []);
+
+  // 토큰 유효기간 타이머
+  const setLogoutTimer = (token) => {
+    const decodeToken = jwtDecode(token);
+    const cuurentTime = Date.now();
+    const expTime = decodeToken.exp * 1000;
+    const timeUntilLogout = expTime - cuurentTime;
+    
+    setTimeout(() => {
+      logout();
+    }, timeUntilLogout);
+  };
+
+  // 로그아웃
+  const logout = () => {
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("refreshToken");
+  };
 
   return (
     <MyContext.Provider
@@ -99,6 +120,7 @@ const App = () => {
         setStudentNum,
         peerId,
         setPeerId,
+        setLogoutTimer
       }}
     >
       <Router>
