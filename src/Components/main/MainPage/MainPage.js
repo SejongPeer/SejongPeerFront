@@ -84,7 +84,7 @@ const MainPage = () => {
           throw new Error('Network response was not ok'); // 응답 상태가 좋지 않을 경우 에러를 발생시킴
         }
         const data = await response.json(); // 주석 해제하여 JSON 응답을 파싱
-        if (data.data === null || data.data.status === 'CANCEL') {
+        if (data.data === null || data.data.status === 'CANCEL' || data.data.status === 'REACTIVATE') {
           navigate('/honbob/start1');
         } else if (data.data.status === 'TIME_OUT' || data.data.status === 'EXPIRED') {
           navigate('/honbob/start1');
