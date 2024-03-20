@@ -125,7 +125,7 @@ const MyPage = () => {
       );
       const data = await response.json();
 
-      if (data.data === null || data.data.status === 'CANCEL') {
+      if (data.data === null || data.data.status === 'CANCEL' || data.data.status === 'REACTIVATE') {
         navigate('/buddy/start1');
       } else if (data.data.status === 'DENIED') {
         alert('상대가 매칭을 거절했습니다. 다시 신청해주세요.');
