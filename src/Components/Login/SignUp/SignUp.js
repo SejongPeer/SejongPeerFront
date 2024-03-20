@@ -195,9 +195,9 @@ const SignUp = props => {
           if (errorClassName == "DUPLICATED_STUDENT_ID" || errorClassName == "DUPLICATED_PHONE_NUMBER") {
             alert("한 학번과 전화번호 당 한 개의 계정만 생성할 수 있습니다.");
           }
-          else if (errorClassName == "MethodArgumentNotValidException") {
-            alert("닉네임은 2자 이상 8자 이하 한글, 영어, 숫자만 입력해주세요.");
-          }
+          // else if (errorClassName == "MethodArgumentNotValidException") {
+          //   alert("닉네임은 2자 이상 8자 이하 한글, 영어, 숫자만 입력해주세요.");
+          // }
           else {
             alert(
               ' 실패했습니다. 다시 시도해주세요. (에러 내용: ' +
