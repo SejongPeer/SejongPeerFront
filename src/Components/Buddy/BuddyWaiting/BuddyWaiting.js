@@ -14,7 +14,7 @@ const BuddyWaiting = () => {
     }
   }, []);
   const moveToMain = () => {
-    navigate("/main");
+    navigate("/buddy/accept");
   };
   const countBuddyHandler = async () => {
     try {
@@ -37,7 +37,8 @@ const BuddyWaiting = () => {
   };
 
   const cancelBuddy = async () => {
-    const status = checkMatchingStatus();
+    const status = await checkMatchingStatus();
+
     if (status) {
       alert("이미 매칭이 완료 되었습니다.");
       navigate("/main");
@@ -89,7 +90,6 @@ const BuddyWaiting = () => {
         }
       );
       const data = await response.json();
-
 
       if (data.data.status === 'FOUND_BUDDY') {
         return true;
