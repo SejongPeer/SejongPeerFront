@@ -40,7 +40,7 @@ const BuddyWaiting = () => {
     const status = checkMatchingStatus();
     if (status) {
       alert("이미 매칭이 완료 되었습니다.");
-      navigate("/buddy/accept");
+      navigate("/main");
     }
     else {
       if (confirm("신청을 취소하시겠습니까?")) {
