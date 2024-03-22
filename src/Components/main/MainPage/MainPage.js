@@ -35,26 +35,13 @@ const MainPage = () => {
           }
         );
         const data = await response.json();
-        console.log(data.data.status);
+        console.log(data.data);
 
-        if (data.data === null || data.data.status === 'CANCEL'|| data.data.status === 'REACTIVATE') {
+        //상태 관리
+        if (data.data === null) {
           navigate('/buddy/start1');
-        } else if (data.data.status === "DENIED") {
-          alert("상대가 매칭을 거절했습니다. 다시 신청해주세요.");
-          navigate('/buddy/start1');
-        } else if (data.data.status === "MATCHING_COMPLETED") {
-          alert("매칭에 성공했습니다. 정보를 확인해주세요!")
-          navigate('/buddy/success')
-        } else if (data.data.status === "ACCEPT") {
-          alert("신청 수락을 했습니다. 상대방이 수락할때까지 기다려 주세요.");
-        } else if (data.data.status === "REJECT") {
-          alert("거절 패널티 1시간이 부과되었습니다. 1시간 이후에 다시 신청해 주세요.");
-        } else if (data.data.status === "IN_PROGRESS") {
-          alert("매칭중입니다!");
-          navigate('/buddy/waiting');
-        } else if (data.data.status === 'FOUND_BUDDY') {
-          alert("버디를 찾았습니다!");
-          navigate('/buddy/accept');
+        } else {
+          statusHandler(data.data.status, data.data.matchingCompletedCount);
         }
 
       } catch (error) {
@@ -63,6 +50,45 @@ const MainPage = () => {
       }
     }
   };
+
+  //버디 - 상태에따른 처리
+  const statusHandler = (status, count) => {
+
+    //취소, 거절 패널티 해제
+    if (status === 'CANCEL'|| status === 'REACTIVATE') {
+      if (count > 0) {
+        navigate('/buddy/success');
+      } else {
+        navigate('/buddy/start1');
+      }
+    // 거절 당함
+    } else if (status === "DENIED") {
+      alert('상대방이 거절했습니다. 다시 신청해 주세요.');
+      if (count > 0) {
+        navigate('/buddy/success');
+      } else {
+        navigate('/buddy/start1');
+      }
+    //매칭 최종 완료
+    } else if (status === "MATCHING_COMPLETED") {
+      alert("매칭에 성공했습니다. 정보를 확인해주세요!")
+      navigate('/buddy/success')
+    //매칭 수락
+    } else if (status === "ACCEPT") {
+      alert("신청 수락을 했습니다. 상대방이 수락할때까지 기다려 주세요.");
+    //매칭 거절
+    } else if (status === "REJECT") {
+      alert("거절 패널티 1시간이 부과되었습니다. 1시간 이후에 다시 신청해 주세요.");
+    //매칭 중
+    } else if (status === "IN_PROGRESS") {
+      alert("매칭중입니다!");
+      navigate('/buddy/waiting');
+    //매칭 완료
+    } else if (status === 'FOUND_BUDDY') {
+      alert("버디를 찾았습니다!");
+      navigate('/buddy/accept');
+    }
+  }
 
   //혼밥 상태 확인
   const HonbobHandler = async () => {
