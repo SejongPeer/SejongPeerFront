@@ -3,12 +3,13 @@ import style from './MainPage.module.css';
 import MainBuddy from './MainBuddy';
 import MainHonbob from './MainHonbob';
 import reprot from '../../../Assets/report.png';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import honbobUse from '../../../Assets/honbobUse.png';
 import peerUse from '../../../Assets/peerUse.png';
 import buddyUse from '../../../Assets/buddyUse.png';
 import buddyButton from '../../../Assets/buddyButton.png';
 import honbobButton from '../../../Assets/honbobButton.png';
+import { MyContext } from '../../../App';
 
 const images = [honbobUse, buddyUse, peerUse];
 
@@ -16,6 +17,7 @@ const MainPage = () => {
   const navigate = useNavigate();
   const refreshToken = localStorage.getItem("refreshToken");
   const accessToken = localStorage.getItem("accessToken");
+  const { setBuddyCount } = useContext(MyContext);
 
   // 버디 상태 확인
   const BuddyHandler = async () => {
@@ -36,6 +38,8 @@ const MainPage = () => {
         );
         const data = await response.json();
         console.log(data.data);
+
+        setBuddyCount(data.data.matchingCompletedCount);
 
         //상태 관리
         if (data.data === null) {

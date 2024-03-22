@@ -3,8 +3,9 @@ import buddySucces from '../../../Assets/buddySuccess.png';
 import prev from '../../../Assets/prev.png';
 import next from '../../../Assets/next.png';
 import BuddyInfoBox from './BuddyInfoBox';
-import { useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { MyContext } from '../../../App';
 
 const BuddySuccess = () => {
   const [major, setMajor] = useState('');
@@ -25,6 +26,7 @@ const BuddySuccess = () => {
   const [slide, setSlide] = useState(0);
   const isFirstRender = useRef(true);
   const navigate = useNavigate();
+  const { buddyCount } = useContext(MyContext);
 
   const goHome = () => {
     navigate('/main');
@@ -94,6 +96,7 @@ const BuddySuccess = () => {
           })
           .catch((error) => console.log(error))
     };
+    console.log(buddyCount);
 
     return <div className={style.container}>
         <p className={style.title}>버디를 찾았습니다!</p>
@@ -134,7 +137,7 @@ const BuddySuccess = () => {
       </div>
         <p className={style.tip}>*옆으로 넘겨 다른 버디를 확인해주세요</p>
         <button onClick={goHome} className={style.go_home}>홈페이지로 이동</button>
-        <button className={style.cancelBtn} onClick={restart}>새로운 버디 찾기! (최대 3명)</button>
+        {buddyCount < 3 ?<button className={style.cancelBtn} onClick={restart}>새로운 버디 찾기! (최대 3명)</button> : <div></div>}
     </div>
 };
 
