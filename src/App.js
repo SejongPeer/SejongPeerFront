@@ -60,6 +60,7 @@ const App = () => {
   const [studentNum, setStudentNum] = useState('');
   const [grade, setGrade] = useState('');
   const [peerId, setPeerId] = useState('');
+  const [buddyCount, setBuddyCount] = useState(0);
 
   // 타이머 재설정
   const initializeApp = () => {
@@ -119,7 +120,9 @@ const App = () => {
         setStudentNum,
         peerId,
         setPeerId,
-        setLogoutTimer
+        setLogoutTimer,
+        setBuddyCount,
+        buddyCount
       }}
     >
       <Router>
