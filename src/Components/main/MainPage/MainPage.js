@@ -15,14 +15,14 @@ const images = [honbobUse, buddyUse, peerUse];
 
 const MainPage = () => {
   const navigate = useNavigate();
-  const refreshToken = localStorage.getItem("refreshToken");
-  const accessToken = localStorage.getItem("accessToken");
+  const refreshToken = localStorage.getItem('refreshToken');
+  const accessToken = localStorage.getItem('accessToken');
   const { setBuddyCount } = useContext(MyContext);
 
   // 버디 상태 확인
   const BuddyHandler = async () => {
     if (refreshToken === null || accessToken === null) {
-      alert("로그인 후 이용 가능한 서비스입니다!");
+      alert('로그인 후 이용 가능한 서비스입니다!');
       navigate('/login');
     } else {
       try {
@@ -39,7 +39,8 @@ const MainPage = () => {
         const data = await response.json();
         console.log(data.data);
 
-        setBuddyCount(data.data.matchingCompletedCount);
+        if (data.data !== null) setBuddyCount(data.data.matchingCompletedCount);
+        else setBuddyCount(0);
 
         //상태 관리
         if (data.data === null) {
@@ -47,7 +48,6 @@ const MainPage = () => {
         } else {
           statusHandler(data.data.status, data.data.matchingCompletedCount);
         }
-
       } catch (error) {
         alert('에러가 발생했습니다.');
         console.log(error.message);
@@ -57,47 +57,48 @@ const MainPage = () => {
 
   //버디 - 상태에따른 처리
   const statusHandler = (status, count) => {
-
     //취소, 거절 패널티 해제
-    if (status === 'CANCEL'|| status === 'REACTIVATE') {
+    if (status === 'CANCEL' || status === 'REACTIVATE') {
       if (count > 0) {
         navigate('/buddy/success');
       } else {
         navigate('/buddy/start1');
       }
-    // 거절 당함
-    } else if (status === "DENIED") {
+      // 거절 당함
+    } else if (status === 'DENIED') {
       alert('상대방이 거절했습니다. 다시 신청해 주세요.');
       if (count > 0) {
         navigate('/buddy/success');
       } else {
         navigate('/buddy/start1');
       }
-    //매칭 최종 완료
-    } else if (status === "MATCHING_COMPLETED") {
-      alert("매칭에 성공했습니다. 정보를 확인해주세요!")
-      navigate('/buddy/success')
-    //매칭 수락
-    } else if (status === "ACCEPT") {
-      alert("신청 수락을 했습니다. 상대방이 수락할때까지 기다려 주세요.");
-    //매칭 거절
-    } else if (status === "REJECT") {
-      alert("거절 패널티 1시간이 부과되었습니다. 1시간 이후에 다시 신청해 주세요.");
-    //매칭 중
-    } else if (status === "IN_PROGRESS") {
-      alert("매칭중입니다!");
+      //매칭 최종 완료
+    } else if (status === 'MATCHING_COMPLETED') {
+      alert('매칭에 성공했습니다. 정보를 확인해주세요!');
+      navigate('/buddy/success');
+      //매칭 수락
+    } else if (status === 'ACCEPT') {
+      alert('신청 수락을 했습니다. 상대방이 수락할때까지 기다려 주세요.');
+      //매칭 거절
+    } else if (status === 'REJECT') {
+      alert(
+        '거절 패널티 1시간이 부과되었습니다. 1시간 이후에 다시 신청해 주세요.'
+      );
+      //매칭 중
+    } else if (status === 'IN_PROGRESS') {
+      alert('매칭중입니다!');
       navigate('/buddy/waiting');
-    //매칭 완료
+      //매칭 완료
     } else if (status === 'FOUND_BUDDY') {
-      alert("버디를 찾았습니다!");
+      alert('버디를 찾았습니다!');
       navigate('/buddy/accept');
     }
-  }
+  };
 
   //혼밥 상태 확인
   const HonbobHandler = async () => {
     if (refreshToken === null || accessToken === null) {
-      alert("로그인 후 이용 가능한 서비스입니다!");
+      alert('로그인 후 이용 가능한 서비스입니다!');
       navigate('/login');
     } else {
       try {
@@ -118,7 +119,10 @@ const MainPage = () => {
 
         if (data.data === null || data.data.status === 'CANCEL') {
           navigate('/honbob/start1');
-        } else if (data.data.status === 'TIME_OUT' || data.data.status === 'EXPIRED') {
+        } else if (
+          data.data.status === 'TIME_OUT' ||
+          data.data.status === 'EXPIRED'
+        ) {
           navigate('/honbob/start1');
         } else if (data.data.status === 'IN_PROGRESS') {
           alert('매칭 중입니다!');
@@ -160,7 +164,7 @@ const MainPage = () => {
   const urls = [
     'https://sejonghonbab.simple.ink/', // 혼밥 이용방법
     'https://sejongbuddy.simple.ink/', // 세종버디 이용방법
-    'https://sejongpeer.simple.ink/' // FAQ
+    'https://sejongpeer.simple.ink/', // FAQ
   ];
 
   // 이미지 클릭 이벤트 핸들러, 인덱스에 해당하는 URL로 이동
@@ -198,9 +202,11 @@ const MainPage = () => {
           padding: '2vh',
         }}
       >
-        <img className={style.useImg}
+        <img
+          className={style.useImg}
           src={images[currentImageIndex]}
-          onClick={() => onImageClick(currentImageIndex)}></img>
+          onClick={() => onImageClick(currentImageIndex)}
+        ></img>
         <div
           style={{
             display: 'flex',
