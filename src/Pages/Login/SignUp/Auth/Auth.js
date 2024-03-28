@@ -1,9 +1,11 @@
-import style from '../Auth/Auth.module.css';
 import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { MyContext } from '../../../../App';
-import Loading from '../../../Loading/Loading';
 import axios from 'axios';
+
+import Loading from '../../../../components/loading/Loading';
+
+import style from '../Auth/Auth.module.css';
 
 const Auth = () => {
   const [Id, setId] = useState('');

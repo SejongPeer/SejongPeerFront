@@ -5,7 +5,7 @@ import SignInBox from "../SignIn/SignInBox";
 import axios from "axios";
 import { MyContext } from "../../../App";
 import { useNavigate } from "react-router-dom";
-import Loading from "../../Loading/Loading";
+import Loading from '../../../components/loading/Loading.js'
 const FindId = () => {
   const navigate = useNavigate();
   const [id, setId] = useState("");

@@ -5,22 +5,22 @@ import { jwtDecode } from 'jwt-decode';
 
 //메인 컴포넌트
 import Header from './components/Header/Header.js';
-import StartLoading from './Pages/main/Loading/StartLoading.js';
-import MainPage from './Pages/main/MainPage/MainPage.js';
+import StartLoading from './Pages/main/loading/StartLoading.js';
+import MainPage from './Pages/main/mainPage/MainPage.js';
 //버디 컴포넌트
-import BuddyStart1 from './Pages/Buddy/info/BuddyStart1.js';
-import BuddyStart2 from './Pages/Buddy/info/BuddyStart2.js';
-import BuddyMatching from './Pages/Buddy/Matching/JS/Buddy_Matching.js';
-import BuddyWaiting from './Pages/Buddy/waiting/BuddyWaiting.js';
-import BuddyAccept from './Pages/Buddy/accept/BuddyAccept.js';
-import BuddySuccess from './Pages/Buddy/success/BuddySuccess.js';
+import BuddyStart1 from './Pages/buddy/info/BuddyStart1.js';
+import BuddyStart2 from './Pages/buddy/info/BuddyStart2.js';
+import BuddyMatching from './Pages/buddy/Matching/JS/Buddy_Matching.js';
+import BuddyWaiting from './Pages/buddy/waiting/BuddyWaiting.js';
+import BuddyAccept from './Pages/buddy/accept/BuddyAccept.js';
+import BuddySuccess from './Pages/buddy/success/BuddySuccess.js';
 import Confirm from './components/Modal/Confirm.js';
 
 //혼밥 컴포넌트
-import Honbob_Matching from './Pages/Honbob/Matching/JS/Honbob_Matching.js';
-import HonbobWaiting from './Pages/Honbob/waiting/HonbobWaiting.js';
-import HonbobSuccess from './Pages/Honbob/success/HonbobSuccess.js';
-import HonbobStart1 from './Pages/Honbob/info/HonbobStart1.js';
+import Honbob_Matching from './Pages/honbob/Matching/JS/Honbob_Matching.js';
+import HonbobWaiting from './Pages/honbob/waiting/HonbobWaiting.js';
+import HonbobSuccess from './Pages/honbob/success/HonbobSuccess.js';
+import HonbobStart1 from './Pages/honbob/info/HonbobStart1.js';
 
 //회원가입/로그인
 import SignIn from './Pages/Login/SignIn/SignIn.js';

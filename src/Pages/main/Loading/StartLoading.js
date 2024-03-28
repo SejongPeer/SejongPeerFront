@@ -1,5 +1,4 @@
 import { useNavigate } from 'react-router-dom';
-import logo from '../../../assets/peerLogoRed.png';
 import style from './StartLoading.module.css';
 import Loadinglogo from './LoadingLogo';
 

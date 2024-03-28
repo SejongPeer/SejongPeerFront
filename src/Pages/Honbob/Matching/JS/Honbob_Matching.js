@@ -1,22 +1,20 @@
-import { useState, useEffect, useContext } from "react";
-import H_Gender from "./H_Gender.js";
-import H_Menu from "./H_Menu.js";
-import H_informCheck from "./H_InformCheck.js";
-import ProgressBar from "../../progressBar/ProgressBar_Honbob.js";
-import style from "../CSS/Honbob_Matching.module.css";
-import { MyContext } from "../../../../App";
-import { useNavigate } from "react-router-dom";
+import { useState, useEffect, useContext } from 'react';
+import H_Gender from './H_Gender.js';
+import H_Menu from './H_Menu.js';
+import H_informCheck from './H_InformCheck.js';
+import ProgressBar from '../../progressBar/ProgressBar_Honbob.js';
+import style from '../CSS/Honbob_Matching.module.css';
+import { MyContext } from '../../../../App.js';
+import { useNavigate } from 'react-router-dom';
 const Honbob_Matching = () => {
   const [slide, setSlide] = useState(0);
-  const [choiceGenderHonbob, setChoiceGender] = useState("");
-  const [choiceGenderKorean, setChoiceGenderKorean] = useState("");
-  const [choiceMenu, setChoiceMenu] = useState("");
-  const [choiceMenuKorean, setChoiceMenuKorean] = useState("");
+  const [choiceGenderHonbob, setChoiceGender] = useState('');
+  const [choiceGenderKorean, setChoiceGenderKorean] = useState('');
+  const [choiceMenu, setChoiceMenu] = useState('');
+  const [choiceMenuKorean, setChoiceMenuKorean] = useState('');
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const userId = localStorage.getItem("userId");
-
-
+  const userId = localStorage.getItem('userId');
 
   useEffect(() => {
     if (userId === null) {
@@ -43,9 +41,9 @@ const Honbob_Matching = () => {
       }
       setWidth(wrapperWidth);
     };
-    window.addEventListener("resize", handleResize);
+    window.addEventListener('resize', handleResize);
     return () => {
-      window.removeEventListener("resize", handleResize);
+      window.removeEventListener('resize', handleResize);
     };
   }, [width]);
 
@@ -69,39 +67,37 @@ const Honbob_Matching = () => {
     }
   };
 
-  const slideMove = (page) => {
+  const slideMove = page => {
     setSlide(page);
   };
 
   // 슬라이드별 이동
   const Slide = {
-    transform: "translateX(" + -width * slide + "px)",
+    transform: 'translateX(' + -width * slide + 'px)',
   };
 
   //사용자가 입력한 정보
 
-  const GenderChoiceData = (choiceGenderHonbob) => {
+  const GenderChoiceData = choiceGenderHonbob => {
     setChoiceGender(choiceGenderHonbob);
   };
-  const menuChoiceData = (choiceMenu) => {
+  const menuChoiceData = choiceMenu => {
     setChoiceMenu(choiceMenu);
-  }
+  };
 
   const { honbobSubmit, setHonbobSubmit } = useContext(MyContext);
 
   let sameGender = {};
 
-  if (choiceGenderHonbob === "동성") {
-    sameGender = "true";
+  if (choiceGenderHonbob === '동성') {
+    sameGender = 'true';
   } else {
-    sameGender = "false";
+    sameGender = 'false';
   }
 
-
   //수정->alert?
-  let kakaoId = isLoggedIn ? localStorage.getItem("kakaoId") : null;
-  let phoneNumber = isLoggedIn ? localStorage.getItem("phoneNum") : null;
-
+  let kakaoId = isLoggedIn ? localStorage.getItem('kakaoId') : null;
+  let phoneNumber = isLoggedIn ? localStorage.getItem('phoneNum') : null;
 
   const honbobSubmitHandler = async e => {
     let matchingInfo = {
@@ -110,12 +106,12 @@ const Honbob_Matching = () => {
     };
     try {
       const response = await fetch(
-        process.env.REACT_APP_BACK_SERVER + "/honbab/register",
+        process.env.REACT_APP_BACK_SERVER + '/honbab/register',
         {
-          method: "POST",
+          method: 'POST',
           body: JSON.stringify(matchingInfo),
           headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
             Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
             'Refresh-Token': localStorage.getItem('refreshToken'),
           },
@@ -128,9 +124,9 @@ const Honbob_Matching = () => {
         throw new Error(data.message);
       }
 
-      alert("제출 성공");
+      alert('제출 성공');
       setHonbobSubmit(false);
-      navigate("/honbob/waiting");
+      navigate('/honbob/waiting');
     } catch (error) {
       console.error(error.message);
       alert(error.message);
@@ -147,11 +143,18 @@ const Honbob_Matching = () => {
   return (
     <div className={style.wrapper} style={mediaWidth}>
       <div className={style.formWrapper} style={Slide}>
-        <H_Gender sendChoiceGenderData={GenderChoiceData} setChoiceGenderKorean={setChoiceGenderKorean} />
-        <H_Menu setChoiceMenu={setChoiceMenu} setChoiceMenuKorean={setChoiceMenuKorean} />
-        <H_informCheck choiceMenuKorean={choiceMenuKorean} choiceGenderKorean={choiceGenderKorean} />
-
-
+        <H_Gender
+          sendChoiceGenderData={GenderChoiceData}
+          setChoiceGenderKorean={setChoiceGenderKorean}
+        />
+        <H_Menu
+          setChoiceMenu={setChoiceMenu}
+          setChoiceMenuKorean={setChoiceMenuKorean}
+        />
+        <H_informCheck
+          choiceMenuKorean={choiceMenuKorean}
+          choiceGenderKorean={choiceGenderKorean}
+        />
       </div>
       <div className={style.barWrapper}>
         <ProgressBar
