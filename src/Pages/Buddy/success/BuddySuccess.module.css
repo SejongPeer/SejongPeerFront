@@ -1,0 +1,170 @@
+.container {
+  margin-top: 8vh;
+  display: flex;
+  flex-direction: column;
+  height: 90%;
+  background-color: #fafafa;
+  align-items: center;
+  justify-content: space-evenly;
+  /* overflow: hidden; */
+}
+.title {
+  font-size: 1.6rem;
+  color: #ff4b4b;
+  font-weight: 700;
+  margin: 4% 0;
+}
+.buddy_succes {
+  width: 80vw;
+  height: 58vw;
+  max-width: 360px;
+  max-height: 320px;
+}
+
+.info_container{
+  width: 90%;
+  height: 23vh;
+  position: relative;
+  overflow: hidden;
+}
+.prev{
+  position: fixed;
+  width: 5%;
+  height: 7%;
+  top: 45%;
+  left: 3%;
+  margin: 30% 0;
+  z-index: 2;
+  cursor: pointer;
+}
+.next{
+  position: fixed;
+  width: 5%;
+  height: 7%;
+  top: 45%;
+  right: 3%;
+  margin: 30% 0;
+  z-index: 2;
+  cursor: pointer;
+}
+@media (min-width: 450px){
+  .prev{
+    position: fixed;
+    width: 3%;
+    height: 7%;
+    top: 35%;
+    left: 24%;
+    z-index: 2;
+    cursor: pointer;
+  }
+  .next{
+    position: fixed;
+    width: 3%;
+    height: 7%;
+    top: 35%;
+    right: 25%;
+    z-index: 2;
+    cursor: pointer;
+  }
+  .info_container{
+    width: 62%;
+    height: 23vh;
+    position: relative;
+    overflow: hidden;
+  }
+  .go_home{
+    width: 40vw;
+    height: 8.5vh;
+    max-height: 56px;
+    max-width: 380px;
+    background-color: #FF4B4B;
+    border-radius: 28px;
+    color: #FFFFFF;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-top: 4%;
+    cursor: pointer;
+}
+
+}
+.inner_container{
+  width: 300%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease 0.1s;
+}
+.info_box {
+  width: 50%;
+  height: 100%;
+  border: 1px solid #e5e5e5;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 0 2%;
+  margin: 0 1.5%;
+}
+.info_wrapper {
+  width: 100%;
+  text-align: left;
+}
+.info_name {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 2% 0;
+  color: #555555;
+}
+.info {
+  margin: 2% 0;
+  font-size: 1rem;
+  color: #555555;
+}
+
+.info_kakao_box {
+  width: 105%;
+  height: 8.5vh;
+  max-height: 56px;
+  border: solid 1.5px #ff4b4b;
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5%;
+}
+.kakao_title {
+    font-weight: 700;
+    color: #111111;
+}
+.kakao_id {
+    color: #777777;
+}
+
+
+.tip{
+  color: #111111;
+  margin: 1% 0;
+  font-weight: 700;
+}
+.go_home{
+    width: 90%;
+    height: 8.5vh;
+    max-height: 56px;
+    max-width: 380px;
+    background-color: #FF4B4B;
+    border-radius: 28px;
+    color: #FFFFFF;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin: 1% 0;
+    cursor: pointer;
+}
+.cancelBtn {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #999999;
+  background-color: transparent;
+  cursor: pointer;
+}

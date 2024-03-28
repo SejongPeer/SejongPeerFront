@@ -1,0 +1,71 @@
+.wrapper {
+  position: relative;
+  height: 100%;
+  margin: 0px;
+  overflow: hidden;
+  background-color: #fafafa;
+}
+
+@media (min-width: 420px) {
+  .wrapper {
+    position: relative;
+    height: 100%;
+    width: 414px;
+    margin: 0px;
+    overflow: hidden;
+  }
+}
+
+.formWrapper {
+  display: flex;
+  height: 90%;
+  transition: transform 0.3s ease 0.1s;
+  margin: auto;
+  /* background-color: rebeccapurple; */
+}
+
+/* 화면 축소시 옆으로 붙는거  */
+.barWrapper {
+  display: flex;
+  justify-content: center;
+  height: 8%;
+  transition: transform 0.3s ease 0.1s;
+  margin: auto;
+}
+
+* {
+  font-family:
+    'Pretendard Std Variable',
+    'Pretendard Std',
+    Pretendard,
+    -apple-system,
+    BlinkMacSystemFont,
+    system-ui,
+    Roboto,
+    'Helvetica Neue',
+    'Segoe UI',
+    'Apple Color Emoji',
+    'Segoe UI Emoji',
+    'Segoe UI Symbol',
+    sans-serif;
+
+  /* font-weight: 400; */
+}
+
+@font-face {
+  font-family:
+    'Pretendard Std Variable',
+    'Pretendard Std',
+    Pretendard,
+    -apple-system,
+    BlinkMacSystemFont,
+    system-ui,
+    Roboto,
+    'Helvetica Neue',
+    'Segoe UI',
+    'Apple Color Emoji',
+    'Segoe UI Emoji',
+    'Segoe UI Symbol',
+    sans-serif;
+  src: url('../../../../assets/Pretendard-Black.woff');
+}

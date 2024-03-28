@@ -4,45 +4,45 @@ import './App.css';
 import { jwtDecode } from 'jwt-decode';
 
 //메인 컴포넌트
-import Header from './Components/Header/Header.js';
-import StartLoading from './Components/main/Loading/StartLoading.js';
-import MainPage from './Components/main/MainPage/MainPage.js';
+import Header from './components/Header/Header.js';
+import StartLoading from './Pages/main/Loading/StartLoading.js';
+import MainPage from './Pages/main/MainPage/MainPage.js';
 //버디 컴포넌트
-import BuddyStart1 from './Components/Buddy/BuddyStart/BuddyStart1.js';
-import BuddyStart2 from './Components/Buddy/BuddyStart/BuddyStart2.js';
-import BuddyMatching from './Components/Buddy/Matching/JS/Buddy_Matching';
-import BuddyWaiting from './Components/Buddy/BuddyWaiting/BuddyWaiting';
-import BuddyAccept from './Components/Buddy/BuddyWaiting/BuddyAccept.js';
-import BuddySuccess from './Components/Buddy/BuddyWaiting/BuddySuccess.js';
-import Confirm from './Components/Modal/Confirm';
+import BuddyStart1 from './Pages/Buddy/info/BuddyStart1.js';
+import BuddyStart2 from './Pages/Buddy/info/BuddyStart2.js';
+import BuddyMatching from './Pages/Buddy/Matching/JS/Buddy_Matching.js';
+import BuddyWaiting from './Pages/Buddy/waiting/BuddyWaiting.js';
+import BuddyAccept from './Pages/Buddy/accept/BuddyAccept.js';
+import BuddySuccess from './Pages/Buddy/success/BuddySuccess.js';
+import Confirm from './components/Modal/Confirm.js';
 
 //혼밥 컴포넌트
-import Honbob_Matching from './Components/Honbob/Matching/JS/Honbob_Matching';
-import HonbobWaiting from './Components/Honbob/HonbobWaiting/HonbobWaiting.js';
-import HonbobSuccess from './Components/Honbob/HonbobSuccess/HonbobSuccess.js';
-import HonbobStart1 from './Components/Honbob/HonbobStart/HonbobStart1.js';
+import Honbob_Matching from './Pages/Honbob/Matching/JS/Honbob_Matching.js';
+import HonbobWaiting from './Pages/Honbob/waiting/HonbobWaiting.js';
+import HonbobSuccess from './Pages/Honbob/success/HonbobSuccess.js';
+import HonbobStart1 from './Pages/Honbob/info/HonbobStart1.js';
 
 //회원가입/로그인
-import SignIn from './Components/Login/SignIn/SignIn';
-import SignUp from './Components/Login/SignUp/SignUp';
-import Auth from './Components/Login/SignUp/Auth/Auth.js';
-import Major from './Components/Modal/Major';
-import FindId from './Components/Login/Find/FindId';
-import ResetPwd from './Components/Login/Find/ResetPwd';
-import Agree1 from './Components/Login/SignUp/Agree1';
-import Agree2 from './Components/Login/SignUp/Agree2';
-import Agree3 from './Components/Login/SignUp/Agree3';
-import Agree from './Components/Login/SignUp/Agree';
+import SignIn from './Pages/Login/SignIn/SignIn.js';
+import SignUp from './Pages/Login/SignUp/SignUp.js';
+import Auth from './Pages/Login/SignUp/Auth/Auth.js';
+import Major from './components/Modal/Major.js';
+import FindId from './Pages/Login/Find/FindId.js';
+import ResetPwd from './Pages/Login/Find/ResetPwd.js';
+import Agree1 from './Pages/Login/SignUp/Agree1.js';
+import Agree2 from './Pages/Login/SignUp/Agree2.js';
+import Agree3 from './Pages/Login/SignUp/Agree3.js';
+import Agree from './Pages/Login/SignUp/Agree.js';
 
 //마이페이지
-import MyPage from './Components/Login/MyPage/MyPage';
-import Modify from './Components/Login/MyPage/Modify/Modify';
+import MyPage from './Pages/myPage/MyPage.js';
+import Modify from './Pages/myPage/modify/Modify.js';
 
 //스터디
-import StudyList from './Components/Study/StudyList/StudyList.js';
-import StudyPostDeatil from './Components/Study/StudyPostDetail/StudyPostDetail.js';
-import StudyPostWrite from './Components/Study/StudyPostWrite/StudyPostWrite.js';
-import StudyFilter from './Components/Study/StudyFilterPage/StudyFIlterPage.js';
+import StudyList from './Pages/Study/StudyList/StudyList.js';
+import StudyPostDeatil from './Pages/Study/StudyPostDetail/StudyPostDetail.js';
+import StudyPostWrite from './Pages/Study/StudyPostWrite/StudyPostWrite.js';
+import StudyFilter from './Pages/Study/StudyFilterPage/StudyFIlterPage.js';
 
 export const MyContext = createContext();
 
@@ -75,12 +75,12 @@ const App = () => {
   }, []);
 
   // 토큰 유효기간 타이머
-  const setLogoutTimer = (token) => {
+  const setLogoutTimer = token => {
     const decodeToken = jwtDecode(token);
     const cuurentTime = Date.now();
     const expTime = decodeToken.exp * 1000;
     const timeUntilLogout = expTime - cuurentTime;
-    
+
     setTimeout(() => {
       logout();
     }, timeUntilLogout);
@@ -88,8 +88,8 @@ const App = () => {
 
   // 로그아웃
   const logout = () => {
-    localStorage.removeItem("accessToken");
-    localStorage.removeItem("refreshToken");
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('refreshToken');
   };
 
   return (
@@ -122,7 +122,7 @@ const App = () => {
         setPeerId,
         setLogoutTimer,
         setBuddyCount,
-        buddyCount
+        buddyCount,
       }}
     >
       <Router>
