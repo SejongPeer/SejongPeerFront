@@ -211,7 +211,7 @@
   .datePicker {
     width: 3vh;
     height: 3vh;
-    background-image: url('../../../assets/calLogo.png');
+    background-image: url('../../../Assets/calLogo.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center center;
@@ -567,7 +567,7 @@
   .datePicker {
     width: 3vh;
     height: 3vh;
-    background-image: url('../../../assets/calLogo.png');
+    background-image: url('../../../Assets/calLogo.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center center;

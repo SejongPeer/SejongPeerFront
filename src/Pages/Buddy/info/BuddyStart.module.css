@@ -54,7 +54,7 @@
   font-family: 'jalnan';
   src: url(../../fonts/Jalnan2.otf);
 }
-.inform_con{
+.inform_con {
   width: 100%;
   display: flex;
 }
@@ -67,7 +67,7 @@
   justify-content: space-evenly;
   align-items: center;
   font-size: 2vh;
-  border: 2px solid #E5E5E5;
+  border: 2px solid #e5e5e5;
   color: #333333;
   background-color: transparent;
   margin-left: auto;
@@ -78,7 +78,7 @@
 }
 
 .informImg {
-  background-image: url("../../../assets/warningLogo.png");
+  background-image: url('../../../Assets/warningLogo.png');
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;

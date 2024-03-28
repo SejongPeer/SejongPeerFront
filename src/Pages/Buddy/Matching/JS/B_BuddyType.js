@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import check from '../../../../assets/check.png';
+import check from '../../../../Assets/check.png';
 import con from '../CSS/B_Container.module.css';
 import btn3 from '../CSS/B_Btn3.module.css';
-import buddyImg3 from '../../../../assets/buddyImg3.png';
+import buddyImg3 from '../../../../Assets/buddyImg3.png';
 
 const Grade = props => {
   const [isSeniorClicked, setIsSeniorClicked] = useState(false);

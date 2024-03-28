@@ -60,7 +60,7 @@ html {
 
 .fightImg {
   margin-top: 8vh;
-  background-image: url('../../../../assets/fightCat.png');
+  background-image: url('../../../../Assets/fightCat.png');
   background-repeat: no-repeat;
   background-position: center center;
   background-size: 100% 100%;

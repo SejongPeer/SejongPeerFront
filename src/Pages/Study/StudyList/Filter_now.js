@@ -1,5 +1,5 @@
 import style from './Filter_now.module.css';
-import check from '../../../assets/check.png';
+import check from '../../../Assets/check.png';
 import { useContext, useEffect, useState } from 'react';
 import { MyContext } from '../../../App';
 

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { MyContext } from '../../../../App';
 import axios from 'axios';
 
-import Loading from '../../../../components/loading/Loading';
+import Loading from '../../../../Components/Load/Loading';
 
 import style from '../Auth/Auth.module.css';
 

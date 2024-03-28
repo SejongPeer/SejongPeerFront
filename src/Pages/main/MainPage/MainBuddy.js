@@ -1,6 +1,6 @@
 import style from './MainBuddy.module.css';
 
-import buddyButton from '../../../assets/buddyButton.png';
+import buddyButton from '../../../Assets/buddyButton.png';
 
 const MainBuddy = () => {
   return (

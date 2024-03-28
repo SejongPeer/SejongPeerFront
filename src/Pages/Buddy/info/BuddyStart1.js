@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import buddyStart1 from "../../../assets/buddyStart1.png"
+import buddyStart1 from "../../../Assets/buddyStart1.png"
 import style from './BuddyStart.module.css';
 import { useEffect, useRef, useState } from 'react';
 
@@ -20,7 +20,7 @@ const BuddyStart1 = () => {
     window.open('https://sejongbuddy.simple.ink/', '_blank');
   };
 
-  const countBuddyHandler = async() => {
+  const countBuddyHandler = async () => {
     try {
       const response = await fetch(
         process.env.REACT_APP_BACK_SERVER + "/buddy/active-count",
@@ -28,18 +28,18 @@ const BuddyStart1 = () => {
           method: 'GET',
         }
       );
-        const data = await response.json();
-        setCountBuddy(data.data.count);
+      const data = await response.json();
+      setCountBuddy(data.data.count);
 
-        if (!response.ok) {
-          throw new Error(data.message);
-        }
+      if (!response.ok) {
+        throw new Error(data.message);
+      }
 
 
-    } catch(error) {
+    } catch (error) {
       console.log(error.message);
     }
-    
+
   };
 
   return (
@@ -62,7 +62,7 @@ const BuddyStart1 = () => {
           세종버디 시작
         </button>
       </div>
-      </div>
+    </div>
   );
 };
 

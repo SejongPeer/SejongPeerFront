@@ -1,6 +1,6 @@
 import style from './StudyFilterPage.module.css';
-import search from '../../../assets/search.png';
-import back from '../../../assets/image/back_black.png';
+import search from '../../../Assets/search.png';
+import back from '../../../Assets/image/back_black.png';
 const StudyFilter = () => {
   return (
     <div className={style.container}>

@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import btn3 from '../CSS/B_Btn3.module.css';
 import con from '../CSS/B_Container.module.css';
-import check from '../../../../assets/check.png';
-import buddyImg3 from '../../../../assets/buddyImg3.png';
+import check from '../../../../Assets/check.png';
+import buddyImg3 from '../../../../Assets/buddyImg3.png';
 
 const GradeDiff = props => {
   const [firstClicked, setFirstClicked] = useState(false);

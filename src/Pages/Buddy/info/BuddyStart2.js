@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import BuddyStart from '../../../assets/buddyStart2.png';
+import BuddyStart from '../../../Assets/buddyStart2.png';
 import style from './BuddyStart.module.css';
 
 const BuddyStart2 = () => {

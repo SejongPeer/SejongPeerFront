@@ -1,8 +1,8 @@
 import { useContext, useState } from 'react';
 import style from './StudyList.module.css';
-import select from '../../../assets/select.png';
+import select from '../../../Assets/select.png';
 import StudyListPost from './StudyListPost';
-import BottomModal from '../../../components/Modal/BottomModal';
+import BottomModal from '../../../Components/Modal/BottomModal';
 import Filter_now from './Filter_now';
 import { MyContext } from '../../../App';
 import Filter_Feild from './Filter_Feild';
@@ -123,7 +123,7 @@ const StudyList = () => {
   const [onFilter, setOnFilter] = useState(['ongoing', 'finish']);
   // all - 모두, ongoing - 모집 중, finish - 모집완료
 
-  const onFilterHandler = onFilter => {};
+  const onFilterHandler = onFilter => { };
 
   // 필터링
 

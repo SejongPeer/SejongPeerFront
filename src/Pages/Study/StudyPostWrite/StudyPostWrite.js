@@ -1,8 +1,8 @@
 import style from './StudyPostWrite.module.css';
-import arrow from '../../../assets/image/down_arrow_black.png';
-import cancelBtn from '../../../assets/cancelBtn.png';
-import ImgPost from '../../../assets/ImgPost.png';
-import StudyWriteText from '../../../assets/StudyWriteText.png';
+import arrow from '../../../Assets/image/down_arrow_black.png';
+import cancelBtn from '../../../Assets/cancelBtn.png';
+import ImgPost from '../../../Assets/ImgPost.png';
+import StudyWriteText from '../../../Assets/StudyWriteText.png';
 import { useContext, useState } from 'react';
 import './StudyPostWriteBasic.css';
 
@@ -12,7 +12,7 @@ import ko from 'date-fns/locale/ko';
 import { parseISO, format } from 'date-fns';
 
 import { MyContext } from '../../../App';
-import BottomModal from '../../../components/Modal/BottomModal';
+import BottomModal from '../../../Components/Modal/BottomModal';
 import StudyPostField from './StudyPostField/StudyPostField';
 import StudyMember from './StudyMember/StudyMember';
 
@@ -106,9 +106,9 @@ const StudyPostWrite = () => {
                   <div className={style.periodDate}>
                     {startDate && endDate
                       ? `${format(startDate, 'M월 d일')} ~ ${format(
-                          endDate,
-                          'M월 d일'
-                        )}`
+                        endDate,
+                        'M월 d일'
+                      )}`
                       : null}
                   </div>
                 </div>

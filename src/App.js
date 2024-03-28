@@ -4,45 +4,46 @@ import './App.css';
 import { jwtDecode } from 'jwt-decode';
 
 //메인 컴포넌트
-import Header from './components/Header/Header.js';
-import StartLoading from './Pages/main/loading/StartLoading.js';
-import MainPage from './Pages/main/mainPage/MainPage.js';
+import Header from '../src/Components/Header/Header.js';
+import StartLoading from '../src/Pages/main/Loading/StartLoading.js';
+import MainPage from '../src/Pages/main/MainPage/MainPage.js';
+
 //버디 컴포넌트
-import BuddyStart1 from './Pages/buddy/info/BuddyStart1.js';
-import BuddyStart2 from './Pages/buddy/info/BuddyStart2.js';
-import BuddyMatching from './Pages/buddy/Matching/JS/Buddy_Matching.js';
-import BuddyWaiting from './Pages/buddy/waiting/BuddyWaiting.js';
-import BuddyAccept from './Pages/buddy/accept/BuddyAccept.js';
-import BuddySuccess from './Pages/buddy/success/BuddySuccess.js';
-import Confirm from './components/Modal/Confirm.js';
+import BuddyStart1 from '../src/Pages/Buddy/info/BuddyStart1.js'
+import BuddyStart2 from '../src/Pages/Buddy/info/BuddyStart2.js'
+import BuddyMatching from '../src/Pages/Buddy/Matching/JS/Buddy_Matching.js';
+import BuddyWaiting from '../src/Pages/Buddy/waiting/BuddyWaiting.js';
+import BuddyAccept from '../src/Pages/Buddy/accept/BuddyAccept.js';
+import BuddySuccess from '../src/Pages/Buddy/success/BuddySuccess.js';
+import Confirm from '../src/Components/Modal/Confirm.js';
 
 //혼밥 컴포넌트
-import Honbob_Matching from './Pages/honbob/Matching/JS/Honbob_Matching.js';
-import HonbobWaiting from './Pages/honbob/waiting/HonbobWaiting.js';
-import HonbobSuccess from './Pages/honbob/success/HonbobSuccess.js';
-import HonbobStart1 from './Pages/honbob/info/HonbobStart1.js';
+import Honbob_Matching from '../src/Pages/Honbob/Matching/JS/Honbob_Matching.js';
+import HonbobWaiting from '../src/Pages/Honbob/waiting/HonbobWaiting.js';
+import HonbobSuccess from '../src/Pages/Honbob/success/HonbobSuccess.js';
+import HonbobStart1 from '../src/Pages/Honbob/info/HonbobStart1.js';
 
 //회원가입/로그인
-import SignIn from './Pages/Login/SignIn/SignIn.js';
-import SignUp from './Pages/Login/SignUp/SignUp.js';
-import Auth from './Pages/Login/SignUp/Auth/Auth.js';
-import Major from './components/Modal/Major.js';
-import FindId from './Pages/Login/Find/FindId.js';
-import ResetPwd from './Pages/Login/Find/ResetPwd.js';
-import Agree1 from './Pages/Login/SignUp/Agree1.js';
-import Agree2 from './Pages/Login/SignUp/Agree2.js';
-import Agree3 from './Pages/Login/SignUp/Agree3.js';
-import Agree from './Pages/Login/SignUp/Agree.js';
+import SignIn from '../src/Pages/Login/SignIn/SignIn.js';
+import SignUp from '../src/Pages/Login/SignUp/SignUp.js';
+import Auth from '../src/Pages/Login/SignUp/Auth/Auth.js';
+import Major from '../src/Components/Modal/Major.js'
+import FindId from '../src/Pages/Login/Find/FindId.js';
+import ResetPwd from '../src/Pages/Login/Find/ResetPwd.js';
+import Agree1 from '../src/Pages/Login/SignUp/Agree1.js';
+import Agree2 from '../src/Pages/Login/SignUp/Agree2.js';
+import Agree3 from '../src/Pages/Login/SignUp/Agree3.js';
+import Agree from '../src/Pages/Login/SignUp/Agree.js';
 
-//마이페이지
-import MyPage from './Pages/myPage/MyPage.js';
-import Modify from './Pages/myPage/modify/Modify.js';
+// 마이페이지
+import MyPage from '../src/Pages/myPage/MyPage.js';
+import Modify from '../src/Pages/myPage/modify/Modify.js';
 
 //스터디
-import StudyList from './Pages/Study/StudyList/StudyList.js';
-import StudyPostDeatil from './Pages/Study/StudyPostDetail/StudyPostDetail.js';
-import StudyPostWrite from './Pages/Study/StudyPostWrite/StudyPostWrite.js';
-import StudyFilter from './Pages/Study/StudyFilterPage/StudyFIlterPage.js';
+import StudyList from '../src/Pages/Study/StudyList/StudyList.js';
+import StudyPostDeatil from '../src/Pages/Study/StudyPostDetail/StudyPostDetail.js';
+import StudyPostWrite from '../src/Pages/Study/StudyPostWrite/StudyPostWrite.js';
+import StudyFilter from '../src/Pages/Study/StudyFilterPage/StudyFIlterPage.js';
 
 export const MyContext = createContext();
 

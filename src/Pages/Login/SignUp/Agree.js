@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import check from '../../../assets/check2.png';
-import check2 from '../../../assets/check3.png';
+import check from '../../../Assets/check2.png';
+import check2 from '../../../Assets/check3.png';
 import box from './Agree.module.css';
 import sub from './SignUp.module.css';
 
