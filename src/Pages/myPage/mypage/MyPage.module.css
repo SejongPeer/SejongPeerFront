@@ -74,7 +74,7 @@
     border-radius: 18px;
     background-color: white;
     border: 1px solid #e5e5e5;
-    background-image: url('../../assets/releaseWaiting.png');
+    background-image: url('../../../assets/image/releaseWaiting.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100% 100%;
@@ -110,14 +110,14 @@
   }
 
   .buddyImg {
-    background-image: url('../../assets/sejongBuddycat.png');
+    background-image: url('../../../assets/image/sejongBuddycat.png');
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
   }
 
   .honbobImg {
-    background-image: url('../../assets/sejongHonbobcat.png');
+    background-image: url('../../../assets/image/sejongHonbobcat.png');
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
@@ -165,7 +165,7 @@
   .rightArrow {
     width: 1vh;
     height: 2vh;
-    background-image: url('../../assets/right_arrow.png');
+    background-image: url('../../../assets/image/right_arrow.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center center;
@@ -324,7 +324,7 @@
     border-radius: 18px;
     background-color: white;
     border: 1px solid #e5e5e5;
-    background-image: url('../../assets/releaseWaiting.png');
+    background-image: url('../../../assets/image/releaseWaiting.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100% 100%;
@@ -360,14 +360,14 @@
   }
 
   .buddyImg {
-    background-image: url('../../assets/sejongBuddycat.png');
+    background-image: url('../../../assets/image/sejongBuddycat.png');
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
   }
 
   .honbobImg {
-    background-image: url('../../assets/sejongHonbobcat.png');
+    background-image: url('../../../assets/image/sejongHonbobcat.png');
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
@@ -414,7 +414,7 @@
   .rightArrow {
     width: 2vh;
     height: 2vh;
-    background-image: url('../../assets/right_arrow.png');
+    background-image: url('../../../assets/image/right_arrow.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center center;

@@ -1,7 +1,7 @@
 import { useContext, useState, useEffect } from 'react';
-import style from '../SignIn/SignIn.module.css';
+import style from '../signIn/SignIn.module.css';
 import css from './ResetPwd.module.css';
-import SignInBox from '../SignIn/SignInBox';
+import SignInBox from '../signIn/SignInBox';
 import axios from 'axios';
 import { MyContext } from '../../../App';
 import { useLocation } from 'react-router-dom';

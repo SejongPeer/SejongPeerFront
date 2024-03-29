@@ -1,6 +1,6 @@
 import style from './BuddyWaiting.module.css';
 import { useNavigate } from 'react-router-dom';
-import waitingCat from '../../../assets/waitingCat.png';
+import waitingCat from '../../../assets/image/waitingCat.png';
 import { useEffect, useRef, useState } from 'react';
 
 const BuddyWaiting = () => {

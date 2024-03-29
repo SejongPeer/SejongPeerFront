@@ -4,7 +4,7 @@ import './App.css';
 import { jwtDecode } from 'jwt-decode';
 
 //메인 컴포넌트
-import Header from './components/Header/Header.js';
+import Header from './components/header/Header.js';
 import StartLoading from './Pages/main/loading/StartLoading.js';
 import MainPage from './Pages/main/mainPage/MainPage.js';
 //버디 컴포넌트
@@ -23,26 +23,26 @@ import HonbobSuccess from './Pages/honbob/success/HonbobSuccess.js';
 import HonbobStart1 from './Pages/honbob/info/HonbobStart1.js';
 
 //회원가입/로그인
-import SignIn from './Pages/Login/SignIn/SignIn.js';
-import SignUp from './Pages/Login/SignUp/SignUp.js';
-import Auth from './Pages/Login/SignUp/Auth/Auth.js';
+import SignIn from './Pages/Login/signIn/SignIn.js';
+import SignUp from './Pages/Login/signUp/SignUp.js';
+import Auth from './Pages/Login/signUp/Auth/Auth.js';
 import Major from './components/Modal/Major.js';
-import FindId from './Pages/Login/Find/FindId.js';
-import ResetPwd from './Pages/Login/Find/ResetPwd.js';
-import Agree1 from './Pages/Login/SignUp/Agree1.js';
-import Agree2 from './Pages/Login/SignUp/Agree2.js';
-import Agree3 from './Pages/Login/SignUp/Agree3.js';
-import Agree from './Pages/Login/SignUp/Agree.js';
+import FindId from './Pages/Login/find/FindId.js';
+import ResetPwd from './Pages/Login/find/ResetPwd.js';
+import Agree1 from './Pages/Login/signUp/Agree1.js';
+import Agree2 from './Pages/Login/signUp/Agree2.js';
+import Agree3 from './Pages/Login/signUp/Agree3.js';
+import Agree from './Pages/Login/signUp/Agree.js';
 
 //마이페이지
-import MyPage from './Pages/myPage/MyPage.js';
+import MyPage from './Pages/myPage/mypage/MyPage.js';
 import Modify from './Pages/myPage/modify/Modify.js';
 
 //스터디
-import StudyList from './Pages/Study/StudyList/StudyList.js';
-import StudyPostDeatil from './Pages/Study/StudyPostDetail/StudyPostDetail.js';
+import StudyList from './Pages/Study/studyList/StudyList.js';
+import StudyPostDeatil from './Pages/Study/studyPostDetail/StudyPostDetail.js';
 import StudyPostWrite from './Pages/Study/StudyPostWrite/StudyPostWrite.js';
-import StudyFilter from './Pages/Study/StudyFilterPage/StudyFIlterPage.js';
+import StudyFilter from './Pages/Study/studyFilterPage/StudyFIlterPage.js';
 
 export const MyContext = createContext();
 

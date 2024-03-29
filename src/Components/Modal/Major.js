@@ -6,7 +6,7 @@ import EIE from './majorDummy/EIE.js';
 
 import style from './Major.module.css';
 import back from '../../assets/image/back_white.png';
-import close from '../../assets/close.png';
+import close from '../../assets/image/close.png';
 
 const Major = props => {
   const { setModalOpen } = useContext(MyContext);

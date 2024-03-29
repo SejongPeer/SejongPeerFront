@@ -1,5 +1,5 @@
 import style from "./HonbobWaiting.module.css";
-import honbobWaitingLogo from "../../../assets/honbobWaitingImg.png";
+import honbobWaitingLogo from "../../../assets/image/honbobWaitingImg.png";
 import { MyContext } from "../../../App";
 import { useState, useEffect, useContext } from "react";
 import { redirect, useNavigate } from "react-router-dom";

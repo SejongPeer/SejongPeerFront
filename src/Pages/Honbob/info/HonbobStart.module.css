@@ -39,7 +39,7 @@
   }
 
   .informImg {
-    background-image: url("../../../assets/warningLogo.png");
+    background-image: url("../../../assets/image/warningLogo.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -62,7 +62,7 @@
   .honbobLogo {
     height: 45vh;
     width: 27vh;
-    background-image: url("../../../assets/honbobStartLogo.png");
+    background-image: url("../../../assets/image/honbobStartLogo.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100% 100%;
@@ -98,7 +98,7 @@
   .raccoon {
     width: 4vh;
     height: 4vh;
-    background-image: url("../../../assets/raccoonImg.png");
+    background-image: url("../../../assets/image/raccoonImg.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100% 100%;
@@ -159,7 +159,7 @@
   }
 
   .informImg {
-    background-image: url("../../../assets/warningLogo.png");
+    background-image: url("../../../assets/image/warningLogo.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -182,7 +182,7 @@
   .honbobLogo {
     height: 38vh;
     width: 50vw;
-    background-image: url("../../../assets/honbobStartLogo.png");
+    background-image: url("../../../assets/image/honbobStartLogo.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100% 100%;
@@ -217,7 +217,7 @@
   .raccoon {
     width: 5vh;
     height: 5vh;
-    background-image: url("../../../assets/raccoonImg.png");
+    background-image: url("../../../assets/image/raccoonImg.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100% 100%;

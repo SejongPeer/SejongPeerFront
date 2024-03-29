@@ -1,5 +1,5 @@
 import style from './BuddyAccept.module.css';
-import findBuddy from '../../../assets/findBuddy.png';
+import findBuddy from '../../../assets/image/findBuddy.png';
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router';
 

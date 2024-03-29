@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react';
 import style from './StudyList.module.css';
-import select from '../../../assets/select.png';
+import select from '../../../assets/image/select.png';
 import StudyListPost from './StudyListPost';
 import BottomModal from '../../../components/Modal/BottomModal';
 import Filter_now from './Filter_now';

@@ -21,28 +21,28 @@
 }
 
 .item-0 {
-  background-image: url('../../../../assets/KoreanFood.png');
+  background-image: url('../../../../assets/image/KoreanFood.png');
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100% 100%;
 }
 
 .item-1 {
-  background-image: url('../../../../assets/westernFood.png');
+  background-image: url('../../../../assets/image/westernFood.png');
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100% 100%;
 }
 
 .item-2 {
-  background-image: url('../../../../assets/ChineseFood.png');
+  background-image: url('../../../../assets/image/ChineseFood.png');
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100% 100%;
 }
 
 .item-3 {
-  background-image: url('../../../../assets/JapaneseFood.png');
+  background-image: url('../../../../assets/image/JapaneseFood.png');
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100% 100%;

@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import buddyStart1 from "../../../assets/buddyStart1.png"
+import buddyStart1 from "../../../assets/image/buddyStart1.png"
 import style from './BuddyStart.module.css';
 import { useEffect, useRef, useState } from 'react';
 
