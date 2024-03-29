@@ -1,11 +1,13 @@
 import { useContext, useState, useEffect } from 'react';
-// import style from "../SignIn/SignIn.module.css";
-import style from '../find/FindId.module.css';
-import SignInBox from '../signIn/SignInBox.js';
-import axios from 'axios';
-import { MyContext } from '../../../App.js';
+import { MyContext } from '../../../../App.js';
 import { useNavigate } from 'react-router-dom';
-import Loading from '../../../components/loading/Loading.js';
+import axios from 'axios';
+
+import SignInBox from '../../signIn/SignInBox.js';
+
+import style from './FindId.module.css';
+import Loading from '../../../../components/loading/Loading.js';
+
 const FindId = () => {
   const navigate = useNavigate();
   const [id, setId] = useState('');

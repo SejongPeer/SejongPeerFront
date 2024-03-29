@@ -5,7 +5,7 @@ import { jwtDecode } from 'jwt-decode';
 
 //메인 컴포넌트
 import Header from './components/header/Header.js';
-import StartLoading from './Pages/main/loading/StartLoading.js';
+import StartLoading from './Pages/main/landing/StartLoading.js';
 import MainPage from './Pages/main/mainPage/MainPage.js';
 //버디 컴포넌트
 import BuddyStart1 from './Pages/buddy/info/BuddyStart1.js';
@@ -27,11 +27,11 @@ import SignIn from './Pages/Login/signIn/SignIn.js';
 import SignUp from './Pages/Login/signUp/SignUp.js';
 import Auth from './Pages/Login/signUp/Auth/Auth.js';
 import Major from './components/Modal/Major.js';
-import FindId from './Pages/Login/find/FindId.js';
-import ResetPwd from './Pages/Login/find/ResetPwd.js';
-import Agree1 from './Pages/Login/signUp/Agree1.js';
-import Agree2 from './Pages/Login/signUp/Agree2.js';
-import Agree3 from './Pages/Login/signUp/Agree3.js';
+import FindId from './Pages/Login/find/findId/FindId.js';
+import ResetPwd from './Pages/Login/find/ResetPwd/ResetPwd.js';
+import Agree1 from './constants/privacyPolicy/Agree1.js';
+import Agree2 from './constants/privacyPolicy/Agree2.js';
+import Agree3 from './constants/privacyPolicy/Agree3.js';
 import Agree from './Pages/Login/signUp/Agree.js';
 
 //마이페이지

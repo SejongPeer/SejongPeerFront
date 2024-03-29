@@ -7,7 +7,7 @@ import { useContext, useEffect, useState } from 'react';
 import honbobUse from '../../../assets/image/honbobUse.png';
 import peerUse from '../../../assets/image/peerUse.png';
 import buddyUse from '../../../assets/image/buddyUse.png';
-import buddyButton from '../../../assets/image/buddyButton.png';
+import buddy_button from '../../../assets/image/buddy_button.png';
 import honbobButton from '../../../assets/image/honbobButton.png';
 import { MyContext } from '../../../App';
 
@@ -217,7 +217,7 @@ const MainPage = () => {
           }}
         >
           <img
-            src={buddyButton}
+            src={buddy_button}
             className={style.btn1}
             onClick={BuddyHandler}
           ></img>

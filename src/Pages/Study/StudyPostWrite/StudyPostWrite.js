@@ -1,6 +1,6 @@
 import style from './StudyPostWrite.module.css';
 import arrow from '../../../assets/image/down_arrow_black.png';
-import cancelBtn from '../../../assets/image/cancelBtn.png';
+import cancel_black from '../../../assets/image/cancel_black.png';
 import ImgPost from '../../../assets/image/ImgPost.png';
 import StudyWriteText from '../../../assets/image/StudyWriteText.png';
 import { useContext, useState } from 'react';
