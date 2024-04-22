@@ -1,5 +1,5 @@
 import style from './Filter_Feild.module.css';
-import search from '../../../assets/image/search.png';
+import search from '../../../assets/image/search_gray.png';
 
 const Filter_Feild = () => {
   return (

@@ -1,7 +1,7 @@
 import style from './BuddySuccess.module.css';
 import buddySucces from '../../../assets/image/buddySuccess.png';
-import prev from '../../../assets/image/prev.png';
-import next from '../../../assets/image/next.png';
+import prev from '../../../assets/image/back_gray.png';
+import next from '../../../assets/image/next_gray.png';
 import BuddyInfoBox from './BuddyInfoBox';
 import { useContext, useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';

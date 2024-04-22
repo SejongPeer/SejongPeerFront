@@ -6,7 +6,7 @@ import EIE from './majorDummy/EIE.js';
 
 import style from './Major.module.css';
 import back from '../../assets/image/back_white.png';
-import close from '../../assets/image/close.png';
+import cancel_gray from '../../assets/image/cancel_gray.png';
 
 const Major = props => {
   const { setModalOpen } = useContext(MyContext);
@@ -126,7 +126,7 @@ const Major = props => {
               </p>
             </div>
             <button className={style.close} onClick={cancelHandler}>
-              <img src={close} alt="close" />
+              <img src={cancel_gray} alt="close" />
             </button>
           </header>
 
@@ -193,8 +193,8 @@ const Major = props => {
                 단과대학 선택
               </p>
             </div>
-            <button className={style.close} onClick={cancelHandler}>
-              <img src={close} alt="close" />
+            <button className={style.cancel_gray} onClick={cancelHandler}>
+              <img src={cancel_gray} alt="close" />
             </button>
           </header>
 

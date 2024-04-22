@@ -165,7 +165,7 @@
   .rightArrow {
     width: 1vh;
     height: 2vh;
-    background-image: url('../../../assets/image/right_arrow.png');
+    background-image: url('../../../assets/image/next_black.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center center;
@@ -414,7 +414,7 @@
   .rightArrow {
     width: 2vh;
     height: 2vh;
-    background-image: url('../../../assets/image/right_arrow.png');
+    background-image: url('../../../assets/image/next_black.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center center;

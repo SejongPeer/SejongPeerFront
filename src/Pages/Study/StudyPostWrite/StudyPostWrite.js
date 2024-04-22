@@ -1,5 +1,5 @@
 import style from './StudyPostWrite.module.css';
-import arrow from '../../../assets/image/down_arrow_black.png';
+import arrow from '../../../assets/image/down_black.png';
 import cancel_black from '../../../assets/image/cancel_black.png';
 import ImgPost from '../../../assets/image/ImgPost.png';
 import StudyWriteText from '../../../assets/image/StudyWriteText.png';

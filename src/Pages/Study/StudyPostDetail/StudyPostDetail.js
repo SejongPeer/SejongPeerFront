@@ -1,5 +1,5 @@
 import style from './StudyPostDetail.module.css';
-import serch from '../../../assets/image/serch.png';
+import search from '../../../assets/image/search_black.png';
 import { useState, useContext } from 'react';
 import { MyContext } from '../../../App';
 import { useNavigate } from 'react-router-dom';
