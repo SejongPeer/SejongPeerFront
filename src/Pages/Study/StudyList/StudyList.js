@@ -2,7 +2,7 @@ import { useContext, useState } from 'react';
 import style from './StudyList.module.css';
 import select from '../../../assets/image/select.png';
 import StudyListPost from './StudyListPost';
-import BottomModal from '../../../components/Modal/BottomModal';
+import BottomModal from '../../../Components/Modal/BottomModal';
 import Filter_now from './Filter_now';
 import { MyContext } from '../../../App';
 import Filter_Feild from './Filter_Feild';

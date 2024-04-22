@@ -12,7 +12,7 @@ import ko from 'date-fns/locale/ko';
 import { parseISO, format } from 'date-fns';
 
 import { MyContext } from '../../../App';
-import BottomModal from '../../../components/Modal/BottomModal';
+import BottomModal from '../../../Components/Modal/BottomModal';
 import StudyPostField from './StudyPostField/StudyPostField';
 import StudyMember from './StudyMember/StudyMember';
 
