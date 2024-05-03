@@ -33,6 +33,27 @@
     cursor: pointer;
   }
 
+  .festButton {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 7px;
+    background-color: white;
+    height: 25vh;
+    border: 1px solid #e5e5e5;
+    border-radius: 16px;
+    margin-top: 2vh;
+  }
+
+  .festButton button {
+    width: 11vw;
+    height: 10vh;
+    border-radius: 8px;
+    border: 1px solid var(--line_02, #e5e5e5);
+    background: #fafafa;
+    margin-bottom: 10px;
+  }
+
   .studyBtn {
     /* width: 25vw; */
     height: 25vh;
