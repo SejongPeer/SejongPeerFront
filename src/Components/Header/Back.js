@@ -8,6 +8,7 @@ import sejongHonbob from '../../Assets/sejongHonbob.png';
 import login from '../../Assets/login.png';
 import style from './Back.module.css';
 import mypage from '../../Assets/mypage.png';
+import meeting from '../../Assets/meeting.png';
 
 const Back = () => {
   const navigate = useNavigate();
@@ -43,7 +44,7 @@ const Back = () => {
   // 로그인
   const isLoginPath = location.pathname.startsWith('/login');
   // 회원가입
-  const isSignUpPath = location.pathname.startsWith('/buddy');
+  const isFestPath = location.pathname.startsWith('/fest');
   const isBuddyPath = location.pathname.startsWith('/buddy');
   const isStudyPath = location.pathname.startsWith('/study');
   const isHonbobPath = location.pathname.startsWith('/honbob/');
@@ -87,6 +88,9 @@ const Back = () => {
       )}
       {ismyPage && (
         <img className={style.mypagelogo} src={mypage} alt="mypage" />
+      )}
+      {isFestPath && (
+        <img className={style.mypagelogo} src={meeting} alt="mypage" />
       )}
       {/* {isStudy && (
         <img
