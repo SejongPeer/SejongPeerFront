@@ -1,7 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom';
 import style from './MainPage.module.css';
-import MainBuddy from './MainBuddy';
-import MainHonbob from './MainHonbob';
 import reprot from '../../../Assets/report.png';
 import { useContext, useEffect, useState } from 'react';
 import honbobUse from '../../../Assets/honbobUse.png';
@@ -18,6 +16,11 @@ const MainPage = () => {
   const refreshToken = localStorage.getItem('refreshToken');
   const accessToken = localStorage.getItem('accessToken');
   const { setBuddyCount } = useContext(MyContext);
+
+  // 동물상 미팅 페이지 이동
+  const goResult = () => {
+    navigate('/fest/AnimalResult')
+  }
 
   // 버디 상태 확인
   const BuddyHandler = async () => {
@@ -246,7 +249,7 @@ const MainPage = () => {
           </div> */}
         {/* </div> */}
         <div className={style.festButton} >
-          <button><p>내 동물상 결과 확인하기</p></button>
+          <button onClick={goResult}><p>내 동물상 결과 확인하기</p></button>
           <button><p>미팅해요 동물의 숲</p></button>
         </div>
       </div>

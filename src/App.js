@@ -45,6 +45,9 @@ import StudyPostDeatil from '../src/Pages/Study/StudyPostDetail/StudyPostDetail.
 import StudyPostWrite from '../src/Pages/Study/StudyPostWrite/StudyPostWrite.js';
 import StudyFilter from '../src/Pages/Study/StudyFilterPage/StudyFIlterPage.js';
 
+// 축제
+import AnimalResult from './Pages/Festival/AnimalResult/AnimalResult.js';
+
 export const MyContext = createContext();
 
 const App = () => {
@@ -177,6 +180,9 @@ const App = () => {
               <Route path="/study/detail" element={<StudyPostDeatil />} />
               <Route path="/study/post" element={<StudyPostWrite />} />
               <Route path="/study/filter" element={<StudyFilter />} />
+
+              <Route path="/fest/AnimalResult" element={<AnimalResult />} />
+
             </Routes>
           </main>
         </div>
