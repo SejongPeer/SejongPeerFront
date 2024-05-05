@@ -1,12 +1,20 @@
-import style from '../AnimalResult/AnimalResult.module.css'
+import style from '../AnimalApply/AnimalApply.module.css'
 import kakao from '../../../Assets/kakao.png'
-// 동물상 미팅 결과 확인 페이지
-const AnimalResult = () => {
+
+import { useNavigate } from 'react-router-dom'
+
+// 동물상 미팅 신청 1페이지
+const AnimalApply = () => {
+    const navigate = useNavigate();
+
+    const goApply = () => {
+        navigate('/fest/AnimalApply2')
+    }
     return (
         <div className={style.container1}>
             <h1>동물상형 미팅</h1>
             <div className={style.container2}>
-                <button className={style.apply}>동물상 미팅 신청하기</button>
+                <button className={style.apply} onClick={goApply}>동물상 미팅 신청하기</button>
                 <button className={style.apply}>매칭 결과 확인하기</button>
             </div>
             <div className={style.container3}>
@@ -20,4 +28,4 @@ const AnimalResult = () => {
     )
 }
 
-export default AnimalResult
+export default AnimalApply

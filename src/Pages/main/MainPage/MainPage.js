@@ -19,7 +19,7 @@ const MainPage = () => {
 
   // 동물상 미팅 페이지 이동
   const goResult = () => {
-    navigate('/fest/AnimalResult')
+    navigate('/fest/AnimalApply')
   }
 
   // 버디 상태 확인

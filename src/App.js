@@ -39,14 +39,15 @@ import Agree from '../src/Pages/Login/SignUp/Agree.js';
 import MyPage from '../src/Pages/myPage/MyPage.js';
 import Modify from '../src/Pages/myPage/modify/Modify.js';
 
-//스터디
+// 스터디
 import StudyList from '../src/Pages/Study/StudyList/StudyList.js';
 import StudyPostDeatil from '../src/Pages/Study/StudyPostDetail/StudyPostDetail.js';
 import StudyPostWrite from '../src/Pages/Study/StudyPostWrite/StudyPostWrite.js';
 import StudyFilter from '../src/Pages/Study/StudyFilterPage/StudyFIlterPage.js';
 
 // 축제
-import AnimalResult from './Pages/Festival/AnimalResult/AnimalResult.js';
+import AnimalApply from './Pages/Festival/AnimalApply/AnimalApply.js';
+import AnimalApply2 from './Pages/Festival/AnimalApply2/AnimalApply2.js';
 
 export const MyContext = createContext();
 
@@ -181,7 +182,8 @@ const App = () => {
               <Route path="/study/post" element={<StudyPostWrite />} />
               <Route path="/study/filter" element={<StudyFilter />} />
 
-              <Route path="/fest/AnimalResult" element={<AnimalResult />} />
+              <Route path="/fest/AnimalApply" element={<AnimalApply />} />
+              <Route path="/fest/AnimalApply2" element={<AnimalApply2 />} />
 
             </Routes>
           </main>
