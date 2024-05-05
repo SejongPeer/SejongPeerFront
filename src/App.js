@@ -9,8 +9,8 @@ import StartLoading from '../src/Pages/main/Loading/StartLoading.js';
 import MainPage from '../src/Pages/main/MainPage/MainPage.js';
 
 //버디 컴포넌트
-import BuddyStart1 from '../src/Pages/Buddy/info/BuddyStart1.js'
-import BuddyStart2 from '../src/Pages/Buddy/info/BuddyStart2.js'
+import BuddyStart1 from '../src/Pages/Buddy/info/BuddyStart1.js';
+import BuddyStart2 from '../src/Pages/Buddy/info/BuddyStart2.js';
 import BuddyMatching from '../src/Pages/Buddy/Matching/JS/Buddy_Matching.js';
 import BuddyWaiting from '../src/Pages/Buddy/waiting/BuddyWaiting.js';
 import BuddyAccept from '../src/Pages/Buddy/accept/BuddyAccept.js';
@@ -27,7 +27,7 @@ import HonbobStart1 from '../src/Pages/Honbob/info/HonbobStart1.js';
 import SignIn from '../src/Pages/Login/SignIn/SignIn.js';
 import SignUp from '../src/Pages/Login/SignUp/SignUp.js';
 import Auth from '../src/Pages/Login/SignUp/Auth/Auth.js';
-import Major from '../src/Components/Modal/Major.js'
+import Major from '../src/Components/Modal/Major.js';
 import FindId from '../src/Pages/Login/Find/FindId.js';
 import ResetPwd from '../src/Pages/Login/Find/ResetPwd.js';
 import Agree1 from '../src/Pages/Login/SignUp/Agree1.js';
@@ -48,6 +48,7 @@ import StudyFilter from '../src/Pages/Study/StudyFilterPage/StudyFIlterPage.js';
 // 축제
 import AnimalApply from './Pages/Festival/AnimalApply/AnimalApply.js';
 import AnimalApply2 from './Pages/Festival/AnimalApply2/AnimalApply2.js';
+import AnimalApply3 from './Pages/Festival/AnimalApply3/AnimalApply3.js';
 
 export const MyContext = createContext();
 
@@ -184,7 +185,7 @@ const App = () => {
 
               <Route path="/fest/AnimalApply" element={<AnimalApply />} />
               <Route path="/fest/AnimalApply2" element={<AnimalApply2 />} />
-
+              <Route path="/fest/AnimalApply3" element={<AnimalApply3 />} />
             </Routes>
           </main>
         </div>
