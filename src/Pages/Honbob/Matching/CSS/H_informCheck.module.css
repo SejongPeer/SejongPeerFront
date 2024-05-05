@@ -1,0 +1,23 @@
+.informContainer {
+    width: 40vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.divBox {
+    border: 3px solid #FF7474;
+    font-weight: 600;
+    width: 35vh;
+    height: 5vh;
+    display: flex;
+    align-items: center;
+    padding: 2vh;
+    border-radius: 12px;
+    font-size: 1.7vh;
+    color: #555555;
+    margin-bottom: 1vh;
+    margin-top: 0.5vh;
+    background-color: #FFFFFF;
+}

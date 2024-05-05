@@ -7,7 +7,7 @@ const UserMenu = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const refreshToken = localStorage.getItem("refreshToken");
   const accessToken = localStorage.getItem("accessToken");
-  
+
   useEffect(() => {
     if (refreshToken === null & accessToken === null) {
       setIsLoggedIn(false);

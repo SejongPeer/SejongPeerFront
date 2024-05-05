@@ -1,0 +1,316 @@
+@media (min-width: 768px) {
+  .Container {
+    width: 100vw;
+    height: 100vh;
+    background-color: #fbe4e4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .outerContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .ContainerBox {
+    width: 28vw;
+    height: 92.7vh;
+    margin-top: 7.3vh;
+    padding: 1vw 2vw 0 2vw;
+    background-color: #fbe4e4;
+    border: 1px solid #e5e5e5;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .container {
+    width: 28vw;
+    margin-top: 7.3vh;
+    padding: 1vw 2vw 0 2vw;
+    background-color: #fbe4e4;
+    border: 1px solid #e5e5e5;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .container1 {
+    background-color: #ffffff;
+    width: 28vw;
+    height: 29vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .myInformBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 28vw;
+    height: 27vh;
+  }
+
+  .informTitleBox {
+    width: 26vw;
+    height: 5vh;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    /* align-items: flex-start; */
+    flex-direction: row;
+    margin-top: 2vh;
+    gap: 2%;
+  }
+
+  .IdBox {
+    width: 25vw;
+    height: 5vh;
+    border-radius: 24px;
+    border: none;
+    background-color: #F0F0F0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1vh;
+  }
+
+  .myInformDiv {
+    width: 25vw;
+    height: 5vh;
+    border-radius: 24px;
+    border: 1px solid rgb(124, 124, 124);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1vh;
+  }
+
+  .focused {
+    width: 25vw;
+    height: 5vh;
+    border-radius: 24px;
+    border: 3px solid rgb(0, 0, 0);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1vh;
+  }
+
+  .myInformInput::placeholder {
+    text-align: right;
+  }
+
+  .myInformName {
+    font-weight: 700;
+    margin-left: 2vw;
+  }
+
+  .myInformInput {
+    width: 7vw;
+    height: 4vh;
+    font-size: 1.8vh;
+    margin-right: 2vw;
+    outline: none;
+    border: none;
+    text-align: right;
+  }
+
+  .container2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    width: 28vw;
+    height: 12vh;
+    margin-top: 1.5vh;
+  }
+
+  .departBox {
+    width: 26vw;
+    height: 5vh;
+  }
+
+  .modify {
+    position: absolute;
+    bottom: 2vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 26vw;
+    height: 6vh;
+    border-radius: 34px;
+    background-color: #ff4b4b;
+    color: white;
+    border: 1px solid #e5e5e5;
+    margin-top: 5vh;
+  }
+}
+
+@media (max-width: 768px) {
+  .outerContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .ContainerBox {
+    width: 100vw;
+    margin-top: 7.3vh;
+    padding: 1vw 2vw 0 2vw;
+    background-color: #fbe4e4;
+    border: 1px solid #e5e5e5;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .container {
+    width: 100vw;
+    margin-top: 7.3vh;
+    padding: 1vw 2vw 0 2vw;
+    background-color: #fbe4e4;
+    border: 1px solid #e5e5e5;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .container1 {
+    background-color: #ffffff;
+    width: 100vw;
+    height: 29vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .myInformBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 27vh;
+  }
+
+  .informTitleBox {
+    width: 90vw;
+    height: 5vh;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    /* align-items: flex-start; */
+    flex-direction: row;
+    margin-top: 2vh;
+    gap: 2%;
+  }
+
+  .IdBox {
+    width: 90vw;
+    height: 5vh;
+    border-radius: 24px;
+    border: none;
+    background-color: #F0F0F0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1vh;
+    padding-left: 6vw;
+  }
+
+  .myInformDiv {
+    width: 90vw;
+    height: 5vh;
+    border-radius: 24px;
+    border: 1px solid rgb(124, 124, 124);
+    padding-left: 6vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1vh;
+  }
+
+  .focused {
+    width: 90vw;
+    height: 5vh;
+    border-radius: 24px;
+    border: 3px solid rgb(0, 0, 0);
+    padding-left: 6vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1vh;
+  }
+
+  .myInformInput::placeholder {
+    text-align: right;
+  }
+
+  .myInformName {
+    font-weight: 700;
+    margin-left: 0.1vw;
+  }
+
+  .myInformInput {
+    width: 30vw;
+    height: 4vh;
+    font-size: 1.8vh;
+    margin-right: 5vw;
+    outline: none;
+    border: none;
+    text-align: right;
+  }
+
+  .container2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    width: 100vw;
+    height: 10vh;
+    margin-top: 1.5vh;
+  }
+
+  .departBox {
+    width: 90vw;
+    height: 5vh;
+  }
+
+  .modify {
+    position: absolute;
+    bottom: 2vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90vw;
+    height: 6vh;
+    border-radius: 34px;
+    background-color: #ff4b4b;
+    color: white;
+    border: 1px solid #e5e5e5;
+    margin-top: 5vh;
+  }
+}

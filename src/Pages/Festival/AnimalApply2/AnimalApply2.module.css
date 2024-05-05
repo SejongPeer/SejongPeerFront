@@ -1,0 +1,30 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20vh;
+  flex-direction: column;
+}
+
+p {
+  font-weight: 800;
+  font-size: 16px;
+  margin-top: 5vh;
+}
+/* 인증번호 입력 란 */
+.certificationNum {
+  width: 40vh;
+  height: 5vh;
+  border-radius: 100px;
+  border: 1px solid #c5c5c5;
+  background: var(--BG-White_Color, #fff);
+  padding-left: 20px;
+}
+
+.apply {
+  width: 40vh;
+  height: 5vh;
+  /* padding: 10px 20px; */
+  border: none;
+  border-radius: 26px;
+}

@@ -46,9 +46,19 @@
 }
 
 @font-face {
-  font-family: "Pretendard Std Variable", "Pretendard Std", Pretendard,
-    -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue",
-    "Segoe UI", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+  font-family:
+    'Pretendard Std Variable',
+    'Pretendard Std',
+    Pretendard,
+    -apple-system,
+    BlinkMacSystemFont,
+    system-ui,
+    Roboto,
+    'Helvetica Neue',
+    'Segoe UI',
+    'Apple Color Emoji',
+    'Segoe UI Emoji',
+    'Segoe UI Symbol',
     sans-serif;
-  src: url("./Assets/Pretendard-Black.woff");
+  src: url('./Assets/Pretendard-Black.woff');
 }

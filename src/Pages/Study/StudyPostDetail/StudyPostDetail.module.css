@@ -1,0 +1,247 @@
+.container {
+  margin-top: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 85%;
+  background-color: #fafafa;
+}
+
+.title {
+  font-family: Pretendard;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: -0.333px;
+}
+.title2 {
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: -0.333px;
+}
+.Application_period {
+  color: var(--main, #ff4b4b);
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: -0.333px;
+}
+.Application_period2 {
+  color: var(--font_01, #111);
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: -0.333px;
+}
+.flexContainer {
+  display: flex;
+  align-items: left;
+  justify-content: left;
+  width: 100%;
+}
+
+.line {
+  height: 1px;
+  width: 100%;
+  background-color: #b9b9b9;
+  border-bottom: 1px solid var(--line_02, #e5e5e5);
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+.content {
+  margin: auto;
+  max-width: 343px;
+  width: 100%;
+  height: 120px;
+  flex-shrink: 0;
+  color: var(--font_01, #111);
+  font-family: Pretendard;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: -0.333px;
+}
+.back {
+  font-size: 16px;
+  font-weight: 700;
+  color: #999999;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+.tag {
+  display: flex;
+  padding: 4px 8px;
+  align-items: flex-start;
+  gap: 10px;
+  font-weight: 500;
+  border-radius: 15px;
+  border: 1px solid var(--sub, #ff7474);
+  margin-top: 15px;
+}
+.tag2 {
+  color: var(--main, #ff4b4b);
+  font-family: Pretendard;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+  letter-spacing: -0.333px;
+}
+.tag_gray {
+  display: flex;
+  padding: 4px 8px;
+  align-items: flex-start;
+  gap: 10px;
+  font-weight: 500;
+  border-radius: 15px;
+  border: 1px solid var(--sub, #777777);
+  margin-top: 15px;
+}
+.tag2_gray {
+  color: var(--main, #777777);
+  font-family: Pretendard;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+  letter-spacing: -0.333px;
+}
+.tag_container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.title,
+.title2,
+.Application_period,
+.Application_period2,
+.content,
+.tag {
+  text-align: left;
+}
+
+.comment_title {
+  color: var(--font_01, #111);
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: -0.333px;
+}
+
+.comment_container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.comment_nickname {
+  color: var(--font_02, #555);
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: -0.333px;
+}
+
+.comment_date {
+  color: var(--font_04, #999);
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: -0.333px;
+}
+
+.comment_content {
+  color: var(--font_01, #111);
+  font-family: Pretendard;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: -0.333px;
+}
+
+.comment_down {
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+}
+
+.apply {
+  width: 287px;
+  height: 52px;
+  flex-shrink: 0;
+  border-radius: 28px;
+  background: var(--main, #ff4b4b);
+  color: #fff;
+
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: -0.333px;
+  margin-top: 15px;
+}
+
+.scrap_button {
+  width: 52px;
+  height: 52px;
+  flex-shrink: 0;
+  border-radius: 28px;
+  border: 1px solid var(--line_02, #e5e5e5);
+  background: #fff;
+  margin-top: 15px;
+}
+.scrap {
+  width: 20px;
+  height: 20px;
+}
+
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  padding: 20px;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.popupContent {
+  text-align: center;
+  font-family: Pretendard;
+  color: var(--font_01, #111);
+}
+.confirmButton {
+  margin-top: 20px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #ff4b4b;
+  color: white;
+  font-family: Pretendard;
+  font-size: 16px;
+  cursor: pointer;
+}

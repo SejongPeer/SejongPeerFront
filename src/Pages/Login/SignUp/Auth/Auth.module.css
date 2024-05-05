@@ -1,0 +1,193 @@
+@media (min-width: 768px) {
+  .entire_Container {
+    background-color: #FFF7F7;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .container {
+    background-color: #fff7f7;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    margin: 5rem 0;
+  }
+
+  .innerBox {
+    margin-top: 8vh;
+    height: 100vh;
+    width: 28vw;
+    /* background-color: #FBE4E4; */
+    display: flex;
+    align-items: center;
+    margin: auto;
+  }
+
+  .auto {
+    margin-bottom: 15vh;
+  }
+
+  .topBox {
+    width: 28vw;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2vh;
+  }
+
+  .topInnerBox {
+    width: 26vw;
+    height: 8vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 7%;
+  }
+
+  .inputBox {
+    width: 28vw;
+    height: 12vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 6%;
+    margin-top: 2vh;
+  }
+
+  .inputContent {
+    width: 26vw;
+    height: 6vh;
+    border-radius: 35px;
+    border: 1px solid #e5e5e5;
+    padding-left: 2vw;
+    font-size: 2vh;
+  }
+
+  .authBox {
+    width: 28vw;
+    height: 10vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2vh;
+  }
+
+  .authBtn {
+    width: 26vw;
+    height: 8.5vh;
+    border-radius: 35px;
+    border: none;
+    background-color: #ff4b4b;
+    color: #ffffff;
+    padding-left: 2vw;
+    font-size: 2vh;
+    cursor: pointer;
+  }
+
+  .authA {
+    margin-top: 1vh;
+    color: #333333;
+    cursor: pointer;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .entire_Container {
+    background-color: #FFF7F7;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .container {
+    background-color: #fff7f7;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    margin: 5rem 0;
+  }
+
+  .innerBox {
+    margin-top: 10vh;
+    height: 100vh;
+    /* width: 28vw; */
+    /* background-color: #FBE4E4; */
+    display: flex;
+  }
+
+  .topBox {
+    width: 100vw;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .topInnerBox {
+    width: 90vw;
+    height: 8vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 7%;
+  }
+
+  .inputBox {
+    width: 100vw;
+    height: 15vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 6%;
+    margin-top: 2vh;
+  }
+
+  .inputContent {
+    width: 90vw;
+    height: 6.5vh;
+    border-radius: 35px;
+    border: 1px solid #e5e5e5;
+    padding-left: 4vw;
+    font-size: 2vh;
+  }
+
+  .authBox {
+    width: 100vw;
+    height: 10vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2vh;
+  }
+
+  .authBtn {
+    width: 90vw;
+    height: 8.5vh;
+    max-height: 52px;
+    border-radius: 35px;
+    border: none;
+    background-color: #ff4b4b;
+    color: #ffffff;
+    font-weight: 700;
+    padding-left: 2vw;
+    font-size: 2vh;
+    cursor: pointer;
+  }
+
+  .authA {
+    margin-top: 1vh;
+    color: #777777;
+    cursor: pointer;
+  }
+}
