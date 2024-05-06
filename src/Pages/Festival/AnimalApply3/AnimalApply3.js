@@ -12,6 +12,7 @@ const AnimalApply3 = () => {
 
   const handleMeetingSelect = meetingType => {
     setSelectedMeeting(meetingType); // 선택 시 체크 옵션을 보이도록 설정
+    localStorage.setItem('미팅 인원 선택', meetingType); // 저장된 값이 1이면 1:1 미팅, 2면 2:2 미팅...
   };
 
   const handleBack = () => {

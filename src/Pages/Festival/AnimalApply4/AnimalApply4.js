@@ -10,6 +10,7 @@ const AnimalApply4 = () => {
 
   const handleGenderSelect = gender => {
     setSelectedGender(gender); // 성별 선택 핸들러
+    localStorage.setItem('selectedGender', gender); // 선택한 성별을 로컬스토리지에 저장하고 다음 화면에서 써먹어야함
   };
 
   const handleBack = () => {
