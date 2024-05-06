@@ -1,7 +1,8 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import styles from './MyPage.module.css';
 import axios from 'axios';
+
+import styles from './MyPage.module.css';
 
 const MyPage = () => {
   const [myPageData, setMyPageData] = useState({});

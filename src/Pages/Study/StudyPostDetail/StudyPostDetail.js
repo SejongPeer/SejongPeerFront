@@ -1,10 +1,11 @@
-import style from './StudyPostDetail.module.css';
-import serch from '../../../Assets/serch.png';
 import { useState, useContext } from 'react';
 import { MyContext } from '../../../App';
 import { useNavigate } from 'react-router-dom';
-import comment_down from '../../../Assets/comment_down.png';
-import scrap from '../../../Assets/scrap.png';
+
+import search from '../../../Assets/image/search_black.png';
+import comment_down from '../../../Assets/image/comment_down.png';
+import scrap from '../../../Assets/image/scrap.png';
+import style from './StudyPostDetail.module.css';
 
 const StudyListPostDetail = () => {
   const [isPopupVisible, setIsPopupVisible] = useState(false);

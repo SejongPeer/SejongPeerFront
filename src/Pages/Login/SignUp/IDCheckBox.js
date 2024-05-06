@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+
 import style from './InputTextBox.module.css';
-import { useEffect } from 'react';
 
 const IDCheckBox = props => {
   const [username, setUsername] = useState('');

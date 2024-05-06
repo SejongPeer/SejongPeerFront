@@ -1,7 +1,9 @@
-import style from "./HonbobWaiting.module.css";
-import honbobWaitingLogo from "../../../Assets/honbobWaitingImg.png";
+import { MyContext } from "../../../App";
 import { useState, useEffect, useContext } from "react";
 import { redirect, useNavigate } from "react-router-dom";
+
+import honbobWaitingLogo from "../../../Assets/image/honbobWaitingImg.png";
+import style from "./HonbobWaiting.module.css";
 
 const HonbobWaiting = () => {
   const navigate = useNavigate();

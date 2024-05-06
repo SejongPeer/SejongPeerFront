@@ -1,7 +1,6 @@
-import style from '../AnimalApply/AnimalApply.module.css'
-import kakao from '../../../Assets/kakao.png'
-
 import { useNavigate } from 'react-router-dom'
+import kakao from '../../../Assets/image/kakao.png'
+import style from '../AnimalApply/AnimalApply.module.css'
 
 // 동물상 미팅 신청 1페이지
 const AnimalApply = () => {

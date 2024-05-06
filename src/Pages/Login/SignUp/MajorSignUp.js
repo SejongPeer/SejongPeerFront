@@ -1,6 +1,7 @@
 import { useContext, useEffect } from 'react';
 import { MyContext } from '../../../App';
-import Vector from '../../../Assets/Vector.png';
+
+import Vector from '../../../Assets/image/down_black.png';
 import style from './InputTextBox.module.css';
 
 const MajorSignUp = props => {

@@ -1,6 +1,9 @@
 import React from 'react';
+
+import Spinner from '../../Assets/image/spinner.gif';
+
 import style from './Loading.module.css';
-import Spinner from '../../Assets/spinner.gif';
+
 export const Loading = () => {
   return (
     <div className={style.Background}>

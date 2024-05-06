@@ -1,11 +1,14 @@
 import { useState, useEffect, useContext } from 'react';
+import { MyContext } from '../../../../App.js';
+import { useNavigate } from 'react-router-dom';
+
 import H_Gender from './H_Gender.js';
 import H_Menu from './H_Menu.js';
 import H_informCheck from './H_InformCheck.js';
 import ProgressBar from '../../progressBar/ProgressBar_Honbob.js';
+
 import style from '../CSS/Honbob_Matching.module.css';
-import { MyContext } from '../../../../App.js';
-import { useNavigate } from 'react-router-dom';
+
 const Honbob_Matching = () => {
   const [slide, setSlide] = useState(0);
   const [choiceGenderHonbob, setChoiceGender] = useState('');

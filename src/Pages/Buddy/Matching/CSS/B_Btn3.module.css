@@ -99,7 +99,7 @@
 
 @font-face {
   font-family: 'prtendard';
-  src: url(../../../fonts/Pretendard-Regular.otf);
+  src: url(../../../../Assets/font/Pretendard-Regular.otf);
 }
 
 @media (min-width: 500px) {

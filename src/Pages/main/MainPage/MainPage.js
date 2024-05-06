@@ -1,13 +1,17 @@
-import { Link, useNavigate } from 'react-router-dom';
-import style from './MainPage.module.css';
-import reprot from '../../../Assets/report.png';
 import { useContext, useEffect, useState } from 'react';
-import honbobUse from '../../../Assets/honbobUse.png';
-import peerUse from '../../../Assets/peerUse.png';
-import buddyUse from '../../../Assets/buddyUse.png';
-import buddyButton from '../../../Assets/buddyButton.png';
-import honbobButton from '../../../Assets/honbobButton.png';
+import { Link, useNavigate } from 'react-router-dom';
 import { MyContext } from '../../../App';
+
+import MainBuddy from './MainBuddy';
+import MainHonbob from './MainHonbob';
+
+import reprot from '../../../Assets/image/report.png';
+import honbobUse from '../../../Assets/image/honbobUse.png';
+import peerUse from '../../../Assets/image/peerUse.png';
+import buddyUse from '../../../Assets/image/buddyUse.png';
+import buddy_button from '../../../Assets/image/buddy_button.png';
+import honbobButton from '../../../Assets/image/honbobButton.png';
+import style from './MainPage.module.css';
 
 const images = [honbobUse, buddyUse, peerUse];
 
@@ -220,7 +224,7 @@ const MainPage = () => {
           }}
         >
           <img
-            src={buddyButton}
+            src={buddy_button}
             className={style.btn1}
             onClick={BuddyHandler}
           ></img>

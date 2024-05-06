@@ -1,7 +1,7 @@
+import { useState } from 'react';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import style from './Filter_Member.module.css';
-import { useState } from 'react';
 
 const Filter_Member = () => {
   const trackStyle = {

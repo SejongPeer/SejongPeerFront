@@ -1,6 +1,8 @@
 import { useNavigate } from 'react-router-dom';
-import style from './StartLoading.module.css';
+
 import Loadinglogo from './LoadingLogo';
+
+import style from './StartLoading.module.css';
 
 const StartLoading = () => {
   const navigate = useNavigate();
