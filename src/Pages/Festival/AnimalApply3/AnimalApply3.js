@@ -20,6 +20,7 @@ const AnimalApply3 = () => {
   const handleNext = () => {
     navigate('/nextPage'); // 다음 페이지로 이동
   };
+
   return (
     <div className={style.container}>
       <h2>미팅 인원 선택</h2>
