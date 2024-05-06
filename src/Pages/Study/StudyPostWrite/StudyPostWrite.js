@@ -1,20 +1,20 @@
-import style from './StudyPostWrite.module.css';
-import arrow from '../../../assets/image/down_black.png';
-import cancel_black from '../../../assets/image/cancel_black.png';
-import ImgPost from '../../../assets/image/ImgPost.png';
-import StudyWriteText from '../../../assets/image/StudyWriteText.png';
 import { useContext, useState } from 'react';
-import './StudyPostWriteBasic.css';
-
+import { parseISO, format } from 'date-fns';
+import { MyContext } from '../../../App';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import ko from 'date-fns/locale/ko';
-import { parseISO, format } from 'date-fns';
 
-import { MyContext } from '../../../App';
 import BottomModal from '../../../Components/Modal/BottomModal';
 import StudyPostField from './StudyPostField/StudyPostField';
 import StudyMember from './StudyMember/StudyMember';
+
+import arrow from '../../../Assets/image/down_black.png';
+import cancel_black from '../../../Assets/image/cancel_black.png';
+import ImgPost from '../../../Assets/image/ImgPost.png';
+import StudyWriteText from '../../../Assets/image/StudyWriteText.png';
+import style from './StudyPostWrite.module.css';
+import './StudyPostWriteBasic.css';
 
 const StudyPostWrite = () => {
   const [startDate, setStartDate] = useState(null);
@@ -106,9 +106,9 @@ const StudyPostWrite = () => {
                   <div className={style.periodDate}>
                     {startDate && endDate
                       ? `${format(startDate, 'M월 d일')} ~ ${format(
-                          endDate,
-                          'M월 d일'
-                        )}`
+                        endDate,
+                        'M월 d일'
+                      )}`
                       : null}
                   </div>
                 </div>

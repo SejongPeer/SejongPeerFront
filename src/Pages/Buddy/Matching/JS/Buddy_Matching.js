@@ -23,7 +23,7 @@ const Buddy_Matching = () => {
   useEffect(() => {
     const handleResize = () => {
       let wrapperWidth = width;
-      if (window.innerWidth < 415) {
+      if (c < 415) {
         wrapperWidth = window.innerWidth;
       } else {
         wrapperWidth = 414;

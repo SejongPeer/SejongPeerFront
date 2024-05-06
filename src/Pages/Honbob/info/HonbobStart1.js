@@ -1,7 +1,8 @@
+import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+
 import style from './HonbobStart.module.css';
-import { useEffect, useRef, useState } from 'react';
 
 const HonbobStart1 = () => {
   const [countHonbab, setCountHonbab] = useState(0);

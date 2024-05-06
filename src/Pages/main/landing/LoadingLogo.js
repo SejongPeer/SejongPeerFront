@@ -1,6 +1,7 @@
-import ReactPlayer from 'react-player/lazy';
-import loading1 from '../../../assets/image/LogoSejongCat.mp4';
 import { useNavigate } from 'react-router-dom';
+import ReactPlayer from 'react-player/lazy';
+
+import loading1 from '../../../Assets/image/LogoSejongCat.mp4';
 
 const Loadinglogo = () => {
   const navigate = useNavigate();

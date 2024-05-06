@@ -38,11 +38,16 @@ import Agree from './Pages/Login/signUp/Agree.js';
 import MyPage from './Pages/MyPage/MyPage/MyPage.js';
 import Modify from './Pages/MyPage/Modify/Modify.js';
 
-//스터디
-import StudyList from './Pages/Study/StudyList/StudyList.js';
-import StudyPostDeatil from './Pages/Study/StudyPostDetail/StudyPostDetail.js';
-import StudyPostWrite from './Pages/Study/StudyPostWrite/StudyPostWrite.js';
-import StudyFilter from './Pages/Study/StudyFilterPage/StudyFIlterPage.js';
+// 스터디
+import StudyList from '../src/Pages/Study/StudyList/StudyList.js';
+import StudyPostDeatil from '../src/Pages/Study/StudyPostDetail/StudyPostDetail.js';
+import StudyPostWrite from '../src/Pages/Study/StudyPostWrite/StudyPostWrite.js';
+import StudyFilter from '../src/Pages/Study/StudyFilterPage/StudyFIlterPage.js';
+
+// 축제
+import AnimalApply from './Pages/Festival/AnimalApply/AnimalApply.js';
+import AnimalApply2 from './Pages/Festival/AnimalApply2/AnimalApply2.js';
+import AnimalApply3 from './Pages/Festival/AnimalApply3/AnimalApply3.js';
 
 export const MyContext = createContext();
 
@@ -176,6 +181,10 @@ const App = () => {
               <Route path="/study/detail" element={<StudyPostDeatil />} />
               <Route path="/study/post" element={<StudyPostWrite />} />
               <Route path="/study/filter" element={<StudyFilter />} />
+
+              <Route path="/fest/AnimalApply" element={<AnimalApply />} />
+              <Route path="/fest/AnimalApply2" element={<AnimalApply2 />} />
+              <Route path="/fest/AnimalApply3" element={<AnimalApply3 />} />
             </Routes>
           </main>
         </div>

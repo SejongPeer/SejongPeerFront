@@ -1,8 +1,10 @@
 import { useLocation } from 'react-router-dom';
-import Back from './Back';
-import style from './Header.module.css';
-import UserMenu from './UserMenu';
 import { useState, useEffect } from 'react';
+
+import Back from './Back';
+import UserMenu from './UserMenu';
+
+import style from './Header.module.css';
 
 const Header = () => {
     const location = useLocation();

@@ -6,7 +6,7 @@ import axios from 'axios';
 import SignInBox from '../../SignIn/SignInBox.js';
 
 import style from './FindId.module.css';
-import Loading from '../../../../Components/Loading/Loading.js';
+import Loading from '../../../../Components/Load/Loading.js';
 
 const FindId = () => {
   const navigate = useNavigate();

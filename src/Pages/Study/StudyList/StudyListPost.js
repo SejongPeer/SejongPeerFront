@@ -1,7 +1,7 @@
 import style from './StudyList.module.css';
-import heart from '../../../assets/image/heart.png';
-import comment from '../../../assets/image/comment.png';
-import picture from '../../../assets/image/image.png';
+import heart from '../../../Assets/image/heart.png';
+import comment from '../../../Assets/image/comment.png';
+import picture from '../../../Assets/image/image.png';
 
 const StudyListPost = props => {
   return (

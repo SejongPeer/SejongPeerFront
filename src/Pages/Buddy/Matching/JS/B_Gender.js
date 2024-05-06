@@ -1,7 +1,9 @@
 import { useState } from 'react';
+
 import con from '../CSS/B_Container.module.css';
 import btn2 from '../CSS/B_Btn2.module.css';
-import buddyImg3 from '../../../../assets/image/buddyImg3.png';
+
+import buddyImg3 from '../../../../Assets/image/buddyImg3.png';
 
 const ChoiceGender = props => {
   const [isSameClicked, setIsSameClicked] = useState(false);

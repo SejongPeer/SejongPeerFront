@@ -1,7 +1,9 @@
-import style from './BuddyAccept.module.css';
-import findBuddy from '../../../assets/image/findBuddy.png';
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router';
+
+import findBuddy from '../../../Assets/image/findBuddy.png';
+
+import style from './BuddyAccept.module.css';
 
 const BuddyAccept = () => {
   const [isAccept, setIsAccept] = useState('');
@@ -51,46 +53,46 @@ const BuddyAccept = () => {
   // 수락/거절 통신
   const sendResult = (accept) => {
     let acceptInfo = {
-      isAccept : accept
+      isAccept: accept
     }
-    
+
     fetch(process.env.REACT_APP_BACK_SERVER + '/buddyMatching/status', {
-        method: 'POST',
-        body: JSON.stringify(acceptInfo),
-        headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
-            'Refresh-Token': localStorage.getItem('refreshToken'),
-        }
-    })
-    .then((response) => response.json())
-    .then((data) => {
-      if (accept) {
-        alert("매칭이 수락되었습니다! \n상대방이 매칭을 수락할 때까지 기다려주세요.");
-        navigate('/main');
-      } else {
-        alert('매칭이 거절되었습니다. \n거절 패널티로 1시간동안 매칭을 등록할 수 없습니다.');
-        navigate('/main');
+      method: 'POST',
+      body: JSON.stringify(acceptInfo),
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+        'Refresh-Token': localStorage.getItem('refreshToken'),
       }
     })
-    .catch(error => console.error('Error:', error));
+      .then((response) => response.json())
+      .then((data) => {
+        if (accept) {
+          alert("매칭이 수락되었습니다! \n상대방이 매칭을 수락할 때까지 기다려주세요.");
+          navigate('/main');
+        } else {
+          alert('매칭이 거절되었습니다. \n거절 패널티로 1시간동안 매칭을 등록할 수 없습니다.');
+          navigate('/main');
+        }
+      })
+      .catch(error => console.error('Error:', error));
   }
 
   //상대 정보 가져오기
   const getInfoHandler = () => {
     fetch(process.env.REACT_APP_BACK_SERVER + '/buddy/partner/details', {
       method: 'GET',
-      headers : {
+      headers: {
         Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
         'Refresh-Token': localStorage.getItem('refreshToken'),
       }
     })
-    .then((response) => response.json())
-    .then((data) => {
-      setBuddyMajor(data.data.collegeMajor);
-      setBuddyGrade(data.data.grade);
-    })
-    .catch((error) => console.log(error))
+      .then((response) => response.json())
+      .then((data) => {
+        setBuddyMajor(data.data.collegeMajor);
+        setBuddyGrade(data.data.grade);
+      })
+      .catch((error) => console.log(error))
   }
 
   return (

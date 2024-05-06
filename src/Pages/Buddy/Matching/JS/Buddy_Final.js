@@ -1,8 +1,9 @@
-import styles from '../CSS/Buddy_Final.module.css';
-import con from '../CSS/B_Container.module.css';
 import { useContext, useEffect } from 'react';
 import { MyContext } from '../../../../App';
 import { useNavigate } from 'react-router-dom';
+
+import styles from '../CSS/Buddy_Final.module.css';
+import con from '../CSS/B_Container.module.css';
 
 const Final = props => {
   //각 정보 클릭 시, 페이지 이동

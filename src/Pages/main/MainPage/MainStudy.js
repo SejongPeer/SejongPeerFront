@@ -1,7 +1,7 @@
-// import studyTextRed from '../../../assets/image/studyTextRed.png';
-// import studyImg from '../../../assets/image/studyImg.png';
-import ready from '../../../assets/image/ready.png';
-import nugool from '../../../assets/image/nugulman.png';
+// import studyTextRed from '../../../Assets/image/studyTextRed.png';
+// import studyImg from '../../../Assets/image/studyImg.png';
+import ready from '../../../Assets/image/ready.png';
+import nugool from '../../../Assets/image/nugulman.png';
 import style from './MainStudy.module.css';
 
 const MainStudy = () => {

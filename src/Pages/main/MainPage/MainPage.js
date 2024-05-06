@@ -1,15 +1,17 @@
+import { useContext, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import style from './MainPage.module.css';
+import { MyContext } from '../../../App';
+
 import MainBuddy from './MainBuddy';
 import MainHonbob from './MainHonbob';
-import reprot from '../../../assets/image/report.png';
-import { useContext, useEffect, useState } from 'react';
-import honbobUse from '../../../assets/image/honbobUse.png';
-import peerUse from '../../../assets/image/peerUse.png';
-import buddyUse from '../../../assets/image/buddyUse.png';
-import buddy_button from '../../../assets/image/buddy_button.png';
-import honbobButton from '../../../assets/image/honbobButton.png';
-import { MyContext } from '../../../App';
+
+import reprot from '../../../Assets/image/report.png';
+import honbobUse from '../../../Assets/image/honbobUse.png';
+import peerUse from '../../../Assets/image/peerUse.png';
+import buddyUse from '../../../Assets/image/buddyUse.png';
+import buddy_button from '../../../Assets/image/buddy_button.png';
+import honbobButton from '../../../Assets/image/honbobButton.png';
+import style from './MainPage.module.css';
 
 const images = [honbobUse, buddyUse, peerUse];
 
@@ -18,6 +20,11 @@ const MainPage = () => {
   const refreshToken = localStorage.getItem('refreshToken');
   const accessToken = localStorage.getItem('accessToken');
   const { setBuddyCount } = useContext(MyContext);
+
+  // 동물상 미팅 페이지 이동
+  const goResult = () => {
+    navigate('/fest/AnimalApply')
+  }
 
   // 버디 상태 확인
   const BuddyHandler = async () => {
@@ -227,8 +234,9 @@ const MainPage = () => {
             onClick={HonbobHandler}
           ></img>
         </div>
-        <div onClick={StudyHandler} className={style.studyBtn}>
-          {/* <div
+        {/* 세종 스터디 버튼 임시로 숨겨둠 - 축제 때문에 */}
+        {/* <div onClick={StudyHandler} className={style.studyBtn}> */}
+        {/* <div
             style={{
               display: "flex",
               alignItems: "flex-end",
@@ -243,6 +251,10 @@ const MainPage = () => {
           <div>
             <button style={{ width: "8vw", height: "8vw" }}></button>
           </div> */}
+        {/* </div> */}
+        <div className={style.festButton} >
+          <button onClick={goResult}><p>내 동물상 결과 확인하기</p></button>
+          <button><p>미팅해요 동물의 숲</p></button>
         </div>
       </div>
       <div className={style.report_user_box} onClick={kakaoChat}>

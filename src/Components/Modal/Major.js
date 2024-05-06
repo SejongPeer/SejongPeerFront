@@ -5,8 +5,8 @@ import collegeDummy from './majorDummy/College.js';
 import EIE from './majorDummy/EIE.js';
 
 import style from './Major.module.css';
-import back from '../../assets/image/back_white.png';
-import cancel_gray from '../../assets/image/cancel_gray.png';
+import back from '../../Assets/image/back_white.png';
+import close from '../../Assets/image/cancel_black.png';
 
 const Major = props => {
   const { setModalOpen } = useContext(MyContext);

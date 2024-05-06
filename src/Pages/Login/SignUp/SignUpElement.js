@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
 import InputTextBox from './InputTextBox';
 
-import style from './SignUpElement.module.css';
 import GenderSignUp from './GenderSignUp';
 import MajorSignUp from './MajorSignUp';
 import IDCheckBox from './IDCheckBox';
 import NickNameBox from './NickNameBox';
+
+import style from './SignUpElement.module.css';
 
 const SignUpElement = props => {
   const [isError, setIsError] = useState('');

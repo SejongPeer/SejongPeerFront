@@ -33,13 +33,13 @@
     justify-content: space-evenly;
     align-items: center;
     font-size: 2vh;
-    border: 2px solid #E5E5E5;
+    border: 2px solid #e5e5e5;
     background-color: transparent;
     color: #333333;
   }
 
   .informImg {
-    background-image: url("../../../assets/image/warningLogo.png");
+    background-image: url("../../../Assets/image/warningLogo.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -62,7 +62,7 @@
   .honbobLogo {
     height: 45vh;
     width: 27vh;
-    background-image: url("../../../assets/image/honbobStartLogo.png");
+    background-image: url("../../../Assets/image/honbobStartLogo.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100% 100%;
@@ -98,7 +98,7 @@
   .raccoon {
     width: 4vh;
     height: 4vh;
-    background-image: url("../../../assets/image/raccoonImg.png");
+    background-image: url("../../../Assets/image/raccoonImg.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100% 100%;
@@ -108,13 +108,12 @@
     width: 40vh;
     height: 7vh;
     border-radius: 32px;
-    color: #FFFFFF;
-    background-color: #FF4B4B;
+    color: #ffffff;
+    background-color: #ff4b4b;
     font-size: 2.5vh;
     margin-top: 4vh;
     font-weight: 600;
     cursor: pointer;
-
   }
 }
 
@@ -153,13 +152,13 @@
     justify-content: space-evenly;
     align-items: center;
     font-size: 2vh;
-    border: 2px solid #E5E5E5;
+    border: 2px solid #e5e5e5;
     background-color: transparent;
     color: #333333;
   }
 
   .informImg {
-    background-image: url("../../../assets/image/warningLogo.png");
+    background-image: url("../../../Assets/image/warningLogo.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -182,7 +181,7 @@
   .honbobLogo {
     height: 38vh;
     width: 50vw;
-    background-image: url("../../../assets/image/honbobStartLogo.png");
+    background-image: url("../../../Assets/image/honbobStartLogo.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100% 100%;
@@ -217,7 +216,7 @@
   .raccoon {
     width: 5vh;
     height: 5vh;
-    background-image: url("../../../assets/image/raccoonImg.png");
+    background-image: url("../../../Assets/image/raccoonImg.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100% 100%;
@@ -228,12 +227,11 @@
     height: 8.5vh;
     max-height: 56px;
     border-radius: 32px;
-    color: #FFFFFF;
-    background-color: #FF4B4B;
+    color: #ffffff;
+    background-color: #ff4b4b;
     font-size: 2.5vh;
     margin-top: 5vh;
     font-weight: 600;
     cursor: pointer;
-
   }
 }

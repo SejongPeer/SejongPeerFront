@@ -1,13 +1,15 @@
-import { useNavigate } from 'react-router-dom';
-import backicon from '../../assets/image/back_white.png';
-import sejongpeertext from '../../assets/image/sejongpeertext.png';
-import sejongBuddy from '../../assets/image/sejongBuddy.png';
-import { useLocation } from 'react-router-dom';
-import sejongStudy from '../../assets/image/sejongStudy.png';
-import sejongHonbob from '../../assets/image/sejongHonbob.png';
-import login from '../../assets/image/login.png';
+import { useNavigate, useLocation } from 'react-router-dom';
+
+import backicon from '../../Assets/image/back_white.png'
+import sejongpeertext from '../../Assets/image/sejongpeertext.png';
+import sejongBuddy from '../../Assets/image/sejongBuddy.png';
+import sejongStudy from '../../Assets/image/sejongStudy.png';
+import sejongHonbob from '../../Assets/image/sejongHonbob.png';
+import login from '../../Assets/image/login.png';
+import mypage from '../../Assets/image/mypage.png';
+import meeting from '../../Assets/image/meeting.png';
+
 import style from './Back.module.css';
-import mypage from '../../assets/image/mypage.png';
 
 const Back = () => {
   const navigate = useNavigate();
@@ -43,7 +45,7 @@ const Back = () => {
   // 로그인
   const isLoginPath = location.pathname.startsWith('/login');
   // 회원가입
-  const isSignUpPath = location.pathname.startsWith('/buddy');
+  const isFestPath = location.pathname.startsWith('/fest');
   const isBuddyPath = location.pathname.startsWith('/buddy');
   const isStudyPath = location.pathname.startsWith('/study');
   const isHonbobPath = location.pathname.startsWith('/honbob/');
@@ -87,6 +89,9 @@ const Back = () => {
       )}
       {ismyPage && (
         <img className={style.mypagelogo} src={mypage} alt="mypage" />
+      )}
+      {isFestPath && (
+        <img className={style.mypagelogo} src={meeting} alt="mypage" />
       )}
       {/* {isStudy && (
         <img

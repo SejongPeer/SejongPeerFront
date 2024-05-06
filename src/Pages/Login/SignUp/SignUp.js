@@ -1,9 +1,11 @@
 import { useNavigate } from 'react-router-dom';
 import { useState, useEffect, useContext } from 'react';
-import SignUpElement from './SignUpElement';
-import style from './SignUp.module.css';
 import { MyContext } from '../../../App';
+
+import SignUpElement from './SignUpElement';
 import IDCheckBox from './IDCheckBox';
+
+import style from './SignUp.module.css';
 
 const SignUp = props => {
   // const { name, setName } = useContext(MyContext);

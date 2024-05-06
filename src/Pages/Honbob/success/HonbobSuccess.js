@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import style from "./HonbobSuccess.module.css";
 import { useNavigate } from "react-router-dom";
 
+import style from "./HonbobSuccess.module.css";
 
 const HonbobSuccess = () => {
     const navigate = useNavigate();
