@@ -5,8 +5,8 @@ import { jwtDecode } from 'jwt-decode';
 
 //메인 컴포넌트
 import Header from './Components/Header/Header.js';
-import StartLoading from './Pages/Main/Landing/StartLoading.js';
-import MainPage from './Pages/Main/MainPage/MainPage.js';
+import StartLoading from './Pages/main/landing/StartLoading.js';
+import MainPage from './Pages/main/MainPage/MainPage.js';
 //버디 컴포넌트
 import BuddyStart1 from './Pages/Buddy/info/BuddyStart1.js';
 import BuddyStart2 from './Pages/Buddy/info/BuddyStart2.js';
@@ -24,19 +24,19 @@ import HonbobStart1 from './Pages/Honbob/info/HonbobStart1.js';
 
 //회원가입/로그인
 import SignIn from './Pages/Login/SignIn/SignIn.js';
-import SignUp from './Pages/Login/signUp/SignUp.js';
-import Auth from './Pages/Login/signUp/Auth/Auth.js';
+import SignUp from './Pages/Login/SignUp/SignUp.js';
+import Auth from './Pages/Login/SignUp/Auth/Auth.js';
 import Major from './Components/Modal/Major.js';
 import FindId from './Pages/Login/find/findId/FindId.js';
 import ResetPwd from './Pages/Login/find/ResetPwd/ResetPwd.js';
 import Agree1 from './constants/privacyPolicy/Agree1.js';
 import Agree2 from './constants/privacyPolicy/Agree2.js';
 import Agree3 from './constants/privacyPolicy/Agree3.js';
-import Agree from './Pages/Login/signUp/Agree.js';
+import Agree from './Pages/Login/SignUp/Agree.js';
 
 //마이페이지
-import MyPage from './Pages/MyPage/MyPage/MyPage.js';
-import Modify from './Pages/MyPage/Modify/Modify.js';
+import MyPage from './Pages/myPage/mypage/MyPage.js';
+import Modify from './Pages/myPage/modify/Modify.js';
 
 // 스터디
 import StudyList from '../src/Pages/Study/StudyList/StudyList.js';
