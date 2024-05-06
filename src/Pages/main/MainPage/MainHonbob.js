@@ -1,5 +1,5 @@
-import sejongHonbobcat from '../../../Assets/sejongHonbobcat.png';
-import honbobEscape from '../../../Assets/honbobEscape.png';
+import sejongHonbobcat from '../../../Assets/image/sejongHonbobcat.png';
+import honbobEscape from '../../../Assets/image/honbobEscape.png';
 
 import style from './MainHonbob.module.css';
 

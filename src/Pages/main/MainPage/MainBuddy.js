@@ -1,12 +1,11 @@
 import style from './MainBuddy.module.css';
-
-import buddyButton from '../../../Assets/buddyButton.png';
+import buddy_button from '../../../Assets/image/buddy_button.png';
 
 const MainBuddy = () => {
   return (
     // <div className={style.container}>
     <>
-      <img src={buddyButton}></img>
+      <img src={buddy_button}></img>
     </>
 
     // </div>

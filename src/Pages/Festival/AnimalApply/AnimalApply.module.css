@@ -35,7 +35,7 @@
   .festUse {
     width: 50vh;
     height: 18vh;
-    background-image: url('../../../Assets/festUse.png');
+    background-image: url('../../../Assets/image/festUse.png');
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
@@ -105,7 +105,7 @@
   .festUse {
     width: 40vh;
     height: 12vh;
-    background-image: url('../../../Assets/festUse.png');
+    background-image: url('../../../Assets/image/festUse.png');
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;

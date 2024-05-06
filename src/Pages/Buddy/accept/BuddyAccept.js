@@ -1,7 +1,9 @@
-import style from './BuddyAccept.module.css';
-import findBuddy from '../../../Assets/findBuddy.png';
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router';
+
+import findBuddy from '../../../Assets/image/findBuddy.png';
+
+import style from './BuddyAccept.module.css';
 
 const BuddyAccept = () => {
   const [isAccept, setIsAccept] = useState('');

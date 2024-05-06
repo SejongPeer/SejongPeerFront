@@ -1,5 +1,6 @@
-import styles from './Modify.module.css';
 import { useState, useEffect } from 'react';
+
+import styles from './Modify.module.css';
 
 const Modify = () => {
   const [focusedDiv, setFocusedDiv] = useState(null);

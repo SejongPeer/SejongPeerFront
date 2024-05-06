@@ -1,7 +1,8 @@
 import React, { useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import styles from "./ProgressBar.module.css";
 import { MyContext } from "../../../App.js";
+
+import styles from "./ProgressBar.module.css";
 
 const ProgressBar = (props) => {
   const [step, setStep] = useState(Array(5).fill(false));

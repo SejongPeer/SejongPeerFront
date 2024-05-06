@@ -1,11 +1,13 @@
-import style from './BuddySuccess.module.css';
-import buddySucces from '../../../Assets/buddySuccess.png';
-import prev from '../../../Assets/prev.png';
-import next from '../../../Assets/next.png';
-import BuddyInfoBox from './BuddyInfoBox';
 import { useContext, useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { MyContext } from '../../../App';
+
+import BuddyInfoBox from './BuddyInfoBox';
+
+import buddySucces from '../../../Assets/image/buddySuccess.png';
+import prev from '../../../Assets/image/back_gray.png';
+import next from '../../../Assets/image/next_gray.png';
+import style from './BuddySuccess.module.css';
 
 const BuddySuccess = () => {
   const [major, setMajor] = useState('');

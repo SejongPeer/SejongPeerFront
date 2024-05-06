@@ -1,9 +1,10 @@
-import SignInBox from './SignInBox';
 import { useNavigate } from 'react-router-dom';
-// import { jwtDecode } from "jwt-decode";
-import style from './SignIn.module.css';
 import { useContext, useState } from 'react';
 import { MyContext } from '../../../App';
+
+import SignInBox from './SignInBox';
+
+import style from './SignIn.module.css'
 
 const SignIn = () => {
   const { setLogoutTimer } = useContext(MyContext);

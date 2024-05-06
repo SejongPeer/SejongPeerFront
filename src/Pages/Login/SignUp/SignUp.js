@@ -1,19 +1,20 @@
 import { useNavigate } from 'react-router-dom';
 import { useState, useEffect, useContext } from 'react';
-import SignUpElement from './SignUpElement';
-import style from './SignUp.module.css';
 import { MyContext } from '../../../App';
-import IDCheckBox from '../SignUp/IDCheckBox';
 
+import SignUpElement from './SignUpElement';
+import IDCheckBox from './IDCheckBox';
+
+import style from './SignUp.module.css';
 
 const SignUp = props => {
   // const { name, setName } = useContext(MyContext);
   // const { studentNum, setStudentNum } = useContext(MyContext);
   // const { grade, setGrade } = useContext(MyContext);
 
-  const name = localStorage.getItem('name')
-  const studentId = localStorage.getItem('studentId')
-  const grade = localStorage.getItem('grade')
+  const name = localStorage.getItem('name');
+  const studentId = localStorage.getItem('studentId');
+  const grade = localStorage.getItem('grade');
   const [idValue, setIdValue] = useState('');
   const [pwdValue, setPwdValue] = useState('');
   const [pwdCheckValue, setPwdCheckValue] = useState(''); //비밀번호 확인 추가
@@ -37,7 +38,6 @@ const SignUp = props => {
   const [doubleMajorChecked, setDoubleMajorChecked] = useState(false); // Checkbox state for 복수/부전공
   const navigate = useNavigate();
 
-
   //중복확인 시 응답 받아오는 함수 (true 일 경우 중복된 아이디, false 인 경우 사용 가능한 아이디)
   const [isIdExist, setIsIdExist] = useState(true);
   const [isNicknameExist, setIsNicknameExist] = useState(true);
@@ -54,7 +54,7 @@ const SignUp = props => {
   };
 
   const nicknameExistHandler = nick => {
-    setIsNicknameExist(nick)
+    setIsNicknameExist(nick);
   };
 
   const nextStepHandler = () => {
@@ -126,9 +126,11 @@ const SignUp = props => {
   async function submitHandler(e) {
     e.preventDefault();
     // 복수전공 체크 여부에 따라 변수 값을 조정
-    const finalDoubleCollegeValue = doubleCollegeValue ? doubleCollegeValue : null;
+    const finalDoubleCollegeValue = doubleCollegeValue
+      ? doubleCollegeValue
+      : null;
     const finalDoubleMajorValue = doubleMajorChecked ? doublemajorValue : null;
-    let errorClassName = "";
+    let errorClassName = '';
 
     if (
       idValue === '' ||
@@ -147,7 +149,7 @@ const SignUp = props => {
       alert('모든 양식의 작성을 완료해주세요');
       e.preventDefault();
     } else if (isNicknameExist) {
-      alert("닉네임 중복검사를 진행해주세요.")
+      alert('닉네임 중복검사를 진행해주세요.');
     } else {
       if (error === '가입완료 되었습니다.') {
         let join = {
@@ -192,8 +194,11 @@ const SignUp = props => {
           navigate('/login');
         } catch (err) {
           console.log(err.message);
-          if (errorClassName == "DUPLICATED_STUDENT_ID" || errorClassName == "DUPLICATED_PHONE_NUMBER") {
-            alert("한 학번과 전화번호 당 한 개의 계정만 생성할 수 있습니다.");
+          if (
+            errorClassName == 'DUPLICATED_STUDENT_ID' ||
+            errorClassName == 'DUPLICATED_PHONE_NUMBER'
+          ) {
+            alert('한 학번과 전화번호 당 한 개의 계정만 생성할 수 있습니다.');
           }
           // else if (errorClassName == "MethodArgumentNotValidException") {
           //   alert("닉네임은 2자 이상 8자 이하 한글, 영어, 숫자만 입력해주세요.");
@@ -201,8 +206,8 @@ const SignUp = props => {
           else {
             alert(
               ' 실패했습니다. 다시 시도해주세요. (에러 내용: ' +
-              err.message +
-              ')'
+                err.message +
+                ')'
             );
           }
           e.preventDefault();
@@ -309,7 +314,8 @@ const SignUp = props => {
                 phoneNumberValue={phoneNumberValue}
               />
               <div className={style.Info}>
-                *전화번호로 매칭 정보가 전달됩니다. 정확하게 작성해주세요.             </div>
+                *전화번호로 매칭 정보가 전달됩니다. 정확하게 작성해주세요.{' '}
+              </div>
               <SignUpElement
                 id="gender"
                 title="성별"
@@ -341,8 +347,9 @@ const SignUp = props => {
                   checked={doubleMajorChecked}
                   onChange={e => setDoubleMajorChecked(e.target.checked)}
                   style={{
-                    marginRight: '10px', marginTop: '15px',
-                    cursor: 'pointer'
+                    marginRight: '10px',
+                    marginTop: '15px',
+                    cursor: 'pointer',
                   }}
                 />
                 <label
@@ -364,7 +371,8 @@ const SignUp = props => {
                 />
               )}
               <div className={style.Info}>
-                *학과선택은 2024 수강편람을 기준으로 정리되었습니다.              </div>
+                *학과선택은 2024 수강편람을 기준으로 정리되었습니다.{' '}
+              </div>
               <button
                 type="submit"
                 className={style.submitBtn}

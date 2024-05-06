@@ -1,7 +1,8 @@
 import { useNavigate } from 'react-router-dom';
-import buddyStart1 from "../../../Assets/buddyStart1.png"
-import style from './BuddyStart.module.css';
 import { useEffect, useRef, useState } from 'react';
+
+import buddyStart1 from "../../../Assets/image/buddyStart1.png"
+import style from './BuddyStart.module.css';
 
 const BuddyStart1 = () => {
   const [countBuddy, setCountBuddy] = useState(0);

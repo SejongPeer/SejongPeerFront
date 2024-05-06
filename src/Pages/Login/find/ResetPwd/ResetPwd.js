@@ -1,11 +1,12 @@
-import { useContext, useState, useEffect } from 'react';
-import style from '../SignIn/SignIn.module.css';
-import css from './ResetPwd.module.css';
-import SignInBox from '../SignIn/SignInBox';
+import { useState } from 'react';
 import axios from 'axios';
-import { MyContext } from '../../../App';
 import { useLocation } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+
+import SignInBox from '../../SignIn/SignInBox.js';
+
+import style from '../../SignIn/SignIn.module.css';
+import css from './ResetPwd.module.css';
 
 const ResetPwd = () => {
   const [inputPwd, setInputPwd] = useState('');

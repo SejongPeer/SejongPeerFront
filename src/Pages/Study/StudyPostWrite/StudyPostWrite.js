@@ -1,20 +1,20 @@
-import style from './StudyPostWrite.module.css';
-import arrow from '../../../Assets/image/down_arrow_black.png';
-import cancelBtn from '../../../Assets/cancelBtn.png';
-import ImgPost from '../../../Assets/ImgPost.png';
-import StudyWriteText from '../../../Assets/StudyWriteText.png';
 import { useContext, useState } from 'react';
-import './StudyPostWriteBasic.css';
-
+import { parseISO, format } from 'date-fns';
+import { MyContext } from '../../../App';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import ko from 'date-fns/locale/ko';
-import { parseISO, format } from 'date-fns';
 
-import { MyContext } from '../../../App';
 import BottomModal from '../../../Components/Modal/BottomModal';
 import StudyPostField from './StudyPostField/StudyPostField';
 import StudyMember from './StudyMember/StudyMember';
+
+import arrow from '../../../Assets/image/down_black.png';
+import cancel_black from '../../../Assets/image/cancel_black.png';
+import ImgPost from '../../../Assets/image/ImgPost.png';
+import StudyWriteText from '../../../Assets/image/StudyWriteText.png';
+import style from './StudyPostWrite.module.css';
+import './StudyPostWriteBasic.css';
 
 const StudyPostWrite = () => {
   const [startDate, setStartDate] = useState(null);

@@ -1,14 +1,15 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
+
 import backicon from '../../Assets/image/back_white.png'
-import sejongpeertext from '../../Assets/sejongpeertext.png';
-import sejongBuddy from '../../Assets/sejongBuddy.png';
-import { useLocation } from 'react-router-dom';
-import sejongStudy from '../../Assets/sejongStudy.png';
-import sejongHonbob from '../../Assets/sejongHonbob.png';
-import login from '../../Assets/login.png';
+import sejongpeertext from '../../Assets/image/sejongpeertext.png';
+import sejongBuddy from '../../Assets/image/sejongBuddy.png';
+import sejongStudy from '../../Assets/image/sejongStudy.png';
+import sejongHonbob from '../../Assets/image/sejongHonbob.png';
+import login from '../../Assets/image/login.png';
+import mypage from '../../Assets/image/mypage.png';
+import meeting from '../../Assets/image/meeting.png';
+
 import style from './Back.module.css';
-import mypage from '../../Assets/mypage.png';
-import meeting from '../../Assets/meeting.png';
 
 const Back = () => {
   const navigate = useNavigate();

@@ -1,4 +1,4 @@
-import style from './Agree.module.css';
+import agree from '../../Pages/Login/signUp/Agree.module.css';
 
 const Agree2 = () => {
   return (

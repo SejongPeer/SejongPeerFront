@@ -1,5 +1,5 @@
 import style from './StudyPostField.module.css';
-import search from '../../../../Assets/search.png';
+import search from '../../../../Assets/image/search_gray.png';
 
 const StudyPostField = () => {
   return (

@@ -1,8 +1,10 @@
-import style from '../AnimalApply3/AnimalApply3.module.css';
-import kakao from '../../../Assets/kakao.png';
-
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+
+import kakao from '../../../Assets/image/kakao.png';
+
+import style from '../AnimalApply3/AnimalApply3.module.css';
+
 
 // 동물상 미팅 신청 3페이지
 const AnimalApply3 = () => {
