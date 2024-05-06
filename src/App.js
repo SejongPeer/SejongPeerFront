@@ -48,6 +48,8 @@ import StudyFilter from '../src/Pages/Study/StudyFilterPage/StudyFIlterPage.js';
 import AnimalApply from './Pages/Festival/AnimalApply/AnimalApply.js';
 import AnimalApply2 from './Pages/Festival/AnimalApply2/AnimalApply2.js';
 import AnimalApply3 from './Pages/Festival/AnimalApply3/AnimalApply3.js';
+import AnimalApply4 from './Pages/Festival/AnimalApply4/AnimalApply4.js';
+import AnimalApply5 from './Pages/Festival/AnimalApply5/AnimalApply5.js';
 
 export const MyContext = createContext();
 
@@ -185,6 +187,8 @@ const App = () => {
               <Route path="/fest/AnimalApply" element={<AnimalApply />} />
               <Route path="/fest/AnimalApply2" element={<AnimalApply2 />} />
               <Route path="/fest/AnimalApply3" element={<AnimalApply3 />} />
+              <Route path="/fest/AnimalApply4" element={<AnimalApply4 />} />
+              <Route path="/fest/AnimalApply5" element={<AnimalApply5 />} />
             </Routes>
           </main>
         </div>

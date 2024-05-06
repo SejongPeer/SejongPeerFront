@@ -5,7 +5,6 @@ import kakao from '../../../Assets/image/kakao.png';
 
 import style from '../AnimalApply3/AnimalApply3.module.css';
 
-
 // 동물상 미팅 신청 3페이지
 const AnimalApply3 = () => {
   const navigate = useNavigate();
@@ -20,7 +19,7 @@ const AnimalApply3 = () => {
   };
 
   const handleNext = () => {
-    navigate('/nextPage'); // 다음 페이지로 이동
+    navigate('/fest/AnimalApply4'); // 다음 페이지로 이동
   };
 
   return (
