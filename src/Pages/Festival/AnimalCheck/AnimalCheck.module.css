@@ -1,0 +1,72 @@
+@media (max-width: 768px) {
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 15vh;
+      flex-direction: column;
+    }
+  
+    .p {
+      font-weight: 800;
+      font-size: 16px;
+    }
+  
+    /* 인증번호 입력 란 */
+    .certificationNum {
+      width: 38vh;
+      height: 6vh;
+      border-radius: 100px;
+      border: 1px solid #c5c5c5;
+      background: var(--BG-White_Color, #fff);
+      padding-left: 20px;
+    }
+  
+    .apply {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 38vh;
+      height: 7vh;
+      /* padding: 10px 20px; */
+      border: none;
+      border-radius: 26px;
+      font-size: 18px;
+      margin-top: 2.7vh;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 5vh;
+      flex-direction: column;
+    }
+  
+    .p {
+        font-weight: 800;
+        font-size: 16px;
+        margin-top: 5vh;
+    }
+    /* 인증번호 입력 란 */
+    .certificationNum {
+        width: 38vh;
+        height: 5vh;
+        border-radius: 100px;
+        border: 1px solid #c5c5c5;
+        background: var(--BG-White_Color, #fff);
+        padding-left: 20px;
+    }
+  
+    .apply {
+        width: 38vh;
+        height: 5vh;
+        /* padding: 10px 20px; */
+        border: none;
+        border-radius: 26px;
+        margin-top: 2.7vh;
+    }
+  }
+  
