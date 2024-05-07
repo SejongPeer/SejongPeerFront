@@ -1,0 +1,52 @@
+@media (min-width: 768px) {
+  .container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 20vh;
+  }
+  .container p {
+    margin: 0;
+  }
+  .alert {
+    font-family: 'jalnan';
+  }
+
+  .festUse {
+    width: 50vh;
+    height: 18vh;
+    background-image: url('../../../Assets/image/festUse.png');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: #fafafa;
+    border: none;
+    margin-top: 20vh;
+  }
+}
+@media (max-width: 768px) {
+  .container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 20vh;
+  }
+  .container p {
+    margin: 0;
+  }
+  .alert {
+    font-family: 'jalnan';
+  }
+
+  .festUse {
+    width: 40vh;
+    height: 18vh;
+    background-image: url('../../../Assets/image/festUse.png');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: #fafafa;
+    border: none;
+    margin-top: 20vh;
+  }
+}

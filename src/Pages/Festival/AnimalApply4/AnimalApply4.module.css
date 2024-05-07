@@ -1,4 +1,69 @@
 @media (min-width: 768px) {
+  .container1 {
+    display: flex;
+    align-items: center;
+    margin-top: 15vh;
+    flex-direction: column;
+  }
+
+  .genderContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3vh;
+    gap: 10px;
+  }
+
+  .genderOption {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 18vh;
+    height: 18vh;
+    border-radius: 40px;
+    border: 1px solid var(--line_02, #e5e5e5);
+    background: var(--back_02, #fff);
+  }
+
+  .navigation {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 10px 20px; /* 양쪽 여백 */
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 20px; /* 버튼 위치 조정 */
+  }
+
+  .backButton,
+  .nextButton,
+  .nextButtonActive {
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+  }
+
+  .backButton {
+    border-radius: 25px;
+    border: 1px solid var(--line_02, #e5e5e5);
+    background: var(--back_02, #fff);
+  }
+
+  .nextButton {
+    border-radius: 25px;
+    border: 1px solid var(--line_02, #e5e5e5);
+    background: var(--back_02, #ff9e9e);
+    color: white;
+  }
+
+  .nextButtonActive {
+    border-radius: 25px;
+    background-color: #ff4b4b; /* 빨간색 */
+    color: white;
+  }
 }
 
 /* 모바일 버전 */

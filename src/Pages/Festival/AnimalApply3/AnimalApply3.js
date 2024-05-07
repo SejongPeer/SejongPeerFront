@@ -25,7 +25,7 @@ const AnimalApply3 = () => {
 
   return (
     <div className={style.container}>
-      <h2>미팅 인원 선택</h2>
+      <h2 className={style.title}>미팅 인원 선택</h2>
       <div className={style.container2}>
         <div
           className={`meeting-option ${style.meetingOption} ${selectedMeeting === 1 ? 'selected' : ''}`}
@@ -35,7 +35,7 @@ const AnimalApply3 = () => {
           }}
           onClick={() => handleMeetingSelect(1)}
         >
-          <p>1:1 미팅</p>
+          <p className={style.meeting}>1:1 미팅</p>
           {selectedMeeting === 1 && <span className="check-mark">✔</span>}
         </div>
         <div
@@ -46,7 +46,7 @@ const AnimalApply3 = () => {
           }}
           onClick={() => handleMeetingSelect(2)}
         >
-          <p>2:2 미팅</p>
+          <p className={style.meeting}>2:2 미팅</p>
           {selectedMeeting === 2 && <span className="check-mark">✔</span>}
         </div>
         <div
@@ -57,7 +57,7 @@ const AnimalApply3 = () => {
           }}
           onClick={() => handleMeetingSelect(3)}
         >
-          <p>3:3 미팅</p>
+          <p className={style.meeting}>3:3 미팅</p>
           {selectedMeeting === 3 && <span className="check-mark">✔</span>}
         </div>
       </div>
