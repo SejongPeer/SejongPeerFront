@@ -15,7 +15,7 @@ const AnimalCheck = () => {
         style={{
           width: '30vh',
           height: '30vh',
-          backgroundColor: '#FF4B4B',
+          backgroundColor: '#D9D9D9',
           marginBottom: '2vh',
           borderRadius: '20px',
         }}

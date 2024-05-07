@@ -1,0 +1,99 @@
+@font-face {
+    font-family: 'jalnan';
+    src: url(../../../Assets/font/Jalnan2.otf);
+}
+
+@media (max-width: 768px) {
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 13vh;
+      flex-direction: column;
+      overflow: scroll;
+    }
+
+    .animal_type{
+        font-size: 1.25rem;
+        font-family: 'jalnan';
+    }
+
+    .wrapper{
+        width: 80vw;
+    }
+    .title{
+        font-size: 1.125rem;
+        font-weight: 800;
+        margin: 24px 0 0 0;
+    }
+    .description{
+        font-size: 0.938rem;
+        font-weight: 500;
+        margin: 8px 0;
+    }
+
+    .ratio_container{
+        width: 80vw;
+        height: 256px;
+        border: 1px solid #E5E5E5;
+        border-radius: 16px;
+        margin-top: 2vh;
+    }
+
+    .down_btn {
+        width: 38vh;
+        height: 7vh;
+        background-color: #FF4B4B;
+        border-radius: 26px;
+        color: white;
+        font-size: 1.125rem;
+        margin: 2vh 0;
+    }
+}
+@media (min-width: 768px) {
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 13vh;
+        flex-direction: column;
+        overflow: scroll;
+    }
+
+    .animal_type{
+        font-size: 1.25rem;
+        font-family: 'jalnan';
+    }
+
+    .wrapper{
+        width: 80vw;
+    }
+    .title{
+        font-size: 1.125rem;
+        font-weight: 800;
+        margin: 24px 0 0 0;
+    }
+    .description{
+        font-size: 0.938rem;
+        font-weight: 500;
+        margin: 8px 0;
+    }
+
+    .ratio_container{
+        width: 80vw;
+        height: 256px;
+        border: 1px solid #E5E5E5;
+        border-radius: 16px;
+        margin-top: 2vh;
+    }
+
+    .down_btn {
+        width: 38vh;
+        height: 7vh;
+        background-color: #FF4B4B;
+        border-radius: 26px;
+        color: white;
+        font-size: 1.125rem;
+        margin: 2vh 0;
+    }
+}
