@@ -29,7 +29,7 @@ const AnimalApply2 = () => {
         개인정보 수집동의
       </label>
       <br />
-      <p style={{ marginTop: '5vh' }} className={style.p}>
+      <p style={{ marginTop: '4vh' }} className={style.p}>
         인증번호 입력
       </p>
       <input
