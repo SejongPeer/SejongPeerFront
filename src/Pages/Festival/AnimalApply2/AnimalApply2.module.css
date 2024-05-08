@@ -14,7 +14,7 @@
 
   /* 인증번호 입력 란 */
   .certificationNum {
-    width: 40vh;
+    width: 38vh;
     height: 7vh;
     border-radius: 100px;
     border: 1px solid #c5c5c5;
@@ -26,12 +26,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 40vh;
+    width: 38vh;
     height: 7vh;
     /* padding: 10px 20px; */
     border: none;
     border-radius: 26px;
     font-size: 18px;
+    margin-top: 2.9vh;
   }
 }
 
@@ -51,7 +52,7 @@
   }
   /* 인증번호 입력 란 */
   .certificationNum {
-    width: 40vh;
+    width: 38vh;
     height: 5vh;
     border-radius: 100px;
     border: 1px solid #c5c5c5;
@@ -60,13 +61,11 @@
   }
 
   .apply {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40vh;
+    width: 38vh;
     height: 5vh;
     /* padding: 10px 20px; */
     border: none;
     border-radius: 26px;
+    margin-top: 2.9vh;
   }
 }

@@ -50,6 +50,9 @@ import AnimalApply2 from './Pages/Festival/AnimalApply2/AnimalApply2.js';
 import AnimalApply3 from './Pages/Festival/AnimalApply3/AnimalApply3.js';
 import AnimalApply4 from './Pages/Festival/AnimalApply4/AnimalApply4.js';
 import AnimalApply5 from './Pages/Festival/AnimalApply5/AnimalApply5.js';
+import MeetingResult from './Pages/Festival/MeetingResult/MeetingResult.js';
+
+import AnimalCheck from './Pages/Festival/AnimalCheck/AnimalCheck.js';
 import AnimalResult from './Pages/Festival/AnimalResult/AnimalResult.js';
 
 export const MyContext = createContext();
@@ -190,7 +193,10 @@ const App = () => {
               <Route path="/fest/AnimalApply3" element={<AnimalApply3 />} />
               <Route path="/fest/AnimalApply4" element={<AnimalApply4 />} />
               <Route path="/fest/AnimalApply5" element={<AnimalApply5 />} />
-              <Route path="/fest/AnimalResult" element={<AnimalResult />} />
+              <Route path="/fest/MeetingResult" element={<MeetingResult />} />
+
+              <Route path="/fest/animalcheck" element={<AnimalCheck />} />
+              <Route path="/fest/animalresult" element={<AnimalResult />} />
             </Routes>
           </main>
         </div>

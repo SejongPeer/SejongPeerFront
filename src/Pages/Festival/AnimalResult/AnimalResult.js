@@ -1,30 +1,44 @@
-import { useNavigate } from 'react-router-dom';
-
-import style from '../AnimalResult/AnimalResult.module.css';
+import style from './AnimalResult.module.css';
 
 const AnimalResult = () => {
-  const navigate = useNavigate();
-
-  const goHome = () => {
-    navigate('/main');
-  };
   return (
     <div className={style.container}>
-      <h2 className={style.alert}>신청 완료!</h2>
-      <p>6시 이후에 매칭 결과가 문자로 전달됩니다 :)</p>
-      <p style={{ fontWeight: 800, marginTop: '10px' }}>
-        아래 이용방법을 반드시 확인해주세요!
-      </p>
-      <div className={style.container3}>
-        <button className={style.festUse}></button>
+      <div
+        style={{
+          width: '20vh',
+          height: '20vh',
+          backgroundColor: '#D9D9D9',
+          borderRadius: '20px',
+        }}
+      ></div>
+      <p className={style.animal_type}>강아지상</p>
+
+      <div className={style.wrapper}>
+        <p className={style.title}>동물상 특징</p>
+        <p className={style.description}>
+          멍멍ㅁ멈멍멍멍ㅁ멈멍멍멍ㅁ멈멍멍멍ㅁ멈멍멍멍ㅁ멈멍멍멍ㅁ멈멍멍멍ㅁ멈멍
+        </p>
       </div>
-      <p
-        href
-        style={{ textDecoration: 'underline', fontWeight: '700' }}
-        onClick={goHome}
-      >
-        홈페이지로 돌아가기
-      </p>
+
+      <div className={style.wrapper}>
+        <p className={style.title}>대표 연예인</p>
+        <p className={style.description}>김민지, 김지우, 츄, 장유진</p>
+      </div>
+
+      <div className={style.wrapper}>
+        <p className={style.title}>동물상 비율?</p>
+        <div className={style.ratio_container}>
+          <div>
+            <div></div>
+            <div>
+              <div></div>
+              <div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button className={style.down_btn}>결과 다운받기</button>
     </div>
   );
 };
