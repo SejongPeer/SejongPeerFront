@@ -1,8 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 
-import style from '../MeetingResult/MeetingResult.module.css';
+import style from '../ApplyComplete/ApplyComplete.module.css';
 
-const MeetingResult = () => {
+const ApplyComplete = () => {
   const navigate = useNavigate();
 
   const goHome = () => {
@@ -29,4 +29,4 @@ const MeetingResult = () => {
   );
 };
 
-export default MeetingResult;
+export default ApplyComplete;
