@@ -11,6 +11,7 @@ import peerUse from '../../../Assets/image/peerUse.png';
 import buddyUse from '../../../Assets/image/buddyUse.png';
 import buddy_button from '../../../Assets/image/buddy_button.png';
 import honbobButton from '../../../Assets/image/honbobButton.png';
+import ready from '../../../Assets/image/ready.png'
 import style from './MainPage.module.css';
 
 const images = [honbobUse, buddyUse, peerUse];
@@ -252,10 +253,11 @@ const MainPage = () => {
             <button style={{ width: "8vw", height: "8vw" }}></button>
           </div> */}
         {/* </div> */}
-        <div className={style.festButton} >
+        {/*<div className={style.festButton} >
           <button onClick={goResult}><p>내 동물상 결과 확인하기</p></button>
           <button><p>미팅해요 동물의 숲</p></button>
-        </div>
+        </div>*/}
+        <img className={style.ready} src={ready}/>
       </div>
       <div className={style.report_user_box} onClick={kakaoChat}>
         <div className={style.reprot_icon}>
