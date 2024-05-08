@@ -25,7 +25,7 @@ const AnimalCheck = () => {
       </p>
       <input
         type="text"
-        placeholder="등록시 입력한 학번을 입력해 주세요"
+        placeholder="학번 입력(외부인의 경우, 전화번호 입력)"
         value={verificationCode}
         onChange={e => setVerificationCode(e.target.value)}
         maxLength="8"
