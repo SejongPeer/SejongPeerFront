@@ -6,7 +6,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-color: #FFF7F7;
+  background-color: #fff7f7;
   z-index: 2;
   align-items: center;
 }
@@ -24,7 +24,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-
 }
 
 .controller_next {
@@ -58,7 +57,7 @@
   margin-left: 3%;
   border: 2px solid #ff4b4b;
   border-radius: 25px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   font-size: 1rem;
   font-weight: bold;
   color: #333333;
@@ -91,7 +90,6 @@
   height: 100%;
   background-color: #ccc;
 }
-
 
 @media (min-width: 420px) {
   .test {

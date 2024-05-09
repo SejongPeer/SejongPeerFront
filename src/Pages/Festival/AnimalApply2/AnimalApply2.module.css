@@ -45,10 +45,10 @@
     flex-direction: column;
   }
 
-  p {
+  .p {
     font-weight: 800;
     font-size: 16px;
-    margin-top: 5vh;
+    /* margin-top: 5vh; */
   }
   /* 인증번호 입력 란 */
   .certificationNum {

@@ -6,7 +6,7 @@ import instagram from '../../../Assets/image/instagram_icon.png';
 import kakao from '../../../Assets/image/kakao_icon.png';
 import blog from '../../../Assets/image/blog_icon.png';
 
-import style from './AnimalResult.module.css'
+import style from './AnimalResult.module.css';
 
 const AnimalResult = () => {
     const captureRef = useRef(null); // useRef를 사용하여 DOM 요소 참조
