@@ -5,7 +5,6 @@ import kakao from '../../../Assets/image/kakao.png';
 
 import style from '../AnimalApply3/AnimalApply3.module.css';
 
-
 // 동물상 미팅 신청 3페이지
 const AnimalApply3 = () => {
   const navigate = useNavigate();
@@ -13,6 +12,7 @@ const AnimalApply3 = () => {
 
   const handleMeetingSelect = meetingType => {
     setSelectedMeeting(meetingType); // 선택 시 체크 옵션을 보이도록 설정
+    localStorage.setItem('미팅 인원 선택', meetingType); // 저장된 값이 1이면 1:1 미팅, 2면 2:2 미팅...
   };
 
   const handleBack = () => {
@@ -20,12 +20,12 @@ const AnimalApply3 = () => {
   };
 
   const handleNext = () => {
-    navigate('/nextPage'); // 다음 페이지로 이동
+    navigate('/fest/AnimalApply4'); // 다음 페이지로 이동
   };
 
   return (
     <div className={style.container}>
-      <h2>미팅 인원 선택</h2>
+      <h2 className={style.title}>미팅 인원 선택</h2>
       <div className={style.container2}>
         <div
           className={`meeting-option ${style.meetingOption} ${selectedMeeting === 1 ? 'selected' : ''}`}
@@ -35,7 +35,7 @@ const AnimalApply3 = () => {
           }}
           onClick={() => handleMeetingSelect(1)}
         >
-          <p>1:1 미팅</p>
+          <p className={style.meeting}>1:1 미팅</p>
           {selectedMeeting === 1 && <span className="check-mark">✔</span>}
         </div>
         <div
@@ -46,7 +46,7 @@ const AnimalApply3 = () => {
           }}
           onClick={() => handleMeetingSelect(2)}
         >
-          <p>2:2 미팅</p>
+          <p className={style.meeting}>2:2 미팅</p>
           {selectedMeeting === 2 && <span className="check-mark">✔</span>}
         </div>
         <div
@@ -57,7 +57,7 @@ const AnimalApply3 = () => {
           }}
           onClick={() => handleMeetingSelect(3)}
         >
-          <p>3:3 미팅</p>
+          <p className={style.meeting}>3:3 미팅</p>
           {selectedMeeting === 3 && <span className="check-mark">✔</span>}
         </div>
       </div>

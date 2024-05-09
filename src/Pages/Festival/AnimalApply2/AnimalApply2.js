@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import style from '../AnimalApply2/AnimalApply2.module.css';
 
 // 동물상 미팅 신청 2페이지
@@ -8,6 +9,15 @@ const AnimalApply2 = () => {
 
   // 버튼 활성화 여부를 결정하는 함수
   const isButtonActive = personalInfoChecked && verificationCode.length === 4;
+
+  const navigate = useNavigate();
+
+  // 다음 페이지로 이동하는 함수
+  const handleNextPage = () => {
+    if (isButtonActive) {
+      navigate('/fest/AnimalApply3'); // 버튼 활성화 시 다음 페이지 URL을 변경하세요.
+    }
+  };
 
   return (
     <div className={style.container}>
@@ -48,6 +58,7 @@ const AnimalApply2 = () => {
         }}
         className={style.apply}
         disabled={!isButtonActive}
+        onClick={handleNextPage}
       >
         <p className={style.p}>동물상 미팅 신청</p>
       </button>
