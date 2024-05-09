@@ -5,12 +5,20 @@
 
 @media (max-width: 768px) {
     .container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-top: 13vh;
-      flex-direction: column;
-      overflow: scroll;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin-top: 10vh;
+        flex-direction: column;
+        overflow: scroll;
+    }
+    .capture_container{
+        padding: 10%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
     }
 
     .animal_type{
@@ -99,21 +107,10 @@
         font-weight: 800;
     }
 
-    .share_box{
-        width: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: space-evenly;
-    }
-    .icon{
-        width: 40px;
-        height: 40px;
-    }
-
     .go_home{
         color: #999999;
         font-weight: 700;
-        margin: 15% 0 10%;
+        margin: 4% 0 10%;
     }
 }
 @media (min-width: 768px) {
@@ -127,6 +124,13 @@
         flex-direction: column;
         overflow-y: scroll;
         overflow-x: hidden;
+    }
+    .capture_container{
+        padding: 10%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
     }
 
     .animal_type{
@@ -215,20 +219,9 @@
         font-weight: 800;
     }
 
-    .share_box{
-        width: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: space-evenly;
-    }
-    .icon{
-        width: 40px;
-        height: 40px;
-    }
-
     .go_home{
         color: #999999;
         font-weight: 700;
-        margin: 15% 0 10%;
+        margin: 5% 0 10%;
     }
 }
