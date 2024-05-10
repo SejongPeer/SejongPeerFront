@@ -4,14 +4,21 @@
 }
 
 @media (max-width: 768px) {
-  .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 13vh;
-    flex-direction: column;
-    overflow: scroll;
-  }
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 10vh;
+      flex-direction: column;
+      overflow: scroll;
+    }
+    .capture_container{
+        padding: 10%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
 
   .animal_type {
     font-size: 1.25rem;
@@ -88,46 +95,39 @@
     background-color: #999999;
   }
 
-  .down_btn {
-    width: 38vh;
-    height: 6.5vh;
-    background-color: #ff4b4b;
-    border-radius: 26px;
-    color: white;
-    font-size: 1.125rem;
-    margin: 2vh 0;
-    font-weight: 800;
-  }
+    .down_btn {
+        width: 38vh;
+        height: 6.5vh;
+        background-color: #FF4B4B;
+        border-radius: 26px;
+        color: white;
+        font-size: 1.125rem;
+        margin: 2vh 0;
+        font-weight: 800;
+    }
 
-  .share_box {
-    width: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-  }
-  .icon {
-    width: 40px;
-    height: 40px;
-  }
-
-  .go_home {
-    color: #999999;
-    font-weight: 700;
-    margin: 15% 0 10%;
-  }
+    .go_home{
+        color: #999999;
+        font-weight: 700;
+        margin: 5% 0 10%;
+    }
 }
 @media (min-width: 768px) {
-  .container {
-    width: 50vw;
-    height: 140%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 3vh;
-    flex-direction: column;
-    overflow-y: scroll;
-    overflow-x: hidden;
-  }
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 10vh;
+        flex-direction: column;
+        overflow: scroll;
+      }
+      .capture_container{
+          padding: 10%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+      }
 
   .animal_type {
     font-size: 1.25rem;
@@ -204,31 +204,20 @@
     background-color: #999999;
   }
 
-  .down_btn {
-    width: 38vh;
-    height: 6vh;
-    background-color: #ff4b4b;
-    border-radius: 26px;
-    color: white;
-    font-size: 1.125rem;
-    margin: 2vh 0;
-    font-weight: 800;
-  }
+    .down_btn {
+        width: 38vh;
+        height: 6vh;
+        background-color: #FF4B4B;
+        border-radius: 26px;
+        color: white;
+        font-size: 1.125rem;
+        margin: 2vh 0;
+        font-weight: 800;
+    }
 
-  .share_box {
-    width: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-  }
-  .icon {
-    width: 40px;
-    height: 40px;
-  }
-
-  .go_home {
-    color: #999999;
-    font-weight: 700;
-    margin: 15% 0 10%;
-  }
+    .go_home{
+        color: #999999;
+        font-weight: 700;
+        margin: 5% 0 10%;
+    }
 }
