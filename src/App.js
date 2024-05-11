@@ -54,7 +54,7 @@ import AnimalApply5 from './Pages/Festival/AnimalApply5/AnimalApply5.js';
 import ApplyComplete from './Pages/Festival/ApplyComplete/ApplyComplete.js';
 
 import AnimalMatchInfo from './Pages/Festival/AnimalMatchResult/AnimalMatchInfo.js'
-import AnimalMatchingResult from './Pages/Festival/AnimalMatchResult/AnimalMatchResult.js'
+import AnimalMatchResult from './Pages/Festival/AnimalMatchResult/AnimalMatchResult.js'
 
 import AnimalCheck from './Pages/Festival/AnimalCheck/AnimalCheck.js';
 import AnimalResult from './Pages/Festival/AnimalResult/AnimalResult.js';
@@ -200,7 +200,7 @@ const App = () => {
               <Route path="/fest/ApplyComplete" element={<ApplyComplete />} />
 
               <Route path="/fest/AnimalMatchInfo" element={<AnimalMatchInfo/>}/>
-              <Route path="/fest/AnimalMatchResult" element={<AnimalMatchingResult/>}/>
+              <Route path="/fest/AnimalMatchResult" element={<AnimalMatchResult/>}/>
 
               <Route path="/fest/animalcheck" element={<AnimalCheck />} />
               <Route path="/fest/animalresult" element={<AnimalResult />} />
