@@ -4,14 +4,17 @@
   flex-direction: row;
   /* 수직으로 아이템을 배치합니다. */
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   height: 50vh;
-  gap: 2%;
 }
 
 .menuBox {
   margin-bottom: 1vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .imgBox {
@@ -20,60 +23,15 @@
   margin-bottom: 1vh;
 }
 
-.item-0 {
-  background-image: url('../../../../Assets/image/KoreanFood.png');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 100% 100%;
-}
-
-.item-1 {
-  background-image: url('../../../../Assets/image/westernFood.png');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 100% 100%;
-}
-
-.item-2 {
-  background-image: url('../../../../Assets/image/ChineseFood.png');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 100% 100%;
-}
-
-.item-3 {
-  background-image: url('../../../../Assets/image/JapaneseFood.png');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 100% 100%;
-}
-
-.menuBtn {
-  font-size: 1.2rem;
-  font-weight: bold;
-  width: 45%;
-  aspect-ratio: 1;
-  margin-bottom: 1vh;
-  border-radius: 40px;
-  /* border: 1px solid #e5e5e5; */
-  cursor: pointer;
-  background-color: white;
-  color: #333333;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
 /* 데스크탑 */
-@media (min-width: 768px) {
+@media (min-width: 670px) {
   .menuBtn {
-    font-size: 1.1rem;
+    font-size: 0.8em;
     font-weight: bold;
     width: 45%;
     aspect-ratio: 1;
     padding-top: 20px;
-    border-radius: 40px;
+    border-radius: 36px;
     /* border: 1px solid #e5e5e5; */
     cursor: pointer;
     background-color: white;
@@ -98,18 +56,56 @@
     background-color: white;
     color: #333333;
   }
+  .item-0 {
+    background-image: url('../../../../Assets/image/KoreanFood.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+    width: 100%;
+    aspect-ratio: 1/2;
+  }
+
+  .item-1 {
+    background-image: url('../../../../Assets/image/westernFood.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+    width: 100%;
+    aspect-ratio: 1/2;
+  }
+
+  .item-2 {
+    background-image: url('../../../../Assets/image/ChineseFood.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+    width: 80%;
+    aspect-ratio: 1/1;
+    margin-bottom: 20%;
+    /* aspect-ratio:; */
+  }
+
+  .item-3 {
+    background-image: url('../../../../Assets/image/JapaneseFood.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+    width: 80%;
+    aspect-ratio: 1/1;
+    margin-bottom: 20%;
+  }
 }
 
 /* 모바일 */
-@media (max-width: 768px) {
+@media (max-width: 670px) {
   .menuBtn {
     font-size: 16px;
     font-weight: bold;
-    width: 48%;
-    aspect-ratio: 1;
+    width: 45%;
+    aspect-ratio: 1/1;
     margin-bottom: 1vh;
     padding-top: 20px;
-    border-radius: 40px;
+    border-radius: 36px;
     /* border: 1px solid #e5e5e5; */
     cursor: pointer;
     background-color: white;
@@ -119,6 +115,7 @@
     align-items: center;
     justify-content: center;
     padding-bottom: 2vh;
+    box-sizing: border-box;
   }
 
   .item {
@@ -133,5 +130,43 @@
     cursor: pointer;
     background-color: white;
     color: #333333;
+  }
+  .item-0 {
+    background-image: url('../../../../Assets/image/KoreanFood.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+    width: 100%;
+    aspect-ratio: 1/2;
+  }
+
+  .item-1 {
+    background-image: url('../../../../Assets/image/westernFood.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+    width: 100%;
+    aspect-ratio: 1/2;
+  }
+
+  .item-2 {
+    background-image: url('../../../../Assets/image/ChineseFood.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+    width: 100%;
+    aspect-ratio: 1/1;
+    margin-bottom: 20%;
+    /* aspect-ratio:; */
+  }
+
+  .item-3 {
+    background-image: url('../../../../Assets/image/JapaneseFood.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+    width: 100%;
+    aspect-ratio: 1/1;
+    margin-bottom: 20%;
   }
 }
