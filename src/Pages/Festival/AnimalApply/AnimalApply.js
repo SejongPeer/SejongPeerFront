@@ -9,12 +9,15 @@ const AnimalApply = () => {
     const goApply = () => {
         navigate('/fest/AnimalApply2')
     }
+    const goAnimalMatchingResult = () => {
+        navigate('/fest/AnimalMatchInfo')
+    }
     return (
         <div className={style.container1}>
             <h1>동물상형 미팅</h1>
             <div className={style.container2}>
                 <button className={style.apply} onClick={goApply}>동물상 미팅 신청하기</button>
-                <button className={style.apply}>매칭 결과 확인하기</button>
+                <button className={style.apply} onClick={goAnimalMatchingResult}>매칭 결과 확인하기</button>
             </div>
             <div className={style.container3}>
                 <button className={style.festUse}></button>

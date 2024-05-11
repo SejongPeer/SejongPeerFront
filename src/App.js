@@ -7,6 +7,7 @@ import { jwtDecode } from 'jwt-decode';
 import Header from './Components/Header/Header.js';
 import StartLoading from './Pages/main/landing/StartLoading.js';
 import MainPage from './Pages/main/MainPage/MainPage.js';
+
 //버디 컴포넌트
 import BuddyStart1 from './Pages/Buddy/info/BuddyStart1.js';
 import BuddyStart2 from './Pages/Buddy/info/BuddyStart2.js';
@@ -51,6 +52,9 @@ import AnimalApply3 from './Pages/Festival/AnimalApply3/AnimalApply3.js';
 import AnimalApply4 from './Pages/Festival/AnimalApply4/AnimalApply4.js';
 import AnimalApply5 from './Pages/Festival/AnimalApply5/AnimalApply5.js';
 import ApplyComplete from './Pages/Festival/ApplyComplete/ApplyComplete.js';
+
+import AnimalMatchInfo from './Pages/Festival/AnimalMatchResult/AnimalMatchInfo.js'
+import AnimalMatchingResult from './Pages/Festival/AnimalMatchResult/AnimalMatchResult.js'
 
 import AnimalCheck from './Pages/Festival/AnimalCheck/AnimalCheck.js';
 import AnimalResult from './Pages/Festival/AnimalResult/AnimalResult.js';
@@ -194,6 +198,9 @@ const App = () => {
               <Route path="/fest/AnimalApply4" element={<AnimalApply4 />} />
               <Route path="/fest/AnimalApply5" element={<AnimalApply5 />} />
               <Route path="/fest/ApplyComplete" element={<ApplyComplete />} />
+
+              <Route path="/fest/AnimalMatchInfo" element={<AnimalMatchInfo/>}/>
+              <Route path="/fest/AnimalMatchResult" element={<AnimalMatchingResult/>}/>
 
               <Route path="/fest/animalcheck" element={<AnimalCheck />} />
               <Route path="/fest/animalresult" element={<AnimalResult />} />
