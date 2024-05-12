@@ -57,10 +57,10 @@ const H_Menu = props => {
                 <div
                   className={`${style.imgBox} ${style[`item-${index}`]}`}
                 ></div>
-                <div>{val}</div>
+                <div className={style.menuText}>{val}</div>
               </div>
             ) : (
-              val
+              <div className={style.menuText}>{val}</div>
             )}
           </button>
         ))}

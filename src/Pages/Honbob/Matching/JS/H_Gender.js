@@ -41,7 +41,7 @@ const H_Gender = props => {
           이성
         </button>
       </div>
-      <div className={con.fightImg}></div>
+      {/* <div className={con.fightImg}></div> */}
     </div>
   );
 };
