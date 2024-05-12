@@ -67,8 +67,27 @@ html {
   width: 30vh;
   height: 30vh;
 }
+/* 데스크탑 */
+@media (min-width: 670px) {
+  .container {
+    flex-shrink: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    margin-top: 100px;
+    background-color: #fff7f7;
+  }
+  .title {
+    margin: 3vh 0px 1vh 0px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+  }
+}
 /* 모바일 */
-@media (max-height: 670px) {
+@media (max-width: 670px) {
   .container {
     flex-shrink: 0;
     width: 100%;
