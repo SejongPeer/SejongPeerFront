@@ -27,8 +27,8 @@
     justify-content: space-around;
   }
 }
-
-@media (max-height: 670px) {
+/* 모바일 */
+@media (max-width: 670px) {
   .progressBarWrapper {
     height: 10%;
     width: 100%;
@@ -49,12 +49,12 @@
 
 .nextController {
   height: 90%;
-  width: 20vw;
+  width: 40%;
   margin-right: 3%;
-  border: 1px solid #FF4B4B;
+  border: 1px solid #ff4b4b;
   border-radius: 25px;
-  background-color: #FF4B4B;
-  font-size: 1rem;
+  background-color: #ff4b4b;
+  font-size: 1em;
   font-weight: bold;
   color: #ffffff;
   cursor: pointer;
@@ -62,12 +62,12 @@
 
 .nextNonController {
   height: 90%;
-  width: 20vw;
+  width: 40%;
   margin-right: 3%;
-  border: 1px solid #FF4B4B;
+  border: 1px solid #ff4b4b;
   border-radius: 25px;
-  background-color: #FF4B4B;
-  font-size: 1rem;
+  background-color: #ff4b4b;
+  font-size: 1em;
   font-weight: bold;
   color: #ffffff;
   cursor: pointer;
@@ -76,12 +76,12 @@
 
 .prevController {
   height: 90%;
-  width: 20vw;
+  width: 40%;
   margin-left: 3%;
-  border: 2px solid #FF4B4B;
+  border: 2px solid #ff4b4b;
   border-radius: 25px;
   background-color: transparent;
-  font-size: 1rem;
+  font-size: 1em;
   font-weight: bold;
   color: #333333;
   cursor: pointer;
@@ -95,7 +95,7 @@
   font-size: 16px;
   font-weight: bold;
   color: #ffffff;
-  background-color: #FF4B4B;
+  background-color: #ff4b4b;
   border-radius: 25px;
   border: none;
   cursor: pointer;
@@ -117,43 +117,43 @@
   background-color: #ccc;
 }
 
-@media(max-width:768px) {
+@media (max-width: 768px) {
   .nextController {
-    height: 90%;
-    width: 20vw;
+    height: 100%;
+    width: 22%;
     margin-right: 3%;
-    border: 1px solid #FF4B4B;
+    border: 1px solid #ff4b4b;
     border-radius: 25px;
-    background-color: #FF4B4B;
-    font-size: 1rem;
-    font-weight: bold;
+    background-color: #ff4b4b;
+    font-size: 1em;
+    font-weight: 800;
     color: #ffffff;
     cursor: pointer;
   }
 
   .nextNonController {
-    height: 90%;
-    width: 20vw;
+    height: 100%;
+    width: 22%;
     margin-right: 3%;
-    border: 1px solid #FF4B4B;
+    border: 1px solid #ff4b4b;
     border-radius: 25px;
-    background-color: #FF4B4B;
-    font-size: 1rem;
-    font-weight: bold;
+    background-color: #ff4b4b;
+    font-size: 1em;
+    font-weight: 800;
     color: #ffffff;
     cursor: pointer;
     opacity: 0.5;
   }
 
   .prevController {
-    height: 90%;
-    width: 20vw;
+    height: 100%;
+    width: 22%;
     margin-left: 3%;
-    border: 2px solid #FF4B4B;
+    border: 2px solid #ff4b4b;
     border-radius: 25px;
     background-color: transparent;
-    font-size: 1rem;
-    font-weight: bold;
+    font-size: 1em;
+    font-weight: 800;
     color: #333333;
     cursor: pointer;
   }

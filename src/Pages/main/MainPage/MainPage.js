@@ -209,6 +209,7 @@ const MainPage = () => {
         style={{
           padding: '2vh',
         }}
+        className={style.wrapper}
       >
         <img
           className={style.useImg}

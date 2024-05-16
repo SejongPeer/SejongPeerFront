@@ -37,7 +37,7 @@ html {
 }
 
 .title {
-  margin: 30px 0px 40px 0px;
+  margin: 1vh 0px 1vh 0px;
   font-size: 20px;
   font-weight: bold;
   text-align: center;
@@ -67,8 +67,27 @@ html {
   width: 30vh;
   height: 30vh;
 }
-
-@media (max-height: 670px) {
+/* 데스크탑 */
+@media (min-width: 670px) {
+  .container {
+    flex-shrink: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    margin-top: 100px;
+    background-color: #fff7f7;
+  }
+  .title {
+    margin: 3vh 0px 1vh 0px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+  }
+}
+/* 모바일 */
+@media (max-width: 670px) {
   .container {
     flex-shrink: 0;
     width: 100%;
@@ -77,7 +96,7 @@ html {
     align-items: center;
     position: relative;
     margin-top: 70px;
-    overflow-y: scroll;
+    overflow-y: hidden;
   }
 
   .titlebox {
@@ -90,7 +109,7 @@ html {
   }
 
   .title {
-    margin: 20px 0px 30px 0px;
+    margin: 1vh 0px 1vh 0px;
     font-size: 20px;
     font-weight: bold;
   }

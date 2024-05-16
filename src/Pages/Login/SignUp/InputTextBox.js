@@ -9,7 +9,7 @@ const InputTextBox = props => {
   const isPhone = props.id === 'phoneNum';
 
   const inputHandler = event => {
-    const regex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d!@#$%^&*\-=+|;:'",.?/~]*$/;
+    const regex = /^[a-zA-Z0-9]{10,}$/;
 
     let inputValue = event.target.value;
     //아이디

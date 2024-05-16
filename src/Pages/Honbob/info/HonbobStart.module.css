@@ -1,3 +1,4 @@
+/* 데스크탑 버전 */
 @media (min-width: 768px) {
   .Container {
     width: 100vw;
@@ -12,6 +13,7 @@
     height: 100vh;
     /* background-color: aliceblue; */
     background-color: transparent;
+    overflow: hidden;
   }
 
   .top {
@@ -39,7 +41,7 @@
   }
 
   .informImg {
-    background-image: url("../../../Assets/image/warningLogo.png");
+    background-image: url('../../../Assets/image/warningLogo.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -61,8 +63,8 @@
 
   .honbobLogo {
     height: 45vh;
-    width: 27vh;
-    background-image: url("../../../Assets/image/honbobStartLogo.png");
+    width: 30vh;
+    background-image: url('../../../Assets/image/honbobStartLogo.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100% 100%;
@@ -71,7 +73,7 @@
   .informContext {
     margin-top: 3vh;
     font-weight: 600;
-    width: 30vh;
+    width: 100%;
     gap: 2%;
     display: flex;
     flex-direction: column;
@@ -81,7 +83,7 @@
 
   .context1 {
     margin: 0.5vh;
-    font-size: 2vh;
+    font-size: 1.7vh;
   }
 
   .findContext {
@@ -98,7 +100,7 @@
   .raccoon {
     width: 4vh;
     height: 4vh;
-    background-image: url("../../../Assets/image/raccoonImg.png");
+    background-image: url('../../../Assets/image/raccoonImg.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100% 100%;
@@ -116,7 +118,7 @@
     cursor: pointer;
   }
 }
-
+/* 모바일 */
 @media (max-width: 768px) {
   .Container {
     width: 100vw;
@@ -131,6 +133,7 @@
     height: 100%;
     /* background-color: aliceblue; */
     background-color: transparent;
+    overflow: hidden;
   }
 
   .top {
@@ -158,7 +161,7 @@
   }
 
   .informImg {
-    background-image: url("../../../Assets/image/warningLogo.png");
+    background-image: url('../../../Assets/image/warningLogo.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -181,14 +184,14 @@
   .honbobLogo {
     height: 38vh;
     width: 50vw;
-    background-image: url("../../../Assets/image/honbobStartLogo.png");
+    background-image: url('../../../Assets/image/honbobStartLogo.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100% 100%;
   }
 
   .informContext {
-    margin-top: 3vh;
+    margin-top: 5vh;
     font-weight: 600;
     gap: 2%;
     display: flex;
@@ -216,7 +219,7 @@
   .raccoon {
     width: 5vh;
     height: 5vh;
-    background-image: url("../../../Assets/image/raccoonImg.png");
+    background-image: url('../../../Assets/image/raccoonImg.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100% 100%;
@@ -230,7 +233,7 @@
     color: #ffffff;
     background-color: #ff4b4b;
     font-size: 2.5vh;
-    margin-top: 5vh;
+    margin-top: 3vh;
     font-weight: 600;
     cursor: pointer;
   }

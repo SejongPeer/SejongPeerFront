@@ -1,24 +1,24 @@
-import { useState } from "react";
-import con from "../CSS/H_Container.module.css";
-import btn2 from "../CSS/H_Btn2.module.css";
+import { useState } from 'react';
+import con from '../CSS/H_Container.module.css';
+import btn2 from '../CSS/H_Btn2.module.css';
 
-const H_Gender = (props) => {
+const H_Gender = props => {
   const [isSameClicked, setIsSameClicked] = useState(false);
   const [isDontCareClicked, setIsDontCareClicked] = useState(false);
 
   const clickSameBtnHandler = () => {
     setIsSameClicked(true);
     setIsDontCareClicked(false);
-    const choiceGender = "SAME";
-    props.setChoiceGenderKorean("동성");
+    const choiceGender = 'SAME';
+    props.setChoiceGenderKorean('동성');
     props.sendChoiceGenderData(choiceGender);
   };
 
   const clickDontCareBtnHandler = () => {
     setIsSameClicked(false);
     setIsDontCareClicked(true);
-    const choiceGender = "NO_MATTER";
-    props.setChoiceGenderKorean("상관없음");
+    const choiceGender = 'NO_MATTER';
+    props.setChoiceGenderKorean('이성');
     props.sendChoiceGenderData(choiceGender);
   };
 
@@ -29,7 +29,7 @@ const H_Gender = (props) => {
 
   return (
     <div className={con.container}>
-      <p className={con.title}>원하는 밥짝꿍 성별을 선택해주세요!</p>
+      <p className={con.title}>원하는 축제짝꿍 성별을 선택해주세요!</p>
       <div>
         <button className={clickSameBtnColor} onClick={clickSameBtnHandler}>
           동성
@@ -38,10 +38,10 @@ const H_Gender = (props) => {
           className={clickDontCareBtnColor}
           onClick={clickDontCareBtnHandler}
         >
-          상관없음
+          이성
         </button>
       </div>
-      <div className={con.fightImg}></div>
+      {/* <div className={con.fightImg}></div> */}
     </div>
   );
 };
