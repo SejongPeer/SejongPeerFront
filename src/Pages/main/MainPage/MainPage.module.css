@@ -15,7 +15,7 @@
     width: 100vw;
     height: 90vh;
   }
-  .wrapper{
+  .wrapper {
     max-width: 400px;
     display: flex;
     flex-direction: column;

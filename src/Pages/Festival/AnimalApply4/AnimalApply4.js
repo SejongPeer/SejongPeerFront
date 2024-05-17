@@ -10,7 +10,7 @@ const AnimalApply4 = () => {
 
   const handleGenderSelect = gender => {
     setSelectedGender(gender); // 성별 선택 핸들러
-    localStorage.setItem('selectedGender', gender); // 선택한 성별을 로컬스토리지에 저장하고 다음 화면에서 써먹어야함
+    localStorage.setItem('gender', gender); // 선택한 성별을 로컬스토리지에 저장하고 다음 화면에서 써먹어야함
   };
 
   const handleBack = () => {
@@ -25,27 +25,27 @@ const AnimalApply4 = () => {
       <h1>본인 성별 선택</h1>
       <div className={style.genderContainer}>
         <div
-          className={`${style.genderOption} ${selectedGender === '남자' ? style.selected : ''}`}
+          className={`${style.genderOption} ${selectedGender === 'MALE' ? style.selected : ''}`}
           style={{
             border:
-              selectedGender === '남자'
+              selectedGender === 'MALE'
                 ? '2px solid #ff4b4b'
                 : '1px solid #e5e5e5',
           }}
-          onClick={() => handleGenderSelect('남자')}
+          onClick={() => handleGenderSelect('MALE')}
         >
           <p>남자</p>
           {/* {selectedGender === '남자' && <span className="check-mark">✔</span>} */}
         </div>
         <div
-          className={`${style.genderOption} ${selectedGender === '여자' ? style.selected : ''}`}
+          className={`${style.genderOption} ${selectedGender === 'FEMALE' ? style.selected : ''}`}
           style={{
             border:
-              selectedGender === '여자'
+              selectedGender === 'FEMALE'
                 ? '2px solid #ff4b4b'
                 : '1px solid #e5e5e5',
           }}
-          onClick={() => handleGenderSelect('여자')}
+          onClick={() => handleGenderSelect('FEMALE')}
         >
           <p>여자</p>
           {/* {selectedGender === '여자' && <span className="check-mark">✔</span>} */}
