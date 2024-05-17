@@ -9,16 +9,44 @@ const AnimalApply5 = () => {
   const [meetingType, setMeetingType] = useState(null);
   const [forms, setForms] = useState([]);
   const [gender, setGender] = useState(null);
-  const [gender1, setGender1] = useState(null);
+
+  const animalMapping = {
+    상관없음: 'NONE',
+    강아지: 'DOG',
+    고양이: 'CAT',
+    토끼: 'RABBIT',
+    공룡: 'DINOSAUR',
+    곰: 'BEAR',
+    늑대: 'WOLF',
+    사막여우: 'DESERT_FOX',
+    사슴: 'DEER',
+    햄스터: 'HAMSTER',
+  };
 
   useEffect(() => {
     // 페이지 로드 시 로컬 스토리지에서 미팅 유형 및 성별을 가져와 상태를 설정
-    const savedMeetingType = localStorage.getItem('미팅 인원 선택');
-    const savedGender = localStorage.getItem('selectedGender');
-    if (savedMeetingType) {
-      setMeetingType(savedMeetingType);
-      setForms(Array(parseInt(savedMeetingType)).fill(null));
+    const savedMeetingGroupType = localStorage.getItem('MeetingGroupType');
+    const savedGender = localStorage.getItem('gender');
+    let meetingTypeInt;
+
+    if (savedMeetingGroupType) {
+      switch (savedMeetingGroupType) {
+        case 'ONE_ON_ONE':
+          meetingTypeInt = 1;
+          break;
+        case 'TWO_ON_TWO':
+          meetingTypeInt = 2;
+          break;
+        case 'THREE_ON_THREE':
+          meetingTypeInt = 3;
+          break;
+        default:
+          meetingTypeInt = 1;
+      }
+      setMeetingType(meetingTypeInt);
+      setForms(Array(meetingTypeInt).fill({}));
     }
+
     if (savedGender) {
       setGender(savedGender);
     }
@@ -36,22 +64,82 @@ const AnimalApply5 = () => {
 
   // 성별에 따른 동물상 옵션
   const getAnimalOptions = gender => {
-    if (gender === '여자') {
-      return ['강아지', '고양이', '토끼', '공룡', '곰', '늑대'];
-    } else if (gender === '남자') {
-      return ['강아지', '고양이', '토끼', '사막여우', '사슴', '햄스터'];
+    if (gender === 'FEMALE') {
+      return ['상관없음', '강아지', '고양이', '토끼', '공룡', '곰', '늑대'];
+    } else if (gender === 'MALE') {
+      return [
+        '상관없음',
+        '강아지',
+        '고양이',
+        '토끼',
+        '사막여우',
+        '사슴',
+        '햄스터',
+      ];
     }
     return []; // 기본적으로 빈 배열 반환
   };
 
   // 성별에 따른 동물상 옵션
   const getAnimalOptions1 = gender1 => {
-    if (gender1 === '남자') {
-      return ['강아지', '고양이', '토끼', '공룡', '곰', '늑대'];
-    } else if (gender1 === '여자') {
-      return ['강아지', '고양이', '토끼', '사막여우', '사슴', '햄스터'];
+    if (gender1 === 'MALE') {
+      return ['상관없음', '강아지', '고양이', '토끼', '공룡', '곰', '늑대'];
+    } else if (gender1 === 'FEMALE') {
+      return [
+        '상관없음',
+        '강아지',
+        '고양이',
+        '토끼',
+        '사막여우',
+        '사슴',
+        '햄스터',
+      ];
     }
     return []; // 기본적으로 빈 배열 반환
+  };
+
+  const handleSubmit = async () => {
+    const MeetingGroupType =
+      meetingType === 1
+        ? 'ONE_ON_ONE'
+        : meetingType === 2
+          ? 'TWO_ON_TWO'
+          : 'THREE_ON_THREE';
+
+    const data = forms.map(form => ({
+      name: form.name,
+      phoneNumber: form.phoneNumber,
+      gender: gender,
+      selfAnimalType: animalMapping[form.selfAnimalType] || 'NONE',
+      firstAnimalType: animalMapping[form.firstAnimalType] || 'NONE',
+      secondAnimalType: animalMapping[form.secondAnimalType] || 'NONE',
+    }));
+
+    // 요청 데이터 로그 출력
+    console.log('Submitting data:', data);
+    console.log('MeetingGroupType:', MeetingGroupType);
+
+    try {
+      const response = await fetch(
+        `${process.env.REACT_APP_FEST_SERVER}/user/register?groupType=${MeetingGroupType}`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+        }
+      );
+
+      if (response.ok) {
+        alert('미팅 신청 완료!');
+        navigate('/fest/ApplyComplete'); // 성공 시 성공 페이지로 이동 (페이지 변경 시 적절히 수정)
+      } else {
+        console.error('Registration failed', response);
+      }
+    } catch (error) {
+      console.error('Error during registration:', error);
+    }
   };
 
   // 폼의 개수에 따라 컨테이너 높이 계산
@@ -60,8 +148,7 @@ const AnimalApply5 = () => {
 
   return (
     <div className={style.container} style={{ height: `${totalHeight}px` }}>
-      {/* <h1>미팅 유형: {meetingType}</h1> */}
-      {forms.map((_, index) => (
+      {forms.map((form, index) => (
         <div key={index}>
           <p className={style.student}>학생 {index + 1}</p>
           <div className={style.form}>
@@ -70,7 +157,7 @@ const AnimalApply5 = () => {
               <select
                 className={style.input}
                 onChange={e =>
-                  handleChange(index, 'animalType', e.target.value)
+                  handleChange(index, 'selfAnimalType', e.target.value)
                 }
                 defaultValue=""
               >
@@ -110,7 +197,7 @@ const AnimalApply5 = () => {
                 <select
                   className={style.input}
                   onChange={e =>
-                    handleChange(index, 'preferredAnimal', e.target.value)
+                    handleChange(index, 'firstAnimalType', e.target.value)
                   }
                   defaultValue=""
                 >
@@ -126,7 +213,7 @@ const AnimalApply5 = () => {
                 <select
                   className={style.input}
                   onChange={e =>
-                    handleChange(index, 'preferredAnimal', e.target.value)
+                    handleChange(index, 'secondAnimalType', e.target.value)
                   }
                   defaultValue=""
                 >
@@ -144,7 +231,9 @@ const AnimalApply5 = () => {
           </div>
         </div>
       ))}
-      <button className={style.apply}>동물상 미팅 신청하기</button>
+      <button className={style.apply} onClick={handleSubmit}>
+        동물상 미팅 신청하기
+      </button>
     </div>
   );
 };
