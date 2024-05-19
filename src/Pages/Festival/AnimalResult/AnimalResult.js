@@ -1,15 +1,38 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import axios from 'axios';
 import html2canvas from 'html2canvas';
 import AnimalRatio from './AnimalRatio';
-
-import instagram from '../../../Assets/image/instagram_icon.png';
-import kakao from '../../../Assets/image/kakao_icon.png';
-import blog from '../../../Assets/image/blog_icon.png';
 
 import style from './AnimalResult.module.css';
 
 const AnimalResult = () => {
     const captureRef = useRef(null); // useRef를 사용하여 DOM 요소 참조
+    const isFirstRender = useRef(true);
+    const userId = 12345;
+    
+
+    useEffect(() => {
+        if (isFirstRender.current) {
+            getResult();
+        }
+      }, []);
+
+    const getResult = async() => {
+        if (userId) {
+            try {
+                const response = await axios.get(`${process.env.REACT_APP_FEST_SERVER}/measurements/download`, {
+                    params: {
+                        studentId: userId
+                    }
+                });
+                console.log(response.data.data.scores);
+            } catch (error) {
+                console.log(error);
+            }
+        } else {
+            alert('해당 사용자를 찾을 수 없습니다.');
+        }
+    }
 
     const captureElement = async () => {
         if (captureRef.current) {
