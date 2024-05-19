@@ -9,4 +9,11 @@ module.exports = function (app) {
       pathRewrite: { '/api': '/auth' },
     })
   );
+  // app.use(
+  //   '/measurements',
+  //   createProxyMiddleware({
+  //     target: 'process.env.REACT_APP_FEST_SERVER',
+  //     changeOrigin: true,
+  //   })
+  // );
 };
