@@ -4,18 +4,25 @@ import html2canvas from 'html2canvas';
 import AnimalRatio from './AnimalRatio';
 
 import style from './AnimalResult.module.css';
+import AnimalInfo from './AnimalInfo';
+import { useNavigate } from 'react-router-dom';
 
 const AnimalResult = () => {
     const captureRef = useRef(null); // useRef를 사용하여 DOM 요소 참조
     const isFirstRender = useRef(true);
     const userId = 12345;
-    
+    const [result, setResult] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (isFirstRender.current) {
             getResult();
         }
-      }, []);
+    }, []);
+
+    const goHome = () => {
+        navigate('/main');
+    }
 
     const getResult = async() => {
         if (userId) {
@@ -25,7 +32,8 @@ const AnimalResult = () => {
                         studentId: userId
                     }
                 });
-                console.log(response.data.data.scores);
+                const sort_result = response.data.data.scores.sort((a, b) => b.score - a.score);
+                setResult(sort_result);
             } catch (error) {
                 console.log(error);
             }
@@ -48,39 +56,24 @@ const AnimalResult = () => {
 
     return <div className={style.container}>
         <div ref={captureRef} className={style.capture_container}>
-            <div
-                style={{
-                width: '215px',
-                height: '215px',
-                backgroundColor: '#D9D9D9',
-                borderRadius: '20px',
-                }}
-            ></div>
-            <p className={style.animal_type}>강아지상</p>
-
+            <AnimalInfo />
             <div className={style.wrapper}>
-                <p className={style.title}>동물상 특징</p>
-                <p className={style.description}>멍멍ㅁ멈멍멍멍ㅁ멈멍멍멍ㅁ멈멍멍멍ㅁ멈멍멍멍ㅁ멈멍멍멍ㅁ멈멍멍멍ㅁ멈멍</p>
-            </div>
-
-            <div className={style.wrapper}>
-                <p className={style.title}>대표 연예인</p>
-                <p className={style.description}>김민지, 김지우, 츄, 장유진</p>
-            </div>
-
-            <div className={style.wrapper}>
-                <p className={style.title}>동물상 비율?</p>
+                <p className={style.title}>동물상 비율</p>
                 <div className={style.ratio_container}> 
-                    <AnimalRatio />
-                    <AnimalRatio />
-                    <AnimalRatio />
-                    <AnimalRatio />
-                    <AnimalRatio />
+                    {result.slice(0, 5).map((animal, index) => (
+                        <AnimalRatio
+                        key={index}
+                        animal_name={animal.animal}
+                        animal_score={animal.score}
+                        />
+                    ))}
                 </div>
             </div>
         </div>
         <button onClick={captureElement} className={style.down_btn}>결과 다운받기</button>
-        <p className={style.go_home}>홈페이지로 이동하기</p>
+        <p 
+        className={style.go_home}
+        onClick={goHome}>홈페이지로 이동하기</p>
     </div>
 };
 
