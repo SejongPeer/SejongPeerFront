@@ -4,21 +4,27 @@
 }
 
 @media (max-width: 768px) {
-    .container {
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10vh;
+    flex-direction: column;
+    overflow: scroll;
+  }
+  .capture_container{
+      padding: 10%;
       display: flex;
       justify-content: center;
       align-items: center;
-      margin-top: 10vh;
       flex-direction: column;
-      overflow: scroll;
-    }
-    .capture_container{
-        padding: 10%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-    }
+  }
+  .info_wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+  }
 
   .animal_type {
     font-size: 1.25rem;
@@ -95,39 +101,45 @@
     background-color: #999999;
   }
 
-    .down_btn {
-        width: 38vh;
-        height: 6.5vh;
-        background-color: #FF4B4B;
-        border-radius: 26px;
-        color: white;
-        font-size: 1.125rem;
-        margin: 2vh 0;
-        font-weight: 800;
-    }
+  .down_btn {
+      width: 38vh;
+      height: 6.5vh;
+      background-color: #FF4B4B;
+      border-radius: 26px;
+      color: white;
+      font-size: 1.125rem;
+      margin: 2vh 0;
+      font-weight: 800;
+  }
 
-    .go_home{
-        color: #999999;
-        font-weight: 700;
-        margin: 5% 0 10%;
-    }
+  .go_home{
+      color: #999999;
+      font-weight: 700;
+      margin: 5% 0 10%;
+  }
 }
 @media (min-width: 768px) {
-    .container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-top: 10vh;
-        flex-direction: column;
-        overflow: scroll;
-      }
-      .capture_container{
-          padding: 10%;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          flex-direction: column;
-      }
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5vh;
+    flex-direction: column;
+    height: 130%;
+  }
+  .capture_container{
+    padding: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .info_wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
 
   .animal_type {
     font-size: 1.25rem;
@@ -204,20 +216,20 @@
     background-color: #999999;
   }
 
-    .down_btn {
-        width: 38vh;
-        height: 6vh;
-        background-color: #FF4B4B;
-        border-radius: 26px;
-        color: white;
-        font-size: 1.125rem;
-        margin: 2vh 0;
-        font-weight: 800;
-    }
+  .down_btn {
+      width: 38vh;
+      height: 6vh;
+      background-color: #FF4B4B;
+      border-radius: 26px;
+      color: white;
+      font-size: 1.125rem;
+      font-weight: 800;
+      margin: 1vh 0;
+  }
 
-    .go_home{
-        color: #999999;
-        font-weight: 700;
-        margin: 5% 0 10%;
-    }
+  .go_home{
+      color: #999999;
+      font-weight: 700;
+      margin: 5% 0 10%;
+  }
 }
