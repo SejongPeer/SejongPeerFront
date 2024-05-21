@@ -77,6 +77,8 @@ const App = () => {
   const [peerId, setPeerId] = useState('');
   const [buddyCount, setBuddyCount] = useState(0);
 
+  const [animalType, setAnimalType] = useState([]);
+
   // 타이머 재설정
   const initializeApp = () => {
     const token = localStorage.getItem('refreshToken');
@@ -138,6 +140,8 @@ const App = () => {
         setLogoutTimer,
         setBuddyCount,
         buddyCount,
+        animalType,
+        setAnimalType,
       }}
     >
       <Router>
