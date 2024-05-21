@@ -1,47 +1,23 @@
-import React, { useEffect, useRef, useState } from 'react';
-import axios from 'axios';
+import React, { useContext, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { MyContext } from '../../../App';
 import html2canvas from 'html2canvas';
 import AnimalRatio from './AnimalRatio';
 
 import style from './AnimalResult.module.css';
 import AnimalInfo from './AnimalInfo';
-import { useNavigate } from 'react-router-dom';
 
 const AnimalResult = () => {
     const captureRef = useRef(null); // useRef를 사용하여 DOM 요소 참조
-    const isFirstRender = useRef(true);
-    const userId = 12345;
-    const [result, setResult] = useState([]);
     const navigate = useNavigate();
+    const { animalType } = useContext(MyContext);
 
-    useEffect(() => {
-        if (isFirstRender.current) {
-            getResult();
-        }
-    }, []);
-
+    // 메인 이동
     const goHome = () => {
         navigate('/main');
     }
 
-    const getResult = async() => {
-        if (userId) {
-            try {
-                const response = await axios.get(`${process.env.REACT_APP_FEST_SERVER}/measurements/download`, {
-                    params: {
-                        studentId: userId
-                    }
-                });
-                const sort_result = response.data.data.scores.sort((a, b) => b.score - a.score);
-                setResult(sort_result);
-            } catch (error) {
-                console.log(error);
-            }
-        } else {
-            alert('해당 사용자를 찾을 수 없습니다.');
-        }
-    }
-
+    // 이미지 다운
     const captureElement = async () => {
         if (captureRef.current) {
             const canvas = await html2canvas(captureRef.current);
@@ -56,11 +32,13 @@ const AnimalResult = () => {
 
     return <div className={style.container}>
         <div ref={captureRef} className={style.capture_container}>
-            <AnimalInfo />
+            <AnimalInfo 
+                type={animalType[0].animal}
+            />
             <div className={style.wrapper}>
                 <p className={style.title}>동물상 비율</p>
                 <div className={style.ratio_container}> 
-                    {result.slice(0, 5).map((animal, index) => (
+                    {animalType.slice(0, 5).map((animal, index) => (
                         <AnimalRatio
                         key={index}
                         animal_name={animal.animal}
