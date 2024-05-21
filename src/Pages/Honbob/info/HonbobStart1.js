@@ -69,7 +69,7 @@ const HonbobStart1 = () => {
             </div>
           </div>
           <button className={style.submitBtn} onClick={HonbobHandler}>
-            혼밥탈출 신청하기
+            혼축탈출 신청하기
           </button>
         </div>
       </div>

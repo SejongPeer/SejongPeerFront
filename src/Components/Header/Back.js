@@ -1,6 +1,6 @@
 import { useNavigate, useLocation } from 'react-router-dom';
 
-import backicon from '../../Assets/image/back_white.png'
+import backicon from '../../Assets/image/back_white.png';
 import sejongpeertext from '../../Assets/image/sejongpeertext.png';
 import sejongBuddy from '../../Assets/image/sejongBuddy.png';
 import sejongStudy from '../../Assets/image/sejongStudy.png';
@@ -14,8 +14,8 @@ import style from './Back.module.css';
 const Back = () => {
   const navigate = useNavigate();
   const backHandler = () => {
-    if (location.pathname === "/main") {
-      navigate("/main");
+    if (location.pathname === '/main') {
+      navigate('/main');
     } else {
       navigate(-1);
     }
@@ -82,7 +82,7 @@ const Back = () => {
       )}
       {isHonbobPath && (
         <img
-          className={style.sejongpeerlogo}
+          className={style.sejonghonboblogo}
           src={sejongHonbob}
           alt="sejongpeerlogo"
         />

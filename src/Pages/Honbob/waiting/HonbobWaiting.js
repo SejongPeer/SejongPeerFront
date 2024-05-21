@@ -12,7 +12,8 @@ const HonbobWaiting = () => {
   };
 
   const honbobCancleSubmitHandler = async () => {
-    const status = checkMatchingStatus();
+    const status = await checkMatchingStatus();
+    console.log(status);
 
     if (status) {
       alert('이미 매칭이 완료 되었습니다.');
@@ -79,28 +80,25 @@ const HonbobWaiting = () => {
       }
 
       const data = await response.json(); // 주석 해제하여 JSON 응답을 파싱
-      if (data.data.status === 'MATCHING_COMPLETED') {
-        return true;
-      }
-      return false;
+      console.log('Status = ', data.data.status);
+      // console.log('Status = ', data.data.status);
+      return data.data.status === 'MATCHING_COMPLETED';
     } catch (error) {
       console.error('에러 체크:', error);
-      // alert('매칭 체크 실패!');
     }
   };
 
-  useEffect(() => {
-    checkMatchingStatus();
-    const intervalId = setInterval(() => checkMatchingStatus(), 3000); // 3초마다 확인 (맞게 조절)
-
-    return () => clearInterval(intervalId);
-  }, []);
+  // useEffect(() => {
+  //   checkMatchingStatus();
+  //   const intervalId = setInterval(() => checkMatchingStatus(), 3000); // 3초마다 확인 (맞게 조절)
+  //   return () => clearInterval(intervalId);
+  // }, []);
 
   return (
     <div className={style.container}>
       <div className={style.TextBox}>
         <img src={honbobWaitingLogo} className={style.honbobWaitingImg} />
-        <p className={style.Text1}>대동제 동지 찾는 중{dots}</p>
+        <p className={style.Text1}>혼축탈출 동지 찾는 중{dots}</p>
         <p className={style.Text2}>
           <span className={style.Text2_span1}>*</span>
           <span className={style.Text2_span2}>
