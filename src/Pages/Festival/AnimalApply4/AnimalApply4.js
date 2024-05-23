@@ -22,7 +22,7 @@ const AnimalApply4 = () => {
   };
   return (
     <div className={style.container1}>
-      <h1>본인 성별 선택</h1>
+      <h2 className={style.h2Font}>본인 성별 선택</h2>
       <div className={style.genderContainer}>
         <div
           className={`${style.genderOption} ${selectedGender === 'MALE' ? style.selected : ''}`}

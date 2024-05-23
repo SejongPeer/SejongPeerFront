@@ -5,7 +5,13 @@
     margin-top: 15vh;
     flex-direction: column;
   }
-
+  .h2Font {
+    font-family: 'jalnan';
+    font-style: normal;
+    font-weight: 700;
+    line-height: 28px;
+    letter-spacing: -0.5px;
+  }
   .genderContainer {
     display: flex;
     justify-content: center;
@@ -72,8 +78,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    /* margin-top: 5vh; */
+    margin-top: 15vh;
     flex-direction: column;
+  }
+
+  .h2Font {
+    font-family: 'jalnan';
+    font-style: normal;
+    font-weight: 700;
+    line-height: 28px;
+    letter-spacing: -0.5px;
   }
 
   .genderContainer {
@@ -88,8 +102,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 18vh;
-    height: 18vh;
+    width: 151px;
+    height: 151px;
     border-radius: 40px;
     border: 1px solid var(--line_02, #e5e5e5);
     background: var(--back_02, #fff);

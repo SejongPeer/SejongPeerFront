@@ -58,9 +58,7 @@ const AnimalApply2 = () => {
         개인정보 수집동의
       </label>
       <br />
-      <p style={{ marginTop: '4vh' }} className={style.p}>
-        인증번호 입력
-      </p>
+      <p className={style.p}>인증번호 입력</p>
       <input
         type="text"
         placeholder="인증번호 4자리를 입력해 주세요"

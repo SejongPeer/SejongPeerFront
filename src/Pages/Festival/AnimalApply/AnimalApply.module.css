@@ -84,8 +84,8 @@
 
   /* 신청, 확인 버튼 */
   .apply {
-    width: 40vh;
-    height: 8vh;
+    width: 311px;
+    height: 56px;
     border-radius: 50px;
     border: 1px solid var(--line_02, #e5e5e5);
     background: var(--back_02, #fafafa);

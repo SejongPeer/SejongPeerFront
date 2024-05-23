@@ -1,7 +1,8 @@
+import { check } from 'prettier';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import kakao from '../../../Assets/image/kakao.png';
+import checkBtn from '../../../Assets/image/checkBtn.png';
 
 import style from '../AnimalApply3/AnimalApply3.module.css';
 
@@ -44,7 +45,9 @@ const AnimalApply3 = () => {
           onClick={() => handleMeetingSelect(1)}
         >
           <p className={style.meeting}>1:1 미팅</p>
-          {selectedMeeting === 1 && <span className="check-mark">✔</span>}
+          {selectedMeeting === 1 && (
+            <img style={{ width: '2vh', height: '1.3vh' }} src={checkBtn}></img>
+          )}
         </div>
         <div
           className={`meeting-option ${style.meetingOption} ${selectedMeeting === 2 ? 'selected' : ''}`}
@@ -55,7 +58,9 @@ const AnimalApply3 = () => {
           onClick={() => handleMeetingSelect(2)}
         >
           <p className={style.meeting}>2:2 미팅</p>
-          {selectedMeeting === 2 && <span className="check-mark">✔</span>}
+          {selectedMeeting === 2 && (
+            <img style={{ width: '2vh', height: '1.3vh' }} src={checkBtn}></img>
+          )}
         </div>
         <div
           className={`meeting-option ${style.meetingOption} ${selectedMeeting === 3 ? 'selected' : ''}`}
@@ -66,7 +71,9 @@ const AnimalApply3 = () => {
           onClick={() => handleMeetingSelect(3)}
         >
           <p className={style.meeting}>3:3 미팅</p>
-          {selectedMeeting === 3 && <span className="check-mark">✔</span>}
+          {selectedMeeting === 3 && (
+            <img style={{ width: '2vh', height: '1.3vh' }} src={checkBtn}></img>
+          )}
         </div>
       </div>
       <div className={style.navigation}>

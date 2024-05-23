@@ -195,7 +195,7 @@ const AnimalApply5 = () => {
               <label>원하는 동물상</label>
               <div className={style.formGroup1}>
                 <select
-                  className={style.input}
+                  className={style.input2}
                   onChange={e =>
                     handleChange(index, 'firstAnimalType', e.target.value)
                   }
@@ -211,7 +211,7 @@ const AnimalApply5 = () => {
                   ))}
                 </select>
                 <select
-                  className={style.input}
+                  className={style.input2}
                   onChange={e =>
                     handleChange(index, 'secondAnimalType', e.target.value)
                   }
