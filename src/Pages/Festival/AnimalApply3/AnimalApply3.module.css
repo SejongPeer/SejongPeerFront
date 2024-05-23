@@ -24,9 +24,9 @@
     border-radius: 50px;
     border: 1px solid #e5e5e5;
     display: flex;
-    justify-content: space-between; /* Changed from center to space-between */
+    justify-content: space-between;
     align-items: center;
-    padding: 0 30px; /* Added padding to space content from the borders */
+    padding: 0 30px;
     margin-bottom: 10px;
   }
 
@@ -90,19 +90,28 @@
     margin-top: 15vh;
     flex-direction: column;
   }
+
+  .title {
+    font-family: 'jalnan';
+    font-style: normal;
+    font-weight: 700;
+    line-height: 28px; /* 140% */
+    letter-spacing: -0.5px;
+  }
+
   .container2 {
     margin-top: 3vh;
   }
 
   .meetingOption {
-    width: 40vh;
-    height: 8vh;
+    width: 311px;
+    height: 56px;
     border-radius: 50px;
     border: 1px solid #e5e5e5;
     display: flex;
-    justify-content: space-between; /* Changed from center to space-between */
+    justify-content: space-between;
     align-items: center;
-    padding: 0 30px; /* Added padding to space content from the borders */
+    padding: 0 30px;
     margin-bottom: 10px;
   }
 
