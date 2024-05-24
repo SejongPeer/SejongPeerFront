@@ -8,25 +8,25 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 10vh;
+    margin-top: 15vh;
     flex-direction: column;
     overflow: scroll;
   }
-  .capture_container{
-      padding: 0 10%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
+  .capture_container {
+    padding: 0 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
   }
   .info_wrapper {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
   }
 
-  .character{
+  .character {
     width: 30vh;
     height: 30vh;
     border-radius: 20px;
@@ -112,20 +112,20 @@
   }
 
   .down_btn {
-      width: 38vh;
-      height: 6.5vh;
-      background-color: #FF4B4B;
-      border-radius: 26px;
-      color: white;
-      font-size: 1.125rem;
-      margin: 2vh 0;
-      font-weight: 800;
+    width: 38vh;
+    height: 6.5vh;
+    background-color: #ff4b4b;
+    border-radius: 26px;
+    color: white;
+    font-size: 1.125rem;
+    margin: 2vh 0;
+    font-weight: 800;
   }
 
-  .go_home{
-      color: #999999;
-      font-weight: 700;
-      margin: 5% 0 10%;
+  .go_home {
+    color: #999999;
+    font-weight: 700;
+    margin: 5% 0 10%;
   }
 }
 @media (min-width: 768px) {
@@ -137,7 +137,7 @@
     flex-direction: column;
     height: 130%;
   }
-  .capture_container{
+  .capture_container {
     padding: 5%;
     display: flex;
     justify-content: center;
@@ -151,7 +151,7 @@
     flex-direction: column;
   }
 
-  .character{
+  .character {
     width: 30vh;
     height: 30vh;
     border-radius: 20px;
@@ -237,19 +237,19 @@
   }
 
   .down_btn {
-      width: 38vh;
-      height: 6vh;
-      background-color: #FF4B4B;
-      border-radius: 26px;
-      color: white;
-      font-size: 1.125rem;
-      font-weight: 800;
-      margin: 1vh 0;
+    width: 38vh;
+    height: 6vh;
+    background-color: #ff4b4b;
+    border-radius: 26px;
+    color: white;
+    font-size: 1.125rem;
+    font-weight: 800;
+    margin: 1vh 0;
   }
 
-  .go_home{
-      color: #999999;
-      font-weight: 700;
-      margin: 5% 0 10%;
+  .go_home {
+    color: #999999;
+    font-weight: 700;
+    margin: 5% 0 10%;
   }
 }
