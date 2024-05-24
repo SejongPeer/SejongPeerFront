@@ -26,13 +26,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 311px;
-    height: 51px;
+    width: 38vh;
+    height: 7vh;
     /* padding: 10px 20px; */
     border: none;
     border-radius: 26px;
     font-size: 18px;
-    margin-top: 2.9vh;
+    margin-top: 2.7vh;
+    font-weight: 800;
   }
 }
 
@@ -66,6 +67,7 @@
     /* padding: 10px 20px; */
     border: none;
     border-radius: 26px;
-    margin-top: 2.9vh;
-  }
+    margin-top: 2.7vh;
+    font-weight: 800;
+}
 }
