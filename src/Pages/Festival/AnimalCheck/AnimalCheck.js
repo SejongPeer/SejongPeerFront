@@ -77,8 +77,7 @@ const AnimalCheck = () => {
         className={style.apply}
         disabled={!isButtonActive}
         onClick={getResult}
-      >
-        <p className={style.p}>결과 확인</p>
+      > 결과 확인
       </button>
     </div>
   );

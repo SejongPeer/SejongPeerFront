@@ -33,6 +33,7 @@
       border-radius: 26px;
       font-size: 18px;
       margin-top: 2.7vh;
+      font-weight: 800;
     }
   }
   
@@ -67,6 +68,7 @@
         border: none;
         border-radius: 26px;
         margin-top: 2.7vh;
+        font-weight: 800;
     }
   }
   

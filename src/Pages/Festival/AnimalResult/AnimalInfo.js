@@ -1,4 +1,5 @@
 import ANIMAL_TYPE from '../../../constants/animal/animal_info';
+import test from '../../../Assets/image/man_wolf.png'
 import style from './AnimalResult.module.css';
 
 const AnimalInfo = (props) => {
@@ -6,14 +7,7 @@ const AnimalInfo = (props) => {
 
     return (
         <div className={style.info_wrapper}>
-            <div
-                style={{
-                width: '215px',
-                height: '215px',
-                backgroundColor: '#D9D9D9',
-                borderRadius: '20px',
-                }}
-            ></div>
+            <img src={result.src} className={style.character}/>
             <p className={style.animal_type}>{result.name}상</p>
 
             <div className={style.wrapper}>

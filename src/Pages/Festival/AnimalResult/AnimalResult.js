@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { MyContext } from '../../../App';
 import html2canvas from 'html2canvas';
@@ -16,6 +16,13 @@ const AnimalResult = () => {
     const goHome = () => {
         navigate('/main');
     }
+
+    useEffect(() => {
+        if(!animalType) {
+            alert('불러온 정보가 없습니다. 다시 시도해주세요 :)')
+            navigate('/fest/animalcheck');
+        }
+    }, [animalType])
 
     // 이미지 다운
     const captureElement = async () => {
