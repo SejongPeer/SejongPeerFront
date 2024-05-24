@@ -5,7 +5,9 @@ const AnimalRatio = (props) => {
     const name = ANIMAL_TYPE.find(a => a.id === props.animal_name);
 
     return <div className={style.ratio_profile}>
-        <div className={style.ratio_img}></div>
+        <div className={style.ratio_img_container}>
+            <img src={name.src} className={style.ratio_img}/>
+        </div>
         <div className={style.ratio_right}>
             <div className={style.ratio_type}>
                 <span className={style.ratio_type_name}>{name.name}</span>

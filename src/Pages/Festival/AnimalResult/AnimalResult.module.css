@@ -13,7 +13,7 @@
     overflow: scroll;
   }
   .capture_container{
-      padding: 10%;
+      padding: 0 10%;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -24,6 +24,12 @@
       justify-content: center;
       align-items: center;
       flex-direction: column;
+  }
+
+  .character{
+    width: 30vh;
+    height: 30vh;
+    border-radius: 20px;
   }
 
   .animal_type {
@@ -64,12 +70,16 @@
     align-items: center;
     margin: 3%;
   }
-  .ratio_img {
+  .ratio_img_container {
     width: 32px;
     height: 32px;
     border-radius: 50%;
-    background-color: #d9d9d9;
+    border: 1px solid #d9d9d9;
     margin-right: 2vw;
+  }
+  .ratio_img {
+    width: 100%;
+    height: 100%;
   }
   .ratio_right {
     width: 85%;
@@ -141,6 +151,12 @@
     flex-direction: column;
   }
 
+  .character{
+    width: 30vh;
+    height: 30vh;
+    border-radius: 20px;
+  }
+
   .animal_type {
     font-size: 1.25rem;
     font-family: 'jalnan';
@@ -179,12 +195,16 @@
     align-items: center;
     margin: 3%;
   }
-  .ratio_img {
+  .ratio_img_container {
     width: 32px;
     height: 32px;
     border-radius: 50%;
-    background-color: #d9d9d9;
+    border: 1px solid #d9d9d9;
     margin-right: 2vw;
+  }
+  .ratio_img {
+    width: 100%;
+    height: 100%;
   }
   .ratio_right {
     width: 85%;
