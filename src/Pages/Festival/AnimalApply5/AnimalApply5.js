@@ -11,7 +11,6 @@ const AnimalApply5 = () => {
   const [gender, setGender] = useState(null);
 
   const animalMapping = {
-    상관없음: 'NONE',
     강아지: 'DOG',
     고양이: 'CAT',
     토끼: 'RABBIT',
@@ -65,17 +64,9 @@ const AnimalApply5 = () => {
   // 성별에 따른 동물상 옵션
   const getAnimalOptions = gender => {
     if (gender === 'FEMALE') {
-      return ['상관없음', '강아지', '고양이', '토끼', '공룡', '곰', '늑대'];
+      return ['강아지', '고양이', '토끼', '공룡', '곰', '늑대'];
     } else if (gender === 'MALE') {
-      return [
-        '상관없음',
-        '강아지',
-        '고양이',
-        '토끼',
-        '사막여우',
-        '사슴',
-        '햄스터',
-      ];
+      return ['강아지', '고양이', '토끼', '사막여우', '사슴', '햄스터'];
     }
     return []; // 기본적으로 빈 배열 반환
   };
@@ -83,17 +74,9 @@ const AnimalApply5 = () => {
   // 성별에 따른 동물상 옵션
   const getAnimalOptions1 = gender1 => {
     if (gender1 === 'MALE') {
-      return ['상관없음', '강아지', '고양이', '토끼', '공룡', '곰', '늑대'];
+      return ['강아지', '고양이', '토끼', '공룡', '곰', '늑대'];
     } else if (gender1 === 'FEMALE') {
-      return [
-        '상관없음',
-        '강아지',
-        '고양이',
-        '토끼',
-        '사막여우',
-        '사슴',
-        '햄스터',
-      ];
+      return ['강아지', '고양이', '토끼', '사막여우', '사슴', '햄스터'];
     }
     return []; // 기본적으로 빈 배열 반환
   };
@@ -155,7 +138,7 @@ const AnimalApply5 = () => {
             <div className={style.formGroup}>
               <label>본인 동물상</label>
               <select
-                className={style.input}
+                className={`${style.input2} ${style.select}`}
                 onChange={e =>
                   handleChange(index, 'selfAnimalType', e.target.value)
                 }
