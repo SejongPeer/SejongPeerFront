@@ -66,6 +66,43 @@ const AnimalMatchResult = () => {
     const gender = localStorage.getItem('gender');
     setGender(gender);
     setTemporaryData(gender);
+
+
+    // const fetchData = async () => {
+    //   try {
+    //     const userId = localStorage.getItem('userId'); // 테스트할 유저의 고유 ID
+    //     const response = await fetch(
+    //       `${process.env.REACT_APP_FEST_SERVER}/meeting/matching-result?userId=${userId}`
+    //     );
+    //     const data = await response.json();
+    //     console.log(data);
+    //     const gender = localStorage.getItem('gender'); // 로컬스토리지에서 gender 값을 가져옴
+    //     setGender(gender);
+
+    //     if (gender === 'MALE') {
+    //       setSelfAnimalTypes(
+    //         data.data.maleUsers.map(user => user.selfAnimalType)
+    //       );
+    //       setOpponentAnimalTypes(
+    //         data.data.femaleUsers.map(user => user.selfAnimalType)
+    //       );
+    //     } else if (gender === 'FEMALE') {
+    //       setSelfAnimalTypes(
+    //         data.data.femaleUsers.map(user => user.selfAnimalType)
+    //       );
+    //       setOpponentAnimalTypes(
+    //         data.data.maleUsers.map(user => user.selfAnimalType)
+    //       );
+    //     }
+
+    //     setMeetingGroupType(data.data.meetingGroupType);
+    //     setKakaoLink(data.data.kakaoLink);
+    //   } catch (error) {
+    //     console.error('Error fetching match result:', error);
+    //   }
+    // };
+
+    // fetchData();
   }, []);
 
   const getAnimalImageKey = (animalType, isSelf) => {
