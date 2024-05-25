@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import styles from '../AnimalMatchResult/AnimalMatchResult.module.css';
+import styled from 'styled-components';
+import { useNavigate, useContext } from 'react-router-dom';
 
-// 이미지 파일을 직접 import
 import M_Bear from '../../../Assets/Animals/M_Bear.png';
 import M_Cat from '../../../Assets/Animals/M_Cat.png';
 import M_Dino from '../../../Assets/Animals/M_Dino.png';
@@ -14,7 +14,6 @@ import W_DesertFox from '../../../Assets/Animals/W_DesertFox.png';
 import W_Dog from '../../../Assets/Animals/W_Dog.png';
 import W_Rabbit from '../../../Assets/Animals/W_Rabbit.png';
 
-// 이미지 파일을 객체에 저장
 const ANIMAL_IMAGES = {
   M_Bear,
   M_Cat,
@@ -29,7 +28,6 @@ const ANIMAL_IMAGES = {
   W_Rabbit,
 };
 
-// 동물 타입 이름을 정의
 const ANIMAL_TYPES = {
   BEAR: '곰',
   CAT: '고양이',
@@ -48,42 +46,63 @@ const AnimalMatchResult = () => {
   const [kakaoLink, setKakaoLink] = useState('');
   const [gender, setGender] = useState('');
 
+  const setTemporaryData = gender => {
+    if (gender === 'MALE') {
+      setSelfAnimalTypes(['DOG', 'DOG', 'DOG']);
+      setOpponentAnimalTypes(['DOG', 'DOG', 'DOG']);
+    } else if (gender === 'FEMALE') {
+      setSelfAnimalTypes(['DOG', 'DOG', 'DOG']);
+      setOpponentAnimalTypes(['DOG', 'DOG', 'DOG']);
+    }
+    setMeetingGroupType('THREE_ON_THREE');
+    setKakaoLink(null);
+
+    console.log('Temporary selfAnimalTypes:', ['DOG', 'DOG', 'DOG']);
+    console.log('Temporary opponentAnimalTypes:', ['DOG', 'DOG', 'DOG']);
+    console.log('ANIMAL_TYPES[selfAnimalTypes[0]]:', ANIMAL_TYPES['DOG']);
+  };
+
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const userId = localStorage.getItem('userId'); // 테스트할 유저의 고유 ID
-        const response = await fetch(
-          `${process.env.REACT_APP_FEST_SERVER}/meeting/matching-result?userId=${userId}`
-        );
-        const data = await response.json();
-        console.log(data);
-        const gender = localStorage.getItem('gender'); // 로컬스토리지에서 gender 값을 가져옴
-        setGender(gender);
+    const gender = localStorage.getItem('gender');
+    setGender(gender);
+    setTemporaryData(gender);
 
-        if (gender === 'MALE') {
-          setSelfAnimalTypes(
-            data.data.maleUsers.map(user => user.selfAnimalType)
-          );
-          setOpponentAnimalTypes(
-            data.data.femaleUsers.map(user => user.selfAnimalType)
-          );
-        } else if (gender === 'FEMALE') {
-          setSelfAnimalTypes(
-            data.data.femaleUsers.map(user => user.selfAnimalType)
-          );
-          setOpponentAnimalTypes(
-            data.data.maleUsers.map(user => user.selfAnimalType)
-          );
-        }
 
-        setMeetingGroupType(data.data.meetingGroupType);
-        setKakaoLink(data.data.kakaoLink);
-      } catch (error) {
-        console.error('Error fetching match result:', error);
-      }
-    };
+    // const fetchData = async () => {
+    //   try {
+    //     const userId = localStorage.getItem('userId'); // 테스트할 유저의 고유 ID
+    //     const response = await fetch(
+    //       `${process.env.REACT_APP_FEST_SERVER}/meeting/matching-result?userId=${userId}`
+    //     );
+    //     const data = await response.json();
+    //     console.log(data);
+    //     const gender = localStorage.getItem('gender'); // 로컬스토리지에서 gender 값을 가져옴
+    //     setGender(gender);
 
-    fetchData();
+    //     if (gender === 'MALE') {
+    //       setSelfAnimalTypes(
+    //         data.data.maleUsers.map(user => user.selfAnimalType)
+    //       );
+    //       setOpponentAnimalTypes(
+    //         data.data.femaleUsers.map(user => user.selfAnimalType)
+    //       );
+    //     } else if (gender === 'FEMALE') {
+    //       setSelfAnimalTypes(
+    //         data.data.femaleUsers.map(user => user.selfAnimalType)
+    //       );
+    //       setOpponentAnimalTypes(
+    //         data.data.maleUsers.map(user => user.selfAnimalType)
+    //       );
+    //     }
+
+    //     setMeetingGroupType(data.data.meetingGroupType);
+    //     setKakaoLink(data.data.kakaoLink);
+    //   } catch (error) {
+    //     console.error('Error fetching match result:', error);
+    //   }
+    // };
+
+    // fetchData();
   }, []);
 
   const getAnimalImageKey = (animalType, isSelf) => {
@@ -103,39 +122,176 @@ const AnimalMatchResult = () => {
       const animalImage = ANIMAL_IMAGES[animalImageKey];
 
       return (
-        <div key={index} className={styles.cardContainer2}>
-          <div className={styles.card}>
-            <img
-              src={animalImage}
-              alt={ANIMAL_TYPES[animalType]}
-              className={styles.animalImage}
-            />
-            <div className={styles.animalName}>{ANIMAL_TYPES[animalType]}</div>
-          </div>
-        </div>
+        <CardContainer2 key={index}>
+          <Card>
+            <AnimalImage src={animalImage} alt={ANIMAL_TYPES[animalType]} />
+            <AnimalName>{ANIMAL_TYPES[animalType]}상~!</AnimalName>
+          </Card>
+        </CardContainer2>
       );
     });
   };
 
   return (
-    <div className={styles.container}>
-      <div className={styles.cardContainer}>
-        <div className={styles.cardContainer2}>
-          <h2>본인 동물상</h2>
-          <div className={styles.cardGroup}>
-            {renderAnimalCards(selfAnimalTypes)}
-          </div>
-        </div>
-        <div className={styles.cardContainer2}>
-          <h2>상대 동물상</h2>
-          <div className={styles.cardGroup}>
-            {renderAnimalCards(opponentAnimalTypes)}
-          </div>
-        </div>
-      </div>
-      <button className={styles.chatButton}>오픈채팅 참여</button>
-    </div>
+    <Container>
+      <CardContainer>
+        <CardContainer2>
+          <Title>본인 동물상</Title>
+          <AnimalBox>
+            <AnimalImage src={M_Dog} alt={ANIMAL_TYPES[selfAnimalTypes[0]]} />
+            <AnimalBoxText>
+              {ANIMAL_TYPES[selfAnimalTypes[0]]}강아지상
+            </AnimalBoxText>
+          </AnimalBox>
+          <CardGroup>
+            {renderAnimalCards(selfAnimalTypes.slice(1), true)}
+          </CardGroup>
+        </CardContainer2>
+        <CardContainer2>
+          <Title>상대 동물상</Title>
+          <AnimalBox>
+            <AnimalImage src={M_Dog} alt={ANIMAL_TYPES[selfAnimalTypes[0]]} />
+
+            <AnimalBoxText>
+              {ANIMAL_TYPES[opponentAnimalTypes[0]]}강아지상
+            </AnimalBoxText>
+          </AnimalBox>
+          <CardGroup>
+            {renderAnimalCards(opponentAnimalTypes.slice(1), false)}
+          </CardGroup>
+        </CardContainer2>
+      </CardContainer>
+
+      <ChatButton>오픈채팅 참여</ChatButton>
+    </Container>
   );
 };
-
 export default AnimalMatchResult;
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 15vh;
+
+  @media (min-width: 768px) {
+    /* 데스크탑 스타일 */
+  }
+`;
+
+const CardContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 10px; 
+  width: 100%;
+  margin-bottom: 20px; 
+  flex-direction: row;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+    flex-direction: row;
+    gap: 10px; 
+  }
+`;
+
+const CardContainer2 = styled.div`
+  align-items: center;
+`;
+
+const Title = styled.h1`
+  overflow: hidden;
+  color: var(--Font-02_black, #111);
+  text-align: center;
+  text-overflow: ellipsis;
+  font-family: Jalnan;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 28px;
+  letter-spacing: -0.5px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  margin-top: 20px;
+`;
+
+const Card = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #e5e5e5;
+  border-radius: 16px;
+  padding: 20px;
+  width: 135px;
+  height: 147px;
+  flex-shrink: 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
+  `;
+
+const AnimalImage = styled.img`
+  width: 70px;
+  height: 70px;
+  margin-top: 20px;
+  margin-left: 30px;
+`;
+
+const AnimalName = styled.div`
+  font-size: 14px;
+  color: #555;
+`;
+
+const ChatButton = styled.button`
+  width: 343px;
+  height: 52px;
+  background-color: #ff4b4b;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  position: fixed;
+  bottom: 80px;
+`;
+
+const AnimalBox = styled.div`
+  width: 135px;
+  height: 147px;
+  flex-shrink: 0;
+  border-radius: 16px;
+  border: 1px solid #e5e5e5;
+  background: #fff;
+`;
+
+const AnimalCircle = styled.div`
+  width: 71px;
+  height: 71px;
+  flex-shrink: 0;
+  border-radius: 35.5px;
+  border: 1px solid var(--line_02, #e5e5e5);
+  margin-top: 20px;
+  margin-left: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const AnimalBoxText = styled.h1`
+  color: var(--Font-02_black, #111);
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: -0.333px;
+  margin-top: 10px;
+`;
+
+const CardGroup = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+`;

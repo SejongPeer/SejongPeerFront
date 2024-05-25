@@ -1,8 +1,22 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import styled from 'styled-components';
+import {useState} from 'react';
+import { useNavigate, useContext } from 'react-router-dom';
+import { MyContext } from '../../../App';
+import styled from "styled-components";
+import { createGlobalStyle } from 'styled-components';
+
+const LocalGlobalStyle = createGlobalStyle`
+  @font-face {
+    font-family: 'jalnan2';
+    src: url('../../../');
+  }
+  
+  body {
+    font-family: 'jalnan', sans-serif;
+  }
+`;
 
 const AnimalMatchInfo = () => {
+    console.log("AnimalMatchInfo 잘 들어옴!");
   const [name, setName] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
 
@@ -50,12 +64,11 @@ const AnimalMatchInfo = () => {
             onChange={e => setPhoneNumber(e.target.value)}
           />
         </Box>
-        <MeetingStart onClick={handleMeetingStart}>미팅시작</MeetingStart>
+        <MeetingStart onClick={handleMeetingStart}>미팅 결과 확인</MeetingStart>
       </Container>
     </EntireContainer>
   );
 };
-
 export default AnimalMatchInfo;
 
 const EntireContainer = styled.div`
@@ -70,7 +83,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 15vh;
+  margin-top: 10vh;
 `;
 
 const Title = styled.h2`
@@ -109,6 +122,19 @@ const MeetingStart = styled.button`
 `;
 
 const Box = styled.div`
+
+  width: 335px;
+  height: 56px;
+  border-radius: 35px;
+  padding: 24px;
+  background-color: #FFFFFF;
+  border-color: #E5E5E5;
+  margin: 4px 0px;
+  font-size: 16px;
+  color: #999999;
+  border-style: solid;
+
+
   display: flex;
   width: 311px;
   padding: 14px 20px;
