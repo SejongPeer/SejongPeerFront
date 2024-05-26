@@ -77,7 +77,7 @@ const AnimalMatchResult = () => {
         setMeetingGroupType(data.data.meetingGroupType);
         setKakaoLink(data.data.kakaoLink);
       } catch (error) {
-        console.error('Error fetching match result:', error);
+        console.error('Error fetching match result!!:', error);
       }
     };
 
