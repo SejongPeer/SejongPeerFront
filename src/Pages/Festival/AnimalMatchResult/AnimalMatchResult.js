@@ -93,6 +93,7 @@ const AnimalMatchResult = () => {
         ? 'W'
         : 'M';
     console.log("성별 붙인 값 : "+ `${prefix}_${animalType}`);
+
     return `${prefix}_${animalType}`;
   };
 
@@ -165,6 +166,7 @@ const CardContainer = styled.div`
     align-items: center;
     flex-direction: row;
     gap: 30px; 
+
   }
 `;
 
@@ -174,6 +176,7 @@ const CardContainer2 = styled.div`
   align-items: center;
   margin-top:-30px;
   margin-bottom:-100px;
+
 `;
 const CardGroup = styled.div`
   display: flex;
@@ -242,6 +245,7 @@ const ChatButton = styled.button`
   position: fixed;
   bottom: 80px;
   margin-bottom:-65px;
+
 `;
 
 const AnimalBox = styled.div`
