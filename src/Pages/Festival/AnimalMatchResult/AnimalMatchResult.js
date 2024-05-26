@@ -92,7 +92,7 @@ const AnimalMatchResult = () => {
       : gender === 'MALE'
         ? 'W'
         : 'M';
-    console.log("성별 붙인 키 : "+ `${prefix}_${animalType}`);
+    console.log("성별 붙인 값 : "+ `${prefix}_${animalType}`);
     return `${prefix}_${animalType}`;
   };
 
@@ -277,3 +277,4 @@ const AnimalBoxText = styled.h1`
   letter-spacing: -0.333px;
   margin-top: 10px;
 `;
+
