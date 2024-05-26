@@ -22,7 +22,7 @@ const AnimalMatchInfo = () => {
 
   const handleMeetingStart = async () => {
     const response = await fetch(
-      `${process.env.REACT_APP_FEST_SERVER}/api/v1/user/login`,
+      `${process.env.REACT_APP_FEST_SERVER}/user/login`,
       {
         method: 'POST',
         headers: {

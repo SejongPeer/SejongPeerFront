@@ -57,7 +57,7 @@ const AnimalMatchResult = () => {
       try {
         const userId = localStorage.getItem('userId'); // 테스트할 유저의 고유 ID
         const response = await fetch(
-          `${process.env.REACT_APP_FEST_SERVER}/api/v1/meeting/matching-result?userId=${userId}`
+          `${process.env.REACT_APP_FEST_SERVER}/meeting/matching-result?userId=${userId}`
         );
         const data = await response.json();
         console.log(data);
