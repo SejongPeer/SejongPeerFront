@@ -221,7 +221,7 @@ const MainPage = () => {
             display: 'flex',
             flexDirection: 'row',
             justifyContent: 'center',
-            gap: '5%',
+            gap: '4%',
             marginTop: '1vh',
           }}
         >
@@ -237,28 +237,27 @@ const MainPage = () => {
           ></img>
         </div>
         {/* 세종 스터디 버튼 임시로 숨겨둠 - 축제 때문에 */}
-        {/* <div onClick={StudyHandler} className={style.studyBtn}> */}
-        {/* <div
-            style={{
-              display: "flex",
-              alignItems: "flex-end",
-              marginTop: "2vh",
-            }}
+        <div className={style.festButton}>
+          <button
+            className={style.festButton2}
+            style={{ backgroundColor: '#FAFAFA' }}
+            onClick={goResult}
           >
-            <img src={sejongStudy2} className={style.sejongStudy2}></img>
-            <p style={{ margin: "0 0 0 0.5vw", fontWeight: "800" }}>
-              인생 팀원 구하기
-            </p>
-          </div>
-          <div>
-            <button style={{ width: "8vw", height: "8vw" }}></button>
-          </div> */}
-        {/* </div> */}
-        {/*<div className={style.festButton} >
-          <button onClick={goResult}><p>내 동물상 결과 확인하기</p></button>
-          <button><p>미팅해요 동물의 숲</p></button>
-        </div>*/}
-        <img className={style.ready} src={ready} />
+            <p>결과 확인</p>
+          </button>
+          <button
+            className={style.festButton2}
+            style={{
+              backgroundColor: '#FF4B4B',
+              color: 'white',
+              border: 'none',
+            }}
+            onClick={goResult}
+          >
+            <p>미팅하기</p>
+          </button>
+        </div>
+        {/* <img className={style.ready} src={ready} /> */}
       </div>
       <div className={style.report_user_box} onClick={kakaoChat}>
         <div className={style.reprot_icon}>
