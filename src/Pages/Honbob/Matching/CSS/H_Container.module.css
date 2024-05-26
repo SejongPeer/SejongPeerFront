@@ -38,8 +38,8 @@ html {
 
 .title {
   margin: 1vh 0px 1vh 0px;
-  font-size: 20px;
-  font-weight: bold;
+  font-size: 0.8em;
+  font-weight: 600;
   text-align: center;
 }
 
@@ -81,9 +81,12 @@ html {
   }
   .title {
     margin: 3vh 0px 1vh 0px;
-    font-size: 20px;
+    font-size: 1.1em;
     font-weight: bold;
     text-align: center;
+  }
+  .btnContainer {
+    margin-top: 1.2vh;
   }
 }
 /* 모바일 */
@@ -95,7 +98,7 @@ html {
     flex-direction: column;
     align-items: center;
     position: relative;
-    margin-top: 70px;
+    margin-top: 84px;
     overflow-y: hidden;
   }
 
@@ -110,7 +113,7 @@ html {
 
   .title {
     margin: 1vh 0px 1vh 0px;
-    font-size: 20px;
+    font-size: 1.1em;
     font-weight: bold;
   }
 
@@ -127,5 +130,8 @@ html {
   .btn3 {
     display: flex;
     flex-direction: column;
+  }
+  .btnContainer {
+    margin-top: 1.2vh;
   }
 }

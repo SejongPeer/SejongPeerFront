@@ -27,6 +27,7 @@ const AnimalCheck = () => {
 
   // 인증 확인
   const getResult = async() => {
+    console.log(process.env.REACT_APP_FEST_SERVER);
     try {
         const response = await axios.get(`${process.env.REACT_APP_FEST_SERVER}/measurements/download`, {
             params: {
@@ -77,8 +78,7 @@ const AnimalCheck = () => {
         className={style.apply}
         disabled={!isButtonActive}
         onClick={getResult}
-      >
-        <p className={style.p}>결과 확인</p>
+      > 결과 확인
       </button>
     </div>
   );

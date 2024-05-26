@@ -93,6 +93,7 @@ const Back = () => {
       {isFestPath && (
         <img className={style.mypagelogo} src={meeting} alt="mypage" />
       )}
+
       {/* {isStudy && (
         <img
           className={style.sejongpeerlogo}
