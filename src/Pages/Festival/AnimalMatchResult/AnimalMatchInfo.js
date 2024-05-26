@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useNavigate, useContext } from 'react-router-dom';
-import { MyContext } from '../../../App';
 import styled from 'styled-components';
 import { createGlobalStyle } from 'styled-components';
 
@@ -16,14 +15,12 @@ const LocalGlobalStyle = createGlobalStyle`
 `;
 
 const AnimalMatchInfo = () => {
-  // console.log('AnimalMatchInfo 잘 들어옴!');
   const [name, setName] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
 
   const navigate = useNavigate();
 
   const handleMeetingStart = async () => {
-    // console.log('잘 들어왔음요~');
     const response = await fetch(
       `${process.env.REACT_APP_FEST_SERVER}/api/v1/user/login`,
       {

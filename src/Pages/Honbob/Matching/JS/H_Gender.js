@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import con from '../CSS/H_Container.module.css';
 import btn2 from '../CSS/H_Btn2.module.css';
+import styled from 'styled-components';
 
 const H_Gender = props => {
   const [isSameClicked, setIsSameClicked] = useState(false);
@@ -30,7 +31,7 @@ const H_Gender = props => {
   return (
     <div className={con.container}>
       <p className={con.title}>원하는 축제짝꿍 성별을 선택해주세요!</p>
-      <div>
+      <div className={con.btnContainer}>
         <button className={clickSameBtnColor} onClick={clickSameBtnHandler}>
           동성
         </button>

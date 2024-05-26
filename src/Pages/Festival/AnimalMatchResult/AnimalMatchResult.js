@@ -99,7 +99,8 @@ const AnimalMatchResult = () => {
       : gender === 'MALE'
         ? 'W'
         : 'M';
-    console.log('성별 붙인 키 : ' + `${prefix}_${animalType}`);
+    console.log('성별 붙인 값 : ' + `${prefix}_${animalType}`);
+
     return `${prefix}_${animalType}`;
   };
 
@@ -109,7 +110,6 @@ const AnimalMatchResult = () => {
       const animalImage = ANIMAL_IMAGES[animalImageKey];
       console.log('animalImageKey : ' + ANIMAL_TYPES[animalType]);
       console.log('animalImage : ' + animalImage);
-
       return (
         <Container key={index}>
           <CardContainer2>
@@ -147,7 +147,6 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* margin-top: 15vh; */
 
   @media (min-width: 768px) {
     /* 데스크탑 스타일 */
@@ -176,8 +175,6 @@ const CardContainer2 = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* margin-top: -30px;
-  margin-bottom: -100px; */
 `;
 const CardGroup = styled.div`
   display: flex;

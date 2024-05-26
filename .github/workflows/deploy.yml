@@ -24,6 +24,7 @@ jobs:
         run: |
           touch .env
           echo REACT_APP_BACK_SERVER=${{ secrets.REACT_APP_BACK_SERVER }} >> .env
+          echo REACT_APP_FEST_SERVER=${{ secrets.REACT_APP_FEST_SERVER }} >> .env
           echo REACT_APP_KAKAO_KEY=${{ secrets.REACT_APP_KAKAO_KEY }} >> .env
           echo REACT_APP_GOOGLE_ANALYTICS_TRACKING_ID=${{ secrets.REACT_APP_GOOGLE_ANALYTICS_TRACKING_ID }} >> .env
           echo GENERATE_SOURCEMAP=${{ secrets.GENERATE_SOURCEMAP }} >> .env

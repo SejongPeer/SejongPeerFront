@@ -62,7 +62,7 @@
   .festButton {
     width: 351px;
     height: 204px;
-    background-image: url(http://localhost:3000/static/media/Festival.bee2265c0dee8bfe93f1.png);
+    background-image: url('../../../Assets/image/Festival.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;

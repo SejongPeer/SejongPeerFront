@@ -54,10 +54,10 @@ const H_Menu = props => {
             {' '}
             {index === 0 || index === 1 || index === 2 || index === 3 ? (
               <div className={style.menuBox}>
-                <div
-                  className={`${style.imgBox} ${style[`item-${index}`]}`}
-                ></div>
-                <div className={style.menuText}>{val}</div>
+                <div className={`${style.imgBox} ${style[`item-${index}`]}`} />
+                <div className={`${style.menuText} ${style[`text-${index}`]}`}>
+                  {val}
+                </div>
               </div>
             ) : (
               <div className={style.menuText}>{val}</div>
