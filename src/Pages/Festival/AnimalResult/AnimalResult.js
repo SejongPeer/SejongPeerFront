@@ -19,7 +19,7 @@ const AnimalResult = () => {
 
   useEffect(() => {
     if (!animalType) {
-      alert('불러온 정보가 없습니다. 다시 시도해주세요 :)');
+      alert('불러온 정보가 없습니다. 다시 시도해주세요');
       navigate('/fest/animalcheck');
     }
   }, [animalType]);
