@@ -68,41 +68,41 @@ const AnimalMatchResult = () => {
     setTemporaryData(gender);
 
 
-    // const fetchData = async () => {
-    //   try {
-    //     const userId = localStorage.getItem('userId'); // 테스트할 유저의 고유 ID
-    //     const response = await fetch(
-    //       `${process.env.REACT_APP_FEST_SERVER}/meeting/matching-result?userId=${userId}`
-    //     );
-    //     const data = await response.json();
-    //     console.log(data);
-    //     const gender = localStorage.getItem('gender'); // 로컬스토리지에서 gender 값을 가져옴
-    //     setGender(gender);
+    const fetchData = async () => {
+      try {
+        const userId = localStorage.getItem('userId'); // 테스트할 유저의 고유 ID
+        const response = await fetch(
+          `${process.env.REACT_APP_FEST_SERVER}/meeting/matching-result?userId=${userId}`
+        );
+        const data = await response.json();
+        console.log(data);
+        const gender = localStorage.getItem('gender'); // 로컬스토리지에서 gender 값을 가져옴
+        setGender(gender);
 
-    //     if (gender === 'MALE') {
-    //       setSelfAnimalTypes(
-    //         data.data.maleUsers.map(user => user.selfAnimalType)
-    //       );
-    //       setOpponentAnimalTypes(
-    //         data.data.femaleUsers.map(user => user.selfAnimalType)
-    //       );
-    //     } else if (gender === 'FEMALE') {
-    //       setSelfAnimalTypes(
-    //         data.data.femaleUsers.map(user => user.selfAnimalType)
-    //       );
-    //       setOpponentAnimalTypes(
-    //         data.data.maleUsers.map(user => user.selfAnimalType)
-    //       );
-    //     }
+        if (gender === 'MALE') {
+          setSelfAnimalTypes(
+            data.data.maleUsers.map(user => user.selfAnimalType)
+          );
+          setOpponentAnimalTypes(
+            data.data.femaleUsers.map(user => user.selfAnimalType)
+          );
+        } else if (gender === 'FEMALE') {
+          setSelfAnimalTypes(
+            data.data.femaleUsers.map(user => user.selfAnimalType)
+          );
+          setOpponentAnimalTypes(
+            data.data.maleUsers.map(user => user.selfAnimalType)
+          );
+        }
 
-    //     setMeetingGroupType(data.data.meetingGroupType);
-    //     setKakaoLink(data.data.kakaoLink);
-    //   } catch (error) {
-    //     console.error('Error fetching match result:', error);
-    //   }
-    // };
+        setMeetingGroupType(data.data.meetingGroupType);
+        setKakaoLink(data.data.kakaoLink);
+      } catch (error) {
+        console.error('Error fetching match result:', error);
+      }
+    };
 
-    // fetchData();
+    fetchData();
   }, []);
 
   const getAnimalImageKey = (animalType, isSelf) => {
@@ -121,13 +121,15 @@ const AnimalMatchResult = () => {
       const animalImageKey = getAnimalImageKey(animalType, isSelf);
       const animalImage = ANIMAL_IMAGES[animalImageKey];
 
-      return (
-        <CardContainer2 key={index}>
-          <Card>
-            <AnimalImage src={animalImage} alt={ANIMAL_TYPES[animalType]} />
-            <AnimalName>{ANIMAL_TYPES[animalType]}상~!</AnimalName>
-          </Card>
+      return (     
+        <Container key={index}>
+          <CardContainer2>
+            <Card>
+            <AnimalImage src={M_Dog} alt={ANIMAL_TYPES[selfAnimalTypes[0]]} />
+            <AnimalName>{ANIMAL_TYPES[animalType]}상!</AnimalName>
+            </Card>
         </CardContainer2>
+       </Container>
       );
     });
   };
@@ -137,25 +139,25 @@ const AnimalMatchResult = () => {
       <CardContainer>
         <CardContainer2>
           <Title>본인 동물상</Title>
-          <AnimalBox>
+          {/* <AnimalBox>
             <AnimalImage src={M_Dog} alt={ANIMAL_TYPES[selfAnimalTypes[0]]} />
             <AnimalBoxText>
-              {ANIMAL_TYPES[selfAnimalTypes[0]]}강아지상
+              {ANIMAL_TYPES[selfAnimalTypes[0]]}상
             </AnimalBoxText>
-          </AnimalBox>
+          </AnimalBox> */}
           <CardGroup>
             {renderAnimalCards(selfAnimalTypes.slice(1), true)}
           </CardGroup>
         </CardContainer2>
         <CardContainer2>
           <Title>상대 동물상</Title>
-          <AnimalBox>
+          {/* <AnimalBox>
             <AnimalImage src={M_Dog} alt={ANIMAL_TYPES[selfAnimalTypes[0]]} />
 
             <AnimalBoxText>
-              {ANIMAL_TYPES[opponentAnimalTypes[0]]}강아지상
+              {ANIMAL_TYPES[opponentAnimalTypes[0]]}상
             </AnimalBoxText>
-          </AnimalBox>
+          </AnimalBox> */}
           <CardGroup>
             {renderAnimalCards(opponentAnimalTypes.slice(1), false)}
           </CardGroup>
@@ -186,6 +188,8 @@ const CardContainer = styled.div`
   width: 100%;
   margin-bottom: 20px; 
   flex-direction: row;
+  flex-direction: column;
+
 
   @media (max-width: 768px) {
     flex-direction: column;
@@ -196,7 +200,16 @@ const CardContainer = styled.div`
 `;
 
 const CardContainer2 = styled.div`
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  margin-bottom:5px;
+`;
+const CardGroup = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  flex-direction:column;
 `;
 
 const Title = styled.h1`
@@ -233,13 +246,15 @@ const Card = styled.div`
 const AnimalImage = styled.img`
   width: 70px;
   height: 70px;
-  margin-top: 20px;
-  margin-left: 30px;
+  margin-top: 1px;
+  margin-left: 1px;
 `;
 
 const AnimalName = styled.div`
-  font-size: 14px;
-  color: #555;
+  font-size: 17px;
+  color: black;
+  font-weight:800;
+  margin-top:10px;
 `;
 
 const ChatButton = styled.button`
@@ -290,8 +305,4 @@ const AnimalBoxText = styled.h1`
   margin-top: 10px;
 `;
 
-const CardGroup = styled.div`
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-`;
+

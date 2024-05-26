@@ -16,13 +16,14 @@ const LocalGlobalStyle = createGlobalStyle`
 `;
 
 const AnimalMatchInfo = () => {
-    console.log("AnimalMatchInfo 잘 들어옴!");
+  console.log("AnimalMatchInfo 잘 들어옴!");
   const [name, setName] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
 
   const navigate = useNavigate();
 
   const handleMeetingStart = async () => {
+    console.log("잘 들어왔음요~");
     const response = await fetch(
       `${process.env.REACT_APP_FEST_SERVER}/user/login`,
       {
