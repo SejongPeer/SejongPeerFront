@@ -115,6 +115,17 @@
 
 /* 모바일 */
 @media (max-width: 670px) {
+  .menuContainer {
+    width: 40vh;
+    display: flex;
+    flex-direction: row;
+    /* 수직으로 아이템을 배치합니다. */
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    height: 50vh;
+    margin-top: 1.2vh;
+  }
   .menuBtn {
     font-size: 16px;
     font-weight: bold;
@@ -133,6 +144,23 @@
     justify-content: center;
     padding-bottom: 2vh;
     box-sizing: border-box;
+  }
+  .menuBox {
+    margin-bottom: 1vh;
+    height: 90%;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .menuText {
+    font-size: 1em;
+    font-weight: 600;
+  }
+  .text-0,
+  .text-1 {
+    margin-top: 1vh;
   }
 
   .item {
@@ -162,9 +190,9 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-    /* width: 120%; */
-    width: 300%;
-    aspect-ratio: 2/1;
+    /* background-size: 100% 100%; */
+    width: 100%;
+    aspect-ratio: 1/1;
   }
 
   .item-2 {
@@ -172,7 +200,7 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100% 100%;
-    width: 80%;
+    width: 50%;
     aspect-ratio: 1/1;
     margin-bottom: 20%;
     /* aspect-ratio:; */
@@ -183,24 +211,8 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100% 100%;
-    width: 80%;
+    width: 50%;
     aspect-ratio: 1/1;
     margin-bottom: 20%;
-  }
-  .menuBox {
-    margin-bottom: 1vh;
-    height: 90%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-  }
-  .menuText {
-    font-size: 1em;
-    font-weight: 600;
-  }
-  .text-0,
-  .text-1 {
-    margin-top: 1vh;
   }
 }
