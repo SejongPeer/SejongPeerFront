@@ -1,7 +1,6 @@
-import {useState} from 'react';
+import { useState } from 'react';
 import { useNavigate, useContext } from 'react-router-dom';
-import { MyContext } from '../../../App';
-import styled from "styled-components";
+import styled from 'styled-components';
 import { createGlobalStyle } from 'styled-components';
 
 const LocalGlobalStyle = createGlobalStyle`
@@ -16,14 +15,12 @@ const LocalGlobalStyle = createGlobalStyle`
 `;
 
 const AnimalMatchInfo = () => {
-  console.log("AnimalMatchInfo 잘 들어옴!");
   const [name, setName] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
 
   const navigate = useNavigate();
 
   const handleMeetingStart = async () => {
-    console.log("잘 들어왔음요~");
     const response = await fetch(
       `${process.env.REACT_APP_FEST_SERVER}/user/login`,
       {
@@ -44,6 +41,7 @@ const AnimalMatchInfo = () => {
       navigate('/fest/AnimalMatchResult');
     } else {
       console.error('Error:', response.statusText);
+      alert('아직 매칭되지 않았습니다!');
     }
   };
 
@@ -123,28 +121,17 @@ const MeetingStart = styled.button`
 `;
 
 const Box = styled.div`
-
-  width: 335px;
-  height: 56px;
+  height: 52px;
   border-radius: 35px;
   padding: 24px;
-  background-color: #FFFFFF;
-  border-color: #E5E5E5;
-  margin: 4px 0px;
+  background-color: #ffffff;
+  border-color: #e5e5e5;
   font-size: 16px;
-  color: #999999;
-  border-style: solid;
-
-
   display: flex;
   width: 311px;
   padding: 14px 20px;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 10px;
   border-radius: 100px;
   border: 1px solid #c5c5c5;
-  background: var(--BG-White_Color, #fff);
   margin-bottom: 12px;
 `;
 

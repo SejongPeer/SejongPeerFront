@@ -1,41 +1,44 @@
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { useNavigate, useContext } from 'react-router-dom';
 
-import M_Bear from '../../../Assets/Animals/M_Bear.png';
-import M_Cat from '../../../Assets/Animals/M_Cat.png';
-import M_Dino from '../../../Assets/Animals/M_Dino.png';
-import M_Dog from '../../../Assets/Animals/M_Dog.png';
-import M_Rabbit from '../../../Assets/Animals/M_Rabbit.png';
-import M_Wolf from '../../../Assets/Animals/M_Wolf.png';
-import W_Cat from '../../../Assets/Animals/W_Cat.png';
-import W_Dear from '../../../Assets/Animals/W_Dear.png';
-import W_DesertFox from '../../../Assets/Animals/W_DesertFox.png';
-import W_Dog from '../../../Assets/Animals/W_Dog.png';
-import W_Rabbit from '../../../Assets/Animals/W_Rabbit.png';
+import M_BEAR from '../../../Assets/Animals/M_BEAR.png';
+import M_CAT from '../../../Assets/Animals/M_CAT.png';
+import M_DINOSAUR from '../../../Assets/Animals/M_DINOSAUR.png';
+import M_DOG from '../../../Assets/Animals/M_DOG.png';
+import M_RABBIT from '../../../Assets/Animals/M_RABBIT.png';
+import M_WOLF from '../../../Assets/Animals/M_WOLF.png';
+
+import W_CAT from '../../../Assets/Animals/W_CAT.png';
+import W_DEER from '../../../Assets/Animals/W_DEER.png';
+import W_DESERT_FOX from '../../../Assets/Animals/W_DESERT_FOX.png';
+import W_DOG from '../../../Assets/Animals/W_DOG.png';
+import W_RABBIT from '../../../Assets/Animals/W_RABBIT.png';
+import W_HAMSTER from '../../../Assets/Animals/W_HAMSTER.png';
 
 const ANIMAL_IMAGES = {
-  M_Bear,
-  M_Cat,
-  M_Dino,
-  M_Dog,
-  M_Rabbit,
-  M_Wolf,
-  W_Cat,
-  W_Dear,
-  W_DesertFox,
-  W_Dog,
-  W_Rabbit,
+  M_BEAR,
+  M_CAT,
+  M_DINOSAUR,
+  M_DOG,
+  M_RABBIT,
+  M_WOLF,
+  W_CAT,
+  W_DEER,
+  W_DESERT_FOX,
+  W_DOG,
+  W_RABBIT,
+  W_HAMSTER,
 };
 
 const ANIMAL_TYPES = {
   BEAR: '곰',
   CAT: '고양이',
-  DINO: '공룡',
+  DINOSAUR: '공룡',
   DOG: '강아지',
   RABBIT: '토끼',
+  HAMSTER: '햄스터',
   WOLF: '늑대',
-  DEAR: '사슴',
+  DEER: '사슴',
   DESERT_FOX: '사막여우',
 };
 
@@ -46,27 +49,9 @@ const AnimalMatchResult = () => {
   const [kakaoLink, setKakaoLink] = useState('');
   const [gender, setGender] = useState('');
 
-  const setTemporaryData = gender => {
-    if (gender === 'MALE') {
-      setSelfAnimalTypes(['DOG', 'DOG', 'DOG']);
-      setOpponentAnimalTypes(['DOG', 'DOG', 'DOG']);
-    } else if (gender === 'FEMALE') {
-      setSelfAnimalTypes(['DOG', 'DOG', 'DOG']);
-      setOpponentAnimalTypes(['DOG', 'DOG', 'DOG']);
-    }
-    setMeetingGroupType('THREE_ON_THREE');
-    setKakaoLink(null);
-
-    console.log('Temporary selfAnimalTypes:', ['DOG', 'DOG', 'DOG']);
-    console.log('Temporary opponentAnimalTypes:', ['DOG', 'DOG', 'DOG']);
-    console.log('ANIMAL_TYPES[selfAnimalTypes[0]]:', ANIMAL_TYPES['DOG']);
-  };
-
   useEffect(() => {
     const gender = localStorage.getItem('gender');
     setGender(gender);
-    setTemporaryData(gender);
-
 
     const fetchData = async () => {
       try {
@@ -76,6 +61,7 @@ const AnimalMatchResult = () => {
         );
         const data = await response.json();
         console.log(data);
+
         const gender = localStorage.getItem('gender'); // 로컬스토리지에서 gender 값을 가져옴
         setGender(gender);
 
@@ -98,7 +84,7 @@ const AnimalMatchResult = () => {
         setMeetingGroupType(data.data.meetingGroupType);
         setKakaoLink(data.data.kakaoLink);
       } catch (error) {
-        console.error('Error fetching match result:', error);
+        console.error('Error fetching match result!!:', error);
       }
     };
 
@@ -113,6 +99,8 @@ const AnimalMatchResult = () => {
       : gender === 'MALE'
         ? 'W'
         : 'M';
+    console.log('성별 붙인 값 : ' + `${prefix}_${animalType}`);
+
     return `${prefix}_${animalType}`;
   };
 
@@ -120,16 +108,17 @@ const AnimalMatchResult = () => {
     return animalTypes.map((animalType, index) => {
       const animalImageKey = getAnimalImageKey(animalType, isSelf);
       const animalImage = ANIMAL_IMAGES[animalImageKey];
-
-      return (     
+      console.log('animalImageKey : ' + ANIMAL_TYPES[animalType]);
+      console.log('animalImage : ' + animalImage);
+      return (
         <Container key={index}>
           <CardContainer2>
             <Card>
-            <AnimalImage src={M_Dog} alt={ANIMAL_TYPES[selfAnimalTypes[0]]} />
-            <AnimalName>{ANIMAL_TYPES[animalType]}상!</AnimalName>
+              <AnimalImage src={animalImage} alt={ANIMAL_TYPES[animalType]} />
+              <AnimalName>{ANIMAL_TYPES[animalType]}상</AnimalName>
             </Card>
-        </CardContainer2>
-       </Container>
+          </CardContainer2>
+        </Container>
       );
     });
   };
@@ -139,28 +128,11 @@ const AnimalMatchResult = () => {
       <CardContainer>
         <CardContainer2>
           <Title>본인 동물상</Title>
-          {/* <AnimalBox>
-            <AnimalImage src={M_Dog} alt={ANIMAL_TYPES[selfAnimalTypes[0]]} />
-            <AnimalBoxText>
-              {ANIMAL_TYPES[selfAnimalTypes[0]]}상
-            </AnimalBoxText>
-          </AnimalBox> */}
-          <CardGroup>
-            {renderAnimalCards(selfAnimalTypes.slice(1), true)}
-          </CardGroup>
+          <CardGroup>{renderAnimalCards(selfAnimalTypes, true)}</CardGroup>
         </CardContainer2>
         <CardContainer2>
           <Title>상대 동물상</Title>
-          {/* <AnimalBox>
-            <AnimalImage src={M_Dog} alt={ANIMAL_TYPES[selfAnimalTypes[0]]} />
-
-            <AnimalBoxText>
-              {ANIMAL_TYPES[opponentAnimalTypes[0]]}상
-            </AnimalBoxText>
-          </AnimalBox> */}
-          <CardGroup>
-            {renderAnimalCards(opponentAnimalTypes.slice(1), false)}
-          </CardGroup>
+          <CardGroup>{renderAnimalCards(opponentAnimalTypes, false)}</CardGroup>
         </CardContainer2>
       </CardContainer>
 
@@ -168,13 +140,13 @@ const AnimalMatchResult = () => {
     </Container>
   );
 };
+
 export default AnimalMatchResult;
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 15vh;
 
   @media (min-width: 768px) {
     /* 데스크탑 스타일 */
@@ -184,18 +156,18 @@ const Container = styled.div`
 const CardContainer = styled.div`
   display: flex;
   justify-content: center;
-  gap: 10px; 
+  gap: 10px;
   width: 100%;
-  margin-bottom: 20px; 
+  margin-bottom: 20px;
   flex-direction: row;
   flex-direction: column;
-
 
   @media (max-width: 768px) {
     flex-direction: column;
     align-items: center;
     flex-direction: row;
-    gap: 10px; 
+    gap: 25px;
+    margin-top: 15vh;
   }
 `;
 
@@ -203,13 +175,15 @@ const CardContainer2 = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom:5px;
 `;
 const CardGroup = styled.div`
   display: flex;
   justify-content: center;
-  gap: 5px;
-  flex-direction:column;
+  gap: 24px;
+  flex-direction: column;
+  border-radius: 16px;
+  border: 1px solid #e5e5e5;
+  background: #fff;
 `;
 
 const Title = styled.h1`
@@ -226,22 +200,18 @@ const Title = styled.h1`
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 1;
-  margin-top: 20px;
+  margin-top: 5px;
+  margin-bottom: 10px;
 `;
 
 const Card = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 1px solid #e5e5e5;
-  border-radius: 16px;
   padding: 20px;
   width: 135px;
   height: 147px;
-  flex-shrink: 0;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin-bottom: 10px;
-  `;
+`;
 
 const AnimalImage = styled.img`
   width: 70px;
@@ -253,8 +223,8 @@ const AnimalImage = styled.img`
 const AnimalName = styled.div`
   font-size: 17px;
   color: black;
-  font-weight:800;
-  margin-top:10px;
+  font-weight: 800;
+  margin-top: 10px;
 `;
 
 const ChatButton = styled.button`
@@ -268,7 +238,8 @@ const ChatButton = styled.button`
   border-radius: 25px;
   cursor: pointer;
   position: fixed;
-  bottom: 80px;
+  bottom: 140px;
+  margin-bottom: -65px;
 `;
 
 const AnimalBox = styled.div`
@@ -304,5 +275,3 @@ const AnimalBoxText = styled.h1`
   letter-spacing: -0.333px;
   margin-top: 10px;
 `;
-
-
