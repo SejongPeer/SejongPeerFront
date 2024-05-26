@@ -1,6 +1,6 @@
 .selectBtn {
   font-size: 18px;
-  font-weight: bold;
+  font-weight: 600;
   width: 151px;
   height: 152px;
   /* height: 184px; */
@@ -19,7 +19,7 @@
   background: #ffffff;
   color: #333333;
   font-size: 18px;
-  font-weight: bold;
+  font-weight: 600;
   width: 151px;
   height: 152px;
   /* height: 184px; */
