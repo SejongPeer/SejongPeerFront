@@ -27,6 +27,12 @@ const MainPage = () => {
     navigate('/fest/AnimalApply');
   };
 
+  // 동물상 결과 확인
+  const goAnimalResult = () => {
+    navigate('/fest/animalcheck');
+  };
+
+
   // 버디 상태 확인
   const BuddyHandler = async () => {
     if (refreshToken === null || accessToken === null) {
@@ -241,9 +247,9 @@ const MainPage = () => {
           <button
             className={style.festButton2}
             style={{ backgroundColor: '#FAFAFA' }}
-            onClick={goResult}
+            onClick={goAnimalResult}
           >
-            <p>결과 확인</p>
+            <p>내 동물상 확인</p>
           </button>
           <button
             className={style.festButton2}

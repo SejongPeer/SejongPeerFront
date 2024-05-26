@@ -52,6 +52,13 @@
     margin-top: 5vh;
     flex-direction: column;
   }
+  .container2 {
+    background-image: url('../../../Assets/image/animalTitle.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 374px;
+  }
 
   .p {
     font-weight: 800;
