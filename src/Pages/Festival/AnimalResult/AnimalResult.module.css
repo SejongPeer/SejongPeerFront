@@ -8,7 +8,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 15vh;
+    margin-top: 8vh;
     flex-direction: column;
     overflow: scroll;
   }
@@ -18,6 +18,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    padding-top: 7%;
   }
   .info_wrapper {
     display: flex;
@@ -35,6 +36,7 @@
   .animal_type {
     font-size: 1.25rem;
     font-family: 'jalnan';
+    margin: 0;
   }
 
   .wrapper {
@@ -44,6 +46,20 @@
     font-size: 1.125rem;
     font-weight: 800;
     margin: 24px 0 0 0;
+  }
+  .info{
+    width: 70vw;
+    height: 32px;
+    border: 1px solid #FF4B4B;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 7%;
+  }
+  .info p{
+    font-size: 14px;
+    font-weight: 700;
   }
   .description {
     font-size: 0.938rem;
@@ -108,7 +124,7 @@
   .ratio_back {
     width: 72%;
     height: 4px;
-    background-color: #999999;
+    background-color: #FF7474;
   }
 
   .down_btn {
@@ -135,7 +151,7 @@
     align-items: center;
     margin-top: 5vh;
     flex-direction: column;
-    height: 130%;
+    height: 150%;
   }
   .capture_container {
     padding: 5%;
@@ -160,6 +176,7 @@
   .animal_type {
     font-size: 1.25rem;
     font-family: 'jalnan';
+    margin: 0;
   }
 
   .wrapper {
@@ -169,6 +186,20 @@
     font-size: 1.125rem;
     font-weight: 800;
     margin: 24px 0 0 0;
+  }
+  .info{
+    width: 35vw;
+    height: 32px;
+    border: 1px solid #FF4B4B;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 7%;
+  }
+  .info p{
+    font-size: 14px;
+    font-weight: 700;
   }
   .description {
     font-size: 0.938rem;
@@ -237,7 +268,7 @@
   }
 
   .down_btn {
-    width: 38vh;
+    width: 72%;
     height: 6vh;
     background-color: #ff4b4b;
     border-radius: 26px;

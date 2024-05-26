@@ -40,11 +40,14 @@ const AnimalResult = () => {
   return (
     <div className={style.container}>
       <div ref={captureRef} className={style.capture_container}>
+        <div className={style.info}>
+          <p>학술정보원 앞에 부스 위치 (09:00~16:00)</p>
+        </div>
         <AnimalInfo type={animalType[0].animal} />
         <div className={style.wrapper}>
           <p className={style.title}>동물상 비율</p>
           <div className={style.ratio_container}>
-            {animalType.slice(0, 5).map((animal, index) => (
+            {animalType.slice(0, 6).map((animal, index) => (
               <AnimalRatio
                 key={index}
                 animal_name={animal.animal}

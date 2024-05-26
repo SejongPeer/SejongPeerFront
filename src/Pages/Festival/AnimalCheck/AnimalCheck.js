@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from 'react';
 import { MyContext } from '../../../App';
 import { useNavigate } from 'react-router-dom';
 
+import titleImg from '../../../Assets/image/animalTitle.png';
 import style from './AnimalCheck.module.css'
 
 const AnimalCheck = () => {
@@ -50,15 +51,7 @@ const AnimalCheck = () => {
 
   return (
     <div className={style.container}>
-      <div
-        style={{
-          width: '30vh',
-          height: '30vh',
-          backgroundColor: '#D9D9D9',
-          marginBottom: '2vh',
-          borderRadius: '20px',
-        }}
-      ></div>
+      <img src={titleImg} className={style.titleImg}/>
       <p style={{ marginTop: '4vh' }} className={style.p}>
         고유번호 입력
       </p>
