@@ -92,7 +92,8 @@ const AnimalMatchResult = () => {
       : gender === 'MALE'
         ? 'W'
         : 'M';
-    console.log("성별 붙인 키 : "+ `${prefix}_${animalType}`);
+    console.log("성별 붙인 값 : "+ `${prefix}_${animalType}`);
+
     return `${prefix}_${animalType}`;
   };
 
@@ -164,7 +165,8 @@ const CardContainer = styled.div`
     flex-direction: column;
     align-items: center;
     flex-direction: row;
-    gap: 10px; 
+    gap: 30px; 
+
   }
 `;
 
@@ -172,12 +174,15 @@ const CardContainer2 = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom:5px;
+  margin-top:-30px;
+  margin-bottom:-100px;
+
 `;
 const CardGroup = styled.div`
   display: flex;
   justify-content: center;
-  gap: 5px;
+  gap: 30px;
+  margin-top:-60px;
   flex-direction:column;
 `;
 
@@ -195,7 +200,7 @@ const Title = styled.h1`
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 1;
-  margin-top: 20px;
+  margin-top: 5px;
   margin-bottom:10px;
 `;
 
@@ -239,6 +244,8 @@ const ChatButton = styled.button`
   cursor: pointer;
   position: fixed;
   bottom: 80px;
+  margin-bottom:-65px;
+
 `;
 
 const AnimalBox = styled.div`
@@ -274,3 +281,4 @@ const AnimalBoxText = styled.h1`
   letter-spacing: -0.333px;
   margin-top: 10px;
 `;
+
