@@ -40,23 +40,18 @@ const AnimalApply2 = () => {
 
   return (
     <div className={style.container}>
-      <div
-        style={{
-          width: '30vh',
-          height: '30vh',
-          backgroundColor: '#3f3f',
-          marginBottom: '2vh',
-          borderRadius: '20px',
-        }}
-      ></div>
-      <label>
+      <div className={style.container2}></div>
+      <a
+        href="https://sejongpeerprivacypolicy.simple.ink/"
+        style={{ marginTop: '16px' }}
+      >
         <input
           type="checkbox"
           checked={personalInfoChecked}
           onChange={e => setPersonalInfoChecked(e.target.checked)}
         />{' '}
         개인정보 수집동의
-      </label>
+      </a>
       <br />
       <p className={style.p}>인증번호 입력</p>
       <input

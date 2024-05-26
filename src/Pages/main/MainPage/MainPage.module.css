@@ -22,16 +22,18 @@
     align-items: center;
     justify-content: center;
   }
+
   .useImg {
-    width: 50vh;
-    height: 18vh;
+    width: 343px;
+    height: 112px;
+    flex-shrink: 0;
     cursor: pointer;
   }
 
   .btn1 {
-    /* background-color: #ffffff; */
-    cursor: pointer;
-    width: 24vh;
+    width: 166px;
+    height: 160px;
+    flex-shrink: 0;
   }
   .btn2 {
     margin-top: 112px;
@@ -51,19 +53,42 @@
     align-items: flex-end;
     gap: 7px;
     background-color: white;
-    height: 25vh;
+    height: 204px;
+    width: 343px;
     border: 1px solid #e5e5e5;
     border-radius: 16px;
     margin-top: 2vh;
   }
+  .festButton {
+    width: 351px;
+    height: 204px;
+    background-image: url(http://localhost:3000/static/media/Festival.bee2265c0dee8bfe93f1.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    border: 1px solid #e5e5e5;
+    border-radius: 15px;
+    gap: 7px;
+  }
 
-  .festButton button {
-    width: 11vw;
-    height: 10vh;
+  .festButton2 {
+    margin-top: 144px;
+    width: 152px;
+    height: 44px;
     border-radius: 8px;
     border: 1px solid var(--line_02, #e5e5e5);
-    background: #fafafa;
-    margin-bottom: 10px;
+    color: var(--font_01, #111);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    letter-spacing: -0.333px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
   }
 
   .studyBtn {
@@ -116,7 +141,8 @@
     justify-content: center;
     align-items: center;
     flex-direction: row;
-    width: 50vh;
+    width: 344px;
+    height: 40px;
     gap: 3%;
     font-size: 0.9rem;
     color: #333333;
@@ -252,6 +278,38 @@
     background-color: #ffffff;
     cursor: pointer;
     width: 20vh;
+  }
+
+  .festButton {
+    width: 351px;
+    height: 204px;
+    background-image: url(http://localhost:3000/static/media/Festival.bee2265c0dee8bfe93f1.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    border: 1px solid #e5e5e5;
+    border-radius: 15px;
+    gap: 7px;
+  }
+
+  .festButton2 {
+    margin-top: 144px;
+    width: 152px;
+    height: 44px;
+    border-radius: 8px;
+    border: 1px solid var(--line_02, #e5e5e5);
+    color: var(--font_01, #111);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    letter-spacing: -0.333px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
   }
 
   .studyBtn {
