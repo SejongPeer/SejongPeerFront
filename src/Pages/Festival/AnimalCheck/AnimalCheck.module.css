@@ -3,8 +3,12 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      margin-top: 15vh;
+      margin-top: 7.4vh;
       flex-direction: column;
+    }
+    .titleImg{
+      width: 100vw;
+      height: 100vw;
     }
   
     .p {
@@ -42,8 +46,12 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      margin-top: 5vh;
+      margin-top: 1vh;
       flex-direction: column;
+    }
+    .titleImg{
+      width: 375px;
+      height: 375px;
     }
   
     .p {
