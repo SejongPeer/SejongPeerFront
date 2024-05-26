@@ -5,26 +5,26 @@ import { useNavigate, useContext } from 'react-router-dom';
 import M_Bear from '../../../Assets/Animals/M_Bear.png';
 import M_Cat from '../../../Assets/Animals/M_Cat.png';
 import M_Dino from '../../../Assets/Animals/M_Dino.png';
-import M_Dog from '../../../Assets/Animals/M_Dog.png';
+import M_DOG from '../../../Assets/Animals/M_DOG.png';
 import M_Rabbit from '../../../Assets/Animals/M_Rabbit.png';
 import M_Wolf from '../../../Assets/Animals/M_Wolf.png';
 import W_Cat from '../../../Assets/Animals/W_Cat.png';
 import W_Dear from '../../../Assets/Animals/W_Dear.png';
 import W_DesertFox from '../../../Assets/Animals/W_DesertFox.png';
-import W_Dog from '../../../Assets/Animals/W_Dog.png';
+import W_DOG from '../../../Assets/Animals/W_DOG.png';
 import W_Rabbit from '../../../Assets/Animals/W_Rabbit.png';
 
 const ANIMAL_IMAGES = {
   M_Bear,
   M_Cat,
   M_Dino,
-  M_Dog,
+  M_DOG,
   M_Rabbit,
   M_Wolf,
   W_Cat,
   W_Dear,
   W_DesertFox,
-  W_Dog,
+  W_DOG,
   W_Rabbit,
 };
 
@@ -46,26 +46,26 @@ const AnimalMatchResult = () => {
   const [kakaoLink, setKakaoLink] = useState('');
   const [gender, setGender] = useState('');
 
-  const setTemporaryData = gender => {
-    if (gender === 'MALE') {
-      setSelfAnimalTypes(['DOG', 'DOG', 'DOG']);
-      setOpponentAnimalTypes(['DOG', 'DOG', 'DOG']);
-    } else if (gender === 'FEMALE') {
-      setSelfAnimalTypes(['DOG', 'DOG', 'DOG']);
-      setOpponentAnimalTypes(['DOG', 'DOG', 'DOG']);
-    }
-    setMeetingGroupType('THREE_ON_THREE');
-    setKakaoLink(null);
+  // const setTemporaryData = gender => {
+  //   if (gender === 'MALE') {
+  //     setSelfAnimalTypes(['DOG', 'DOG', 'DOG']);
+  //     setOpponentAnimalTypes(['DOG', 'DOG', 'DOG']);
+  //   } else if (gender === 'FEMALE') {
+  //     setSelfAnimalTypes(['DOG', 'DOG', 'DOG']);
+  //     setOpponentAnimalTypes(['DOG', 'DOG', 'DOG']);
+  //   }
+  //   setMeetingGroupType('THREE_ON_THREE');
+  //   setKakaoLink(null);
 
-    console.log('Temporary selfAnimalTypes:', ['DOG', 'DOG', 'DOG']);
-    console.log('Temporary opponentAnimalTypes:', ['DOG', 'DOG', 'DOG']);
-    console.log('ANIMAL_TYPES[selfAnimalTypes[0]]:', ANIMAL_TYPES['DOG']);
-  };
+  //   console.log('Temporary selfAnimalTypes:', ['DOG', 'DOG', 'DOG']);
+  //   console.log('Temporary opponentAnimalTypes:', ['DOG', 'DOG', 'DOG']);
+  //   console.log('ANIMAL_TYPES[selfAnimalTypes[0]]:', ANIMAL_TYPES['DOG']);
+  // };
 
   useEffect(() => {
     const gender = localStorage.getItem('gender');
     setGender(gender);
-    setTemporaryData(gender);
+    //setTemporaryData(gender);
 
 
     const fetchData = async () => {
@@ -76,6 +76,12 @@ const AnimalMatchResult = () => {
         );
         const data = await response.json();
         console.log(data);
+        console.log(data.data.femaleUsers);
+        console.log(data.data.maleUsers);
+
+        console.log(data.data);
+
+
         const gender = localStorage.getItem('gender'); // 로컬스토리지에서 gender 값을 가져옴
         setGender(gender);
 
@@ -113,20 +119,26 @@ const AnimalMatchResult = () => {
       : gender === 'MALE'
         ? 'W'
         : 'M';
+
+    console.log("변환된 동물 변수 : "+`${prefix}_${animalType}`);
+
     return `${prefix}_${animalType}`;
   };
 
   const renderAnimalCards = (animalTypes, isSelf) => {
     return animalTypes.map((animalType, index) => {
       const animalImageKey = getAnimalImageKey(animalType, isSelf);
-      const animalImage = ANIMAL_IMAGES[animalImageKey];
-
+      const animalImage = getAnimalImageKey(animalType, isSelf);
+      console.log("animalImageKey : "+ animalImageKey);
+      console.log("animalImage : "+ animalImage);
       return (     
         <Container key={index}>
           <CardContainer2>
             <Card>
-            <AnimalImage src={M_Dog} alt={ANIMAL_TYPES[selfAnimalTypes[0]]} />
-            <AnimalName>{ANIMAL_TYPES[animalType]}상!</AnimalName>
+            <AnimalImage src={M_DOG} alt={ANIMAL_TYPES[selfAnimalTypes[0]]} />
+
+            {/* <AnimalImage src={animalImageKey} alt={animalImage} /> */}
+            <AnimalName>{ANIMAL_TYPES[animalType]}상</AnimalName>
             </Card>
         </CardContainer2>
        </Container>
@@ -159,7 +171,7 @@ const AnimalMatchResult = () => {
             </AnimalBoxText>
           </AnimalBox> */}
           <CardGroup>
-            {renderAnimalCards(opponentAnimalTypes.slice(1), false)}
+            {renderAnimalCards(opponentAnimalTypes.slice(1), true)}
           </CardGroup>
         </CardContainer2>
       </CardContainer>
