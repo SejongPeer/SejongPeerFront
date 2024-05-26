@@ -2,30 +2,31 @@ import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { useNavigate, useContext } from 'react-router-dom';
 
-import M_Bear from '../../../Assets/Animals/M_Bear.png';
-import M_Cat from '../../../Assets/Animals/M_Cat.png';
-import M_Dino from '../../../Assets/Animals/M_Dino.png';
+import M_Bear from '../../../Assets/Animals/M_BEAR.png';
+import M_Cat from '../../../Assets/Animals/M_CAT.png';
+import M_Dino from '../../../Assets/Animals/M_DINO.png';
 import M_DOG from '../../../Assets/Animals/M_DOG.png';
-import M_Rabbit from '../../../Assets/Animals/M_Rabbit.png';
-import M_Wolf from '../../../Assets/Animals/M_Wolf.png';
-import W_Cat from '../../../Assets/Animals/W_Cat.png';
-import W_Dear from '../../../Assets/Animals/W_Dear.png';
-import W_DesertFox from '../../../Assets/Animals/W_DesertFox.png';
+import M_Rabbit from '../../../Assets/Animals/M_RABBIT.png';
+import M_Wolf from '../../../Assets/Animals/M_WOLF.png';
+
+import W_Cat from '../../../Assets/Animals/W_CAT.png';
+import W_Dear from '../../../Assets/Animals/W_DEAR.png';
+import W_DesertFox from '../../../Assets/Animals/W_DESERTFOX.png';
 import W_DOG from '../../../Assets/Animals/W_DOG.png';
-import W_Rabbit from '../../../Assets/Animals/W_Rabbit.png';
+import W_Rabbit from '../../../Assets/Animals/W_RABBIT.png';
 
 const ANIMAL_IMAGES = {
-  M_Bear,
-  M_Cat,
-  M_Dino,
+  M_BEAR,
+  M_CAT,
+  M_DINO,
   M_DOG,
-  M_Rabbit,
-  M_Wolf,
-  W_Cat,
-  W_Dear,
-  W_DesertFox,
+  M_RABBIT,
+  M_WOLF,
+  W_CAT,
+  W_DEAR,
+  W_DESERTFOX,
   W_DOG,
-  W_Rabbit,
+  W_RABBIT,
 };
 
 const ANIMAL_TYPES = {
@@ -136,8 +137,6 @@ const AnimalMatchResult = () => {
           <CardContainer2>
             <Card>
             <AnimalImage src={M_DOG} alt={ANIMAL_TYPES[selfAnimalTypes[0]]} />
-
-            {/* <AnimalImage src={animalImageKey} alt={animalImage} /> */}
             <AnimalName>{ANIMAL_TYPES[animalType]}상</AnimalName>
             </Card>
         </CardContainer2>
