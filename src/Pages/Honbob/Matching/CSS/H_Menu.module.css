@@ -109,6 +109,7 @@
   }
   .menuText {
     font-size: 1.3em;
+    font-weight: 600;
   }
 }
 
@@ -152,8 +153,8 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-    width: 130%;
-    aspect-ratio: 1/1;
+    width: 250%;
+    aspect-ratio: 2/1;
   }
 
   .item-1 {
@@ -161,8 +162,9 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-    width: 180%;
-    aspect-ratio: 1/1;
+    /* width: 120%; */
+    width: 300%;
+    aspect-ratio: 2/1;
   }
 
   .item-2 {
@@ -187,6 +189,7 @@
   }
   .menuBox {
     margin-bottom: 1vh;
+    height: 90%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -194,5 +197,10 @@
   }
   .menuText {
     font-size: 1em;
+    font-weight: 600;
+  }
+  .text-0,
+  .text-1 {
+    margin-top: 1vh;
   }
 }
