@@ -131,6 +131,8 @@
     font-weight: bold;
     width: 45%;
     aspect-ratio: 1/1;
+    width: 18vh;
+    height: 18vh;
     margin-bottom: 1vh;
     padding-top: 20px;
     border-radius: 36px;
@@ -147,7 +149,7 @@
   }
   .menuBox {
     margin-bottom: 1vh;
-    height: 90%;
+    height: 100%;
     width: 90%;
     display: flex;
     justify-content: center;
@@ -157,10 +159,6 @@
   .menuText {
     font-size: 1em;
     font-weight: 600;
-  }
-  .text-0,
-  .text-1 {
-    margin-top: 1vh;
   }
 
   .item {
@@ -181,17 +179,26 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-    width: 250%;
+    width: 150%;
+    margin-bottom: 5%;
     aspect-ratio: 2/1;
   }
 
-  .item-1 {
+  /* .item-1 {
     background-image: url('../../../../Assets/image/westernFood.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-    /* background-size: 100% 100%; */
+    background-size: 100% 100%;
     width: 100%;
+    aspect-ratio: 1/1;
+  } */
+  .item-1 {
+    background-image: url('../../../../Assets/image/westernFood.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 70%;
     aspect-ratio: 1/1;
   }
 

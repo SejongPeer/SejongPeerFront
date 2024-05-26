@@ -135,8 +135,8 @@
   }
 
   .moveToHomeBtn {
-    font-size: 2vh;
-    font-weight: 700;
+    font-size: 1.15em;
+    font-weight: 500;
     width: 42vh;
     height: 8.5vh;
     max-height: 56px;
@@ -149,7 +149,7 @@
   }
 
   .cancelBtn {
-    font-size: 2vh;
+    font-size: 1em;
     font-weight: 700;
     color: #999999;
     background-color: transparent;
