@@ -1,4 +1,6 @@
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+
 import kakao from '../../../Assets/image/kakao.png';
 import style from '../AnimalApply/AnimalApply.module.css';
 
@@ -12,6 +14,30 @@ const AnimalApply = () => {
   const goAnimalMatchingResult = () => {
     navigate('/fest/AnimalMatchInfo');
   };
+
+  const goBanner = () => {
+    window.open('https://animalmeeting.simple.ink/', '_blank');
+  };
+
+  useEffect(() => {
+    if (window.Kakao) {
+      const script = document.createElement('script');
+      script.src = 'https://developers.kakao.com/sdk/js/kakao.min.js';
+      script.onload = () => {
+        const key = process.env.REACT_APP_KAKAO_KEY;
+        window.Kakao.init(key);
+      };
+      document.head.appendChild(script);
+    }
+  }, []);
+
+  const kakaoChat = () => {
+    if (window.Kakao) {
+      window.Kakao.Channel.chat({
+        channelPublicId: '_AgxobG', // 여기에 채널의 고유 ID를 입력하세요.
+      });
+    }
+  };
   return (
     <div className={style.container1}>
       <h1>동물상형 미팅</h1>
@@ -24,8 +50,8 @@ const AnimalApply = () => {
         </button>
       </div>
       <div className={style.container3}>
-        <button className={style.festUse}></button>
-        <button className={style.kakao}>
+        <button className={style.festUse} onClick={goBanner}></button>
+        <button className={style.kakao} onClick={kakaoChat}>
           <img src={kakao} alt="카카오톡 문의하기" />
           카카오톡 문의하기
         </button>
