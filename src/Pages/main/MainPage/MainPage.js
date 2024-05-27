@@ -32,7 +32,6 @@ const MainPage = () => {
     navigate('/fest/animalcheck');
   };
 
-
   // 버디 상태 확인
   const BuddyHandler = async () => {
     if (refreshToken === null || accessToken === null) {
