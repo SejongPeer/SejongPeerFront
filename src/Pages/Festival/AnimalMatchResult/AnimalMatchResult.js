@@ -61,6 +61,7 @@ const AnimalMatchResult = () => {
         );
         const data = await response.json();
         console.log(data);
+        console.log("옾챗 링크 : "+ data.data.kakaoLink)
 
         const gender = localStorage.getItem('gender'); // 로컬스토리지에서 gender 값을 가져옴
         setGender(gender);
@@ -104,6 +105,11 @@ const AnimalMatchResult = () => {
     return `${prefix}_${animalType}`;
   };
 
+  const handleChatButtonClick = () => {
+    window.location.href = kakaoLink;
+  };
+  
+
   const renderAnimalCards = (animalTypes, isSelf) => {
     return animalTypes.map((animalType, index) => {
       const animalImageKey = getAnimalImageKey(animalType, isSelf);
@@ -136,7 +142,7 @@ const AnimalMatchResult = () => {
         </CardContainer2>
       </CardContainer>
 
-      <ChatButton>오픈채팅 참여</ChatButton>
+      <ChatButton onClick={handleChatButtonClick}>오픈채팅 참여</ChatButton>
     </Container>
   );
 };
