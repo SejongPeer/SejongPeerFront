@@ -40,6 +40,9 @@ const HonbobStart1 = () => {
       console.log(error.message);
     }
   };
+  useEffect(() => {
+    countHonbabHandler();
+  }, []);
 
   return (
     <div className={style.Container}>
@@ -53,7 +56,7 @@ const HonbobStart1 = () => {
           <div className={style.honbobLogo}></div>
           <div className={style.informContext}>
             <div className={style.context1}>
-              '대동지'는 대동제 기간(5월 29일~5월 31일)동안
+              '혼축탈출'는 대동제 기간(5월 29일~5월 31일)동안
             </div>
             <div className={style.context1}>
               <b>함께 다닐 수 있는 학우를 구할 수 있는 프로그램입니다.</b>

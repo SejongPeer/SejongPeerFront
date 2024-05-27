@@ -62,12 +62,12 @@
   }
 
   .honbobLogo {
-    height: 45vh;
-    width: 30vh;
+    height: 48vh;
+    width: 35vh;
     background-image: url('../../../Assets/image/honbobStartLogo.png');
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 100% 100%;
+    background-size: contain;
   }
 
   .informContext {
@@ -182,16 +182,16 @@
   }
 
   .honbobLogo {
-    height: 38vh;
-    width: 50vw;
+    height: 40vh;
+    width: 60vw;
     background-image: url('../../../Assets/image/honbobStartLogo.png');
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 100% 100%;
+    background-size: contain;
   }
 
   .informContext {
-    margin-top: 5vh;
+    margin-top: 2vh;
     font-weight: 600;
     gap: 2%;
     display: flex;
