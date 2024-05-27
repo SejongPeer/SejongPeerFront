@@ -147,6 +147,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-evenly;
 
   @media (min-width: 768px) {
     /* 데스크탑 스타일 */
