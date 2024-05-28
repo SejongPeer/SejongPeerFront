@@ -49,7 +49,7 @@ const AnimalResult = () => {
         const blob = await response.blob();
         const url = URL.createObjectURL(blob);
         const link = document.createElement('a');
-        link.download = '현장측정결과이미지.jpg'; 
+        link.download = '부스버전결과이미지.jpg'; 
         link.href = url;
         link.click();
         URL.revokeObjectURL(url); 
@@ -91,7 +91,7 @@ const AnimalResult = () => {
         결과 다운받기
       </button>
       <button onClick={captureElement2} className={style.down_btn2}>
-      현장 측정 결과 다운받기
+      부스 버전 결과 다운받기
       </button>
       <p className={style.go_home} onClick={goHome}>
         홈페이지로 이동하기
