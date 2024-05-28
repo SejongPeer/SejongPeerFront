@@ -12,10 +12,11 @@ const AnimalCheck = () => {
   const { setAnimalType, setPhotoUrl } = useContext(MyContext);
   const navigate = useNavigate();
 
+    // 입력 확인 핸들러
   const inputHandler = e => {
     setVerificationCode(e.target.value);
   };
-
+  // verificationCode 상태가 변경될 때마다 실행
   useEffect(() => {
     if (verificationCode.length >= 4) {
       setIsButtonActive(true);
@@ -23,8 +24,9 @@ const AnimalCheck = () => {
       setIsButtonActive(false);
     }
   }, [verificationCode]);
-
+  // 인증 확인
   const getResult = async () => {
+        // console.log(process.env.REACT_APP_FEST_SERVER);
     try {
       const response = await axios.get(
         `${process.env.REACT_APP_FEST_SERVER}/measurements/download`,
@@ -34,7 +36,7 @@ const AnimalCheck = () => {
           },
         }
       );
-
+      // 사용자가 있는지 확인
       if (
         response.data &&
         response.data.data &&
