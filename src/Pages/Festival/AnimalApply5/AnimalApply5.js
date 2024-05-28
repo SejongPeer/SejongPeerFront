@@ -118,7 +118,8 @@ const AnimalApply5 = () => {
         alert('미팅 신청 완료!');
         navigate('/fest/ApplyComplete'); // 성공 시 성공 페이지로 이동 (페이지 변경 시 적절히 수정)
       } else {
-        console.error('Registration failed', response);
+        alert('올바른 형태의 이름과 전화번호를 입력해주세요!');
+        // console.error('Registration failed', response);
       }
     } catch (error) {
       console.error('Error during registration:', error);
