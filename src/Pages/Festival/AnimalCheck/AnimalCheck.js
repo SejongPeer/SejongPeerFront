@@ -50,6 +50,7 @@ const AnimalCheck = () => {
         );
         setAnimalType(sort_result);
         console.log(response.data.data.photoUrl);
+        localStorage.setItem('photoUrl', response.data.data.photoUrl);
         navigate('/fest/animalresult');
       } else {
         throw new Error('해당 사용자를 찾을 수 없습니다.');
