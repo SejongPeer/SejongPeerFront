@@ -8,11 +8,10 @@ import style from './AnimalResult.module.css';
 import AnimalInfo from './AnimalInfo';
 
 const AnimalResult = () => {
-  const captureRef = useRef(null); // useRef를 사용하여 DOM 요소 참조
+  const captureRef = useRef(null);
   const navigate = useNavigate();
-  const { animalType } = useContext(MyContext);
+  const { animalType, photoUrl } = useContext(MyContext);
 
-  // 메인 이동
   const goHome = () => {
     navigate('/main');
   };
@@ -24,18 +23,45 @@ const AnimalResult = () => {
     }
   }, [animalType]);
 
-  // 이미지 다운
   const captureElement = async () => {
     if (captureRef.current) {
       const canvas = await html2canvas(captureRef.current);
       const image = canvas.toDataURL('image/png');
-      // 이미지 다운로드
       const link = document.createElement('a');
       link.download = '동물상결과.png';
       link.href = image;
       link.click();
     }
   };
+  const captureElement2 = async () => {
+    if (photoUrl) {
+      try {
+        const response = await fetch(photoUrl, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'image/jpeg',
+          },
+        });
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const blob = await response.blob();
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.download = '현장측정결과이미지.jpg'; 
+        link.href = url;
+        link.click();
+        URL.revokeObjectURL(url); 
+      } catch (error) {
+        console.error('Failed to fetch the image:', error);
+        alert('이미지 다운로드에 실패했습니다. 다시 시도해 주세요.');
+      }
+    } else {
+      alert('이미지 URL이 없습니다.');
+    }
+  };
+  
+  
   if (!animalType || !Array.isArray(animalType) || animalType.length === 0) {
     return null;
   }
@@ -62,6 +88,9 @@ const AnimalResult = () => {
       </div>
       <button onClick={captureElement} className={style.down_btn}>
         결과 다운받기
+      </button>
+      <button onClick={captureElement2} className={style.down_btn2}>
+      현장 측정 결과 다운받기
       </button>
       <p className={style.go_home} onClick={goHome}>
         홈페이지로 이동하기

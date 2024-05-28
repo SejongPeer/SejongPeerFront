@@ -41,7 +41,7 @@ const AnimalApply2 = () => {
   return (
     <div className={style.container}>
       <div className={style.container2}></div>
-      <div style={{ display: 'flex', gap: '5px' }}>
+      <div style={{ display: 'flex', gap: '7px' }}>
         <a
           href="https://sejongpeerprivacypolicy.simple.ink/"
           style={{ marginTop: '16px' }}
