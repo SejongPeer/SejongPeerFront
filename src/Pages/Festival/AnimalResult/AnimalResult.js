@@ -8,10 +8,10 @@ import style from './AnimalResult.module.css';
 import AnimalInfo from './AnimalInfo';
 
 const AnimalResult = () => {
-  const captureRef = useRef(null);
+  const captureRef = useRef(null);// useRef를 사용하여 DOM 요소 참조
   const navigate = useNavigate();
   const { animalType, photoUrl } = useContext(MyContext);
-
+  // 메인 이동
   const goHome = () => {
     navigate('/main');
   };
@@ -22,7 +22,7 @@ const AnimalResult = () => {
       navigate('/fest/animalcheck');
     }
   }, [animalType]);
-
+  // 이미지 다운
   const captureElement = async () => {
     if (captureRef.current) {
       const canvas = await html2canvas(captureRef.current);
@@ -33,6 +33,7 @@ const AnimalResult = () => {
       link.click();
     }
   };
+  //현장측정결과 이미지 다운
   const captureElement2 = async () => {
     if (photoUrl) {
       try {
