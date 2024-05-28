@@ -78,6 +78,7 @@ const App = () => {
   const [buddyCount, setBuddyCount] = useState(0);
 
   const [animalType, setAnimalType] = useState([]);
+  const [photoUrl, setPhotoUrl] = useState(''); // photoUrl 상태 추가
 
   // 타이머 재설정
   const initializeApp = () => {
@@ -143,6 +144,10 @@ const App = () => {
         buddyCount,
         animalType,
         setAnimalType,
+        animalType, 
+        setAnimalType, 
+        photoUrl, 
+        setPhotoUrl
       }}
     >
       <Router>

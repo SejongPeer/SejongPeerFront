@@ -127,6 +127,16 @@
     background-color: #FF7474;
   }
 
+  .down_btn2 {
+    width: 38vh;
+    height: 6.5vh;
+    background-color: #F1F1F5;
+    border-radius: 26px;
+    color: black;
+    font-size: 1.125rem;
+    margin: 1vh 0;
+    font-weight: 800;
+  }
   .down_btn {
     width: 38vh;
     height: 6.5vh;
@@ -136,6 +146,7 @@
     font-size: 1.125rem;
     margin: 2vh 0;
     font-weight: 800;
+    margin-bottom: 2px;
   }
 
   .go_home {
@@ -277,6 +288,17 @@
     font-weight: 800;
     margin: 1vh 0;
   }
+  .down_btn2 {
+    width: 72%;
+    height: 6vh;
+    background-color: #F1F1F5;
+    border-radius: 26px;
+    color: black;
+    font-size: 1.125rem;
+    font-weight: 800;
+    margin: 1vh 0;
+  }
+  
 
   .go_home {
     color: #999999;
