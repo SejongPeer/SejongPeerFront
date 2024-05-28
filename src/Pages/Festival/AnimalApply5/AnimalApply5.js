@@ -99,8 +99,8 @@ const AnimalApply5 = () => {
     }));
 
     // 요청 데이터 로그 출력
-    console.log('Submitting data:', data);
-    console.log('MeetingGroupType:', MeetingGroupType);
+    // console.log('Submitting data:', data);
+    // console.log('MeetingGroupType:', MeetingGroupType);
 
     try {
       const response = await fetch(

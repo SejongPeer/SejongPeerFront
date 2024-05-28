@@ -36,6 +36,9 @@ const AnimalResult = () => {
       link.click();
     }
   };
+  if (!animalType || !Array.isArray(animalType) || animalType.length === 0) {
+    return null;
+  }
 
   return (
     <div className={style.container}>

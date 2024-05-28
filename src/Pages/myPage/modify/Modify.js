@@ -92,34 +92,29 @@ const Modify = () => {
           },
         }
       );
-      console.log(response);
+      // console.log(response);
       if (!response.ok) {
-
         const errorData = await response.json();
         if (errorData.data) {
           alert(errorData.data.message);
-        }
-        else {
+        } else {
           throw new Error(errorData.message);
         }
-
       }
 
       const data = await response.json(); // data 변수를 await로 초기화
 
-
       if (newKaKaoId !== '') {
-        localStorage.setItem("kakaoAccount", KaKaoId);
+        localStorage.setItem('kakaoAccount', KaKaoId);
       }
       if (newPhoneNum !== '') {
-        localStorage.setItem("phoneNumber", PhoneNum);
+        localStorage.setItem('phoneNumber', PhoneNum);
       }
       if (newNickName !== '') {
-        localStorage.setItem("nickname", NickName);
+        localStorage.setItem('nickname', NickName);
       }
 
-
-      alert("수정 성공");
+      alert('수정 성공');
     } catch (error) {
       console.error(error.message);
       e.preventDefault();

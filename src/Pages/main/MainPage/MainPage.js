@@ -4,6 +4,7 @@ import { MyContext } from '../../../App';
 
 import MainBuddy from './MainBuddy';
 import MainHonbob from './MainHonbob';
+import kakao from '../../../Assets/image/kakao.png';
 
 import reprot from '../../../Assets/image/report.png';
 import honbobUse from '../../../Assets/image/honbobUse.png';
@@ -50,7 +51,7 @@ const MainPage = () => {
           }
         );
         const data = await response.json();
-        console.log(data.data);
+        // console.log(data.data);
 
         if (data.data !== null) setBuddyCount(data.data.matchingCompletedCount);
         else setBuddyCount(0);
@@ -264,11 +265,15 @@ const MainPage = () => {
         </div>
         {/* <img className={style.ready} src={ready} /> */}
       </div>
-      <div className={style.report_user_box} onClick={kakaoChat}>
-        <div className={style.reprot_icon}>
-          <img src={reprot} alt="reprot" />
-        </div>
-        <span style={{ color: '#555', fontWeight: '800' }}>악성 유저 신고</span>
+      <div onClick={kakaoChat}>
+        <button
+          className={style.kakao}
+          onClick={kakaoChat}
+          style={{ gap: '10px' }}
+        >
+          <img src={kakao} alt="카카오톡 문의하기" />
+          카카오톡 문의하기
+        </button>
       </div>
       {/* <button className={style.btn} onClick={readyHandler}>
             <MainStudy />

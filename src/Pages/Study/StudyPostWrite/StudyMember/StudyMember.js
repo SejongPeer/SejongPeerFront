@@ -26,7 +26,7 @@ const StudyMember = prop => {
     setSliderValue(value); // 슬라이더 값을 업데이트
     prop.setStartMem(value[0]);
     prop.setEndMem(value[1]);
-    console.log(value);
+    // console.log(value);
   };
 
   return (

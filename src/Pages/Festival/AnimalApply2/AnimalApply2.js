@@ -41,17 +41,19 @@ const AnimalApply2 = () => {
   return (
     <div className={style.container}>
       <div className={style.container2}></div>
-      <a
-        href="https://sejongpeerprivacypolicy.simple.ink/"
-        style={{ marginTop: '16px' }}
-      >
-        <input
-          type="checkbox"
-          checked={personalInfoChecked}
-          onChange={e => setPersonalInfoChecked(e.target.checked)}
-        />{' '}
-        개인정보 수집동의
-      </a>
+      <div style={{ display: 'flex', gap: '5px' }}>
+        <a
+          href="https://sejongpeerprivacypolicy.simple.ink/"
+          style={{ marginTop: '16px' }}
+        >
+          <input
+            type="checkbox"
+            checked={personalInfoChecked}
+            onChange={e => setPersonalInfoChecked(e.target.checked)}
+          />{' '}
+        </a>
+        <p style={{ marginBottom: '0' }}>개인정보 수집동의</p>
+      </div>
       <br />
       <p className={style.p}>인증번호 입력</p>
       <input
@@ -72,7 +74,9 @@ const AnimalApply2 = () => {
         disabled={!isButtonActive}
         onClick={handleNextPage}
       >
-        <p className={style.p}>동물상 미팅 신청</p>
+        <p className={style.p} style={{ margin: '0' }}>
+          동물상 미팅 신청
+        </p>
       </button>
     </div>
   );
