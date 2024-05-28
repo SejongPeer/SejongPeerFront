@@ -4,7 +4,7 @@ import { MyContext } from '../../../App';
 import { useNavigate } from 'react-router-dom';
 
 import titleImg from '../../../Assets/image/animalTitle.png';
-import style from './AnimalCheck.module.css'
+import style from './AnimalCheck.module.css';
 
 const AnimalCheck = () => {
   const [verificationCode, setVerificationCode] = useState('');
@@ -13,45 +13,55 @@ const AnimalCheck = () => {
   const navigate = useNavigate();
 
   // 입력 확인 핸들러
-  const inputHandler = (e) => {
+  const inputHandler = e => {
     setVerificationCode(e.target.value);
   };
 
   // verificationCode 상태가 변경될 때마다 실행
   useEffect(() => {
-      if (verificationCode.length >= 4) {
-          setIsButtonActive(true);
-      } else {
-          setIsButtonActive(false);
-      }
+    if (verificationCode.length >= 4) {
+      setIsButtonActive(true);
+    } else {
+      setIsButtonActive(false);
+    }
   }, [verificationCode]);
 
   // 인증 확인
-  const getResult = async() => {
-    console.log(process.env.REACT_APP_FEST_SERVER);
+  const getResult = async () => {
+    // console.log(process.env.REACT_APP_FEST_SERVER);
     try {
-        const response = await axios.get(`${process.env.REACT_APP_FEST_SERVER}/measurements/download`, {
-            params: {
-                studentId: verificationCode
-            }
-        });
-
-        // 사용자가 있는지 확인
-        if (response.data && response.data.data && Array.isArray(response.data.data.scores)) {
-          const sort_result = response.data.data.scores.sort((a, b) => b.score - a.score);
-          setAnimalType(sort_result);
-          navigate('/fest/animalresult');
-        } else {
-          throw new Error('해당 사용자를 찾을 수 없습니다.');
+      const response = await axios.get(
+        `${process.env.REACT_APP_FEST_SERVER}/measurements/download`,
+        {
+          params: {
+            studentId: verificationCode,
+          },
         }
+      );
+
+      // 사용자가 있는지 확인
+      if (
+        response.data &&
+        response.data.data &&
+        Array.isArray(response.data.data.scores)
+      ) {
+        const sort_result = response.data.data.scores.sort(
+          (a, b) => b.score - a.score
+        );
+        setAnimalType(sort_result);
+        console.log(response.data.data.photoUrl);
+        navigate('/fest/animalresult');
+      } else {
+        throw new Error('해당 사용자를 찾을 수 없습니다.');
+      }
     } catch (error) {
-        alert(error.message);
+      alert(error.message);
     }
-  }
+  };
 
   return (
     <div className={style.container}>
-      <img src={titleImg} className={style.titleImg}/>
+      <img src={titleImg} className={style.titleImg} />
       <p style={{ marginTop: '4vh' }} className={style.p}>
         고유번호 입력
       </p>
@@ -71,10 +81,12 @@ const AnimalCheck = () => {
         className={style.apply}
         disabled={!isButtonActive}
         onClick={getResult}
-      > 결과 확인
+      >
+        {' '}
+        결과 확인
       </button>
     </div>
   );
-}
+};
 
 export default AnimalCheck;

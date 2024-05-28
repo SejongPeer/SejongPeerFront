@@ -34,8 +34,8 @@ const AnimalMatchInfo = () => {
 
     if (response.ok) {
       const data = await response.json();
-      console.log(data);
-      console.log(data.data.id);
+      // console.log(data);
+      // console.log(data.data.id);
       localStorage.setItem('userId', data.data.id);
       alert('매칭 결과페이지로 이동합니다!');
       navigate('/fest/AnimalMatchResult');
