@@ -131,11 +131,11 @@ const AnimalMatchResult = () => {
       <CardContainer>
         <CardContainer2>
           <Title>본인 동물상</Title>
-          <CardGroup>{renderAnimalCards(opponentAnimalTypes, false)}</CardGroup>
+          <CardGroup>{renderAnimalCards(selfAnimalTypes, true)}</CardGroup>
         </CardContainer2>
         <CardContainer2>
           <Title>상대 동물상</Title>
-          <CardGroup>{renderAnimalCards(selfAnimalTypes, true)}</CardGroup>
+          <CardGroup>{renderAnimalCards(opponentAnimalTypes, false)}</CardGroup>
         </CardContainer2>
       </CardContainer>
 
