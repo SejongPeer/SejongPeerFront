@@ -12,7 +12,7 @@ const AnimalCheck = () => {
   const { setAnimalType, setPhotoUrl } = useContext(MyContext);
   const navigate = useNavigate();
 
-    // 입력 확인 핸들러
+  // 입력 확인 핸들러
   const inputHandler = e => {
     setVerificationCode(e.target.value);
   };
@@ -26,7 +26,7 @@ const AnimalCheck = () => {
   }, [verificationCode]);
   // 인증 확인
   const getResult = async () => {
-        // console.log(process.env.REACT_APP_FEST_SERVER);
+    // console.log(process.env.REACT_APP_FEST_SERVER);
     try {
       const response = await axios.get(
         `${process.env.REACT_APP_FEST_SERVER}/measurements/download`,
@@ -46,6 +46,7 @@ const AnimalCheck = () => {
           (a, b) => b.score - a.score
         );
         setAnimalType(sort_result);
+        console.log(response.data);
         setPhotoUrl(response.data.data.photoUrl); // photoUrl 설정
         console.log(response.data.data.photoUrl);
         localStorage.setItem('photoUrl', response.data.data.photoUrl);
