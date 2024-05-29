@@ -60,8 +60,7 @@ const AnimalMatchResult = () => {
           `${process.env.REACT_APP_FEST_SERVER}/meeting/matching-result?userId=${userId}`
         );
         const data = await response.json();
-        // console.log(data);
-        // console.log("옾챗 링크 : "+ data.data.kakaoLink)
+        console.log(data);
 
         const gender = localStorage.getItem('gender'); // 로컬스토리지에서 gender 값을 가져옴
         setGender(gender);
@@ -85,7 +84,7 @@ const AnimalMatchResult = () => {
         setMeetingGroupType(data.data.meetingGroupType);
         setKakaoLink(data.data.kakaoLink);
       } catch (error) {
-        console.error('Error fetching match result!!:', error);
+        console.error('Error fetching match result:', error);
       }
     };
 
@@ -100,8 +99,7 @@ const AnimalMatchResult = () => {
       : gender === 'MALE'
         ? 'W'
         : 'M';
-    //console.log('성별 붙인 값 : ' + `${prefix}_${animalType}`);
-
+    console.log('성별 붙인 키 : ' + `${prefix}_${animalType}`);
     return `${prefix}_${animalType}`;
   };
 
@@ -133,11 +131,11 @@ const AnimalMatchResult = () => {
       <CardContainer>
         <CardContainer2>
           <Title>본인 동물상</Title>
-          <CardGroup>{renderAnimalCards(selfAnimalTypes, true)}</CardGroup>
+          <CardGroup>{renderAnimalCards(opponentAnimalTypes, false)}</CardGroup>
         </CardContainer2>
         <CardContainer2>
           <Title>상대 동물상</Title>
-          <CardGroup>{renderAnimalCards(opponentAnimalTypes, false)}</CardGroup>
+          <CardGroup>{renderAnimalCards(selfAnimalTypes, true)}</CardGroup>
         </CardContainer2>
       </CardContainer>
 
