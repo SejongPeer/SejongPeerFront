@@ -3,10 +3,10 @@ import { MyContext } from '../../../../App.js';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-import SignInBox from '../../SignIn/SignInBox.js';
+import SignInBox from '../../signIn/SignInBox.js';
 
 import style from './FindId.module.css';
-import Loading from '../../../../Components/Load/Loading.js';
+import Loading from '../../../../components/load/Loading.js';
 
 const FindId = () => {
   const navigate = useNavigate();

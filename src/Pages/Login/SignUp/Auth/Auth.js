@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { MyContext } from '../../../../App';
 import axios from 'axios';
 
-import Loading from '../../../../Components/Load/Loading';
+import Loading from '../../../../components/load/Loading';
 
 import style from '../Auth/Auth.module.css';
 
@@ -16,34 +16,35 @@ const Auth = () => {
   const isSejong = () => {
     setLoading(true);
     axios
-      .post(process.env.REACT_APP_BACK_SERVER + '/auth/sejong-auth', {
-        id: Id,
-        pw: passWord,
-      }, {
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      })
-      .then(
-        (response) => {
-          let result = response.data.data.isAuth;
-          if (result === false)
-            alert("아이디 및 비밀번호가 일치하지 않습니다")
-          else if (result === true) {
-            alert("인증 완료");
-            setName(response.data.data.name);
-            setGrade(response.data.data.grade);
-            setStudentNum(Id);
-            setLoading(false);
-            localStorage.setItem('name', response.data.data.name);
-            localStorage.setItem('grade', response.data.data.grade);
-            localStorage.setItem('studentId', Id);
-            navigate("/login/signup");
-          }
-          setLoading(false);
+      .post(
+        process.env.REACT_APP_BACK_SERVER + '/auth/sejong-auth',
+        {
+          id: Id,
+          pw: passWord,
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
         }
       )
-      .catch((err) => console.log(err.message));
+      .then(response => {
+        let result = response.data.data.isAuth;
+        if (result === false) alert('아이디 및 비밀번호가 일치하지 않습니다');
+        else if (result === true) {
+          alert('인증 완료');
+          setName(response.data.data.name);
+          setGrade(response.data.data.grade);
+          setStudentNum(Id);
+          setLoading(false);
+          localStorage.setItem('name', response.data.data.name);
+          localStorage.setItem('grade', response.data.data.grade);
+          localStorage.setItem('studentId', Id);
+          navigate('/login/signup');
+        }
+        setLoading(false);
+      })
+      .catch(err => console.log(err.message));
   };
 
   const { name, setName } = useContext(MyContext);

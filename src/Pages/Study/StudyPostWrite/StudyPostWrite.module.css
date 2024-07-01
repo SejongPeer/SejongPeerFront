@@ -211,7 +211,7 @@
   .datePicker {
     width: 3vh;
     height: 3vh;
-    background-image: url('../../../Assets/image/calLogo.png');
+    background-image: url('../../../assets/image/calLogo.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center center;
@@ -382,12 +382,12 @@
 
   .header {
     width: 100vw;
-    height: 7vh;
+    height: 48px;
     background-color: #ffffff;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
-    /* gap: 20%; */
+    gap: 200px;
   }
 
   .leftBox {
@@ -565,12 +565,12 @@
   }
 
   .datePicker {
-    width: 3vh;
-    height: 3vh;
-    background-image: url('../../../Assets/image/calLogo.png');
+    width: 20px;
+    height: 20px;
+    background-image: url('../../../assets/image/calLogo.png');
     background-size: contain;
     background-repeat: no-repeat;
-    background-position: center center;
+    background-position: center;
     border: none;
     cursor: pointer;
     color: transparent;
@@ -603,7 +603,7 @@
 
   .contentArea {
     display: block;
-    width: 82vw;
+    width: 90vw;
     height: 40vh;
     border: none;
     resize: none;
@@ -622,13 +622,13 @@
   }
 
   .textLength {
-    width: 10vw;
+    width: 100vw;
     height: 4vh;
     color: #777777;
-    margin-right: 0.05vw;
+    margin-right: 10vw;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
   }
 
   .bottomBox {

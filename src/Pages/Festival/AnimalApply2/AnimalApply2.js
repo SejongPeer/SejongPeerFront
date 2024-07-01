@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import style from '../AnimalApply2/AnimalApply2.module.css';
+import style from '../animalApply2/AnimalApply2.module.css';
 
 // 동물상 미팅 신청 2페이지
 const AnimalApply2 = () => {

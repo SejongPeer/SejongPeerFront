@@ -48,11 +48,11 @@
 }
 @font-face {
   font-family: 'omyupretty';
-  src: url(../../../Assets/font/omyu\ pretty.ttf);
+  src: url(../../../assets/font/omyu\ pretty.ttf);
 }
 @font-face {
   font-family: 'jalnan';
-  src: url(../../../Assets/font/Jalnan2.otf);
+  src: url(../../../assets/font/Jalnan2.otf);
 }
 .inform_con {
   width: 100%;
@@ -78,7 +78,7 @@
 }
 
 .informImg {
-  background-image: url("../../../Assets/image/warningLogo.png");
+  background-image: url('../../../assets/image/warningLogo.png');
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;

@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from 'react';
 import { MyContext } from '../../../App';
 import { useNavigate } from 'react-router-dom';
 
-import titleImg from '../../../Assets/image/animalTitle.png';
+import titleImg from '../../../assets/image/animalTitle.png';
 import style from './AnimalCheck.module.css';
 
 const AnimalCheck = () => {

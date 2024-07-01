@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import con from '../CSS/H_Container.module.css';
-import style from '../CSS/H_Menu.module.css';
+import con from '../css/H_Container.module.css';
+import style from '../css/H_Menu.module.css';
 const H_Menu = props => {
   // const [isClicked, setIsClicked] = useState(null);
   const [clickedIndex, setClickedIndex] = useState(null);

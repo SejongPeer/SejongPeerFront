@@ -1,5 +1,5 @@
 import ANIMAL_TYPE from '../../../constants/animal/animal_info';
-import test from '../../../Assets/image/man_wolf.png';
+import test from '../../../assets/image/man_wolf.png';
 import style from './AnimalResult.module.css';
 
 const AnimalInfo = props => {

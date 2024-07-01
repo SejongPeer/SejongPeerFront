@@ -1,19 +1,19 @@
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
-import M_BEAR from '../../../Assets/Animals/M_BEAR.png';
-import M_CAT from '../../../Assets/Animals/M_CAT.png';
-import M_DINOSAUR from '../../../Assets/Animals/M_DINOSAUR.png';
-import M_DOG from '../../../Assets/Animals/M_DOG.png';
-import M_RABBIT from '../../../Assets/Animals/M_RABBIT.png';
-import M_WOLF from '../../../Assets/Animals/M_WOLF.png';
+import M_BEAR from '../../../assets/animals/M_BEAR.png';
+import M_CAT from '../../../assets/animals/M_CAT.png';
+import M_DINOSAUR from '../../../assets/animals/M_DINOSAUR.png';
+import M_DOG from '../../../assets/animals/M_DOG.png';
+import M_RABBIT from '../../../assets/animals/M_RABBIT.png';
+import M_WOLF from '../../../assets/animals/M_WOLF.png';
 
-import W_CAT from '../../../Assets/Animals/W_CAT.png';
-import W_DEER from '../../../Assets/Animals/W_DEER.png';
-import W_DESERT_FOX from '../../../Assets/Animals/W_DESERT_FOX.png';
-import W_DOG from '../../../Assets/Animals/W_DOG.png';
-import W_RABBIT from '../../../Assets/Animals/W_RABBIT.png';
-import W_HAMSTER from '../../../Assets/Animals/W_HAMSTER.png';
+import W_CAT from '../../../assets/animals/W_CAT.png';
+import W_DEER from '../../../assets/animals/W_DEER.png';
+import W_DESERT_FOX from '../../../assets/animals/W_DESERT_FOX.png';
+import W_DOG from '../../../assets/animals/W_DOG.png';
+import W_RABBIT from '../../../assets/animals/W_RABBIT.png';
+import W_HAMSTER from '../../../assets/animals/W_HAMSTER.png';
 
 const ANIMAL_IMAGES = {
   M_BEAR,

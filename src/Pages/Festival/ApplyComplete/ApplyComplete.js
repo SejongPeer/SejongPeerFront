@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import style from '../ApplyComplete/ApplyComplete.module.css';
+import style from '../applyComplete/ApplyComplete.module.css';
 
 const ApplyComplete = () => {
   const navigate = useNavigate();
