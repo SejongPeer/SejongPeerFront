@@ -6,7 +6,7 @@ const BuddyStart2 = () => {
   const navigate = useNavigate();
 
   const BuddyHandler = async () => {
-    navigate("/buddy/matching");
+    navigate('/buddy/matching');
   };
 
   const BackHandler = () => {

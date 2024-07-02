@@ -1,5 +1,6 @@
-import { useContext, useState } from 'react';
-import { parseISO, format } from 'date-fns';
+// src/pages/StudyPostWrite.js
+import React, { useContext, useState } from 'react';
+import { format } from 'date-fns';
 import { MyContext } from '../../../App';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -8,11 +9,11 @@ import ko from 'date-fns/locale/ko';
 import BottomModal from '../../../components/modal/BottomModal';
 import StudyPostField from './studyPostField/StudyPostField';
 import StudyMember from './studyMember/StudyMember';
+import ConfirmModal from './ConfirmModal';
 
+import cancelBtn from '../../../assets/image/cancel.png';
 import arrow from '../../../assets/image/down_black.png';
-import cancelBtn from '../../../assets/image/cancel_black.png';
-import ImgPost from '../../../assets/image/ImgPost.png';
-import StudyWriteText from '../../../assets/image/StudyWriteText.png';
+
 import style from './StudyPostWrite.module.css';
 import './StudyPostWriteBasic.css';
 
@@ -53,6 +54,7 @@ const StudyPostWrite = () => {
   const [isClickedStudy, setIsClickedStudy] = useState(false);
   const [isClickedMember, setIsClickedMember] = useState(false);
   const { modalOpen, setModalOpen } = useContext(MyContext);
+  const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
 
   const studyFilterHandler = () => {
     setModalOpen(!modalOpen);
@@ -66,18 +68,22 @@ const StudyPostWrite = () => {
     setIsClickedStudy(false);
   };
 
+  const openConfirmModal = () => {
+    setIsConfirmModalOpen(true);
+  };
+
+  const closeConfirmModal = () => {
+    setIsConfirmModalOpen(false);
+  };
+
   return (
     <div className={style.container}>
       <div className={style.innerConatiner}>
         <div className={style.header}>
-          <div className={style.leftBox}>
-            <img src={cancelBtn} className={style.cancelBtn}></img>
-            <img src={StudyWriteText} className={style.textImgWrapper}></img>
-          </div>
-          <div className={style.rightBox}>
-            <p className={style.addpostText}>사진 추가</p>
-            <img src={ImgPost} className={style.imgAddWrapper}></img>
-          </div>
+          <h3 style={{ fontFamily: 'jalnan', marginTop: '21px' }}>
+            팀원 모으기
+          </h3>
+          <img src={cancelBtn} onClick={openConfirmModal} alt="Cancel" />
         </div>
         <div className={style.contentContainer}>
           <div className={style.topBox}>
@@ -95,6 +101,7 @@ const StudyPostWrite = () => {
                   src={arrow}
                   className={style.arrowImg}
                   onClick={studyFilterHandler}
+                  alt="Arrow"
                 />
               </div>
             </div>
@@ -113,20 +120,18 @@ const StudyPostWrite = () => {
                   </div>
                 </div>
 
-                <div className={style.datePickerContainer}>
-                  <DatePicker
-                    className={style.datePicker}
-                    selectsRange={true}
-                    locale={ko}
-                    dateFormat="MM월dd일"
-                    selected={dateRange.startDate}
-                    startDate={dateRange.startDate}
-                    endDate={dateRange.endDate}
-                    onChange={dates => setChangeDate(dates)}
-                    onFocus={handleDatePickerFocus}
-                    showPopperArrow={false}
-                  />
-                </div>
+                <DatePicker
+                  className={style.datePicker}
+                  selectsRange={true}
+                  locale={ko}
+                  dateFormat="MM월dd일"
+                  selected={dateRange.startDate}
+                  startDate={dateRange.startDate}
+                  endDate={dateRange.endDate}
+                  onChange={dates => setChangeDate(dates)}
+                  onFocus={handleDatePickerFocus}
+                  showPopperArrow={false}
+                />
               </div>
             </div>
 
@@ -146,6 +151,7 @@ const StudyPostWrite = () => {
                   src={arrow}
                   className={style.arrowImg}
                   onClick={memberFilterHandler}
+                  alt="Arrow"
                 />
               </div>
             </div>
@@ -158,9 +164,7 @@ const StudyPostWrite = () => {
               rows="5"
               cols="33"
             />
-            <div className={style.textLengthBox}>
-              <div className={style.textLength}>{text.length}/1000자</div>
-            </div>
+            <div className={style.textLength}>{text.length}/1000자</div>
           </div>
           <div className={style.bottomBox}>
             <div className={style.openChatBox}>
@@ -194,6 +198,7 @@ const StudyPostWrite = () => {
           )}
         </BottomModal>
       )}
+      <ConfirmModal isOpen={isConfirmModalOpen} onClose={closeConfirmModal} />
     </div>
   );
 };

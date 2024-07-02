@@ -40,10 +40,10 @@ import MyPage from './pages/myPage/mypage/MyPage.js';
 import Modify from './pages/myPage/modify/Modify.js';
 
 // 스터디
-import StudyList from './pages/study/studyList/StudyList.js';
-import StudyPostDeatil from './pages/study/studyPostDetail/StudyPostDetail.js';
-import StudyPostWrite from './pages/study/studyPostWrite/StudyPostWrite.js';
-import StudyFilter from './pages/study/studyFilterPage/StudyFIlterPage.js';
+import StudyList from '../src/pages/study/studyList/StudyList.js';
+import StudyPostDeatil from '../src/pages/study/studyPostDetail/StudyPostDetail.js';
+import StudyPostWrite from '../src/pages/study/studyPostWrite/StudyPostWrite.js';
+import StudyFilter from '../src/pages/study/studyFilterPage/StudyFIlterPage.js';
 
 // 축제
 import AnimalApply from './pages/festival/animalApply/AnimalApply.js';
@@ -78,6 +78,7 @@ const App = () => {
   const [buddyCount, setBuddyCount] = useState(0);
 
   const [animalType, setAnimalType] = useState([]);
+  const [photoUrl, setPhotoUrl] = useState(''); // photoUrl 상태 추가
 
   // 타이머 재설정
   const initializeApp = () => {
@@ -142,6 +143,10 @@ const App = () => {
         buddyCount,
         animalType,
         setAnimalType,
+        animalType,
+        setAnimalType,
+        photoUrl,
+        setPhotoUrl,
       }}
     >
       <Router>

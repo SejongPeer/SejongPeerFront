@@ -61,7 +61,6 @@ const AnimalMatchResult = () => {
         );
         const data = await response.json();
         console.log(data);
-        console.log("옾챗 링크 : "+ data.data.kakaoLink)
 
         const gender = localStorage.getItem('gender'); // 로컬스토리지에서 gender 값을 가져옴
         setGender(gender);
@@ -85,7 +84,7 @@ const AnimalMatchResult = () => {
         setMeetingGroupType(data.data.meetingGroupType);
         setKakaoLink(data.data.kakaoLink);
       } catch (error) {
-        console.error('Error fetching match result!!:', error);
+        console.error('Error fetching match result:', error);
       }
     };
 
@@ -100,15 +99,13 @@ const AnimalMatchResult = () => {
       : gender === 'MALE'
         ? 'W'
         : 'M';
-    //console.log('성별 붙인 값 : ' + `${prefix}_${animalType}`);
-
+    console.log('성별 붙인 키 : ' + `${prefix}_${animalType}`);
     return `${prefix}_${animalType}`;
   };
 
   const handleChatButtonClick = () => {
     window.location.href = kakaoLink;
   };
-  
 
   const renderAnimalCards = (animalTypes, isSelf) => {
     return animalTypes.map((animalType, index) => {

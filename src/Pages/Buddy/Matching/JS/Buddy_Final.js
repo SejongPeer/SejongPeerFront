@@ -173,7 +173,6 @@ const Final = props => {
             </div>
             <div className={styles.textWrapperHalf}>{buddyText}</div>
           </div>
-
         </div>
 
         <div className={styles.infoWrapper}>

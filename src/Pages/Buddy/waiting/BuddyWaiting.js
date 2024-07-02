@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import waitingCat from '../../../assets/image/waitingCat.png';
 import style from './BuddyWaiting.module.css';
 
-
 const BuddyWaiting = () => {
   const [countBuddy, setCountBuddy] = useState(0);
   const navigate = useNavigate();

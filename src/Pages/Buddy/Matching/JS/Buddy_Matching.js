@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
-import ChoiceGender from './B_Gender.js';
-import Grade from './B_BuddyType.js';
-import Major from './B_Major.js';
-import GradeDiff from './B_Grade.js';
-import Final from './Buddy_Final.js';
+import ChoiceGender from './B_Gender';
+import Grade from './B_BuddyType';
+import Major from './B_Major';
+import GradeDiff from './B_Grade';
+import Final from './Buddy_Final';
 import ProgressBar from '../../progressBar/ProgressBar.js';
 
 import style from '../css/Buddy_Matching.module.css';

@@ -40,7 +40,7 @@ const Auth = () => {
           localStorage.setItem('name', response.data.data.name);
           localStorage.setItem('grade', response.data.data.grade);
           localStorage.setItem('studentId', Id);
-          navigate('/login/SignUp');
+          navigate('/login/signup');
         }
         setLoading(false);
       })

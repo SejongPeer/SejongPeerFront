@@ -133,7 +133,7 @@ const StudyList = () => {
 
   const navigate = useNavigate();
   const goPost = () => {
-    navigate('/studypost');
+    navigate('/study/post');
   };
 
   return (

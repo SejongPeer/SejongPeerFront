@@ -24,7 +24,7 @@ const Filter_Member = () => {
 
   const handleSliderChange = value => {
     setSliderValue(value); // 슬라이더 값을 업데이트
-    console.log(sliderValue);
+    // console.log(sliderValue);
   };
 
   return (

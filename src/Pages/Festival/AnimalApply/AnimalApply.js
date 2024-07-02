@@ -43,17 +43,17 @@ const AnimalApply = () => {
       <h1>동물상형 미팅</h1>
       <div className={style.container2}>
         <button className={style.apply} onClick={goApply}>
-          동물상 미팅 신청하기
+          <p className={style.font}>동물상 미팅 신청하기</p>
         </button>
         <button className={style.apply} onClick={goAnimalMatchingResult}>
-          매칭 결과 확인하기
+          <p className={style.font}>매칭 결과 확인하기</p>
         </button>
       </div>
       <div className={style.container3}>
         <button className={style.festUse} onClick={goBanner}></button>
         <button className={style.kakao} onClick={kakaoChat}>
           <img src={kakao} alt="카카오톡 문의하기" />
-          카카오톡 문의하기
+          <p style={{ color: 'black' }}>카카오톡 문의하기</p>
         </button>
       </div>
     </div>

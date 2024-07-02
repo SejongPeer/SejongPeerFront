@@ -13,7 +13,7 @@ const HonbobWaiting = () => {
 
   const honbobCancleSubmitHandler = async () => {
     const status = await checkMatchingStatus();
-    console.log(status);
+    // console.log(status);
 
     if (status) {
       alert('이미 매칭이 완료 되었습니다.');
@@ -80,7 +80,6 @@ const HonbobWaiting = () => {
       }
 
       const data = await response.json(); // 주석 해제하여 JSON 응답을 파싱
-      console.log('Status = ', data.data.status);
       // console.log('Status = ', data.data.status);
       return data.data.status === 'MATCHING_COMPLETED';
     } catch (error) {

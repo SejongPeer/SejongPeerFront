@@ -4,6 +4,7 @@ import { MyContext } from '../../../App';
 
 import MainBuddy from './MainBuddy';
 import MainHonbob from './MainHonbob';
+import kakao from '../../../assets/image/kakao.png';
 
 import reprot from '../../../assets/image/report.png';
 import honbobUse from '../../../assets/image/honbobUse.png';
@@ -50,7 +51,7 @@ const MainPage = () => {
           }
         );
         const data = await response.json();
-        console.log(data.data);
+        // console.log(data.data);
 
         if (data.data !== null) setBuddyCount(data.data.matchingCompletedCount);
         else setBuddyCount(0);
@@ -152,8 +153,8 @@ const MainPage = () => {
   };
 
   const StudyHandler = () => {
-    // navigate("/study");
-    alert('4월 중 서비스 예정입니다!');
+    navigate('/study');
+    // alert('4월 중 서비스 예정입니다!');
   };
   const reportUserHandler = () => {
     alert('너 신고');
@@ -243,7 +244,17 @@ const MainPage = () => {
         </div>
         {/* 세종 스터디 버튼 임시로 숨겨둠 - 축제 때문에 */}
         <div className={style.festButton}>
-          <button
+          <div className={style.studyText}>
+            <h3 style={{ fontFamily: 'jalnan', margin: '16px 4px 12px 0px' }}>
+              세종스터디
+            </h3>
+            <p style={{ fontFamily: 'Pretendard' }}>인생 팀원 구하기</p>
+          </div>
+          <div className={style.studyContainer}>
+            <button className={style.school} onClick={StudyHandler}></button>
+            <button className={style.except}></button>
+          </div>
+          {/* <button
             className={style.festButton2}
             style={{ backgroundColor: '#FAFAFA' }}
             onClick={goAnimalResult}
@@ -260,15 +271,19 @@ const MainPage = () => {
             onClick={goResult}
           >
             <p>미팅하기</p>
-          </button>
+          </button> */}
         </div>
         {/* <img className={style.ready} src={ready} /> */}
       </div>
-      <div className={style.report_user_box} onClick={kakaoChat}>
-        <div className={style.reprot_icon}>
-          <img src={reprot} alt="reprot" />
-        </div>
-        <span style={{ color: '#555', fontWeight: '800' }}>악성 유저 신고</span>
+      <div onClick={kakaoChat}>
+        <button
+          className={style.kakao}
+          onClick={kakaoChat}
+          style={{ gap: '10px' }}
+        >
+          <img src={kakao} alt="카카오톡 문의하기" />
+          카카오톡 문의하기
+        </button>
       </div>
       {/* <button className={style.btn} onClick={readyHandler}>
             <MainStudy />
