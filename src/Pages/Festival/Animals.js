@@ -1,14 +1,14 @@
-import M_Bear from '../../Assets/Animals/M_Bear.png';
-import M_Cat from '../../Assets/Animals/M_Cat.png';
-import M_Dino from '../../Assets/Animals/M_Dino.png';
-import M_Dog from '../../Assets/Animals/M_Dog.png';
-import M_Rabbit from '../../Assets/Animals/M_Rabbit.png';
-import M_Wolf from '../../Assets/Animals/M_Wolf.png';
-import W_Cat from '../../Assets/Animals/W_Cat.png';
-import W_Dear from '../../Assets/Animals/W_Dear.png';
-import W_DesertFox from '../../Assets/Animals/W_DesertFox.png';
-import W_Dog from '../../Assets/Animals/W_Dog.png';
-import W_Rabbit from '../../Assets/Animals/W_Rabbit.png';
+import M_Bear from '../../assets/Animals/M_Bear.png';
+import M_Cat from '../../assets/Animals/M_Cat.png';
+import M_Dino from '../../assets/Animals/M_Dino.png';
+import M_Dog from '../../assets/Animals/M_Dog.png';
+import M_Rabbit from '../../assets/Animals/M_Rabbit.png';
+import M_Wolf from '../../assets/Animals/M_Wolf.png';
+import W_Cat from '../../assets/Animals/W_Cat.png';
+import W_Dear from '../../assets/Animals/W_Dear.png';
+import W_DesertFox from '../../assets/Animals/W_DesertFox.png';
+import W_Dog from '../../assets/Animals/W_Dog.png';
+import W_Rabbit from '../../assets/Animals/W_Rabbit.png';
 
 export const ANIMAL_IMAGES = {
   M_Cat: M_Cat,

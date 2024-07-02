@@ -4,60 +4,60 @@ import './App.css';
 import { jwtDecode } from 'jwt-decode';
 
 //메인 컴포넌트
-import Header from './Components/Header/Header.js';
-import StartLoading from './Pages/main/landing/StartLoading.js';
-import MainPage from './Pages/main/MainPage/MainPage.js';
+import Header from './components/header/Header.js';
+import StartLoading from './pages/main/landing/StartLoading.js';
+import MainPage from './pages/main/mainPage/MainPage.js';
 
 //버디 컴포넌트
-import BuddyStart1 from './Pages/Buddy/info/BuddyStart1.js';
-import BuddyStart2 from './Pages/Buddy/info/BuddyStart2.js';
-import BuddyMatching from './Pages/Buddy/Matching/JS/Buddy_Matching.js';
-import BuddyWaiting from './Pages/Buddy/waiting/BuddyWaiting.js';
-import BuddyAccept from './Pages/Buddy/accept/BuddyAccept.js';
-import BuddySuccess from './Pages/Buddy/success/BuddySuccess.js';
-import Confirm from './Components/Modal/Confirm.js';
+import BuddyStart1 from './pages/buddy/info/BuddyStart1.js';
+import BuddyStart2 from './pages/buddy/info/BuddyStart2.js';
+import BuddyMatching from './pages/buddy/matching/js/Buddy_Matching.js';
+import BuddyWaiting from './pages/buddy/waiting/BuddyWaiting.js';
+import BuddyAccept from './pages/buddy/accept/BuddyAccept.js';
+import BuddySuccess from './pages/buddy/success/BuddySuccess.js';
+import Confirm from './components/modal/Confirm.js';
 
 //혼밥 컴포넌트
-import Honbob_Matching from './Pages/Honbob/Matching/JS/Honbob_Matching.js';
-import HonbobWaiting from './Pages/Honbob/waiting/HonbobWaiting.js';
-import HonbobSuccess from './Pages/Honbob/success/HonbobSuccess.js';
-import HonbobStart1 from './Pages/Honbob/info/HonbobStart1.js';
+import Honbob_Matching from './pages/honbob/matching/js/Honbob_Matching.js';
+import HonbobWaiting from './pages/honbob/waiting/HonbobWaiting.js';
+import HonbobSuccess from './pages/honbob/success/HonbobSuccess.js';
+import HonbobStart1 from './pages/honbob/info/HonbobStart1.js';
 
 //회원가입/로그인
-import SignIn from './Pages/Login/SignIn/SignIn.js';
-import SignUp from './Pages/Login/SignUp/SignUp.js';
-import Auth from './Pages/Login/SignUp/Auth/Auth.js';
-import Major from './Components/Modal/Major.js';
-import FindId from './Pages/Login/find/findId/FindId.js';
-import ResetPwd from './Pages/Login/find/ResetPwd/ResetPwd.js';
+import SignIn from './pages/login/signIn/SignIn.js';
+import SignUp from './pages/login/signUp/SignUp.js';
+import Auth from './pages/login/signUp/Auth/Auth.js';
+import Major from './components/modal/Major.js';
+import FindId from './pages/login/find/findId/FindId.js';
+import ResetPwd from './pages/login/find/resetPwd/ResetPwd.js';
 import Agree1 from './constants/privacyPolicy/Agree1.js';
 import Agree2 from './constants/privacyPolicy/Agree2.js';
 import Agree3 from './constants/privacyPolicy/Agree3.js';
-import Agree from './Pages/Login/SignUp/Agree.js';
+import Agree from './pages/login/signUp/Agree.js';
 
 //마이페이지
-import MyPage from './Pages/myPage/mypage/MyPage.js';
-import Modify from './Pages/myPage/modify/Modify.js';
+import MyPage from './pages/myPage/mypage/MyPage.js';
+import Modify from './pages/myPage/modify/Modify.js';
 
 // 스터디
-import StudyList from '../src/Pages/Study/StudyList/StudyList.js';
-import StudyPostDeatil from '../src/Pages/Study/StudyPostDetail/StudyPostDetail.js';
-import StudyPostWrite from '../src/Pages/Study/StudyPostWrite/StudyPostWrite.js';
-import StudyFilter from '../src/Pages/Study/StudyFilterPage/StudyFIlterPage.js';
+import StudyList from '../src/pages/study/studyList/StudyList.js';
+import StudyPostDeatil from '../src/pages/study/studyPostDetail/StudyPostDetail.js';
+import StudyPostWrite from '../src/pages/study/studyPostWrite/StudyPostWrite.js';
+import StudyFilter from '../src/pages/study/studyFilterPage/StudyFIlterPage.js';
 
 // 축제
-import AnimalApply from './Pages/Festival/AnimalApply/AnimalApply.js';
-import AnimalApply2 from './Pages/Festival/AnimalApply2/AnimalApply2.js';
-import AnimalApply3 from './Pages/Festival/AnimalApply3/AnimalApply3.js';
-import AnimalApply4 from './Pages/Festival/AnimalApply4/AnimalApply4.js';
-import AnimalApply5 from './Pages/Festival/AnimalApply5/AnimalApply5.js';
-import ApplyComplete from './Pages/Festival/ApplyComplete/ApplyComplete.js';
+import AnimalApply from './pages/festival/animalApply/AnimalApply.js';
+import AnimalApply2 from './pages/festival/animalApply2/AnimalApply2.js';
+import AnimalApply3 from './pages/festival/animalApply3/AnimalApply3.js';
+import AnimalApply4 from './pages/festival/animalApply4/AnimalApply4.js';
+import AnimalApply5 from './pages/festival/animalApply5/AnimalApply5.js';
+import ApplyComplete from './pages/festival/applyComplete/ApplyComplete.js';
 
-import AnimalMatchInfo from './Pages/Festival/AnimalMatchResult/AnimalMatchInfo.js';
-import AnimalMatchResult from './Pages/Festival/AnimalMatchResult/AnimalMatchResult.js';
+import AnimalMatchInfo from './pages/festival/animalMatchResult/AnimalMatchInfo.js';
+import AnimalMatchResult from './pages/festival/animalMatchResult/AnimalMatchResult.js';
 
-import AnimalCheck from './Pages/Festival/AnimalCheck/AnimalCheck.js';
-import AnimalResult from './Pages/Festival/AnimalResult/AnimalResult.js';
+import AnimalCheck from './pages/festival/animalCheck/AnimalCheck.js';
+import AnimalResult from './pages/festival/animalResult/AnimalResult.js';
 
 export const MyContext = createContext();
 
@@ -110,7 +110,6 @@ const App = () => {
     localStorage.removeItem('refreshToken');
   };
 
-  
   return (
     <MyContext.Provider
       value={{
@@ -144,10 +143,10 @@ const App = () => {
         buddyCount,
         animalType,
         setAnimalType,
-        animalType, 
-        setAnimalType, 
-        photoUrl, 
-        setPhotoUrl
+        animalType,
+        setAnimalType,
+        photoUrl,
+        setPhotoUrl,
       }}
     >
       <Router>

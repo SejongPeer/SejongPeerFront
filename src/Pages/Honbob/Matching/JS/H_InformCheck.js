@@ -1,5 +1,5 @@
-import con from '../CSS/H_Container.module.css';
-import style from '../CSS/H_informCheck.module.css';
+import con from '../css/H_Container.module.css';
+import style from '../css/H_informCheck.module.css';
 const H_informCheck = props => {
   const kakaoAccount = localStorage.getItem('kakaoAccount');
   const phoneNumber = localStorage.getItem('phoneNumber');

@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 
-import check from '../../../../Assets/image/check.png';
-import nugul from '../../../../Assets/image/nugul.png';
-import con from '../CSS/B_Container.module.css';
-import btn3 from '../CSS/B_Btn3.module.css';
+import check from '../../../../assets/image/check.png';
+import nugul from '../../../../assets/image/nugul.png';
+import con from '../css/B_Container.module.css';
+import btn3 from '../css/B_Btn3.module.css';
 
 const Major = props => {
   const [isMajorClicked, setIsMajorClicked] = useState(false);

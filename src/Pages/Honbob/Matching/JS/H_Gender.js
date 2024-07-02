@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import con from '../CSS/H_Container.module.css';
-import btn2 from '../CSS/H_Btn2.module.css';
+import con from '../css/H_Container.module.css';
+import btn2 from '../css/H_Btn2.module.css';
 import styled from 'styled-components';
 
 const H_Gender = props => {

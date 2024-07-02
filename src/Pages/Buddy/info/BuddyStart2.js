@@ -1,12 +1,12 @@
 import { useNavigate } from 'react-router-dom';
-import BuddyStart from '../../../Assets/image/buddyStart2.png';
+import BuddyStart from '../../../assets/image/buddyStart2.png';
 import style from './BuddyStart.module.css';
 
 const BuddyStart2 = () => {
   const navigate = useNavigate();
 
   const BuddyHandler = async () => {
-    navigate("/buddy/matching");
+    navigate('/buddy/matching');
   };
 
   const BackHandler = () => {

@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'jalnan';
-  src: url(../../../Assets/font/Jalnan2.otf);
+  src: url(../../../assets/font/Jalnan2.otf);
 }
 
 @media (max-width: 768px) {
@@ -47,17 +47,17 @@
     font-weight: 800;
     margin: 24px 0 0 0;
   }
-  .info{
+  .info {
     width: 70vw;
     height: 32px;
-    border: 1px solid #FF4B4B;
+    border: 1px solid #ff4b4b;
     border-radius: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 7%;
   }
-  .info p{
+  .info p {
     font-size: 14px;
     font-weight: 700;
   }
@@ -124,13 +124,13 @@
   .ratio_back {
     width: 72%;
     height: 4px;
-    background-color: #FF7474;
+    background-color: #ff7474;
   }
 
   .down_btn2 {
     width: 38vh;
     height: 6.5vh;
-    background-color: #F1F1F5;
+    background-color: #f1f1f5;
     border-radius: 26px;
     color: black;
     font-size: 1.125rem;
@@ -198,17 +198,17 @@
     font-weight: 800;
     margin: 24px 0 0 0;
   }
-  .info{
+  .info {
     width: 35vw;
     height: 32px;
-    border: 1px solid #FF4B4B;
+    border: 1px solid #ff4b4b;
     border-radius: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 7%;
   }
-  .info p{
+  .info p {
     font-size: 14px;
     font-weight: 700;
   }
@@ -291,14 +291,13 @@
   .down_btn2 {
     width: 72%;
     height: 6vh;
-    background-color: #F1F1F5;
+    background-color: #f1f1f5;
     border-radius: 26px;
     color: black;
     font-size: 1.125rem;
     font-weight: 800;
     margin: 1vh 0;
   }
-  
 
   .go_home {
     color: #999999;

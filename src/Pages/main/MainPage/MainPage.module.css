@@ -62,7 +62,7 @@
   .festButton {
     width: 351px;
     height: 204px;
-    background-image: url('../../../Assets/image/Festival.png');
+    /* background-image: url('../../../assets/image/Festival.png'); */
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -98,7 +98,7 @@
     background-color: white;
     border: 1px solid #e5e5e5;
     border-radius: 16px;
-    background-image: url('../../../Assets/image/ready.png');
+    background-image: url('../../../assets/image/ready.png');
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
@@ -295,21 +295,43 @@
   }
 
   .festButton {
-    width: 351px;
+    width: 343px;
     height: 204px;
-    background-image: url(../../../Assets/image/Festival.png);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
+    background-color: white;
+    margin-top: 10px;
+    border-radius: 15px;
+  }
+
+  .studyText {
+    display: flex;
+    align-items: baseline;
+    margin-left: 16px;
+  }
+  .studyContainer {
     display: flex;
     justify-content: center;
-    align-items: center;
-    margin-top: 10px;
-    border: 1px solid #e5e5e5;
-    border-radius: 15px;
     gap: 7px;
   }
 
+  .school {
+    width: 152px;
+    height: 136px;
+    background-image: url('../../../assets/image/school.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: white;
+  }
+
+  .except {
+    width: 152px;
+    height: 136px;
+    background-image: url('../../../assets/image/except.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: white;
+  }
   .festButton2 {
     margin-top: 144px;
     width: 152px;
@@ -333,7 +355,7 @@
     background-color: white;
     border: 1px solid #e5e5e5;
     border-radius: 16px;
-    background-image: url('../../../Assets/image/ready.png');
+    background-image: url('../../../assets/image/ready.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;

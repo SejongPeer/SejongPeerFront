@@ -19,7 +19,7 @@
     width: 45vh;
     height: 35vh;
     margin-top: 5vh;
-    background-image: url('../../../Assets/image/honbobSuccessImg.png');
+    background-image: url('../../../assets/image/honbobSuccessImg.png');
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
@@ -113,7 +113,7 @@
     width: 40vh;
     height: 25vh;
     margin-top: 5vh;
-    background-image: url('../../../Assets/image/honbobSuccessImg.png');
+    background-image: url('../../../assets/image/honbobSuccessImg.png');
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;

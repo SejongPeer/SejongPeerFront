@@ -2,9 +2,9 @@ import { check } from 'prettier';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import checkBtn from '../../../Assets/image/checkBtn.png';
+import checkBtn from '../../../assets/image/checkBtn.png';
 
-import style from '../AnimalApply3/AnimalApply3.module.css';
+import style from '../animalApply3/AnimalApply3.module.css';
 
 // 동물상 미팅 신청 3페이지
 const AnimalApply3 = () => {

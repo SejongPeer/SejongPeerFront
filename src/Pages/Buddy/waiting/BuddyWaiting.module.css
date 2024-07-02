@@ -14,7 +14,7 @@
   height: 45vh;
 }
 .title {
-  font-family: "jalnan";
+  font-family: 'jalnan';
   color: #ff4b4b;
   font-size: 3rem;
   margin: 0;
@@ -34,7 +34,6 @@
   margin-top: 2vh;
 }
 
-
 .BtnBox {
   width: 80%;
   display: flex;
@@ -52,7 +51,7 @@
   font-weight: 600;
   font-size: 0.9rem;
   text-align: center;
-  color: #FF7474;
+  color: #ff7474;
   margin: 0.5vh;
 }
 .moveToHomeBtn {
@@ -77,6 +76,6 @@
 }
 
 @font-face {
-  font-family: "jalnan";
-  src: url(../../../Assets/font/Jalnan2.otf);
+  font-family: 'jalnan';
+  src: url(../../../assets/font/Jalnan2.otf);
 }

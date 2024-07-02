@@ -4,15 +4,15 @@ import { MyContext } from '../../../App';
 
 import MainBuddy from './MainBuddy';
 import MainHonbob from './MainHonbob';
-import kakao from '../../../Assets/image/kakao.png';
+import kakao from '../../../assets/image/kakao.png';
 
-import reprot from '../../../Assets/image/report.png';
-import honbobUse from '../../../Assets/image/honbobUse.png';
-import peerUse from '../../../Assets/image/peerUse.png';
-import buddyUse from '../../../Assets/image/buddyUse.png';
-import buddy_button from '../../../Assets/image/buddy_button.png';
-import honbobButton from '../../../Assets/image/honbobButton.png';
-import ready from '../../../Assets/image/ready.png';
+import reprot from '../../../assets/image/report.png';
+import honbobUse from '../../../assets/image/honbobUse.png';
+import peerUse from '../../../assets/image/peerUse.png';
+import buddyUse from '../../../assets/image/buddyUse.png';
+import buddy_button from '../../../assets/image/buddy_button.png';
+import honbobButton from '../../../assets/image/honbobButton.png';
+import ready from '../../../assets/image/ready.png';
 import style from './MainPage.module.css';
 
 const images = [honbobUse, buddyUse, peerUse];
@@ -153,8 +153,8 @@ const MainPage = () => {
   };
 
   const StudyHandler = () => {
-    // navigate("/study");
-    alert('4월 중 서비스 예정입니다!');
+    navigate('/study');
+    // alert('4월 중 서비스 예정입니다!');
   };
   const reportUserHandler = () => {
     alert('너 신고');
@@ -244,7 +244,17 @@ const MainPage = () => {
         </div>
         {/* 세종 스터디 버튼 임시로 숨겨둠 - 축제 때문에 */}
         <div className={style.festButton}>
-          <button
+          <div className={style.studyText}>
+            <h3 style={{ fontFamily: 'jalnan', margin: '16px 4px 12px 0px' }}>
+              세종스터디
+            </h3>
+            <p style={{ fontFamily: 'Pretendard' }}>인생 팀원 구하기</p>
+          </div>
+          <div className={style.studyContainer}>
+            <button className={style.school} onClick={StudyHandler}></button>
+            <button className={style.except}></button>
+          </div>
+          {/* <button
             className={style.festButton2}
             style={{ backgroundColor: '#FAFAFA' }}
             onClick={goAnimalResult}
@@ -261,7 +271,7 @@ const MainPage = () => {
             onClick={goResult}
           >
             <p>미팅하기</p>
-          </button>
+          </button> */}
         </div>
         {/* <img className={style.ready} src={ready} /> */}
       </div>

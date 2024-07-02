@@ -1,22 +1,22 @@
-import { useState } from "react";
-import con from "../CSS/H_Container.module.css";
-import btn2 from "../CSS/H_Btn2.module.css";
+import { useState } from 'react';
+import con from '../css/H_Container.module.css';
+import btn2 from '../css/H_Btn2.module.css';
 
-const ChoiceGenderHonbob = (props) => {
+const ChoiceGenderHonbob = props => {
   const [isSameClicked, setIsSameClicked] = useState(false);
   const [isDontCareClicked, setIsDontCareClicked] = useState(false);
 
   const clickSameBtnHandler = () => {
     setIsSameClicked(true);
     setIsDontCareClicked(false);
-    const choiceGender = "남자";
+    const choiceGender = '남자';
     props.sendChoiceMyGenderData(choiceGender);
   };
 
   const clickDontCareBtnHandler = () => {
     setIsSameClicked(false);
     setIsDontCareClicked(true);
-    const choiceGender = "여자";
+    const choiceGender = '여자';
     props.sendChoiceMyGenderData(choiceGender);
   };
 
