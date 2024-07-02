@@ -42,7 +42,7 @@ const SignUp = props => {
   const [isIdExist, setIsIdExist] = useState(true);
   const [isNicknameExist, setIsNicknameExist] = useState(true);
 
-  const signUpErrorHandler = error => {
+  const SignUpErrorHandler = error => {
     setError(error);
     if (error === '') {
       setError('가입완료 되었습니다.');
@@ -227,13 +227,13 @@ const SignUp = props => {
         <div className={`${style.form} ${fadeEffect}`}>
           {step === 1 && (
             <>
-              {/* <IDCheckBox idData={idData} errorHandler={signUpErrorHandler} setIsIdExist={setIsIdExist} /> */}
+              {/* <IDCheckBox idData={idData} errorHandler={SignUpErrorHandler} setIsIdExist={setIsIdExist} /> */}
               <SignUpElement
                 id="userId"
                 title="아이디 입력(공백 없이 4-24자)"
                 name="아이디 입력"
                 idData={idData}
-                signUpErrorHandler={signUpErrorHandler}
+                SignUpErrorHandler={SignUpErrorHandler}
                 idExistHandler={idExistHandler}
                 isIdExist={isIdExist}
                 idValue={idValue}
@@ -244,7 +244,7 @@ const SignUp = props => {
                   title="비밀번호(10자 이상의 영문, 숫자)"
                   name="비밀번호 입력"
                   pwdData={pwdData}
-                  signUpErrorHandler={signUpErrorHandler}
+                  SignUpErrorHandler={SignUpErrorHandler}
                   pwdValue={pwdValue}
                 />
               </div>
@@ -253,7 +253,7 @@ const SignUp = props => {
                   id="pwdCheck"
                   name="비밀번호 확인"
                   pwdCheckData={pwdCheckData}
-                  signUpErrorHandler={signUpErrorHandler}
+                  SignUpErrorHandler={SignUpErrorHandler}
                   pwdValue={pwdValue}
                   pwdCheckValue={pwdCheckValue}
                 />
@@ -263,21 +263,21 @@ const SignUp = props => {
                 title="이름"
                 name={name}
                 nameData={nameData}
-                signUpErrorHandler={signUpErrorHandler}
+                SignUpErrorHandler={SignUpErrorHandler}
               />
               <SignUpElement
                 id="studentNum"
                 title="학번"
                 name={studentId}
                 studentNumData={studentNumData}
-                signUpErrorHandler={signUpErrorHandler}
+                SignUpErrorHandler={SignUpErrorHandler}
               />
               <SignUpElement
                 id="grade"
                 title="학년"
                 name={grade}
                 gradeData={gradeData}
-                signUpErrorHandler={signUpErrorHandler}
+                SignUpErrorHandler={SignUpErrorHandler}
               />
               <button className={style.submitBtn} onClick={nextStepHandler}>
                 다음
@@ -293,7 +293,7 @@ const SignUp = props => {
                 title="닉네임 입력"
                 name="닉네임 입력"
                 nickNameData={nickNameData}
-                signUpErrorHandler={signUpErrorHandler}
+                SignUpErrorHandler={SignUpErrorHandler}
                 nicknameExistHandler={nicknameExistHandler}
                 nicknameValue={nicknameValue}
               />
@@ -302,7 +302,7 @@ const SignUp = props => {
                 title="카카오톡 아이디"
                 name="카카오톡 아이디 입력(매칭 상대방에게 전달)"
                 kakaoData={kakaoData}
-                signUpErrorHandler={signUpErrorHandler}
+                SignUpErrorHandler={SignUpErrorHandler}
                 kakaoidValue={kakaoidValue}
               />
               <SignUpElement
@@ -310,7 +310,7 @@ const SignUp = props => {
                 title="전화번호"
                 name="전화번호 - 없이 입력"
                 phoneNumData={phoneNumData}
-                signUpErrorHandler={signUpErrorHandler}
+                SignUpErrorHandler={SignUpErrorHandler}
                 phoneNumberValue={phoneNumberValue}
               />
               <div className={style.Info}>
@@ -321,7 +321,7 @@ const SignUp = props => {
                 title="성별"
                 name="준비중"
                 genderData={genderData}
-                signUpErrorHandler={signUpErrorHandler}
+                SignUpErrorHandler={SignUpErrorHandler}
                 genderValue={genderValue}
               />
               <SignUpElement
@@ -330,7 +330,7 @@ const SignUp = props => {
                 name="단과대/학과 선택"
                 majorData={majorData}
                 collegeData={collegeData}
-                signUpErrorHandler={signUpErrorHandler}
+                SignUpErrorHandler={SignUpErrorHandler}
                 collegeValue={collegeValue}
                 majorValue={majorValue}
               />
@@ -365,7 +365,7 @@ const SignUp = props => {
                   name="복수전공/부전공 선택"
                   doublemajorData={doublemajorData}
                   doubleCollegeData={doubleCollegeData}
-                  signUpErrorHandler={signUpErrorHandler}
+                  SignUpErrorHandler={SignUpErrorHandler}
                   doublemajorValue={doublemajorValue}
                   doubleCollegeValue={doubleCollegeValue}
                 />

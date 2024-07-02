@@ -4,7 +4,7 @@ import { MyContext } from '../../../App';
 
 import SignInBox from './SignInBox';
 
-import style from './SignIn.module.css'
+import style from './SignIn.module.css';
 
 const SignIn = () => {
   const { setLogoutTimer } = useContext(MyContext);
@@ -92,7 +92,7 @@ const SignIn = () => {
             ID • PW 찾기
           </button>
           <span className={style.line}> | </span>
-          <button onClick={goSignUpHandler} className={style.signUpBtn}>
+          <button onClick={goSignUpHandler} className={style.SignUpBtn}>
             회원가입
           </button>
         </div>

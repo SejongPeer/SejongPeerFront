@@ -2,9 +2,9 @@ import { useState, useContext } from 'react';
 import { MyContext } from '../../../App';
 import { useNavigate } from 'react-router-dom';
 
-import search from '../../../Assets/image/search_black.png';
-import comment_down from '../../../Assets/image/comment_down.png';
-import scrap from '../../../Assets/image/scrap.png';
+import search from '../../../assets/image/search_black.png';
+import comment_down from '../../../assets/image/comment_down.png';
+import scrap from '../../../assets/image/scrap.png';
 import style from './StudyPostDetail.module.css';
 
 const StudyListPostDetail = () => {

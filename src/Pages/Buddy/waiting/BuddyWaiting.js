@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import waitingCat from '../../../Assets/image/waitingCat.png';
+import waitingCat from '../../../assets/image/waitingCat.png';
 import style from './BuddyWaiting.module.css';
 
 

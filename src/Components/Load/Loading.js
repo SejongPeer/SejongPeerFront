@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Spinner from '../../Assets/image/spinner.gif';
+import Spinner from '../../assets/image/spinner.gif';
 
 import style from './Loading.module.css';
 

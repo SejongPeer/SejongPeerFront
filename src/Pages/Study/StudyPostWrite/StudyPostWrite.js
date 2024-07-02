@@ -5,14 +5,14 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import ko from 'date-fns/locale/ko';
 
-import BottomModal from '../../../Components/Modal/BottomModal';
-import StudyPostField from './StudyPostField/StudyPostField';
-import StudyMember from './StudyMember/StudyMember';
+import BottomModal from '../../../components/modal/BottomModal';
+import StudyPostField from './studyPostField/StudyPostField';
+import StudyMember from './studyMember/StudyMember';
 
-import arrow from '../../../Assets/image/down_black.png';
-import cancel_black from '../../../Assets/image/cancel_black.png';
-import ImgPost from '../../../Assets/image/ImgPost.png';
-import StudyWriteText from '../../../Assets/image/StudyWriteText.png';
+import arrow from '../../../assets/image/down_black.png';
+import cancelBtn from '../../../assets/image/cancel_black.png';
+import ImgPost from '../../../assets/image/ImgPost.png';
+import StudyWriteText from '../../../assets/image/StudyWriteText.png';
 import style from './StudyPostWrite.module.css';
 import './StudyPostWriteBasic.css';
 
@@ -106,9 +106,9 @@ const StudyPostWrite = () => {
                   <div className={style.periodDate}>
                     {startDate && endDate
                       ? `${format(startDate, 'M월 d일')} ~ ${format(
-                        endDate,
-                        'M월 d일'
-                      )}`
+                          endDate,
+                          'M월 d일'
+                        )}`
                       : null}
                   </div>
                 </div>

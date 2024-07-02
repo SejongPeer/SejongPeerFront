@@ -1,9 +1,12 @@
 import ANIMAL_TYPE from '../../../constants/animal/animal_info';
-import test from '../../../Assets/image/man_wolf.png';
+import test from '../../../assets/image/man_wolf.png';
 import style from './AnimalResult.module.css';
 
 const AnimalInfo = props => {
   const result = ANIMAL_TYPE.find(a => a.id === props.type);
+  console.log()
+  const imgSrc = result.src;
+  console.log(imgSrc);
 
   return (
     <div className={style.info_wrapper}>

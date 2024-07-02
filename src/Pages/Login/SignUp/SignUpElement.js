@@ -19,7 +19,7 @@ const SignUpElement = props => {
 
   const errorHandler = error => {
     setIsError(error);
-    props.signUpErrorHandler(error);
+    props.SignUpErrorHandler(error);
   };
 
   // useEffect(() => {

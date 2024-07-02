@@ -3,13 +3,13 @@ import { MyContext } from '../../../App';
 import { useNavigate } from 'react-router-dom';
 
 import StudyListPost from './StudyListPost';
-import BottomModal from '../../../Components/Modal/BottomModal';
+import BottomModal from '../../../components/modal/BottomModal';
 import Filter_now from './Filter_now';
 import Filter_Feild from './Filter_Feild';
 import Filter_Member from './Filter_Member';
 
 import style from './StudyList.module.css';
-import select from '../../../Assets/image/select.png';
+import select from '../../../assets/image/select.png';
 
 const StudyList = () => {
   const [posts, setPosts] = useState([
@@ -125,7 +125,7 @@ const StudyList = () => {
   const [onFilter, setOnFilter] = useState(['ongoing', 'finish']);
   // all - 모두, ongoing - 모집 중, finish - 모집완료
 
-  const onFilterHandler = onFilter => { };
+  const onFilterHandler = onFilter => {};
 
   // 필터링
 

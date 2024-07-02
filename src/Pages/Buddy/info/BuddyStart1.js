@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
 
-import buddyStart1 from "../../../Assets/image/buddyStart1.png"
+import buddyStart1 from "../../../assets/image/buddyStart1.png"
 import style from './BuddyStart.module.css';
 
 const BuddyStart1 = () => {

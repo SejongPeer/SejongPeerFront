@@ -61,7 +61,7 @@
     color: #333333;
   }
   .item-0 {
-    background-image: url('../../../../Assets/image/KoreanFood.png');
+    background-image: url('../../../../assets/image/KoreanFood.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -71,7 +71,7 @@
   }
 
   .item-1 {
-    background-image: url('../../../../Assets/image/westernFood.png');
+    background-image: url('../../../../assets/image/westernFood.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -80,7 +80,7 @@
   }
 
   .item-2 {
-    background-image: url('../../../../Assets/image/ChineseFood.png');
+    background-image: url('../../../../assets/image/ChineseFood.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -90,7 +90,7 @@
   }
 
   .item-3 {
-    background-image: url('../../../../Assets/image/JapaneseFood.png');
+    background-image: url('../../../../assets/image/JapaneseFood.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -175,7 +175,7 @@
     color: #333333;
   }
   .item-0 {
-    background-image: url('../../../../Assets/image/KoreanFood.png');
+    background-image: url('../../../../assets/image/KoreanFood.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -185,7 +185,7 @@
   }
 
   /* .item-1 {
-    background-image: url('../../../../Assets/image/westernFood.png');
+    background-image: url('../../../../assets/image/westernFood.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -194,7 +194,7 @@
     aspect-ratio: 1/1;
   } */
   .item-1 {
-    background-image: url('../../../../Assets/image/westernFood.png');
+    background-image: url('../../../../assets/image/westernFood.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -203,7 +203,7 @@
   }
 
   .item-2 {
-    background-image: url('../../../../Assets/image/ChineseFood.png');
+    background-image: url('../../../../assets/image/ChineseFood.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100% 100%;
@@ -214,7 +214,7 @@
   }
 
   .item-3 {
-    background-image: url('../../../../Assets/image/JapaneseFood.png');
+    background-image: url('../../../../assets/image/JapaneseFood.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100% 100%;

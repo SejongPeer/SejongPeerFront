@@ -8,7 +8,7 @@
   }
 
   .container2 {
-    background-image: url('../../../Assets/image/animalTitle.png');
+    background-image: url('../../../assets/image/animalTitle.png');
     background-repeat: no-repeat;
     background-size: cover;
     width: 100%;
@@ -53,7 +53,7 @@
     flex-direction: column;
   }
   .container2 {
-    background-image: url('../../../Assets/image/animalTitle.png');
+    background-image: url('../../../assets/image/animalTitle.png');
     background-repeat: no-repeat;
     background-size: cover;
     width: 100%;

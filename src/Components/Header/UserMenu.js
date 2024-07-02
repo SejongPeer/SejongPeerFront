@@ -1,17 +1,17 @@
-import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
-import usermenu from "../../Assets/image/usermenu.png";
+import usermenu from '../../assets/image/usermenu.png';
 
-import style from "./UserMenu.module.css";
+import style from './UserMenu.module.css';
 
 const UserMenu = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const refreshToken = localStorage.getItem("refreshToken");
-  const accessToken = localStorage.getItem("accessToken");
+  const refreshToken = localStorage.getItem('refreshToken');
+  const accessToken = localStorage.getItem('accessToken');
 
   useEffect(() => {
-    if (refreshToken === null & accessToken === null) {
+    if ((refreshToken === null) & (accessToken === null)) {
       setIsLoggedIn(false);
     } else {
       setIsLoggedIn(true);
@@ -20,16 +20,21 @@ const UserMenu = () => {
 
   const navigate = useNavigate();
   const goLogin = () => {
-    navigate("/login");
+    navigate('/login');
   };
   const goMyPage = () => {
-    navigate("/mypage");
+    navigate('/mypage');
   };
 
   return (
     <button className={style.wrapper}>
       {isLoggedIn ? (
-        <img onClick={goMyPage} className={style.usericon} src={usermenu} alt="usericon" />
+        <img
+          onClick={goMyPage}
+          className={style.usericon}
+          src={usermenu}
+          alt="usericon"
+        />
       ) : (
         <span className={style.login} onClick={goLogin}>
           로그인

@@ -1,21 +1,21 @@
-import { useState, useEffect } from "react";
-import ChoiceGender from "./B_Gender";
-import Grade from "./B_BuddyType";
-import Major from "./B_Major";
-import GradeDiff from "./B_Grade";
-import Final from "./Buddy_Final";
-import ProgressBar from "../../progressBar/ProgressBar.js";
+import { useState, useEffect } from 'react';
+import ChoiceGender from './B_Gender.js';
+import Grade from './B_BuddyType.js';
+import Major from './B_Major.js';
+import GradeDiff from './B_Grade.js';
+import Final from './Buddy_Final.js';
+import ProgressBar from '../../progressBar/ProgressBar.js';
 
-import style from "../CSS/Buddy_Matching.module.css";
+import style from '../css/Buddy_Matching.module.css';
 
 const Buddy_Matching = () => {
   const [slide, setSlide] = useState(0);
 
-  const [choiceGender, setChoiceGender] = useState("");
-  const [grade, setGrade] = useState("");
-  const [major, setMajor] = useState("");
+  const [choiceGender, setChoiceGender] = useState('');
+  const [grade, setGrade] = useState('');
+  const [major, setMajor] = useState('');
   const [subMajor, setSubMajor] = useState(false);
-  const [gradeDiff, setGradeDiff] = useState("");
+  const [gradeDiff, setGradeDiff] = useState('');
 
   // 화면 넓이 설정
   const [width, setWidth] = useState(window.innerWidth);
@@ -30,9 +30,9 @@ const Buddy_Matching = () => {
       }
       setWidth(wrapperWidth);
     };
-    window.addEventListener("resize", handleResize);
+    window.addEventListener('resize', handleResize);
     return () => {
-      window.removeEventListener("resize", handleResize);
+      window.removeEventListener('resize', handleResize);
     };
   }, [width]);
 
@@ -65,29 +65,29 @@ const Buddy_Matching = () => {
 
   // 슬라이드별 이동
   const Slide = {
-    transform: "translateX(" + -width * slide + "px)",
+    transform: 'translateX(' + -width * slide + 'px)',
   };
 
   //Final에서
-  const slideMove = (page) => {
+  const slideMove = page => {
     const p = page;
     setSlide(p);
   };
 
   //사용자가 입력한 정보
-  const GenderChoiceData = (choiceGender) => {
+  const GenderChoiceData = choiceGender => {
     setChoiceGender(choiceGender);
   };
-  const GradeData = (grade) => {
+  const GradeData = grade => {
     setGrade(grade);
   };
-  const MajorData = (major) => {
+  const MajorData = major => {
     setMajor(major);
   };
-  const subMajorData = (sub) => {
+  const subMajorData = sub => {
     setSubMajor(sub);
-  }
-  const GradeDiffData = (gradeDiff) => {
+  };
+  const GradeDiffData = gradeDiff => {
     setGradeDiff(gradeDiff);
   };
 
@@ -95,9 +95,7 @@ const Buddy_Matching = () => {
     <div className={style.wrapper} style={mediaWidth}>
       <div className={style.formWrapper} style={Slide}>
         <ChoiceGender sendChoiceGenderData={GenderChoiceData} />
-        <Major 
-        sendMajorData={MajorData} 
-        sendSubMajorData={subMajorData}/>
+        <Major sendMajorData={MajorData} sendSubMajorData={subMajorData} />
         <Grade sendGradeData={GradeData} />
         <GradeDiff sendGradeDiffData={GradeDiffData} />
         <Final
@@ -109,7 +107,7 @@ const Buddy_Matching = () => {
           slideMove={slideMove}
         />
       </div>
-      
+
       <ProgressBar
         moveNext={MoveNext}
         moveBefore={MoveBefore}

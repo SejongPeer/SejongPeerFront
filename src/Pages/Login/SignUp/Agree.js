@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import check from '../../../Assets/image/check2.png';
-import check2 from '../../../Assets/image/check3.png';
+import check from '../../../assets/image/check2.png';
+import check2 from '../../../assets/image/check3.png';
 import box from './Agree.module.css';
 import sub from './SignUp.module.css';
 
@@ -59,7 +59,7 @@ const Agree = () => {
   //   if (agree !== true) {
   //     alert("모두 동의를 해야 회원가입이 가능합니다.");
   //   } else {
-  //     navigate("/login/signup");
+  //     navigate("/login/SignUp");
   //   }
   // };
   const moveToAuth = () => {

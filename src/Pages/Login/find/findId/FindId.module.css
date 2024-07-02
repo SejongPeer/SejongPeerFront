@@ -1,19 +1,19 @@
 .entire_Container {
-    background-color: #FFF7F7;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  background-color: #fff7f7;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.aaa{
+.aaa {
   margin-top: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 .container {
-  background-color: #FFF7F7;
+  background-color: #fff7f7;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -41,7 +41,7 @@
   font-weight: 500;
   cursor: pointer;
 }
-.signUpBtn {
+.SignUpBtn {
   border: none;
   background-color: transparent;
   font-size: 14px;

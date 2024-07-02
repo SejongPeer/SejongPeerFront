@@ -4,9 +4,9 @@ import { MyContext } from '../../../App';
 
 import BuddyInfoBox from './BuddyInfoBox';
 
-import buddySucces from '../../../Assets/image/buddySuccess.png';
-import prev from '../../../Assets/image/back_gray.png';
-import next from '../../../Assets/image/next_gray.png';
+import buddySucces from '../../../assets/image/buddySuccess.png';
+import prev from '../../../assets/image/back_gray.png';
+import next from '../../../assets/image/next_gray.png';
 import style from './BuddySuccess.module.css';
 
 const BuddySuccess = () => {

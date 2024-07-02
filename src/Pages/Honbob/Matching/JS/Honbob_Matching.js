@@ -7,7 +7,7 @@ import H_Menu from './H_Menu.js';
 import H_informCheck from './H_InformCheck.js';
 import ProgressBar from '../../progressBar/ProgressBar_Honbob.js';
 
-import style from '../CSS/Honbob_Matching.module.css';
+import style from '../css/Honbob_Matching.module.css';
 
 const Honbob_Matching = () => {
   const [slide, setSlide] = useState(0);

@@ -5,13 +5,13 @@ import { MyContext } from '../../../App';
 import MainBuddy from './MainBuddy';
 import MainHonbob from './MainHonbob';
 
-import reprot from '../../../Assets/image/report.png';
-import honbobUse from '../../../Assets/image/honbobUse.png';
-import peerUse from '../../../Assets/image/peerUse.png';
-import buddyUse from '../../../Assets/image/buddyUse.png';
-import buddy_button from '../../../Assets/image/buddy_button.png';
-import honbobButton from '../../../Assets/image/honbobButton.png';
-import ready from '../../../Assets/image/ready.png';
+import reprot from '../../../assets/image/report.png';
+import honbobUse from '../../../assets/image/honbobUse.png';
+import peerUse from '../../../assets/image/peerUse.png';
+import buddyUse from '../../../assets/image/buddyUse.png';
+import buddy_button from '../../../assets/image/buddy_button.png';
+import honbobButton from '../../../assets/image/honbobButton.png';
+import ready from '../../../assets/image/ready.png';
 import style from './MainPage.module.css';
 
 const images = [honbobUse, buddyUse, peerUse];

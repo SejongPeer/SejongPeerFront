@@ -35,6 +35,21 @@ const AnimalResult = () => {
       link.href = image;
       link.click();
     }
+    capture();
+  };
+
+  const capture = () => {
+    const storedImageUrl = localStorage.getItem('imgUrl');
+    if (storedImageUrl) {
+      const link1 = document.createElement('a');
+      link1.href = storedImageUrl;
+      link1.download = 'animal_photo.png';
+      document.body.appendChild(link1); // 링크를 document에 추가
+      link1.click();
+      document.body.removeChild(link1); // 링크를 클릭 후 제거
+    } else {
+      console.error('Stored image URL is not available');
+    }
   };
 
   return (
@@ -57,7 +72,9 @@ const AnimalResult = () => {
           </div>
         </div>
       </div>
-      <button onClick={captureElement} className={style.down_btn}>
+      <button 
+        onClick={captureElement}
+        className={style.down_btn}>
         결과 다운받기
       </button>
       <p className={style.go_home} onClick={goHome}>

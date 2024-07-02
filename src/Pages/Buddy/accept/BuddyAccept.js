@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router';
 
-import findBuddy from '../../../Assets/image/findBuddy.png';
+import findBuddy from '../../../assets/image/findBuddy.png';
 
 import style from './BuddyAccept.module.css';
 

@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from 'react';
 import { MyContext } from '../../../App';
 import { useNavigate } from 'react-router-dom';
 
-import titleImg from '../../../Assets/image/animalTitle.png';
+import titleImg from '../../../assets/image/animalTitle.png';
 import style from './AnimalCheck.module.css'
 
 const AnimalCheck = () => {
@@ -28,7 +28,6 @@ const AnimalCheck = () => {
 
   // 인증 확인
   const getResult = async() => {
-    console.log(process.env.REACT_APP_FEST_SERVER);
     try {
         const response = await axios.get(`${process.env.REACT_APP_FEST_SERVER}/measurements/download`, {
             params: {
@@ -39,6 +38,8 @@ const AnimalCheck = () => {
         // 사용자가 있는지 확인
         if (response.data && response.data.data && Array.isArray(response.data.data.scores)) {
           const sort_result = response.data.data.scores.sort((a, b) => b.score - a.score);
+          console.log(sort_result);
+          localStorage.setItem('imgUrl', response.data.data.photoUrl);
           setAnimalType(sort_result);
           navigate('/fest/animalresult');
         } else {

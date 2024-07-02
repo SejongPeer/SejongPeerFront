@@ -62,7 +62,7 @@
   .festButton {
     width: 351px;
     height: 204px;
-    background-image: url('../../../Assets/image/Festival.png');
+    background-image: url('../../../assets/image/Festival.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -98,7 +98,7 @@
     background-color: white;
     border: 1px solid #e5e5e5;
     border-radius: 16px;
-    background-image: url('../../../Assets/image/ready.png');
+    background-image: url('../../../assets/image/ready.png');
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
@@ -283,7 +283,7 @@
   .festButton {
     width: 351px;
     height: 204px;
-    background-image: url(../../../Assets/image/Festival.png);
+    background-image: url(../../../assets/image/Festival.png);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -319,7 +319,7 @@
     background-color: white;
     border: 1px solid #e5e5e5;
     border-radius: 16px;
-    background-image: url('../../../Assets/image/ready.png');
+    background-image: url('../../../assets/image/ready.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
