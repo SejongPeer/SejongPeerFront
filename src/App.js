@@ -7,9 +7,6 @@ import { jwtDecode } from 'jwt-decode';
 import Header from './components/header/Header.js';
 import StartLoading from './pages/main/landing/StartLoading.js';
 import MainPage from './pages/main/mainPage/MainPage.js';
-import Header from './components/header/Header.js';
-import StartLoading from './pages/main/landing/StartLoading.js';
-import MainPage from './pages/main/mainPage/MainPage.js';
 
 //버디 컴포넌트
 import BuddyStart1 from './pages/buddy/info/BuddyStart1.js';
@@ -19,19 +16,8 @@ import BuddyWaiting from './pages/buddy/waiting/BuddyWaiting.js';
 import BuddyAccept from './pages/buddy/accept/BuddyAccept.js';
 import BuddySuccess from './pages/buddy/success/BuddySuccess.js';
 import Confirm from './components/modal/Confirm.js';
-import BuddyStart1 from './pages/buddy/info/BuddyStart1.js';
-import BuddyStart2 from './pages/buddy/info/BuddyStart2.js';
-import BuddyMatching from './pages/buddy/matching/js/Buddy_Matching.js';
-import BuddyWaiting from './pages/buddy/waiting/BuddyWaiting.js';
-import BuddyAccept from './pages/buddy/accept/BuddyAccept.js';
-import BuddySuccess from './pages/buddy/success/BuddySuccess.js';
-import Confirm from './components/modal/Confirm.js';
 
 //혼밥 컴포넌트
-import Honbob_Matching from './pages/honbob/matching/js/Honbob_Matching.js';
-import HonbobWaiting from './pages/honbob/waiting/HonbobWaiting.js';
-import HonbobSuccess from './pages/honbob/success/HonbobSuccess.js';
-import HonbobStart1 from './pages/honbob/info/HonbobStart1.js';
 import Honbob_Matching from './pages/honbob/matching/js/Honbob_Matching.js';
 import HonbobWaiting from './pages/honbob/waiting/HonbobWaiting.js';
 import HonbobSuccess from './pages/honbob/success/HonbobSuccess.js';
@@ -69,20 +55,11 @@ import AnimalApply3 from './pages/festival/animalApply3/AnimalApply3.js';
 import AnimalApply4 from './pages/festival/animalApply4/AnimalApply4.js';
 import AnimalApply5 from './pages/festival/animalApply5/AnimalApply5.js';
 import ApplyComplete from './pages/festival/applyComplete/ApplyComplete.js';
-import AnimalApply from './pages/festival/animalApply/AnimalApply.js';
-import AnimalApply2 from './pages/festival/animalApply2/AnimalApply2.js';
-import AnimalApply3 from './pages/festival/animalApply3/AnimalApply3.js';
-import AnimalApply4 from './pages/festival/animalApply4/AnimalApply4.js';
-import AnimalApply5 from './pages/festival/animalApply5/AnimalApply5.js';
-import ApplyComplete from './pages/festival/applyComplete/ApplyComplete.js';
+
 
 import AnimalMatchInfo from './pages/festival/animalMatchResult/AnimalMatchInfo.js';
 import AnimalMatchResult from './pages/festival/animalMatchResult/AnimalMatchResult.js';
-import AnimalMatchInfo from './pages/festival/animalMatchResult/AnimalMatchInfo.js';
-import AnimalMatchResult from './pages/festival/animalMatchResult/AnimalMatchResult.js';
 
-import AnimalCheck from './pages/festival/animalCheck/AnimalCheck.js';
-import AnimalResult from './pages/festival/animalResult/AnimalResult.js';
 import AnimalCheck from './pages/festival/animalCheck/AnimalCheck.js';
 import AnimalResult from './pages/festival/animalResult/AnimalResult.js';
 
