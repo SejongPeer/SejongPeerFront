@@ -11,7 +11,7 @@ const StudyListPost = props => {
           {props.post.tags &&
             props.post.tags.map((tag, tagIndex) => (
               <div key={tagIndex} className={style[`${tag.type}`]}>
-                <span>{tag.name}</span>
+                <p>{tag.name}</p>
               </div>
             ))}
         </div>
@@ -29,11 +29,11 @@ const StudyListPost = props => {
       <div className={style.post_bottom}>
         <div className={style.like}>
           <img src={heart} alt="like" className={style.like_icon} />
-          <span className={style.like_number}>{props.post.like}</span>
+          <p className={style.like_number}>{props.post.like}</p>
         </div>
         <div className={style.comment}>
           <img src={comment} alt="comment" className={style.comment_icon} />
-          <span className={style.comment_number}>{props.post.comment}</span>
+          <p className={style.comment_number}>{props.post.comment}</p>
         </div>
       </div>
     </div>

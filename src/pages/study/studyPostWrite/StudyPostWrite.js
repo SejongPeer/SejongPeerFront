@@ -6,16 +6,20 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import ko from 'date-fns/locale/ko';
 
+// modal
 import BottomModal from '../../../components/modal/BottomModal';
+import ConfirmModal from './confirmModal/ConfirmModal';
+
+// components
 import StudyPostField from './studyPostField/StudyPostField';
 import StudyMember from './studyMember/StudyMember';
-import ConfirmModal from './ConfirmModal';
 
-
+// image
 import cancelBtn from '../../../assets/image/cancel.png';
 import arrow from '../../../assets/image/down_black.png';
 import style from './StudyPostWrite.module.css';
 import './StudyPostWriteBasic.css';
+import MeetingWay from './meetingWay/MeetingWay';
 
 const StudyPostWrite = () => {
   const [startDate, setStartDate] = useState(null);
@@ -76,6 +80,12 @@ const StudyPostWrite = () => {
     setIsConfirmModalOpen(false);
   };
 
+  const [selectedOption, setSelectedOption] = useState(null);
+
+  const handleOptionClick = option => {
+    setSelectedOption(option);
+  };
+
   return (
     <div className={style.container}>
       <div className={style.innerConatiner}>
@@ -134,7 +144,7 @@ const StudyPostWrite = () => {
                 />
               </div>
             </div>
-
+            {/* 모집 인원 */}
             <div className={style.personNumBox}>
               <div className={style.personNumWrapper}>
                 <div className={style.personNumLeft}>
@@ -155,7 +165,13 @@ const StudyPostWrite = () => {
                 />
               </div>
             </div>
+            {/* 모집 빈도 */}
+            <MeetingWay
+              selectedOption={selectedOption}
+              onOptionClick={handleOptionClick}
+            />
           </div>
+          {/* 내용 입력 칸 */}
           <div className={style.middleBox}>
             <textarea
               onChange={handleTextChange}

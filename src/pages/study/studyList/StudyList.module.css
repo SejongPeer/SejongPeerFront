@@ -38,7 +38,7 @@
   flex-basis: auto;
 }
 
-.filter span {
+.filter p {
   font-size: 1rem;
   white-space: nowrap;
   color: #777777;
@@ -77,16 +77,18 @@
   gap: 5%;
 }
 .tag_class {
-  width: auto;
+  width: 105px;
+  height: 20px;
   border: 1px solid #ff7474;
   border-radius: 15px;
-  padding: 0.29vh 1.5vw;
+  padding: 4px 12px 4px 12px;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
-.tag_class span {
+.tag_class p {
   white-space: nowrap;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   color: #ff4b4b;
 }
 .tag_contest {
@@ -97,7 +99,7 @@
   display: flex;
   align-items: center;
 }
-.tag_contest span {
+.tag_contest p {
   margin: 0;
   white-space: nowrap;
   font-size: 0.9rem;
@@ -111,7 +113,7 @@
   display: flex;
   align-items: center;
 }
-.tag span {
+.tag p {
   margin: 0;
   white-space: nowrap;
   font-size: 0.9rem;
@@ -131,20 +133,18 @@
   padding: 0 1.2%;
 }
 .title {
-  font-size: 1.2rem;
-  font-weight: 700;
+  font-size: 1rem;
+  font-weight: 600;
   color: #111111;
   margin: 2% 0;
 }
 .member_ongoing {
-  font-size: 1.2rem;
-  font-weight: 700;
+  font-weight: 600;
   color: #ff4b4b;
   margin: 2% 0;
 }
 .member_finish {
-  font-size: 1.2rem;
-  font-weight: 700;
+  font-weight: 600;
   color: #c5c5c5;
   margin: 2% 0;
 }

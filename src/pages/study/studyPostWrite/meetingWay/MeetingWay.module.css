@@ -1,0 +1,37 @@
+/* src/components/MeetingWay.module.css */
+.MeetingWayBox {
+  margin-top: 20px;
+}
+
+.MeetingWayWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.MeetingWay {
+  margin-right: 10px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.options {
+  display: flex;
+}
+
+.option {
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  padding: 10px 20px;
+  margin-right: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.option:hover {
+  background-color: #e0e0e0;
+}
+
+.selectedOption {
+  background-color: #d0d0d0;
+  border: 1px solid #999;
+}
