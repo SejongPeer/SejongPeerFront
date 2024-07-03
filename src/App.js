@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { useState, createContext, useEffect } from 'react';
 import './App.css';
-import jwtDecode from 'jwt-decode';
+import { decode } from 'jwt-decode';
 
 // 메인 컴포넌트
 import Header from './components/header/Header.js';
