@@ -26,7 +26,7 @@ import HonbobStart1 from './pages/honbob/info/HonbobStart1.js';
 // 회원가입/로그인
 import SignIn from './pages/login/signIn/SignIn.js';
 import SignUp from './pages/login/signUp/SignUp.js';
-import Auth from './pages/login/signUp/Auth/Auth.js';
+import Auth from './pages/login/signUp/auth/Auth.js';
 import Major from './components/modal/Major.js';
 import FindId from './pages/login/find/findId/FindId.js';
 import ResetPwd from './pages/login/find/resetPwd/ResetPwd.js';
@@ -180,7 +180,7 @@ const App = () => {
               <Route path="/honbob/success" element={<HonbobSuccess />} />
 
               <Route path="/login" element={<SignIn />} />
-              <Route path="/login/signup" element={<SignUp />} />
+              <Route path="/login/SignUp" element={<SignUp />} />
               <Route path="/login/auth" element={<Auth />} />
               <Route path="/login/findid" element={<FindId />} />
               <Route path="/login/resetpwd" element={<ResetPwd />} />
