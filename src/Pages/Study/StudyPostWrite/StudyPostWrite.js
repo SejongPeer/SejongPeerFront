@@ -11,6 +11,7 @@ import StudyPostField from './studyPostField/StudyPostField';
 import StudyMember from './studyMember/StudyMember';
 import ConfirmModal from './ConfirmModal';
 
+
 import cancelBtn from '../../../assets/image/cancel.png';
 import arrow from '../../../assets/image/down_black.png';
 import style from './StudyPostWrite.module.css';
