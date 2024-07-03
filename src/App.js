@@ -1,14 +1,14 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { useState, createContext, useEffect } from 'react';
 import './App.css';
-import { jwtDecode } from 'jwt-decode';
+import jwtDecode from 'jwt-decode';
 
-//메인 컴포넌트
+// 메인 컴포넌트
 import Header from './components/header/Header.js';
 import StartLoading from './pages/main/landing/StartLoading.js';
 import MainPage from './pages/main/mainPage/MainPage.js';
 
-//버디 컴포넌트
+// 버디 컴포넌트
 import BuddyStart1 from './pages/buddy/info/BuddyStart1.js';
 import BuddyStart2 from './pages/buddy/info/BuddyStart2.js';
 import BuddyMatching from './pages/buddy/matching/js/Buddy_Matching.js';
@@ -17,13 +17,13 @@ import BuddyAccept from './pages/buddy/accept/BuddyAccept.js';
 import BuddySuccess from './pages/buddy/success/BuddySuccess.js';
 import Confirm from './components/modal/Confirm.js';
 
-//혼밥 컴포넌트
+// 혼밥 컴포넌트
 import Honbob_Matching from './pages/honbob/matching/js/Honbob_Matching.js';
 import HonbobWaiting from './pages/honbob/waiting/HonbobWaiting.js';
 import HonbobSuccess from './pages/honbob/success/HonbobSuccess.js';
 import HonbobStart1 from './pages/honbob/info/HonbobStart1.js';
 
-//회원가입/로그인
+// 회원가입/로그인
 import SignIn from './pages/login/signIn/SignIn.js';
 import SignUp from './pages/login/signUp/SignUp.js';
 import Auth from './pages/login/signUp/Auth/Auth.js';
@@ -34,11 +34,8 @@ import Agree1 from './constants/privacyPolicy/Agree1.js';
 import Agree2 from './constants/privacyPolicy/Agree2.js';
 import Agree3 from './constants/privacyPolicy/Agree3.js';
 import Agree from './pages/login/signUp/Agree.js';
-import Agree from './pages/login/signUp/Agree.js';
 
-//마이페이지
-import MyPage from './pages/myPage/mypage/MyPage.js';
-import Modify from './pages/myPage/modify/Modify.js';
+// 마이페이지
 import MyPage from './pages/myPage/mypage/MyPage.js';
 import Modify from './pages/myPage/modify/Modify.js';
 
@@ -55,11 +52,8 @@ import AnimalApply3 from './pages/festival/animalApply3/AnimalApply3.js';
 import AnimalApply4 from './pages/festival/animalApply4/AnimalApply4.js';
 import AnimalApply5 from './pages/festival/animalApply5/AnimalApply5.js';
 import ApplyComplete from './pages/festival/applyComplete/ApplyComplete.js';
-
-
 import AnimalMatchInfo from './pages/festival/animalMatchResult/AnimalMatchInfo.js';
 import AnimalMatchResult from './pages/festival/animalMatchResult/AnimalMatchResult.js';
-
 import AnimalCheck from './pages/festival/animalCheck/AnimalCheck.js';
 import AnimalResult from './pages/festival/animalResult/AnimalResult.js';
 
@@ -97,7 +91,7 @@ const App = () => {
   }, []);
 
   // 토큰 유효기간 타이머
-  const setLogoutTimer = token => {
+  const setLogoutTimer = (token) => {
     const decodeToken = jwtDecode(token);
     const cuurentTime = Date.now();
     const expTime = decodeToken.exp * 1000;
@@ -145,8 +139,6 @@ const App = () => {
         setLogoutTimer,
         setBuddyCount,
         buddyCount,
-        animalType,
-        setAnimalType,
         animalType,
         setAnimalType,
         photoUrl,
