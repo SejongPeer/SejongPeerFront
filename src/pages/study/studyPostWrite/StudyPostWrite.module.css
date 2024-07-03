@@ -387,7 +387,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 200px;
+    gap: 230px;
   }
 
   .leftBox {
@@ -456,7 +456,7 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    margin-top: 1vh;
+    margin-top: 3.5vh;
   }
 
   .topBox {
@@ -484,16 +484,9 @@
   }
 
   .periodWrapper,
-  .personNumWrapper {
-    width: 81vw;
-    height: 4.6vh;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
+  .personNumWrapper,
   .categoryWrapper {
-    width: 81vw;
+    width: 90vw;
     height: 4.6vh;
     display: flex;
     justify-content: space-between;
@@ -503,7 +496,7 @@
   .titleInput {
     border: none;
     height: 4.5vh;
-    width: 82vw;
+    width: 90vw;
     font-size: 1.9vh;
     display: flex;
     align-items: center;
@@ -590,15 +583,14 @@
   /* 여기까지 */
   .middleBox {
     width: 100vw;
-    height: 50vh;
+    height: 280px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    margin-top: 1vh;
     background-color: #ffffff;
     border-bottom: 1px #e5e5e5 solid;
-    margin-top: 2.5vh;
+    margin-top: 4.5vh;
   }
 
   .contentArea {

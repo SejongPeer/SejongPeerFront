@@ -141,15 +141,15 @@ const StudyList = () => {
       <div className={style.header}></div>
       <div className={style.filter_box}>
         <div className={style.filter} onClick={studyFilterModalHandler}>
-          <span>스터디</span>
+          <p>스터디</p>
           <img src={select} alt="select" className={style.select} />
         </div>
         <div className={style.filter} onClick={memberFilterModalHandler}>
-          <span>모집인원</span>
+          <p>모집인원</p>
           <img src={select} alt="select" className={style.select} />
         </div>
         <div className={style.filter} onClick={onFilterModalHandler}>
-          <span>모집여부</span>
+          <p>모집여부</p>
           <img src={select} alt="select" className={style.select} />
         </div>
       </div>
