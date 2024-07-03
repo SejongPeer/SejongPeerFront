@@ -1,0 +1,77 @@
+.select {
+  width: 335px;
+  height: 56px;
+  padding: 0px 20px;
+  border: 1px solid #e5e5e5;
+  border-radius: 30px;
+  font-weight: bold;
+  font-size: 18px;
+  cursor: pointer;
+  text-align: left;
+  z-index: 5;
+  background-color: white;
+  position: relative;
+  color: #666666;
+}
+.select1 {
+  width: 335px;
+  height: 56px;
+  padding: 0px 20px;
+  border: 1px solid #e5e5e5;
+  border-radius: 30px;
+  font-weight: bold;
+  font-size: 18px;
+  cursor: pointer;
+  text-align: left;
+  z-index: 5;
+  background-color: white;
+  position: relative;
+  color: #333333;
+}
+
+.select:active {
+  border: 1px solid #ff4b4b;
+}
+
+.listbox {
+  width: 335px;
+  height: auto;
+  position: fixed;
+  list-style: none;
+  border: 1px solid #e5e5e5;
+  box-sizing: border-box;
+  border-radius: 20px;
+  display: none;
+  padding: 40px 20px 10px 20px;
+  margin: -40px 0px;
+  z-index: 2;
+}
+
+.selectDiv {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.arrow {
+  width: 16px;
+  height: 6px;
+}
+
+.list {
+  font-size: 18px;
+  padding: 15px 5px;
+  text-align: left;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  width: 260px;
+  height: 50px;
+  color: #666666;
+  background-color: transparent;
+}
+
+.list:active {
+  background-color: rgba(255, 0, 0, 0.15);
+  border-radius: 15px;
+}

@@ -1,0 +1,158 @@
+@media (min-width: 768px) {
+  .container1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .container2 {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  /* 신청, 확인 버튼 */
+  .apply {
+    width: 50vh;
+    height: 8vh;
+    border-radius: 50px;
+    border: 1px solid var(--line_02, #e5e5e5);
+    background: var(--back_02, #fafafa);
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+    justify-content: flex-start;
+  }
+
+  .font {
+    color: black;
+    font-family: Pretendard;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px; /* 150% */
+    letter-spacing: -0.333px;
+  }
+
+  h1 {
+    font-family: 'jalnan';
+    font-weight: 400;
+    margin-bottom: 5vh;
+  }
+
+  .festUse {
+    width: 50vh;
+    height: 18vh;
+    background-image: url('../../../assets/image/festUse.png');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: #fafafa;
+    border: none;
+  }
+
+  .container3 {
+    margin-top: 20vh;
+  }
+
+  .kakao {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50vh;
+    height: 5vh;
+    font-size: 16px;
+    border: none;
+    padding: 10px;
+    background-color: #fafafa;
+    border-radius: 50px;
+    border: 1px solid var(--line_02, #e5e5e5);
+  }
+
+  .kakao img {
+    margin-right: 10px; /* 이미지와 텍스트 간격 */
+    height: 100%; /* 이미지 높이 버튼 높이에 맞춤 */
+  }
+}
+
+/* 모바일 버전 */
+@media (max-width: 768px) {
+  .container1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .container2 {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  /* 신청, 확인 버튼 */
+  .apply {
+    width: 311px;
+    height: 56px;
+    border-radius: 50px;
+    border: 1px solid var(--line_02, #e5e5e5);
+    background: var(--back_02, #fafafa);
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+    justify-content: flex-start;
+  }
+
+  .font {
+    color: black;
+    font-family: Pretendard;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px; /* 150% */
+    letter-spacing: -0.333px;
+  }
+
+  h1 {
+    font-family: 'jalnan';
+    font-weight: 400;
+    margin-top: 20vh;
+  }
+
+  .festUse {
+    width: 40vh;
+    height: 12vh;
+    background-image: url('../../../assets/image/festUse.png');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: #fafafa;
+    border: none;
+  }
+
+  .container3 {
+    margin-top: 20vh;
+  }
+
+  .kakao {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40vh;
+    height: 5vh;
+    font-size: 16px;
+    border: none;
+    padding: 10px;
+    background-color: #fafafa;
+    border-radius: 50px;
+    border: 1px solid var(--line_02, #e5e5e5);
+  }
+
+  .kakao img {
+    margin-right: 10px; /* 이미지와 텍스트 간격 */
+    height: 100%; /* 이미지 높이 버튼 높이에 맞춤 */
+  }
+}

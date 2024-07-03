@@ -1,0 +1,104 @@
+.inputText {
+  width: 330px;
+  height: 48px;
+  border-radius: 35px;
+  background-color: #ffffff;
+  border: 1px solid #e5e5e5;
+  color: #666666;
+  padding: 20px;
+  font-size: 16px;
+  font-weight: 400;
+  margin-left: 2.5px;
+}
+
+.majorbox {
+  width: 335px;
+  height: 48px;
+  border-radius: 35px;
+  background-color: #ffffff;
+  border: 1px solid #e5e5e5;
+  color: #666666;
+  padding: 20px;
+  font-size: 16px;
+  font-weight: 400;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;/*수정*/
+  align-items: center;
+  cursor: pointer;
+}
+
+.emailBtn {
+  width: 68px;
+  height: 40px;
+  border-radius: 35px;
+  border: none;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
+  z-index: 3;
+  right: 2.5%;
+  position: absolute;
+  transform: translateY(10%);
+  background-color: #ff4b4b;
+  cursor: pointer;
+}
+
+.emailCheckBtn {
+  width: 68px;
+  height: 40px;
+  border-radius: 35px;
+  border: none;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
+  z-index: 3;
+  right: 2.5%;
+  position: absolute;
+  transform: translateY(10%);
+  background-color: #e5e5e5;
+  cursor: pointer;
+}
+
+.relative {
+  position: relative;
+}
+
+.emailContainer {
+  margin: 6px 0px;
+}
+
+.idcheckBtn {
+  width: 80px;
+  height: 40px;
+  border-radius: 35px;
+  border: none;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  z-index: 3;
+  right: 2.5%;
+  position: absolute;
+  transform: translateY(10%);
+  background-color: #ff4b4b;
+  cursor: pointer;
+}
+
+.RightId {
+  color: #00C908;
+  font-weight: 500;
+  font-size: 14px;
+  margin: 4px 12px;
+}
+
+.vectorImage {
+  width: 8%; 
+  height: 300%;
+  /* margin-left: 160px; */
+}
+
+.majorSelectionContainer {
+  display: flex;
+  align-items: center;
+  gap: 10px; 
+}

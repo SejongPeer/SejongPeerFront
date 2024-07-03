@@ -1,0 +1,150 @@
+.progressBarWrapper {
+  height: 10%;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #fff7f7;
+  z-index: 2;
+  align-items: center;
+}
+.test {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-around;
+}
+
+.controllerWrapper {
+  width: 100%;
+  height: 55%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.controller_next {
+  height: 90%;
+  width: 20vw;
+  margin-right: 3%;
+  border: 1px solid #ff4b4b;
+  border-radius: 25px;
+  background-color: #ff4b4b;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #ffffff;
+  cursor: pointer;
+}
+.controller_next_none {
+  height: 90%;
+  width: 20vw;
+  margin-right: 3%;
+  border: 1px solid #ff4b4b;
+  border-radius: 25px;
+  background-color: #ff4b4b;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #ffffff;
+  cursor: pointer;
+  opacity: 0.5;
+}
+.controller_prev {
+  height: 90%;
+  width: 20vw;
+  margin-left: 3%;
+  border: 2px solid #ff4b4b;
+  border-radius: 25px;
+  background-color: #ffffff;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #333333;
+  cursor: pointer;
+}
+
+.submitBtn {
+  height: 32px;
+  width: 52px;
+  margin: 0px 20px;
+  padding: 0px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #ff4b4b;
+  border-radius: 25px;
+  border: none;
+  cursor: pointer;
+}
+
+.barWrapper {
+  width: 100%;
+  height: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.progress {
+  width: 19%;
+  height: 100%;
+  background-color: #ccc;
+}
+
+@media (min-width: 420px) {
+  .test {
+    display: flex;
+    width: 414px;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-around;
+  }
+  .controller_next {
+    height: 90%;
+    width: 10vw;
+    margin-right: 3%;
+    border: 1px solid #ff4b4b;
+    border-radius: 25px;
+    background-color: #ff4b4b;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #ffffff;
+    cursor: pointer;
+  }
+  .controller_next_none {
+    height: 90%;
+    width: 10vw;
+    margin-right: 3%;
+    border: 1px solid #ff4b4b;
+    border-radius: 25px;
+    background-color: #ff4b4b;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #ffffff;
+    cursor: pointer;
+    opacity: 0.5;
+  }
+  .controller_prev {
+    height: 90%;
+    width: 10vw;
+    margin-left: 3%;
+    border: 2px solid #ff4b4b;
+    border-radius: 25px;
+    background-color: transparent;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333333;
+    cursor: pointer;
+  }
+}
+
+@media (max-height: 670px) {
+  .progressBarWrapper {
+    height: 10%;
+    width: 100%;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+}

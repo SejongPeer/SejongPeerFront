@@ -1,0 +1,149 @@
+/* 모바일 */
+@media (max-width: 768px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 15vh;
+  }
+
+  .title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+
+  .cardContainer {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    width: 100%;
+    margin-bottom: 204px;
+  }
+
+  .cardContainer2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #e5e5e5;
+    border-radius: 16px;
+    padding: 20px;
+    width: 135px;
+    height: 147px;
+    flex-shrink: 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+  }
+
+  .animalImage {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 10px;
+  }
+
+  .animalType {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+
+  .animalName {
+    font-size: 14px;
+    color: #555;
+  }
+
+  .chatButton {
+    width: 343px;
+    height: 52px;
+    background-color: #ff4b4b;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    position: fixed;
+    bottom: 80px;
+  }
+}
+
+/* 데스크탑 */
+@media (min-width: 768px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 15vh;
+  }
+
+  .title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+
+  .cardContainer {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    width: 100%;
+    margin-bottom: 204px;
+  }
+
+  .cardContainer2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #e5e5e5;
+    border-radius: 16px;
+    padding: 20px;
+    width: 135px;
+    height: 147px;
+    flex-shrink: 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+  }
+
+  .animalImage {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 10px;
+  }
+
+  .animalType {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+
+  .animalName {
+    font-size: 14px;
+    color: #555;
+  }
+
+  .chatButton {
+    width: 343px;
+    height: 52px;
+    background-color: #ff4b4b;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    position: fixed;
+    bottom: 80px;
+  }
+}

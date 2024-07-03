@@ -1,0 +1,165 @@
+/* 데탑 버전 */
+@media (min-width: 768px) {
+  .container {
+    margin-top: 5rem;
+    display: flex;
+    flex-direction: column;
+    height: 80%;
+    justify-content: space-between;
+    background-color: #fafafa;
+  }
+
+  .TextBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 80%;
+    justify-content: center;
+  }
+
+  .Text1 {
+    font-size: 3vh;
+    color: #ff4b4b;
+    font-weight: bold;
+    margin: 0;
+  }
+
+  .Text2 {
+    text-align: center;
+    color: #666666;
+  }
+
+  .Text2_span1 {
+    color: #ff4b4b;
+  }
+
+  .Text2_span2 {
+    font-weight: 600;
+  }
+
+  .Text3 {
+    font-weight: 600;
+    color: #ff4b4b;
+    text-align: center;
+  }
+
+  .BtnBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .moveToHomeBtn {
+    font-size: 2vh;
+    font-weight: 700;
+    width: 42vh;
+    height: 8.5vh;
+    max-height: 56px;
+    margin: 8px;
+    border-radius: 40px;
+    background-color: #ff4b4b;
+    border: none;
+    color: white;
+    cursor: pointer;
+  }
+
+  .cancelBtn {
+    font-size: 2vh;
+    font-weight: 700;
+    color: #999999;
+    background-color: transparent;
+    cursor: pointer;
+  }
+
+  .honbobWaitingImg {
+    width: 40vh;
+    height: 40vh;
+    background-color: #fafafa;
+    margin-bottom: 2vh;
+  }
+}
+
+/* 모바일 버전 */
+@media (max-width: 768px) {
+  .container {
+    margin-top: 5rem;
+    display: flex;
+    flex-direction: column;
+    height: 80%;
+    justify-content: space-between;
+    background-color: #fafafa;
+  }
+
+  .TextBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 80%;
+    justify-content: center;
+  }
+
+  .Text1 {
+    font-size: 3vh;
+    color: #ff4b4b;
+    font-weight: bold;
+    margin: 0;
+  }
+
+  .Text2 {
+    width: 80%;
+    font-size: 0.9em;
+    text-align: center;
+    color: #666666;
+  }
+
+  .Text2_span1 {
+    color: #ff4b4b;
+  }
+
+  .Text2_span2 {
+    font-weight: 600;
+  }
+
+  .Text3 {
+    width: 90%;
+    font-size: 0.9em;
+    font-weight: 600;
+    color: #ff4b4b;
+    text-align: center;
+  }
+
+  .BtnBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .moveToHomeBtn {
+    font-size: 1.15em;
+    font-weight: 500;
+    width: 42vh;
+    height: 8.5vh;
+    max-height: 56px;
+    margin: 8px;
+    border-radius: 40px;
+    background-color: #ff4b4b;
+    border: none;
+    color: white;
+    cursor: pointer;
+  }
+
+  .cancelBtn {
+    font-size: 1em;
+    font-weight: 700;
+    color: #999999;
+    background-color: transparent;
+    cursor: pointer;
+  }
+
+  .honbobWaitingImg {
+    width: 70vw;
+    height: 70vw;
+    background-color: #fafafa;
+    margin-bottom: 2vh;
+  }
+}

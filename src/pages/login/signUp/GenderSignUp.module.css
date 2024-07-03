@@ -1,0 +1,33 @@
+.genderContainer {
+  width: 128px;
+  height: 48px;
+  border-radius: 35px;
+  border: 1px solid #e5e5e5;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.clicked {
+  width: 60px;
+  height: 40px;
+  background-color: #ff4b4b;
+  color: #ffffff;
+  border: none;
+  border-radius: 35px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.btn {
+  width: 60px;
+  height: 40px;
+  background-color: transparent;
+  color: #666666;
+  border: none;
+  border-radius: 35px;
+  font-size: 16px;
+  font-weight: 400;
+  cursor: pointer;
+}
