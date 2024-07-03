@@ -11,9 +11,9 @@ import StudyPostField from './studyPostField/StudyPostField';
 import StudyMember from './studyMember/StudyMember';
 import ConfirmModal from './ConfirmModal';
 
+
 import cancelBtn from '../../../assets/image/cancel.png';
 import arrow from '../../../assets/image/down_black.png';
-
 import style from './StudyPostWrite.module.css';
 import './StudyPostWriteBasic.css';
 
@@ -78,15 +78,13 @@ const StudyPostWrite = () => {
 
   return (
     <div className={style.container}>
-
       <div className={style.innerConatiner}>
         <div className={style.header}>
-          <h3 style={{ fontFamily: 'jalnan', marginTop: '21px', fontWeight: 500 }}>
+          <h3 style={{ fontFamily: 'jalnan', marginTop: '21px' }}>
             팀원 모으기
           </h3>
           <img src={cancelBtn} onClick={openConfirmModal} alt="Cancel" />
         </div>
-
         <div className={style.contentContainer}>
           <div className={style.topBox}>
             <div className={style.titleBox}>
@@ -96,7 +94,6 @@ const StudyPostWrite = () => {
                 type="text"
               />
             </div>
-            
             <div className={style.categoryBox}>
               <div className={style.categoryWrapper}>
                 <div className={style.category}>카테고리</div>
@@ -108,7 +105,6 @@ const StudyPostWrite = () => {
                 />
               </div>
             </div>
-
             <div className={style.periodBox}>
               <div className={style.periodWrapper}>
                 <div className={style.periodLeft}>

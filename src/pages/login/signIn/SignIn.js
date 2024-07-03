@@ -26,7 +26,6 @@ const SignIn = () => {
     setPWd(pwdinput);
   };
 
-  //login
   const LoginHandler = async e => {
     e.preventDefault(); // 기본 이벤트를 방지합니다.
 
@@ -50,7 +49,7 @@ const SignIn = () => {
       if (!response.ok) {
         alert('아이디나 비밀번호가 일치하지 않습니다.');
         const errorData = await response.json(); // 오류 응답을 처리합니다.
-        throw new Error(data.message);
+        throw new Error(errorData.message);
       }
 
       const data = await response.json(); // data 변수를 await로 초기화
@@ -75,7 +74,7 @@ const SignIn = () => {
       navigate('/main');
     } catch (error) {
       console.error(error.message);
-      e.preventDefault();
+      alert('로그인에 실패했습니다. 다시 시도해주세요.');
     }
   };
 
@@ -92,7 +91,7 @@ const SignIn = () => {
             ID • PW 찾기
           </button>
           <span className={style.line}> | </span>
-          <button onClick={goSignUpHandler} className={style.SignUpBtn}>
+          <button onClick={goSignUpHandler} className={style.signUpBtn}>
             회원가입
           </button>
         </div>
