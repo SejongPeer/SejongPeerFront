@@ -7,6 +7,7 @@ import styled from 'styled-components';
 import search from '../../../assets/image/search_black.png';
 import comment_down from '../../../assets/image/comment_down.png';
 import scrap from '../../../assets/image/scrap.png';
+import heart from '../../../assets/image/heart_postdetail.svg'
 
 import axios from 'axios';
 
@@ -75,21 +76,19 @@ const StudyListPostDetail = () => {
         <FlexContainer>
           <ApplicationPeriod>지원기간</ApplicationPeriod>
           <ApplicationPeriod2>{studyData.data.recruitmentStart}</ApplicationPeriod2>
+          ~
           <ApplicationPeriod3>{studyData.data.recruitmentEnd}</ApplicationPeriod3>
         </FlexContainer>
+        <Tag>
+            <TagText>{studyData.data.categoryName}</TagText>
+          </Tag>
         <Line />
         <Content>
           {studyData.data.content}
         </Content>
         <TagContainer>
-          <Tag>
-            <TagText>학교수업</TagText>
-          </Tag>
-          <TagGray>
-            <TagTextGray>C프로그래밍실습</TagTextGray>
-          </TagGray>
+
         </TagContainer>
-        <Line />
 
         {/* <CommentTitle>댓글 4</CommentTitle>
         <Line />
@@ -130,7 +129,8 @@ const StudyListPostDetail = () => {
 
         <CommentContainer>
           <ScrapButton>
-            <ScrapImage src={scrap} alt="scrap" />
+            <ScrapImage src={heart} alt="heart" />
+            <ScrapCount>12</ScrapCount>
           </ScrapButton>
           <ApplyButton onClick={togglePopup}>지원하기(1/4)</ApplyButton>
         </CommentContainer>
@@ -162,6 +162,8 @@ const Container = styled.div`
   background-color: #fafafa;
 `;
 
+
+
 const Title = styled.div`
   font-family: Pretendard;
   font-size: 18px;
@@ -176,11 +178,14 @@ const Title2 = styled.div`
   font-family: Pretendard;
   font-size: 14px;
   font-style: normal;
-  font-weight: 600;
+  font-weight: 400;
+  color: #555;  
   line-height: 20px;
   letter-spacing: -0.333px;
   text-align: left;
   margin-right: 10px;
+  margin-top:2px;
+  margin-bottom:2px;
 `;
 
 const Nickname = styled(Title2)`
@@ -188,7 +193,7 @@ const Nickname = styled(Title2)`
   color: #555;
 `;
 
-const ApplicationPeriod = styled.div`
+const ApplicationPeriod = styled(Title2)`
   color: var(--main, #ff4b4b);
   font-family: Pretendard;
   font-size: 14px;
@@ -209,11 +214,11 @@ const ApplicationPeriod2 = styled.div`
   line-height: 20px;
   letter-spacing: -0.333px;
   text-align: left;
-  margin-right: 10px;
+  margin-right: 1px;
 `;
 
 const ApplicationPeriod3 = styled(ApplicationPeriod2)`
-  color: #999;
+
 `;
 
 const FlexContainer = styled.div`
@@ -225,12 +230,16 @@ const FlexContainer = styled.div`
 
 const Line = styled.div`
   height: 1px;
-  width: 100%;
+  width: 100vw;
   background-color: #b9b9b9;
-  border-bottom: 1.1px solid var(--line_02, #e5e5e5);
+  border-bottom: 5px solid var(--line_02, #FFF7F7);
   margin-top: 15px;
   margin-bottom: 15px;
+  margin-left: -50vw;
+  left: 50%;
+  position: relative;
 `;
+
 
 const Content = styled.div`
   margin: auto;
@@ -347,6 +356,10 @@ const ApplyButton = styled.button`
 `;
 
 const ScrapButton = styled.button`
+  display: flex;
+  flex-direction: column; /* Set flex direction to column */
+  align-items: center; /* Center align items */
+  justify-content: center; /* Center justify items */
   width: 52px;
   height: 52px;
   flex-shrink: 0;
@@ -356,6 +369,14 @@ const ScrapButton = styled.button`
   margin-top: 15px;
   cursor: pointer;
 `;
+
+const ScrapCount = styled.div`
+  font-family: Pretendard;
+  font-size: 12px;
+  color: #555;
+  margin-top: 2px; /* Add some margin to separate from the image */
+`;
+
 
 const ScrapImage = styled.img`
   width: 20px;
