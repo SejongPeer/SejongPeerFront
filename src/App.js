@@ -1,7 +1,8 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { useState, createContext, useEffect } from 'react';
 import './App.css';
-import { decode } from 'jwt-decode';
+import { jwtDecode } from 'jwt-decode';
+
 
 // 메인 컴포넌트
 import Header from './components/header/Header.js';
@@ -193,7 +194,7 @@ const App = () => {
               <Route path="/mypage/modify" element={<Modify />} />
 
               <Route path="/study" element={<StudyList />} />
-              <Route path="/study/detail" element={<StudyPostDeatil />} />
+              <Route path="/study/post/:studyId" element={<StudyPostDeatil />} />
               <Route path="/study/post" element={<StudyPostWrite />} />
               <Route path="/study/filter" element={<StudyFilter />} />
 

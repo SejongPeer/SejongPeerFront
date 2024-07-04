@@ -1,7 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { useContext, useState } from 'react';
 import { MyContext } from '../../../App';
-
 import SignInBox from './SignInBox';
 
 import style from './SignIn.module.css';
