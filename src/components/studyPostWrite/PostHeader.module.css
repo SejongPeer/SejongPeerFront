@@ -1,0 +1,24 @@
+@media (min-width: 768px) {
+    .header {
+        width: 28vw;
+        height: 7vh;
+        background-color: #ffffff;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #E5E5E5;
+      }
+}
+
+@media (max-width: 768px) {
+    .header {
+        width: 100vw;
+        height: 48px;
+        background-color: #ffffff;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        gap: 200px;
+        border-bottom: 1px solid #E5E5E5;
+      }           
+}

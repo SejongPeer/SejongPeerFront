@@ -3,7 +3,6 @@ import { useState, createContext, useEffect } from 'react';
 import './App.css';
 import { jwtDecode } from 'jwt-decode';
 
-
 // 메인 컴포넌트
 import Header from './components/header/Header.js';
 import StartLoading from './pages/main/landing/StartLoading.js';
@@ -43,7 +42,7 @@ import Modify from './pages/myPage/modify/Modify.js';
 // 스터디
 import StudyList from '../src/pages/study/studyList/StudyList.js';
 import StudyPostDeatil from '../src/pages/study/studyPostDetail/StudyPostDetail.js';
-import StudyPostWrite from '../src/pages/study/studyPostWrite/StudyPostWrite.js';
+import StudyPostWrite from './Pages/Study/StudyPostWrite/StudyPostWrite.js';
 import StudyFilter from '../src/pages/study/studyFilterPage/StudyFIlterPage.js';
 
 // 축제
