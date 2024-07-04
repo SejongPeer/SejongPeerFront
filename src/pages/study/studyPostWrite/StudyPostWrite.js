@@ -3,10 +3,13 @@ import React, { useContext, useState } from 'react';
 import { format } from 'date-fns';
 import { MyContext } from '../../../App';
 
+// modal
 import BottomModal from '../../../components/modal/BottomModal';
+import ConfirmModal from './confirmModal/ConfirmModal';
+
+// components
 import StudyPostField from './studyPostField/StudyPostField';
 import StudyMember from './studyMember/StudyMember';
-import ConfirmModal from './ConfirmModal';
 
 // 컴포넌트
 import PostHeader from '../../../components/studyPostWrite/PostHeader';
@@ -106,6 +109,7 @@ const StudyPostWrite = () => {
         />
 
         <div className={style.contentContainer}>
+
           <StudyRequirement 
             startDate={startDate}
             endDate={endDate}
@@ -130,6 +134,7 @@ const StudyPostWrite = () => {
           <ImageUpload />
           <StudyLink />
           <Tag />
+
         </div>
       </div>
 

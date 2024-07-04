@@ -42,7 +42,7 @@ import Modify from './pages/myPage/modify/Modify.js';
 // 스터디
 import StudyList from '../src/pages/study/studyList/StudyList.js';
 import StudyPostDeatil from '../src/pages/study/studyPostDetail/StudyPostDetail.js';
-import StudyPostWrite from '../src/pages/study/studyPostWrite/StudyPostWrite.js';
+import StudyPostWrite from './Pages/Study/StudyPostWrite/StudyPostWrite.js';
 import StudyFilter from '../src/pages/study/studyFilterPage/StudyFIlterPage.js';
 
 // 축제
@@ -193,7 +193,7 @@ const App = () => {
               <Route path="/mypage/modify" element={<Modify />} />
 
               <Route path="/study" element={<StudyList />} />
-              <Route path="/study/detail" element={<StudyPostDeatil />} />
+              <Route path="/study/post/:studyId" element={<StudyPostDeatil />} />
               <Route path="/study/post" element={<StudyPostWrite />} />
               <Route path="/study/filter" element={<StudyFilter />} />
 

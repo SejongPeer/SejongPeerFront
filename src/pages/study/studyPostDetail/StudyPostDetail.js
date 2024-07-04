@@ -1,16 +1,58 @@
-import { useState, useContext } from 'react';
-import { MyContext } from '../../../App';
-import { useNavigate } from 'react-router-dom';
+
+
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import styled from 'styled-components';
 
 import search from '../../../assets/image/search_black.png';
 import comment_down from '../../../assets/image/comment_down.png';
 import scrap from '../../../assets/image/scrap.png';
-import style from './StudyPostDetail.module.css';
+
+import axios from 'axios';
 
 const StudyListPostDetail = () => {
   const [isPopupVisible, setIsPopupVisible] = useState(false);
-
+  const [studyData, setStudyData] = useState(null);
+  const {studyId} = useParams();
   const navigate = useNavigate();
+  // const studyId = 3;
+  console.log("studyId : ",studyId);
+
+  useEffect(() => {
+    const fetchStudyData = async () => {
+      try {
+        const response = await fetch(
+          process.env.REACT_APP_BACK_SERVER + `/study/post/${studyId}`,
+          {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+              'Refresh-Token': localStorage.getItem('refreshToken'),
+            },
+          }
+        );
+        
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        setStudyData(data);
+        console.log(data);
+      } catch (error) {
+        console.error('Error fetching study data:', error);
+      }
+    };
+
+    fetchStudyData();
+  }, [studyId]);
+
+
+  if (!studyData) {
+    return <div>Loading...</div>;
+  }
+
   const BackHandler = () => {
     navigate('/study');
   };
@@ -20,109 +62,334 @@ const StudyListPostDetail = () => {
   const closePopup = () => {
     setIsPopupVisible(false);
   };
+  console.log(studyData)
 
   return (
-    <div className={style.container}>
+    <Container>
       <div>
-        <div className={style.title}>주말마다 카공 같이 하실 분?</div>
-        <div className={style.title2}>컴퓨터공학과 세종냥이</div>
-        <div className={style.flexContainer}>
-          <div className={style.Application_period}>지원기간</div>
-          <div className={style.Application_period2}>
-            {'  '}
-            2024.01.20-2024.01.30
-          </div>
-        </div>
-        <div className={style.line}></div>
-        <div className={style.content}>
-          주말마다 디자인인모션 같이 공부하실 분 모집합니다~! A+ 노리고 공부하실
-          분들만 지원해주세요!! 주말마다 디자인인모션 같이 공부하실 분
-          모집합니다~! A+ 노리고 공부하실 분들만 지원해주세요!! 주말마다
-          디자인인모션 같이 공부하실 분 모집합니다~! A+ 노리고 공부하실 분들만
-          지원해주세요!!{' '}
-        </div>
-        <div className={style.tag_container}>
-          <button className={style.tag}>
-            <div className={style.tag2}>학교수업!!!!</div>
-          </button>
-          <button className={style.tag_gray}>
-            <div className={style.tag2_gray}>C프로그래밍!!!</div>
-          </button>
-        </div>
-        <div className={style.line}></div>
+        <Title>{studyData.data.title}</Title>
+        <FlexContainer>
+          <Title2>{studyData.data.writerMajor}</Title2>
+          <Nickname>{studyData.data.writerNickname}</Nickname>
+        </FlexContainer>
+        <FlexContainer>
+          <ApplicationPeriod>지원기간</ApplicationPeriod>
+          <ApplicationPeriod2>{studyData.data.recruitmentStart}</ApplicationPeriod2>
+          <ApplicationPeriod3>{studyData.data.recruitmentEnd}</ApplicationPeriod3>
+        </FlexContainer>
+        <Line />
+        <Content>
+          {studyData.data.content}
+        </Content>
+        <TagContainer>
+          <Tag>
+            <TagText>학교수업</TagText>
+          </Tag>
+          <TagGray>
+            <TagTextGray>C프로그래밍실습</TagTextGray>
+          </TagGray>
+        </TagContainer>
+        <Line />
 
-        <div className={style.comment_title}>댓글 4</div>
-        <div className={style.line}></div>
+        {/* <CommentTitle>댓글 4</CommentTitle>
+        <Line />
 
-        <div className={style.comment_container}>
-          <div className={style.comment_nickname}>세종냥이1</div>
-          <div className={style.comment_date}>23.03.28</div>
-        </div>
-        <div className={style.comment_content}>
+        <CommentContainer>
+          <CommentNickname>세종냥이1</CommentNickname>
+          <CommentDate>23.03.28</CommentDate>
+        </CommentContainer>
+        <CommentContent>
           다른 과 학생인데 스터디 참여 가능할까요..?
-        </div>
+        </CommentContent>
 
-        <div className={style.comment_container}>
-          <img
-            src={comment_down}
-            alt="comment_down"
-            className={style.comment_down}
-          ></img>
-          <div className={style.comment_nickname}>글쓴이</div>
-          <div className={style.comment_date}>23.03.28</div>
-        </div>
+        <CommentContainer>
+          <CommentDown src={comment_down} alt="comment_down" />
+          <CommentNickname>글쓴이</CommentNickname>
+          <CommentDate>23.03.28</CommentDate>
+        </CommentContainer>
 
-        <div className={style.comment_content}>
-          열심히 하신다면 참여가능합니다!{' '}
-        </div>
+        <CommentContent>열심히 하신다면 참여가능합니다!</CommentContent>
 
-        <div className={style.line}></div>
+        <Line />
 
-        <div className={style.comment_container}>
-          <div className={style.comment_nickname}>세종냥이1</div>
-          <div className={style.comment_date}>23.03.28</div>
-        </div>
-        <div className={style.comment_content}>
+        <CommentContainer>
+          <CommentNickname>세종냥이1</CommentNickname>
+          <CommentDate>23.03.28</CommentDate>
+        </CommentContainer>
+        <CommentContent>
           다른 과 학생인데 스터디 참여 가능할까요..?
-        </div>
+        </CommentContent>
 
-        <div className={style.comment_container}>
-          <img
-            src={comment_down}
-            alt="comment_down"
-            className={style.comment_down}
-          ></img>
-          <div className={style.comment_nickname}>글쓴이</div>
-          <div className={style.comment_date}>23.03.28</div>
-        </div>
+        <CommentContainer>
+          <CommentDown src={comment_down} alt="comment_down" />
+          <CommentNickname>글쓴이</CommentNickname>
+          <CommentDate>23.03.28</CommentDate>
+        </CommentContainer>
 
-        <div className={style.comment_content}>
-          열심히 하신다면 참여가능합니다!{' '}
-        </div>
-        <div className={style.comment_container}>
-          <button className={style.scrap_button}>
-            <img src={scrap} alt="scrap" className={style.scrap}></img>
-          </button>
-          <button className={style.apply} onClick={togglePopup}>
-            지원하기(1/4)
-          </button>{' '}
-        </div>
+        <CommentContent>열심히 하신다면 참여가능합니다!</CommentContent> */}
+
+        <CommentContainer>
+          <ScrapButton>
+            <ScrapImage src={scrap} alt="scrap" />
+          </ScrapButton>
+          <ApplyButton onClick={togglePopup}>지원하기(1/4)</ApplyButton>
+        </CommentContainer>
         {isPopupVisible && (
-          <div className={style.popup}>
-            <div className={style.popupContent}>
+          <Popup>
+            <PopupContent>
               지원 완료! <br />
               닉네임과 학과 정보가 전달됩니다. <br />
               게시자가 지원을 수락하면 오픈채팅방 링크가 메세지로 전달됩니다.
               <br />
-              <button onClick={closePopup} className={style.confirmButton}>
-                확인
-              </button>
-            </div>
-          </div>
+              <ConfirmButton onClick={closePopup}>확인</ConfirmButton>
+            </PopupContent>
+          </Popup>
         )}
       </div>
-    </div>
+    </Container>
   );
 };
 
 export default StudyListPostDetail;
+
+const Container = styled.div`
+  margin-top: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 85%;
+  background-color: #fafafa;
+`;
+
+const Title = styled.div`
+  font-family: Pretendard;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: -0.333px;
+  text-align: left;
+`;
+
+const Title2 = styled.div`
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: -0.333px;
+  text-align: left;
+  margin-right: 10px;
+`;
+
+const Nickname = styled(Title2)`
+  font-weight: 400;
+  color: #555;
+`;
+
+const ApplicationPeriod = styled.div`
+  color: var(--main, #ff4b4b);
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: -0.333px;
+  text-align: left;
+  margin-right: 10px;
+`;
+
+const ApplicationPeriod2 = styled.div`
+  color: var(--font_01, #111);
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: -0.333px;
+  text-align: left;
+  margin-right: 10px;
+`;
+
+const ApplicationPeriod3 = styled(ApplicationPeriod2)`
+  color: #999;
+`;
+
+const FlexContainer = styled.div`
+  display: flex;
+  align-items: left;
+  justify-content: left;
+  width: 100%;
+`;
+
+const Line = styled.div`
+  height: 1px;
+  width: 100%;
+  background-color: #b9b9b9;
+  border-bottom: 1.1px solid var(--line_02, #e5e5e5);
+  margin-top: 15px;
+  margin-bottom: 15px;
+`;
+
+const Content = styled.div`
+  margin: auto;
+  max-width: 343px;
+  width: 100%;
+  height: 120px;
+  flex-shrink: 0;
+  color: var(--font_01, #111);
+  font-family: Pretendard;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: -0.333px;
+  text-align: left;
+`;
+
+const TagContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+`;
+
+const Tag = styled.button`
+  display: flex;
+  padding: 4px 8px;
+  align-items: flex-start;
+  gap: 10px;
+  font-weight: 500;
+  border-radius: 15px;
+  border: 1px solid var(--sub, #ff7474);
+  margin-top: 15px;
+  background: none;
+  cursor: pointer;
+`;
+
+const TagGray = styled(Tag)`
+  border: 1px solid var(--sub, #777777);
+`;
+
+const TagText = styled.div`
+  color: var(--main, #ff4b4b);
+  font-family: Pretendard;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+  letter-spacing: -0.333px;
+`;
+
+const TagTextGray = styled(TagText)`
+  color: var(--main, #777777);
+`;
+
+const CommentContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+`;
+
+const CommentNickname = styled.div`
+  color: var(--font_02, #555);
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: -0.333px;
+`;
+
+const CommentDate = styled.div`
+  color: var(--font_04, #999);
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: -0.333px;
+`;
+
+const CommentContent = styled.div`
+  color: var(--font_01, #111);
+  font-family: Pretendard;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: -0.333px;
+`;
+
+const CommentDown = styled.img`
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+`;
+
+const ApplyButton = styled.button`
+  width: 287px;
+  height: 52px;
+  flex-shrink: 0;
+  border-radius: 28px;
+  background: var(--main, #ff4b4b);
+  color: #fff;
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: -0.333px;
+  margin-top: 15px;
+  cursor: pointer;
+  border: none;
+`;
+
+const ScrapButton = styled.button`
+  width: 52px;
+  height: 52px;
+  flex-shrink: 0;
+  border-radius: 28px;
+  border: 1px solid var(--line_02, #e5e5e5);
+  background: #fff;
+  margin-top: 15px;
+  cursor: pointer;
+`;
+
+const ScrapImage = styled.img`
+  width: 20px;
+  height: 20px;
+`;
+
+const Popup = styled.div`
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  padding: 20px;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+`;
+
+const PopupContent = styled.div`
+  text-align: center;
+  font-family: Pretendard;
+  color: var(--font_01, #111);
+`;
+
+const ConfirmButton = styled.button`
+  margin-top: 20px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #ff4b4b;
+  color: white;
+  font-family: Pretendard;
+  font-size: 16px;
+  cursor: pointer;
+`;

@@ -53,12 +53,6 @@ const StudyList = () => {
         { name: '송형규', type: 'tag' },
       ],
       state: 'finish',
-      date: '24.02.04',
-      tags: [
-        { name: 'JAVA 프로그래밍', type: 'tag_class' },
-        { name: '우미애', type: 'tag' },
-      ],
-      state: 'ongoing',
     },
     {
       index: 4,
@@ -136,26 +130,32 @@ const StudyList = () => {
     navigate('/study/post');
   };
 
+  const goPostDetail = (index) => {
+    navigate(`/study/post/${index}`);
+  };
+
   return (
     <div className={style.container}>
       <div className={style.header}></div>
       <div className={style.filter_box}>
         <div className={style.filter} onClick={studyFilterModalHandler}>
-          <span>스터디</span>
+          <p>스터디</p>
           <img src={select} alt="select" className={style.select} />
         </div>
         <div className={style.filter} onClick={memberFilterModalHandler}>
-          <span>모집인원</span>
+          <p>모집인원</p>
           <img src={select} alt="select" className={style.select} />
         </div>
         <div className={style.filter} onClick={onFilterModalHandler}>
-          <span>모집여부</span>
+          <p>모집여부</p>
           <img src={select} alt="select" className={style.select} />
         </div>
       </div>
       <div className={style.list_wrapper}>
         {filterHandler.map(post => (
-          <StudyListPost post={post} key={post.index} />
+          <div key={post.index} onClick={() => goPostDetail(post.index)}>
+            <StudyListPost post={post} />
+          </div>
         ))}
       </div>
       <div className={style.write_btn} onClick={goPost}>
