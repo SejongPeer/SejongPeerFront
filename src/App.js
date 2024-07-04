@@ -194,7 +194,7 @@ const App = () => {
               <Route path="/mypage/modify" element={<Modify />} />
 
               <Route path="/study" element={<StudyList />} />
-              <Route path="/study/post/:studyId" element={<StudyPostDeatil />} />
+              <Route path="/api/v1/study/post/:studyId" element={<StudyPostDeatil />} />
               <Route path="/study/post" element={<StudyPostWrite />} />
               <Route path="/study/filter" element={<StudyFilter />} />
 

@@ -19,9 +19,25 @@ const StudyListPostDetail = () => {
   useEffect(() => {
     const fetchStudyData = async () => {
       try {
-        const response = await axios.get(`/api/v1/study/post/${studyId}`);
-        setStudyData(response.data);
-        console.log(response.data);
+        const response = await fetch(
+          process.env.REACT_APP_BACK_SERVER + `/study/post/${studyId}`,
+          {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+              'Refresh-Token': localStorage.getItem('refreshToken'),
+            },
+          }
+        );
+        
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        setStudyData(data);
+        console.log(data);
       } catch (error) {
         console.error('Error fetching study data:', error);
       }
@@ -29,6 +45,7 @@ const StudyListPostDetail = () => {
 
     fetchStudyData();
   }, [studyId]);
+
 
   if (!studyData) {
     return <div>Loading...</div>;
@@ -43,36 +60,36 @@ const StudyListPostDetail = () => {
   const closePopup = () => {
     setIsPopupVisible(false);
   };
-  
+  console.log(studyData)
 
   return (
     <Container>
       <div>
-        <Title>주말마다 카공 같이 하실 분?</Title>
-        <Title2>컴퓨터공학과 세종냥이</Title2>
+        <Title>{studyData.data.title}</Title>
+        <FlexContainer>
+          <Title2>{studyData.data.writerMajor}</Title2>
+          <Nickname>{studyData.data.writerNickname}</Nickname>
+        </FlexContainer>
         <FlexContainer>
           <ApplicationPeriod>지원기간</ApplicationPeriod>
-          <ApplicationPeriod2> 2024.01.20-2024.01.30</ApplicationPeriod2>
+          <ApplicationPeriod2>{studyData.data.recruitmentStart}</ApplicationPeriod2>
+          <ApplicationPeriod3>{studyData.data.recruitmentEnd}</ApplicationPeriod3>
         </FlexContainer>
         <Line />
         <Content>
-          주말마다 디자인인모션 같이 공부하실 분 모집합니다~! A+ 노리고 공부하실
-          분들만 지원해주세요!! 주말마다 디자인인모션 같이 공부하실 분
-          모집합니다~! A+ 노리고 공부하실 분들만 지원해주세요!! 주말마다
-          디자인인모션 같이 공부하실 분 모집합니다~! A+ 노리고 공부하실 분들만
-          지원해주세요!!
+          {studyData.data.content}
         </Content>
         <TagContainer>
           <Tag>
-            <TagText>학교수업!!!!</TagText>
+            <TagText>학교수업</TagText>
           </Tag>
           <TagGray>
-            <TagTextGray>C프로그래밍!!!</TagTextGray>
+            <TagTextGray>C프로그래밍실습</TagTextGray>
           </TagGray>
         </TagContainer>
         <Line />
 
-        <CommentTitle>댓글 4</CommentTitle>
+        {/* <CommentTitle>댓글 4</CommentTitle>
         <Line />
 
         <CommentContainer>
@@ -107,7 +124,7 @@ const StudyListPostDetail = () => {
           <CommentDate>23.03.28</CommentDate>
         </CommentContainer>
 
-        <CommentContent>열심히 하신다면 참여가능합니다!</CommentContent>
+        <CommentContent>열심히 하신다면 참여가능합니다!</CommentContent> */}
 
         <CommentContainer>
           <ScrapButton>
@@ -161,6 +178,12 @@ const Title2 = styled.div`
   line-height: 20px;
   letter-spacing: -0.333px;
   text-align: left;
+  margin-right: 10px;
+`;
+
+const Nickname = styled(Title2)`
+  font-weight: 400;
+  color: #555;
 `;
 
 const ApplicationPeriod = styled.div`
@@ -172,6 +195,7 @@ const ApplicationPeriod = styled.div`
   line-height: 20px;
   letter-spacing: -0.333px;
   text-align: left;
+  margin-right: 10px;
 `;
 
 const ApplicationPeriod2 = styled.div`
@@ -183,6 +207,11 @@ const ApplicationPeriod2 = styled.div`
   line-height: 20px;
   letter-spacing: -0.333px;
   text-align: left;
+  margin-right: 10px;
+`;
+
+const ApplicationPeriod3 = styled(ApplicationPeriod2)`
+  color: #999;
 `;
 
 const FlexContainer = styled.div`
@@ -252,17 +281,6 @@ const TagText = styled.div`
 
 const TagTextGray = styled(TagText)`
   color: var(--main, #777777);
-`;
-
-const CommentTitle = styled.div`
-  color: var(--font_01, #111);
-  font-family: Pretendard;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 24px;
-  letter-spacing: -0.333px;
-  text-align: left;
 `;
 
 const CommentContainer = styled.div`

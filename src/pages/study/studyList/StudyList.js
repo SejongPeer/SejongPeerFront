@@ -131,7 +131,7 @@ const StudyList = () => {
   };
 
   const goPostDetail = (index) => {
-    navigate(`/study/post/${index}`);
+    navigate(`/api/v1/study/post/${index}`);
   };
 
   return (
