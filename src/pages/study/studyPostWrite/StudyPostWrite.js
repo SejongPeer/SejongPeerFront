@@ -1,5 +1,5 @@
 // src/pages/StudyPostWrite.js
-import React, { useContext, useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import { format } from 'date-fns';
 import { MyContext } from '../../../App';
 
@@ -7,23 +7,24 @@ import { MyContext } from '../../../App';
 import BottomModal from '../../../components/modal/BottomModal';
 import ConfirmModal from './confirmModal/ConfirmModal';
 
-// components
+// modal components
 import StudyPostField from './studyPostField/StudyPostField';
 import StudyMember from './studyMember/StudyMember';
 
-// 컴포넌트
+// components
 import PostHeader from '../../../components/studyPostWrite/PostHeader';
 import StudyRequirement from '../../../components/studyPostWrite/StudyRequirement';
-
-import style from './StudyPostWrite.module.css';
-import './StudyPostWriteBasic.css';
 import PostInput from '../../../components/studyPostWrite/PostInput';
 import Inquire from '../../../components/studyPostWrite/studyRequirement/Inquire';
 import ImageUpload from '../../../components/studyPostWrite/ImageUpload';
 import StudyLink from '../../../components/studyPostWrite/studyRequirement/StudyLink';
 import Tag from '../../../components/studyPostWrite/studyRequirement/Tag';
 
+import style from './StudyPostWrite.module.css';
+import './StudyPostWriteBasic.css';
+
 const StudyPostWrite = () => {
+  // 모집 기간, 모집 인원
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
   const [startMember, setStartMember] = useState(0);
@@ -57,6 +58,7 @@ const StudyPostWrite = () => {
     event.target.blur();
   };
 
+  // 모달 오픈, 
   const [isClickedStudy, setIsClickedStudy] = useState(false);
   const [isClickedMember, setIsClickedMember] = useState(false);
   const { modalOpen, setModalOpen } = useContext(MyContext);
@@ -90,6 +92,7 @@ const StudyPostWrite = () => {
     setIsClickedMember(false);
   };
 
+  // 모임 빈도, 방식
   const [selectedWay, setSelectedWay] = useState(null);
   const [seletedFrequency, setSeletedFrequency] = useState(null);
 
@@ -99,6 +102,33 @@ const StudyPostWrite = () => {
 
   const handleFrequencyClick = option => {
     setSeletedFrequency(prevOption => (prevOption === option ? null : option))
+  }
+
+  //이미지 업로드
+  const [imgFiles, setImgFiles] = useState([]);
+  const imgRef = useRef();
+  console.log(imgFiles)
+
+  const ImgHandler = (event) => {
+    const files = Array.from(event.target.files);
+    const newImgFiles = [...imgFiles];
+
+    files.forEach(file => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onloadend = () => {
+            if (newImgFiles.length < 3) {
+                newImgFiles.push(reader.result);
+                setImgFiles([...newImgFiles]);
+            }
+        };
+    });
+    event.target.value = '';
+  };
+
+  const ImgDeleteHandler = (index) => {
+    const newImgFiles = imgFiles.filter((_, i) => i !== index);
+    setImgFiles(newImgFiles);
   }
 
   return (
@@ -131,7 +161,12 @@ const StudyPostWrite = () => {
             text={text}
           />
           <Inquire />
-          <ImageUpload />
+          <ImageUpload 
+            imgFiles={imgFiles}
+            ImgHandler={ImgHandler}
+            imgRef={imgRef}
+            ImgDeleteHandler={ImgDeleteHandler}
+          />
           <StudyLink />
           <Tag />
 
