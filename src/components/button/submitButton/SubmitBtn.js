@@ -1,12 +1,16 @@
-import { Children } from 'react';
 import style from './SubmitBtn.module.css'
 
-const SubmitBtn = (props) => {
-    return (
-        <div>
-            {Children}
-        </div>
-    )
+const SubmitBtn = ({
+    name,
+    ready,
+    onClickHandler
+}) => {
+    return <button 
+        className={ready ? style.submitBtn : style.submitBtn_notReady} 
+        onClick={onClickHandler}
+    >
+        {name}
+    </button>
 }
 
 export default SubmitBtn;

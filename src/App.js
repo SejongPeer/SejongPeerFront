@@ -44,6 +44,7 @@ import StudyList from '../src/pages/study/studyList/StudyList.js';
 import StudyPostDeatil from '../src/pages/study/studyPostDetail/StudyPostDetail.js';
 import StudyPostWrite from './pages/study/studyPostWrite/StudyPostWrite.js';
 import StudyFilter from '../src/pages/study/studyFilterPage/StudyFIlterPage.js';
+import StudyModify from './pages/study/studyModify/studyModify.js';
 
 // 축제
 import AnimalApply from './pages/festival/animalApply/AnimalApply.js';
@@ -196,6 +197,7 @@ const App = () => {
               <Route path="/study/post/:studyId" element={<StudyPostDeatil />} />
               <Route path="/study/post" element={<StudyPostWrite />} />
               <Route path="/study/filter" element={<StudyFilter />} />
+              <Route path="/study/modify" element={<StudyModify />} />
 
               <Route path="/fest/AnimalApply" element={<AnimalApply />} />
               <Route path="/fest/AnimalApply2" element={<AnimalApply2 />} />

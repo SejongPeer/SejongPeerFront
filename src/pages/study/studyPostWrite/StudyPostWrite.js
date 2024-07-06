@@ -22,6 +22,7 @@ import Tag from '../../../components/studyPostWrite/studyRequirement/Tag';
 
 import style from './StudyPostWrite.module.css';
 import './StudyPostWriteBasic.css';
+import SubmitBtn from '../../../components/button/submitButton/SubmitBtn';
 
 const StudyPostWrite = () => {
   // 모집 기간, 모집 인원
@@ -131,6 +132,9 @@ const StudyPostWrite = () => {
     setImgFiles(newImgFiles);
   }
 
+  //
+  const [isFilled, setIsFilled] = useState(true);
+
   return (
     <div className={style.container}>
       <div className={style.innerConatiner}>
@@ -174,7 +178,10 @@ const StudyPostWrite = () => {
       </div>
 
       <div className={style.postConainer}>
-        <button className={style.postBtn}>모집글 올리기</button>
+        <SubmitBtn 
+          name={'모집글 올리기'}
+          ready={isFilled}
+        />
       </div>
 
       {modalOpen && (
