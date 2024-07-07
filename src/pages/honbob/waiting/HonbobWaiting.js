@@ -97,26 +97,26 @@ const HonbobWaiting = () => {
     <div className={style.container}>
       <div className={style.TextBox}>
         <img src={honbobWaitingLogo} className={style.honbobWaitingImg} />
-        <p className={style.Text1}>혼축탈출 동지 찾는 중{dots}</p>
+        <p className={style.Text1}>밥짝꿍 찾는 중{dots}</p>
         <p className={style.Text2}>
           <span className={style.Text2_span1}>*</span>
           <span className={style.Text2_span2}>
-            신청 당일 00시~24시까지 매칭되며,
+            15분 동안 매칭이 되며,
             <br />
-            축제기간 동안 매일 새로운 동지를 찾을 수 있습니다.
+            매칭 실패 시 다시 신청할 수 있습니다.
           </span>
         </p>
       </div>
 
       <div className={style.BtnBox}>
         <p className={style.Text3}>
-          매칭 시 동지의 카카오톡ID와 선호액티비티가 전달됩니다.
+          매칭 시 밥짝꿍의 카카오톡ID와 선호메뉴가 전달됩니다.
         </p>
         <button className={style.moveToHomeBtn} onClick={moveToMain}>
           홈페이지로 이동
         </button>
         <button className={style.cancelBtn} onClick={honbobCancleSubmitHandler}>
-          대동지 취소
+          혼밥탈출 취소
         </button>
       </div>
     </div>

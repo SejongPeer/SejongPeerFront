@@ -19,7 +19,7 @@ const H_Gender = props => {
     setIsSameClicked(false);
     setIsDontCareClicked(true);
     const choiceGender = 'NO_MATTER';
-    props.setChoiceGenderKorean('이성');
+    props.setChoiceGenderKorean('상관없음');
     props.sendChoiceGenderData(choiceGender);
   };
 
@@ -30,7 +30,7 @@ const H_Gender = props => {
 
   return (
     <div className={con.container}>
-      <p className={con.title}>원하는 축제짝꿍 성별을 선택해주세요!</p>
+      <p className={con.title}>원하는 밥짝꿍 성별을 선택해주세요!</p>
       <div className={con.btnContainer}>
         <button className={clickSameBtnColor} onClick={clickSameBtnHandler}>
           동성
@@ -39,10 +39,10 @@ const H_Gender = props => {
           className={clickDontCareBtnColor}
           onClick={clickDontCareBtnHandler}
         >
-          이성
+          상관없음
         </button>
       </div>
-      {/* <div className={con.fightImg}></div> */}
+      <div className={con.fightImg}></div>
     </div>
   );
 };

@@ -84,7 +84,7 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-    width: 45%;
+    width: 75%;
     aspect-ratio: 1/1;
     margin-bottom: 15%;
   }
@@ -94,7 +94,7 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-    width: 45%;
+    width: 75%;
     aspect-ratio: 1/1;
     margin-bottom: 15%;
   }
@@ -179,7 +179,7 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-    width: 150%;
+    width: 120%;
     margin-bottom: 5%;
     aspect-ratio: 2/1;
   }
@@ -197,9 +197,10 @@
     background-image: url('../../../../assets/image/westernFood.png');
     background-repeat: no-repeat;
     background-position: center;
-    background-size: cover;
-    width: 70%;
-    aspect-ratio: 1/1;
+    background-size: contain;
+    width: 120%;
+    margin-bottom: 5%;
+    aspect-ratio: 2/1;
   }
 
   .item-2 {
@@ -207,7 +208,7 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100% 100%;
-    width: 50%;
+    width: 80%;
     aspect-ratio: 1/1;
     margin-bottom: 20%;
     /* aspect-ratio:; */
@@ -218,7 +219,7 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100% 100%;
-    width: 50%;
+    width: 80%;
     aspect-ratio: 1/1;
     margin-bottom: 20%;
   }

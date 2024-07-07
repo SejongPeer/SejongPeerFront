@@ -20,6 +20,7 @@ import Confirm from './components/modal/Confirm.js';
 // 혼밥 컴포넌트
 import Honbob_Matching from './pages/honbob/matching/js/Honbob_Matching.js';
 import HonbobWaiting from './pages/honbob/waiting/HonbobWaiting.js';
+// import HonbobWaiting from './Pages/Honbob/waiting/HonbobWaiting.js';
 import HonbobSuccess from './pages/honbob/success/HonbobSuccess.js';
 import HonbobStart1 from './pages/honbob/info/HonbobStart1.js';
 
@@ -91,7 +92,7 @@ const App = () => {
   }, []);
 
   // 토큰 유효기간 타이머
-  const setLogoutTimer = (token) => {
+  const setLogoutTimer = token => {
     const decodeToken = jwtDecode(token);
     const cuurentTime = Date.now();
     const expTime = decodeToken.exp * 1000;
@@ -193,7 +194,10 @@ const App = () => {
               <Route path="/mypage/modify" element={<Modify />} />
 
               <Route path="/study" element={<StudyList />} />
-              <Route path="/study/post/:studyId" element={<StudyPostDeatil />} />
+              <Route
+                path="/study/post/:studyId"
+                element={<StudyPostDeatil />}
+              />
               <Route path="/study/post" element={<StudyPostWrite />} />
               <Route path="/study/filter" element={<StudyFilter />} />
 
