@@ -1,4 +1,5 @@
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
+import axios from 'axios';
 import { MyContext } from '../../../App';
 import { useNavigate } from 'react-router-dom';
 
@@ -12,125 +13,79 @@ import style from './StudyList.module.css';
 import select from '../../../assets/image/select.png';
 
 const StudyList = () => {
-  const [posts, setPosts] = useState([
-    {
-      index: 1,
-      title: '같이 A+ 맞을 사람 구함',
-      member: '1/4',
-      like: 16,
-      islike: true,
-      image: true,
-      comment: 3,
-      date: '24.02.04',
-      tags: [
-        { name: 'JAVA 프로그래밍', type: 'tag_class' },
-        { name: '우미애', type: 'tag' },
-      ],
-      state: 'ongoing',
-    },
-    {
-      index: 2,
-      title: '프로젝트 팀원 모집',
-      member: '2/5',
-      like: 20,
-      comment: 5,
-      date: '24.02.06',
-      tags: [
-        { name: '알고리즘', type: 'tag_class' },
-        { name: '김교수', type: 'tag' },
-      ],
-      state: 'ongoing',
-    },
-    {
-      index: 3,
-      title: '캡스톤 같은조 할사람 구함',
-      member: '모집완료',
-      like: 16,
-      comment: 3,
-      date: '24.02.04',
-      tags: [
-        { name: '캡스톤 디자인A', type: 'tag_class' },
-        { name: '송형규', type: 'tag' },
-      ],
-      state: 'finish',
-    },
-    {
-      index: 4,
-      title: '프로젝트 팀원 모집',
-      member: '2/5',
-      like: 20,
-      comment: 5,
-      date: '24.02.06',
-      tags: [
-        { name: '알고리즘', type: 'tag_class' },
-        { name: '김교수', type: 'tag' },
-      ],
-      state: 'ongoing',
-    },
-    {
-      index: 5,
-      title: '캡스톤 같은조 할사람 구함',
-      member: '모집완료',
-      like: 16,
-      comment: 3,
-      date: '24.02.04',
-      tags: [
-        { name: '캡스톤 디자인A', type: 'tag_class' },
-        { name: '송형규', type: 'tag' },
-      ],
-      state: 'finish',
-    },
-  ]);
-
-  //모달 오픈
+  const [posts, setPosts] = useState([]);
   const { modalOpen, setModalOpen } = useContext(MyContext);
-  const [isClickedStudy, setIsClickedStudy] = useState(false);
-  const [isClickedMember, setIsClickedMember] = useState(false);
-  const [isClickedOn, setIsClickedOn] = useState(false);
 
-  const modalHandler = () => {
-    setModalOpen(!modalOpen);
-  };
-  const studyFilterModalHandler = () => {
-    setModalOpen(!modalOpen);
-    setIsClickedStudy(true);
-  };
+  useEffect(() => {
+    const fetchPosts = async () => {
+      const accessToken = localStorage.getItem('accessToken'); // 로컬 스토리지에서 엑세스 토큰 가져오기
+      const refreshToken = localStorage.getItem('refreshToken'); // 로컬 스토리지에서 리프레시 토큰 가져오기
 
-  // 모집인원 모달 창 렌더링 여부
-  const memberFilterModalHandler = () => {
-    setModalOpen(!modalOpen);
-    setIsClickedMember(true);
-  };
+      console.log('Access Token:', accessToken); // 엑세스 토큰 확인
+      console.log('Refresh Token:', refreshToken); // 리프레시 토큰 확인
 
-  // 모집여부 모달 창 렌더링 여부
-  const onFilterModalHandler = () => {
-    setModalOpen(!modalOpen);
-    setIsClickedOn(true);
-  };
+      if (!accessToken || !refreshToken) {
+        console.error('Tokens not found in local storage.');
+        return;
+      }
 
-  // 모달 닫을 때 내용 제거
-  const deleteHandler = () => {
-    setIsClickedStudy(false);
-    setIsClickedMember(false);
-    setIsClickedOn(false);
-  };
+      try {
+        const response = await axios.get(
+          'https://www.api-sejongpeer.shop/api/v1/study/post',
+          {
+            params: {
+              studyType: 'LECTURE', // 또는 'EXTERNAL_ACTIVITY'
+              page: 0,
+            },
+            headers: {
+              Authorization: `Bearer ${accessToken}`, // 헤더에 엑세스 토큰 추가
+              'Refresh-token': `${refreshToken}`, // 헤더에 리프레시 토큰 추가
+              'Content-Type': 'application/json',
+            },
+            withCredentials: true, // 쿠키를 포함하는 요청에 필요할 수 있습니다.
+          }
+        );
 
-  //필터링 값
-  const [onFilter, setOnFilter] = useState(['ongoing', 'finish']);
-  // all - 모두, ongoing - 모집 중, finish - 모집완료
+        // 응답 데이터 구조에 맞게 posts 설정
+        if (
+          response.data &&
+          response.data.data &&
+          Array.isArray(response.data.data.content)
+        ) {
+          setPosts(response.data.data.content);
+        } else {
+          console.error(
+            'Response data is not in expected format:',
+            response.data
+          );
+          setPosts([]);
+        }
 
-  const onFilterHandler = onFilter => {};
+        console.log('게시글 조회성공!');
+        console.log(response.data);
+      } catch (error) {
+        if (error.response) {
+          console.error(
+            'Error:',
+            error.response.status,
+            error.response.data.message
+          );
+        } else {
+          console.error('Error:', error.message);
+        }
+      }
+    };
 
-  // 필터링
-
-  const filterHandler = posts.filter(post => onFilter.includes(post.state));
+    fetchPosts();
+  }, []);
 
   const navigate = useNavigate();
+
   const goPost = () => {
     navigate('/study/post');
   };
 
-  const goPostDetail = (index) => {
+  const goPostDetail = index => {
     navigate(`/study/post/${index}`);
   };
 
@@ -138,22 +93,22 @@ const StudyList = () => {
     <div className={style.container}>
       <div className={style.header}></div>
       <div className={style.filter_box}>
-        <div className={style.filter} onClick={studyFilterModalHandler}>
+        <div className={style.filter} onClick={modalOpen}>
           <p>스터디</p>
           <img src={select} alt="select" className={style.select} />
         </div>
-        <div className={style.filter} onClick={memberFilterModalHandler}>
+        <div className={style.filter} onClick={modalOpen}>
           <p>모집인원</p>
           <img src={select} alt="select" className={style.select} />
         </div>
-        <div className={style.filter} onClick={onFilterModalHandler}>
+        <div className={style.filter} onClick={modalOpen}>
           <p>모집여부</p>
           <img src={select} alt="select" className={style.select} />
         </div>
       </div>
       <div className={style.list_wrapper}>
-        {filterHandler.map(post => (
-          <div key={post.index} onClick={() => goPostDetail(post.index)}>
+        {posts.map(post => (
+          <div key={post.id} onClick={() => goPostDetail(post.id)}>
             <StudyListPost post={post} />
           </div>
         ))}
@@ -162,16 +117,10 @@ const StudyList = () => {
         모집글 작성
       </div>
       {modalOpen && (
-        <BottomModal deleteHandler={deleteHandler}>
-          {isClickedStudy && <Filter_Feild />}
-          {isClickedMember && <Filter_Member />}
-          {isClickedOn && (
-            <Filter_now
-              onFilterHandler={onFilterHandler}
-              deleteHandler={deleteHandler}
-              onFilter={onFilter}
-            />
-          )}
+        <BottomModal deleteHandler={() => setModalOpen(false)}>
+          <Filter_Feild />
+          <Filter_Member />
+          <Filter_now />
         </BottomModal>
       )}
     </div>
