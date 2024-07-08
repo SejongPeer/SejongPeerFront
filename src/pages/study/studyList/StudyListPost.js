@@ -1,14 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 import heart from '../../../assets/image/heart.png';
-import comment from '../../../assets/image/comment.png';
+import filledHeart from '../../../assets/image/filledHeart.svg'; // 채워진 하트 아이콘
 import picture from '../../../assets/image/image.png';
 import COLORS from '../../../theme';
 
 const StudyListPost = ({ post }) => {
-  const { title, createdAt, hasImage, categoryName } = post;
+  const { title, createdAt, hasImage, categoryName, id } = post;
+  const isScrapped = localStorage.getItem(`isScrapped_${id}`) === 'true'; // 스크랩 상태 확인
 
-  // 날짜 형식을 변환하는 함수
   const formatDate = dateString => {
     const date = new Date(dateString);
     const year = date.getFullYear().toString().slice(2);
@@ -33,12 +33,12 @@ const StudyListPost = ({ post }) => {
 
       <PostBottom>
         <Like>
-          <LikeIcon src={heart} alt="like" />
-          <LikeNumber>0</LikeNumber>{' '}
+          <LikeIcon src={isScrapped ? filledHeart : heart} alt="like" />
+          <LikeNumber>0</LikeNumber>
         </Like>
         {/* <Comment>
           <CommentIcon src={comment} alt="comment" />
-          <CommentNumber>0</CommentNumber>{' '}
+          <CommentNumber>0</CommentNumber>
         </Comment> */}
       </PostBottom>
     </PostWrapper>

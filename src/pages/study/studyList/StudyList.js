@@ -1,86 +1,33 @@
-import { useContext, useState, useEffect } from 'react';
-import axios from 'axios';
-import { MyContext } from '../../../App';
+// src/components/study/StudyList.js
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import COLORS from '../../../theme';
-
 import StudyListPost from './StudyListPost';
 import BottomModal from '../../../components/modal/BottomModal';
 import Filter_now from './Filter_now';
 import Filter_Feild from './Filter_Feild';
 import Filter_Member from './Filter_Member';
-
 import select from '../../../assets/image/select.png';
+import useStudyStore from './useStudyStore';
+import { fetchPosts } from './api';
 
 const StudyList = () => {
-  const [posts, setPosts] = useState([]);
-  const { modalOpen, setModalOpen } = useContext(MyContext);
+  const { posts, modalOpen, setPosts, setModalOpen } = useStudyStore();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchPosts = async () => {
-      const accessToken = localStorage.getItem('accessToken'); // 로컬 스토리지에서 엑세스 토큰 가져오기
-      const refreshToken = localStorage.getItem('refreshToken'); // 로컬 스토리지에서 리프레시 토큰 가져오기
-
-      console.log('Access Token:', accessToken); // 엑세스 토큰 확인
-      console.log('Refresh Token:', refreshToken); // 리프레시 토큰 확인
-
-      if (!accessToken || !refreshToken) {
-        console.error('Tokens not found in local storage.');
-        return;
-      }
-
+    const loadPosts = async () => {
       try {
-        const response = await axios.get(
-          'https://www.api-sejongpeer.shop/api/v1/study/post',
-          {
-            params: {
-              studyType: 'LECTURE', // 또는 'EXTERNAL_ACTIVITY'
-              page: 0,
-            },
-            headers: {
-              Authorization: `Bearer ${accessToken}`, // 헤더에 엑세스 토큰 추가
-              'Refresh-token': `${refreshToken}`, // 헤더에 리프레시 토큰 추가
-              'Content-Type': 'application/json',
-            },
-            withCredentials: true, // 쿠키를 포함하는 요청에 필요할 수 있습니다.
-          }
-        );
-
-        // 응답 데이터 구조에 맞게 posts 설정
-        if (
-          response.data &&
-          response.data.data &&
-          Array.isArray(response.data.data.content)
-        ) {
-          setPosts(response.data.data.content);
-        } else {
-          console.error(
-            'Response data is not in expected format:',
-            response.data
-          );
-          setPosts([]);
-        }
-
-        console.log('게시글 조회성공!');
-        console.log(response.data);
+        const fetchedPosts = await fetchPosts();
+        setPosts(fetchedPosts);
       } catch (error) {
-        if (error.response) {
-          console.error(
-            'Error:',
-            error.response.status,
-            error.response.data.message
-          );
-        } else {
-          console.error('Error:', error.message);
-        }
+        console.error('Error fetching posts:', error);
       }
     };
 
-    fetchPosts();
-  }, []);
-
-  const navigate = useNavigate();
+    loadPosts();
+  }, [setPosts]);
 
   const goPost = () => {
     navigate('/study/post');
@@ -94,15 +41,15 @@ const StudyList = () => {
     <Container>
       <Header></Header>
       <FilterBox>
-        <Filter onClick={modalOpen}>
+        <Filter onClick={() => setModalOpen(true)}>
           <p>스터디</p>
           <SelectImage src={select} alt="select" />
         </Filter>
-        <Filter onClick={modalOpen}>
+        <Filter onClick={() => setModalOpen(true)}>
           <p>모집인원</p>
           <SelectImage src={select} alt="select" />
         </Filter>
-        <Filter onClick={modalOpen}>
+        <Filter onClick={() => setModalOpen(true)}>
           <p>모집여부</p>
           <SelectImage src={select} alt="select" />
         </Filter>

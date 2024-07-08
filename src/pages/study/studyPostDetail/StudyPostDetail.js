@@ -5,12 +5,9 @@ import useStore from './useStore';
 import COLORS from '../../../theme';
 import heart from '../../../assets/image/heart_postdetail.svg';
 import filledHeart from '../../../assets/image/filledHeart.svg';
-
-// api 호출 함수 컴포넌트로 따로 분리함
 import { fetchStudyData, applyForStudy, toggleScrap } from './api';
 
 const StudyListPostDetail = () => {
-  // 상태관리 -> zustand 사용
   const {
     isPopupVisible,
     popupMessage,
@@ -25,13 +22,16 @@ const StudyListPostDetail = () => {
   } = useStore();
 
   const { studyId } = useParams();
+
   useEffect(() => {
     const fetchData = async () => {
       try {
         const data = await fetchStudyData(studyId);
         setStudyData(data);
-        setScrapped(data.data.isScrapped);
+        const scrapped = localStorage.getItem(`isScrapped_${studyId}`);
+        setScrapped(scrapped ? JSON.parse(scrapped) : data.data.isScrapped);
         const appliedStatus = localStorage.getItem(`isApplied_${studyId}`);
+        console.log(data);
         if (appliedStatus) {
           setApplied(JSON.parse(appliedStatus));
         }
@@ -56,6 +56,7 @@ const StudyListPostDetail = () => {
     setPopupVisible(false);
   };
 
+  // 스터디 지원 버튼
   const applyForStudyHandler = async () => {
     try {
       const response = await applyForStudy(studyId);
@@ -80,11 +81,15 @@ const StudyListPostDetail = () => {
     }
   };
 
+  // 스터디 스크랩 버튼
   const toggleScrapHandler = async () => {
     try {
       const response = await toggleScrap(studyId, isScrapped);
       if (response.status === 200) {
-        setScrapped(!isScrapped);
+        const newScrappedStatus = !isScrapped;
+        setScrapped(newScrappedStatus);
+        localStorage.setItem(`isScrapped_${studyId}`, newScrappedStatus);
+        console.log(response);
       } else {
         console.error('스크랩 실패:', response);
       }
