@@ -8,13 +8,22 @@ import COLORS from '../../../theme';
 const StudyListPost = ({ post }) => {
   const { title, createdAt, hasImage, categoryName } = post;
 
+  // 날짜 형식을 변환하는 함수
+  const formatDate = dateString => {
+    const date = new Date(dateString);
+    const year = date.getFullYear().toString().slice(2);
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    const day = date.getDate().toString().padStart(2, '0');
+    return `${year}.${month}.${day}`;
+  };
+
   return (
     <PostWrapper>
       <PostTop>
         <TagWrapper>
           <TagText>{categoryName}</TagText>
         </TagWrapper>
-        <DateText>{createdAt}</DateText>
+        <DateText>{formatDate(createdAt)}</DateText>
       </PostTop>
 
       <PostMiddle>
@@ -27,10 +36,10 @@ const StudyListPost = ({ post }) => {
           <LikeIcon src={heart} alt="like" />
           <LikeNumber>0</LikeNumber>{' '}
         </Like>
-        <Comment>
+        {/* <Comment>
           <CommentIcon src={comment} alt="comment" />
           <CommentNumber>0</CommentNumber>{' '}
-        </Comment>
+        </Comment> */}
       </PostBottom>
     </PostWrapper>
   );
@@ -118,20 +127,5 @@ const LikeIcon = styled.img`
 `;
 
 const LikeNumber = styled.p`
-  color: ${COLORS.font3};
-`;
-
-const Comment = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 15%;
-`;
-
-const CommentIcon = styled.img`
-  width: 16px;
-  height: 16px;
-`;
-
-const CommentNumber = styled.p`
   color: ${COLORS.font3};
 `;

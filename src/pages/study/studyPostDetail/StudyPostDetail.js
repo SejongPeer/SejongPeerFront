@@ -1,100 +1,98 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
+import useStore from './useStore';
 import COLORS from '../../../theme';
 import heart from '../../../assets/image/heart_postdetail.svg';
-import axios from 'axios';
+import filledHeart from '../../../assets/image/filledHeart.svg';
+
+// api 호출 함수 컴포넌트로 따로 분리함
+import { fetchStudyData, applyForStudy, toggleScrap } from './api';
 
 const StudyListPostDetail = () => {
-  const [isPopupVisible, setIsPopupVisible] = useState(false);
-  const [popupMessage, setPopupMessage] = useState('');
-  const [studyData, setStudyData] = useState(null);
-  const [isApplied, setIsApplied] = useState(false);
+  // 상태관리 -> zustand 사용
+  const {
+    isPopupVisible,
+    popupMessage,
+    studyData,
+    isApplied,
+    isScrapped,
+    setPopupVisible,
+    setPopupMessage,
+    setStudyData,
+    setApplied,
+    setScrapped,
+  } = useStore();
+
   const { studyId } = useParams();
-  const navigate = useNavigate();
-
   useEffect(() => {
-    const fetchStudyData = async () => {
+    const fetchData = async () => {
       try {
-        const response = await fetch(
-          `${process.env.REACT_APP_BACK_SERVER}/study/post/${studyId}`,
-          {
-            method: 'GET',
-            headers: {
-              'Content-Type': 'application/json',
-              Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
-              'Refresh-Token': localStorage.getItem('refreshToken'),
-            },
-          }
-        );
-
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
-        const data = await response.json();
+        const data = await fetchStudyData(studyId);
         setStudyData(data);
-        console.log(data);
+        setScrapped(data.data.isScrapped);
+        const appliedStatus = localStorage.getItem(`isApplied_${studyId}`);
+        if (appliedStatus) {
+          setApplied(JSON.parse(appliedStatus));
+        }
       } catch (error) {
         console.error('Error fetching study data:', error);
       }
     };
 
-    const appliedStatus = localStorage.getItem(`isApplied_${studyId}`);
-    if (appliedStatus) {
-      setIsApplied(JSON.parse(appliedStatus));
-    }
-
-    fetchStudyData();
-  }, [studyId]);
+    fetchData();
+  }, [studyId, setStudyData, setScrapped, setApplied]);
 
   if (!studyData) {
     return <div>Loading...</div>;
   }
 
-  const BackHandler = () => {
-    navigate('/study');
-  };
-
   const togglePopup = message => {
     setPopupMessage(message);
-    setIsPopupVisible(!isPopupVisible);
+    setPopupVisible(!isPopupVisible);
   };
 
   const closePopup = () => {
-    setIsPopupVisible(false);
+    setPopupVisible(false);
   };
 
-  const applyForStudy = async () => {
+  const applyForStudyHandler = async () => {
     try {
-      const response = await axios.post(
-        `${process.env.REACT_APP_BACK_SERVER}/study/relations`,
-        { studyId: parseInt(studyId) },
-        {
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
-            'Refresh-Token': localStorage.getItem('refreshToken'),
-          },
-        }
-      );
-
+      const response = await applyForStudy(studyId);
       if (response.status === 201) {
         togglePopup(
           '지원 완료! 모집자가 수락 후, 모집인원이 다 차거나 마감일이 되면 메시지로 오픈채팅 링크가 전달됩니다.'
         );
-        setIsApplied(true);
+        setApplied(true);
         localStorage.setItem(`isApplied_${studyId}`, true);
+        console.log(response);
       } else {
         console.error('Failed to apply for study:', response);
       }
     } catch (error) {
       if (error.response && error.response.status === 409) {
         togglePopup('이미 신청한 스터디입니다!');
-        setIsApplied(true);
+        setApplied(true);
         localStorage.setItem(`isApplied_${studyId}`, true);
       } else {
         console.error('Error applying for study:', error);
+      }
+    }
+  };
+
+  const toggleScrapHandler = async () => {
+    try {
+      const response = await toggleScrap(studyId, isScrapped);
+      if (response.status === 200) {
+        setScrapped(!isScrapped);
+      } else {
+        console.error('스크랩 실패:', response);
+      }
+    } catch (error) {
+      if (error.response && error.response.status === 403) {
+        console.error('권한이 없음.');
+      } else {
+        console.error('스크랩 실패:', error);
       }
     }
   };
@@ -125,11 +123,11 @@ const StudyListPostDetail = () => {
         <TagContainer></TagContainer>
 
         <CommentContainer>
-          <ScrapButton>
-            <ScrapImage src={heart} alt="heart" />
+          <ScrapButton onClick={toggleScrapHandler}>
+            <ScrapImage src={isScrapped ? filledHeart : heart} alt="heart" />
             <ScrapCount>12</ScrapCount>
           </ScrapButton>
-          <ApplyButton onClick={applyForStudy} isApplied={isApplied}>
+          <ApplyButton onClick={applyForStudyHandler} isApplied={isApplied}>
             {isApplied ? '지원완료' : '지원하기(1/4)'}
           </ApplyButton>
         </CommentContainer>
@@ -160,7 +158,6 @@ const Container = styled.div`
 `;
 
 const Title = styled.div`
-  font-family: Pretendard;
   font-size: 18px;
   font-style: normal;
   font-weight: 600;
@@ -170,7 +167,6 @@ const Title = styled.div`
 `;
 
 const Title2 = styled.div`
-  font-family: Pretendard;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -199,7 +195,6 @@ const ApplicationPeriod = styled(Title2)`
 
 const ApplicationPeriod2 = styled.div`
   color: ${COLORS.font1};
-  font-family: Pretendard;
   font-size: 14px;
   line-height: 20px;
   letter-spacing: -0.333px;
@@ -220,7 +215,7 @@ const Line = styled.div`
   height: 1px;
   width: 100vw;
   background-color: ${COLORS.line1};
-  border-bottom: 5px solid ${COLORS.line2};
+  border-bottom: 5px solid #fff7f7;
   margin-top: 15px;
   margin-bottom: 15px;
   margin-left: -50vw;
@@ -235,7 +230,6 @@ const Content = styled.div`
   height: 120px;
   flex-shrink: 0;
   color: ${COLORS.font1};
-  font-family: Pretendard;
   font-size: 15px;
   font-style: normal;
   font-weight: 400;
@@ -265,7 +259,6 @@ const Tag = styled.button`
 
 const TagText = styled.div`
   color: ${COLORS.main};
-  font-family: Pretendard;
   font-size: 12px;
   font-style: normal;
   font-weight: 500;
@@ -295,7 +288,6 @@ const ScrapButton = styled.button`
 `;
 
 const ScrapCount = styled.div`
-  font-family: Pretendard;
   font-size: 12px;
   color: ${COLORS.font2};
   margin-top: 2px;
@@ -314,7 +306,6 @@ const ApplyButton = styled.button`
   background: ${props => (props.isApplied ? COLORS.line2 : COLORS.main)};
   color: #fff;
   text-align: center;
-  font-family: Pretendard;
   font-size: 18px;
   font-style: normal;
   font-weight: 700;
@@ -345,20 +336,17 @@ const Popup = styled.div`
 const PopupContent = styled.div`
   display: flex;
   text-align: center;
-  font-family: Pretendard;
   color: ${COLORS.font1};
   flex-direction: column;
 `;
 
 const PopupTitle = styled.div`
-  font-family: Pretendard;
   font-size: 16px;
   font-weight: 600;
   margin-bottom: 10px;
 `;
 
 const PopupMessage = styled.div`
-  font-family: Pretendard;
   font-size: 14px;
   color: ${COLORS.font2};
   line-height: 1.5;
@@ -372,7 +360,6 @@ const ConfirmButton = styled.button`
   border-radius: 5px;
   background-color: ${COLORS.main};
   color: white;
-  font-family: Pretendard;
   font-size: 16px;
   cursor: pointer;
 `;
