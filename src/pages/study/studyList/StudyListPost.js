@@ -1,44 +1,137 @@
-import style from './StudyList.module.css';
+import React from 'react';
+import styled from 'styled-components';
 import heart from '../../../assets/image/heart.png';
 import comment from '../../../assets/image/comment.png';
 import picture from '../../../assets/image/image.png';
+import COLORS from '../../../theme';
 
 const StudyListPost = ({ post }) => {
   const { title, createdAt, hasImage, categoryName } = post;
 
   return (
-    <div className={style.post_wrapper}>
-      <div className={style.post_top}>
-        <div className={style.tag_wrapper}>
-          <div className={style.category}>
-            <p>{categoryName}</p>
-          </div>
-        </div>
+    <PostWrapper>
+      <PostTop>
+        <TagWrapper>
+          <TagText>{categoryName}</TagText>
+        </TagWrapper>
+        <DateText>{createdAt}</DateText>
+      </PostTop>
 
-        <div className={style.date}>{createdAt}</div>
-      </div>
+      <PostMiddle>
+        <Title>{title}</Title>
+        {hasImage && <ImageIcon src={picture} alt="hasImage" />}
+      </PostMiddle>
 
-      <div className={style.post_middle}>
-        <p className={style.title}>{title}</p>
-        {hasImage && (
-          <img src={picture} alt="hasImage" className={style.image_icon} />
-        )}
-      </div>
-
-      <div className={style.post_bottom}>
-        <div className={style.like}>
-          <img src={heart} alt="like" className={style.like_icon} />
-          <p className={style.like_number}>0</p>{' '}
-          {/* 예시로 0을 넣었습니다. 실제 좋아요 수가 있다면 변경하세요 */}
-        </div>
-        <div className={style.comment}>
-          <img src={comment} alt="comment" className={style.comment_icon} />
-          <p className={style.comment_number}>0</p>{' '}
-          {/* 예시로 0을 넣었습니다. 실제 댓글 수가 있다면 변경하세요 */}
-        </div>
-      </div>
-    </div>
+      <PostBottom>
+        <Like>
+          <LikeIcon src={heart} alt="like" />
+          <LikeNumber>0</LikeNumber>{' '}
+        </Like>
+        <Comment>
+          <CommentIcon src={comment} alt="comment" />
+          <CommentNumber>0</CommentNumber>{' '}
+        </Comment>
+      </PostBottom>
+    </PostWrapper>
   );
 };
 
 export default StudyListPost;
+
+const PostWrapper = styled.div`
+  width: 100%;
+  height: 12vh;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid ${COLORS.line2};
+  padding: 1% 3%;
+`;
+
+const PostTop = styled.div`
+  width: 100%;
+  height: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1%;
+  margin-top: 1.5%;
+`;
+
+const TagWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 5%;
+  border-radius: 15px;
+  border: 1px solid ${COLORS.main};
+`;
+
+const TagText = styled.p`
+  margin: 0px;
+  padding: 2px 8px;
+  color: ${COLORS.main};
+`;
+
+const DateText = styled.div`
+  font-size: 1rem;
+  color: ${COLORS.font4};
+`;
+
+const PostMiddle = styled.div`
+  width: 100%;
+  height: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.2%;
+`;
+
+const Title = styled.p`
+  font-size: 1rem;
+  font-weight: 600;
+  color: ${COLORS.font1};
+  margin: 2% 0;
+`;
+
+const ImageIcon = styled.img`
+  width: 16px;
+  height: 16px;
+`;
+
+const PostBottom = styled.div`
+  width: 100%;
+  height: 30%;
+  display: flex;
+  align-items: center;
+  gap: 5%;
+  padding: 0 1.2%;
+`;
+
+const Like = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 8%;
+`;
+
+const LikeIcon = styled.img`
+  width: 16px;
+  height: 16px;
+`;
+
+const LikeNumber = styled.p`
+  color: ${COLORS.font3};
+`;
+
+const Comment = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 15%;
+`;
+
+const CommentIcon = styled.img`
+  width: 16px;
+  height: 16px;
+`;
+
+const CommentNumber = styled.p`
+  color: ${COLORS.font3};
+`;
