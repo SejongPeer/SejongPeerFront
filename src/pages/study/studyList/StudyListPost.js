@@ -98,7 +98,7 @@ const Title = styled.p`
   font-size: 1rem;
   font-weight: 600;
   color: ${COLORS.font1};
-  margin: 2% 0;
+  margin: 2.1% 0;
 `;
 
 const ImageIcon = styled.img`
