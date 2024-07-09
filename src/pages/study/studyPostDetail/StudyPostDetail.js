@@ -1,51 +1,23 @@
-<<<<<<< Updated upstream
-
-
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-=======
-import React, { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
->>>>>>> Stashed changes
 import styled from 'styled-components';
 
 import search from '../../../assets/image/search_black.png';
 import comment_down from '../../../assets/image/comment_down.png';
 import scrap from '../../../assets/image/scrap.png';
-import heart from '../../../assets/image/heart_postdetail.svg'
+import heart from '../../../assets/image/heart_postdetail.svg';
 
 import axios from 'axios';
 
 const StudyListPostDetail = () => {
-<<<<<<< Updated upstream
   const [isPopupVisible, setIsPopupVisible] = useState(false);
   const [studyData, setStudyData] = useState(null);
-  const {studyId} = useParams();
-  const navigate = useNavigate();
-  // const studyId = 3;
-  console.log("studyId : ",studyId);
-=======
-  const {
-    isPopupVisible,
-    popupMessage,
-    studyData,
-    isApplied,
-    isScrapped,
-    scrapId,
-    setPopupVisible,
-    setPopupMessage,
-    setStudyData,
-    setApplied,
-    setScrapped,
-  } = useStore();
-
   const { studyId } = useParams();
->>>>>>> Stashed changes
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchStudyData = async () => {
       try {
-<<<<<<< Updated upstream
         const response = await fetch(
           process.env.REACT_APP_BACK_SERVER + `/study/post/${studyId}`,
           {
@@ -57,23 +29,9 @@ const StudyListPostDetail = () => {
             },
           }
         );
-        
+
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
-=======
-        const data = await fetchStudyData(studyId);
-        console.log(data);
-        setStudyData(data);
-        const scrapped = localStorage.getItem(`isScrapped_${studyId}`);
-        const storedScrapId = localStorage.getItem(`scrapId_${studyId}`);
-        setScrapped(
-          scrapped ? JSON.parse(scrapped) : data.data.isScrapped,
-          storedScrapId ? JSON.parse(storedScrapId) : data.data.scrapId
-        );
-        const appliedStatus = localStorage.getItem(`isApplied_${studyId}`);
-        if (appliedStatus) {
-          setApplied(JSON.parse(appliedStatus));
->>>>>>> Stashed changes
         }
 
         const data = await response.json();
@@ -87,7 +45,6 @@ const StudyListPostDetail = () => {
     fetchStudyData();
   }, [studyId]);
 
-
   if (!studyData) {
     return <div>Loading...</div>;
   }
@@ -95,44 +52,14 @@ const StudyListPostDetail = () => {
   const BackHandler = () => {
     navigate('/study');
   };
+
   const togglePopup = () => {
     setIsPopupVisible(!isPopupVisible);
   };
+
   const closePopup = () => {
-<<<<<<< Updated upstream
     setIsPopupVisible(false);
   };
-  console.log(studyData)
-=======
-    setPopupVisible(false);
-  };
-
-  const applyForStudyHandler = async () => {
-    try {
-      const response = await applyForStudy(studyId);
-      if (response.status === 201) {
-        togglePopup(
-          '지원 완료! 모집자가 수락 후, 모집인원이 다 차거나 마감일이 되면 메시지로 오픈채팅 링크가 전달됩니다.'
-        );
-        setApplied(true);
-        localStorage.setItem(`isApplied_${studyId}`, true);
-        console.log(response);
-      } else {
-        console.error('Failed to apply for study:', response);
-      }
-    } catch (error) {
-      if (error.response && error.response.status === 409) {
-        togglePopup('이미 신청한 스터디입니다!');
-        setApplied(true);
-        localStorage.setItem(`isApplied_${studyId}`, true);
-      } else {
-        console.error('Error applying for study:', error);
-      }
-    }
-  };
-
-  const toggleScrapHandler = async () => {};
->>>>>>> Stashed changes
 
   return (
     <Container>
@@ -144,57 +71,20 @@ const StudyListPostDetail = () => {
         </FlexContainer>
         <FlexContainer>
           <ApplicationPeriod>지원기간</ApplicationPeriod>
-          <ApplicationPeriod2>{studyData.data.recruitmentStart}</ApplicationPeriod2>
+          <ApplicationPeriod2>
+            {studyData.data.recruitmentStart}
+          </ApplicationPeriod2>
           ~
-          <ApplicationPeriod3>{studyData.data.recruitmentEnd}</ApplicationPeriod3>
+          <ApplicationPeriod3>
+            {studyData.data.recruitmentEnd}
+          </ApplicationPeriod3>
         </FlexContainer>
         <Tag>
-            <TagText>{studyData.data.categoryName}</TagText>
-          </Tag>
+          <TagText>{studyData.data.categoryName}</TagText>
+        </Tag>
         <Line />
-        <Content>
-          {studyData.data.content}
-        </Content>
-        <TagContainer>
-
-        </TagContainer>
-
-        {/* <CommentTitle>댓글 4</CommentTitle>
-        <Line />
-
-        <CommentContainer>
-          <CommentNickname>세종냥이1</CommentNickname>
-          <CommentDate>23.03.28</CommentDate>
-        </CommentContainer>
-        <CommentContent>
-          다른 과 학생인데 스터디 참여 가능할까요..?
-        </CommentContent>
-
-        <CommentContainer>
-          <CommentDown src={comment_down} alt="comment_down" />
-          <CommentNickname>글쓴이</CommentNickname>
-          <CommentDate>23.03.28</CommentDate>
-        </CommentContainer>
-
-        <CommentContent>열심히 하신다면 참여가능합니다!</CommentContent>
-
-        <Line />
-
-        <CommentContainer>
-          <CommentNickname>세종냥이1</CommentNickname>
-          <CommentDate>23.03.28</CommentDate>
-        </CommentContainer>
-        <CommentContent>
-          다른 과 학생인데 스터디 참여 가능할까요..?
-        </CommentContent>
-
-        <CommentContainer>
-          <CommentDown src={comment_down} alt="comment_down" />
-          <CommentNickname>글쓴이</CommentNickname>
-          <CommentDate>23.03.28</CommentDate>
-        </CommentContainer>
-
-        <CommentContent>열심히 하신다면 참여가능합니다!</CommentContent> */}
+        <Content>{studyData.data.content}</Content>
+        <TagContainer></TagContainer>
 
         <CommentContainer>
           <ScrapButton>
@@ -231,8 +121,6 @@ const Container = styled.div`
   background-color: #fafafa;
 `;
 
-
-
 const Title = styled.div`
   font-family: Pretendard;
   font-size: 18px;
@@ -248,13 +136,13 @@ const Title2 = styled.div`
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
-  color: #555;  
+  color: #555;
   line-height: 20px;
   letter-spacing: -0.333px;
   text-align: left;
   margin-right: 10px;
-  margin-top:2px;
-  margin-bottom:2px;
+  margin-top: 2px;
+  margin-bottom: 2px;
 `;
 
 const Nickname = styled(Title2)`
@@ -286,9 +174,7 @@ const ApplicationPeriod2 = styled.div`
   margin-right: 1px;
 `;
 
-const ApplicationPeriod3 = styled(ApplicationPeriod2)`
-
-`;
+const ApplicationPeriod3 = styled(ApplicationPeriod2)``;
 
 const FlexContainer = styled.div`
   display: flex;
@@ -301,14 +187,13 @@ const Line = styled.div`
   height: 1px;
   width: 100vw;
   background-color: #b9b9b9;
-  border-bottom: 5px solid var(--line_02, #FFF7F7);
+  border-bottom: 5px solid var(--line_02, #fff7f7);
   margin-top: 15px;
   margin-bottom: 15px;
   margin-left: -50vw;
   left: 50%;
   position: relative;
 `;
-
 
 const Content = styled.div`
   margin: auto;
@@ -445,7 +330,6 @@ const ScrapCount = styled.div`
   color: #555;
   margin-top: 2px; /* Add some margin to separate from the image */
 `;
-
 
 const ScrapImage = styled.img`
   width: 20px;
