@@ -1,8 +1,13 @@
+// src/api/study.js
 import axios from 'axios';
 
 export const fetchStudyData = async studyId => {
   const accessToken = localStorage.getItem('accessToken');
   const refreshToken = localStorage.getItem('refreshToken');
+
+  if (!accessToken || !refreshToken) {
+    throw new Error('토큰이 없음!');
+  }
 
   const response = await axios.get(
     `${process.env.REACT_APP_BACK_SERVER}/study/post/${studyId}`,
@@ -10,7 +15,7 @@ export const fetchStudyData = async studyId => {
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${accessToken}`,
-        'Refresh-token': refreshToken,
+        'Refresh-token': `${refreshToken}`,
       },
     }
   );
@@ -18,9 +23,14 @@ export const fetchStudyData = async studyId => {
   return response.data;
 };
 
+// 스터디 신청 함수
 export const applyForStudy = async studyId => {
   const accessToken = localStorage.getItem('accessToken');
   const refreshToken = localStorage.getItem('refreshToken');
+
+  if (!accessToken || !refreshToken) {
+    throw new Error('토큰이 없음!');
+  }
 
   const response = await axios.post(
     `${process.env.REACT_APP_BACK_SERVER}/study/relations`,
@@ -29,7 +39,7 @@ export const applyForStudy = async studyId => {
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${accessToken}`,
-        'Refresh-token': refreshToken,
+        'Refresh-token': `${refreshToken}`,
       },
     }
   );
@@ -37,6 +47,7 @@ export const applyForStudy = async studyId => {
   return response;
 };
 
+// 스터디 스크랩 함수
 export const toggleScrap = async (studyId, isScrapped, scrapId = null) => {
   const accessToken = localStorage.getItem('accessToken');
   const refreshToken = localStorage.getItem('refreshToken');
@@ -52,7 +63,6 @@ export const toggleScrap = async (studyId, isScrapped, scrapId = null) => {
     }
     // DELETE 요청
     const url = `${process.env.REACT_APP_BACK_SERVER}/scraps/${scrapId}`;
-    console.log(`Deleting scrap with ID: ${scrapId} at URL: ${url}`);
     const response = await axios.delete(url, {
       headers: {
         'Content-Type': 'application/json',
@@ -64,7 +74,6 @@ export const toggleScrap = async (studyId, isScrapped, scrapId = null) => {
   } else {
     // POST 요청
     const url = `${process.env.REACT_APP_BACK_SERVER}/scraps/study/${studyId}`;
-    console.log(`Creating scrap for study ID: ${studyId} at URL: ${url}`);
     const response = await axios.post(
       url,
       {},
@@ -76,10 +85,6 @@ export const toggleScrap = async (studyId, isScrapped, scrapId = null) => {
         },
       }
     );
-    if (response.status === 200 || response.status === 201) {
-      console.log(response.data.data); // scrapId가 제대로 반환되는지 확인
-      return response.data.data; // scrapId 반환
-    }
     return response;
   }
 };

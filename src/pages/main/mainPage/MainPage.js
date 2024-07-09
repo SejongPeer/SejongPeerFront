@@ -153,8 +153,10 @@ const MainPage = () => {
   };
 
   const StudyHandler = () => {
-    navigate('/study');
-    // alert('4월 중 서비스 예정입니다!');
+    if (refreshToken === null || accessToken === null) {
+      alert('로그인 후 이용 가능한 서비스입니다!');
+      navigate('/login');
+    } else navigate('/study');
   };
   const reportUserHandler = () => {
     alert('너 신고');

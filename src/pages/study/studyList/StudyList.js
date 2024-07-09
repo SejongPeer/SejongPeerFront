@@ -1,181 +1,154 @@
-import { useContext, useState } from 'react';
-import { MyContext } from '../../../App';
+// src/components/study/StudyList.js
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import styled from 'styled-components';
+import COLORS from '../../../theme';
 import StudyListPost from './StudyListPost';
 import BottomModal from '../../../components/modal/BottomModal';
 import Filter_now from './Filter_now';
 import Filter_Feild from './Filter_Feild';
 import Filter_Member from './Filter_Member';
-
-import style from './StudyList.module.css';
 import select from '../../../assets/image/select.png';
+import useStudyStore from './useStudyStore';
+import { fetchPosts } from './api';
 
 const StudyList = () => {
-  const [posts, setPosts] = useState([
-    {
-      index: 1,
-      title: '같이 A+ 맞을 사람 구함',
-      member: '1/4',
-      like: 16,
-      islike: true,
-      image: true,
-      comment: 3,
-      date: '24.02.04',
-      tags: [
-        { name: 'JAVA 프로그래밍', type: 'tag_class' },
-        { name: '우미애', type: 'tag' },
-      ],
-      state: 'ongoing',
-    },
-    {
-      index: 2,
-      title: '프로젝트 팀원 모집',
-      member: '2/5',
-      like: 20,
-      comment: 5,
-      date: '24.02.06',
-      tags: [
-        { name: '알고리즘', type: 'tag_class' },
-        { name: '김교수', type: 'tag' },
-      ],
-      state: 'ongoing',
-    },
-    {
-      index: 3,
-      title: '캡스톤 같은조 할사람 구함',
-      member: '모집완료',
-      like: 16,
-      comment: 3,
-      date: '24.02.04',
-      tags: [
-        { name: '캡스톤 디자인A', type: 'tag_class' },
-        { name: '송형규', type: 'tag' },
-      ],
-      state: 'finish',
-    },
-    {
-      index: 4,
-      title: '프로젝트 팀원 모집',
-      member: '2/5',
-      like: 20,
-      comment: 5,
-      date: '24.02.06',
-      tags: [
-        { name: '알고리즘', type: 'tag_class' },
-        { name: '김교수', type: 'tag' },
-      ],
-      state: 'ongoing',
-    },
-    {
-      index: 5,
-      title: '캡스톤 같은조 할사람 구함',
-      member: '모집완료',
-      like: 16,
-      comment: 3,
-      date: '24.02.04',
-      tags: [
-        { name: '캡스톤 디자인A', type: 'tag_class' },
-        { name: '송형규', type: 'tag' },
-      ],
-      state: 'finish',
-    },
-  ]);
-
-  //모달 오픈
-  const { modalOpen, setModalOpen } = useContext(MyContext);
-  const [isClickedStudy, setIsClickedStudy] = useState(false);
-  const [isClickedMember, setIsClickedMember] = useState(false);
-  const [isClickedOn, setIsClickedOn] = useState(false);
-
-  const modalHandler = () => {
-    setModalOpen(!modalOpen);
-  };
-  const studyFilterModalHandler = () => {
-    setModalOpen(!modalOpen);
-    setIsClickedStudy(true);
-  };
-
-  // 모집인원 모달 창 렌더링 여부
-  const memberFilterModalHandler = () => {
-    setModalOpen(!modalOpen);
-    setIsClickedMember(true);
-  };
-
-  // 모집여부 모달 창 렌더링 여부
-  const onFilterModalHandler = () => {
-    setModalOpen(!modalOpen);
-    setIsClickedOn(true);
-  };
-
-  // 모달 닫을 때 내용 제거
-  const deleteHandler = () => {
-    setIsClickedStudy(false);
-    setIsClickedMember(false);
-    setIsClickedOn(false);
-  };
-
-  //필터링 값
-  const [onFilter, setOnFilter] = useState(['ongoing', 'finish']);
-  // all - 모두, ongoing - 모집 중, finish - 모집완료
-
-  const onFilterHandler = onFilter => {};
-
-  // 필터링
-
-  const filterHandler = posts.filter(post => onFilter.includes(post.state));
-
+  const { posts, modalOpen, setPosts, setModalOpen } = useStudyStore();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const loadPosts = async () => {
+      try {
+        const fetchedPosts = await fetchPosts();
+        setPosts(fetchedPosts);
+      } catch (error) {
+        console.error('Error fetching posts:', error);
+      }
+    };
+
+    loadPosts();
+  }, [setPosts]);
+
   const goPost = () => {
     navigate('/study/post');
   };
 
-  const goPostDetail = (index) => {
+  const goPostDetail = index => {
     navigate(`/study/post/${index}`);
   };
 
   return (
-    <div className={style.container}>
-      <div className={style.header}></div>
-      <div className={style.filter_box}>
-        <div className={style.filter} onClick={studyFilterModalHandler}>
+    <Container>
+      <Header></Header>
+      <FilterBox>
+        <Filter onClick={() => setModalOpen(true)}>
           <p>스터디</p>
-          <img src={select} alt="select" className={style.select} />
-        </div>
-        <div className={style.filter} onClick={memberFilterModalHandler}>
+          <SelectImage src={select} alt="select" />
+        </Filter>
+        <Filter onClick={() => setModalOpen(true)}>
           <p>모집인원</p>
-          <img src={select} alt="select" className={style.select} />
-        </div>
-        <div className={style.filter} onClick={onFilterModalHandler}>
+          <SelectImage src={select} alt="select" />
+        </Filter>
+        <Filter onClick={() => setModalOpen(true)}>
           <p>모집여부</p>
-          <img src={select} alt="select" className={style.select} />
-        </div>
-      </div>
-      <div className={style.list_wrapper}>
-        {filterHandler.map(post => (
-          <div key={post.index} onClick={() => goPostDetail(post.index)}>
+          <SelectImage src={select} alt="select" />
+        </Filter>
+      </FilterBox>
+      <ListWrapper>
+        {posts.map(post => (
+          <div key={post.id} onClick={() => goPostDetail(post.id)}>
             <StudyListPost post={post} />
           </div>
         ))}
-      </div>
-      <div className={style.write_btn} onClick={goPost}>
-        모집글 작성
-      </div>
+      </ListWrapper>
+      <WriteButton onClick={goPost}>모집글 작성</WriteButton>
       {modalOpen && (
-        <BottomModal deleteHandler={deleteHandler}>
-          {isClickedStudy && <Filter_Feild />}
-          {isClickedMember && <Filter_Member />}
-          {isClickedOn && (
-            <Filter_now
-              onFilterHandler={onFilterHandler}
-              deleteHandler={deleteHandler}
-              onFilter={onFilter}
-            />
-          )}
+        <BottomModal deleteHandler={() => setModalOpen(false)}>
+          <Filter_Feild />
+          <Filter_Member />
+          <Filter_now />
         </BottomModal>
       )}
-    </div>
+    </Container>
   );
 };
 
 export default StudyList;
+
+const Container = styled.div`
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+`;
+
+const Header = styled.div`
+  width: 100%;
+  height: 7%;
+`;
+
+const FilterBox = styled.div`
+  width: 100%;
+  height: 5%;
+  display: flex;
+  align-items: center;
+  padding: 0 2.5%;
+  background-color: ${COLORS.back1};
+  position: fixed;
+  margin: 0vh 0 0.5vh 0;
+  border-bottom: 5px solid ${COLORS.line2};
+`;
+
+const Filter = styled.div`
+  width: auto;
+  min-width: 20%;
+  max-width: 100px;
+  padding: 1% 2%;
+  height: 70%;
+  border: 1px solid ${COLORS.line1};
+  border-radius: 25px;
+  margin: 0 1%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  white-space: nowrap;
+  overflow: hidden;
+  flex-basis: auto;
+  p {
+    font-size: 1rem;
+    white-space: nowrap;
+    color: ${COLORS.font3};
+  }
+`;
+
+const SelectImage = styled.img`
+  width: 10px;
+  height: 6px;
+  margin-left: 4%;
+`;
+
+const ListWrapper = styled.div`
+  width: 100vw;
+  height: auto;
+  margin: 5vh 0;
+`;
+
+const WriteButton = styled.div`
+  width: 40%;
+  max-width: 200px;
+  height: 6%;
+  max-height: 60px;
+  background-color: ${COLORS.main};
+  border-radius: 35px;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  bottom: 5vh;
+  z-index: 2;
+`;
