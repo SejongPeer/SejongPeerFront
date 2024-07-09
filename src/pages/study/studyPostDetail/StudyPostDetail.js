@@ -44,7 +44,7 @@ const StudyListPostDetail = () => {
   }, [studyId, setStudyData, setScrapped, setApplied]);
 
   if (!studyData) {
-    return <div>Loading...</div>;
+    return <div>Loading..</div>;
   }
 
   const togglePopup = message => {
