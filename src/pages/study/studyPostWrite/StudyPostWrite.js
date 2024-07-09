@@ -1,5 +1,5 @@
 // src/pages/StudyPostWrite.js
-import React, { useContext, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { format } from 'date-fns';
 import { MyContext } from '../../../App';
 
@@ -24,10 +24,16 @@ import style from './StudyPostWrite.module.css';
 import './StudyPostWriteBasic.css';
 import SubmitBtn from '../../../components/button/submitButton/SubmitBtn';
 
-const StudyPostWrite = () => {
+const StudyPostWrite = (props) => {
+  //제목
+  const [title, setTitle] = useState(props.title);
+  const TitleHandler = e => {
+    const newTitle = e.target.value;
+    setTitle(newTitle);
+  }
   // 모집 기간, 모집 인원
-  const [startDate, setStartDate] = useState(null);
-  const [endDate, setEndDate] = useState(null);
+  const [startDate, setStartDate] = useState(props.recruitmentStart);
+  const [endDate, setEndDate] = useState(props.recruitmentEnd);
   const [startMember, setStartMember] = useState(0);
   const [endMember, setEndMember] = useState(0);
 
@@ -42,7 +48,12 @@ const StudyPostWrite = () => {
     startDate: null,
     endDate: null,
   });
+
   const [text, setText] = useState('');
+
+  useEffect(() => {
+    setText(props.content);
+  }, [props.content])
 
   const handleTextChange = e => {
     const newText = e.target.value;
@@ -108,7 +119,7 @@ const StudyPostWrite = () => {
   //이미지 업로드
   const [imgFiles, setImgFiles] = useState([]);
   const imgRef = useRef();
-  console.log(imgFiles)
+  //console.log(imgFiles)
 
   const ImgHandler = (event) => {
     const files = Array.from(event.target.files);
@@ -132,7 +143,6 @@ const StudyPostWrite = () => {
     setImgFiles(newImgFiles);
   }
 
-  //
   const [isFilled, setIsFilled] = useState(true);
 
   return (
@@ -145,6 +155,8 @@ const StudyPostWrite = () => {
         <div className={style.contentContainer}>
 
           <StudyRequirement 
+            title = {title}
+            TitleHandler = {TitleHandler}
             startDate={startDate}
             endDate={endDate}
             setChangeDate={setChangeDate}
