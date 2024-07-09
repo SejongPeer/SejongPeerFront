@@ -1,7 +1,12 @@
+<<<<<<< Updated upstream
 
 
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+=======
+import React, { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+>>>>>>> Stashed changes
 import styled from 'styled-components';
 
 import search from '../../../assets/image/search_black.png';
@@ -12,16 +17,35 @@ import heart from '../../../assets/image/heart_postdetail.svg'
 import axios from 'axios';
 
 const StudyListPostDetail = () => {
+<<<<<<< Updated upstream
   const [isPopupVisible, setIsPopupVisible] = useState(false);
   const [studyData, setStudyData] = useState(null);
   const {studyId} = useParams();
   const navigate = useNavigate();
   // const studyId = 3;
   console.log("studyId : ",studyId);
+=======
+  const {
+    isPopupVisible,
+    popupMessage,
+    studyData,
+    isApplied,
+    isScrapped,
+    scrapId,
+    setPopupVisible,
+    setPopupMessage,
+    setStudyData,
+    setApplied,
+    setScrapped,
+  } = useStore();
+
+  const { studyId } = useParams();
+>>>>>>> Stashed changes
 
   useEffect(() => {
     const fetchStudyData = async () => {
       try {
+<<<<<<< Updated upstream
         const response = await fetch(
           process.env.REACT_APP_BACK_SERVER + `/study/post/${studyId}`,
           {
@@ -36,6 +60,20 @@ const StudyListPostDetail = () => {
         
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
+=======
+        const data = await fetchStudyData(studyId);
+        console.log(data);
+        setStudyData(data);
+        const scrapped = localStorage.getItem(`isScrapped_${studyId}`);
+        const storedScrapId = localStorage.getItem(`scrapId_${studyId}`);
+        setScrapped(
+          scrapped ? JSON.parse(scrapped) : data.data.isScrapped,
+          storedScrapId ? JSON.parse(storedScrapId) : data.data.scrapId
+        );
+        const appliedStatus = localStorage.getItem(`isApplied_${studyId}`);
+        if (appliedStatus) {
+          setApplied(JSON.parse(appliedStatus));
+>>>>>>> Stashed changes
         }
 
         const data = await response.json();
@@ -61,9 +99,40 @@ const StudyListPostDetail = () => {
     setIsPopupVisible(!isPopupVisible);
   };
   const closePopup = () => {
+<<<<<<< Updated upstream
     setIsPopupVisible(false);
   };
   console.log(studyData)
+=======
+    setPopupVisible(false);
+  };
+
+  const applyForStudyHandler = async () => {
+    try {
+      const response = await applyForStudy(studyId);
+      if (response.status === 201) {
+        togglePopup(
+          '지원 완료! 모집자가 수락 후, 모집인원이 다 차거나 마감일이 되면 메시지로 오픈채팅 링크가 전달됩니다.'
+        );
+        setApplied(true);
+        localStorage.setItem(`isApplied_${studyId}`, true);
+        console.log(response);
+      } else {
+        console.error('Failed to apply for study:', response);
+      }
+    } catch (error) {
+      if (error.response && error.response.status === 409) {
+        togglePopup('이미 신청한 스터디입니다!');
+        setApplied(true);
+        localStorage.setItem(`isApplied_${studyId}`, true);
+      } else {
+        console.error('Error applying for study:', error);
+      }
+    }
+  };
+
+  const toggleScrapHandler = async () => {};
+>>>>>>> Stashed changes
 
   return (
     <Container>
