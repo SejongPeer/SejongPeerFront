@@ -11,6 +11,8 @@ import DateFrequency from './studyRequirement/DateFrequency';
 
 
 const StudyRequirement = ({
+    title, 
+    TitleHandler,
     startDate,
     endDate,
     setChangeDate,
@@ -29,7 +31,10 @@ const StudyRequirement = ({
     return (
         <div className={style.topBox}>
             <RequireContainer>
-              <Title />
+              <Title 
+                title = {title}
+                TitleHandler = {TitleHandler}
+              />
             </RequireContainer>
 
             <RequireContainer>

@@ -12,6 +12,7 @@ const PostInput = ({
               className={style.contentArea}
               rows="5"
               cols="33"
+              value={text}
             />
             <div className={style.textLength}>{text.length}/1000자</div>
         </div>
