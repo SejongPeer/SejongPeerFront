@@ -1,6 +1,5 @@
 // src/pages/StudyPostWrite.js
 import React, { useContext, useEffect, useRef, useState } from 'react';
-import { format } from 'date-fns';
 import { MyContext } from '../../../App';
 
 // modal
@@ -24,53 +23,31 @@ import style from './StudyPostWrite.module.css';
 import './StudyPostWriteBasic.css';
 import SubmitBtn from '../../../components/button/submitButton/SubmitBtn';
 
-const StudyPostWrite = (props) => {
-  //제목
-  const [title, setTitle] = useState(props.title);
-  const TitleHandler = e => {
-    const newTitle = e.target.value;
-    setTitle(newTitle);
-  }
-  // 모집 기간, 모집 인원
-  const [startDate, setStartDate] = useState(props.recruitmentStart);
-  const [endDate, setEndDate] = useState(props.recruitmentEnd);
-  const [startMember, setStartMember] = useState(0);
-  const [endMember, setEndMember] = useState(0);
+//zustand
+import usePostStore from './usePostStore';
+import { format } from 'date-fns';
+const StudyPostWrite = props => {
+  const {
+    title,
+    // category,
+    startDate,
+    endDate,
+    memberNum,
+    selectedWay,
+    selectedFrequency,
+    questionLink,
+    content,
+    studyLink,
+    tags,
+  } = usePostStore();
 
-  const setStartMem = num => {
-    setStartMember(num);
-  };
-  const setEndMem = num => {
-    setEndMember(num);
-  };
+  // setTitle(newTitle);
 
-  const [dateRange, setDateRange] = useState({
-    startDate: null,
-    endDate: null,
-  });
-
-  const [text, setText] = useState('');
-
-  useEffect(() => {
-    setText(props.content);
-  }, [props.content])
-
-  const handleTextChange = e => {
-    const newText = e.target.value;
-    setText(newText);
-  };
-
-  const setChangeDate = dates => {
-    const [start, end] = dates;
-    setStartDate(start);
-    setEndDate(end);
-    setDateRange({ startDate: start, endDate: end });
-  };
   const handleDatePickerFocus = event => {
     event.target.blur();
   };
 
-  // 모달 오픈, 
+  // 모달 오픈,
   const [isClickedStudy, setIsClickedStudy] = useState(false);
   const [isClickedMember, setIsClickedMember] = useState(false);
   const { modalOpen, setModalOpen } = useContext(MyContext);
@@ -104,80 +81,64 @@ const StudyPostWrite = (props) => {
     setIsClickedMember(false);
   };
 
-  // 모임 빈도, 방식
-  const [selectedWay, setSelectedWay] = useState(null);
-  const [seletedFrequency, setSeletedFrequency] = useState(null);
-
-  const handleWayClick = option => {
-    setSelectedWay(prevOption => (prevOption === option ? null : option));
-  };
-
-  const handleFrequencyClick = option => {
-    setSeletedFrequency(prevOption => (prevOption === option ? null : option))
-  }
+  
 
   //이미지 업로드
   const [imgFiles, setImgFiles] = useState([]);
   const imgRef = useRef();
   //console.log(imgFiles)
 
-  const ImgHandler = (event) => {
+  const ImgHandler = event => {
     const files = Array.from(event.target.files);
     const newImgFiles = [...imgFiles];
 
     files.forEach(file => {
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onloadend = () => {
-            if (newImgFiles.length < 3) {
-                newImgFiles.push(reader.result);
-                setImgFiles([...newImgFiles]);
-            }
-        };
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onloadend = () => {
+        if (newImgFiles.length < 3) {
+          newImgFiles.push(reader.result);
+          setImgFiles([...newImgFiles]);
+        }
+      };
     });
     event.target.value = '';
   };
 
-  const ImgDeleteHandler = (index) => {
+  const ImgDeleteHandler = index => {
     const newImgFiles = imgFiles.filter((_, i) => i !== index);
     setImgFiles(newImgFiles);
-  }
+  };
 
   const [isFilled, setIsFilled] = useState(true);
 
+  const submitHandler = () => {
+    console.log('title : ', title);
+    // console.log('category : ', category);
+    console.log('memberNum : ', memberNum);
+    console.log('selectedWay : ', selectedWay);
+    console.log('selectedFrequency : ', selectedFrequency);
+    console.log('content : ', content);
+    console.log('studyLink : ', studyLink);
+    console.log('questionLink : ', questionLink);
+    console.log(tags);
+    console.log('startDate : ', format(startDate, 'yyyy-MM-dd'));
+    console.log('endDate : ', format(endDate, 'yyyy-MM-dd'));
+  };
   return (
     <div className={style.container}>
       <div className={style.innerConatiner}>
-        <PostHeader 
-        onOpenConfirmModal={openConfirmModal} 
-        />
+        <PostHeader onOpenConfirmModal={openConfirmModal} />
 
         <div className={style.contentContainer}>
-
-          <StudyRequirement 
-            title = {title}
-            TitleHandler = {TitleHandler}
-            startDate={startDate}
-            endDate={endDate}
-            setChangeDate={setChangeDate}
-            dateRange={dateRange}
+          <StudyRequirement
             handleDatePickerFocus={handleDatePickerFocus}
-            format={format}
-            startMember={startMember}
-            endMember={endMember}
             studyFilterHandler={studyFilterHandler}
             memberFilterHandler={memberFilterHandler}
-            selectedWay={selectedWay}
-            handleWayClick={handleWayClick}
-            seletedFrequency={seletedFrequency}
-            handleFrequencyClick={handleFrequencyClick}
           />
-          <PostInput 
-            handleTextChange={handleTextChange}
-            text={text}
-          />
+          <PostInput />
           <Inquire />
-          <ImageUpload 
+          <ImageUpload
             imgFiles={imgFiles}
             ImgHandler={ImgHandler}
             imgRef={imgRef}
@@ -185,23 +146,17 @@ const StudyPostWrite = (props) => {
           />
           <StudyLink />
           <Tag />
-
         </div>
       </div>
 
-      <div className={style.postConainer}>
-        <SubmitBtn 
-          name={'모집글 올리기'}
-          ready={isFilled}
-        />
+      <div className={style.postConainer} onClick={submitHandler}>
+        <SubmitBtn name={'모집글 올리기'} ready={isFilled} />
       </div>
 
       {modalOpen && (
         <BottomModal deleteHandler={deleteHandler}>
           {isClickedStudy && <StudyPostField />}
-          {isClickedMember && (
-            <StudyMember setStartMem={setStartMem} setEndMem={setEndMem} />
-          )}
+          {isClickedMember && <StudyMember />}
         </BottomModal>
       )}
       <ConfirmModal isOpen={isConfirmModalOpen} onClose={closeConfirmModal} />
