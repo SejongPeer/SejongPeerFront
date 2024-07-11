@@ -9,75 +9,38 @@ import RecruitMember from './studyRequirement/RecruitMember';
 import MeetingWay from './studyRequirement/MeetingWay';
 import DateFrequency from './studyRequirement/DateFrequency';
 
-
 const StudyRequirement = ({
-    title, 
-    TitleHandler,
-    startDate,
-    endDate,
-    setChangeDate,
-    dateRange,
-    format,
-    startMember,
-    endMember,
-    studyFilterHandler,
-    memberFilterHandler,
-    handleDatePickerFocus,
-    selectedWay, 
-    handleWayClick,
-    seletedFrequency,
-    handleFrequencyClick
+  studyFilterHandler,
+  memberFilterHandler,
+  handleDatePickerFocus,
 }) => {
-    return (
-        <div className={style.topBox}>
-            <RequireContainer>
-              <Title 
-                title = {title}
-                TitleHandler = {TitleHandler}
-              />
-            </RequireContainer>
+  return (
+    <div className={style.topBox}>
+      <RequireContainer>
+        <Title />
+      </RequireContainer>
 
-            <RequireContainer>
-                <Category 
-                    studyFilterHandler={studyFilterHandler}
-                />
-            </RequireContainer>
+      <RequireContainer>
+        <Category studyFilterHandler={studyFilterHandler} />
+      </RequireContainer>
 
-            <RequireContainer>
-                <RecruitDate 
-                    startDate={startDate}
-                    endDate={endDate}
-                    setChangeDate={setChangeDate}
-                    dateRange={dateRange}
-                    format={format}
-                    handleDatePickerFocus={handleDatePickerFocus}
-                />
-            </RequireContainer>
+      <RequireContainer>
+        <RecruitDate handleDatePickerFocus={handleDatePickerFocus} />
+      </RequireContainer>
 
-            <RequireContainer>
-                <RecruitMember 
-                    memberFilterHandler={memberFilterHandler}
-                    startMember={startMember}
-                    endMember={endMember}
-                />
-            </RequireContainer>
+      <RequireContainer>
+        <RecruitMember memberFilterHandler={memberFilterHandler} />
+      </RequireContainer>
 
-            <RequireContainer>
-                <DateFrequency 
-                    seletedFrequency={seletedFrequency}
-                    handleFrequencyClick={handleFrequencyClick}
-                />
-            </RequireContainer>
-            <RequireContainer>
-                <MeetingWay 
-                    selectedWay={selectedWay}
-                    handleWayClick={handleWayClick}
-                    seletedFrequency={seletedFrequency}         handleFrequencyClick={handleFrequencyClick}
-                />
-            </RequireContainer>
-        </div>
-    );
-}
+      <RequireContainer>
+        <DateFrequency />
+      </RequireContainer>
+      <RequireContainer>
+        <MeetingWay />
+      </RequireContainer>
+    </div>
+  );
+};
 
 export default StudyRequirement;
 
