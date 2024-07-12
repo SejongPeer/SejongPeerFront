@@ -31,7 +31,7 @@ const StudyListPostDetail = () => {
         const scrapped = localStorage.getItem(`isScrapped_${studyId}`);
         setScrapped(scrapped ? JSON.parse(scrapped) : data.data.isScrapped);
         const appliedStatus = localStorage.getItem(`isApplied_${studyId}`);
-        console.log(data);
+        // console.log(data);
         if (appliedStatus) {
           setApplied(JSON.parse(appliedStatus));
         }
@@ -56,7 +56,6 @@ const StudyListPostDetail = () => {
     setPopupVisible(false);
   };
 
-  // 스터디 지원 버튼
   const applyForStudyHandler = async () => {
     try {
       const response = await applyForStudy(studyId);
@@ -66,7 +65,7 @@ const StudyListPostDetail = () => {
         );
         setApplied(true);
         localStorage.setItem(`isApplied_${studyId}`, true);
-        console.log(response);
+        // console.log(response);
       } else {
         console.error('Failed to apply for study:', response);
       }
@@ -81,7 +80,6 @@ const StudyListPostDetail = () => {
     }
   };
 
-  // 스터디 스크랩 버튼
   const toggleScrapHandler = async () => {
     try {
       const response = await toggleScrap(studyId, isScrapped);
@@ -89,7 +87,16 @@ const StudyListPostDetail = () => {
         const newScrappedStatus = !isScrapped;
         setScrapped(newScrappedStatus);
         localStorage.setItem(`isScrapped_${studyId}`, newScrappedStatus);
-        console.log(response);
+
+        if (newScrappedStatus) {
+          alert('스크랩에 추가합니다!');
+          localStorage.setItem(`scrapId_${studyId}`, response.data.data);
+        } else {
+          alert('스크랩에서 제거합니다!');
+          localStorage.removeItem(`scrapId_${studyId}`);
+        }
+
+        // console.log(response.data.data);
       } else {
         console.error('스크랩 실패:', response);
       }

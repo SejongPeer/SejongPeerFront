@@ -81,8 +81,6 @@ const StudyPostWrite = props => {
     setIsClickedMember(false);
   };
 
-  
-
   //이미지 업로드
   const [imgFiles, setImgFiles] = useState([]);
   const imgRef = useRef();
