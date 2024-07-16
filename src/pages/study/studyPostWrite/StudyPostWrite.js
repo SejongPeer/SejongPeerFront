@@ -52,7 +52,9 @@ const StudyPostWrite = (props) => {
   const [text, setText] = useState('');
 
   useEffect(() => {
-    setText(props.content);
+    if(props.content !== undefined) {
+      setText(props.content);
+    }
   }, [props.content])
 
   const handleTextChange = e => {
@@ -119,7 +121,7 @@ const StudyPostWrite = (props) => {
   //이미지 업로드
   const [imgFiles, setImgFiles] = useState([]);
   const imgRef = useRef();
-  //console.log(imgFiles)
+  console.log(imgFiles)
 
   const ImgHandler = (event) => {
     const files = Array.from(event.target.files);
