@@ -15,6 +15,7 @@ import honbobButton from '../../../assets/image/honbobButton.png';
 import ready from '../../../assets/image/ready.png';
 import style from './MainPage.module.css';
 
+import useStudyInfoStore from '../../study/useStudyInfoStore';
 const images = [honbobUse, buddyUse, peerUse];
 
 const MainPage = () => {
@@ -151,12 +152,17 @@ const MainPage = () => {
       }
     }
   };
+  //studyType설정
+  const { studyType, setStudyType } = useStudyInfoStore();
 
   const StudyHandler = () => {
+    setStudyType('lecture');
     if (refreshToken === null || accessToken === null) {
       alert('로그인 후 이용 가능한 서비스입니다!');
       navigate('/login');
-    } else navigate('/study');
+    } else {
+      if (studyType === 'lecture') navigate('/study');
+    }
   };
   const reportUserHandler = () => {
     alert('너 신고');

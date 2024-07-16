@@ -25,22 +25,25 @@ import SubmitBtn from '../../../components/button/submitButton/SubmitBtn';
 
 //zustand
 import usePostStore from './usePostStore';
+import useStudyInfoStore from '../useStudyInfoStore';
 import { format } from 'date-fns';
+import Category from '../../../components/studyPostWrite/studyRequirement/Category';
 const StudyPostWrite = props => {
   const {
     title,
-    // category,
+    category,
     startDate,
     endDate,
     memberNum,
     selectedWay,
     selectedFrequency,
     questionLink,
+    images,
     content,
     studyLink,
     tags,
   } = usePostStore();
-
+  const { studyType } = useStudyInfoStore();
   // setTitle(newTitle);
 
   const handleDatePickerFocus = event => {
@@ -110,19 +113,55 @@ const StudyPostWrite = props => {
 
   const [isFilled, setIsFilled] = useState(true);
 
-  const submitHandler = () => {
-    console.log('title : ', title);
-    // console.log('category : ', category);
-    console.log('memberNum : ', memberNum);
-    console.log('selectedWay : ', selectedWay);
-    console.log('selectedFrequency : ', selectedFrequency);
-    console.log('content : ', content);
-    console.log('studyLink : ', studyLink);
-    console.log('questionLink : ', questionLink);
-    console.log(tags);
-    console.log('startDate : ', format(startDate, 'yyyy-MM-dd'));
-    console.log('endDate : ', format(endDate, 'yyyy-MM-dd'));
+  const submitHandler = async e => {
+    const formStartDate = format(startDate, 'yyyy-MM-dd HH:mm:ss');
+    const formEndDate = format(endDate, 'yyyy-MM-dd HH:mm:ss');
+    const studyData = {
+      title: title,
+      content: content,
+      recruitmentCount: memberNum,
+      method: selectedWay,
+      frequency: selectedFrequency,
+      kakaoLink: studyLink,
+      questionLink: questionLink,
+      lectureId: category,
+      recruitmentStartAt: formStartDate,
+      recruitmentEndAt: formEndDate,
+      tags: tags,
+      images: images,
+    };
+    try {
+      const response = await fetch(
+        process.env.REACT_APP_BACK_SERVER + '/study/lecture',
+        {
+          method: 'POST',
+          body: JSON.stringify(studyData),
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+            'Refresh-Token': localStorage.getItem('refreshToken'),
+          },
+        }
+      );
+
+      // 응답 본문이 비어있는지 확인
+      const text = await response.text();
+      const data = text ? JSON.parse(text) : {};
+
+      if (!response.ok) {
+        throw new Error(data.message || 'Something went wrong');
+      }
+
+      if (data.data !== null) {
+        errorClassName = data.data.errorClassName;
+      }
+    } catch (err) {
+      console.log('ErrorMessage : ', err.message);
+
+      e.preventDefault();
+    }
   };
+
   return (
     <div className={style.container}>
       <div className={style.innerConatiner}>
