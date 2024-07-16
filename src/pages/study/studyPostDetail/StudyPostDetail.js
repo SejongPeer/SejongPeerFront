@@ -127,6 +127,16 @@ const StudyListPostDetail = () => {
             {studyData.data.recruitmentEnd}
           </ApplicationPeriod3>
         </FlexContainer>
+        <FlexContainer>
+          <Title2>방식</Title2>
+          <StudyMethod>
+            {studyData.data.studyFrequency} • {studyData.data.studyMethod}
+          </StudyMethod>
+        </FlexContainer>
+        <FlexContainer>
+          <Title2>문의</Title2>
+          <StudyMethod>{studyData.data.questionKakaoLink}</StudyMethod>
+        </FlexContainer>
         <Tag>
           <TagText>{studyData.data.categoryName}</TagText>
         </Tag>
@@ -189,6 +199,14 @@ const Title2 = styled.div`
   margin-right: 10px;
   margin-top: 2px;
   margin-bottom: 2px;
+`;
+
+const StudyMethod = styled.div`
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.333px;
+  text-align: left;
+  margin-right: 10px;
 `;
 
 const Nickname = styled(Title2)`
