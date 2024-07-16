@@ -5,7 +5,12 @@ import useStore from './useStore';
 import COLORS from '../../../theme';
 import heart from '../../../assets/image/heart_postdetail.svg';
 import filledHeart from '../../../assets/image/filledHeart.svg';
-import { fetchStudyData, applyForStudy, toggleScrap } from './api';
+import {
+  fetchStudyData,
+  applyForStudy,
+  toggleScrap,
+  fetchScrapCount,
+} from './api';
 
 const StudyListPostDetail = () => {
   const {
@@ -14,11 +19,13 @@ const StudyListPostDetail = () => {
     studyData,
     isApplied,
     isScrapped,
+    scrapCount,
     setPopupVisible,
     setPopupMessage,
     setStudyData,
     setApplied,
     setScrapped,
+    setScrapCount,
   } = useStore();
 
   const { studyId } = useParams();
@@ -35,6 +42,9 @@ const StudyListPostDetail = () => {
         if (appliedStatus) {
           setApplied(JSON.parse(appliedStatus));
         }
+        // 스크랩 수 조회
+        const scrapData = await fetchScrapCount(studyId);
+        setScrapCount(scrapData.data.scrapCount);
       } catch (error) {
         console.error('Error fetching study data:', error);
       }
@@ -91,12 +101,12 @@ const StudyListPostDetail = () => {
         if (newScrappedStatus) {
           alert('스크랩에 추가합니다!');
           localStorage.setItem(`scrapId_${studyId}`, response.data.data);
+          setScrapCount(scrapCount + 1);
         } else {
           alert('스크랩에서 제거합니다!');
           localStorage.removeItem(`scrapId_${studyId}`);
+          setScrapCount(scrapCount - 1);
         }
-
-        // console.log(response.data.data);
       } else {
         console.error('스크랩 실패:', response);
       }
@@ -127,6 +137,13 @@ const StudyListPostDetail = () => {
             {studyData.data.recruitmentEnd}
           </ApplicationPeriod3>
         </FlexContainer>
+        <FlexContainer>
+          <Title2>방식</Title2>
+          <StudyMethod></StudyMethod>
+        </FlexContainer>
+        <FlexContainer>
+          <Title2>문의</Title2>
+        </FlexContainer>
         <Tag>
           <TagText>{studyData.data.categoryName}</TagText>
         </Tag>
@@ -137,7 +154,7 @@ const StudyListPostDetail = () => {
         <CommentContainer>
           <ScrapButton onClick={toggleScrapHandler}>
             <ScrapImage src={isScrapped ? filledHeart : heart} alt="heart" />
-            <ScrapCount>12</ScrapCount>
+            <ScrapCount>{scrapCount}</ScrapCount>
           </ScrapButton>
           <ApplyButton onClick={applyForStudyHandler} isApplied={isApplied}>
             {isApplied ? '지원완료' : '지원하기(1/4)'}
@@ -191,13 +208,15 @@ const Title2 = styled.div`
   margin-bottom: 2px;
 `;
 
+const StudyMethod = styled.div``;
+
 const Nickname = styled(Title2)`
   font-weight: 400;
   color: ${COLORS.font2};
 `;
 
 const ApplicationPeriod = styled(Title2)`
-  color: ${COLORS.font1};
+  /* color: ${COLORS.font1}; */
   font-size: 14px;
   line-height: 20px;
   letter-spacing: -0.333px;
