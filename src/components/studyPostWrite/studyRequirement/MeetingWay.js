@@ -15,12 +15,12 @@ const MeetingWay = () => {
       <label className={style.label}>방식</label>
       <div className={style.options}>
         <label
-          className={`${style.option} ${selectedWay === 'FACT_TO_FACE' ? style.optionChecked : ''}`}
+          className={`${style.option} ${selectedWay === 'FACE_TO_FACE' ? style.optionChecked : ''}`}
         >
           <input
             type="checkbox"
-            value="FACT_TO_FACE"
-            checked={selectedWay === 'FACT_TO_FACE'}
+            value="FACE_TO_FACE"
+            checked={selectedWay === 'FACE_TO_FACE'}
             onChange={handleChange}
             className={style.radioInput}
           />

@@ -2,7 +2,7 @@ import { create } from 'zustand';
 
 const usePostStore = create(set => ({
   title: '',
-  category: '',
+  category: 5,
   startDate: null,
   endDate: null,
   memberNum: 1,
@@ -10,7 +10,7 @@ const usePostStore = create(set => ({
   selectedFrequency: null,
   content: '',
   questionLink: '',
-  imges: [],
+  images: null,
   studyLink: '',
   tags: [],
   setTitle: title => set({ title }),
