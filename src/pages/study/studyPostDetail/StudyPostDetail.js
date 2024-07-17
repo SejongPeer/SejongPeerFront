@@ -139,10 +139,13 @@ const StudyListPostDetail = () => {
         </FlexContainer>
         <FlexContainer>
           <Title2>방식</Title2>
-          <StudyMethod></StudyMethod>
+          <StudyMethod>
+            {studyData.data.studyFrequency} • {studyData.data.studyMethod}
+          </StudyMethod>
         </FlexContainer>
         <FlexContainer>
           <Title2>문의</Title2>
+          <StudyMethod>{studyData.data.questionKakaoLink}</StudyMethod>
         </FlexContainer>
         <Tag>
           <TagText>{studyData.data.categoryName}</TagText>
@@ -208,7 +211,14 @@ const Title2 = styled.div`
   margin-bottom: 2px;
 `;
 
-const StudyMethod = styled.div``;
+const StudyMethod = styled.div`
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.333px;
+  text-align: left;
+  margin-right: 10px;
+`;
+
 
 const Nickname = styled(Title2)`
   font-weight: 400;
