@@ -1,6 +1,5 @@
 // src/pages/StudyPostWrite.js
 import React, { useContext, useEffect, useRef, useState } from 'react';
-import { format } from 'date-fns';
 import { MyContext } from '../../../App';
 
 // modal
@@ -24,19 +23,28 @@ import style from './StudyPostWrite.module.css';
 import './StudyPostWriteBasic.css';
 import SubmitBtn from '../../../components/button/submitButton/SubmitBtn';
 
-const StudyPostWrite = (props) => {
-  //제목
-  const [title, setTitle] = useState(props.title);
-  const TitleHandler = e => {
-    const newTitle = e.target.value;
-    setTitle(newTitle);
-  }
-  // 모집 기간, 모집 인원
-  const [startDate, setStartDate] = useState(props.recruitmentStart);
-  const [endDate, setEndDate] = useState(props.recruitmentEnd);
-  const [startMember, setStartMember] = useState(0);
-  const [endMember, setEndMember] = useState(0);
-
+//zustand
+import usePostStore from './usePostStore';
+import useStudyInfoStore from '../useStudyInfoStore';
+import { format } from 'date-fns';
+import Category from '../../../components/studyPostWrite/studyRequirement/Category';
+const StudyPostWrite = props => {
+  const {
+    title,
+    category,
+    startDate,
+    endDate,
+    memberNum,
+    selectedWay,
+    selectedFrequency,
+    questionLink,
+    images,
+    content,
+    studyLink,
+    tags,
+  } = usePostStore();
+  const { studyType } = useStudyInfoStore();
+  // setTitle(newTitle);
   const setStartMem = num => {
     setStartMember(num);
   };
@@ -72,7 +80,7 @@ const StudyPostWrite = (props) => {
     event.target.blur();
   };
 
-  // 모달 오픈, 
+  // 모달 오픈,
   const [isClickedStudy, setIsClickedStudy] = useState(false);
   const [isClickedMember, setIsClickedMember] = useState(false);
   const { modalOpen, setModalOpen } = useContext(MyContext);
@@ -106,80 +114,113 @@ const StudyPostWrite = (props) => {
     setIsClickedMember(false);
   };
 
-  // 모임 빈도, 방식
-  const [selectedWay, setSelectedWay] = useState(null);
-  const [seletedFrequency, setSeletedFrequency] = useState(null);
-
-  const handleWayClick = option => {
-    setSelectedWay(prevOption => (prevOption === option ? null : option));
-  };
-
-  const handleFrequencyClick = option => {
-    setSeletedFrequency(prevOption => (prevOption === option ? null : option))
-  }
-
   //이미지 업로드
   const [imgFiles, setImgFiles] = useState([]);
   const imgRef = useRef();
   console.log(imgFiles)
 
-  const ImgHandler = (event) => {
+  const ImgHandler = event => {
     const files = Array.from(event.target.files);
     const newImgFiles = [...imgFiles];
 
     files.forEach(file => {
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onloadend = () => {
-            if (newImgFiles.length < 3) {
-                newImgFiles.push(reader.result);
-                setImgFiles([...newImgFiles]);
-            }
-        };
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onloadend = () => {
+        if (newImgFiles.length < 3) {
+          newImgFiles.push(reader.result);
+          setImgFiles([...newImgFiles]);
+        }
+      };
     });
     event.target.value = '';
   };
 
-  const ImgDeleteHandler = (index) => {
+  const ImgDeleteHandler = index => {
     const newImgFiles = imgFiles.filter((_, i) => i !== index);
     setImgFiles(newImgFiles);
-  }
+  };
 
   const [isFilled, setIsFilled] = useState(true);
+
+  const submitHandler = async e => {
+    const formStartDate = format(startDate, 'yyyy-MM-dd HH:mm:ss');
+    const formEndDate = format(endDate, 'yyyy-MM-dd HH:mm:ss');
+    const studyData = {
+      title: title,
+      content: content,
+      recruitmentCount: memberNum,
+      method: selectedWay,
+      frequency: selectedFrequency,
+      kakaoLink: studyLink,
+      questionLink: questionLink,
+      lectureId: category,
+      recruitmentStartAt: formStartDate,
+      recruitmentEndAt: formEndDate,
+      tags: tags,
+      images: images,
+    };
+    try {
+      if (location.pathname.startsWith("/login")) {
+        const response = await fetch(
+          process.env.REACT_APP_BACK_SERVER + '/study/',
+          {
+            method: 'PATCH',
+            body: JSON.stringify(studyData),
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+              'Refresh-Token': localStorage.getItem('refreshToken'),
+            },
+          }
+        );
+      } else {
+        const response = await fetch(
+          process.env.REACT_APP_BACK_SERVER + '/study/lecture',
+          {
+            method: 'POST',
+            body: JSON.stringify(studyData),
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+              'Refresh-Token': localStorage.getItem('refreshToken'),
+            },
+          }
+        );
+      }
+
+      // 응답 본문이 비어있는지 확인
+      const text = await response.text();
+      const data = text ? JSON.parse(text) : {};
+
+      if (!response.ok) {
+        throw new Error(data.message || 'Something went wrong');
+      }
+
+      if (data.data !== null) {
+        errorClassName = data.data.errorClassName;
+      }
+    } catch (err) {
+      console.log('ErrorMessage : ', err.message);
+
+      e.preventDefault();
+    }
+  };
 
   return (
     <div className={style.container}>
       <div className={style.innerConatiner}>
-        <PostHeader 
-        onOpenConfirmModal={openConfirmModal} 
-        />
+        <PostHeader onOpenConfirmModal={openConfirmModal} />
 
         <div className={style.contentContainer}>
-
-          <StudyRequirement 
-            title = {title}
-            TitleHandler = {TitleHandler}
-            startDate={startDate}
-            endDate={endDate}
-            setChangeDate={setChangeDate}
-            dateRange={dateRange}
+          <StudyRequirement
             handleDatePickerFocus={handleDatePickerFocus}
-            format={format}
-            startMember={startMember}
-            endMember={endMember}
             studyFilterHandler={studyFilterHandler}
             memberFilterHandler={memberFilterHandler}
-            selectedWay={selectedWay}
-            handleWayClick={handleWayClick}
-            seletedFrequency={seletedFrequency}
-            handleFrequencyClick={handleFrequencyClick}
           />
-          <PostInput 
-            handleTextChange={handleTextChange}
-            text={text}
-          />
+          <PostInput />
           <Inquire />
-          <ImageUpload 
+          <ImageUpload
             imgFiles={imgFiles}
             ImgHandler={ImgHandler}
             imgRef={imgRef}
@@ -187,23 +228,17 @@ const StudyPostWrite = (props) => {
           />
           <StudyLink />
           <Tag />
-
         </div>
       </div>
 
-      <div className={style.postConainer}>
-        <SubmitBtn 
-          name={'모집글 올리기'}
-          ready={isFilled}
-        />
+      <div className={style.postConainer} onClick={submitHandler}>
+        <SubmitBtn name={'모집글 올리기'} ready={isFilled} />
       </div>
 
       {modalOpen && (
         <BottomModal deleteHandler={deleteHandler}>
           {isClickedStudy && <StudyPostField />}
-          {isClickedMember && (
-            <StudyMember setStartMem={setStartMem} setEndMem={setEndMem} />
-          )}
+          {isClickedMember && <StudyMember />}
         </BottomModal>
       )}
       <ConfirmModal isOpen={isConfirmModalOpen} onClose={closeConfirmModal} />

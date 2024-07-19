@@ -2,9 +2,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-
 import SignInBox from '../../signIn/SignInBox.js';
-
 import style from '../../signIn/SignIn.module.css';
 import css from './ResetPwd.module.css';
 
