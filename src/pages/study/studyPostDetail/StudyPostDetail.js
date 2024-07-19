@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+
+import Popup from './Popup';
 import styled from 'styled-components';
 import useStore from './useStore';
 import COLORS from '../../../theme';
@@ -8,6 +10,7 @@ import filledHeart from '../../../assets/image/filledHeart.svg';
 import {
   fetchStudyData,
   applyForStudy,
+  cancelStudyApplication,
   toggleScrap,
   fetchScrapCount,
 } from './api';
@@ -20,12 +23,14 @@ const StudyListPostDetail = () => {
     isApplied,
     isScrapped,
     scrapCount,
+    popupTitle,
     setPopupVisible,
     setPopupMessage,
     setStudyData,
     setApplied,
     setScrapped,
     setScrapCount,
+    setPopupTitle,
   } = useStore();
 
   const { studyId } = useParams();
@@ -38,11 +43,9 @@ const StudyListPostDetail = () => {
         const scrapped = localStorage.getItem(`isScrapped_${studyId}`);
         setScrapped(scrapped ? JSON.parse(scrapped) : data.data.isScrapped);
         const appliedStatus = localStorage.getItem(`isApplied_${studyId}`);
-        // console.log(data);
         if (appliedStatus) {
           setApplied(JSON.parse(appliedStatus));
         }
-        // 스크랩 수 조회
         const scrapData = await fetchScrapCount(studyId);
         setScrapCount(scrapData.data.scrapCount);
       } catch (error) {
@@ -68,16 +71,26 @@ const StudyListPostDetail = () => {
 
   const applyForStudyHandler = async () => {
     try {
-      const response = await applyForStudy(studyId);
-      if (response.status === 201) {
-        togglePopup(
-          '지원 완료! 모집자가 수락 후, 모집인원이 다 차거나 마감일이 되면 메시지로 오픈채팅 링크가 전달됩니다.'
-        );
-        setApplied(true);
-        localStorage.setItem(`isApplied_${studyId}`, true);
-        // console.log(response);
+      if (isApplied) {
+        const response = await cancelStudyApplication(studyId);
+        if (response.status === 200) {
+          togglePopup('지원 취소 완료');
+          setApplied(false);
+          localStorage.setItem(`isApplied_${studyId}`, false);
+        } else {
+          console.error('Failed to cancel study application:', response);
+        }
       } else {
-        console.error('Failed to apply for study:', response);
+        const response = await applyForStudy(studyId);
+        if (response.status === 201) {
+          togglePopup(
+            '지원 완료! 모집자가 수락 후, 모집인원이 다 차거나 마감일이 되면 메시지로 오픈채팅 링크가 전달됩니다.'
+          );
+          setApplied(true);
+          localStorage.setItem(`isApplied_${studyId}`, true);
+        } else {
+          console.error('Failed to apply for study:', response);
+        }
       }
     } catch (error) {
       if (error.response && error.response.status === 409) {
@@ -86,6 +99,10 @@ const StudyListPostDetail = () => {
         localStorage.setItem(`isApplied_${studyId}`, true);
       } else {
         console.error('Error applying for study:', error);
+      }
+
+      if (error.response.status === 403) {
+        togglePopup('1시간 패널티 부과 중입니다!');
       }
     }
   };
@@ -160,17 +177,17 @@ const StudyListPostDetail = () => {
             <ScrapCount>{scrapCount}</ScrapCount>
           </ScrapButton>
           <ApplyButton onClick={applyForStudyHandler} isApplied={isApplied}>
-            {isApplied ? '지원완료' : '지원하기(1/4)'}
+            {isApplied
+              ? '지원취소'
+              : `지원하기 (${studyData.data.participantCount} / ${studyData.data.totalRecruitmentCount})`}
           </ApplyButton>
         </CommentContainer>
         {isPopupVisible && (
-          <Popup>
-            <PopupContent>
-              <PopupTitle>스터디 지원 완료</PopupTitle>
-              <PopupMessage>{popupMessage}</PopupMessage>
-              <ConfirmButton onClick={closePopup}>확인</ConfirmButton>
-            </PopupContent>
-          </Popup>
+          <Popup
+            title={popupTitle}
+            message={popupMessage}
+            onClose={closePopup}
+          />
         )}
       </div>
     </Container>
@@ -218,7 +235,6 @@ const StudyMethod = styled.div`
   text-align: left;
   margin-right: 10px;
 `;
-
 
 const Nickname = styled(Title2)`
   font-weight: 400;
@@ -345,7 +361,8 @@ const ApplyButton = styled.button`
   flex-shrink: 0;
   border-radius: 28px;
   background: ${props => (props.isApplied ? COLORS.line2 : COLORS.main)};
-  color: #fff;
+  color: ${props =>
+    props.isApplied ? '#111' : '#fff'}; /* 글씨 색상 조건부 변경 */
   text-align: center;
   font-size: 18px;
   font-style: normal;
@@ -355,52 +372,4 @@ const ApplyButton = styled.button`
   margin-top: 15px;
   cursor: pointer;
   border: none;
-`;
-
-const Popup = styled.div`
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 300px;
-  padding: 20px;
-  background: white;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
-`;
-
-const PopupContent = styled.div`
-  display: flex;
-  text-align: center;
-  color: ${COLORS.font1};
-  flex-direction: column;
-`;
-
-const PopupTitle = styled.div`
-  font-size: 16px;
-  font-weight: 600;
-  margin-bottom: 10px;
-`;
-
-const PopupMessage = styled.div`
-  font-size: 14px;
-  color: ${COLORS.font2};
-  line-height: 1.5;
-  margin-bottom: 20px;
-`;
-
-const ConfirmButton = styled.button`
-  margin-top: 20px;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  background-color: ${COLORS.main};
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
 `;
