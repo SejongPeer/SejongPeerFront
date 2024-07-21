@@ -23,11 +23,15 @@ import style from './StudyPostWrite.module.css';
 import './StudyPostWriteBasic.css';
 import SubmitBtn from '../../../components/button/submitButton/SubmitBtn';
 
+//팝업
+import Popup from '../../../components/studyPopup/Popup';
+
 //zustand
 import usePostStore from './usePostStore';
 import useStudyInfoStore from '../useStudyInfoStore';
+import usePopupStroe from '../../../components/studyPopup/usePopupStore';
 import { format } from 'date-fns';
-import Category from '../../../components/studyPostWrite/studyRequirement/Category';
+// import Category from '../../../components/studyPostWrite/studyRequirement/Category';
 const StudyPostWrite = props => {
   const {
     title,
@@ -38,13 +42,18 @@ const StudyPostWrite = props => {
     selectedWay,
     selectedFrequency,
     questionLink,
-    images,
     content,
     studyLink,
     tags,
   } = usePostStore();
+  const {
+    isPopupVisible,
+    popupMessage,
+    popupTitle,
+    setPopupVisible,
+    setPopupMessage,
+  } = usePopupStroe();
   const { studyType } = useStudyInfoStore();
-  // setTitle(newTitle);
 
   const handleDatePickerFocus = event => {
     event.target.blur();
@@ -87,7 +96,6 @@ const StudyPostWrite = props => {
   //이미지 업로드
   const [imgFiles, setImgFiles] = useState([]);
   const imgRef = useRef();
-  //console.log(imgFiles)
 
   const ImgHandler = event => {
     const files = Array.from(event.target.files);
@@ -110,7 +118,7 @@ const StudyPostWrite = props => {
     const newImgFiles = imgFiles.filter((_, i) => i !== index);
     setImgFiles(newImgFiles);
   };
-  //이미지 업로드
+  //이미지 업로드 통신
   const imgUpload = async id => {
     const imgs = [...imgFiles];
     const imgData = {
@@ -145,10 +153,39 @@ const StudyPostWrite = props => {
       console.log('ErrorMessage : ', err.message);
     }
   };
+
+  //유효성 검사 팝업 핸들러
+  const togglePopup = message => {
+    setPopupMessage(message);
+    setPopupVisible(!isPopupVisible);
+  };
+
+  const closePopup = () => {
+    setPopupVisible(false);
+  };
+
   const [isFilled, setIsFilled] = useState(true);
 
   const submitHandler = async e => {
-    const formStartDate = format(startDate, 'yyyy-MM-dd HH:mm:ss');
+    //제목/모집기간/모집인원/내용/오픈채팅 링크/카테고리
+    const validation = (name, text) => {
+      if (text === '' || text === null) return `${name}을(를) 입력해주세요`;
+    };
+
+    const errorMessage =
+      validation('제목', title) ||
+      validation('모집 시작일', startDate) ||
+      validation('모집 종료일', endDate) ||
+      validation('내용', content) ||
+      validation('오픈채팅 링크', studyLink) ||
+      null;
+
+    if (errorMessage) {
+      togglePopup(errorMessage);
+      return;
+    }
+    const formStartDate =
+      startDate === format(startDate, 'yyyy-MM-dd HH:mm:ss');
     const formEndDate = format(endDate, 'yyyy-MM-dd HH:mm:ss');
     const studyData =
       studyType === 'lecture'
@@ -180,7 +217,7 @@ const StudyPostWrite = props => {
             tags: tags,
             images: null,
           };
-    console.log(studyData);
+
     try {
       const response = await fetch(
         `${process.env.REACT_APP_BACK_SERVER}/study/${studyType}`,
@@ -197,7 +234,6 @@ const StudyPostWrite = props => {
 
       const text = await response.text();
       const data = text ? JSON.parse(text) : {};
-      // console.log('data : ', data.data.id);
 
       const studyId = data.data.id;
       imgUpload(studyId);
@@ -250,6 +286,9 @@ const StudyPostWrite = props => {
         </BottomModal>
       )}
       <ConfirmModal isOpen={isConfirmModalOpen} onClose={closeConfirmModal} />
+      {isPopupVisible && (
+        <Popup title={popupTitle} message={popupMessage} onClose={closePopup} />
+      )}
     </div>
   );
 };
