@@ -110,29 +110,80 @@ const StudyPostWrite = props => {
     const newImgFiles = imgFiles.filter((_, i) => i !== index);
     setImgFiles(newImgFiles);
   };
+  //이미지 업로드
+  const imgUpload = async id => {
+    const imgs = [...imgFiles];
+    const imgData = {
+      studyId: id,
+      base64ImagesList: imgs,
+    };
+    try {
+      const response = await fetch(
+        `${process.env.REACT_APP_BACK_SERVER}/image/study/upload`,
+        {
+          method: 'POST',
+          body: JSON.stringify(imgData),
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+            'Refresh-Token': localStorage.getItem('refreshToken'),
+          },
+        }
+      );
 
+      const text = await response.text();
+      const data = text ? JSON.parse(text) : {};
+      console.log(data);
+      if (!response.ok) {
+        throw new Error(data.message || 'Something went wrong');
+      }
+
+      if (data.data !== null) {
+        errorClassName = data.data.errorClassName;
+      }
+    } catch (err) {
+      console.log('ErrorMessage : ', err.message);
+    }
+  };
   const [isFilled, setIsFilled] = useState(true);
 
   const submitHandler = async e => {
     const formStartDate = format(startDate, 'yyyy-MM-dd HH:mm:ss');
     const formEndDate = format(endDate, 'yyyy-MM-dd HH:mm:ss');
-    const studyData = {
-      title: title,
-      content: content,
-      recruitmentCount: memberNum,
-      method: selectedWay,
-      frequency: selectedFrequency,
-      kakaoLink: studyLink,
-      questionLink: questionLink,
-      lectureId: category,
-      recruitmentStartAt: formStartDate,
-      recruitmentEndAt: formEndDate,
-      tags: tags,
-      images: images,
-    };
+    const studyData =
+      studyType === 'lecture'
+        ? {
+            title: title,
+            content: content,
+            recruitmentCount: memberNum,
+            method: selectedWay,
+            frequency: selectedFrequency,
+            kakaoLink: studyLink,
+            questionLink: questionLink,
+            lectureId: category,
+            recruitmentStartAt: formStartDate,
+            recruitmentEndAt: formEndDate,
+            tags: tags,
+            images: null,
+          }
+        : {
+            title: title,
+            content: content,
+            recruitmentCount: memberNum,
+            method: selectedWay,
+            frequency: selectedFrequency,
+            kakaoLink: studyLink,
+            questionLink: questionLink,
+            externalActivityId: category,
+            recruitmentStartAt: formStartDate,
+            recruitmentEndAt: formEndDate,
+            tags: tags,
+            images: null,
+          };
+    console.log(studyData);
     try {
       const response = await fetch(
-        process.env.REACT_APP_BACK_SERVER + '/study/lecture',
+        `${process.env.REACT_APP_BACK_SERVER}/study/${studyType}`,
         {
           method: 'POST',
           body: JSON.stringify(studyData),
@@ -144,10 +195,12 @@ const StudyPostWrite = props => {
         }
       );
 
-      // 응답 본문이 비어있는지 확인
       const text = await response.text();
       const data = text ? JSON.parse(text) : {};
+      // console.log('data : ', data.data.id);
 
+      const studyId = data.data.id;
+      imgUpload(studyId);
       if (!response.ok) {
         throw new Error(data.message || 'Something went wrong');
       }
