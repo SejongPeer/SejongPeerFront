@@ -1,7 +1,7 @@
 // Popup.js
 import React from 'react';
 import styled from 'styled-components';
-import COLORS from '../../../theme';
+import COLORS from '../../theme';
 
 const Popup = ({ title, message, onClose }) => {
   return (

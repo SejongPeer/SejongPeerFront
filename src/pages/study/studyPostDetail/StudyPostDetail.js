@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
-import Popup from './Popup';
+import Popup from '../../../components/studyPopup/Popup';
 import styled from 'styled-components';
 import useStore from './useStore';
+import usePopupStroe from '../../../components/studyPopup/usePopupStore';
 import COLORS from '../../../theme';
 import heart from '../../../assets/image/heart_postdetail.svg';
 import filledHeart from '../../../assets/image/filledHeart.svg';
@@ -17,21 +18,23 @@ import {
 
 const StudyListPostDetail = () => {
   const {
-    isPopupVisible,
-    popupMessage,
     studyData,
     isApplied,
     isScrapped,
     scrapCount,
-    popupTitle,
-    setPopupVisible,
-    setPopupMessage,
     setStudyData,
     setApplied,
     setScrapped,
     setScrapCount,
-    setPopupTitle,
   } = useStore();
+  const {
+    isPopupVisible,
+    popupMessage,
+    popupTitle,
+    setPopupVisible,
+    setPopupMessage,
+    setPopupTitle,
+  } = usePopupStroe();
 
   const { studyId } = useParams();
 
