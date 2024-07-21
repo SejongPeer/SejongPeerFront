@@ -6,6 +6,7 @@ export const fetchStudyData = async studyId => {
   const refreshToken = localStorage.getItem('refreshToken');
 
   if (!accessToken || !refreshToken) {
+    alert('재로그인 해야합니다!');
     throw new Error('토큰이 없음!');
   }
 
@@ -28,6 +29,7 @@ export const applyForStudy = async studyId => {
   const refreshToken = localStorage.getItem('refreshToken');
 
   if (!accessToken || !refreshToken) {
+    alert('재로그인 해야합니다!');
     throw new Error('토큰이 없음!');
   }
 
@@ -42,7 +44,31 @@ export const applyForStudy = async studyId => {
       },
     }
   );
+  console.log(response.data);
+  return response;
+};
 
+// 스터디 지원 취소
+export const cancelStudyApplication = async studyId => {
+  const accessToken = localStorage.getItem('accessToken');
+  const refreshToken = localStorage.getItem('refreshToken');
+
+  if (!accessToken || !refreshToken) {
+    alert('재로그인 해야합니다!');
+    throw new Error('토큰이 없음!');
+  }
+
+  const response = await axios.delete(
+    `${process.env.REACT_APP_BACK_SERVER}/study/relations/${studyId}`,
+    {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${accessToken}`,
+        'Refresh-token': `${refreshToken}`,
+      },
+    }
+  );
+  console.log(response.data);
   return response;
 };
 
@@ -51,10 +77,9 @@ export const toggleScrap = async (studyId, isScrapped) => {
   const accessToken = localStorage.getItem('accessToken');
   const refreshToken = localStorage.getItem('refreshToken');
   const scrapId = localStorage.getItem(`scrapId_${studyId}`);
-  // console.log(accessToken);
-  // console.log(refreshToken);
-  // console.log(scrapId);
+
   if (!accessToken || !refreshToken) {
+    alert('재로그인 해야합니다!');
     throw new Error('토큰이 없음!');
   }
 
@@ -99,6 +124,7 @@ export const fetchScrapCount = async studyId => {
   const refreshToken = localStorage.getItem('refreshToken');
 
   if (!accessToken || !refreshToken) {
+    alert('재로그인 해야합니다!');
     throw new Error('토큰이 없음!');
   }
 
@@ -113,5 +139,6 @@ export const fetchScrapCount = async studyId => {
     }
   );
 
+  // console.log(response.data);
   return response.data;
 };
