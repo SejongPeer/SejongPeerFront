@@ -4,38 +4,24 @@ import usePostStore from '../studyPostWrite/usePostStore';
 import useStudyInfoStore from '../useStudyInfoStore';
 
 const StudyModify = () => {
-  const studyId = 1;
+  const studyId = 58;
   //const {studyId} = useParams();
   //console.log("studyId : ",studyId);
   const [studyData, setStudyData] = useState(null);
 
   const {
-    title,
     setTitle,
-    category,
     setCategory,
-    startDate,
     setStartDate,
-    endDate,
     setEndDate,
-    memberNum,
     setMemberNum,
-    selectedWay,
     setSelectedWay,
-    selectedFrequency,
     setSelectedFrequency,
-    questionLink,
     setQuestionLink,
-    images,
-    addImage,
-    content,
     setContent,
-    studyLink,
     setStudyLink,
-    tags,
     setTags
   } = usePostStore();
-  const { studyType } = useStudyInfoStore();
 
   useEffect(() => {
     const fetchStudyData = async () => {
@@ -92,12 +78,15 @@ const StudyModify = () => {
       setMemberNum(studyData.data.totalRecruitmentCount);
       setContent(studyData.data.content);
       setQuestionLink(studyData.data.questionKakaoLink);
+      setStudyLink(studyData.data.finalKakaoLink);
+      setTags(studyData.data.tags);
     }
   }, [studyData]);
 
   return studyData ? (
     <StudyPostWrite
       studyId={studyId}
+      imgUrl = {studyData.data.imgUrlList}
     />
   ) : (
     <div>Loading...</div>
