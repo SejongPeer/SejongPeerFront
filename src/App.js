@@ -99,6 +99,8 @@ const App = () => {
     const timeUntilLogout = expTime - cuurentTime;
 
     setTimeout(() => {
+      console.log('logout');
+      alert('logout!')
       logout();
     }, timeUntilLogout);
   };

@@ -184,9 +184,9 @@ const StudyPostWrite = props => {
       togglePopup(errorMessage);
       return;
     }
-    const formStartDate =
-      startDate === format(startDate, 'yyyy-MM-dd HH:mm:ss');
+    const formStartDate = format(startDate, 'yyyy-MM-dd HH:mm:ss');
     const formEndDate = format(endDate, 'yyyy-MM-dd HH:mm:ss');
+    console.log(formStartDate)
     const studyData =
       studyType === 'lecture'
         ? {
@@ -217,7 +217,6 @@ const StudyPostWrite = props => {
             tags: tags,
             images: null,
           };
-
     try {
       const response = await fetch(
         `${process.env.REACT_APP_BACK_SERVER}/study/${studyType}`,

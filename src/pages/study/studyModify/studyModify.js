@@ -1,11 +1,41 @@
 import { useEffect, useState } from 'react';
 import StudyPostWrite from '../studyPostWrite/StudyPostWrite';
+import usePostStore from '../studyPostWrite/usePostStore';
+import useStudyInfoStore from '../useStudyInfoStore';
 
 const StudyModify = () => {
-  const studyId = 2;
+  const studyId = 1;
   //const {studyId} = useParams();
   //console.log("studyId : ",studyId);
   const [studyData, setStudyData] = useState(null);
+
+  const {
+    title,
+    setTitle,
+    category,
+    setCategory,
+    startDate,
+    setStartDate,
+    endDate,
+    setEndDate,
+    memberNum,
+    setMemberNum,
+    selectedWay,
+    setSelectedWay,
+    selectedFrequency,
+    setSelectedFrequency,
+    questionLink,
+    setQuestionLink,
+    images,
+    addImage,
+    content,
+    setContent,
+    studyLink,
+    setStudyLink,
+    tags,
+    setTags
+  } = usePostStore();
+  const { studyType } = useStudyInfoStore();
 
   useEffect(() => {
     const fetchStudyData = async () => {
@@ -37,15 +67,37 @@ const StudyModify = () => {
     fetchStudyData();
   }, [studyId]);
 
+  useEffect(() => {
+    if (studyData) {
+      if(studyData.data.studyFrequency === '주 1~2회') {
+        setSelectedFrequency("ONCE_OR_TWICE_A_WEEK");
+      } else if (studyData.data.studyFrequency === '주 3~4회') {
+        setSelectedFrequency('THREE_TO_FOUR_TIMES_A_WEEK');
+      } else {
+        setSelectedFrequency('FIVE_OR_MORE_TIMES_A_WEEK');
+      }
+
+      if(studyData.data.studyMethod === '대면') {
+        setSelectedWay("FACE_TO_FACE");
+      } else if (studyData.data.studyMethod === '비대면') {
+        setSelectedWay('NON_FACE_TO_FACE');
+      } else {
+        setSelectedWay('BOTH');
+      }
+
+      setTitle(studyData.data.title);
+      setCategory(studyData.data.categoryName);
+      setStartDate(studyData.data.recruitmentStart);
+      setEndDate(studyData.data.recruitmentEnd);
+      setMemberNum(studyData.data.totalRecruitmentCount);
+      setContent(studyData.data.content);
+      setQuestionLink(studyData.data.questionKakaoLink);
+    }
+  }, [studyData]);
+
   return studyData ? (
     <StudyPostWrite
-      title={studyData.data.title}
-      categoryName={studyData.data.categoryName}
-      recruitmentStart={studyData.data.recruitmentStart}
-      recruitmentEnd={studyData.data.recruitmentEnd}
-      numberOfApplicants={studyData.data.numberOfApplicants}
-      content={studyData.data.content}
-      imgUrl={studyData.data.imgUrl}
+      studyId={studyId}
     />
   ) : (
     <div>Loading...</div>
