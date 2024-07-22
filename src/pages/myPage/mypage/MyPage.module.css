@@ -36,6 +36,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin-top:95%;
   }
 
   .informTitleBox {
@@ -84,7 +85,7 @@
   .leftBox {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items:self-start;
     /* justify-content: left; */
     width: 12vw; /* 너비를 넓혔습니다 */
     gap: 1vh;
@@ -160,7 +161,7 @@
   .myInformWord {
     width: 10vw;
     text-align: left;
-    margin-left: 3vw;
+    margin-left: 1vw;
   }
 
   .rightArrow {
@@ -251,6 +252,7 @@
     width: 26vw;
     height: 6vh;
     background-color: transparent;
+    padding-bottom: 20%;
   }
 }
 
@@ -284,6 +286,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin-top:95%;
   }
 
   .informTitleBox {
@@ -411,7 +414,7 @@
   .myInformWord {
     width: 40vw;
     text-align: left;
-    margin-left: 8vw;
+    margin-left: 1vw;
   }
 
   .rightArrow {
@@ -504,6 +507,8 @@
     background-color: transparent;
     cursor: pointer;
     margin: 3%;
+    padding-bottom: 20%;
+    /* margin-bottom: 90%; */
   }
 
   .container5 {
