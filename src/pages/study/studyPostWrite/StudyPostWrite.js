@@ -93,6 +93,7 @@ const StudyPostWrite = props => {
     setIsClickedMember(false);
   };
 
+  
   //이미지 업로드
   const [imgFiles, setImgFiles] = useState([]);
   const imgRef = useRef();
@@ -186,7 +187,7 @@ const StudyPostWrite = props => {
     }
     const formStartDate = format(startDate, 'yyyy-MM-dd HH:mm:ss');
     const formEndDate = format(endDate, 'yyyy-MM-dd HH:mm:ss');
-    console.log(formStartDate)
+    
     const studyData =
       studyType === 'lecture'
         ? {
@@ -251,6 +252,86 @@ const StudyPostWrite = props => {
     }
   };
 
+  const modifyHandler = async e => {
+    //제목/모집기간/모집인원/내용/오픈채팅 링크/카테고리
+    const validation = (name, text) => {
+      if (text === '' || text === null) return `${name}을(를) 입력해주세요`;
+    };
+
+    const errorMessage =
+      validation('제목', title) ||
+      validation('모집 시작일', startDate) ||
+      validation('모집 종료일', endDate) ||
+      validation('내용', content) ||
+      validation('오픈채팅 링크', studyLink) ||
+      null;
+
+    if (errorMessage) {
+      togglePopup(errorMessage);
+      return;
+    }
+    const formStartDate = format(startDate, 'yyyy-MM-dd HH:mm:ss');
+    const formEndDate = format(endDate, 'yyyy-MM-dd HH:mm:ss');
+    
+    const studyData = {
+            title: title,
+            content: content,
+            recruitmentCount: memberNum,
+            method: selectedWay,
+            frequency: selectedFrequency,
+            kakaoLink: studyLink,
+            questionLink: questionLink,
+            lectureId: category,
+            recruitmentStartAt: formStartDate,
+            recruitmentEndAt: formEndDate,
+            tags: tags,
+            images: null,
+    };
+    console.log(studyData);
+
+    try {
+      const response = await fetch(
+        `${process.env.REACT_APP_BACK_SERVER}/study/${props.studyId}`,
+        {
+          method: 'PATCH',
+          body: JSON.stringify(studyData),
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+            'Refresh-Token': localStorage.getItem('refreshToken'),
+          },
+        }
+      );
+
+      const text = await response.text();
+      const data = text ? JSON.parse(text) : {};
+
+      const studyId = data.data.id;
+      imgUpload(studyId);
+      if (!response.ok) {
+        throw new Error(data.message || 'Something went wrong');
+      }
+
+      if (data.data !== null) {
+        errorClassName = data.data.errorClassName;
+      }
+    } catch (err) {
+      console.log('ErrorMessage : ', err.message);
+
+      e.preventDefault();
+    }
+  };
+
+  const [isPost, setIsPost] = useState(true);
+  useEffect(() => {
+    if (window.location.pathname === '/study/modify') {
+      setIsPost(false);
+    } else {
+      setIsPost(true);
+    }
+  }, [])
+  const btnOnclick = isPost ? submitHandler : modifyHandler;
+
   return (
     <div className={style.container}>
       <div className={style.innerConatiner}>
@@ -275,8 +356,8 @@ const StudyPostWrite = props => {
         </div>
       </div>
 
-      <div className={style.postConainer} onClick={submitHandler}>
-        <SubmitBtn name={'모집글 올리기'} ready={isFilled} />
+      <div className={style.postConainer} onClick={btnOnclick}>
+        <SubmitBtn name={isPost ? '모집글 올리기' : '모집글 수정하기'} ready={isFilled} />
       </div>
 
       {modalOpen && (

@@ -18,6 +18,7 @@ const Tag = () => {
         placeholder="(선택) #태그입력_최대_3개 (예: #팀플, #프로젝트)"
         className={style.titleInput}
         type="text"
+        value={tags}
       />
     </div>
   );
