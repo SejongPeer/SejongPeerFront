@@ -23,11 +23,15 @@ import style from './StudyPostWrite.module.css';
 import './StudyPostWriteBasic.css';
 import SubmitBtn from '../../../components/button/submitButton/SubmitBtn';
 
+//팝업
+import Popup from '../../../components/studyPopup/Popup';
+
 //zustand
 import usePostStore from './usePostStore';
 import useStudyInfoStore from '../useStudyInfoStore';
+import usePopupStroe from '../../../components/studyPopup/usePopupStore';
 import { format } from 'date-fns';
-import Category from '../../../components/studyPostWrite/studyRequirement/Category';
+// import Category from '../../../components/studyPostWrite/studyRequirement/Category';
 const StudyPostWrite = props => {
   const {
     title,
@@ -38,44 +42,19 @@ const StudyPostWrite = props => {
     selectedWay,
     selectedFrequency,
     questionLink,
-    images,
     content,
     studyLink,
     tags,
   } = usePostStore();
+  const {
+    isPopupVisible,
+    popupMessage,
+    popupTitle,
+    setPopupVisible,
+    setPopupMessage,
+  } = usePopupStroe();
   const { studyType } = useStudyInfoStore();
-  // setTitle(newTitle);
-  const setStartMem = num => {
-    setStartMember(num);
-  };
-  const setEndMem = num => {
-    setEndMember(num);
-  };
 
-  const [dateRange, setDateRange] = useState({
-    startDate: null,
-    endDate: null,
-  });
-
-  const [text, setText] = useState('');
-
-  useEffect(() => {
-    if(props.content !== undefined) {
-      setText(props.content);
-    }
-  }, [props.content])
-
-  const handleTextChange = e => {
-    const newText = e.target.value;
-    setText(newText);
-  };
-
-  const setChangeDate = dates => {
-    const [start, end] = dates;
-    setStartDate(start);
-    setEndDate(end);
-    setDateRange({ startDate: start, endDate: end });
-  };
   const handleDatePickerFocus = event => {
     event.target.blur();
   };
@@ -117,7 +96,6 @@ const StudyPostWrite = props => {
   //이미지 업로드
   const [imgFiles, setImgFiles] = useState([]);
   const imgRef = useRef();
-  console.log(imgFiles)
 
   const ImgHandler = event => {
     const files = Array.from(event.target.files);
@@ -140,42 +118,111 @@ const StudyPostWrite = props => {
     const newImgFiles = imgFiles.filter((_, i) => i !== index);
     setImgFiles(newImgFiles);
   };
+  //이미지 업로드 통신
+  const imgUpload = async id => {
+    const imgs = [...imgFiles];
+    const imgData = {
+      studyId: id,
+      base64ImagesList: imgs,
+    };
+    try {
+      const response = await fetch(
+        `${process.env.REACT_APP_BACK_SERVER}/image/study/upload`,
+        {
+          method: 'POST',
+          body: JSON.stringify(imgData),
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+            'Refresh-Token': localStorage.getItem('refreshToken'),
+          },
+        }
+      );
+
+      const text = await response.text();
+      const data = text ? JSON.parse(text) : {};
+      console.log(data);
+      if (!response.ok) {
+        throw new Error(data.message || 'Something went wrong');
+      }
+
+      if (data.data !== null) {
+        errorClassName = data.data.errorClassName;
+      }
+    } catch (err) {
+      console.log('ErrorMessage : ', err.message);
+    }
+  };
+
+  //유효성 검사 팝업 핸들러
+  const togglePopup = message => {
+    setPopupMessage(message);
+    setPopupVisible(!isPopupVisible);
+  };
+
+  const closePopup = () => {
+    setPopupVisible(false);
+  };
 
   const [isFilled, setIsFilled] = useState(true);
 
   const submitHandler = async e => {
+    //제목/모집기간/모집인원/내용/오픈채팅 링크/카테고리
+    const validation = (name, text) => {
+      if (text === '' || text === null) return `${name}을(를) 입력해주세요`;
+    };
+
+    const errorMessage =
+      validation('제목', title) ||
+      validation('모집 시작일', startDate) ||
+      validation('모집 종료일', endDate) ||
+      validation('내용', content) ||
+      validation('오픈채팅 링크', studyLink) ||
+      null;
+
+    if (errorMessage) {
+      togglePopup(errorMessage);
+      return;
+    }
     const formStartDate = format(startDate, 'yyyy-MM-dd HH:mm:ss');
     const formEndDate = format(endDate, 'yyyy-MM-dd HH:mm:ss');
-    const studyData = {
-      title: title,
-      content: content,
-      recruitmentCount: memberNum,
-      method: selectedWay,
-      frequency: selectedFrequency,
-      kakaoLink: studyLink,
-      questionLink: questionLink,
-      lectureId: category,
-      recruitmentStartAt: formStartDate,
-      recruitmentEndAt: formEndDate,
-      tags: tags,
-      images: images,
-    };
-    console.log(studyData)
-
-    let serverEndpoint = process.env.REACT_APP_BACK_SERVER + '/study/lecture'
-    let serverMethod = 'POST';
-    console.log(props.studyId)
-
-    if (location.pathname === "/study/modify") {
-      serverEndpoint = process.env.REACT_APP_BACK_SERVER + `/study/${props.studyId}`
-      serverMethod = 'PATCH'
-    }
-
+    console.log(formStartDate)
+    const studyData =
+      studyType === 'lecture'
+        ? {
+            title: title,
+            content: content,
+            recruitmentCount: memberNum,
+            method: selectedWay,
+            frequency: selectedFrequency,
+            kakaoLink: studyLink,
+            questionLink: questionLink,
+            lectureId: category,
+            recruitmentStartAt: formStartDate,
+            recruitmentEndAt: formEndDate,
+            tags: tags,
+            images: null,
+          }
+        : {
+            title: title,
+            content: content,
+            recruitmentCount: memberNum,
+            method: selectedWay,
+            frequency: selectedFrequency,
+            kakaoLink: studyLink,
+            questionLink: questionLink,
+            externalActivityId: category,
+            recruitmentStartAt: formStartDate,
+            recruitmentEndAt: formEndDate,
+            tags: tags,
+            images: null,
+          };
+        console.log(studyData)
     try {
       const response = await fetch(
-        serverEndpoint,
+        `${process.env.REACT_APP_BACK_SERVER}/study/${studyType}`,
         {
-          method: serverMethod,
+          method: 'POST',
           body: JSON.stringify(studyData),
           headers: {
             'Content-Type': 'application/json',
@@ -185,10 +232,11 @@ const StudyPostWrite = props => {
         }
       );
 
-      // 응답 본문이 비어있는지 확인
       const text = await response.text();
       const data = text ? JSON.parse(text) : {};
 
+      const studyId = data.data.id;
+      imgUpload(studyId);
       if (!response.ok) {
         throw new Error(data.message || 'Something went wrong');
       }
@@ -238,6 +286,9 @@ const StudyPostWrite = props => {
         </BottomModal>
       )}
       <ConfirmModal isOpen={isConfirmModalOpen} onClose={closeConfirmModal} />
+      {isPopupVisible && (
+        <Popup title={popupTitle} message={popupMessage} onClose={closePopup} />
+      )}
     </div>
   );
 };

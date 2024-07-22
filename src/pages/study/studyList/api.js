@@ -1,5 +1,6 @@
 // src/api/study.js
 import axios from 'axios';
+import useStudyInfoStore from '../useStudyInfoStore';
 
 export const fetchPosts = async () => {
   const accessToken = localStorage.getItem('accessToken');
