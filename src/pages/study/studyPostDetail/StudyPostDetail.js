@@ -1,66 +1,143 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+
+import Popup from '../../../components/studyPopup/Popup';
 import styled from 'styled-components';
-
-import search from '../../../assets/image/search_black.png';
-import comment_down from '../../../assets/image/comment_down.png';
-import scrap from '../../../assets/image/scrap.png';
-
-import axios from 'axios';
+import useStore from './useStore';
+import usePopupStroe from '../../../components/studyPopup/usePopupStore';
+import COLORS from '../../../theme';
+import heart from '../../../assets/image/heart_postdetail.svg';
+import filledHeart from '../../../assets/image/filledHeart.svg';
+import {
+  fetchStudyData,
+  applyForStudy,
+  cancelStudyApplication,
+  toggleScrap,
+  fetchScrapCount,
+} from './api';
 
 const StudyListPostDetail = () => {
-  const [isPopupVisible, setIsPopupVisible] = useState(false);
-  const [studyData, setStudyData] = useState(null);
-  const {studyId} = useParams();
-  const navigate = useNavigate();
-  // const studyId = 3;
-  console.log("studyId : ",studyId);
+  const {
+    studyData,
+    isApplied,
+    isScrapped,
+    scrapCount,
+    setStudyData,
+    setApplied,
+    setScrapped,
+    setScrapCount,
+  } = useStore();
+  const {
+    isPopupVisible,
+    popupMessage,
+    popupTitle,
+    setPopupVisible,
+    setPopupMessage,
+    setPopupTitle,
+  } = usePopupStroe();
+
+  const { studyId } = useParams();
 
   useEffect(() => {
-    const fetchStudyData = async () => {
+    const fetchData = async () => {
       try {
-        const response = await fetch(
-          process.env.REACT_APP_BACK_SERVER + `/study/post/${studyId}`,
-          {
-            method: 'GET',
-            headers: {
-              'Content-Type': 'application/json',
-              Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
-              'Refresh-Token': localStorage.getItem('refreshToken'),
-            },
-          }
-        );
-        
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
-        const data = await response.json();
+        const data = await fetchStudyData(studyId);
         setStudyData(data);
-        console.log(data);
+        const scrapped = localStorage.getItem(`isScrapped_${studyId}`);
+        setScrapped(scrapped ? JSON.parse(scrapped) : data.data.isScrapped);
+        const appliedStatus = localStorage.getItem(`isApplied_${studyId}`);
+        if (appliedStatus) {
+          setApplied(JSON.parse(appliedStatus));
+        }
+        const scrapData = await fetchScrapCount(studyId);
+        setScrapCount(scrapData.data.scrapCount);
       } catch (error) {
         console.error('Error fetching study data:', error);
       }
     };
 
-    fetchStudyData();
-  }, [studyId]);
-
+    fetchData();
+  }, [studyId, setStudyData, setScrapped, setApplied]);
 
   if (!studyData) {
-    return <div>Loading...</div>;
+    return <div>Loading..</div>;
   }
 
-  const BackHandler = () => {
-    navigate('/study');
+  const togglePopup = message => {
+    setPopupMessage(message);
+    setPopupVisible(!isPopupVisible);
   };
-  const togglePopup = () => {
-    setIsPopupVisible(!isPopupVisible);
-  };
+
   const closePopup = () => {
-    setIsPopupVisible(false);
+    setPopupVisible(false);
   };
-  console.log(studyData)
+
+  const applyForStudyHandler = async () => {
+    try {
+      if (isApplied) {
+        const response = await cancelStudyApplication(studyId);
+        if (response.status === 200) {
+          togglePopup('지원 취소 완료');
+          setApplied(false);
+          localStorage.setItem(`isApplied_${studyId}`, false);
+        } else {
+          console.error('Failed to cancel study application:', response);
+        }
+      } else {
+        const response = await applyForStudy(studyId);
+        if (response.status === 201) {
+          togglePopup(
+            '지원 완료! 모집자가 수락 후, 모집인원이 다 차거나 마감일이 되면 메시지로 오픈채팅 링크가 전달됩니다.'
+          );
+          setApplied(true);
+          localStorage.setItem(`isApplied_${studyId}`, true);
+        } else {
+          console.error('Failed to apply for study:', response);
+        }
+      }
+    } catch (error) {
+      if (error.response && error.response.status === 409) {
+        togglePopup('이미 신청한 스터디입니다!');
+        setApplied(true);
+        localStorage.setItem(`isApplied_${studyId}`, true);
+      } else {
+        console.error('Error applying for study:', error);
+      }
+
+      if (error.response.status === 403) {
+        togglePopup('1시간 패널티 부과 중입니다!');
+      }
+    }
+  };
+
+  const toggleScrapHandler = async () => {
+    try {
+      const response = await toggleScrap(studyId, isScrapped);
+      if (response.status === 200) {
+        const newScrappedStatus = !isScrapped;
+        setScrapped(newScrappedStatus);
+        localStorage.setItem(`isScrapped_${studyId}`, newScrappedStatus);
+
+        if (newScrappedStatus) {
+          alert('스크랩에 추가합니다!');
+          localStorage.setItem(`scrapId_${studyId}`, response.data.data);
+          setScrapCount(scrapCount + 1);
+        } else {
+          alert('스크랩에서 제거합니다!');
+          localStorage.removeItem(`scrapId_${studyId}`);
+          setScrapCount(scrapCount - 1);
+        }
+      } else {
+        console.error('스크랩 실패:', response);
+      }
+    } catch (error) {
+      if (error.response && error.response.status === 403) {
+        console.error('권한이 없음.');
+      } else {
+        console.error('스크랩 실패:', error);
+      }
+    }
+  };
 
   return (
     <Container>
@@ -72,76 +149,48 @@ const StudyListPostDetail = () => {
         </FlexContainer>
         <FlexContainer>
           <ApplicationPeriod>지원기간</ApplicationPeriod>
-          <ApplicationPeriod2>{studyData.data.recruitmentStart}</ApplicationPeriod2>
-          <ApplicationPeriod3>{studyData.data.recruitmentEnd}</ApplicationPeriod3>
+          <ApplicationPeriod2>
+            {studyData.data.recruitmentStart}
+          </ApplicationPeriod2>
+          ~
+          <ApplicationPeriod3>
+            {studyData.data.recruitmentEnd}
+          </ApplicationPeriod3>
         </FlexContainer>
+        <FlexContainer>
+          <Title2>방식</Title2>
+          <StudyMethod>
+            {studyData.data.studyFrequency} • {studyData.data.studyMethod}
+          </StudyMethod>
+        </FlexContainer>
+        <FlexContainer>
+          <Title2>문의</Title2>
+          <StudyMethod>{studyData.data.questionKakaoLink}</StudyMethod>
+        </FlexContainer>
+        <Tag>
+          <TagText>{studyData.data.categoryName}</TagText>
+        </Tag>
         <Line />
-        <Content>
-          {studyData.data.content}
-        </Content>
-        <TagContainer>
-          <Tag>
-            <TagText>학교수업</TagText>
-          </Tag>
-          <TagGray>
-            <TagTextGray>C프로그래밍실습</TagTextGray>
-          </TagGray>
-        </TagContainer>
-        <Line />
-
-        {/* <CommentTitle>댓글 4</CommentTitle>
-        <Line />
+        <Content>{studyData.data.content}</Content>
+        <TagContainer></TagContainer>
 
         <CommentContainer>
-          <CommentNickname>세종냥이1</CommentNickname>
-          <CommentDate>23.03.28</CommentDate>
-        </CommentContainer>
-        <CommentContent>
-          다른 과 학생인데 스터디 참여 가능할까요..?
-        </CommentContent>
-
-        <CommentContainer>
-          <CommentDown src={comment_down} alt="comment_down" />
-          <CommentNickname>글쓴이</CommentNickname>
-          <CommentDate>23.03.28</CommentDate>
-        </CommentContainer>
-
-        <CommentContent>열심히 하신다면 참여가능합니다!</CommentContent>
-
-        <Line />
-
-        <CommentContainer>
-          <CommentNickname>세종냥이1</CommentNickname>
-          <CommentDate>23.03.28</CommentDate>
-        </CommentContainer>
-        <CommentContent>
-          다른 과 학생인데 스터디 참여 가능할까요..?
-        </CommentContent>
-
-        <CommentContainer>
-          <CommentDown src={comment_down} alt="comment_down" />
-          <CommentNickname>글쓴이</CommentNickname>
-          <CommentDate>23.03.28</CommentDate>
-        </CommentContainer>
-
-        <CommentContent>열심히 하신다면 참여가능합니다!</CommentContent> */}
-
-        <CommentContainer>
-          <ScrapButton>
-            <ScrapImage src={scrap} alt="scrap" />
+          <ScrapButton onClick={toggleScrapHandler}>
+            <ScrapImage src={isScrapped ? filledHeart : heart} alt="heart" />
+            <ScrapCount>{scrapCount}</ScrapCount>
           </ScrapButton>
-          <ApplyButton onClick={togglePopup}>지원하기(1/4)</ApplyButton>
+          <ApplyButton onClick={applyForStudyHandler} isApplied={isApplied}>
+            {isApplied
+              ? '지원취소'
+              : `지원하기 (${studyData.data.participantCount} / ${studyData.data.totalRecruitmentCount})`}
+          </ApplyButton>
         </CommentContainer>
         {isPopupVisible && (
-          <Popup>
-            <PopupContent>
-              지원 완료! <br />
-              닉네임과 학과 정보가 전달됩니다. <br />
-              게시자가 지원을 수락하면 오픈채팅방 링크가 메세지로 전달됩니다.
-              <br />
-              <ConfirmButton onClick={closePopup}>확인</ConfirmButton>
-            </PopupContent>
-          </Popup>
+          <Popup
+            title={popupTitle}
+            message={popupMessage}
+            onClose={closePopup}
+          />
         )}
       </div>
     </Container>
@@ -157,11 +206,10 @@ const Container = styled.div`
   align-items: center;
   justify-content: flex-start;
   height: 85%;
-  background-color: #fafafa;
+  background-color: ${COLORS.back1};
 `;
 
 const Title = styled.div`
-  font-family: Pretendard;
   font-size: 18px;
   font-style: normal;
   font-weight: 600;
@@ -171,10 +219,20 @@ const Title = styled.div`
 `;
 
 const Title2 = styled.div`
-  font-family: Pretendard;
   font-size: 14px;
   font-style: normal;
-  font-weight: 600;
+  font-weight: 400;
+  color: ${COLORS.font2};
+  line-height: 20px;
+  letter-spacing: -0.333px;
+  text-align: left;
+  margin-right: 10px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+`;
+
+const StudyMethod = styled.div`
+  font-size: 14px;
   line-height: 20px;
   letter-spacing: -0.333px;
   text-align: left;
@@ -183,15 +241,12 @@ const Title2 = styled.div`
 
 const Nickname = styled(Title2)`
   font-weight: 400;
-  color: #555;
+  color: ${COLORS.font2};
 `;
 
-const ApplicationPeriod = styled.div`
-  color: var(--main, #ff4b4b);
-  font-family: Pretendard;
+const ApplicationPeriod = styled(Title2)`
+  /* color: ${COLORS.font1}; */
   font-size: 14px;
-  font-style: normal;
-  font-weight: 600;
   line-height: 20px;
   letter-spacing: -0.333px;
   text-align: left;
@@ -199,35 +254,33 @@ const ApplicationPeriod = styled.div`
 `;
 
 const ApplicationPeriod2 = styled.div`
-  color: var(--font_01, #111);
-  font-family: Pretendard;
+  color: ${COLORS.font1};
   font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
   line-height: 20px;
   letter-spacing: -0.333px;
   text-align: left;
-  margin-right: 10px;
+  margin-right: 1px;
 `;
 
-const ApplicationPeriod3 = styled(ApplicationPeriod2)`
-  color: #999;
-`;
+const ApplicationPeriod3 = styled(ApplicationPeriod2)``;
 
 const FlexContainer = styled.div`
   display: flex;
-  align-items: left;
+  align-items: center;
   justify-content: left;
   width: 100%;
 `;
 
 const Line = styled.div`
   height: 1px;
-  width: 100%;
-  background-color: #b9b9b9;
-  border-bottom: 1px solid var(--line_02, #e5e5e5);
+  width: 100vw;
+  background-color: ${COLORS.line1};
+  border-bottom: 5px solid #fff7f7;
   margin-top: 15px;
   margin-bottom: 15px;
+  margin-left: -50vw;
+  left: 50%;
+  position: relative;
 `;
 
 const Content = styled.div`
@@ -236,8 +289,7 @@ const Content = styled.div`
   width: 100%;
   height: 120px;
   flex-shrink: 0;
-  color: var(--font_01, #111);
-  font-family: Pretendard;
+  color: ${COLORS.font1};
   font-size: 15px;
   font-style: normal;
   font-weight: 400;
@@ -259,28 +311,19 @@ const Tag = styled.button`
   gap: 10px;
   font-weight: 500;
   border-radius: 15px;
-  border: 1px solid var(--sub, #ff7474);
+  border: 1px solid ${COLORS.sub};
   margin-top: 15px;
   background: none;
   cursor: pointer;
 `;
 
-const TagGray = styled(Tag)`
-  border: 1px solid var(--sub, #777777);
-`;
-
 const TagText = styled.div`
-  color: var(--main, #ff4b4b);
-  font-family: Pretendard;
+  color: ${COLORS.main};
   font-size: 12px;
   font-style: normal;
   font-weight: 500;
   line-height: 16px;
   letter-spacing: -0.333px;
-`;
-
-const TagTextGray = styled(TagText)`
-  color: var(--main, #777777);
 `;
 
 const CommentContainer = styled.div`
@@ -289,40 +332,30 @@ const CommentContainer = styled.div`
   gap: 10px;
 `;
 
-const CommentNickname = styled.div`
-  color: var(--font_02, #555);
-  font-family: Pretendard;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 20px;
-  letter-spacing: -0.333px;
-`;
-
-const CommentDate = styled.div`
-  color: var(--font_04, #999);
-  font-family: Pretendard;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 20px;
-  letter-spacing: -0.333px;
-`;
-
-const CommentContent = styled.div`
-  color: var(--font_01, #111);
-  font-family: Pretendard;
-  font-size: 15px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 20px;
-  letter-spacing: -0.333px;
-`;
-
-const CommentDown = styled.img`
-  width: 12px;
-  height: 12px;
+const ScrapButton = styled.button`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
   flex-shrink: 0;
+  border-radius: 28px;
+  border: 1px solid ${COLORS.line2};
+  background: #fff;
+  margin-top: 15px;
+  cursor: pointer;
+`;
+
+const ScrapCount = styled.div`
+  font-size: 12px;
+  color: ${COLORS.font2};
+  margin-top: 2px;
+`;
+
+const ScrapImage = styled.img`
+  width: 20px;
+  height: 20px;
 `;
 
 const ApplyButton = styled.button`
@@ -330,10 +363,10 @@ const ApplyButton = styled.button`
   height: 52px;
   flex-shrink: 0;
   border-radius: 28px;
-  background: var(--main, #ff4b4b);
-  color: #fff;
+  background: ${props => (props.isApplied ? COLORS.line2 : COLORS.main)};
+  color: ${props =>
+    props.isApplied ? '#111' : '#fff'}; /* 글씨 색상 조건부 변경 */
   text-align: center;
-  font-family: Pretendard;
   font-size: 18px;
   font-style: normal;
   font-weight: 700;
@@ -342,52 +375,4 @@ const ApplyButton = styled.button`
   margin-top: 15px;
   cursor: pointer;
   border: none;
-`;
-
-const ScrapButton = styled.button`
-  width: 52px;
-  height: 52px;
-  flex-shrink: 0;
-  border-radius: 28px;
-  border: 1px solid var(--line_02, #e5e5e5);
-  background: #fff;
-  margin-top: 15px;
-  cursor: pointer;
-`;
-
-const ScrapImage = styled.img`
-  width: 20px;
-  height: 20px;
-`;
-
-const Popup = styled.div`
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 300px;
-  padding: 20px;
-  background: white;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
-`;
-
-const PopupContent = styled.div`
-  text-align: center;
-  font-family: Pretendard;
-  color: var(--font_01, #111);
-`;
-
-const ConfirmButton = styled.button`
-  margin-top: 20px;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  background-color: #ff4b4b;
-  color: white;
-  font-family: Pretendard;
-  font-size: 16px;
-  cursor: pointer;
 `;

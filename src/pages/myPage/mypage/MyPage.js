@@ -44,23 +44,23 @@ const MyPage = () => {
   };
   // 로그아웃
   const handleLogout = () => {
-      localStorage.removeItem('account');
-      localStorage.removeItem('grade');
-      localStorage.removeItem('gender');
-      localStorage.removeItem('major');
-      localStorage.removeItem('minor');
-      localStorage.removeItem('name');
-      localStorage.removeItem('nickname');
-      localStorage.removeItem('phoneNumber');
-      localStorage.removeItem('studentId');
-      localStorage.removeItem('accessToken');
-      localStorage.removeItem('refreshToken');
-      localStorage.removeItem('kakaoAccount');
-      localStorage.removeItem('pwd');
-      localStorage.removeItem('userId');
-      console.log('로그아웃 성공');
-      alert('로그아웃 되었습니다');
-      navigate('/main');
+    localStorage.removeItem('account');
+    localStorage.removeItem('grade');
+    localStorage.removeItem('gender');
+    localStorage.removeItem('major');
+    localStorage.removeItem('minor');
+    localStorage.removeItem('name');
+    localStorage.removeItem('nickname');
+    localStorage.removeItem('phoneNumber');
+    localStorage.removeItem('studentId');
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('refreshToken');
+    localStorage.removeItem('kakaoAccount');
+    localStorage.removeItem('pwd');
+    localStorage.removeItem('userId');
+    console.log('로그아웃 성공');
+    alert('로그아웃 되었습니다');
+    navigate('/main');
   };
 
   const gender = localStorage.getItem('gender');
@@ -132,7 +132,6 @@ const MyPage = () => {
       } else {
         statusHandler(data.data.status, data.data.matchingCompletedCount);
       }
-      
     } catch (error) {
       alert('에러가 발생했습니다.');
       console.log(error.message);
@@ -141,42 +140,43 @@ const MyPage = () => {
 
   //버디 - 상태에따른 처리
   const statusHandler = (status, count) => {
-
     //취소, 거절 패널티 해제
-    if (status === 'CANCEL'|| status === 'REACTIVATE') {
+    if (status === 'CANCEL' || status === 'REACTIVATE') {
       if (count > 0) {
         navigate('/buddy/success');
       } else {
         navigate('/buddy/start1');
       }
-    // 거절 당함
-    } else if (status === "DENIED") {
+      // 거절 당함
+    } else if (status === 'DENIED') {
       alert('상대방이 거절했습니다. 다시 신청해 주세요.');
       if (count > 0) {
         navigate('/buddy/success');
       } else {
         navigate('/buddy/start1');
       }
-    //매칭 최종 완료
-    } else if (status === "MATCHING_COMPLETED") {
-      alert("매칭에 성공했습니다. 정보를 확인해주세요!")
-      navigate('/buddy/success')
-    //매칭 수락
-    } else if (status === "ACCEPT") {
-      alert("신청 수락을 했습니다. 상대방이 수락할때까지 기다려 주세요.");
-    //매칭 거절
-    } else if (status === "REJECT") {
-      alert("거절 패널티 1시간이 부과되었습니다. 1시간 이후에 다시 신청해 주세요.");
-    //매칭 중
-    } else if (status === "IN_PROGRESS") {
-      alert("매칭중입니다!");
+      //매칭 최종 완료
+    } else if (status === 'MATCHING_COMPLETED') {
+      alert('매칭에 성공했습니다. 정보를 확인해주세요!');
+      navigate('/buddy/success');
+      //매칭 수락
+    } else if (status === 'ACCEPT') {
+      alert('신청 수락을 했습니다. 상대방이 수락할때까지 기다려 주세요.');
+      //매칭 거절
+    } else if (status === 'REJECT') {
+      alert(
+        '거절 패널티 1시간이 부과되었습니다. 1시간 이후에 다시 신청해 주세요.'
+      );
+      //매칭 중
+    } else if (status === 'IN_PROGRESS') {
+      alert('매칭중입니다!');
       navigate('/buddy/waiting');
-    //매칭 완료
+      //매칭 완료
     } else if (status === 'FOUND_BUDDY') {
-      alert("버디를 찾았습니다!");
+      alert('버디를 찾았습니다!');
       navigate('/buddy/accept');
     }
-  }
+  };
 
   //혼밥 매칭상대 확인
   const HonbobHandler = async () => {
@@ -239,6 +239,7 @@ const MyPage = () => {
             <div className={styles.outerContainer}>
               <div className={styles.container1}>
                 <div className={styles.informTitleBox}>
+                  <span className={styles.br}></span>
                   <p
                     style={{ fontWeight: '700', marginBottom: '0px' }}
                     className={styles.informTitle}
@@ -246,16 +247,36 @@ const MyPage = () => {
                     매칭정보
                   </p>
                 </div>
-
                 <div className={styles.matchingBox}>
-                  {/* <button className={styles.matchingButton}>
-    <div className={styles.leftBox}>
-      <div className={`${styles.redWord} ${styles.checkWord}`}>세종스터디</div>
-      <div className={`${styles.blackWord} ${styles.checkWord}`} style={{ fontWeight: "700" }}>내 게시글 확인</div>
-    </div>
-    <div className={styles.rightImg}></div>
-  </button> */}
-                  <button className={styles.hideBtn}></button>
+                  <button className={styles.matchingButton}>
+                    <div className={styles.leftBox}>
+                      <div className={`${styles.redWord} ${styles.checkWord}`}>
+                        지원한 스터디 확인
+                      </div>
+                      <div
+                        className={`${styles.blackWord} ${styles.checkWord}`}
+                        style={{ fontWeight: '700' }}
+                      >
+                        내가 지원한 스터디 현황 확인하기
+                      </div>
+                    </div>
+                    <div className={styles.rightImg}></div>
+                  </button>
+                  <button className={styles.matchingButton}>
+                    <div className={styles.leftBox}>
+                      <div className={`${styles.redWord} ${styles.checkWord}`}>
+                        내 스터디 게시글 관리
+                      </div>
+                      <div
+                        className={`${styles.blackWord} ${styles.checkWord}`}
+                        style={{ fontWeight: '700' }}
+                      >
+                        내가 업로드한 게시글, 신청자 관리하기
+                      </div>
+                    </div>
+                    <div className={styles.rightImg}></div>
+                  </button>
+                  {/*<button className={styles.hideBtn}></button>*/}
                   <button
                     onClick={BuddyHandler}
                     className={styles.matchingButton}
@@ -290,6 +311,38 @@ const MyPage = () => {
                     </div>
                     <div className={styles.honbobImg}></div>
                   </button>
+                </div>
+              </div>
+                  {/* _________ */}
+              <div className={styles.container5}>
+                <div className={styles.informTitleBox}>
+                  <span className={styles.br}></span>
+                  <p
+                    style={{ fontWeight: '700', marginBottom: '0px' }}
+                    className={styles.informTitle}
+                  >
+                    세종스터디
+                  </p>
+                </div>
+
+                <div className={styles.matchingBox}>
+                  <button className={styles.matchingButton}>
+                    <div className={styles.leftBox}>
+                      <div className={`${styles.redWord} ${styles.checkWord}`}>
+                        좋아요 한 글
+                      </div>
+                    </div>
+                    <div className={styles.rightImg}></div>
+                  </button>
+                  <button className={styles.matchingButton}>
+                    <div className={styles.leftBox}>
+                      <div className={`${styles.redWord} ${styles.checkWord}`}>
+                        댓글 단 글
+                      </div>
+                    </div>
+                    <div className={styles.rightImg}></div>
+                  </button>
+                  {/*<button className={styles.hideBtn}></button>*/}
                 </div>
               </div>
               <div className={styles.container2}>
@@ -392,14 +445,16 @@ const MyPage = () => {
                   <div style={{ textDecoration: 'underline' }}>공지사항</div>
                 </div>
               </div>
-              <button style={{ cursor: 'pointer', }} className={styles.logout} onClick={handleLogout}>
+              <button
+                style={{ cursor: 'pointer' }}
+                className={styles.logout}
+                onClick={handleLogout}
+              >
                 <p
                   style={{
                     fontWeight: '700',
                     fontSize: '1.3em',
-
                   }}
-
                 >
                   로그아웃
                 </p>

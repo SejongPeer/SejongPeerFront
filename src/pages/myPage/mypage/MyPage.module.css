@@ -36,12 +36,14 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin-top:95%;
   }
 
   .informTitleBox {
     width: 26vw;
     display: flex;
     justify-content: flex-start;
+    margin-top: 2vh;
   }
 
   .matchingBox {
@@ -54,7 +56,7 @@
 
   .matchingButton {
     cursor: pointer;
-    width: 26vw;
+    width: 28vw; /* 너비를 넓혔습니다 */
     height: 9vh;
     display: flex;
     justify-content: space-between;
@@ -85,7 +87,7 @@
     flex-direction: column;
     align-items: center;
     /* justify-content: left; */
-    width: 10vw;
+    width: 12vw; /* 너비를 넓혔습니다 */
     gap: 1vh;
   }
 
@@ -98,7 +100,7 @@
   }
 
   .checkWord {
-    width: 7vw;
+    width: 12vw; /* 너비를 넓혔습니다 */
     text-align: left;
   }
 
@@ -250,6 +252,7 @@
     width: 26vw;
     height: 6vh;
     background-color: transparent;
+    padding-bottom: 20%;
   }
 }
 
@@ -272,7 +275,7 @@
     align-items: center;
     flex-direction: column;
     width: 100vw;
-    height: 100vh;
+    height: 100vh; 
     margin-top: 1vh;
   }
 
@@ -283,6 +286,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin-top:95%;
   }
 
   .informTitleBox {
@@ -290,9 +294,10 @@
     width: 90vw;
     display: flex;
     align-items: center;
+    /* margin-top: 2vh; */
   }
   .informTitleBox p {
-    margin: 3% 0;
+    margin: 3% 40% 40% 0;
   }
 
   .matchingBox {
@@ -304,7 +309,7 @@
   }
 
   .matchingButton {
-    width: 90vw;
+    width: 95vw; /* 너비를 넓혔습니다 */
     height: 9vh;
     display: flex;
     justify-content: space-between;
@@ -333,10 +338,11 @@
   .leftBox {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items:self-start;
     /* justify-content: left; */
-    width: 40vw;
+    width: 65vw; /* 너비를 넓혔습니다 */
     gap: 1vh;
+    margin-left: 10px;
   }
 
   .redWord {
@@ -348,7 +354,7 @@
   }
 
   .checkWord {
-    width: 30vw;
+    width: 65vw; /* 너비를 넓혔습니다 */
     text-align: left;
   }
 
@@ -501,5 +507,22 @@
     background-color: transparent;
     cursor: pointer;
     margin: 3%;
+    padding-bottom: 20%;
+    /* margin-bottom: 90%; */
   }
+
+  .container5 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    width: 100vw;
+    height: 30vh;
+    margin-top: 1vh;
+  }
+
+  /* .br {
+    margin-bottom: 0;
+  } */
 }

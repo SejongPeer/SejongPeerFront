@@ -3,7 +3,6 @@ import { useState, createContext, useEffect } from 'react';
 import './App.css';
 import { jwtDecode } from 'jwt-decode';
 
-
 // 메인 컴포넌트
 import Header from './components/header/Header.js';
 import StartLoading from './pages/main/landing/StartLoading.js';
@@ -43,8 +42,9 @@ import Modify from './pages/myPage/modify/Modify.js';
 // 스터디
 import StudyList from '../src/pages/study/studyList/StudyList.js';
 import StudyPostDeatil from '../src/pages/study/studyPostDetail/StudyPostDetail.js';
-import StudyPostWrite from '../src/pages/study/studyPostWrite/StudyPostWrite.js';
+import StudyPostWrite from './pages/study/studyPostWrite/StudyPostWrite.js';
 import StudyFilter from '../src/pages/study/studyFilterPage/StudyFIlterPage.js';
+import StudyModify from './pages/study/studyModify/studyModify.js';
 
 // 축제
 import AnimalApply from './pages/festival/animalApply/AnimalApply.js';
@@ -99,6 +99,8 @@ const App = () => {
     const timeUntilLogout = expTime - cuurentTime;
 
     setTimeout(() => {
+      console.log('logout');
+      alert('logout!')
       logout();
     }, timeUntilLogout);
   };
@@ -197,6 +199,7 @@ const App = () => {
               <Route path="/api/v1/study/post/:studyId" element={<StudyPostDeatil />} />
               <Route path="/study/post" element={<StudyPostWrite />} />
               <Route path="/study/filter" element={<StudyFilter />} />
+              <Route path="/study/modify" element={<StudyModify />} />
 
               <Route path="/fest/AnimalApply" element={<AnimalApply />} />
               <Route path="/fest/AnimalApply2" element={<AnimalApply2 />} />
