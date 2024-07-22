@@ -160,34 +160,30 @@ const StudyPostWrite = props => {
       tags: tags,
       images: images,
     };
+    console.log(studyData)
+
+    let serverEndpoint = process.env.REACT_APP_BACK_SERVER + '/study/lecture'
+    let serverMethod = 'POST';
+    console.log(props.studyId)
+
+    if (location.pathname === "/study/modify") {
+      serverEndpoint = process.env.REACT_APP_BACK_SERVER + `/study/${props.studyId}`
+      serverMethod = 'PATCH'
+    }
+
     try {
-      if (location.pathname.startsWith("/login")) {
-        const response = await fetch(
-          process.env.REACT_APP_BACK_SERVER + '/study/',
-          {
-            method: 'PATCH',
-            body: JSON.stringify(studyData),
-            headers: {
-              'Content-Type': 'application/json',
-              Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
-              'Refresh-Token': localStorage.getItem('refreshToken'),
-            },
-          }
-        );
-      } else {
-        const response = await fetch(
-          process.env.REACT_APP_BACK_SERVER + '/study/lecture',
-          {
-            method: 'POST',
-            body: JSON.stringify(studyData),
-            headers: {
-              'Content-Type': 'application/json',
-              Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
-              'Refresh-Token': localStorage.getItem('refreshToken'),
-            },
-          }
-        );
-      }
+      const response = await fetch(
+        serverEndpoint,
+        {
+          method: serverMethod,
+          body: JSON.stringify(studyData),
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+            'Refresh-Token': localStorage.getItem('refreshToken'),
+          },
+        }
+      );
 
       // 응답 본문이 비어있는지 확인
       const text = await response.text();

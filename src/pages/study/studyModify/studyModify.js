@@ -69,23 +69,36 @@ const StudyModify = () => {
 
   useEffect(() => {
     if (studyData) {
+      if(studyData.data.studyFrequency === '주 1~2회') {
+        setSelectedFrequency("ONCE_OR_TWICE_A_WEEK");
+      } else if (studyData.data.studyFrequency === '주 3~4회') {
+        setSelectedFrequency('THREE_TO_FOUR_TIMES_A_WEEK');
+      } else {
+        setSelectedFrequency('FIVE_OR_MORE_TIMES_A_WEEK');
+      }
+
+      if(studyData.data.studyMethod === '대면') {
+        setSelectedWay("FACE_TO_FACE");
+      } else if (studyData.data.studyMethod === '비대면') {
+        setSelectedWay('NON_FACE_TO_FACE');
+      } else {
+        setSelectedWay('BOTH');
+      }
+
       setTitle(studyData.data.title);
       setCategory(studyData.data.categoryName);
       setStartDate(studyData.data.recruitmentStart);
       setEndDate(studyData.data.recruitmentEnd);
       setMemberNum(studyData.data.totalRecruitmentCount);
       setContent(studyData.data.content);
-      //setSelectedWay(studyData.data.studyFrequency);
       setQuestionLink(studyData.data.questionKakaoLink);
     }
   }, [studyData]);
 
-  const modifyHandler = () => {
-    
-  }
-
   return studyData ? (
-    <StudyPostWrite/>
+    <StudyPostWrite
+      studyId={studyId}
+    />
   ) : (
     <div>Loading...</div>
   );
