@@ -217,7 +217,6 @@ const StudyPostWrite = props => {
             tags: tags,
             images: null,
           };
-        console.log(studyData)
     try {
       const response = await fetch(
         `${process.env.REACT_APP_BACK_SERVER}/study/${studyType}`,
