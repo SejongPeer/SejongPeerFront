@@ -9,3 +9,4 @@ const useScrapStore = create(set => ({
 }));
 
 export default useScrapStore;
+

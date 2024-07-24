@@ -10,47 +10,28 @@ import Filter_Member from '../../study/studyList/Filter_Member';
 import select from '../../../assets/image/select.png';
 import useScrapStore from './useScrapStore';
 import axios from 'axios';
+import { fetchScraps } from './api';
 
 const MyPageScrapList = () => {
   const { posts, modalOpen, setPosts, setModalOpen } = useScrapStore();
   const navigate = useNavigate();
-  const accessToken = localStorage.getItem('accessToken');
-  const refreshToken = localStorage.getItem('refreshToken');
 
   useEffect(() => {
     const loadPosts = async () => {
-      if (!accessToken || !refreshToken) {
-        throw new Error('Tokens not found in local storage.');
-      }
       try {
-        const response = await axios.get(
-          'https://www.api-sejongpeer.shop/api/v1/scraps/all',
-          {
-            params: {
-              studyType: 'LECTURE', // 또는 'EXTERNAL_ACTIVITY'
-              page: 0,
-            },
-            headers: {
-              Authorization: `Bearer ${accessToken}`,
-              'Refresh-token': refreshToken,
-              'Content-Type': 'application/json',
-            },
-            withCredentials: true, // 쿠키를 포함하는 요청에 필요할 수 있습니다.
-          }
-        );
-        setPosts(response.data.data);
-        console.log(response.data.data);
+        const fetchedScraps = await fetchScraps();
+        setPosts(fetchedScraps);
       } catch (error) {
         console.error('Error fetching posts:', error);
       }
     };
-
     loadPosts();
-  }, [accessToken, refreshToken, setPosts]);
+  }, [setPosts]);
 
   const goPostDetail = index => {
     navigate(`/study/post/${index}`);
   };
+
 
   return (
     <Container>
