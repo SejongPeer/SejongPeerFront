@@ -38,6 +38,7 @@ import Agree from './pages/login/signUp/Agree.js';
 // 마이페이지
 import MyPage from './pages/myPage/mypage/MyPage.js';
 import Modify from './pages/myPage/modify/Modify.js';
+import MyPageScrapList from './pages/myPage/mypage/MyPageScrapList.js'
 
 // 스터디
 import StudyList from '../src/pages/study/studyList/StudyList.js';
@@ -194,6 +195,7 @@ const App = () => {
               <Route path="/personalinfo2" element={<Agree3 />} />
               <Route path="/mypage" element={<MyPage />} />
               <Route path="/mypage/modify" element={<Modify />} />
+              <Route path="/mypage/scraplist" element={<MyPageScrapList />}/>
 
               <Route path="/study" element={<StudyList />} />
               <Route path="/study/post/:studyId" element={<StudyPostDeatil />} />
