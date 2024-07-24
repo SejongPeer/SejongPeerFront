@@ -5,7 +5,6 @@ import arrow from '../../../assets/image/down_black.png';
  
 const Category = ({studyFilterHandler}) => {
     const {category} = usePostStore();
-    console.log(category);
     
     const [isPost, setIsPost] = useState(true);
     useEffect(() => {

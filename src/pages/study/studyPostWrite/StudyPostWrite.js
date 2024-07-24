@@ -350,7 +350,7 @@ const StudyPostWrite = props => {
             ImgHandler={ImgHandler}
             imgRef={imgRef}
             ImgDeleteHandler={ImgDeleteHandler}
-            imgUrl={props.imgUrl}
+            imgUrlList={props.imgUrl}
           />
           <StudyLink />
           <Tag />
