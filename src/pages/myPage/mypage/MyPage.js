@@ -326,8 +326,10 @@ const MyPage = () => {
                 </div>
 
                 <div className={styles.matchingBox}>
-                  <button className={styles.matchingButton}>
-                    <div className={styles.leftBox}>
+                <button
+                    className={styles.matchingButton}
+                    onClick={() => navigate('/mypage/scraplist')}
+                  >                    <div className={styles.leftBox}>
                       <div className={`${styles.redWord} ${styles.checkWord}`}>
                         좋아요 한 글
                       </div>
