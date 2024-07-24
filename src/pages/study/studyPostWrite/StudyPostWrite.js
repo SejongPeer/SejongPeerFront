@@ -119,6 +119,7 @@ const StudyPostWrite = props => {
     const newImgFiles = imgFiles.filter((_, i) => i !== index);
     setImgFiles(newImgFiles);
   };
+  
   //이미지 업로드 통신
   const imgUpload = async id => {
     const imgs = [...imgFiles];
@@ -323,7 +324,7 @@ const StudyPostWrite = props => {
 
   const [isPost, setIsPost] = useState(true);
   useEffect(() => {
-    if (window.location.pathname === '/study/modify') {
+    if (window.location.pathname.startsWith('/study/modify')) {
       setIsPost(false);
     } else {
       setIsPost(true);
@@ -349,6 +350,7 @@ const StudyPostWrite = props => {
             ImgHandler={ImgHandler}
             imgRef={imgRef}
             ImgDeleteHandler={ImgDeleteHandler}
+            imgUrl={props.imgUrl}
           />
           <StudyLink />
           <Tag />

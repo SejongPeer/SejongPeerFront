@@ -142,3 +142,29 @@ export const fetchScrapCount = async studyId => {
   // console.log(response.data);
   return response.data;
 };
+
+//게시글 삭제 함수
+// 단건 게시물 별 스크랩 수 조회
+export const deletePostHandler = async studyId => {
+  const accessToken = localStorage.getItem('accessToken');
+  const refreshToken = localStorage.getItem('refreshToken');
+
+  if (!accessToken || !refreshToken) {
+    alert('재로그인 해야합니다!');
+    throw new Error('토큰이 없음!');
+  }
+
+  const response = await axios.delete(
+    `${process.env.REACT_APP_BACK_SERVER}/study/${studyId}`,
+    {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${accessToken}`,
+        'Refresh-token': `${refreshToken}`,
+      },
+    }
+  );
+
+  // console.log(response.data);
+  return response.data;
+};
