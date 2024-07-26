@@ -26,5 +26,6 @@ export const fetchPosts = async () => {
     }
   );
   console.log(response.data.data);
+  console.log(response.data.data.content[0].id);
   return response.data.data.content;
 };

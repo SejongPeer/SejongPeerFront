@@ -34,12 +34,8 @@ const StudyListPost = ({ post }) => {
       <PostBottom>
         <Like>
           <LikeIcon src={isScrapped ? filledHeart : heart} alt="like" />
-          <LikeNumber>0</LikeNumber>
+          <LikeNumber>{post.scrapCount}</LikeNumber>
         </Like>
-        {/* <Comment>
-          <CommentIcon src={comment} alt="comment" />
-          <CommentNumber>0</CommentNumber>
-        </Comment> */}
       </PostBottom>
     </PostWrapper>
   );
