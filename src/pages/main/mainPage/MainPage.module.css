@@ -50,7 +50,7 @@
   .festButton {
     display: flex;
     justify-content: center;
-    align-items: flex-end;
+    /* align-items: center; */
     gap: 7px;
     background-color: white;
     height: 204px;
@@ -58,23 +58,46 @@
     border: 1px solid #e5e5e5;
     border-radius: 16px;
     margin-top: 2vh;
+    flex-direction: column;
   }
-  .festButton {
-    width: 351px;
-    height: 204px;
-    /* background-image: url('../../../assets/image/Festival.png'); */
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
+
+  .studyText {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    margin-left: 16px;
+  }
+
+  .title {
+    font-family: 'jalnan';
+    margin: 16px 4px 4px 0px;
+  }
+
+  .studyContainer {
     display: flex;
     justify-content: center;
-    align-items: center;
-    margin-top: 10px;
-    border: 1px solid #e5e5e5;
-    border-radius: 15px;
     gap: 7px;
   }
 
+  .school {
+    width: 152px;
+    height: 136px;
+    background-image: url('../../../assets/image/school.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: white;
+  }
+
+  .except {
+    width: 152px;
+    height: 136px;
+    background-image: url('../../../assets/image/except.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: white;
+  }
   .festButton2 {
     margin-top: 144px;
     width: 152px;
@@ -307,6 +330,12 @@
     align-items: baseline;
     margin-left: 16px;
   }
+
+  .title {
+    font-family: 'jalnan';
+    margin: 16px 4px 12px 0px;
+  }
+
   .studyContainer {
     display: flex;
     justify-content: center;
