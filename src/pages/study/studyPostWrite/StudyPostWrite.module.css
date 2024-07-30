@@ -10,18 +10,18 @@
   }
 
   .innerConatiner {
-    width: 28vw;
+    width: 674px;
     height: auto;
-    background-color: #FFF7F7;
+    background-color: #fff7f7;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    margin-top: 16vh;
+    margin-top: 39vh;
   }
 
   .contentContainer {
-    width: 28vw;
+    width: 674px;
     height: auto;
     background-color: transparent;
     display: flex;
@@ -30,7 +30,7 @@
   }
 
   .postConainer {
-    width: 28vw;
+    width: 674px;
     height: 64px;
     display: flex;
     justify-content: center;
@@ -39,7 +39,7 @@
   }
 
   .postBtn {
-    width: 343px;
+    width: 674px;
     height: 52px;
     background-color: #ff4b4b;
     text-align: center;
@@ -65,7 +65,7 @@
   .innerConatiner {
     width: 100vw;
     height: auto;
-    background-color: #FFF7F7;
+    background-color: #fff7f7;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -89,7 +89,7 @@
     justify-content: center;
     align-items: center;
     background-color: #ffffff;
-    position: fixed;
+    /* position: fixed; */
     bottom: 0%;
   }
 

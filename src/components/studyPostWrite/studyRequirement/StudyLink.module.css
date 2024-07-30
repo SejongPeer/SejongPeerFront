@@ -1,57 +1,62 @@
 @media (min-width: 768px) {
-    .openChatBox {
-        display: flex;
-        justify-content: center;
-        width: 28vw;
-        height: 68px;
-        flex-direction: column;
-        background-color: #FFFFFF;
-        border-bottom: 1px solid #E5E5E5;
-        margin-top: 4px;
-    }
-    
-    .openChatBox p {
-        font-size: 14px;
-        color: #FF3838;
-    }
-    
-    .openChatInput {
-        width: 26vw;
-        height: 27px;
-        font-size: 15px;
-        border: none;
-        outline: none;
-    }
+  .openChatBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 674px;
+    height: 85px;
+    flex-direction: column;
+    background-color: #ffffff;
+    border-bottom: 1px solid #e5e5e5;
+    margin-top: 4px;
+  }
+
+  .openChatBox p {
+    font-size: 1.5vh;
+    color: #ff3838;
+    width: 624px;
+    margin-bottom: 5px;
+    margin-top: 2px;
+  }
+
+  .openChatInput {
+    display: inline-block;
+    width: 624px;
+    height: 27px;
+    font-size: 1.5vh;
+    border: none;
+    outline: none;
+  }
 }
 
 @media (max-width: 768px) {
-    .openChatBox {
-        display: flex;
-        justify-content: center;
-        width: 100%;
-        height: 68px;
-        flex-direction: column;
-        background-color: #FFFFFF;
-        border-bottom: 1px solid #E5E5E5;
-        margin-top: 4px;
-    }
-    
-    .openChatBox p {
-        font-size: 14px;
-        color: #FF3838;
-        margin: 4px 16px;
-    }
-    
-    .openChatInput {
-        width: 100%;
-        height: 27px;
-        font-size: 15px;
-        border: none;
-        outline: none;
-        padding: 0 16px;
-    }
-    .openChatInput::placeholder {
-        font-size: 15px;
-        font-weight: 500;
-    }
+  .openChatBox {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 68px;
+    flex-direction: column;
+    background-color: #ffffff;
+    border-bottom: 1px solid #e5e5e5;
+    margin-top: 4px;
+  }
+
+  .openChatBox p {
+    font-size: 14px;
+    color: #ff3838;
+    margin: 4px 16px;
+  }
+
+  .openChatInput {
+    width: 100%;
+    height: 27px;
+    font-size: 15px;
+    border: none;
+    outline: none;
+    padding: 0 16px;
+  }
+  .openChatInput::placeholder {
+    font-size: 15px;
+    font-weight: 500;
+  }
 }

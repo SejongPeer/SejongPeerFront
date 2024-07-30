@@ -45,8 +45,8 @@ const StudyRequirement = ({
 export default StudyRequirement;
 
 const RequireContainer = styled.div`
-  width: 28vw;
-  height: 48px;
+  width: 674px;
+  height: 52px;
   background-color: #ffffff;
   border-bottom: 1px #e5e5e5 solid;
   display: flex;
