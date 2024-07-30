@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react';
+
 import style from './ImageUpload.module.css';
 import plus from '../../assets/image/plus_black.png';
 import close from '../../assets/image/close_with_circle.png';
@@ -6,12 +8,23 @@ const ImageUpload = ({
     imgFiles,
     ImgHandler,
     imgRef,
-    ImgDeleteHandler
+    ImgDeleteHandler,
+    imgUrlList
 }) => {
+    const [isPost, setIsPost] = useState(true);
+    useEffect(() => {
+        if (window.location.pathname.startsWith('/study/modify')) {
+        setIsPost(false);
+        } else {
+        setIsPost(true);
+        }
+    }, []);
+    console.log(imgUrlList);
+
     return (
         <div className={style.iamgeContainer}>
-            <p>사진 (최대 3개 업로드)</p>
-            <div className={style.uploadImgWrapper}>
+            {isPost ? <p>사진 (최대 3개 업로드)</p> : <p>사진 (수정불가)</p>}
+            {isPost ? <div className={style.uploadImgWrapper}>
                 {imgFiles.map((imgFile, index) => (
                     <div className={style.imageWrapper} key={index}>
                         <img 
@@ -44,6 +57,15 @@ const ImageUpload = ({
                     </form>
                 )}
             </div>
+            :
+            <div className={style.uploadImgWrapper}>
+                {imgUrlList.map((image) => (
+                    <div className={style.imageWrapper} key={image.imageId} >
+                        <img src={image.imgUrl} alt={`image-${image.imageId}`} className={style.upload}/>
+                    </div>
+                ))}
+            </div>
+            }
         </div>
     )
 }

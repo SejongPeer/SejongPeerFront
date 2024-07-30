@@ -1,12 +1,11 @@
 import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import StudyPostWrite from '../studyPostWrite/StudyPostWrite';
 import usePostStore from '../studyPostWrite/usePostStore';
 import useStudyInfoStore from '../useStudyInfoStore';
 
 const StudyModify = () => {
-  const studyId = 58;
-  //const {studyId} = useParams();
-  //console.log("studyId : ",studyId);
+  const {studyId} = useParams();
   const [studyData, setStudyData] = useState(null);
 
   const {
