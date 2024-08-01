@@ -1,22 +1,21 @@
+.submitBtn,
+.submitBtn_notReady {
+  width: 100%;
+  height: 52px;
+  background-color: #ff4b4b;
+  text-align: center;
+  color: #ffffff;
+  border: none;
+  border-radius: 28px;
+  font-size: 1.7vh;
+  font-weight: 700;
+}
+.submitBtn:hover {
+  cursor: pointer;
+}
 .submitBtn {
-    width: 343px;
-    height: 52px;
-    background-color: #ff4b4b;
-    text-align: center;
-    color: #ffffff;
-    border: none;
-    border-radius: 28px;
-    font-size: 18px;
-    font-weight: 700;
+  background-color: #ff4b4b;
 }
 .submitBtn_notReady {
-    width: 343px;
-    height: 52px;
-    background-color: #E5E5E5;
-    text-align: center;
-    color: #ffffff;
-    border: none;
-    border-radius: 28px;
-    font-size: 18px;
-    font-weight: 700;
+  background-color: #ffffff;
 }
