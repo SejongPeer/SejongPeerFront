@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import Popup from '../../../components/studyPopup/Popup';
@@ -8,12 +8,15 @@ import usePopupStroe from '../../../components/studyPopup/usePopupStore';
 import COLORS from '../../../theme';
 import heart from '../../../assets/image/heart_postdetail.svg';
 import filledHeart from '../../../assets/image/filledHeart.svg';
+import more from '../../../assets/image/more.png';
+
 import {
   fetchStudyData,
   applyForStudy,
   cancelStudyApplication,
   toggleScrap,
   fetchScrapCount,
+  deletePostHandler,
 } from './api';
 
 const StudyListPostDetail = () => {
@@ -38,6 +41,24 @@ const StudyListPostDetail = () => {
 
   const { studyId } = useParams();
 
+  const navigate = useNavigate();
+  const modifyHandler = () => {
+    navigate(`/study/modify/${studyId}`)
+  };
+
+  const deleteHandler = async() => {
+    try {
+      const data = await deletePostHandler(studyId);
+      console.log(data);
+      alert('게시글이 삭제되었습니다!');
+      navigate('/study');
+    } catch(error) {
+      console.error('Error fetching study data:', error);
+    }
+  }
+
+  const [ismodalOpen, setIsmodalOpen] = useState(false);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -58,6 +79,17 @@ const StudyListPostDetail = () => {
 
     fetchData();
   }, [studyId, setStudyData, setScrapped, setApplied]);
+
+  const [isWriter, setIsWriter] = useState(false);
+  useEffect(() => {
+    const getNick = localStorage.getItem('nickname');
+
+    if (studyData && getNick === studyData.data.writerNickname) {
+      setIsWriter(true);
+    } else {
+      setIsWriter(false);
+    }
+  }, [studyData]);
 
   if (!studyData) {
     return <div>Loading..</div>;
@@ -142,7 +174,42 @@ const StudyListPostDetail = () => {
   return (
     <Container>
       <div>
-        <Title>{studyData.data.title}</Title>
+        <Title>
+          {studyData.data.title}
+          {isWriter ? <img 
+            src={more}
+            style={{
+              width: '24px',
+              height: '24px'
+            }}
+            alt='more'
+            onClick={()=>{setIsmodalOpen(!ismodalOpen)}}
+          /> : <></>}
+        </Title>
+        {ismodalOpen ? <MoreModal>
+        <div style={{
+        width: '90%', 
+        display: 'flex', 
+        justifyContent: 'space-evenly', 
+        borderBottom: '1px solid #E5E5E5'
+        }}
+        onClick={modifyHandler}>
+          <p style={{
+            fontSize: '14px',
+            color:'#555555',
+            fontWeight: '700',
+            margin: '8px',
+          }}>수정하기</p>
+        </div>
+          <p style={{
+            fontSize: '14px',
+            color:'#555555',
+            fontWeight: '700',
+            margin: '8px',
+          }}
+          onClick={deleteHandler}
+          >삭제하기</p>
+        </MoreModal> : <></>}
         <FlexContainer>
           <Title2>{studyData.data.writerMajor}</Title2>
           <Nickname>{studyData.data.writerNickname}</Nickname>
@@ -207,6 +274,7 @@ const Container = styled.div`
   justify-content: flex-start;
   height: 85%;
   background-color: ${COLORS.back1};
+  position: relative;
 `;
 
 const Title = styled.div`
@@ -216,6 +284,9 @@ const Title = styled.div`
   line-height: 24px;
   letter-spacing: -0.333px;
   text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 `;
 
 const Title2 = styled.div`
@@ -376,3 +447,19 @@ const ApplyButton = styled.button`
   cursor: pointer;
   border: none;
 `;
+
+const MoreModal = styled.div`
+  width: 84px;
+  height: 72px;
+  border-radius: 12px;
+  position: absolute;
+  right: 16px;
+  top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  background-color: #FAFAFA;
+  border: 1px solid #E5E5E5;
+`
