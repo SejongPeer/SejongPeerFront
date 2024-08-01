@@ -1,9 +1,9 @@
-import React, { useContext, useState, useEffect } from "react";
-import { MyContext } from "../../App";
+import React, { useContext, useState, useEffect } from 'react';
+import { MyContext } from '../../App';
 
 import style from './BottomModal.module.css';
 
-const BottomModal = (props) => {
+const BottomModal = ({ state = null, children }) => {
   const [animate, setAnimate] = useState(false);
   const { modalOpen, setModalOpen } = useContext(MyContext);
 
@@ -20,10 +20,17 @@ const BottomModal = (props) => {
     // props.deleteHandler()
   };
 
-  return <div className={style.modal}>
-    <div onClick={cancelHandler} className={style.backdrop} />
-    <div className={`${style.container} ${animate ? style.animate : ''}`}>{props.children}</div>
-  </div>;
+  return (
+    <div className={style.modal}>
+      <div
+        onClick={state === 'studyPostField' ? null : cancelHandler}
+        className={style.backdrop}
+      />
+      <div className={`${style.container} ${animate ? style.animate : ''}`}>
+        {children}
+      </div>
+    </div>
+  );
 };
 
 export default BottomModal;

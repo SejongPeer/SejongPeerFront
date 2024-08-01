@@ -30,10 +30,14 @@ import Popup from '../../../components/studyPopup/Popup';
 import usePostStore from './usePostStore';
 import useStudyInfoStore from '../useStudyInfoStore';
 import usePopupStroe from '../../../components/studyPopup/usePopupStore';
+import useTimeTableStore from '../timeTable/useTimeTableStore';
 import { format } from 'date-fns';
 // import Category from '../../../components/studyPostWrite/studyRequirement/Category';
 
 import { useNavigate } from 'react-router-dom';
+
+//강의 시간표
+import getTimeTable from '../timeTable/getTimeTable';
 const StudyPostWrite = props => {
   const {
     title,
@@ -56,6 +60,7 @@ const StudyPostWrite = props => {
     setPopupMessage,
   } = usePopupStroe();
   const { studyType } = useStudyInfoStore();
+  const { subjectName, setTableInfos, setShowData } = useTimeTableStore();
 
   const navigate = useNavigate();
 
@@ -63,6 +68,16 @@ const StudyPostWrite = props => {
     event.target.blur();
   };
 
+  //강의 시간표 get
+  useEffect(() => {
+    const fetchAndSetTimeTable = async () => {
+      const data = await getTimeTable();
+      setTableInfos(data.tableInfos);
+      setShowData(data.showData);
+    };
+
+    fetchAndSetTimeTable();
+  }, []);
   // 모달 오픈,
   const [isClickedStudy, setIsClickedStudy] = useState(false);
   const [isClickedMember, setIsClickedMember] = useState(false);
@@ -122,7 +137,7 @@ const StudyPostWrite = props => {
     const newImgFiles = imgFiles.filter((_, i) => i !== index);
     setImgFiles(newImgFiles);
   };
-  
+
   //이미지 업로드 통신
   const imgUpload = async id => {
     const imgs = [...imgFiles];
@@ -174,10 +189,14 @@ const StudyPostWrite = props => {
   const submitHandler = async e => {
     //제목/모집기간/모집인원/내용/오픈채팅 링크/카테고리
     const validation = (name, text) => {
-      if (text === '' || text === null) return `${name}을(를) 입력해주세요`;
+      if (text === '' || text === null) {
+        if (name === '카테고리') return `${name}를 선택해주세요`;
+        return `${name}을(를) 입력해주세요`;
+      }
     };
 
     const errorMessage =
+      validation('카테고리', category) ||
       validation('제목', title) ||
       validation('모집 시작일', startDate) ||
       validation('모집 종료일', endDate) ||
@@ -191,6 +210,7 @@ const StudyPostWrite = props => {
     }
     const formStartDate = format(startDate, 'yyyy-MM-dd HH:mm:ss');
     const formEndDate = format(endDate, 'yyyy-MM-dd HH:mm:ss');
+
     const studyData =
       studyType === 'lecture'
         ? {
@@ -247,17 +267,85 @@ const StudyPostWrite = props => {
         throw new Error(data.message || 'Something went wrong');
       }
 
-      // if (data.data !== null) {
-      //   errorClassName = data.data.errorClassName;
-      // }
-      alert('게시글 작성 완료');
-      navigate(`/study/post/${studyId}`);
+      if (data.data !== null) {
+        errorClassName = data.data.errorClassName;
+      }
     } catch (err) {
       console.log('ErrorMessage : ', err.message);
+
       e.preventDefault();
     }
   };
 
+  const modifyHandler = async e => {
+    //제목/모집기간/모집인원/내용/오픈채팅 링크/카테고리
+    const validation = (name, text) => {
+      if (text === '' || text === null) return `${name}을(를) 입력해주세요`;
+    };
+
+    const errorMessage =
+      validation('제목', title) ||
+      validation('모집 시작일', startDate) ||
+      validation('모집 종료일', endDate) ||
+      validation('내용', content) ||
+      validation('오픈채팅 링크', studyLink) ||
+      null;
+
+    if (errorMessage) {
+      togglePopup(errorMessage);
+      return;
+    }
+    const formStartDate = format(startDate, 'yyyy-MM-dd HH:mm:ss');
+    const formEndDate = format(endDate, 'yyyy-MM-dd HH:mm:ss');
+
+    const studyData = {
+      title: title,
+      content: content,
+      recruitmentCount: memberNum,
+      method: selectedWay,
+      frequency: selectedFrequency,
+      kakaoLink: studyLink,
+      questionLink: questionLink,
+      lectureId: category,
+      recruitmentStartAt: formStartDate,
+      recruitmentEndAt: formEndDate,
+      tags: tags,
+      images: null,
+    };
+    console.log(studyData);
+
+    try {
+      const response = await fetch(
+        `${process.env.REACT_APP_BACK_SERVER}/study/${props.studyId}`,
+        {
+          method: 'PATCH',
+          body: JSON.stringify(studyData),
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+            'Refresh-Token': localStorage.getItem('refreshToken'),
+          },
+        }
+      );
+
+      const text = await response.text();
+      const data = text ? JSON.parse(text) : {};
+
+      const studyId = data.data.id;
+      imgUpload(studyId);
+      if (!response.ok) {
+        throw new Error(data.message || 'Something went wrong');
+      }
+
+      if (data.data !== null) {
+        errorClassName = data.data.errorClassName;
+      }
+    } catch (err) {
+      console.log('ErrorMessage : ', err.message);
+
+      e.preventDefault();
+    }
+  };
 
   const [isPost, setIsPost] = useState(true);
   useEffect(() => {
@@ -266,7 +354,7 @@ const StudyPostWrite = props => {
     } else {
       setIsPost(true);
     }
-  }, [])
+  }, []);
   const btnOnclick = isPost ? submitHandler : modifyHandler;
 
   return (
@@ -294,11 +382,17 @@ const StudyPostWrite = props => {
       </div>
 
       <div className={style.postConainer} onClick={submitHandler}>
-        <SubmitBtn name={'모집글 올리기'} ready={isFilled} />
+        <SubmitBtn
+          name={isPost ? '모집글 올리기' : '모집글 수정하기'}
+          ready={isFilled}
+        />
       </div>
 
       {modalOpen && (
-        <BottomModal deleteHandler={deleteHandler}>
+        <BottomModal
+          deleteHandler={deleteHandler}
+          state={isClickedStudy ? 'studyPostField' : null}
+        >
           {isClickedStudy && <StudyPostField />}
           {isClickedMember && <StudyMember />}
         </BottomModal>
