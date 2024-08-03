@@ -1,5 +1,4 @@
-// src/components/study/StudyList.js
-import { useEffect } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import COLORS from '../../../theme';
@@ -13,8 +12,10 @@ import useStudyStore from './useStudyStore';
 import { fetchPosts } from './api';
 
 const StudyList = () => {
-  const { posts, modalOpen, setPosts, setModalOpen } = useStudyStore();
+  const { posts, setPosts } = useStudyStore();
+  const [modalOpen, setModalOpen] = useState(null);
   const navigate = useNavigate();
+  const modalRef = useRef();
 
   useEffect(() => {
     const loadPosts = async () => {
@@ -37,19 +38,40 @@ const StudyList = () => {
     navigate(`/study/post/${index}`);
   };
 
+  useEffect(() => {
+    const handleClickOutside = event => {
+      if (modalRef.current && !modalRef.current.contains(event.target)) {
+        setModalOpen(null);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [modalRef]);
+
   return (
     <Container>
       <Header></Header>
       <FilterBox>
-        <Filter onClick={() => setModalOpen(true)}>
+        <Filter
+          onClick={() => setModalOpen(modalOpen === 'study' ? null : 'study')}
+        >
           <p>스터디</p>
           <SelectImage src={select} alt="select" />
         </Filter>
-        <Filter onClick={() => setModalOpen(true)}>
+        <Filter
+          onClick={() =>
+            setModalOpen(modalOpen === 'members' ? null : 'members')
+          }
+        >
           <p>모집인원</p>
           <SelectImage src={select} alt="select" />
         </Filter>
-        <Filter onClick={() => setModalOpen(true)}>
+        <Filter
+          onClick={() => setModalOpen(modalOpen === 'status' ? null : 'status')}
+        >
           <p>모집여부</p>
           <SelectImage src={select} alt="select" />
         </Filter>
@@ -63,10 +85,16 @@ const StudyList = () => {
       </ListWrapper>
       <WriteButton onClick={goPost}>모집글 작성</WriteButton>
       {modalOpen && (
-        <BottomModal deleteHandler={() => setModalOpen(false)}>
-          <Filter_Feild />
-          <Filter_Member />
-          <Filter_now />
+        <BottomModal ref={modalRef} setModalOpen={setModalOpen}>
+          {modalOpen === 'study' && (
+            <Filter_Feild closeModal={() => setModalOpen(null)} />
+          )}
+          {modalOpen === 'members' && (
+            <Filter_Member closeModal={() => setModalOpen(null)} />
+          )}
+          {modalOpen === 'status' && (
+            <Filter_now closeModal={() => setModalOpen(null)} />
+          )}
         </BottomModal>
       )}
     </Container>
@@ -79,11 +107,21 @@ const Container = styled.div`
   width: 100vw;
   height: 100vh;
   position: relative;
+  @media (min-width: 768px) {
+    width: 30vw;
+    height: 100vh;
+    position: relative;
+    margin-top: 2vh;
+  }
 `;
 
 const Header = styled.div`
   width: 100%;
   height: 7%;
+  @media (min-width: 768px) {
+    width: 30vw;
+    height: 7%;
+  }
 `;
 
 const FilterBox = styled.div`
@@ -92,10 +130,12 @@ const FilterBox = styled.div`
   display: flex;
   align-items: center;
   padding: 0 2.5%;
-  background-color: ${COLORS.back1};
+  background-color: #fafafa;
   position: fixed;
-  margin: 0vh 0 0.5vh 0;
-  border-bottom: 5px solid ${COLORS.line2};
+  border-bottom: 3px solid #e5e5e5;
+  @media (min-width: 768px) {
+    width: 30vw;
+  }
 `;
 
 const Filter = styled.div`
@@ -130,6 +170,9 @@ const ListWrapper = styled.div`
   width: 100vw;
   height: auto;
   margin: 5vh 0;
+  @media (min-width: 768px) {
+    width: 30vw;
+  }
 `;
 
 const WriteButton = styled.div`
@@ -145,7 +188,7 @@ const WriteButton = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  position: fixed;
+  position: sticky;
   margin: 0 auto;
   left: 0;
   right: 0;
