@@ -1,0 +1,21 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+/* 데스크탑 */
+@media (min-width: 768px) {
+  .innerContainer {
+    width: 674px;
+    background-color: #fbe4e4;
+  }
+}
+/* 모바일 */
+@media (max-width: 768px) {
+  .innerContainer {
+    width: 100vw;
+    background-color: #fbe4e4;
+  }
+}
