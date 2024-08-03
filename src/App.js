@@ -38,8 +38,8 @@ import Agree from './pages/login/signUp/Agree.js';
 // 마이페이지
 import MyPage from './pages/myPage/mypage/MyPage.js';
 import Modify from './pages/myPage/modify/Modify.js';
-import MyPageScrapList from './pages/myPage/mypage/MyPageScrapList.js'
-
+import MyPageScrapList from './pages/myPage/mypage/MyPageScrapList.js';
+import MyPost from './pages/myPage/myPost/myPost.js';
 // 스터디
 import StudyList from '../src/pages/study/studyList/StudyList.js';
 import StudyPostDeatil from '../src/pages/study/studyPostDetail/StudyPostDetail.js';
@@ -93,7 +93,7 @@ const App = () => {
   }, []);
 
   // 토큰 유효기간 타이머
-  const setLogoutTimer = (token) => {
+  const setLogoutTimer = token => {
     const decodeToken = jwtDecode(token);
     const cuurentTime = Date.now();
     const expTime = decodeToken.exp * 1000;
@@ -101,7 +101,7 @@ const App = () => {
 
     setTimeout(() => {
       console.log('logout');
-      alert('logout!')
+      alert('logout!');
       logout();
     }, timeUntilLogout);
   };
@@ -195,10 +195,14 @@ const App = () => {
               <Route path="/personalinfo2" element={<Agree3 />} />
               <Route path="/mypage" element={<MyPage />} />
               <Route path="/mypage/modify" element={<Modify />} />
-              <Route path="/mypage/scraplist" element={<MyPageScrapList />}/>
+              <Route path="/mypage/scraplist" element={<MyPageScrapList />} />
+              <Route path="/mypost" element={<MyPost />} />
 
               <Route path="/study" element={<StudyList />} />
-              <Route path="/study/post/:studyId" element={<StudyPostDeatil />} />
+              <Route
+                path="/study/post/:studyId"
+                element={<StudyPostDeatil />}
+              />
               <Route path="/study/post" element={<StudyPostWrite />} />
               <Route path="/study/filter" element={<StudyFilter />} />
               <Route path="/study/modify/:studyId" element={<StudyModify />} />
