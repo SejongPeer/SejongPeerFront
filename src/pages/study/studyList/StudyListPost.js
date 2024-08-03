@@ -6,7 +6,17 @@ import picture from '../../../assets/image/image.png';
 import COLORS from '../../../theme';
 
 const StudyListPost = ({ post }) => {
-  const { title, createdAt, hasImage, categoryName, id } = post;
+  const {
+    title,
+    createdAt,
+    hasImage,
+    categoryName,
+    id,
+    tags,
+    scrapCount,
+    totalRecruitmentCount,
+    participantCount,
+  } = post;
   const isScrapped = localStorage.getItem(`isScrapped_${id}`) === 'true'; // 스크랩 상태 확인
 
   const formatDate = dateString => {
@@ -19,17 +29,38 @@ const StudyListPost = ({ post }) => {
 
   return (
     <PostWrapper>
-      <PostTop>
-        <TagWrapper>
-          <TagText>{categoryName}</TagText>
-        </TagWrapper>
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+        }}
+      >
+        <PostTop>
+          <TagWrapper>
+            <TagText>{categoryName}</TagText>
+          </TagWrapper>
+          {tags.map((tag, index) => (
+            <TagText1 key={index}>{tag}</TagText1>
+          ))}
+        </PostTop>
         <DateText>{formatDate(createdAt)}</DateText>
-      </PostTop>
-
-      <PostMiddle>
-        <Title>{title}</Title>
-        {hasImage && <ImageIcon src={picture} alt="hasImage" />}
-      </PostMiddle>
+      </div>
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+        }}
+      >
+        <PostMiddle>
+          <Title>{title}</Title>
+          {hasImage && <ImageIcon src={picture} alt="hasImage" />}
+        </PostMiddle>
+        <Count>
+          {participantCount} / {totalRecruitmentCount}
+        </Count>
+      </div>
 
       <PostBottom>
         <Like>
@@ -46,7 +77,7 @@ export default StudyListPost;
 const PostWrapper = styled.div`
   width: 100%;
   height: 12vh;
-  display: flex;
+  /* display: flex; */
   flex-direction: column;
   border-bottom: 1px solid ${COLORS.line2};
   padding: 1% 3%;
@@ -57,8 +88,7 @@ const PostTop = styled.div`
   height: 20%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 0 1%;
+  gap: 4px;
   margin-top: 1.5%;
 `;
 
@@ -67,27 +97,51 @@ const TagWrapper = styled.div`
   align-items: center;
   gap: 5%;
   border-radius: 15px;
-  border: 1px solid ${COLORS.main};
 `;
 
 const TagText = styled.p`
   margin: 0px;
-  padding: 2px 8px;
   color: ${COLORS.main};
+  display: flex;
+  align-items: center;
+  gap: 5%;
+  border-radius: 15px;
+  border: 1px solid ${COLORS.main};
+  padding: 2px 8px;
+`;
+
+const TagText1 = styled.p`
+  margin: 0px;
+  color: ${COLORS.font3};
+  display: flex;
+  align-items: center;
+  gap: 5%;
+  border-radius: 15px;
+  border: 1px solid ${COLORS.line1};
+  padding: 2px 8px;
 `;
 
 const DateText = styled.div`
   font-size: 1rem;
   color: ${COLORS.font4};
+  margin-top: 1.5%;
 `;
 
 const PostMiddle = styled.div`
-  width: 100%;
-  height: 40%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 4px;
   padding: 0 1.2%;
+  margin-top: 6px;
+`;
+
+const Count = styled.div`
+  display: flex;
+  align-items: center;
+  color: ${COLORS.main};
+  font-weight: 600;
+  font-size: 16px;
+  margin: 0px;
 `;
 
 const Title = styled.p`

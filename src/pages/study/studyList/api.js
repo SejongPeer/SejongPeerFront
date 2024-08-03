@@ -1,10 +1,11 @@
 // src/api/study.js
 import axios from 'axios';
-import useStudyInfoStore from '../useStudyInfoStore';
+import useStudyInfoStore from '../../study/useStudyInfoStore';
 
 export const fetchPosts = async () => {
   const accessToken = localStorage.getItem('accessToken');
   const refreshToken = localStorage.getItem('refreshToken');
+  const { studyType } = useStudyInfoStore.getState();
 
   if (!accessToken || !refreshToken) {
     throw new Error('Tokens not found in local storage.');
@@ -14,7 +15,7 @@ export const fetchPosts = async () => {
     'https://www.api-sejongpeer.shop/api/v1/study/post',
     {
       params: {
-        studyType: 'LECTURE', // 또는 'EXTERNAL_ACTIVITY'
+        studyType: studyType.toUpperCase(), // 'LECTURE' or 'EXTERNAL_ACTIVITY'
         page: 0,
       },
       headers: {

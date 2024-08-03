@@ -16,7 +16,7 @@ import ready from '../../../assets/image/ready.png';
 import style from './MainPage.module.css';
 
 import useStudyInfoStore from '../../study/useStudyInfoStore';
-import { BuddyHandler, HonbobHandler } from './api'; // Import API functions
+import { BuddyHandler, HonbobHandler } from './api';
 
 const images = [honbobUse, buddyUse, peerUse];
 
@@ -25,16 +25,15 @@ const MainPage = () => {
   const { setBuddyCount } = useContext(MyContext);
   const { studyType, setStudyType } = useStudyInfoStore();
 
-  // StudyHandler function to set study type and navigate
-  const StudyHandler = () => {
-    setStudyType('lecture');
+  const StudyHandler = type => {
+    setStudyType(type);
     const refreshToken = localStorage.getItem('refreshToken');
     const accessToken = localStorage.getItem('accessToken');
     if (refreshToken === null || accessToken === null) {
       alert('로그인 후 이용 가능한 서비스입니다!');
       navigate('/login');
     } else {
-      if (studyType === 'lecture') navigate('/study');
+      navigate('/study');
     }
   };
 
@@ -129,8 +128,14 @@ const MainPage = () => {
             </p>
           </div>
           <div className={style.studyContainer}>
-            <button className={style.school} onClick={StudyHandler}></button>
-            <button className={style.except}></button>
+            <button
+              className={style.school}
+              onClick={() => StudyHandler('lecture')}
+            ></button>
+            <button
+              className={style.except}
+              onClick={() => StudyHandler('external_activity')}
+            ></button>
           </div>
         </div>
       </div>
