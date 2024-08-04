@@ -1,3 +1,4 @@
+
 import React from 'react';
 import styled from 'styled-components';
 import StudyMyPost from '../../../components/studyMyPost/studyMyPost';
@@ -13,6 +14,7 @@ const MyPost = () => {
         <StudyMyPost />
       </InnerContainer>
     </Container>
+
   );
 };
 
@@ -51,3 +53,4 @@ const Notice = styled.div`
     font-size: 1.3rem;
   }
 `;
+

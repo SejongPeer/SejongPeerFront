@@ -3,9 +3,11 @@ import styled from 'styled-components';
 import COLORS from '../../theme';
 
 import { useEffect, useState } from 'react';
+
 import { fetchMyPost } from './api/fetchMyPost';
 import { applicantSelection } from './api/applicantSelection';
 import { earlyClose } from './api/earlyClose';
+
 
 const StudyMyPost = () => {
   const [myPosts, setMyPosts] = useState([]);
@@ -22,6 +24,7 @@ const StudyMyPost = () => {
 
     loadPosts();
   }, []);
+
 
   const AcceptHandle = async (studyId, nickname, value) => {
     const patchData = {
@@ -46,28 +49,34 @@ const StudyMyPost = () => {
       console.log(error);
     }
   };
+
   return (
     <Container>
       {myPosts.map((post, index) => (
         <OuterBox key={index}>
           <HeaderStyle>
+
             <Title>{post.studyTitle}</Title>
             <HeaderBottom>
               <ApplicantNum>지원인원 : {post.applicants.length}명</ApplicantNum>
               <EndBtn onClick={() => CancelHandle(post.studyId)}>
                 모집마감하기
               </EndBtn>
+
             </HeaderBottom>
           </HeaderStyle>
 
           {post.applicants.length > 0 && (
+
             <BottomStyle>
+
               {post.applicants.map((applicant, appIndex) => (
                 <ApplicantBox key={appIndex}>
                   <ApplicantInfo>
                     {applicant.major} {applicant.grade}학년
                   </ApplicantInfo>
                   <BtnBox>
+
                     <AcceptBtn
                       onClick={() =>
                         AcceptHandle(post.studyId, applicant.nickname, true)
@@ -82,6 +91,7 @@ const StudyMyPost = () => {
                     >
                       거절
                     </RefuseBtn>
+
                   </BtnBox>
                 </ApplicantBox>
               ))}
@@ -112,6 +122,7 @@ const HeaderStyle = styled.div`
   padding: 15px;
   display: flex;
   flex-direction: column;
+
   justify-content: center;
   gap: 15%;
   border-bottom: 1px solid ${COLORS.line2};
@@ -119,6 +130,7 @@ const HeaderStyle = styled.div`
     height: 9vh;
     gap: 15%;
   }
+
 `;
 const Title = styled.p`
   width: 100%;
@@ -139,9 +151,11 @@ const ApplicantNum = styled.span`
   color: ${COLORS.main};
   font-size: 0.9rem;
   font-weight: 600;
+
   @media (min-width: 768px) {
     font-size: 1.2rem;
   }
+
 `;
 const EndBtn = styled.button`
   background-color: ${COLORS.back2};
