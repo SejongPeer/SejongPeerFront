@@ -3,8 +3,11 @@ import styled from 'styled-components';
 import COLORS from '../../theme';
 
 import { useEffect, useState } from 'react';
-import { fetchMyPost } from './api';
-import style from './studyMyPost.module.css';
+
+import { fetchMyPost } from './api/fetchMyPost';
+import { applicantSelection } from './api/applicantSelection';
+import { earlyClose } from './api/earlyClose';
+
 
 const StudyMyPost = () => {
   const [myPosts, setMyPosts] = useState([]);
@@ -21,28 +24,74 @@ const StudyMyPost = () => {
 
     loadPosts();
   }, []);
+
+
+  const AcceptHandle = async (studyId, nickname, value) => {
+    const patchData = {
+      studyId: studyId,
+      applicantNickname: nickname,
+      isAccept: value,
+    };
+    try {
+      const response = await applicantSelection(patchData);
+      console.log('Response:', response);
+    } catch (error) {
+      console.log(error);
+    }
+    const msg = value === true ? '수락' : '거절';
+    alert(`${msg}되었습니다`);
+  };
+  const CancelHandle = async studyId => {
+    try {
+      const response = await earlyClose(studyId);
+      console.log('Response:', response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <Container>
       {myPosts.map((post, index) => (
         <OuterBox key={index}>
           <HeaderStyle>
-            <Title className={style.title}>{post.studyTitle}</Title>
+
+            <Title>{post.studyTitle}</Title>
             <HeaderBottom>
               <ApplicantNum>지원인원 : {post.applicants.length}명</ApplicantNum>
-              <EndBtn>모집마감하기</EndBtn>
+              <EndBtn onClick={() => CancelHandle(post.studyId)}>
+                모집마감하기
+              </EndBtn>
+
             </HeaderBottom>
           </HeaderStyle>
 
           {post.applicants.length > 0 && (
-            <BottomStyle className={style.applicantsList}>
+
+            <BottomStyle>
+
               {post.applicants.map((applicant, appIndex) => (
                 <ApplicantBox key={appIndex}>
                   <ApplicantInfo>
                     {applicant.major} {applicant.grade}학년
                   </ApplicantInfo>
                   <BtnBox>
-                    <AcceptBtn>수락</AcceptBtn>
-                    <RefuseBtn>거절</RefuseBtn>
+
+                    <AcceptBtn
+                      onClick={() =>
+                        AcceptHandle(post.studyId, applicant.nickname, true)
+                      }
+                    >
+                      수락
+                    </AcceptBtn>
+                    <RefuseBtn
+                      onClick={() =>
+                        AcceptHandle(post.studyId, applicant.nickname, false)
+                      }
+                    >
+                      거절
+                    </RefuseBtn>
+
                   </BtnBox>
                 </ApplicantBox>
               ))}
@@ -73,8 +122,15 @@ const HeaderStyle = styled.div`
   padding: 15px;
   display: flex;
   flex-direction: column;
+
+  justify-content: center;
   gap: 15%;
   border-bottom: 1px solid ${COLORS.line2};
+  @media (min-width: 768px) {
+    height: 9vh;
+    gap: 15%;
+  }
+
 `;
 const Title = styled.p`
   width: 100%;
@@ -83,6 +139,9 @@ const Title = styled.p`
   padding: 0;
   font-size: 1.2rem;
   font-weight: 700;
+  @media (min-width: 768px) {
+    font-size: 1.5rem;
+  }
 `;
 const HeaderBottom = styled.div`
   display: flex;
@@ -92,12 +151,20 @@ const ApplicantNum = styled.span`
   color: ${COLORS.main};
   font-size: 0.9rem;
   font-weight: 600;
+
+  @media (min-width: 768px) {
+    font-size: 1.2rem;
+  }
+
 `;
 const EndBtn = styled.button`
   background-color: ${COLORS.back2};
   color: ${COLORS.font4};
   font-size: 0.9rem;
   font-weight: 500;
+  @media (min-width: 768px) {
+    font-size: 1.1rem;
+  }
 `;
 
 const BottomStyle = styled.div`
@@ -118,6 +185,9 @@ const ApplicantInfo = styled.span`
   display: flex;
   justify-content: center;
   align-items: center;
+  @media (min-width: 768px) {
+    font-size: 1.3rem;
+  }
 `;
 const BtnBox = styled.div`
   display: flex;

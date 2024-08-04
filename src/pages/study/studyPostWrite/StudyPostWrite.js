@@ -262,7 +262,8 @@ const StudyPostWrite = props => {
       if (imgFiles.length > 0) {
         await imgUpload(studyId);
       }
-
+      alert('게시글 작성 완료');
+      navigate(`/study/post/${studyId}`);
       if (!response.ok) {
         throw new Error(data.message || 'Something went wrong');
       }
@@ -340,6 +341,8 @@ const StudyPostWrite = props => {
       if (data.data !== null) {
         errorClassName = data.data.errorClassName;
       }
+      alert('게시글 수정 완료');
+      navigate(`/study/post/${studyId}`);
     } catch (err) {
       console.log('ErrorMessage : ', err.message);
 
