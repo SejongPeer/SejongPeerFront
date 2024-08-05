@@ -147,6 +147,12 @@
     justify-content: center;
     margin-right: 4px;
   }
+  .checked {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #ff3838;
+  }
   .optionChecked .customCheckbox {
     background-color: #ff3838;
     border-color: #ff3838;
@@ -306,8 +312,17 @@
     justify-content: center;
     margin-right: 4px;
   }
+  .checked {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background-color: #ff3838;
+  }
   .optionChecked .customCheckbox {
     background-color: #ff3838;
     border-color: #ff3838;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }

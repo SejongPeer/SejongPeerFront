@@ -51,6 +51,17 @@ const StudyPostWrite = props => {
     content,
     studyLink,
     tags,
+    setTitle,
+    setCategory,
+    setStartDate,
+    setEndDate,
+    setMemberNum,
+    setSelectedWay,
+    setSelectedFrequency,
+    setContent,
+    setStudyLink,
+    setQuestionLink,
+    setTags,
   } = usePostStore();
   const {
     isPopupVisible,
@@ -61,7 +72,18 @@ const StudyPostWrite = props => {
   } = usePopupStroe();
   const { studyType } = useStudyInfoStore();
   const { subjectName, setTableInfos, setShowData } = useTimeTableStore();
-
+  console.log(
+    title,
+    category,
+    startDate,
+    endDate,
+    memberNum,
+    selectedWay,
+    selectedFrequency,
+    questionLink,
+    content,
+    studyLink,
+    tags,);
   const navigate = useNavigate();
 
   const handleDatePickerFocus = event => {
@@ -263,6 +285,20 @@ const StudyPostWrite = props => {
         await imgUpload(studyId);
       }
       alert('게시글 작성 완료');
+
+      // 게시글 초기화
+      setTitle('');
+      setCategory(null);
+      setStartDate('');
+      setEndDate('');
+      setMemberNum(1);
+      setSelectedWay('FACE_TO_FACE');
+      setSelectedFrequency('ONCE_OR_TWICE_A_WEEK');
+      setContent('');
+      setStudyLink('');
+      setQuestionLink('');
+      setTags([]);
+
       navigate(`/study/post/${studyId}`);
       if (!response.ok) {
         throw new Error(data.message || 'Something went wrong');
@@ -278,6 +314,7 @@ const StudyPostWrite = props => {
     }
   };
 
+  //수정 통신
   const modifyHandler = async e => {
     //제목/모집기간/모집인원/내용/오픈채팅 링크/카테고리
     const validation = (name, text) => {
@@ -332,8 +369,7 @@ const StudyPostWrite = props => {
       const text = await response.text();
       const data = text ? JSON.parse(text) : {};
 
-      const studyId = data.data.id;
-      imgUpload(studyId);
+
       if (!response.ok) {
         throw new Error(data.message || 'Something went wrong');
       }
@@ -342,7 +378,20 @@ const StudyPostWrite = props => {
         errorClassName = data.data.errorClassName;
       }
       alert('게시글 수정 완료');
-      navigate(`/study/post/${studyId}`);
+
+      // 게시글 초기화
+      setTitle('');
+      setStartDate('');
+      setEndDate('');
+      setMemberNum(1);
+      setSelectedWay('FACE_TO_FACE');
+      setSelectedFrequency('ONCE_OR_TWICE_A_WEEK');
+      setContent('');
+      setStudyLink('');
+      setQuestionLink('');
+      setTags([]);
+
+      navigate(`/study/post/${props.studyId}`);
     } catch (err) {
       console.log('ErrorMessage : ', err.message);
 
@@ -384,7 +433,7 @@ const StudyPostWrite = props => {
         </div>
       </div>
 
-      <div className={style.postConainer} onClick={submitHandler}>
+      <div className={style.postConainer} onClick={btnOnclick}>
         <SubmitBtn
           name={isPost ? '모집글 올리기' : '모집글 수정하기'}
           ready={isFilled}

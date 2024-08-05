@@ -15,13 +15,14 @@ const ConfirmModal = ({ isOpen, onClose }) => {
   return (
     <div className={styles.modalOverlay}>
       <div className={styles.modalContent}>
-        <h3>글 작성을 취소하시겠습니까?</h3>
+        <h3>게시글 작성을 취소하시겠습니까?</h3>
+        <p>작성한 내용은 저장되지 않습니다.</p>
         <div className={styles.buttonContainer}>
-          <button className={styles.cancelButton} onClick={onClose}>
-            취소
+          <button className={styles.confirmButton} onClick={onClose}>
+            계속 작성하기
           </button>
-          <button className={styles.confirmButton} onClick={handleConfirm}>
-            확인
+          <button className={styles.cancelButton} onClick={handleConfirm}>
+            작성취소
           </button>
         </div>
       </div>
