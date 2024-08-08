@@ -13,7 +13,6 @@ const StudyListPost = ({ post }) => {
     categoryName,
     id,
     tags,
-    scrapCount,
     totalRecruitmentCount,
     participantCount,
   } = post;

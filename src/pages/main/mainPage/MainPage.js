@@ -1,18 +1,17 @@
 import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { MyContext } from '../../../App';
+import { toast } from 'sonner';
 
 import MainBuddy from './MainBuddy';
 import MainHonbob from './MainHonbob';
 import kakao from '../../../assets/image/kakao.png';
 
-import reprot from '../../../assets/image/report.png';
 import honbobUse from '../../../assets/image/honbobUse.png';
 import peerUse from '../../../assets/image/peerUse.png';
 import buddyUse from '../../../assets/image/buddyUse.png';
 import buddy_button from '../../../assets/image/buddy_button.png';
 import honbobButton from '../../../assets/image/honbobButton.png';
-import ready from '../../../assets/image/ready.png';
 import style from './MainPage.module.css';
 
 import useStudyInfoStore from '../../study/useStudyInfoStore';
@@ -30,7 +29,7 @@ const MainPage = () => {
     const refreshToken = localStorage.getItem('refreshToken');
     const accessToken = localStorage.getItem('accessToken');
     if (refreshToken === null || accessToken === null) {
-      alert('로그인 후 이용 가능한 서비스입니다!');
+      toast.error('로그인 후 이용 가능한 서비스입니다!');
       navigate('/login');
     } else {
       navigate('/study');

@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 import styles from './MyPage.module.css';
+import { toast } from 'sonner';
 
 const MyPage = () => {
   const [myPageData, setMyPageData] = useState({});
@@ -10,6 +11,10 @@ const MyPage = () => {
   const navigate = useNavigate();
   const goModify = () => {
     navigate('/mypage/modify');
+  };
+
+  const handleAppliedStudy = () => {
+    navigate('/mypage/appliedStudy');
   };
   // 탈퇴하기
   const handleDeleteAccount = async () => {
@@ -29,7 +34,7 @@ const MyPage = () => {
         );
         if (response.status === 200) {
           // 성공적으로 탈퇴 처리됨
-          alert('계정이 성공적으로 삭제되었습니다.');
+          toast.success('계정이 성공적으로 삭제되었습니다.');
           // 로컬 스토리지에서 사용자 정보 제거
           localStorage.removeItem('accessToken');
           localStorage.removeItem('refreshToken');
@@ -38,7 +43,7 @@ const MyPage = () => {
         }
       } catch (error) {
         console.error('탈퇴 처리 중 오류 발생:', error);
-        alert('오류가 발생했습니다. 다시 시도해주세요.');
+        toast.error('오류가 발생했습니다. 다시 시도해주세요.');
       }
     }
   };
@@ -59,7 +64,7 @@ const MyPage = () => {
     localStorage.removeItem('pwd');
     localStorage.removeItem('userId');
     console.log('로그아웃 성공');
-    alert('로그아웃 되었습니다');
+    toast.success('로그아웃 되었습니다');
     navigate('/main');
   };
 
@@ -127,13 +132,13 @@ const MyPage = () => {
       const data = await response.json();
       //상태 관리
       if (data.data === null) {
-        alert('아직 신청한 내역이 없습니다!');
+        toast.error('아직 신청한 내역이 없습니다!');
         navigate('/buddy/start1');
       } else {
         statusHandler(data.data.status, data.data.matchingCompletedCount);
       }
     } catch (error) {
-      alert('에러가 발생했습니다.');
+      toast.warning('에러가 발생했습니다.');
       console.log(error.message);
     }
   };
@@ -149,7 +154,7 @@ const MyPage = () => {
       }
       // 거절 당함
     } else if (status === 'DENIED') {
-      alert('상대방이 거절했습니다. 다시 신청해 주세요.');
+      toast.error('상대방이 거절했습니다. 다시 신청해 주세요.');
       if (count > 0) {
         navigate('/buddy/success');
       } else {
@@ -157,23 +162,25 @@ const MyPage = () => {
       }
       //매칭 최종 완료
     } else if (status === 'MATCHING_COMPLETED') {
-      alert('매칭에 성공했습니다. 정보를 확인해주세요!');
+      toast.success('매칭에 성공했습니다. 정보를 확인해주세요!');
       navigate('/buddy/success');
       //매칭 수락
     } else if (status === 'ACCEPT') {
-      alert('신청 수락을 했습니다. 상대방이 수락할때까지 기다려 주세요.');
+      toast.success(
+        '신청 수락을 했습니다. 상대방이 수락할때까지 기다려 주세요.'
+      );
       //매칭 거절
     } else if (status === 'REJECT') {
-      alert(
+      toast.error(
         '거절 패널티 1시간이 부과되었습니다. 1시간 이후에 다시 신청해 주세요.'
       );
       //매칭 중
     } else if (status === 'IN_PROGRESS') {
-      alert('매칭중입니다!');
+      toast.info('매칭중입니다!');
       navigate('/buddy/waiting');
       //매칭 완료
     } else if (status === 'FOUND_BUDDY') {
-      alert('버디를 찾았습니다!');
+      toast.success('버디를 찾았습니다!');
       navigate('/buddy/accept');
     }
   };
@@ -203,15 +210,15 @@ const MyPage = () => {
       ) {
         navigate('/honbob/start1');
       } else if (data.data.status === 'IN_PROGRESS') {
-        alert('매칭 중입니다!');
+        toast.info('매칭 중입니다!');
         navigate('/honbob/waiting');
       } else if (data.data.status === 'MATCHING_COMPLETED') {
-        alert('매칭에 성공했습니다!');
+        toast.success('매칭에 성공했습니다!');
         navigate('/honbob/success');
       }
     } catch (error) {
       console.error('에러 체크:', error);
-      alert('매칭 체크 실패!');
+      toast.error('매칭 체크 실패!');
     }
   };
 
@@ -222,13 +229,6 @@ const MyPage = () => {
   //버디 사용방법
   const buddyInfoHandler = () => {
     window.open('https://sejongbuddy.simple.ink/', '_blank');
-  };
-
-  const agree1 = () => {
-    navigate('/personalinfo');
-  };
-  const agree2 = () => {
-    navigate('/useinfo');
   };
 
   return (
@@ -250,7 +250,10 @@ const MyPage = () => {
                 <div className={styles.matchingBox}>
                   <button className={styles.matchingButton}>
                     <div className={styles.leftBox}>
-                      <div className={`${styles.redWord} ${styles.checkWord}`}>
+                      <div
+                        className={`${styles.redWord} ${styles.checkWord}`}
+                        onClick={handleAppliedStudy}
+                      >
                         지원한 스터디 확인
                       </div>
                       <div
@@ -326,10 +329,12 @@ const MyPage = () => {
                 </div>
 
                 <div className={styles.matchingBox}>
-                <button
+                  <button
                     className={styles.matchingButton}
                     onClick={() => navigate('/mypage/scraplist')}
-                  >                    <div className={styles.leftBox}>
+                  >
+                    {' '}
+                    <div className={styles.leftBox}>
                       <div className={`${styles.redWord} ${styles.checkWord}`}>
                         스크랩 한 글
                       </div>

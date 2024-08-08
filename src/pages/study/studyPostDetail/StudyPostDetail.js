@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import { toast } from 'sonner';
 
 import Popup from '../../../components/studyPopup/Popup';
 import styled from 'styled-components';
@@ -43,19 +44,19 @@ const StudyListPostDetail = () => {
 
   const navigate = useNavigate();
   const modifyHandler = () => {
-    navigate(`/study/modify/${studyId}`)
+    navigate(`/study/modify/${studyId}`);
   };
 
-  const deleteHandler = async() => {
+  const deleteHandler = async () => {
     try {
       const data = await deletePostHandler(studyId);
       console.log(data);
-      alert('게시글이 삭제되었습니다!');
+      toast.success('게시글이 삭제되었습니다!');
       navigate('/study');
-    } catch(error) {
+    } catch (error) {
       console.error('Error fetching study data:', error);
     }
-  }
+  };
 
   const [ismodalOpen, setIsmodalOpen] = useState(false);
 
@@ -71,7 +72,7 @@ const StudyListPostDetail = () => {
           setApplied(JSON.parse(appliedStatus));
         }
         const scrapData = await fetchScrapCount(studyId);
-        console.log(data)
+        console.log(data);
         setScrapCount(scrapData.data.scrapCount);
       } catch (error) {
         console.error('Error fetching study data:', error);
@@ -110,7 +111,7 @@ const StudyListPostDetail = () => {
       if (isApplied) {
         const response = await cancelStudyApplication(studyId);
         if (response.status === 200) {
-          togglePopup('지원 취소 완료');
+          toast.success('지원 취소 완료');
           setApplied(false);
           localStorage.setItem(`isApplied_${studyId}`, false);
         } else {
@@ -119,7 +120,7 @@ const StudyListPostDetail = () => {
       } else {
         const response = await applyForStudy(studyId);
         if (response.status === 201) {
-          togglePopup(
+          toast.success(
             '지원 완료! 모집자가 수락 후, 모집인원이 다 차거나 마감일이 되면 메시지로 오픈채팅 링크가 전달됩니다.'
           );
           setApplied(true);
@@ -130,7 +131,8 @@ const StudyListPostDetail = () => {
       }
     } catch (error) {
       if (error.response && error.response.status === 409) {
-        togglePopup('이미 신청한 스터디입니다!');
+        toast.error('이미 신청한 스터디입니다!');
+
         setApplied(true);
         localStorage.setItem(`isApplied_${studyId}`, true);
       } else {
@@ -138,7 +140,7 @@ const StudyListPostDetail = () => {
       }
 
       if (error.response.status === 403) {
-        togglePopup('1시간 패널티 부과 중입니다!');
+        toast.error('1시간 패널티 부과 중입니다!');
       }
     }
   };
@@ -152,11 +154,11 @@ const StudyListPostDetail = () => {
         localStorage.setItem(`isScrapped_${studyId}`, newScrappedStatus);
 
         if (newScrappedStatus) {
-          alert('스크랩에 추가합니다!');
+          toast.success('스크랩에 추가합니다!');
           localStorage.setItem(`scrapId_${studyId}`, response.data.data);
           setScrapCount(scrapCount + 1);
         } else {
-          alert('스크랩에서 제거합니다!');
+          toast.success('스크랩에서 제거합니다!');
           localStorage.removeItem(`scrapId_${studyId}`);
           setScrapCount(scrapCount - 1);
         }
@@ -165,53 +167,72 @@ const StudyListPostDetail = () => {
       }
     } catch (error) {
       if (error.response && error.response.status === 403) {
-        console.error('권한이 없음.');
+        toast.error('권한이 없음.');
       } else {
         console.error('스크랩 실패:', error);
       }
     }
   };
-  console.log(studyData.data.img)
+  // console.log(studyData.data.img)
 
   return (
     <Container>
       <div>
         <Title>
           {studyData.data.title}
-          {isWriter ? <img 
-            src={more}
-            style={{
-              width: '24px',
-              height: '24px'
-            }}
-            alt='more'
-            onClick={()=>{setIsmodalOpen(!ismodalOpen)}}
-          /> : <></>}
+          {isWriter ? (
+            <img
+              src={more}
+              style={{
+                width: '24px',
+                height: '24px',
+              }}
+              alt="more"
+              onClick={() => {
+                setIsmodalOpen(!ismodalOpen);
+              }}
+            />
+          ) : (
+            <></>
+          )}
         </Title>
-        {ismodalOpen ? <MoreModal>
-        <div style={{
-        width: '90%', 
-        display: 'flex', 
-        justifyContent: 'space-evenly', 
-        borderBottom: '1px solid #E5E5E5'
-        }}
-        onClick={modifyHandler}>
-          <p style={{
-            fontSize: '14px',
-            color:'#555555',
-            fontWeight: '700',
-            margin: '8px',
-          }}>수정하기</p>
-        </div>
-          <p style={{
-            fontSize: '14px',
-            color:'#555555',
-            fontWeight: '700',
-            margin: '8px',
-          }}
-          onClick={deleteHandler}
-          >삭제하기</p>
-        </MoreModal> : <></>}
+        {ismodalOpen ? (
+          <MoreModal>
+            <div
+              style={{
+                width: '90%',
+                display: 'flex',
+                justifyContent: 'space-evenly',
+                borderBottom: '1px solid #E5E5E5',
+              }}
+              onClick={modifyHandler}
+            >
+              <p
+                style={{
+                  fontSize: '14px',
+                  color: '#555555',
+                  fontWeight: '700',
+                  margin: '8px',
+                }}
+              >
+                수정하기
+              </p>
+            </div>
+            <p
+              style={{
+                fontSize: '14px',
+                color: '#555555',
+                fontWeight: '700',
+                margin: '8px',
+              }}
+              onClick={deleteHandler}
+            >
+              삭제하기
+            </p>
+          </MoreModal>
+        ) : (
+          <></>
+        )}
         <FlexContainer>
           <Title2>{studyData.data.writerMajor}</Title2>
           <Nickname>{studyData.data.writerNickname}</Nickname>
@@ -242,13 +263,19 @@ const StudyListPostDetail = () => {
         <Line />
         <Content>{studyData.data.content}</Content>
         <TagContainer>
-          {studyData.data.imgUrlList && studyData.data.imgUrlList.map((image) => (
-            <img style={{
-              width: '100px',
-              height: '100px',
-              borderRadius: '8px'
-            }} key={image.imageId} src={image.imgUrl} alt={`Image ${image.imageId}`} />
-          ))}
+          {studyData.data.imgUrlList &&
+            studyData.data.imgUrlList.map(image => (
+              <img
+                style={{
+                  width: '100px',
+                  height: '100px',
+                  borderRadius: '8px',
+                }}
+                key={image.imageId}
+                src={image.imgUrl}
+                alt={`Image ${image.imageId}`}
+              />
+            ))}
         </TagContainer>
 
         <CommentContainer>
@@ -256,13 +283,17 @@ const StudyListPostDetail = () => {
             <ScrapImage src={isScrapped ? filledHeart : heart} alt="heart" />
             <ScrapCount>{scrapCount}</ScrapCount>
           </ScrapButton>
-          {isWriter ? <ApplyButton>
-            {`신청현황 보기 (${studyData.data.participantCount} / ${studyData.data.totalRecruitmentCount})`}
-          </ApplyButton> :  <ApplyButton onClick={applyForStudyHandler} isApplied={isApplied}>       
-            {isApplied
-              ? '지원취소'
-              : `지원하기 (${studyData.data.participantCount} / ${studyData.data.totalRecruitmentCount})`}
-          </ApplyButton>}
+          {isWriter ? (
+            <ApplyButton>
+              {`신청현황 보기 (${studyData.data.participantCount} / ${studyData.data.totalRecruitmentCount})`}
+            </ApplyButton>
+          ) : (
+            <ApplyButton onClick={applyForStudyHandler} isApplied={isApplied}>
+              {isApplied
+                ? '지원취소'
+                : `지원하기 (${studyData.data.participantCount} / ${studyData.data.totalRecruitmentCount})`}
+            </ApplyButton>
+          )}
         </CommentContainer>
         {isPopupVisible && (
           <Popup
@@ -472,6 +503,6 @@ const MoreModal = styled.div`
   align-items: center;
   justify-content: center;
   z-index: 2;
-  background-color: #FAFAFA;
-  border: 1px solid #E5E5E5;
-`
+  background-color: #fafafa;
+  border: 1px solid #e5e5e5;
+`;
