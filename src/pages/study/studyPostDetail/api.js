@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const getAuthHeaders = () => {
   const accessToken = localStorage.getItem('accessToken');
@@ -6,6 +7,7 @@ const getAuthHeaders = () => {
 
   if (!accessToken || !refreshToken) {
     alert('재로그인 해야합니다!');
+    const navigate = useNavigate('/study')
     throw new Error('토큰이 없음!');
   }
 

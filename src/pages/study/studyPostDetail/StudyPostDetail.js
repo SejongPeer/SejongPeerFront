@@ -71,6 +71,7 @@ const StudyListPostDetail = () => {
           setApplied(JSON.parse(appliedStatus));
         }
         const scrapData = await fetchScrapCount(studyId);
+        console.log(data)
         setScrapCount(scrapData.data.scrapCount);
       } catch (error) {
         console.error('Error fetching study data:', error);
@@ -170,6 +171,7 @@ const StudyListPostDetail = () => {
       }
     }
   };
+  console.log(studyData.data.img)
 
   return (
     <Container>
@@ -239,18 +241,28 @@ const StudyListPostDetail = () => {
         </Tag>
         <Line />
         <Content>{studyData.data.content}</Content>
-        <TagContainer></TagContainer>
+        <TagContainer>
+          {studyData.data.imgUrlList && studyData.data.imgUrlList.map((image) => (
+            <img style={{
+              width: '100px',
+              height: '100px',
+              borderRadius: '8px'
+            }} key={image.imageId} src={image.imgUrl} alt={`Image ${image.imageId}`} />
+          ))}
+        </TagContainer>
 
         <CommentContainer>
           <ScrapButton onClick={toggleScrapHandler}>
             <ScrapImage src={isScrapped ? filledHeart : heart} alt="heart" />
             <ScrapCount>{scrapCount}</ScrapCount>
           </ScrapButton>
-          <ApplyButton onClick={applyForStudyHandler} isApplied={isApplied}>
+          {isWriter ? <ApplyButton>
+            {`신청현황 보기 (${studyData.data.participantCount} / ${studyData.data.totalRecruitmentCount})`}
+          </ApplyButton> :  <ApplyButton onClick={applyForStudyHandler} isApplied={isApplied}>       
             {isApplied
               ? '지원취소'
               : `지원하기 (${studyData.data.participantCount} / ${studyData.data.totalRecruitmentCount})`}
-          </ApplyButton>
+          </ApplyButton>}
         </CommentContainer>
         {isPopupVisible && (
           <Popup

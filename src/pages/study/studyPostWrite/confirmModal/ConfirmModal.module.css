@@ -1,7 +1,7 @@
 /* src/components/ConfirmModal.module.css */
 .modalOverlay {
   position: fixed;
-  top: 0;
+  top: -50px;
   left: 0;
   right: 0;
   bottom: 0;
@@ -14,27 +14,30 @@
 .modalContent {
   background: white;
   padding: 20px;
-  border-radius: 8px;
+  border-radius: 16px;
   text-align: center;
 }
 
 .buttonContainer {
   display: flex;
   justify-content: space-between;
-  margin-top: 20px;
+  margin-top: 40px;
 }
 
 .cancelButton,
 .confirmButton {
-  padding: 10px 20px;
+  width: 120px;
+  padding: 12px 10px;
   border: none;
-  border-radius: 5px;
+  border-radius: 35px;
   cursor: pointer;
+  color: #FFFFFF;
+  font-size: 17px;
+  font-weight: 600;
 }
 
 .cancelButton {
   background-color: #ddd;
-  margin-right: 10px;
 }
 
 .confirmButton {

@@ -23,7 +23,7 @@ const BottomModal = ({ state = null, children }) => {
   return (
     <div className={style.modal}>
       <div
-        onClick={state === 'studyPostField' ? null : cancelHandler}
+        onClick={cancelHandler}
         className={style.backdrop}
       />
       <div className={`${style.container} ${animate ? style.animate : ''}`}>

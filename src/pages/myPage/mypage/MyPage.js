@@ -331,19 +331,19 @@ const MyPage = () => {
                     onClick={() => navigate('/mypage/scraplist')}
                   >                    <div className={styles.leftBox}>
                       <div className={`${styles.redWord} ${styles.checkWord}`}>
-                        좋아요 한 글
+                        스크랩 한 글
                       </div>
                     </div>
                     <div className={styles.rightImg}></div>
                   </button>
-                  <button className={styles.matchingButton}>
+                  {/* <button className={styles.matchingButton}>
                     <div className={styles.leftBox}>
                       <div className={`${styles.redWord} ${styles.checkWord}`}>
                         댓글 단 글
                       </div>
                     </div>
                     <div className={styles.rightImg}></div>
-                  </button>
+                  </button> */}
                   {/*<button className={styles.hideBtn}></button>*/}
                 </div>
               </div>
