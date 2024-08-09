@@ -6,6 +6,7 @@ import axios from 'axios';
 import Loading from '../../../../components/load/Loading';
 
 import style from '../auth/Auth.module.css';
+import { toast } from 'sonner';
 
 const Auth = () => {
   const [Id, setId] = useState('');
@@ -30,9 +31,10 @@ const Auth = () => {
       )
       .then(response => {
         let result = response.data.data.isAuth;
-        if (result === false) alert('아이디 및 비밀번호가 일치하지 않습니다');
+        if (result === false)
+          toast.error('아이디 및 비밀번호가 일치하지 않습니다');
         else if (result === true) {
-          alert('인증 완료');
+          toast.success('인증 완료');
           setName(response.data.data.name);
           setGrade(response.data.data.grade);
           setStudentNum(Id);

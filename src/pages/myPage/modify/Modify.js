@@ -114,7 +114,7 @@ const Modify = () => {
         localStorage.setItem('nickname', NickName);
       }
 
-      alert('수정 성공');
+      toast.success('수정 성공');
     } catch (error) {
       console.error(error.message);
       e.preventDefault();

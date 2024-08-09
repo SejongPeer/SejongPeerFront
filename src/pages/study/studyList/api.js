@@ -15,7 +15,7 @@ export const fetchPosts = async () => {
     'https://www.api-sejongpeer.shop/api/v1/study/post',
     {
       params: {
-        studyType: studyType.toUpperCase(), // 'LECTURE' or 'EXTERNAL_ACTIVITY'
+        studyType: studyType.toUpperCase(), // 'LECTURE' 또는 'EXTERNAL_ACTIVITY'
         page: 0,
       },
       headers: {
@@ -23,7 +23,7 @@ export const fetchPosts = async () => {
         'Refresh-token': refreshToken,
         'Content-Type': 'application/json',
       },
-      withCredentials: true, // 쿠키를 포함하는 요청에 필요할 수 있습니다.
+      withCredentials: true,
     }
   );
   console.log(response.data.data);

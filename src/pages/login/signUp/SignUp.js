@@ -6,6 +6,7 @@ import SignUpElement from './SignUpElement';
 import IDCheckBox from './IDCheckBox';
 
 import style from './SignUp.module.css';
+import { toast } from 'sonner';
 
 const SignUp = props => {
   // const { name, setName } = useContext(MyContext);
@@ -189,7 +190,7 @@ const SignUp = props => {
               throw new Error(data.message);
             }
           }
-          alert('로그인 페이지로 이동합니다.');
+          toast.success('로그인 페이지로 이동합니다.');
 
           navigate('/login');
         } catch (err) {
@@ -198,7 +199,9 @@ const SignUp = props => {
             errorClassName == 'DUPLICATED_STUDENT_ID' ||
             errorClassName == 'DUPLICATED_PHONE_NUMBER'
           ) {
-            alert('한 학번과 전화번호 당 한 개의 계정만 생성할 수 있습니다.');
+            toast.error(
+              '한 학번과 전화번호 당 한 개의 계정만 생성할 수 있습니다.'
+            );
           }
           // else if (errorClassName == "MethodArgumentNotValidException") {
           //   alert("닉네임은 2자 이상 8자 이하 한글, 영어, 숫자만 입력해주세요.");

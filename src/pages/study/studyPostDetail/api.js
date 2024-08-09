@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'sonner';
 
 const getAuthHeaders = () => {
   const accessToken = localStorage.getItem('accessToken');
@@ -7,7 +8,7 @@ const getAuthHeaders = () => {
 
   if (!accessToken || !refreshToken) {
     alert('재로그인 해야합니다!');
-    const navigate = useNavigate('/study')
+    toast.error('재로그인 해야합니다!');
     throw new Error('토큰이 없음!');
   }
 
@@ -92,7 +93,7 @@ export const deletePostHandler = async studyId => {
   const refreshToken = localStorage.getItem('refreshToken');
 
   if (!accessToken || !refreshToken) {
-    alert('재로그인 해야합니다!');
+    toast.error('재로그인 해야합니다!');
     throw new Error('토큰이 없음!');
   }
 
